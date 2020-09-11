@@ -1,7 +1,8 @@
 window.onload = function () {
   const input = document.querySelector('#texto-tarefa');
 
-  const btn = document.querySelector('#criar-tarefa');
+  const btnCreate = document.querySelector('#criar-tarefa');
+  const btnDelete = document.querySelector('#apaga-tudo')
 
   const ol = document.querySelector('#lista-tarefas');
 
@@ -22,7 +23,7 @@ window.onload = function () {
     }
   }
 
-  const todoList = storage.index() ? storage.index() : [];
+  let todoList = storage.index() ? storage.index() : [];
 
   const cleanInput = function () {
     input.value = null;
@@ -34,51 +35,54 @@ window.onload = function () {
     return li ? true : false;
   }
 
-  function splitBG(positionLi){
+  function splitBG(positionLi) {
     let li = document.querySelectorAll('li');
-      
+
     li[positionLi].addEventListener("click", function (event) {
       let li = event.target;
       li.style.backgroundColor = 'rgb(128,128,128)';
-  
+
       for (let index = 0; index < todoList.length; index += 1) {
         let list = document.querySelectorAll('li');
-  
+
         if (list[index].id != li.id) list[index].style.backgroundColor = null;
       }
     });
-    li[positionLi].addEventListener("dblclick", function(event){
+
+    li[positionLi].addEventListener("dblclick", function (event) {
       let li = event.target;
-      if(li.className) li.className = null;
+      if (li.className) li.className = '';
       else li.className = 'completed';
     });
   }
 
   // função factory que carrega conteudo da lista assim que é atualizado a página
   function automaticSplitTodoList() {
-    let todoList = storage.index();
+    for (let index = 0; index < todoList.length; index += 1) {
+      let list = document.createElement('li');
+      list.id = `${todoList[index]}`;
+      list.innerText = todoList[index];
 
-    if (todoList) {
-      for (let index = 0; index < todoList.length; index += 1) {
-        let list = document.createElement('li');
-        list.id = `${todoList[index]}`;
-        list.innerText = todoList[index];
-
-        if (!verifySplited(todoList[index])) {
-          ol.appendChild(list);
-        }
+      if (!verifySplited(todoList[index])) {
+        ol.appendChild(list);
         splitBG(index);
-      }
+      }      
     }
   }
 
   function insertTodo() {
-    todoList.push(input.value);
+    if (input.value != '' && !verifySplited(input.value)) todoList.push(input.value);
     storage.insert(todoList);
     cleanInput();
     automaticSplitTodoList();
   }
 
-  btn.addEventListener('click', insertTodo);
+  function deleteAllTodo() {
+    localStorage.clear('todo-list');
+    window.location.reload();
+  }
+
+  btnCreate.addEventListener('click', insertTodo);
+  btnDelete.addEventListener('click', deleteAllTodo);
   automaticSplitTodoList();
 }
