@@ -2,7 +2,8 @@ window.onload = function () {
   const input = document.querySelector('#texto-tarefa');
 
   const btnCreate = document.querySelector('#criar-tarefa');
-  const btnDelete = document.querySelector('#apaga-tudo')
+  const btnDelete = document.querySelector('#apaga-tudo');
+  const btnDeleteFinalized = document.querySelector('#remover-finalizados');
 
   const ol = document.querySelector('#lista-tarefas');
 
@@ -82,7 +83,16 @@ window.onload = function () {
     window.location.reload();
   }
 
+  function deleteTodoFinalized(){
+    let ol = document.getElementsByTagName('ol')[0];
+    let list = document.querySelectorAll('li');
+    for(let index = 0; index < list.length; index += 1){
+      if(list[index].className == 'completed') ol.removeChild(list[index]);
+    }
+  }
+
   btnCreate.addEventListener('click', insertTodo);
   btnDelete.addEventListener('click', deleteAllTodo);
+  btnDeleteFinalized.addEventListener('click', deleteTodoFinalized);
   automaticSplitTodoList();
 }
