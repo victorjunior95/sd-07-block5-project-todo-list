@@ -47,6 +47,11 @@ window.onload = function () {
         if (list[index].id != li.id) list[index].style.backgroundColor = null;
       }
     });
+    li[positionLi].addEventListener("dblclick", function(event){
+      let li = event.target;
+      if(li.className) li.className = null;
+      else li.className = 'completed';
+    });
   }
 
   // função factory que carrega conteudo da lista assim que é atualizado a página
