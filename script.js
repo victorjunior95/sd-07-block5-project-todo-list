@@ -22,3 +22,8 @@ list.addEventListener("click", (event)=>{
     li = event.target
     li.style.backgroundColor = "rgb(128,128,128)"
 })
+
+list.addEventListener("dblclick", (event)=>{
+    li = event.target
+    li.className = "completed"
+})
