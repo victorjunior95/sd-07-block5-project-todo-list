@@ -1,0 +1,53 @@
+.button {
+  display: inline-block;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  vertical-align: initial;
+}
+
+.buttons {
+  display: inline-block;
+  vertical-align: middle;
+  width: 33%;
+}
+
+.data-colect {
+  background-color: antiquewhite;
+  margin: auto;
+  padding: 10px;
+}
+
+.list-board {
+  border: 1px solid black;
+  height: 400px;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 500px;
+}
+
+.move {
+  background-color: aqua;
+}
+
+.remove {
+  background-color: aquamarine;
+}
+
+.save {
+  background-color: darkkhaki;
+}
+
+.to-do-list , header {
+  text-align: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin-top: 0;
+}
