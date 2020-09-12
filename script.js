@@ -1,9 +1,10 @@
 const inputTask = document.getElementById('texto-tarefa');
 const buttonAddTask = document.getElementById('criar-tarefa');
 const taskList = document.getElementById('lista-tarefas');
+const buttonRemoveAll= document.getElementById('apaga-tudo');
 
 buttonAddTask.addEventListener('click',addTask);
-buttonAddTask.addEventListener('dblclick',doneListItem);
+buttonRemoveAll.addEventListener('click',removeAll);
 
 // function check input
 function checkInput(inputElement) {
@@ -69,13 +70,7 @@ function doneListItem(event) {
   addClassName(event.target,' completed');
 }
 
-// function to listen clicks
-/* function clickItem(event) {
-  switch (event.detail) {
-    case 2: // two clicks - double click
-      addClassName(event.target,' completed');
-      break;
-    default: // one click
-      selectListItem(event);
-  }
-} */
+// function to remove all list item
+function removeAll() {
+  taskList.innerHTML = '';
+}
