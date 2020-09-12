@@ -22,9 +22,29 @@ function addTask() {
     const listItem = document.createElement('li');
     // get text from input
     listItem.innerText = inputTask.value;
+    // add event select
+    listItem.addEventListener('click', selectListItem);
     // append item at the list
     taskList.appendChild(listItem);
     // clear input text
     inputTask.value = '';
   } 
+}
+
+// function to unselect all list item
+function unselectAll() {
+  // get all list item
+  const allListItem = document.querySelectorAll('li');
+  // change class name to empty
+  for (let index = 0; index < allListItem.length; index += 1) {
+    allListItem[index].className = '';
+  }
+}
+
+// function to select one list item
+function selectListItem(event) {
+  // unselect all list items
+  unselectAll();
+  // select list item target
+  event.target.className = 'item-selected';
 }
