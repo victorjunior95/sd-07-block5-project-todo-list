@@ -12,8 +12,13 @@
   <div>
     <form>
       <label for="texto-tarefa">Insert your text:</label>
-      <input type="text" id="texto-tarefa" name="texto-tarefa">
+      <input type="text" id="texto-tarefa" name="texto-tarefa" oninput="writeList()">
     </form>
+  </div>
+  <div>
+      <ol id="lista-tarefas" class="list">
+        <li class="item"></li>
+      </ol>
   </div>
 </body>
 <script src="script.js"></script>
