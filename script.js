@@ -3,6 +3,7 @@ const buttonAddTask = document.getElementById('criar-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 
 buttonAddTask.addEventListener('click',addTask);
+buttonAddTask.addEventListener('dblclick',doneListItem);
 
 // function check input
 function checkInput(inputElement) {
@@ -22,8 +23,10 @@ function addTask() {
     const listItem = document.createElement('li');
     // get text from input
     listItem.innerText = inputTask.value;
-    // add event select
+    // add event select - one click
     listItem.addEventListener('click', selectListItem);
+    // add event select - double click
+    listItem.addEventListener('dblclick', doneListItem);
     // append item at the list
     taskList.appendChild(listItem);
     // clear input text
@@ -35,9 +38,9 @@ function addTask() {
 function unselectAll() {
   // get all list item
   const allListItem = document.querySelectorAll('li');
-  // change class name to empty
+  // remove class item selected from item
   for (let index = 0; index < allListItem.length; index += 1) {
-    allListItem[index].className = '';
+    removeClassName(allListItem[index], ' item-selected');
   }
 }
 
@@ -46,5 +49,33 @@ function selectListItem(event) {
   // unselect all list items
   unselectAll();
   // select list item target
-  event.target.className = 'item-selected';
+  addClassName(event.target,' item-selected');
 }
+
+// function to add a class name to a element
+function addClassName(element, className) {
+  element.className += className;
+}
+
+// function to remove a class name from a element
+function removeClassName(element, className) {
+  const currentClassName = element.className.replace(className,'');
+  element.className = currentClassName;
+}
+
+// function done a list item
+function doneListItem(event) {
+  // mark/check list item target
+  addClassName(event.target,' completed');
+}
+
+// function to listen clicks
+/* function clickItem(event) {
+  switch (event.detail) {
+    case 2: // two clicks - double click
+      addClassName(event.target,' completed');
+      break;
+    default: // one click
+      selectListItem(event);
+  }
+} */
