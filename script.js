@@ -1,11 +1,17 @@
 let textInput = document.querySelector("#texto-tarefa")
-let button = document.querySelector("#criar-tarefa")
+let creator = document.querySelector("#criar-tarefa")
 let list = document.querySelector("#lista-tarefas")
+let clear = document.querySelector("#apaga-tudo")
 
-button.addEventListener("click", ()=>{
+
+creator.addEventListener("click", ()=>{
     let node = document.createElement("li")
     let textNode = document.createTextNode(textInput.value)
     node.appendChild(textNode)
     list.appendChild(node)
     textInput.value = ""
+})
+
+clear.addEventListener("click", ()=>{
+    list.innerHTML = ""
 })
