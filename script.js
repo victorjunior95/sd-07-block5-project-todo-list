@@ -2,6 +2,8 @@ let textInput = document.querySelector("#texto-tarefa")
 let creator = document.querySelector("#criar-tarefa")
 let list = document.querySelector("#lista-tarefas")
 let clear = document.querySelector("#apaga-tudo")
+let completed = document.querySelector("#remover-finalizados")
+
 
 
 creator.addEventListener("click", ()=>{
@@ -17,6 +19,12 @@ clear.addEventListener("click", ()=>{
     list.innerHTML = ""
 })
 
+completed.addEventListener("click", ()=>{
+    for (li in list){
+        console.log("lilil")
+    }
+})
+
 
 list.addEventListener("click", (event)=>{
     li = event.target
@@ -25,5 +33,10 @@ list.addEventListener("click", (event)=>{
 
 list.addEventListener("dblclick", (event)=>{
     li = event.target
-    li.className = "completed"
+    if(li.className == "completed"){
+        li.classList.remove("completed")
+    }
+    else{
+        li.className = "completed"
+    }
 })
