@@ -10,8 +10,15 @@ creator.addEventListener("click", ()=>{
     node.appendChild(textNode)
     list.appendChild(node)
     textInput.value = ""
+    elements = document.querySelectorAll("#lista-tarefas li")
 })
 
 clear.addEventListener("click", ()=>{
     list.innerHTML = ""
+})
+
+
+list.addEventListener("click", (event)=>{
+    li = event.target
+    li.style.backgroundColor = "rgb(128,128,128)"
 })
