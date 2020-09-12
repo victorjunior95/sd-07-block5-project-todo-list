@@ -2,9 +2,11 @@ const inputTask = document.getElementById('texto-tarefa');
 const buttonAddTask = document.getElementById('criar-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 const buttonRemoveAll= document.getElementById('apaga-tudo');
+const buttonRemoveDone= document.getElementById('remover-finalizados');
 
 buttonAddTask.addEventListener('click',addTask);
 buttonRemoveAll.addEventListener('click',removeAll);
+buttonRemoveDone.addEventListener('click',removeAllDone);
 
 // function check input
 function checkInput(inputElement) {
@@ -73,4 +75,15 @@ function doneListItem(event) {
 // function to remove all list item
 function removeAll() {
   taskList.innerHTML = '';
+}
+
+// function to remove all list item done
+function removeAllDone() {
+  // get all list items done
+  const listItemsDone = document.querySelectorAll('.completed');
+  // remove each one
+  for (let index = 0; index < listItemsDone.length; index += 1) {
+    //remove item
+    taskList.removeChild(listItemsDone[index]);
+  }
 }
