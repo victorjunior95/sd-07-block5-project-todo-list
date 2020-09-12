@@ -8,7 +8,7 @@ function selectItem(event) {
     itemList[index].style.backgroundColor = '';
   }
 
-  event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+  event.style.backgroundColor = 'rgb(128, 128, 128)';
 }
 
 function markTask(event) {
@@ -24,14 +24,15 @@ function eventList() {
   const itemList = document.querySelectorAll('.item-list');
 
   for (let index = 0; index < itemList.length; index += 1) {
-    itemList[index].addEventListener('click', selectItem);
+    itemList[index].addEventListener('click', function(){
+      selectItem(itemList[index])});
 
     itemList[index].addEventListener('dblclick', markTask);
   }
 }
 
 function addItemList() {
-  let li = document.createElement('li');
+  const li = document.createElement('li');
   li.className = 'item-list';
   li.innerText = itemText.value;
   list.appendChild(li);
@@ -42,11 +43,52 @@ function addItemList() {
 
 function clearList() {
   const itemList = document.querySelectorAll('.item-list');
-  for (let index = 0; index < itemList.length; index += 1){
+  for (let index = 0; index < itemList.length; index += 1) {
     list.removeChild(itemList[index]);
   }
 }
 
+function changeItem(event) {
+  const itemList = document.querySelectorAll('.item-list');
+
+  for (let index = 0; index < itemList.length; index += 1) {
+    const cssObj = window.getComputedStyle(itemList[index], null);
+
+    if (event.target.id === 'remover-finalizados') {
+      if (cssObj.getPropertyValue('text-decoration').indexOf('line-through') !== -1) {
+        list.removeChild(itemList[index]);
+      }
+    } else {
+      if (cssObj.getPropertyValue('background-color') === 'rgb(128, 128, 128)') {
+
+        if (event.target.id === 'remover-selecionado') {
+          list.removeChild(itemList[index]);
+        }
+
+        if (event.target.id === 'mover-cima') {
+          swap = itemList[index].innerText;
+          itemList[index].innerText = itemList[index].previousElementSibling.innerText;
+          itemList[index].previousElementSibling.innerText = swap;
+        }
+
+        if (event.target.id === 'mover-baixo') {
+          swap = itemList[index].innerText;
+          itemList[index].innerText = itemList[index].nextElementSibling.innerText;
+          itemList[index].nextElementSibling.innerText = swap;
+        }
+      }
+    }
+  }
+}
+
 document.querySelector('#criar-tarefa').addEventListener('click', addItemList);
+
+document.querySelector('#mover-cima').addEventListener('click', changeItem);
+
+document.querySelector('#mover-baixo').addEventListener('click', changeItem);
+
+document.querySelector('#remover-finalizados').addEventListener('click', changeItem);
+
+document.querySelector('#remover-selecionado').addEventListener('click', changeItem);
 
 document.querySelector('#apaga-tudo').addEventListener('click', clearList);
