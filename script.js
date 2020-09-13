@@ -34,7 +34,7 @@ apagarLista.addEventListener('click', function apagaLista() {
 apagaFinalizados.addEventListener('click', function apagaConcluidos() {
   const concluidos = document.querySelectorAll('.completed');
   for (let j = 0; j < concluidos.length; j += 1) {
-    let concluidoRemovido = concluidos[j];
+    const concluidoRemovido = concluidos[j];
     lista.removeChild(concluidoRemovido);
   }
 });
