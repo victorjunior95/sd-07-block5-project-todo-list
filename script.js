@@ -10,7 +10,12 @@ botaoCriarTarefa.addEventListener("click", function() {
         novaTarefa.style.backgroundColor = "rgb(128, 128, 128)";
     });
     novaTarefa.addEventListener("dblclick", function(){
-        novaTarefa.classList.add("completed");
+        if (novaTarefa.classList.contains('completed')){
+            novaTarefa.classList.remove('completed');
+        }
+        else {
+            novaTarefa.classList.add('completed');
+        }
     })
 });
 
