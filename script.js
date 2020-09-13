@@ -4,9 +4,11 @@ botaoCriarTarefa.addEventListener("click", function() {
     let novaTarefa = document.createElement("li");
     novaTarefa.innerHTML = inputTarefa;
     document.getElementById('lista-tarefas').appendChild(novaTarefa);
+    inputTarefa.innerHTML = '';
 });
 
 let botaoApagaTudo = document.getElementById('apaga-tudo');
 botaoApagaTudo.addEventListener("click", function() {
     document.getElementById('lista-tarefas').innerHTML = '';
 });
+
