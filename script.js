@@ -41,3 +41,16 @@ function selecionarItem() {
     })
 });
 }
+
+let limparLista = document.getElementById('apaga-tudo');
+limparLista.addEventListener('click', () =>{
+    document.querySelectorAll('li').forEach((item) =>{
+        item.remove();
+    })
+})
+
+document.getElementById('remover-finalizados').addEventListener('click', () =>{
+    document.querySelectorAll('.completed').forEach((item) =>{
+        item.remove();
+    })
+})
