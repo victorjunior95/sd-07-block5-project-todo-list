@@ -21,17 +21,17 @@ function limparTexto() {
   textoTarefa.value = "";
 }
 
+function descelecionarItem() {
+    document.querySelectorAll("li").forEach((item) => {
+      item.classList.remove("backgroundItemList");
+    });
+  }
+
 function selecionarItem() {
   document.querySelectorAll("li").forEach((item) => {
     item.addEventListener("click", () => {
       descelecionarItem();
       item.classList.add("backgroundItemList");
     });
-  });
-}
-
-function descelecionarItem() {
-  document.querySelectorAll("li").forEach((item) => {
-    item.classList.remove("backgroundItemList");
   });
 }
