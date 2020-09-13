@@ -8,7 +8,7 @@ function focusedItem(event) {
 }
 
 function markItem(event) {
-    event.target.style.textDecoration = 'line-through';
+    event.target.classList.add('completed');
 }
 
 function createListItem() {
