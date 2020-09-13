@@ -62,7 +62,17 @@ function moveDown() {
 }
 
 function removeSelected() {
+  for (const element of document.querySelectorAll('li')) {
+    if (element.classList[0] === 'selected' || element.classList[1] === 'selected')
+      taskList.removeChild(element);
+  }
+}
 
+function removeSelection() {
+  for (const element of document.querySelectorAll('li')) {
+    if (element.classList[0] === 'selected' || element.classList[1] === 'selected')
+      element.classList.toggle('selected');
+  }
 }
 
 function getList() {
