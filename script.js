@@ -12,6 +12,7 @@
 const criarTarefa = document.querySelector("#criar-tarefa");
 let textoTarefa = document.querySelector("#texto-tarefa");
 let li = document.createElement('li');
+let listaTarefas = document.querySelector("#lista-tarefas");
         
 function InputTextField () {
     textoTarefa.addEventListener('keydown', () => {
@@ -21,7 +22,7 @@ function InputTextField () {
 
 function listTask () {
     criarTarefa.addEventListener('click', () => {
-        const listaTarefas = document.querySelector("#lista-tarefas");
+        listaTarefas = document.querySelector("#lista-tarefas");
         li = document.createElement('li');
         li.innerHTML = textoTarefa.value;
         listaTarefas.appendChild(li);
@@ -31,6 +32,15 @@ function listTask () {
 
 //Ao clicar duas vezes em um item, ele deverá ser riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item
 
+
+
+//apagar tudo
+const apagarTudo = document.querySelector("#apaga-tudo");
+apagarTudo.addEventListener('click', () => {
+    document.querySelectorAll(".tarefa").forEach (function (element) {
+        element.remove();
+    })
+})
 
 window.onload = () => {
     InputTextField ()
