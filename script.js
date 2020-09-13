@@ -24,8 +24,9 @@ function eventList() {
   const itemList = document.querySelectorAll('.item-list');
 
   for (let index = 0; index < itemList.length; index += 1) {
-    itemList[index].addEventListener('click', function(){
-      selectItem(itemList[index])});
+    itemList[index].addEventListener('click', function () {
+      selectItem(itemList[index])
+    });
 
     itemList[index].addEventListener('dblclick', markTask);
   }
@@ -50,6 +51,7 @@ function clearList() {
 
 function changeItem(event) {
   const itemList = document.querySelectorAll('.item-list');
+  let change = 0;
 
   for (let index = 0; index < itemList.length; index += 1) {
     const cssObj = window.getComputedStyle(itemList[index], null);
@@ -65,16 +67,22 @@ function changeItem(event) {
           list.removeChild(itemList[index]);
         }
 
-        if (event.target.id === 'mover-cima') {
-          swap = itemList[index].innerText;
+        if (event.target.id === 'mover-cima' && change === 0 && index > 0) {
+          const swap = itemList[index].innerText;
           itemList[index].innerText = itemList[index].previousElementSibling.innerText;
+          itemList[index].style.backgroundColor = '';
           itemList[index].previousElementSibling.innerText = swap;
+          itemList[index].previousElementSibling.style.backgroundColor = 'rgb(128, 128, 128)';
+          change = 1;
         }
 
-        if (event.target.id === 'mover-baixo') {
-          swap = itemList[index].innerText;
+        if (event.target.id === 'mover-baixo' && change === 0 && index < itemList.length-1) {
+          const swap = itemList[index].innerText;
           itemList[index].innerText = itemList[index].nextElementSibling.innerText;
+          itemList[index].style.backgroundColor = '';
           itemList[index].nextElementSibling.innerText = swap;
+          itemList[index].nextElementSibling.style.backgroundColor = 'rgb(128, 128, 128)';
+          change = 1;
         }
       }
     }
@@ -82,6 +90,8 @@ function changeItem(event) {
 }
 
 document.querySelector('#criar-tarefa').addEventListener('click', addItemList);
+
+document.querySelector('#texto-tarefa').addEventListener('change', addItemList);
 
 document.querySelector('#mover-cima').addEventListener('click', changeItem);
 

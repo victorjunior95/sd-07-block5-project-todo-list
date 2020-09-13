@@ -43,6 +43,10 @@
   background-color: darkkhaki;
 }
 
+.selected {
+  background-color: rgb(128, 128, 128);
+}
+
 .to-do-list , header {
   text-align: center;
 }
