@@ -7,6 +7,10 @@ function focusedItem(event) {
   liItem.classList.add('clicked');
 }
 
+function markItem(event) {
+    event.target.style.textDecoration = 'line-through';
+}
+
 function createListItem() {
   const item = document.createElement('li');
   const inputText = document.getElementById('texto-tarefa');
@@ -15,6 +19,7 @@ function createListItem() {
   item.innerText = inputText.value;
   inputText.value = '';
   item.addEventListener('click', focusedItem);
+  item.addEventListener('dblclick', markItem);
 }
 
 function clearAllItems() {
