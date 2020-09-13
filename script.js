@@ -19,7 +19,8 @@ function removeOldSelected() {
 function saveList(listElements) {
   localStorage.clear();
   for (let index = 0; index < listElements.length; index += 1) {
-    const elementDate = { className: listElements[index].className, innerText: listElements[index].innerText };
+    const elemPos = listElements[index];
+    const elementDate = { className: elemPos.className, innerText: elemPos.innerText };
     localStorage.setItem(`item${index}`, JSON.stringify(elementDate));
   }
 }
@@ -103,6 +104,6 @@ buttonEraseSelected.addEventListener('click', function () {
   if (elementToRemove != null) {
     elementToRemove.remove();
   }
-})
+});
 
 window.onload = loadList;
