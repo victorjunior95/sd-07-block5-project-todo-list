@@ -31,7 +31,7 @@ function clearAllItems() {
     }
 }
 
-function removeSelected() {
+function removeDone() {
     const selectedItem = document.getElementsByClassName('completed');
     const listLength = selectedItem.length;
     const orderedList = document.getElementById('lista-tarefas');
@@ -44,5 +44,5 @@ let buttonAddItem = document.getElementById('criar-tarefa');
 buttonAddItem.addEventListener('click', createListItem);
 let clearButton = document.getElementById('apaga-tudo');
 clearButton.addEventListener('click', clearAllItems);
-let removeSelectedItem = document.getElementById('remover-selecionado');
-removeSelectedItem.addEventListener('click', removeSelected);
+let removeSelectedItem = document.getElementById('remover-finalizados');
+removeSelectedItem.addEventListener('click', removeDone);
