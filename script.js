@@ -13,6 +13,7 @@ function createListItem() {
   const orderedList = document.getElementById('lista-tarefas');
   orderedList.appendChild(item);
   item.innerText = inputText.value;
+  inputText.value = "";
   item.addEventListener('click', focusedItem);
 }
 
