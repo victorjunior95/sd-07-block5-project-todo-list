@@ -1,6 +1,8 @@
 const textInput = document.querySelector('#texto-tarefa');
 const buttonMake = document.querySelector('#criar-tarefa');
 const todoList = document.querySelector('#lista-tarefas');
+const buttonClear = document.querySelector('#apaga-tudo');
+const buttonEraseCompleted = document.querySelector('#remover-finalizados');
 
 function removeOldSelected() {
   const itensArray = todoList.children;
@@ -17,15 +19,32 @@ buttonMake.addEventListener('click', function () {
 });
 
 todoList.addEventListener('click', function (event) {
-  removeOldSelected();
-  event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+  if (event.target.tagName === 'LI') {
+    removeOldSelected();
+    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+  }
 });
 
 todoList.addEventListener('dblclick', function (event) {
+  if (event.target.tagName === 'LI') {
     if (event.target.className === 'completed') {
       event.target.className = '';
     } else {
       event.target.className = 'completed';
-      console.log(event.target);
+    }
+  }
+});
+
+buttonClear.addEventListener('click', function () {
+  for (let index = (todoList.children.length - 1); index >= 0; index -= 1) {
+    todoList.removeChild(todoList.children[index]);
+  }
+});
+
+buttonEraseCompleted.addEventListener('click', function () {
+  for (let index = (todoList.children.length - 1); index >= 0; index -= 1) {
+    if (todoList.children[index].className === 'completed') {
+      todoList.removeChild(todoList.children[index]);
+    }
   }
 });
