@@ -13,9 +13,20 @@ function createListItem() {
   const orderedList = document.getElementById('lista-tarefas');
   orderedList.appendChild(item);
   item.innerText = inputText.value;
-  inputText.value = "";
+  inputText.value = '';
   item.addEventListener('click', focusedItem);
+}
+
+function clearAllItems() {
+    const liItems = document.getElementsByTagName('li');
+    const orderedList = document.getElementById('lista-tarefas');
+    const listLength = liItems.length;
+    for (let i = 0; i < listLength; i += 1) {
+      orderedList.removeChild(liItems[0]);
+    }
 }
 
 let buttonAddItem = document.getElementById('criar-tarefa');
 buttonAddItem.addEventListener('click', createListItem);
+let clearButton = document.getElementById('apaga-tudo');
+clearButton.addEventListener('click', clearAllItems);
