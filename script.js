@@ -5,7 +5,14 @@ document.querySelector('#criar-tarefa').addEventListener('click', function () {
   document.querySelector('input').value = '';
   newTask.addEventListener('click', function () {
     newTask.style.backgroundColor = 'rgb(128, 128, 128)';
-  })
+  });
+  newTask.addEventListener('dblclick', function () {
+    if (newTask.classList.contains('completed')) {
+      newTask.classList.remove('completed')
+    } else {
+      newTask.classList.add('completed')
+    }
+  });
 });
 
 
