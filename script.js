@@ -40,9 +40,17 @@ function removeDone() {
     }
 }
 
+function removeSelected() {
+    const orderedList = document.getElementById('lista-tarefas');
+    const selectedItem = document.getElementsByClassName('clicked');
+    orderedList.removeChild(selectedItem[0]);
+}
+
 let buttonAddItem = document.getElementById('criar-tarefa');
 buttonAddItem.addEventListener('click', createListItem);
 let clearButton = document.getElementById('apaga-tudo');
 clearButton.addEventListener('click', clearAllItems);
-let removeSelectedItem = document.getElementById('remover-finalizados');
-removeSelectedItem.addEventListener('click', removeDone);
+let removeDoneItem = document.getElementById('remover-finalizados');
+removeDoneItem.addEventListener('click', removeDone);
+let removeSelectedItem = document.getElementById('remover-selecionado');
+removeSelectedItem.addEventListener('click', removeSelected);
