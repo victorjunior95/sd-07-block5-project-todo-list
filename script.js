@@ -7,7 +7,6 @@ document.querySelector('#criar-tarefa').addEventListener('click', function () {
   newTask.addEventListener('click', function () {
     newTask.style.backgroundColor = 'rgb(128, 128, 128)';
   });
-  
   newTask.addEventListener('dblclick', function () {
     if (newTask.classList.contains('completed')) { // saber se contém a classe especificada
       newTask.classList.remove('completed'); // se sim, remove
@@ -17,14 +16,11 @@ document.querySelector('#criar-tarefa').addEventListener('click', function () {
   });
 });
 
-
 document.querySelector('#remover-finalizados').addEventListener('click', function () {
-  const arrayCompleted = [];
-  arrayCompleted.push(document.querySelector('.completed'))
-  while (arrayCompleted.length != 0) {
+  while (document.querySelector('.completed')) {
     document.querySelector('ol').removeChild(document.querySelector('.completed'));
   }
-})
+});
 
 document.querySelector('#apaga-tudo').addEventListener('click', function () {
   const onlyOl = document.querySelector('ol');
