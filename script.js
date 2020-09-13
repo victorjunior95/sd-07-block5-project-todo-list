@@ -38,6 +38,13 @@ function colorListSelect () {
         li.style.backgroundColor = 'rgb(128,128,128)';
     })
 }
+//Adicione um botão com id="remover-selecionado" que, quando clicado, remove o item selecionado
+const removerSelecionado = document.querySelector("#remover-selecionado");
+function removecolorListSelect () {
+    removerSelecionado.addEventListener("click", () => {
+        li.remove();
+    });
+}
 
 
 //apagar tudo
@@ -61,4 +68,5 @@ window.onload = () => {
     listTask ()
     apagarTudo ()
     colorListSelect ()
+    removecolorListSelect ()
 }
