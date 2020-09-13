@@ -25,7 +25,7 @@ function eventList() {
 
   for (let index = 0; index < itemList.length; index += 1) {
     itemList[index].addEventListener('click', function () {
-      selectItem(itemList[index])
+      selectItem(itemList[index]);
     });
 
     itemList[index].addEventListener('dblclick', markTask);
@@ -49,41 +49,68 @@ function clearList() {
   }
 }
 
-function changeItem(event) {
+function removeCompletedItems() {
+  const itemList = document.querySelectorAll('.item-list');
+
+  for (let index = 0; index < itemList.length; index += 1) {
+    const cssObj = window.getComputedStyle(itemList[index], null);
+
+    if (cssObj.getPropertyValue('text-decoration').indexOf('line-through') !== -1) {
+      list.removeChild(itemList[index]);
+    }
+  }
+}
+
+function removeSelectedItem() {
+  const itemList = document.querySelectorAll('.item-list');
+
+  for (let index = 0; index < itemList.length; index += 1) {
+    const cssObj = window.getComputedStyle(itemList[index], null);
+
+    if (cssObj.getPropertyValue('background-color') === 'rgb(128, 128, 128)') {
+
+          list.removeChild(itemList[index]);
+    }
+  }
+}
+
+function moveItemUp() {
   const itemList = document.querySelectorAll('.item-list');
   let change = 0;
 
   for (let index = 0; index < itemList.length; index += 1) {
     const cssObj = window.getComputedStyle(itemList[index], null);
 
-    if (event.target.id === 'remover-finalizados') {
-      if (cssObj.getPropertyValue('text-decoration').indexOf('line-through') !== -1) {
-        list.removeChild(itemList[index]);
+    if (cssObj.getPropertyValue('background-color') === 'rgb(128, 128, 128)') {
+
+      if (change === 0 && index > 0) {
+        const swap = itemList[index].innerText;
+        itemList[index].innerText = itemList[index].previousElementSibling.innerText;
+        itemList[index].style.backgroundColor = '';
+        itemList[index].previousElementSibling.innerText = swap;
+        itemList[index].previousElementSibling.style.backgroundColor = 'rgb(128, 128, 128)';
+        change = 1;
       }
-    } else {
-      if (cssObj.getPropertyValue('background-color') === 'rgb(128, 128, 128)') {
+    }
+  }
+}
 
-        if (event.target.id === 'remover-selecionado') {
-          list.removeChild(itemList[index]);
-        }
+function moveItemDown() {
+  const itemList = document.querySelectorAll('.item-list');
+  let change = 0;
 
-        if (event.target.id === 'mover-cima' && change === 0 && index > 0) {
-          const swap = itemList[index].innerText;
-          itemList[index].innerText = itemList[index].previousElementSibling.innerText;
-          itemList[index].style.backgroundColor = '';
-          itemList[index].previousElementSibling.innerText = swap;
-          itemList[index].previousElementSibling.style.backgroundColor = 'rgb(128, 128, 128)';
-          change = 1;
-        }
+  for (let index = 0; index < itemList.length; index += 1) {
+    const cssObj = window.getComputedStyle(itemList[index], null);
 
-        if (event.target.id === 'mover-baixo' && change === 0 && index < itemList.length-1) {
-          const swap = itemList[index].innerText;
-          itemList[index].innerText = itemList[index].nextElementSibling.innerText;
-          itemList[index].style.backgroundColor = '';
-          itemList[index].nextElementSibling.innerText = swap;
-          itemList[index].nextElementSibling.style.backgroundColor = 'rgb(128, 128, 128)';
-          change = 1;
-        }
+    if (cssObj.getPropertyValue('background-color') === 'rgb(128, 128, 128)') {
+
+      if (change === 0 && index < itemList.length - 1) {
+        const swap = itemList[index].innerText;
+        itemList[index].innerText = itemList[index].nextElementSibling.innerText;
+        itemList[index].style.backgroundColor = '';
+        itemList[index].nextElementSibling.innerText = swap;
+        itemList[index].nextElementSibling.style.backgroundColor = 'rgb(128, 128, 128)';
+        change = 1;
       }
     }
   }
@@ -91,14 +118,12 @@ function changeItem(event) {
 
 document.querySelector('#criar-tarefa').addEventListener('click', addItemList);
 
-document.querySelector('#texto-tarefa').addEventListener('change', addItemList);
+document.querySelector('#mover-cima').addEventListener('click', moveItemUp);
 
-document.querySelector('#mover-cima').addEventListener('click', changeItem);
+document.querySelector('#mover-baixo').addEventListener('click', moveItemDown);
 
-document.querySelector('#mover-baixo').addEventListener('click', changeItem);
+document.querySelector('#remover-finalizados').addEventListener('click', removeCompletedItems);
 
-document.querySelector('#remover-finalizados').addEventListener('click', changeItem);
-
-document.querySelector('#remover-selecionado').addEventListener('click', changeItem);
+document.querySelector('#remover-selecionado').addEventListener('click', removeSelectedItem);
 
 document.querySelector('#apaga-tudo').addEventListener('click', clearList);
