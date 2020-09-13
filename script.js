@@ -1,6 +1,39 @@
 const list = document.querySelector('#lista-tarefas');
 const itemText = document.querySelector('#texto-tarefa');
 
+function checkLocalStorage() {
+  if (localStorage.getItem('completeList') !== null) {
+    const arrayList = localStorage.getItem('completeList').split('+,+');
+    for (let index = 0; index < arrayList.length; index += 1) {
+      const li = document.createElement('li');
+      li.className = 'item-list';
+      list.appendChild(li);
+      list.lastElementChild.outerHTML = arrayList[index];
+    }
+  }
+
+  eventList();
+}
+
+checkLocalStorage();
+
+function saveLocalStorage() {
+  const listItems = document.querySelectorAll('.item-list');
+  let arrayList = [];
+
+  for (let index = 0; index < listItems.length; index += 1) {
+    if (index === 0) {
+      arrayList.push(`${listItems[index].outerHTML}+`);
+    } else if (index === listItems.length -1) {
+      arrayList.push(`+${listItems[index].outerHTML}`);
+    } else {
+      arrayList.push(`+${listItems[index].outerHTML}+`);
+    }
+  }
+
+  localStorage.setItem('completeList', arrayList);
+}
+
 function selectItem(event) {
   const itemList = document.querySelectorAll('.item-list');
 
@@ -68,8 +101,7 @@ function removeSelectedItem() {
     const cssObj = window.getComputedStyle(itemList[index], null);
 
     if (cssObj.getPropertyValue('background-color') === 'rgb(128, 128, 128)') {
-
-          list.removeChild(itemList[index]);
+      list.removeChild(itemList[index]);
     }
   }
 }
@@ -82,7 +114,6 @@ function moveItemUp() {
     const cssObj = window.getComputedStyle(itemList[index], null);
 
     if (cssObj.getPropertyValue('background-color') === 'rgb(128, 128, 128)') {
-
       if (change === 0 && index > 0) {
         const swap = itemList[index].innerText;
         itemList[index].innerText = itemList[index].previousElementSibling.innerText;
@@ -103,7 +134,6 @@ function moveItemDown() {
     const cssObj = window.getComputedStyle(itemList[index], null);
 
     if (cssObj.getPropertyValue('background-color') === 'rgb(128, 128, 128)') {
-
       if (change === 0 && index < itemList.length - 1) {
         const swap = itemList[index].innerText;
         itemList[index].innerText = itemList[index].nextElementSibling.innerText;
@@ -127,3 +157,9 @@ document.querySelector('#remover-finalizados').addEventListener('click', removeC
 document.querySelector('#remover-selecionado').addEventListener('click', removeSelectedItem);
 
 document.querySelector('#apaga-tudo').addEventListener('click', clearList);
+
+document.querySelector('#salvar-tarefas').addEventListener('click', saveLocalStorage);
+
+document.querySelector('#limpar-localStorage').addEventListener('click', function() {
+  localStorage.removeItem('completeList');
+});
