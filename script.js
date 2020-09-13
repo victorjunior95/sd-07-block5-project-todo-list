@@ -69,6 +69,13 @@ function removeSelected() {
   }
 }
 
+function removeDone() {
+  for (const element of document.querySelectorAll('li')) {
+    if (element.classList[0] === 'completed' || element.classList[1] === 'completed')
+      taskList.removeChild(element);
+  }
+}
+
 function removeSelection() {
   for (const element of document.querySelectorAll('li')) {
     if (element.classList[0] === 'selected' || element.classList[1] === 'selected')
