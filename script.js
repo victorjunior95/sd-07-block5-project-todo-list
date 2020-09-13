@@ -1,3 +1,34 @@
+function createToDo(value) {
+  const li = document.createElement('li');
+  li.innerText = value;
+  li.addEventListener('click', () => selectLi(li));
+  li.addEventListener('dblclick', () => li.classList.toggle('completed'));
+  return li;
+}
+
+function addToDo() {
+  const input = document.querySelector('#texto-tarefa');
+  const ol = document.querySelector('ol');
+  if (input.value !== '') {
+    const li = createToDo(input.value)
+    input.value = '';
+    ol.appendChild(li);
+  }
+}
+
+function initializeList() {
+  if (localStorage.getItem('list-data') !== null) {
+    const ol = document.querySelector('ol');
+    JSON.parse(localStorage.getItem('list-data')).forEach((listItem) => {
+      let li = createToDo(listItem.value);
+      if (listItem.completed === true) {
+        li.classList.add('completed');
+      }
+      ol.appendChild(li);
+    })
+  }
+}
+
 function selectLi(selectedLi) {
   document.querySelectorAll('li').forEach((li) => {
     if (selectedLi === li) {
@@ -6,16 +37,6 @@ function selectLi(selectedLi) {
       li.classList.remove('li-clicked');
     }
   });
-}
-function addToDo() {
-  const input = document.querySelector('#texto-tarefa');
-  const ol = document.querySelector('ol');
-  const li = document.createElement('li');
-  li.innerText = input.value;
-  ol.appendChild(li);
-  input.value = '';
-  li.addEventListener('click', () => selectLi(li));
-  li.addEventListener('dblclick', () => li.classList.toggle('completed'));
 }
 
 function clearList() {
@@ -34,10 +55,23 @@ function removeFinished() {
   });
 }
 
+function saveList() {
+  const list = [];
+  document.querySelectorAll('li').forEach((listItem) => {
+    list.push({
+      value: listItem.innerText,
+      completed: listItem.classList.contains('completed') ? true : false,
+    });
+  });
+  localStorage.setItem('list-data', JSON.stringify(list));
+}
+
 function initializeFunctions() {
   document.querySelector('#criar-tarefa').addEventListener('click', addToDo);
   document.querySelector('#apaga-tudo').addEventListener('click', clearList);
   document.querySelector('#remover-finalizados').addEventListener('click', removeFinished);
+  document.querySelector('#salvar-tarefas').addEventListener('click', saveList);
+  initializeList();
 }
 
 document.body.onload = initializeFunctions;
