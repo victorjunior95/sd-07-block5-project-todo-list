@@ -27,3 +27,10 @@ botaoApagaTudo.addEventListener("click", function() {
 function makeBackgroundColorWhite(item) {
     item.style.backgroundColor = "white";
 }
+
+let botaoRemoverFinalizados = document.getElementById('remover-finalizados');
+botaoRemoverFinalizados.addEventListener("click", function() {
+    document.querySelectorAll('.completed').forEach(function(item) {
+        item.remove();
+    })
+})
