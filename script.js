@@ -11,6 +11,7 @@
 //Habitue-se a pensar nos casos especiais ao construir programas. O que acontece se o usuário tentar mover o primeiro item para cima ou o último para baixo?
 const criarTarefa = document.querySelector("#criar-tarefa");
 let textoTarefa = document.querySelector("#texto-tarefa");
+let li = document.createElement('li');
         
 function InputTextField () {
     textoTarefa.addEventListener('keydown', () => {
@@ -21,12 +22,16 @@ function InputTextField () {
 function listTask () {
     criarTarefa.addEventListener('click', () => {
         const listaTarefas = document.querySelector("#lista-tarefas");
-        const li = document.createElement('li');
+        li = document.createElement('li');
         li.innerHTML = textoTarefa.value;
         listaTarefas.appendChild(li);
+        textoTarefa.value = '';
     })
 }
-    
+
+//Ao clicar duas vezes em um item, ele deverá ser riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item
+
+
 window.onload = () => {
     InputTextField ()
     listTask ()
