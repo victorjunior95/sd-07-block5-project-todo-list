@@ -2,10 +2,8 @@ function selectLi(selectedLi) {
   document.querySelectorAll('li').forEach((li) => {
     if (selectedLi === li) {
       li.classList.toggle('li-clicked');
-    } else {
-      if (li.classList.contains('li-clicked')) {
-        li.classList.remove('li-clicked');
-      }
+    } else if (li.classList.contains('li-clicked')) {
+      li.classList.remove('li-clicked');
     }
   });
 }
@@ -27,9 +25,19 @@ function clearList() {
   });
 }
 
+function removeFinished() {
+  const list = document.querySelector('ol');
+  document.querySelectorAll('li').forEach((listItem) => {
+    if (listItem.classList.contains('completed')) {
+      list.removeChild(listItem);
+    }
+  });
+}
+
 function initializeFunctions() {
   document.querySelector('#criar-tarefa').addEventListener('click', addToDo);
   document.querySelector('#apaga-tudo').addEventListener('click', clearList);
+  document.querySelector('#remover-finalizados').addEventListener('click', removeFinished);
 }
 
 document.body.onload = initializeFunctions;
