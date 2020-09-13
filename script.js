@@ -55,11 +55,23 @@ function save() {
 }
 
 function moveUp() {
+  const listItems = document.querySelectorAll('li');
 
+  listItems.forEach((element) => {
+    if (element.classList[0] === 'selected' || element.classList[1] === 'selected') {
+      if (element.previousSibling !== null) element.after(element.previousSibling);
+    }
+  });
 }
 
 function moveDown() {
+  const listItems = document.querySelectorAll('li');
 
+  listItems.forEach((element) => {
+    if (element.classList[0] === 'selected' || element.classList[1] === 'selected') {
+      if (element.nextSibling !== null) element.before(element.nextSibling);
+    }
+  });
 }
 
 function removeSelected() {
