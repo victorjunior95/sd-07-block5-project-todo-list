@@ -34,9 +34,9 @@ function selecionarItem() {
       item.classList.add("backgroundItemList");
     });
     item.addEventListener('dblclick', () =>{
-        item.style.textDecoration = 'line-through';
+        item.classList.add('completed');
         item.addEventListener('dblclick', () =>{
-            item.style.textDecoration = '';
+            item.classList.remove('completed');
         })
     })
 });
