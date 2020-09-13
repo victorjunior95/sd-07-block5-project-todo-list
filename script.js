@@ -24,6 +24,7 @@ function limparTexto() {
 function descelecionarItem() {
     document.querySelectorAll("li").forEach((item) => {
       item.classList.remove("backgroundItemList");
+      item.classList.remove('selecionado');
     });
   }
 
@@ -32,6 +33,7 @@ function selecionarItem() {
     item.addEventListener("click", () => {
       descelecionarItem();
       item.classList.add("backgroundItemList");
+      item.classList.add('selecionado');
     });
     item.addEventListener('dblclick', () =>{
         item.classList.add('completed');
@@ -51,6 +53,12 @@ limparLista.addEventListener('click', () =>{
 
 document.getElementById('remover-finalizados').addEventListener('click', () =>{
     document.querySelectorAll('.completed').forEach((item) =>{
+        item.remove();
+    })
+})
+
+document.getElementById('remover-selecionado').addEventListener('click', () =>{
+    document.querySelectorAll('.selecionado').forEach((item) =>{
         item.remove();
     })
 })
