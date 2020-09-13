@@ -80,17 +80,17 @@ function verifyMovement() {
   }
 
   let elementList = document.querySelectorAll('li');
-  let elementToMove = document.querySelector('.selected')
+  let elementToMove = document.querySelector('.selected');
 
   let headItem = elementList[0];
   let tailItem = elementList [elementList.length - 1]
 
 
-  if (elementToMove === headItem) {
+  if (elementToMove === headItem || elementToMove === null) {
     freeMove.up = false
   }
 
-  if (elementToMove === tailItem) {
+  if (elementToMove === tailItem || elementToMove === null) {
     freeMove.down = false
   }
 
