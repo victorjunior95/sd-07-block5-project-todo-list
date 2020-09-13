@@ -4,11 +4,15 @@ const taskList = document.getElementById('lista-tarefas');
 const buttonRemoveAll= document.getElementById('apaga-tudo');
 const buttonRemoveDone= document.getElementById('remover-finalizados');
 const buttonSaveTaskList= document.getElementById('salvar-tarefas');
+const buttonMoveUp= document.getElementById('mover-cima');
+const buttonMoveDown= document.getElementById('mover-baixo');
 
 buttonAddTask.addEventListener('click',clickAddTask);
 buttonRemoveAll.addEventListener('click',removeAll);
 buttonRemoveDone.addEventListener('click',removeAllDone);
 buttonSaveTaskList.addEventListener('click',saveTaskList);
+buttonMoveUp.addEventListener('click',clickMove);
+buttonMoveDown.addEventListener('click',clickMove);
 
 // function check input
 function checkInput(inputElement) {
@@ -138,3 +142,49 @@ function loadTaskList() {
 
 // load list from storage
 loadTaskList();
+
+// function get selected list item
+function getSelectedListItem() {
+  return document.querySelector('.item-selected');
+}
+
+// function to move click
+function clickMove(event) {
+  if (event.target.id === 'mover-cima') {
+    moveListItem(true);
+  } else {
+    moveListItem(false);
+  }
+}
+
+//function to move list item
+function moveListItem(moveUp) {
+  // get selected item
+  const listItem = getSelectedListItem();
+  // check if exist selected item
+  if (listItem !== null) {
+    // if try to move up the first list Item -> nothing
+    if (moveUp && listItem === taskList.firstChild) {
+      return false;
+    }
+    // if try to move down the last list Item -> nothing
+    if (!moveUp && listItem === taskList.lastChild) {
+      return false;
+    }
+
+    //if moveUp - move up the list Item
+    if (moveUp) {
+      if (listItem !== taskList.firstChild) {
+        const previousListItem = listItem.previousSibling;
+        taskList.removeChild(listItem);
+        taskList.insertBefore(listItem, previousListItem);
+      }
+    } else { //if moveDown - move down the list item
+      if (listItem !== taskList.lastChild) {
+        const nextListItem = listItem.nextSibling;
+        taskList.removeChild(listItem);
+        taskList.insertBefore(listItem, nextListItem.nextSibling);
+      }
+    }
+  }
+}
