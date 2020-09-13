@@ -13,7 +13,7 @@ function setEventsToElement (element) {
 }
 
 function completedItem(item) {
-  item.classList.remove('selected')
+  // item.classList.remove('selected')
   item.classList.toggle('completed')
 }
 
