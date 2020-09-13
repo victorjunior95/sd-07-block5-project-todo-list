@@ -1,6 +1,10 @@
 const inputText = document.getElementById('texto-tarefa');
-const buttonAddTask = document.getElementById('criar-tarefa');
 const taskList = document.getElementById('lista-tarefas');
+const buttonAddTask = document.getElementById('criar-tarefa');
+const buttonRemoveSelected = document.getElementById('remover-selecionado');
+const buttonMoveUp = document.getElementById('mover-cima');
+const buttonMoveDown = document.getElementById('mover-baixo');
+const buttonSave = document.getElementById('salvar-tarefas');
 const buttonClearAll = document.getElementById('apaga-tudo');
 const buttonClearDone = document.getElementById('remover-finalizados');
 
@@ -36,15 +40,47 @@ function addTask() {
 function clearAll() {
   const listItems = document.querySelectorAll('li');
 
-  listItems.forEach(element => taskList.removeChild(element));
+  listItems.forEach((element) => taskList.removeChild(element));
 }
 
 function clearDone() {
   const listItems = document.querySelectorAll('.completed');
 
-  listItems.forEach(element => taskList.removeChild(element));
+  listItems.forEach((element) => taskList.removeChild(element));
+}
+
+function save() {
+  localStorage.setItem('task_list', taskList.innerHTML);
+}
+
+function moveUp() {
+
+}
+
+function moveDown() {
+
+}
+
+function removeSelected() {
+
+}
+
+function getList() {
+  taskList.innerHTML = localStorage.getItem('task_list');
+
+  document.querySelectorAll('li').forEach((element) => {
+    element.addEventListener('click', selectItem);
+    element.addEventListener('dblclick', markItem);
+  });
+
 }
 
 buttonAddTask.addEventListener('click', addTask);
 buttonClearAll.addEventListener('click', clearAll);
 buttonClearDone.addEventListener('click', clearDone);
+buttonSave.addEventListener('click', save);
+buttonMoveUp.addEventListener('click', moveUp);
+buttonMoveDown.addEventListener('click', moveDown);
+buttonRemoveSelected.addEventListener('click', removeSelected);
+
+getList();
