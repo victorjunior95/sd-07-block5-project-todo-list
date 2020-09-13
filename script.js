@@ -31,7 +31,18 @@ function clearAllItems() {
     }
 }
 
+function removeSelected() {
+    const selectedItem = document.getElementsByClassName('completed');
+    const listLength = selectedItem.length;
+    const orderedList = document.getElementById('lista-tarefas');
+    for (let i = 0; i < listLength; i += 1) {
+      orderedList.removeChild(selectedItem[0]);
+    }
+}
+
 let buttonAddItem = document.getElementById('criar-tarefa');
 buttonAddItem.addEventListener('click', createListItem);
 let clearButton = document.getElementById('apaga-tudo');
 clearButton.addEventListener('click', clearAllItems);
+let removeSelectedItem = document.getElementById('remover-selecionado');
+removeSelectedItem.addEventListener('click', removeSelected);
