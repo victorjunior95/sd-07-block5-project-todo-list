@@ -7,19 +7,25 @@ function removeOldSelected() {
   for (let index = 0; index < itensArray.length; index += 1) {
     itensArray[index].style.backgroundColor = 'white';
   }
-};
+}
 
 buttonMake.addEventListener('click', function () {
   const liElement = document.createElement('li');
   liElement.innerText = textInput.value;
-  liElement.className = 'lista-item';
   todoList.appendChild(liElement);
   textInput.value = '';
 });
 
 todoList.addEventListener('click', function (event) {
   removeOldSelected();
-  if (event.target.className === 'lista-item') {
-    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+  event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+});
+
+todoList.addEventListener('dblclick', function (event) {
+    if (event.target.className === 'completed') {
+      event.target.className = '';
+    } else {
+      event.target.className = 'completed';
+      console.log(event.target);
   }
 });
