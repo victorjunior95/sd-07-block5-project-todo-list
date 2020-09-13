@@ -1,6 +1,29 @@
 const list = document.querySelector('#lista-tarefas');
 const itemText = document.querySelector('#texto-tarefa');
 
+// Function to select item
+
+function selectItem(event) {
+  const itemList = document.querySelectorAll('.item-list');
+
+  for (let index = 0; index < itemList.length; index += 1) {
+    itemList[index].style.backgroundColor = '';
+  }
+
+  event.style.backgroundColor = 'rgb(128, 128, 128)';
+}
+
+// Function to mark item as completed
+
+function markTask(event) {
+  const cssObj = window.getComputedStyle(event.target, null);
+  if (cssObj.getPropertyValue('text-decoration').indexOf('line-through') !== -1) {
+    event.target.className = 'item-list';
+  } else {
+    event.target.className += ' completed';
+  }
+}
+
 // Function to add Event Listener to items list
 
 function eventList() {
@@ -50,29 +73,6 @@ function saveLocalStorage() {
   }
 
   localStorage.setItem('completeList', arrayList);
-}
-
-// Function to select item
-
-function selectItem(event) {
-  const itemList = document.querySelectorAll('.item-list');
-
-  for (let index = 0; index < itemList.length; index += 1) {
-    itemList[index].style.backgroundColor = '';
-  }
-
-  event.style.backgroundColor = 'rgb(128, 128, 128)';
-}
-
-// Function to mark item as completed
-
-function markTask(event) {
-  const cssObj = window.getComputedStyle(event.target, null);
-  if (cssObj.getPropertyValue('text-decoration').indexOf('line-through') !== -1) {
-    event.target.className = 'item-list';
-  } else {
-    event.target.className += ' completed';
-  }
 }
 
 // Function to add items on the list
@@ -135,8 +135,8 @@ function moveItemUp() {
 
     if (cssObj.getPropertyValue('background-color') === 'rgb(128, 128, 128)') {
       if (change === 0 && index > 0) {
-        let item1 = itemList[index];
-        let item2 = itemList[index].previousElementSibling;
+        const item1 = itemList[index];
+        const item2 = itemList[index].previousElementSibling;
         [item1.outerHTML, item2.outerHTML] = [item2.outerHTML, item1.outerHTML];
         change = 1;
       }
@@ -156,8 +156,8 @@ function moveItemDown() {
 
     if (cssObj.getPropertyValue('background-color') === 'rgb(128, 128, 128)') {
       if (change === 0 && index < itemList.length - 1) {
-        let item1 = itemList[index];
-        let item2 = itemList[index].nextElementSibling;
+        const item1 = itemList[index];
+        const item2 = itemList[index].nextElementSibling;
         [item1.outerHTML, item2.outerHTML] = [item2.outerHTML, item1.outerHTML];
         change = 1;
       }
