@@ -13,10 +13,8 @@ document.querySelector("#criar-tarefa").addEventListener("click", () => {
   elementoLista.addEventListener("dblclick", () => {
     if (elementoLista.classList.contains("completed")) {
       elementoLista.classList.remove("completed");
-      console.log(",");
     } else {
       elementoLista.classList.add("completed");
-      console.log(".");
     }
   });
   lista.appendChild(elementoLista);
@@ -38,6 +36,15 @@ document.querySelector(".rf").addEventListener("click", () => {
         .getElementById("lista-tarefas")
         .removeChild(document.getElementsByTagName("li")[i]);
       i = 0;
+    }
+  }
+});
+
+document.querySelector("#remover-selecionado").addEventListener("click", () => {
+  const elemento = document.getElementsByTagName("li");
+  for (let i = 0; i < elemento.length; i++) {
+    if (elemento[i].style.backgroundColor === "rgb(128, 128, 128)") {
+      document.getElementById("lista-tarefas").removeChild(elemento[i]);
     }
   }
 });
