@@ -87,8 +87,15 @@ function removeClassName(element, className) {
 
 // function done a list item
 function doneListItem(event) {
-  // mark/check list item target
-  addClassName(event.target,' completed');
+  // check if list item is done
+  if (event.target.className.indexOf('completed') >= 0) {
+    // un mark/check list item target
+    removeClassName(event.target,' completed')
+  } else {
+    // mark/check list item target
+    addClassName(event.target,' completed');
+  }
+  
 }
 
 // function to remove all list item
