@@ -32,4 +32,22 @@ function markItem(event) {
   event.target.classList.toggle('completed');
 }
 
+function clearAll() {
+  let listItems = document.querySelectorAll('li');
+
+  listItems.forEach(element => {
+    taskList.removeChild(element);
+  });
+}
+
+function clearDone() {
+  let listItems = document.querySelectorAll('.completed');
+
+  listItems.forEach(element => {
+    taskList.removeChild(element);
+  });
+}
+
 buttonAddTask.addEventListener('click', addTask);
+buttonClearAll.addEventListener('click', clearAll);
+buttonClearDone.addEventListener('click', clearDone);
