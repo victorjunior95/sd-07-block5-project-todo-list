@@ -9,6 +9,9 @@ botaoCriarTarefa.addEventListener("click", function() {
         document.querySelectorAll('li').forEach(makeBackgroundColorWhite);
         novaTarefa.style.backgroundColor = "rgb(128, 128, 128)";
     });
+    novaTarefa.addEventListener("dblclick", function(){
+        novaTarefa.classList.add("completed");
+    })
 });
 
 let botaoApagaTudo = document.getElementById('apaga-tudo');
