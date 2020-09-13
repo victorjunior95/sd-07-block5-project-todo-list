@@ -2,6 +2,7 @@ const inputText = document.getElementById('texto-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 const buttonAddTask = document.getElementById('criar-tarefa');
 const buttonRemoveSelected = document.getElementById('remover-selecionado');
+const buttonClearSelection = document.getElementById('limpar-selecao');
 const buttonMoveUp = document.getElementById('mover-cima');
 const buttonMoveDown = document.getElementById('mover-baixo');
 const buttonSave = document.getElementById('salvar-tarefas');
@@ -82,7 +83,6 @@ function getList() {
     element.addEventListener('click', selectItem);
     element.addEventListener('dblclick', markItem);
   });
-
 }
 
 buttonAddTask.addEventListener('click', addTask);
@@ -92,5 +92,6 @@ buttonSave.addEventListener('click', save);
 buttonMoveUp.addEventListener('click', moveUp);
 buttonMoveDown.addEventListener('click', moveDown);
 buttonRemoveSelected.addEventListener('click', removeSelected);
+buttonClearSelection.addEventListener('click', removeSelection);
 
 getList();
