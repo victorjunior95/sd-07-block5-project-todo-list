@@ -32,11 +32,19 @@ function listTask () {
 
 //Ao clicar duas vezes em um item, ele deverá ser riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item
 
+//Ao clicar em um item da lista, altere a cor de fundo do item para cinza rgb(128,128,128)
+function colorListSelect () {
+    listaTarefas.addEventListener('click', () => {
+        li.style.backgroundColor = 'rgb(128,128,128)';
+    })
+}
+
 
 //apagar tudo
 function func () {
     listaTarefas.innerHTML = "";   
 }
+
 function apagarTudo () {
     const apague = document.querySelector("#apaga-tudo");
     apague.addEventListener('click', () => {
@@ -52,4 +60,5 @@ window.onload = () => {
     InputTextField ()
     listTask ()
     apagarTudo ()
+    colorListSelect ()
 }
