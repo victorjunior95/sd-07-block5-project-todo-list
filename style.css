@@ -1,5 +1,4 @@
-html,
-body {
+html , body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -14,9 +13,9 @@ body {
 }
 
 .li-clicked {
-  background-color: rgb(128, 128, 128);
+  background-color: gray;
 }
 
 .completed {
-  text-decoration: line-through;
+  text-decoration: line-through solid black;
 }
