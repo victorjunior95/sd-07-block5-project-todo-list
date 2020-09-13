@@ -33,5 +33,11 @@ function selecionarItem() {
       descelecionarItem();
       item.classList.add("backgroundItemList");
     });
-  });
+    item.addEventListener('dblclick', () =>{
+        item.style.textDecoration = 'line-through';
+        item.addEventListener('dblclick', () =>{
+            item.style.textDecoration = '';
+        })
+    })
+});
 }
