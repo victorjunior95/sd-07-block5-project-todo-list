@@ -6,6 +6,7 @@ const buttonRemoveDone= document.getElementById('remover-finalizados');
 const buttonSaveTaskList= document.getElementById('salvar-tarefas');
 const buttonMoveUp= document.getElementById('mover-cima');
 const buttonMoveDown= document.getElementById('mover-baixo');
+const buttonRemoveSelected= document.getElementById('remover-selecionado');
 
 buttonAddTask.addEventListener('click',clickAddTask);
 buttonRemoveAll.addEventListener('click',removeAll);
@@ -13,6 +14,7 @@ buttonRemoveDone.addEventListener('click',removeAllDone);
 buttonSaveTaskList.addEventListener('click',saveTaskList);
 buttonMoveUp.addEventListener('click',clickMove);
 buttonMoveDown.addEventListener('click',clickMove);
+buttonRemoveSelected.addEventListener('click',removeSelected);
 
 // function check input
 function checkInput(inputElement) {
@@ -163,15 +165,6 @@ function moveListItem(moveUp) {
   const listItem = getSelectedListItem();
   // check if exist selected item
   if (listItem !== null) {
-    // if try to move up the first list Item -> nothing
-    if (moveUp && listItem === taskList.firstChild) {
-      return false;
-    }
-    // if try to move down the last list Item -> nothing
-    if (!moveUp && listItem === taskList.lastChild) {
-      return false;
-    }
-
     //if moveUp - move up the list Item
     if (moveUp) {
       if (listItem !== taskList.firstChild) {
@@ -186,5 +179,16 @@ function moveListItem(moveUp) {
         taskList.insertBefore(listItem, nextListItem.nextSibling);
       }
     }
+  }
+}
+
+// function to remove selected list item
+function removeSelected() {
+  // get selected item
+  const listItem = getSelectedListItem();
+  // check if exist selected item
+  if (listItem !== null) {
+    // remove list item
+    taskList.removeChild(listItem);
   }
 }
