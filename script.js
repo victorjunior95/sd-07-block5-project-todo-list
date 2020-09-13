@@ -59,8 +59,10 @@ function unselectAll() {
   // get all list item
   const allListItem = document.querySelectorAll('li');
   // remove class item selected from item
-  for (let index = 0; index < allListItem.length; index += 1) {
-    removeClassName(allListItem[index], ' item-selected');
+  if (allListItem !== null) {
+    for (let index = 0; index < allListItem.length; index += 1) {
+      removeClassName(allListItem[index], ' item-selected');
+    }
   }
 }
 
@@ -99,9 +101,11 @@ function removeAllDone() {
   // get all list items done
   const listItemsDone = document.querySelectorAll('.completed');
   // remove each one
-  for (let index = 0; index < listItemsDone.length; index += 1) {
-    //remove item
-    taskList.removeChild(listItemsDone[index]);
+  if (listItemsDone !== null) {
+    for (let index = 0; index < listItemsDone.length; index += 1) {
+      //remove item
+      taskList.removeChild(listItemsDone[index]);
+    }
   }
 }
 
@@ -110,22 +114,24 @@ function saveTaskList() {
   const itemsList = [];
   // get all list items
   const allListItem = document.querySelectorAll('li');
-  // for each item at task list
-  for (let index = 0; index < allListItem.length; index += 1) {
-    // get task text
-    const task = allListItem[index].innerText;
-    // get task completed
-    let completed = false;
-    if (allListItem[index].className.indexOf('completed') >= 0) {
-      completed = true;
+  if (allListItem !== null) {
+    // for each item at task list
+    for (let index = 0; index < allListItem.length; index += 1) {
+      // get task text
+      const task = allListItem[index].innerText;
+      // get task completed
+      let completed = false;
+      if (allListItem[index].className.indexOf('completed') >= 0) {
+        completed = true;
+      }
+      // create the item list
+      const itemList = {
+        task: task,
+        completed: completed
+      };
+      // push item list on list
+      itemsList.push(itemList);
     }
-    // create the item list
-    const itemList = {
-      task: task,
-      completed: completed
-    };
-    // push item list on list
-    itemsList.push(itemList);
   }
   // save item list like tasklist
   localStorage.setItem('taskList', JSON.stringify(itemsList));
@@ -137,8 +143,10 @@ function loadTaskList() {
   // get the tasklist on storage
   itemsList = JSON.parse(localStorage.getItem("taskList"));
   // for each item at itemsList
-  for (let index = 0; index < itemsList.length; index += 1) {
-    addTask(itemsList[index].task, itemsList[index].completed);
+  if (itemsList !== null) {
+    for (let index = 0; index < itemsList.length; index += 1) {
+      addTask(itemsList[index].task, itemsList[index].completed);
+    }
   }
 }
 
