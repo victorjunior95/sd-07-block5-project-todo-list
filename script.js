@@ -3,11 +3,32 @@ const buttonMake = document.querySelector('#criar-tarefa');
 const todoList = document.querySelector('#lista-tarefas');
 const buttonClear = document.querySelector('#apaga-tudo');
 const buttonEraseCompleted = document.querySelector('#remover-finalizados');
+const buttonSaveList = document.querySelector('#salvar-tarefas');
+
+window.onload = loadList;
 
 function removeOldSelected() {
   const itensArray = todoList.children;
   for (let index = 0; index < itensArray.length; index += 1) {
     itensArray[index].style.backgroundColor = 'white';
+  }
+}
+
+function saveList(listElements) {
+  localStorage.clear();
+  for (let index = 0; index < listElements.length; index += 1) {
+    const elementDate = {className: listElements[index].className, innerText: listElements[index].innerText};
+    localStorage.setItem(`item${index}`, JSON.stringify(elementDate));
+  }
+}
+
+function loadList() {
+  for (let index = 0; index < localStorage.length; index += 1) {
+    const elementDateSaved = JSON.parse(localStorage.getItem(`item${index}`));
+    const liSavedElement = document.createElement('li');
+    liSavedElement.className = elementDateSaved.className;
+    liSavedElement.innerText = elementDateSaved.innerText;
+    todoList.appendChild(liSavedElement);
   }
 }
 
@@ -47,4 +68,8 @@ buttonEraseCompleted.addEventListener('click', function () {
       todoList.removeChild(todoList.children[index]);
     }
   }
+});
+
+buttonSaveList.addEventListener('click', function () {
+  saveList(todoList.children);
 });
