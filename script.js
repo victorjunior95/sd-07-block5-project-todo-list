@@ -1,5 +1,9 @@
 function focusedItem(event) {
-  let liItem = event.currentTarget;
+  const previousItem = document.getElementsByClassName('clicked');
+  if (previousItem.length > 0) {
+    previousItem[0].classList.remove('clicked');
+  }
+  const liItem = event.currentTarget;
   liItem.classList.add('clicked');
 }
 
