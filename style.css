@@ -6,3 +6,13 @@ body {
     padding: 0;
 }
 
+.completed { //classes dinâmicas
+    text-decoration: line-through;
+    background-color: rgb(0, 0, 0);
+    border: solid;
+}
+
+.seleted { //classes dinâmicas
+    background-color: rgb(128, 128, 128);
+}
+

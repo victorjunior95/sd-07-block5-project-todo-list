@@ -33,16 +33,23 @@ function listTask () {
 //Ao clicar duas vezes em um item, ele deverá ser riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item
 
 
-
 //apagar tudo
-const apagarTudo = document.querySelector("#apaga-tudo");
-apagarTudo.addEventListener('click', () => {
-    document.querySelectorAll(".tarefa").forEach (function (element) {
-        element.remove();
+function func () {
+    listaTarefas.innerHTML = "";   
+}
+function apagarTudo () {
+    const apague = document.querySelector("#apaga-tudo");
+    apague.addEventListener('click', () => {
+        const killLi = func();
     })
-})
+}
+
+
+
+
 
 window.onload = () => {
     InputTextField ()
     listTask ()
+    apagarTudo ()
 }
