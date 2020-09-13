@@ -1,6 +1,22 @@
 const list = document.querySelector('#lista-tarefas');
 const itemText = document.querySelector('#texto-tarefa');
 
+// Function to add Event Listener to items list
+
+function eventList() {
+  const itemList = document.querySelectorAll('.item-list');
+
+  for (let index = 0; index < itemList.length; index += 1) {
+    itemList[index].addEventListener('click', function () {
+      selectItem(itemList[index]);
+    });
+
+    itemList[index].addEventListener('dblclick', markTask);
+  }
+}
+
+// Function to load local Storage list when refresh page
+
 function checkLocalStorage() {
   if (localStorage.getItem('completeList') !== null) {
     const arrayList = localStorage.getItem('completeList').split('+,+');
@@ -17,14 +33,16 @@ function checkLocalStorage() {
 
 checkLocalStorage();
 
+// Function to save list on local storage
+
 function saveLocalStorage() {
   const listItems = document.querySelectorAll('.item-list');
-  let arrayList = [];
+  const arrayList = [];
 
   for (let index = 0; index < listItems.length; index += 1) {
     if (index === 0) {
       arrayList.push(`${listItems[index].outerHTML}+`);
-    } else if (index === listItems.length -1) {
+    } else if (index === listItems.length - 1) {
       arrayList.push(`+${listItems[index].outerHTML}`);
     } else {
       arrayList.push(`+${listItems[index].outerHTML}+`);
@@ -33,6 +51,8 @@ function saveLocalStorage() {
 
   localStorage.setItem('completeList', arrayList);
 }
+
+// Function to select item
 
 function selectItem(event) {
   const itemList = document.querySelectorAll('.item-list');
@@ -44,6 +64,8 @@ function selectItem(event) {
   event.style.backgroundColor = 'rgb(128, 128, 128)';
 }
 
+// Function to mark item as completed
+
 function markTask(event) {
   const cssObj = window.getComputedStyle(event.target, null);
   if (cssObj.getPropertyValue('text-decoration').indexOf('line-through') !== -1) {
@@ -53,17 +75,7 @@ function markTask(event) {
   }
 }
 
-function eventList() {
-  const itemList = document.querySelectorAll('.item-list');
-
-  for (let index = 0; index < itemList.length; index += 1) {
-    itemList[index].addEventListener('click', function () {
-      selectItem(itemList[index]);
-    });
-
-    itemList[index].addEventListener('dblclick', markTask);
-  }
-}
+// Function to add items on the list
 
 function addItemList() {
   const li = document.createElement('li');
@@ -75,12 +87,16 @@ function addItemList() {
   eventList();
 }
 
+// Function to clear all items list
+
 function clearList() {
   const itemList = document.querySelectorAll('.item-list');
   for (let index = 0; index < itemList.length; index += 1) {
     list.removeChild(itemList[index]);
   }
 }
+
+// Function to remove all items completed
 
 function removeCompletedItems() {
   const itemList = document.querySelectorAll('.item-list');
@@ -94,6 +110,8 @@ function removeCompletedItems() {
   }
 }
 
+// Function to remove selected item
+
 function removeSelectedItem() {
   const itemList = document.querySelectorAll('.item-list');
 
@@ -106,6 +124,8 @@ function removeSelectedItem() {
   }
 }
 
+// Function to swap item list selected with previous item list
+
 function moveItemUp() {
   const itemList = document.querySelectorAll('.item-list');
   let change = 0;
@@ -115,16 +135,17 @@ function moveItemUp() {
 
     if (cssObj.getPropertyValue('background-color') === 'rgb(128, 128, 128)') {
       if (change === 0 && index > 0) {
-        const swap = itemList[index].innerText;
-        itemList[index].innerText = itemList[index].previousElementSibling.innerText;
-        itemList[index].style.backgroundColor = '';
-        itemList[index].previousElementSibling.innerText = swap;
-        itemList[index].previousElementSibling.style.backgroundColor = 'rgb(128, 128, 128)';
+        let item1 = itemList[index];
+        let item2 = itemList[index].previousElementSibling;
+        [item1.outerHTML, item2.outerHTML] = [item2.outerHTML, item1.outerHTML];
         change = 1;
       }
     }
   }
+  eventList();
 }
+
+// Function to swap item list selected with next item list
 
 function moveItemDown() {
   const itemList = document.querySelectorAll('.item-list');
@@ -135,16 +156,17 @@ function moveItemDown() {
 
     if (cssObj.getPropertyValue('background-color') === 'rgb(128, 128, 128)') {
       if (change === 0 && index < itemList.length - 1) {
-        const swap = itemList[index].innerText;
-        itemList[index].innerText = itemList[index].nextElementSibling.innerText;
-        itemList[index].style.backgroundColor = '';
-        itemList[index].nextElementSibling.innerText = swap;
-        itemList[index].nextElementSibling.style.backgroundColor = 'rgb(128, 128, 128)';
+        let item1 = itemList[index];
+        let item2 = itemList[index].nextElementSibling;
+        [item1.outerHTML, item2.outerHTML] = [item2.outerHTML, item1.outerHTML];
         change = 1;
       }
     }
   }
+  eventList();
 }
+
+// Applying Event Listener to Buttons
 
 document.querySelector('#criar-tarefa').addEventListener('click', addItemList);
 
@@ -160,6 +182,6 @@ document.querySelector('#apaga-tudo').addEventListener('click', clearList);
 
 document.querySelector('#salvar-tarefas').addEventListener('click', saveLocalStorage);
 
-document.querySelector('#limpar-localStorage').addEventListener('click', function() {
+document.querySelector('#limpar-localStorage').addEventListener('click', function () {
   localStorage.removeItem('completeList');
 });

@@ -1,15 +1,19 @@
 .button {
-  display: inline-block;
+  display: block;
   margin: auto;
-  margin-bottom: 10px;
   margin-top: 10px;
-  vertical-align: initial;
 }
 
 .buttons {
-  display: inline-block;
+  height: 33%;
   vertical-align: middle;
-  width: 33%;
+}
+
+.buttons-collection {
+  display: inline-block;
+  height: 400px;
+  vertical-align: top;
+  width: 200px;
 }
 
 .completed {
@@ -23,10 +27,10 @@
 }
 
 .list-board {
+  background-color: white;
   border: 1px solid black;
-  height: 400px;
-  margin: auto;
-  margin-bottom: 10px;
+  display: inline-block;
+  height: 415px;
   margin-top: 10px;
   width: 500px;
 }
@@ -50,6 +54,11 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: black;
+}
+
+h1 {
+  color: white;
 }
 
 p {
