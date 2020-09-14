@@ -1,12 +1,5 @@
-:root {
-  --darker: rgb(26, 26, 46);
-  --dark: rgb(22, 33, 62);
-  --normal: rgb(15, 52, 96);
-  --light: rgb(233, 69, 96);
-}
-
 body {
-  background-color: var(--dark);
+  background-color: rgb(22 , 33 , 62);
   color: white;
   font-family: Nunito, sans-serif;
   font-size: 1.5em;
@@ -22,8 +15,12 @@ header {
   text-align: center;
 }
 
+h1 {
+  color: rgb(233 , 69 , 96);
+}
+
 input {
-  border-color: var(--normal);
+  border-color: rgb(15 , 52 , 96);
   border-radius: 4px;
   border-width: 3px;
   font-family: Nunito, sans-serif;
@@ -34,23 +31,47 @@ input {
 }
 
 button {
-  border-color: var(--light);
+  border-color: rgb(233 , 69 , 96);
   border-radius: 5px;
   border-width: 3px;
   font-family: Nunito, sans-serif;
   font-size: medium;
   font-weight: 600;
   height: 30px;
-  outline-color: var(--darker);
+  outline-color: rgb(26 , 26 , 46);
   padding: 0 10px;
   vertical-align: middle;
 }
 
 .list {
-  font-family: 'Roboto Mono', monospace;
+  font-family: Roboto Mono, monospace;
   margin: auto;
   text-align: start;
   width: 750px;
+}
+
+ol li {
+  counter-increment: muffins;
+}
+
+ol li:before {
+  content: counter(muffins) ' 📌 ';
+}
+
+ol li.selected:before {
+  content: counter(muffins) ' 👉 ';
+  color: rgb(233 , 69 , 96);
+  font-weight: bold;
+  text-shadow: 3px 3px 3px rgb(15 , 52 , 96);
+}
+
+ol li.completed:before {
+  content: counter(muffins) ' ✅ ';
+}
+
+ol {
+  counter-reset: muffins;
+  list-style: none;
 }
 
 .selected {
@@ -65,7 +86,7 @@ button {
 }
 
 .options {
-  background-color: var(--darker);
+  background-color: rgb(26 , 26 , 46);
   bottom: 0;
   left: 0;
   padding: 20px 30px;
