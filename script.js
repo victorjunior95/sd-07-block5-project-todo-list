@@ -15,6 +15,7 @@ function criaItem(){
     campoInsertTarefa.value = ""; 
     item ++;
     classeItem = document.querySelectorAll('.itens');
+    SelectComplet();
 }
 
 btnCriaTarefa.addEventListener('click',criaItem);
@@ -32,3 +33,12 @@ function limparLista(){
 };
 
 btnApagaTudo.addEventListener('click', limparLista);
+
+function SelectComplet(){
+ for(let index = 0; index < classeItem.length ; index ++){
+        classeItem[index].addEventListener('dblclick',function(){
+            classeItem[index].className = ' ' + 'completed';
+        });
+    }
+};
+
