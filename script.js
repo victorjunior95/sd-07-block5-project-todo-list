@@ -43,6 +43,7 @@ deleteAll.addEventListener('click', () => {
     elements[i].remove();
   }
 });
+
 deleteConcludedTasks.addEventListener('click', () => {
   for (let i = 0; i < elements.length; i += 1) {
     if (elements[i].className === 'completed') {
