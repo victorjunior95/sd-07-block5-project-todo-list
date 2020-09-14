@@ -6,17 +6,17 @@ const buttonCreateTask = document.getElementById('criar-tarefa');
 
 //  Ordered List Outputs
 const orderedListTasks = document.getElementById('lista-tarefas');
+let liTask = document.querySelectorAll('#lista-tarefas li');
 
 //  Functions
 function elementCreator() {
-    let element = document.createElement('li')
-    element.innerText = inputTextTask.value;
-    return element;
+  const element = document.createElement('li');
+  element.innerText = inputTextTask.value;
+  return element;
 }
 
 function addTaskToList() {
-    console.log(inputTextTask.value);
-    orderedListTasks.appendChild(elementCreator());
+  orderedListTasks.appendChild(elementCreator());
 }
 
 // Event Listeners
