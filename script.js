@@ -1,7 +1,7 @@
 /* No campo de input será digitado o texto de uma tarefa qualquer e, em seguida, clicar-se-á no botão de criar tarefa. Será verificado que, após o clique, o texto digitado aparece na lista e desaparece do input */
 
 let textoTarefa = document.getElementById("texto-tarefa");
-let salvar = document.getElementById("criar-tarefa");
+const salvar = document.getElementById("criar-tarefa");
 
 salvar.addEventListener("click", criarTarefa);
 
@@ -22,43 +22,43 @@ function limparTexto() {
 }
 
 function descelecionarItem() {
-    document.querySelectorAll("li").forEach((item) => {
-      item.classList.remove("backgroundItemList");
-      item.classList.remove('selecionado');
-    });
-  }
+  document.querySelectorAll("li").forEach((item) => {
+    item.classList.remove("backgroundItemList");
+    item.classList.remove("selecionado");
+  });
+}
 
 function selecionarItem() {
   document.querySelectorAll("li").forEach((item) => {
     item.addEventListener("click", () => {
       descelecionarItem();
       item.classList.add("backgroundItemList");
-      item.classList.add('selecionado');
+      item.classList.add("selecionado");
     });
-    item.addEventListener('dblclick', () =>{
-        item.classList.add('completed');
-        item.addEventListener('dblclick', () =>{
-            item.classList.remove('completed');
-        })
-    })
-});
+    item.addEventListener("dblclick", () => {
+      item.classList.add("completed");
+      item.addEventListener("dblclick", () => {
+        item.classList.remove("completed");
+      });
+    });
+  });
 }
 
-let limparLista = document.getElementById('apaga-tudo');
-limparLista.addEventListener('click', () =>{
-    document.querySelectorAll('li').forEach((item) =>{
-        item.remove();
-    })
-})
+let limparLista = document.getElementById("apaga-tudo");
+limparLista.addEventListener("click", () => {
+  document.querySelectorAll("li").forEach((item) => {
+    item.remove();
+  });
+});
 
-document.getElementById('remover-finalizados').addEventListener('click', () =>{
-    document.querySelectorAll('.completed').forEach((item) =>{
-        item.remove();
-    })
-})
+document.getElementById("remover-finalizados").addEventListener("click", () => {
+  document.querySelectorAll(".completed").forEach((item) => {
+    item.remove();
+  });
+});
 
-document.getElementById('remover-selecionado').addEventListener('click', () =>{
-    document.querySelectorAll('.selecionado').forEach((item) =>{
-        item.remove();
-    })
-})
+document.getElementById("remover-selecionado").addEventListener("click", () => {
+  document.querySelectorAll(".selecionado").forEach((item) => {
+    item.remove();
+  });
+});
