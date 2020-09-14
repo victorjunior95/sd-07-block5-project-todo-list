@@ -101,7 +101,7 @@ function carregarTarefas(){
     }
 }
 
-function moverBaixo() {
+/* function moverBaixo() {
     let tarefas = document.querySelectorAll(".tarefa")
     let selecionado = document.querySelector(".selected")
     if (selecionado != tarefas[tarefas.length-1]) {
@@ -119,9 +119,9 @@ function moverCima() {
             selecionado.after(selecionado.previousSibling)
         }
     }
-}
+} */
 
-/* function moverBaixo() {
+function moverBaixo() {
     let tarefas = document.querySelectorAll(".tarefa")
     let selecionado = document.querySelector(".selected")
     if (tarefas.length != 0) {
@@ -147,4 +147,4 @@ function moverCima() {
             selecionado.previousSibling.classList.add("selected")
         }
     }
-} */
+}
