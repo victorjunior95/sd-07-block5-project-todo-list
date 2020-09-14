@@ -89,3 +89,25 @@ document.querySelector('#remover-selecionado').addEventListener('click', () => {
     }
   }
 });
+
+//mover pra cima
+document.querySelector('#mover-cima').addEventListener('click', () => {
+  const elemento = document.getElementsByTagName('li');
+  for (let i = 1; i < elemento.length; i += 1) {
+    if (elemento[i].style.backgroundColor === 'rgb(128, 128, 128)') {
+      lista.insertBefore(elemento[i], elemento[i - 1]);
+    }
+  }
+});
+
+//mover pra baixo
+document.querySelector('#mover-baixo').addEventListener('click', () => {
+  const elemento = document.getElementsByTagName('li');
+  for (let i = elemento.length - 1; i >= 0; i -= 1) {
+    console.log(elemento[i]);
+    if (elemento[i].style.backgroundColor === 'rgb(128, 128, 128)') {
+      lista.insertBefore(elemento[i + 1], elemento[i]);
+      console.log(elemento[i]);
+    }
+  }
+});
