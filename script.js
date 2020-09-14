@@ -65,6 +65,51 @@ function saveItems() {
   }
 }
 
+function changeupClassList(list, i) {
+  if (list[i - 1].className.includes('completed')) {
+    list[i].classList = 'completed';
+    list[i - 1].className = 'clicked';
+  } else {
+    list[i - 1].classList = 'clicked'
+    list[i].classList = '';
+  }
+}
+
+function changeDownClassList(list, i) {
+  if (list[i + 1].className.includes('completed')) {
+    list[i].classList = 'completed';
+    list[i + 1].className = 'clicked';
+  } else {
+    list[i + 1].classList = 'clicked'
+    list[i].classList = '';
+  }
+}
+
+
+function moveUp() {
+  const itemsList = document.getElementsByTagName('li');
+  for (let i = 0; i < itemsList.length; i += 1) {
+    if (itemsList[i].classList.value === 'clicked' && i !== 0) {
+      let temp = itemsList[i].innerText;
+      itemsList[i].innerText = itemsList[i - 1].innerText;
+      itemsList[i - 1].innerText = temp;
+      changeupClassList(itemsList, i);
+    }
+  }
+}
+
+function moveDown() {
+  const itemsList = document.getElementsByTagName('li');
+  for (let i = itemsList.length - 1; i >= 0; i -= 1) {
+    if (itemsList[i].classList.value === 'clicked' && i !== itemsList.length - 1) {
+      let temp = itemsList[i].innerText;
+      itemsList[i].innerText = itemsList[i + 1].innerText;
+      itemsList[i + 1].innerText = temp;
+      changeDownClassList(itemsList, i);
+    }
+  }
+}
+
 const buttonAddItem = document.getElementById('criar-tarefa');
 buttonAddItem.addEventListener('click', createListItem);
 const clearButton = document.getElementById('apaga-tudo');
@@ -75,13 +120,16 @@ const removeSelectedItem = document.getElementById('remover-selecionado');
 removeSelectedItem.addEventListener('click', removeSelected);
 const saveItemsButton = document.getElementById('salvar-tarefas');
 saveItemsButton.addEventListener('click', saveItems);
+const moveUpButton = document.getElementById('mover-cima');
+const moveDownButton = document.getElementById('mover-baixo');
+moveUpButton.addEventListener('click', moveUp);
+moveDownButton.addEventListener('click', moveDown);
 
 // carrega os itens salvos no localStorage
 if (localStorage.length > 0) {
   const orderedList = document.getElementById('lista-tarefas');
   for (let i = 0; i < localStorage.length; i += 1) {
     const currentStorage = localStorage.getItem(i).split(',');
-    console.log(currentStorage);
     const localLi = document.createElement('li');
     localLi.innerText = currentStorage[0];
     localLi.classList = currentStorage[1];
