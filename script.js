@@ -21,7 +21,7 @@ for ( let index = 0; index < listItens.length; index += 1){
        
 })
 const clear = document.querySelector('#apaga-tudo')
-let list1 = document.getElementsByTagName('li')
+let list1 = document.querySelectorAll('.itens')
 for(let index1 = 0 ; index1 < list1.length; index1 +=1){
     let itens = list1[index1]
 clear.addEventListener('click' ,function(){
