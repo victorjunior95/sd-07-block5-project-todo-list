@@ -1,5 +1,5 @@
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: Open Sans, sans-serif;
 }
 
 .backgroundItemList {
@@ -15,8 +15,8 @@ body {
 }
 
 .main-content {
-  border-radius: 20px;
   border: 2px solid black;
+  border-radius: 20px;
   margin-left: 380px;
   margin-top: 15px;
   padding-top: 10px;
@@ -25,8 +25,8 @@ body {
 }
 
 .list {
-  border-radius: 9px;
   border: 1px black solid;
+  border-radius: 9px;
   line-height: 25px;
   list-style: symbols();
   margin-left: 38px;
@@ -38,20 +38,16 @@ body {
 }
 
 .button {
-  -webkit-backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
   background: none;
   border: none;
   color: inherit;
+  font-family: Open Sans, sans-serif;
+  font-size: large;
+  outline: none;
   position: relative;
+  text-decoration: underline black;
   vertical-align: middle;
   z-index: 1;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: 'Open Sans', sans-serif;
-  font-size: large;
-  text-decoration: underline black;
-}
-
-.button:focus {
-  outline: none;
 }
