@@ -1,5 +1,7 @@
 const addButton = document.getElementById('criar-tarefa');
-const orderedList = document.getElementById('lista-tarefas')
+const orderedList = document.getElementById('lista-tarefas');
+const deleteButton = document.getElementById('apaga-tudo');
+const buttonRemoveCompleted = document.getElementById('remover-finalizados');
 
 addButton.addEventListener('click', function () {
   let inputItem = document.getElementById('texto-tarefa');
@@ -13,13 +15,14 @@ function createNewTask(newTask) {
   orderedList.appendChild(listItem)
   ;
   addNewTaskListener(listItem)
+  completedTask(listItem)
 }
 
 function addNewTaskListener(listItem) {
   listItem.addEventListener('click', function () {
     removeSelectedClassFromPrevious()
     listItem.className = 'selected'
-    console.log(listItem)
+    console.log('tete')
   })
 }
 
@@ -30,3 +33,35 @@ function removeSelectedClassFromPrevious() {
     selectedItem[0].className = ''
   }
 }
+
+function completedTask(listItem) {
+  listItem.addEventListener('dblclick', function () {
+    if (listItem.className === 'completed') {
+      listItem.className = '';
+    } else {
+      listItem.className = 'completed';
+    }
+  });
+}
+
+let newobj = document.querySelectorAll('#newtest')[0]
+console.log(newobj)
+
+newobj.addEventListener('doubleclick', function () {
+  console.log('teste')
+  event.target.className = 'completed'
+})
+
+deleteButton.addEventListener('click', function () {
+  let allItem = document.querySelectorAll('li')
+  for (let item = 0; item < allItem.length; item += 1) {
+    orderedList.removeChild(allItem[item])
+  }
+})
+
+deleteButton.addEventListener('click', function () {
+  let allCompletedTasks = document.querySelectorAll('.completed')
+  for (let item = 0; item < allItem.length; item += 1) {
+    orderedList.removeChild(allItem[item])
+  }
+})
