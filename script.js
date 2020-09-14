@@ -4,7 +4,6 @@ let listaDeTarefas = document.querySelector("#lista-tarefas");
 
 botaoAddTarefa.addEventListener('click',function adicionandoTarefa(){ 
     let novaTarefa  = document.createElement('li')
-    console.log(novaTarefa)
     novaTarefa.innerText = caixaTextoTarefa.value
     novaTarefa.addEventListener('click', selecionar);
     novaTarefa.addEventListener('dblclick', concluir); 
