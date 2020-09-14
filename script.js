@@ -121,4 +121,17 @@ salvar.addEventListener("click",function(){
         novo.outerHTML = tarefa; 
         
     }
+// MOVER PARA CIMA OU PARA BAIXO
 
+let cima = document.getElementById("mover-cima")
+
+cima.addEventListener("click",function(){
+
+    let atual = document.querySelector(".selected")
+    if (atual!=null){
+        if(atual.previousElementSibling){
+            let anterior = atual.previousElementSibling;
+            anterior.before(atual)
+        }
+    }
+})
