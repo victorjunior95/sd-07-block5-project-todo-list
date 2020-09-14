@@ -1,102 +1,18 @@
-/*
-window.onload = function () {
-  const input = document.querySelector('#texto-tarefa');
+const storage = {
+  index: function () {
+    let todoList = JSON.parse(localStorage.getItem('todo-list'));
 
-  const btnCreate = document.querySelector('#criar-tarefa');
-  const btnDelete = document.querySelector('#apaga-tudo');
-  const btnDeleteFinalized = document.querySelector('#remover-finalizados');
+    return todoList;
+  },
 
-  const ol = document.querySelector('#lista-tarefas');
+  insert: function (todoList) {
+    localStorage.setItem('todo-list', JSON.stringify(todoList));
+  },
 
-  // local storage
-  const storage = {
-    index: function () {
-      let todoList = JSON.parse(localStorage.getItem('todo-list'));
-
-      return todoList;
-    },
-
-    insert: function (todoList) {
-      localStorage.setItem('todo-list', JSON.stringify(todoList));
-    },
-
-    delete: function (id) {
-      localStorage.removeItem(todoList.id)
-    }
+  delete: function (id) {
+    localStorage.removeItem(todoList.id)
   }
-
-  let todoList = storage.index() ? storage.index() : [];
-
-  const cleanInput = function () {
-    input.value = '';
-  }
-
-  // verifica se o li com id ja foi splitado
-  const verifySplited = function (list) {
-    let li = document.querySelector(`#${list}`);
-    return li ? true : false;
-  }
-
-  function splitBG(positionLi) {
-    let li = document.querySelectorAll('li');
-
-    li[positionLi].addEventListener("click", function (event) {
-      let li = event.target;
-      li.style.backgroundColor = 'rgb(128,128,128)';
-
-      for (let index = 0; index < todoList.length; index += 1) {
-        let list = document.querySelectorAll('li');
-
-        if (list[index].id != li.id) list[index].style.backgroundColor = null;
-      }
-    });
-
-    li[positionLi].addEventListener("dblclick", function (event) {
-      let li = event.target;
-      if (li.className) li.className = '';
-      else li.className = 'completed';
-    });
-  }
-
-  function automaticSplitTodoList() {
-    for (let index = 0; index < todoList.length; index += 1) {
-      let list = document.createElement('li');
-      list.id = `${todoList[index]}`;
-      list.innerText = todoList[index];
-
-      if (!verifySplited(todoList[index])) {
-        ol.appendChild(list);
-        splitBG(index);
-      }      
-    }
-  }
-
-  function insertTodo() {
-    if (input.value != '' && !verifySplited(input.value)) todoList.push(input.value);
-    storage.insert(todoList);
-    cleanInput();
-    automaticSplitTodoList();
-  }
-
-  function deleteAllTodo() {
-    localStorage.clear('todo-list');
-    window.location.reload();
-  }
-
-  function deleteTodoFinalized(){
-    let ol = document.getElementsByTagName('ol')[0];
-    let list = document.querySelectorAll('li');
-    for(let index = 0; index < list.length; index += 1){
-      if(list[index].className == 'completed') ol.removeChild(list[index]);
-    }
-  }
-
-  btnCreate.addEventListener('click', insertTodo);
-  btnDelete.addEventListener('click', deleteAllTodo);
-  btnDeleteFinalized.addEventListener('click', deleteTodoFinalized);
-  automaticSplitTodoList();
 }
-*/
 
 function clearInputValue() {
   document.getElementById('texto-tarefa').value = '';
@@ -122,10 +38,6 @@ function getBtnRemoveAll() {
   return document.getElementById('apaga-tudo');
 }
 
-function getOl() {
-  return document.getElementById('lista-tarefas');
-}
-
 function createLi() {
   return document.createElement('li');
 }
@@ -134,9 +46,13 @@ function getLiAll() {
   return document.getElementsByTagName('li');
 }
 
+function getLiCompleted(){
+  return document.querySelectorAll('.completed');
+}
+
 function removeLi(li) {
-  let ol = getOl();
-  ol.removeChild(li);
+  let ols = getOl();
+  ols.removeChild(li);
 }
 
 function insertPropertyInElement({ element = '', text = '', classe = '' }) {
@@ -192,7 +108,7 @@ btnAdd.addEventListener('click', function () {
 // remove finalizados
 let btnRemoveFinalized = getBtnRemoveFinalized();
 btnRemoveFinalized.addEventListener('click', function () {
-  let li = getLiAll();
+  let li = getLiCompleted();
   for (let index = 0; index < li.length; index += 1) {
     if (li[index].className == 'completed') removeLi(li[index]);
   }
