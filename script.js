@@ -27,8 +27,11 @@ for (let index = 0; index < itensList.length; index += 1){
     itemDuploClique.addEventListener('dblclick', function(){
         if (itemDuploClique.classList.contains('completed')){
             itemDuploClique.classList.remove('completed');
+            itemDuploClique.style.textDecoration = '';
     } else {
         itemDuploClique.classList.add('completed');
+        let prop = window.getComputedStyle(itemDuploClique).getPropertyValue('text-decoration');
+        itemDuploClique.style.textDecoration = prop;
     }
     });
 }
