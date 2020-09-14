@@ -114,8 +114,25 @@ function getBtnAdd() {
   return document.getElementById('criar-tarefa');
 }
 
+function getBtnRemoveFinalized() {
+  return document.getElementById('remover-finalizados');
+}
+
+function getOl(){
+  return document.getElementById('lista-tarefas');
+}
+
 function createLi() {
   return document.createElement('li');
+}
+
+function getLiAll(){
+  return document.getElementsByTagName('li');
+}
+
+function removeLi(li){
+  let ol = getOl();
+  ol.removeChild(li);
 }
 
 function insertPropertyInElement({element = '', text = '', classe = ''}){
@@ -166,5 +183,14 @@ let btnAdd = getBtnAdd();
 btnAdd.addEventListener('click', function(){
   insertLiInOl(getInputValue());
   clearInputValue();
-  
 });
+
+// remove finalizados
+let btnRemoveFinalized = getBtnRemoveFinalized();
+btnRemoveFinalized.addEventListener('click', function(){
+  let li = getLiAll();
+  for(let index = 0; index < li.length; index += 1) {
+    if (li[index].className == 'completed') removeLi(li[index]);
+  }
+});
+
