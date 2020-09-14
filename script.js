@@ -5,7 +5,10 @@ let textoTarefa = document.querySelector("#texto-tarefa")
 
 
 let btnMoverCima = document.querySelector("#mover-cima")
+btnMoverCima.addEventListener("click", moverCima)
+
 let btnMoverBaixo = document.querySelector("#mover-baixo")
+btnMoverBaixo.addEventListener("click", moverBaixo)
 
 let btnSalvarTarefas = document.querySelector("#salvar-tarefas")
 btnSalvarTarefas.addEventListener("click", salvarTarefas)
@@ -89,5 +92,19 @@ function carregarTarefas(){
         let tarefas = localStorage.getItem("tarefas")
         let listaTarefas = document.querySelector("#lista-tarefas")
         listaTarefas.innerHTML = tarefas
+    }
+}
+
+function moverBaixo() {
+    let selecionado = document.querySelector(".selected")
+    if (selecionado.nextSibling != null) {
+        selecionado.before(selecionado.nextSibling)
+    }
+}
+
+function moverCima() {
+    let selecionado = document.querySelector(".selected")
+    if (selecionado.previousSibling != null) {
+        selecionado.after(selecionado.previousSibling)
     }
 }
