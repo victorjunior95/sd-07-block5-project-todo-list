@@ -46,7 +46,7 @@ function SelectComplet(){
 function itemTroca(){
     for(let index = 0; index < classeItem.length ; index ++){
            classeItem[index].addEventListener('click',function(){
-               classeItem[index].backgroundColor = 'rgb(128,128,128)';
+               classeItem[index].style.backgroundColor = 'rgb(128,128,128)';
            });
        }
    };
