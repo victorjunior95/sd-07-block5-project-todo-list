@@ -23,6 +23,37 @@ function clickAddTask() {
   addTask(inputTask.value,false);
 }
 
+// function to add a class name to a element
+function addClassName(element, className) {
+  element.className += className;
+}
+
+// function to remove a class name from a element
+function removeClassName(element, className) {
+  const currentClassName = element.className.replace(className, '');
+  element.className = currentClassName;
+}
+
+// function to unselect all list item
+function unselectAll() {
+  // get all list item
+  const allListItem = document.querySelectorAll('li');
+  // remove class item selected from item
+  if (allListItem !== null) {
+    for (let index = 0; index < allListItem.length; index += 1) {
+      removeClassName(allListItem[index], ' item-selected');
+    }
+  }
+}
+
+// function to select one list item
+function selectListItem(event) {
+  // unselect all list items
+  unselectAll();
+  // select list item target
+  addClassName(event.target, ' item-selected');
+}
+
 // function add task
 function addTask(taskName, completed) {
   // check input is not empty
@@ -46,43 +77,12 @@ function addTask(taskName, completed) {
   }
 }
 
-// function to unselect all list item
-function unselectAll() {
-  // get all list item
-  const allListItem = document.querySelectorAll('li');
-  // remove class item selected from item
-  if (allListItem !== null) {
-    for (let index = 0; index < allListItem.length; index += 1) {
-      removeClassName(allListItem[index], ' item-selected');
-    }
-  }
-}
-
-// function to select one list item
-function selectListItem(event) {
-  // unselect all list items
-  unselectAll();
-  // select list item target
-  addClassName(event.target, ' item-selected');
-}
-
-// function to add a class name to a element
-function addClassName(element, className) {
-  element.className += className;
-}
-
-// function to remove a class name from a element
-function removeClassName(element, className) {
-  const currentClassName = element.className.replace(className,'');
-  element.className = currentClassName;
-}
-
 // function done a list item
 function doneListItem(event) {
   // check if list item is done
   if (event.target.className.indexOf('completed') >= 0) {
     // un mark/check list item target
-    removeClassName(event.target, ' completed')
+    removeClassName(event.target, ' completed');
   } else {
     // mark/check list item target
     addClassName(event.target, ' completed');
@@ -124,8 +124,8 @@ function saveTaskList() {
       }
       // create the item list
       const itemList = {
-        task: task,
-        completed: completed,
+        'task': task,
+        'completed': completed,
       };
       // push item list on list
       itemsList.push(itemList);
@@ -153,15 +153,6 @@ function getSelectedListItem() {
   return document.querySelector('.item-selected');
 }
 
-// function to move click
-function clickMove(event) {
-  if (event.target.id === 'mover-cima') {
-    moveListItem(true);
-  } else {
-    moveListItem(false);
-  }
-}
-
 // function to move list item
 function moveListItem(moveUp) {
   // get selected item
@@ -170,18 +161,26 @@ function moveListItem(moveUp) {
   if (listItem !== null) {
     let beforeListItem;
     // if moveUp - move up the list Item
-    if (moveUp) {
-      if (listItem !== taskList.firstChild) {
+    if (moveUp && listItem !== taskList.firstChild) {
         beforeListItem = listItem.previousSibling;
-      }
-    // if moveDown - move down the list item
-    } else { 
-      if (listItem !== taskList.lastChild) {
-        beforeListItem = listItem.nextSibling.nextSibling;
-      }
+        taskList.removeChild(listItem);
+        taskList.insertBefore(listItem, beforeListItem);
     }
-    taskList.removeChild(listItem);
-    taskList.insertBefore(listItem, beforeListItem);
+    // if moveDown - move down the list item
+    if (!moveUp && listItem !== taskList.lastChild) {
+        beforeListItem = listItem.nextSibling.nextSibling;
+        taskList.removeChild(listItem);
+        taskList.insertBefore(listItem, beforeListItem);
+    }
+  }
+}
+
+// function to move click
+function clickMove(event) {
+  if (event.target.id === 'mover-cima') {
+    moveListItem(true);
+  } else {
+    moveListItem(false);
   }
 }
 
