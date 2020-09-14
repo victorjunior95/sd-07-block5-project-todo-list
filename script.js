@@ -53,12 +53,14 @@ function markItem(event) {
 
 function moveUp() {
   const item = document.querySelector('.selected');
-  if (item.previousSibling !== null) item.after(item.previousSibling);
+  if (item !== null)
+    if (item.previousSibling !== null) item.after(item.previousSibling);
 }
 
 function moveDown() {
   const item = document.querySelector('.selected');
-  if (item.nextSibling !== null) item.before(item.nextSibling);
+  if (item !== null)
+    if (item.nextSibling !== null) item.before(item.nextSibling);
 }
 
 function removeSelected() {
