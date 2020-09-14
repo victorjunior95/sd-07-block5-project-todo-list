@@ -162,9 +162,9 @@ function moveUpListItem() {
   const listItem = getSelectedListItem();
   // check if exist selected item
   if (listItem !== null && listItem !== taskList.firstChild) {
-      let beforeListItem = listItem.previousSibling;
-      taskList.removeChild(listItem);
-      taskList.insertBefore(listItem, beforeListItem);
+    const beforeListItem = listItem.previousSibling;
+    taskList.removeChild(listItem);
+    taskList.insertBefore(listItem, beforeListItem);
   }
 }
 
@@ -174,7 +174,7 @@ function moveDownListItem() {
   const listItem = getSelectedListItem();
   // check if exist selected item
   if (listItem !== null && listItem !== taskList.lastChild) {
-    let beforeListItem = listItem.nextSibling.nextSibling;
+    const beforeListItem = listItem.nextSibling.nextSibling;
     taskList.removeChild(listItem);
     taskList.insertBefore(listItem, beforeListItem);
   }
