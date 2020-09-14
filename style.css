@@ -1,7 +1,57 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .backgroundItemList {
   background-color: gray;
 }
 
 .completed {
   text-decoration: line-through solid black;
+}
+
+.botoes {
+  margin-top: 10px;
+}
+
+.main-content {
+  border-radius: 20px;
+  border: 2px solid black;
+  margin-left: 380px;
+  margin-top: 15px;
+  padding-top: 10px;
+  text-align: center;
+  width: 600px;
+}
+
+.list {
+  border-radius: 9px;
+  border: 1px black solid;
+  line-height: 25px;
+  list-style: symbols();
+  margin-left: 38px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  padding-top: 13px;
+  text-align: left;
+  width: 80%;
+}
+
+.button {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background: none;
+  border: none;
+  color: inherit;
+  position: relative;
+  vertical-align: middle;
+  z-index: 1;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Open Sans', sans-serif;
+  font-size: large;
+  text-decoration: underline black;
+}
+
+.button:focus {
+  outline: none;
 }

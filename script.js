@@ -42,8 +42,7 @@ function criarTarefa() {
 
 salvar.addEventListener('click', criarTarefa);
 
-const limparLista = document.getElementById('apaga-tudo');
-limparLista.addEventListener('click', () => {
+document.getElementById('apaga-tudo').addEventListener('click', () => {
   document.querySelectorAll('li').forEach((item) => {
     item.remove();
   });
