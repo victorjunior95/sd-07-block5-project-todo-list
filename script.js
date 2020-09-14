@@ -5,7 +5,11 @@ document.querySelector('#criar-tarefa').addEventListener('click', function () {
   document.querySelector('input').value = ''; // limpando o input
 
   newTask.addEventListener('click', function () {
-    newTask.style.backgroundColor = 'rgb(128, 128, 128)';
+    const isGray = document.querySelector('.gray'); // pega o que tiver com o gray
+    if (isGray) { // saber se existe alguma li com o gray
+      isGray.classList.remove('gray'); // remove se tiver
+    }
+    newTask.classList.add('gray'); // se não, adiciona
   });
   newTask.addEventListener('dblclick', function () {
     if (newTask.classList.contains('completed')) { // saber se contém a classe especificada
@@ -17,7 +21,7 @@ document.querySelector('#criar-tarefa').addEventListener('click', function () {
 });
 
 document.querySelector('#remover-finalizados').addEventListener('click', function () {
-  while (document.querySelector('.completed')) {
+  while (document.querySelector('.completed')) { // remove só os completed
     document.querySelector('ol').removeChild(document.querySelector('.completed'));
   }
 });
