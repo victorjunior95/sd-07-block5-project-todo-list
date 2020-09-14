@@ -27,7 +27,7 @@ window.onload = function () {
   let todoList = storage.index() ? storage.index() : [];
 
   const cleanInput = function () {
-    input.value = null;
+    input.value = '';
   }
 
   // verifica se o li com id ja foi splitado
