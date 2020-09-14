@@ -21,8 +21,6 @@ function selecionarItem() {
     });
     item.addEventListener('dblclick', () => {
       item.classList.add('completed');
-      item.innerHTML = item.innerHTML.concat(' ✔️');
-      item.style.color = 'green';
       item.addEventListener('dblclick', () => {
         item.classList.remove('completed');
       });

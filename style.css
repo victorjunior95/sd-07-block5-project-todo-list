@@ -50,10 +50,6 @@ body {
   z-index: 1;
 }
 
-.arrow-down {
-  text-decoration: none;
-}
-
-.arrow-up {
+.icon {
   text-decoration: none;
 }
