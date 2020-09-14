@@ -28,6 +28,14 @@ function selecionarItem() {
   });
 }
 
+function salvarLista() {
+  const itemArray = [];
+  document.querySelectorAll('li').forEach((item) => {
+    itemArray.push({ item: item.innerHTML, class: item.className });
+    localStorage.setItem('item-list', JSON.stringify(itemArray));
+  });
+}
+
 function criarTarefa() {
   if (textoTarefa.value === '') {
     return;
@@ -69,17 +77,7 @@ document.getElementById('remover-selecionado').addEventListener('click', () => {
   salvarLista();
 });
 
-function salvarLista() {
-  const itemArray = [];
-  document.querySelectorAll('li').forEach((item) => {
-    itemArray.push({ item: item.innerHTML, class: item.className });
-    localStorage.setItem('item-list', JSON.stringify(itemArray));
-  });
-}
-
-document
-  .getElementById('salvar-tarefas')
-  .addEventListener('click', salvarLista);
+document.getElementById('salvar-tarefas').addEventListener('click', salvarLista);
 
 // Site usado como referencia
 // https://www.taniarascia.com/how-to-use-local-storage-with-javascript/
