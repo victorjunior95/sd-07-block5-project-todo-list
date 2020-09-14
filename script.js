@@ -112,23 +112,28 @@ function moverCima() {
 function moverBaixo() {
     let tarefas = document.querySelectorAll(".tarefa")
     let selecionado = document.querySelector(".selected")
-    if (selecionado != tarefas[tarefas.length-1]) {
-        let atual = selecionado.innerHTML
-        selecionado.innerHTML = selecionado.nextSibling.innerHTML
-        selecionado.classList.remove("selected")
-        selecionado.nextSibling.innerHTML = atual
-        selecionado.nextSibling.classList.add("selected")
+    if (tarefas.length != 0) {
+        if (selecionado != tarefas[tarefas.length-1]) {
+            let atual = selecionado.innerHTML
+            selecionado.innerHTML = selecionado.nextSibling.innerHTML
+            selecionado.classList.remove("selected")
+            selecionado.nextSibling.innerHTML = atual
+            selecionado.nextSibling.classList.add("selected")
+        }
     }
 }
 
 function moverCima() {
     let tarefas = document.querySelectorAll(".tarefa")
-    let selecionado = document.querySelector(".selected")
-    if (selecionado != tarefas[0]) {
-        let atual = selecionado.innerHTML
-        selecionado.innerHTML = selecionado.previousSibling.innerHTML
-        selecionado.classList.remove("selected")
-        selecionado.previousSibling.innerHTML = atual
-        selecionado.previousSibling.classList.add("selected")
+    if (tarefas.length != 0) {
+        let selecionado = document.querySelector(".selected")
+        if (selecionado != tarefas[0]) {
+            let atual = selecionado.innerHTML
+            selecionado.innerHTML = selecionado.previousSibling.innerHTML
+            selecionado.classList.remove("selected")
+            selecionado.previousSibling.innerHTML = atual
+            selecionado.previousSibling.classList.add("selected")
+        }
     }
 }
+    
