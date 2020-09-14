@@ -69,7 +69,7 @@ apagar.addEventListener("click",function(){
     pai.innerHTML="";
 })
 
-// APAGAR FINALIZADOS'
+// APAGAR FINALIZADOS
 let apagarCompletos = document.getElementById("remover-finalizados")
 apagarCompletos.addEventListener("click",function(){
 
@@ -79,8 +79,19 @@ apagarCompletos.addEventListener("click",function(){
 for (let i=0;i<lista.length;i+=1){
     if(lista[i].classList.contains("completed")==true){
         pai.removeChild(lista[i])
-        console.log("rodou")
+        console.log("apagou finalizado")
     }
-}
-    
+}    
 })
+
+// APAGAR SELECIONADO
+
+let removerSelecionado = document.getElementById("remover-selecionado")
+removerSelecionado.addEventListener("click",function(){
+    
+    let pai = document.getElementById("lista-tarefas")
+    let lista = document.querySelector(".selected");
+    pai.removeChild(lista);  
+})
+
+//
