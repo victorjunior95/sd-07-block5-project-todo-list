@@ -1,3 +1,4 @@
+/*
 window.onload = function () {
   const input = document.querySelector('#texto-tarefa');
 
@@ -57,7 +58,6 @@ window.onload = function () {
     });
   }
 
-  // função factory que carrega conteudo da lista assim que é atualizado a página
   function automaticSplitTodoList() {
     for (let index = 0; index < todoList.length; index += 1) {
       let list = document.createElement('li');
@@ -96,3 +96,4 @@ window.onload = function () {
   btnDeleteFinalized.addEventListener('click', deleteTodoFinalized);
   automaticSplitTodoList();
 }
+*/
