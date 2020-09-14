@@ -1,0 +1,10 @@
+.selected {
+    background-color: gray;
+    border-radius: 5px;
+    padding-left: 10px;
+    transition: padding 0.3s;
+  }
+  
+  .completed {
+    text-decoration: line-through solid black;
+  }
