@@ -3,6 +3,7 @@ const addNewItem = document.getElementById('criar-tarefa');
 const textInput = document.getElementById('texto-tarefa');
 const todos = document.getElementsByTagName('li');
 
+
 function changeBackgroundColor() {
   for (let i = 0; i < todos.length; i += 1) {
     todos[i].addEventListener('click', () => {
@@ -14,11 +15,7 @@ function changeBackgroundColor() {
 function completeTasks() {
   for (let i = 0; i < todos.length; i += 1) {
     todos[i].addEventListener('dblclick', () => {
-      if (todos[i].className === 'completed') {
-        todos[i].className = '';
-      } else {
-        todos[i].className = 'completed';
-      }
+      todos[i].className = 'completed';
     });
   }
 }
@@ -34,4 +31,3 @@ function insertItem(textItem) {
 }
 
 addNewItem.addEventListener('click', insertItem);
-
