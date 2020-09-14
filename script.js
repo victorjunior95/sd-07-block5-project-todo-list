@@ -18,11 +18,6 @@ function checkInput(inputElement) {
   return result;
 }
 
-// function to clickAddTask
-function clickAddTask() {
-  addTask(inputTask.value,false);
-}
-
 // function to add a class name to a element
 function addClassName(element, className) {
   element.className += className;
@@ -54,6 +49,18 @@ function selectListItem(event) {
   addClassName(event.target, ' item-selected');
 }
 
+// function done a list item
+function doneListItem(event) {
+  // check if list item is done
+  if (event.target.className.indexOf('completed') >= 0) {
+    // un mark/check list item target
+    removeClassName(event.target, ' completed');
+  } else {
+    // mark/check list item target
+    addClassName(event.target, ' completed');
+  }
+}
+
 // function add task
 function addTask(taskName, completed) {
   // check input is not empty
@@ -77,16 +84,9 @@ function addTask(taskName, completed) {
   }
 }
 
-// function done a list item
-function doneListItem(event) {
-  // check if list item is done
-  if (event.target.className.indexOf('completed') >= 0) {
-    // un mark/check list item target
-    removeClassName(event.target, ' completed');
-  } else {
-    // mark/check list item target
-    addClassName(event.target, ' completed');
-  }
+// function to clickAddTask
+function clickAddTask() {
+  addTask(inputTask.value, false);
 }
 
 // function to remove all list item
@@ -107,9 +107,8 @@ function removeAllDone() {
   }
 }
 
-// fucntion to save task list
-function saveTaskList() {
-  const itemsList = [];
+// function to fill list item
+function fillListItem(listItems) {
   // get all list items
   const allListItem = document.querySelectorAll('li');
   if (allListItem !== null) {
@@ -123,14 +122,18 @@ function saveTaskList() {
         completed = true;
       }
       // create the item list
-      const itemList = {
-        'task': task,
-        'completed': completed,
-      };
+      const itemList = {task: task, completed: completed};
       // push item list on list
-      itemsList.push(itemList);
+      listItems.push(itemList);
     }
   }
+}
+
+// fucntion to save task list
+function saveTaskList() {
+  const itemsList = [];
+  // fill itemList
+  fillListItem(itemsList);
   // save item list like tasklist
   localStorage.setItem('taskList', JSON.stringify(itemsList));
 }
@@ -162,15 +165,15 @@ function moveListItem(moveUp) {
     let beforeListItem;
     // if moveUp - move up the list Item
     if (moveUp && listItem !== taskList.firstChild) {
-        beforeListItem = listItem.previousSibling;
-        taskList.removeChild(listItem);
-        taskList.insertBefore(listItem, beforeListItem);
+      beforeListItem = listItem.previousSibling;
+      taskList.removeChild(listItem);
+      taskList.insertBefore(listItem, beforeListItem);
     }
     // if moveDown - move down the list item
     if (!moveUp && listItem !== taskList.lastChild) {
-        beforeListItem = listItem.nextSibling.nextSibling;
-        taskList.removeChild(listItem);
-        taskList.insertBefore(listItem, beforeListItem);
+      beforeListItem = listItem.nextSibling.nextSibling;
+      taskList.removeChild(listItem);
+      taskList.insertBefore(listItem, beforeListItem);
     }
   }
 }
