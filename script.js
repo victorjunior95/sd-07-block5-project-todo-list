@@ -9,15 +9,6 @@ const buttonSave = document.getElementById('salvar-tarefas');
 const buttonClearAll = document.getElementById('apaga-tudo');
 const buttonClearDone = document.getElementById('remover-finalizados');
 
-function selectItem(event) {
-  document.querySelector('.selected').classList.toggle('selected');
-  event.target.classList.toggle('selected');
-}
-
-function markItem(event) {
-  event.target.classList.toggle('completed');
-}
-
 function addTask() {
   if (inputText.value === '') {
     alert('Digite o texto antes de adicionar à lista!');
@@ -46,6 +37,20 @@ function save() {
   localStorage.setItem('task_list', taskList.innerHTML);
 }
 
+function removeSelection() {
+  const item = document.querySelector('.selected');
+  if (item !== null) item.classList.remove('selected');
+}
+
+function selectItem(event) {
+  removeSelection();
+  event.target.classList.add('selected');
+}
+
+function markItem(event) {
+  event.target.classList.toggle('completed');
+}
+
 function moveUp() {
   const item = document.querySelector('.selected');
   if (item.previousSibling !== null) item.after(item.previousSibling);
@@ -57,23 +62,14 @@ function moveDown() {
 }
 
 function removeSelected() {
-  for (const element of document.querySelectorAll('li')) {
-    if (element.classList[0] === 'selected' || element.classList[1] === 'selected')
-      taskList.removeChild(element);
-  }
+  const item = document.querySelector('.selected');
+  taskList.removeChild(item);
 }
 
 function removeDone() {
   for (const element of document.querySelectorAll('li')) {
     if (element.classList[0] === 'completed' || element.classList[1] === 'completed')
       taskList.removeChild(element);
-  }
-}
-
-function removeSelection() {
-  for (const element of document.querySelectorAll('li')) {
-    if (element.classList[0] === 'selected' || element.classList[1] === 'selected')
-      element.classList.toggle('selected');
   }
 }
 
