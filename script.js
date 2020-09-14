@@ -23,17 +23,13 @@ function listTask () {
     })
 }
 
-//### 9 - Ao clicar duas vezes em um item, ele deverá ser riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item.
-//- Será verificado que a ação pedida é disparada mediante duplo clique no elemento da lista e que os elementos da lista completos tem em si a classe `completed` e a propriedade `text-decoration` com o valor `line-through solid rgb(0, 0, 0)`
-function elementoSelecionadoNaLista () {
-    for (let i = 0; i < colorselect.length; i++) {
-        colorselect[i].ondblclick = function () {
-            colorselect[i].style.textDecoration = 'line-through';
-            colorselect[i].className = "completed";
-            colorselect[i].style.border = 'solid';
-            colorselect[i].style.backgroundColor = 'rgb(0, 0, 0)';
-        }
-    }       
+function elementoSelecionadoNaLista (event) {
+    const tarefaCompleta = event.target;
+    if (tarefaCompleta.classList.contains('completed')) {
+        tarefaCompleta.classList.remove('completed');
+    } else {
+        tarefaCompleta.classList.add('completed');
+    }      
 }
 
 
