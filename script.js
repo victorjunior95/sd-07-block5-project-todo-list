@@ -5,10 +5,12 @@ const elements = [];
 
 function changeBackgroundColor(element) {
   element.addEventListener('click', () => {
-    for (let i = 0; i < elements.length; i += 1) {
-      elements[i].classList.remove('selected');
+    if (!element.className) {
+      for (let i = 0; i < elements.length; i += 1) {
+        elements[i].classList.remove('selected');
+      }
+      element.className = 'selected';
     }
-    element.className = 'selected';
   });
 }
 
@@ -17,7 +19,7 @@ function completeTasks(element) {
     if (element.className !== 'completed') {
       element.className = 'completed';
     } else if (element.className === 'completed') {
-      element.className = '';
+      element.classList.remove('completed');
     }
   });
 }
