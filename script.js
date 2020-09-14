@@ -65,7 +65,7 @@ function removeCompletedTasks() {
 
 function removeSelectedTask() {
   selectedTask = document.getElementsByClassName('selected');
-  if (selectedTask[0] !== undefined){
+  if (selectedTask[0] !== undefined) {
     selectedTask[0].parentElement.removeChild(selectedTask[0]);
   }
 }
