@@ -10,5 +10,6 @@ document.querySelector('#criar-tarefa').addEventListener('click', function(){
     selected = li;
   })
   li.innerText = document.querySelector('#texto-tarefa').value
+  document.querySelector('#texto-tarefa').value = '';
   document.querySelector('#lista-tarefas').appendChild(li)
 })
