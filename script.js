@@ -86,9 +86,12 @@ function reconstruir() {
 reconstruir();
 
 function descerItem() {
-  let posicao = document.querySelector('.selecionado').nextSibling;
-  let selecionado = document.querySelector('.selecionado');
-  let pai = document.querySelector('.selecionado').parentNode;
+  if(document.querySelector('.selecionado') === null){
+    return
+  }
+  const posicao = document.querySelector('.selecionado').nextSibling;
+  const selecionado = document.querySelector('.selecionado');
+  const pai = document.querySelector('.selecionado').parentNode;
   if (selecionado === pai.lastChild) {
     return;
   }
@@ -96,9 +99,12 @@ function descerItem() {
 }
 
 function subirItem() {
-  let posicao = document.querySelector('.selecionado').previousSibling;
-  let selecionado = document.querySelector('.selecionado');
-  pai = document.querySelector('.selecionado').parentNode;
+  if(document.querySelector('.selecionado') === null){
+    return;
+  }
+  const posicao = document.querySelector('.selecionado').previousSibling;
+  const selecionado = document.querySelector('.selecionado');
+  const pai = document.querySelector('.selecionado').parentNode;
   if (selecionado === pai.firstChild) {
     return;
   }
@@ -106,9 +112,9 @@ function subirItem() {
 }
 
 document.getElementById('mover-cima').addEventListener('click', () => {
-  subirItem()
-})
+  subirItem();
+});
 
 document.getElementById('mover-baixo').addEventListener('click', () => {
   descerItem();
-})
+});
