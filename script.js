@@ -16,7 +16,6 @@ function listTask () {
         li = document.createElement('li');
         li.innerHTML = textoTarefa.value;
         listaTarefas.appendChild(li);
-        li.appendChild(colorListSelect ());
         textoTarefa.value = '';
     })
 }
@@ -28,14 +27,14 @@ function listTask () {
 //Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo.
 
 //Ao clicar em um item da lista, altere a cor de fundo do item para cinza rgb(128,128,128)
-/*function colorListSelect () {
+function colorListSelect () {
     for (let i = 0; i < colorselect.length; i++) {
         colorselect[i].onclick = function () {
             colorselect[i].style.backgroundColor = 'rgb(128, 128, 128)'
         }
     }        
 }
-*/
+
 
 //Adicione um botão com id="remover-selecionado" que, quando clicado, remove o item selecionado
 const removerSelecionado = document.querySelector("#remover-selecionado");
@@ -64,6 +63,6 @@ window.onload = () => {
     InputTextField ()
     listTask ()
     apagarTudo ()
-    //colorListSelect ()
+    colorListSelect ()
     removecolorListSelect ()
 }
