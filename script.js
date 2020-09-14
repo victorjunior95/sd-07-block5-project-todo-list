@@ -23,6 +23,11 @@ function createItem() {
   li.addEventListener('click', selectItem);
   li.addEventListener('dblclick', markItem);
   taskList.appendChild(li);
+
+  clearInput();
+}
+
+function clearInput() {
   inputText.value = '';
   inputText.focus();
 }
