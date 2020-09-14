@@ -5,7 +5,6 @@ let clear = document.querySelector("#apaga-tudo")
 let completed = document.querySelector("#remover-finalizados")
 
 
-
 creator.addEventListener("click", ()=>{
     let node = document.createElement("li")
     let textNode = document.createTextNode(textInput.value)
@@ -27,8 +26,16 @@ completed.addEventListener("click", ()=>{
 
 
 list.addEventListener("click", (event)=>{
-    li = event.target
-    li.style.backgroundColor = "rgb(128,128,128)"
+    let selected = document.querySelector(".selected")
+    if (selected != null){
+        selected.classList.remove("selected")
+        li = event.target
+        li.classList.add("selected")
+    }
+    else {
+        li = event.target
+        li.classList.add("selected")
+    }
 })
 
 list.addEventListener("dblclick", (event)=>{
