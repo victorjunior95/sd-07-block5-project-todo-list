@@ -1,7 +1,7 @@
 .selected {
-  background-color: rgb(128 , 128 , 128);
-  width: 200px;
+  background-color: grey;
   border-radius: 2px;
+  width: 200px;
 }
 
 .completed {

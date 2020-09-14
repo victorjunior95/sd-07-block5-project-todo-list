@@ -14,7 +14,7 @@ function changeBackgroundColor() {
 function completeTasks() {
   for (let i = 0; i < todos.length; i += 1) {
     todos[i].addEventListener('dblclick', () => {
-      if(todos[i].className === 'completed') {
+      if (todos[i].className === 'completed') {
         todos[i].className = '';
       } else {
         todos[i].className = 'completed';
