@@ -67,7 +67,7 @@ document.getElementById('salvar-tarefas').addEventListener('click', () => {
     localStorage.setItem('item-list', JSON.stringify(itemArray));
   });
 });
-
+// Site usado como referencia
 // https://www.taniarascia.com/how-to-use-local-storage-with-javascript/
 function reconstruir() {
   if (localStorage.getItem('item-list') !== null) {
@@ -84,3 +84,31 @@ function reconstruir() {
 }
 // <-------------------------------------------------------------------->
 reconstruir();
+
+function descerItem() {
+  let posicao = document.querySelector('.selecionado').nextSibling;
+  let selecionado = document.querySelector('.selecionado');
+  let pai = document.querySelector('.selecionado').parentNode;
+  if (selecionado === pai.lastChild) {
+    return;
+  }
+  pai.insertBefore(posicao, selecionado);
+}
+
+function subirItem() {
+  let posicao = document.querySelector('.selecionado').previousSibling;
+  let selecionado = document.querySelector('.selecionado');
+  pai = document.querySelector('.selecionado').parentNode;
+  if (selecionado === pai.firstChild) {
+    return;
+  }
+  pai.insertBefore(selecionado, posicao);
+}
+
+document.getElementById('mover-cima').addEventListener('click', () => {
+  subirItem()
+})
+
+document.getElementById('mover-baixo').addEventListener('click', () => {
+  descerItem();
+})
