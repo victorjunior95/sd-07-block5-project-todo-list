@@ -1,6 +1,7 @@
 const list = document.getElementById('lista-tarefas');
 const addNewItem = document.getElementById('criar-tarefa');
 const textInput = document.getElementById('texto-tarefa');
+const todos = document.getElementsByTagName('li');
 
 function insertItem(textItem) {
   const newItem = document.createElement('li');
@@ -11,4 +12,3 @@ function insertItem(textItem) {
 }
 
 addNewItem.addEventListener('click', insertItem);
-
