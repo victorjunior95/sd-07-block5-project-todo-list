@@ -9,22 +9,33 @@ function addElement() {
   elementList.textContent = tarefaDigitada;
   textInput.value = '';
 
+  // marca e desmarca quando clicado 1 vez
   let itensList = document.querySelectorAll('.item-list');
-for (let index = 0; index < itensList.length; index += 1){
-let itemSelecionado = itensList[index];
-itemSelecionado.addEventListener('click', function(){
-    for (let index = 0; index < itensList.length; index += 1){
-      let apagaCor = itensList[index];
-      apagaCor.style.backgroundColor = ''; 
+  for (let index = 0; index < itensList.length; index += 1){
+    let itemSelecionado = itensList[index];
+    itemSelecionado.addEventListener('click', function(){
+      for (let index = 0; index < itensList.length; index += 1){
+        let apagaCor = itensList[index];
+        apagaCor.style.backgroundColor = ''; 
     }
     itemSelecionado.style.backgroundColor = 'rgb(128, 128, 128)';
 });  
 }
 
-
+for (let index = 0; index < itensList.length; index += 1){
+    let itemDuploClique = itensList[index];
+    itemDuploClique.addEventListener('dblclick', function(){
+        if (itemDuploClique.classList.contains('completed')){
+            itemDuploClique.classList.remove('completed');
+    } else {
+        itemDuploClique.classList.add('completed');
+    }
+    });
+}
+   
 }
 
 const buttonAdd = document.getElementById('criar-tarefa');
 buttonAdd.addEventListener('click', addElement);
 
-
+let itensList = document.querySelectorAll('.item-list');
