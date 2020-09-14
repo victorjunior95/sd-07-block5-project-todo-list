@@ -117,5 +117,7 @@ buttonMoveUp.addEventListener('click', moveTaskUp);
 buttonMoveDown.addEventListener('click', moveTaskDown);
 
 //  Initializing Scripts
+if (localStorage.length !== 0) {
+  window.onload = loadOrderedList;
+}
 
-window.onload = loadOrderedList;
