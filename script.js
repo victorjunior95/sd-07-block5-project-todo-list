@@ -61,3 +61,26 @@ for (let i = 0; i < completos.length; i++) {
     })(i);
  }
 }
+
+// APAGAR TUDO
+let pai = document.getElementById("lista-tarefas")
+let apagar = document.getElementById("apaga-tudo")
+apagar.addEventListener("click",function(){
+    pai.innerHTML="";
+})
+
+// APAGAR FINALIZADOS'
+let apagarCompletos = document.getElementById("remover-finalizados")
+apagarCompletos.addEventListener("click",function(){
+
+    let pai = document.getElementById("lista-tarefas")
+    let lista = document.querySelectorAll(".item");
+
+for (let i=0;i<lista.length;i+=1){
+    if(lista[i].classList.contains("completed")==true){
+        pai.removeChild(lista[i])
+        console.log("rodou")
+    }
+}
+    
+})
