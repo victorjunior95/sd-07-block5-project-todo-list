@@ -95,7 +95,7 @@ function carregarTarefas(){
     }
 }
 
-function moverBaixo() {
+/* function moverBaixo() {
     let selecionado = document.querySelector(".selected")
     if (selecionado.nextSibling != null) {
         selecionado.before(selecionado.nextSibling)
@@ -106,5 +106,27 @@ function moverCima() {
     let selecionado = document.querySelector(".selected")
     if (selecionado.previousSibling != null) {
         selecionado.after(selecionado.previousSibling)
+    }
+} */
+
+function moverBaixo() {
+    let selecionado = document.querySelector(".selected")
+    if (selecionado.nextSibling != null) {
+        let atual = selecionado.innerHTML
+        selecionado.innerHTML = selecionado.nextSibling.innerHTML
+        selecionado.classList.remove("selected")
+        selecionado.nextSibling.innerHTML = atual
+        selecionado.nextSibling.classList.add("selected")
+    }
+}
+
+function moverCima() {
+    let selecionado = document.querySelector(".selected")
+    if (selecionado.previousSibling != null) {
+        let atual = selecionado.innerHTML
+        selecionado.innerHTML = selecionado.previousSibling.innerHTML
+        selecionado.classList.remove("selected")
+        selecionado.previousSibling.innerHTML = atual
+        selecionado.previousSibling.classList.add("selected")
     }
 }
