@@ -94,4 +94,15 @@ removerSelecionado.addEventListener("click",function(){
     pai.removeChild(lista);  
 })
 
-//
+//SALVAR LISTA EM LOCALSTORAGE
+
+let salvar = document.getElementById("salvar-tarefas")
+salvar.addEventListener("click",function(){
+
+    let lista = document.querySelectorAll(".item");
+    for (let i=0;i<lista.length;i+=1){
+        localStorage.setItem("Tarefa "+ i+1, lista[i]);
+        console.log(lista[i]);
+    }
+
+})
