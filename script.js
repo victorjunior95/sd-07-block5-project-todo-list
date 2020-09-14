@@ -60,11 +60,15 @@ function apagarTudo(){
     listaTarefas.innerHTML = ""
 }
 
-function clicarTarefa(){
+/* function clicarTarefa(){
     if (event.target.classList.contains("selected")){limpaSelecionados()}
     else {limpaSelecionados(); event.target.classList.add("selected")}   
+} */
+
+function clicarTarefa(){
+    {limpaSelecionados(); event.target.classList.add("selected")}   
 }
-   
+
 function limpaSelecionados(){
     let tarefas = document.querySelectorAll(".tarefa")
     for (let i of tarefas) {
