@@ -1,4 +1,7 @@
-window.onload = carregarTarefas
+window.onload = function() {
+    carregarTarefas()
+    gambiarra()
+}
 
 let textoTarefa = document.querySelector("#texto-tarefa")
 
@@ -71,7 +74,7 @@ function limpaSelecionados(){
         if (i.classList.contains("selected")){
             i.classList.remove("selected")}
     }
-}
+}gambiarra()
 
 function apagarCompleto(){
     let tarefas = document.querySelectorAll(".tarefa")
@@ -143,3 +146,9 @@ function moverCima() {
     }
 } */
     
+function gambiarra(){
+    let gambiarra = document.querySelector("#gambiarra")
+    console.log(gambiarra)
+    gambiarra.remove()
+
+}
