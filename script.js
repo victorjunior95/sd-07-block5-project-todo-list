@@ -41,7 +41,7 @@ function markAsDoneLi() {
 function elementCreator() {
   const element = document.createElement('li');
   element.innerText = inputTextTask.value;
-  element.className = 'task'
+  element.className = 'task';
   inputTextTask.value = '';
   element.addEventListener('click', unselectLi);
   element.addEventListener('dblclick', markAsDoneLi);
@@ -65,7 +65,7 @@ function removeCompletedTasks() {
 
 function removeSelectedTask() {
   selectedTask = document.getElementsByClassName('selected');
-  if(selectedTask[0] !== undefined){
+  if (selectedTask[0] !== undefined){
     selectedTask[0].parentElement.removeChild(selectedTask[0]);
   }
 }
