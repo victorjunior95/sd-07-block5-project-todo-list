@@ -12,5 +12,21 @@ function createNewTask(newTask) {
   listItem.innerText = newTask;
   orderedList.appendChild(listItem)
   ;
-  console.log(listItem)
+  addNewTaskListener(listItem)
+}
+
+function addNewTaskListener(listItem) {
+  listItem.addEventListener('click', function () {
+    removeSelectedClassFromPrevious()
+    listItem.className = 'selected'
+    console.log(listItem)
+  })
+}
+
+// remove selected class from the task
+function removeSelectedClassFromPrevious() {
+  let selectedItem = document.querySelectorAll('.selected');
+  if (selectedItem.length > 0) {
+    selectedItem[0].className = ''
+  }
 }
