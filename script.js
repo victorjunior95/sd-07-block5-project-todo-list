@@ -8,7 +8,15 @@ function focusedItem(event) {
 }
 
 function markItem(event) {
-    event.target.classList.add('completed');
+  console.log(event.target.classList);
+  const eventList = event.target.classList;
+  for (let i = 0; i < eventList.length; i += 1) {
+    if (eventList[i] === 'completed') {
+      eventList.remove('completed');
+      return;
+    }
+  }
+  event.target.classList.add('completed');
 }
 
 function createListItem() {
