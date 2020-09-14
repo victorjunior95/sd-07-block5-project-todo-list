@@ -81,25 +81,22 @@ function removeSelectedTask() {
 }
 
 function saveOrderedList() {
-  const stringOfTasks = orderedListTasks.innerText;
-  localStorage.setItem('taskList', stringOfTasks);
+  const toString = JSON.stringify(orderedListTasks.innerHTML)
+  localStorage.setItem('keyListTask', toString);
 }
 
 function loadOrderedList() {
-  const stringOfTasks = localStorage.getItem('taskList');
-  let taskPhrase = '';
-  for (let index = 0; index <= stringOfTasks.length; index += 1) {
-    if (stringOfTasks[index] === '\n' || index === stringOfTasks.length) {
-      addTaskToList(taskPhrase);
-      taskPhrase = '';
-    } else {
-      taskPhrase += stringOfTasks[index];
-    }
+  let toHtml = JSON.parse(localStorage.getItem('keyListTask'));
+  orderedListTasks.innerHTML = toHtml;
+  let tasks = document.getElementsByClassName('task');
+  for (let index = 0; index < tasks.length; index += 1) {
+    tasks[index].addEventListener('click', unselectLi);
+    tasks[index].addEventListener('dblclick', markAsDoneLi);
   }
 }
 
 function moveTaskUp() {
-
+  
 }
 
 function moveTaskDown() {
