@@ -10,6 +10,7 @@ const buttonRemoveSelected = document.getElementById('remover-selecionado');
 //  Ordered List Outputs
 const orderedListTasks = document.getElementById('lista-tarefas');
 let selectedTask = document.getElementsByClassName('selected');
+let completedTasks = document.querySelectorAll('.completed');
 
 //  Functions
 function selectOtherLi() {
@@ -57,16 +58,17 @@ function clearTaskList() {
 }
 
 function removeCompletedTasks() {
-  const completedTasks = document.getElementsByClassName('completed');
-  for (let index = 0; index < Object.keys(completedTasks).length; index += 1) {
-    completedTasks[index].parentElement.removeChild(completedTasks[index]);
+  completedTasks = document.getElementsByClassName('completed');
+  let numberMax = completedTasks.length;
+  for (let index = 0; index < numberMax; index += 1) {
+    completedTasks[0].parentElement.removeChild(completedTasks[0]);
   }
 }
 
 function removeSelectedTask() {
   selectedTask = document.getElementsByClassName('selected');
   if (selectedTask[0] !== undefined) {
-    selectedTask[0].parentElement.removeChild(selectedTask[0]);
+    orderedListTasks.removeChild(selectedTask[0]);
   }
 }
 
