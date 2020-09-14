@@ -10,13 +10,7 @@ const buttonClearAll = document.getElementById('apaga-tudo');
 const buttonClearDone = document.getElementById('remover-finalizados');
 
 function selectItem(event) {
-  for (const element of document.getElementsByTagName('li')) {
-    if (element.classList[0] === 'selected') {
-      element.classList.toggle('selected');
-    } else if (element.classList[1] === 'selected') {
-      element.classList.toggle('selected');
-    }
-  }
+  document.querySelector('.selected').classList.toggle('selected');
   event.target.classList.toggle('selected');
 }
 
