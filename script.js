@@ -101,12 +101,14 @@ function carregarTarefas(){
     }
 }
 
-/* function moverBaixo() {
+function moverBaixo() {
     let tarefas = document.querySelectorAll(".tarefa")
     let selecionado = document.querySelector(".selected")
-    if (selecionado != tarefas[tarefas.length-1]) {
-        if (selecionado.nextSibling != null) {
-            selecionado.before(selecionado.nextSibling)
+    if (selecionado != null) {
+        if (selecionado != tarefas[tarefas.length-1]) {
+            if (selecionado.nextSibling != null) {
+                selecionado.before(selecionado.nextSibling)
+            }
         }
     }
 }
@@ -114,14 +116,16 @@ function carregarTarefas(){
 function moverCima() {
     let tarefas = document.querySelectorAll(".tarefa")
     let selecionado = document.querySelector(".selected")
-    if (tarefas.length != 0) {
-        if (selecionado.previousSibling != null) {
-            selecionado.after(selecionado.previousSibling)
+    if (selecionado != null) {
+        if (tarefas.length != 0) {
+            if (selecionado.previousSibling != null) {
+                selecionado.after(selecionado.previousSibling)
+            }
         }
     }
-} */
+}
 
-function moverBaixo() {
+/* function moverBaixo() {
     let tarefas = document.querySelectorAll(".tarefa")
     let selecionado = document.querySelector(".selected")
     if (tarefas.length != 0) {
@@ -147,4 +151,4 @@ function moverCima() {
             selecionado.previousSibling.classList.add("selected")
         }
     }
-}
+} */
