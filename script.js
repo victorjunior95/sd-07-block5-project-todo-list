@@ -6,28 +6,44 @@ const apagaFinalizados = document.querySelector('#remover-finalizados');
 
 function jaSelecionado() {
   const verificaSelecao = event.target;
-  let selecionado = true;
+  let jaFoiSelecionado = true;
   if (!verificaSelecao.classList.contains('selected')) {
-    selecionado = false;
+    jaFoiSelecionado = false;
   }
-  return selecionado;
+  return jaFoiSelecionado;
 }
+
 function selecionado() {
   const itemAtual = jaSelecionado();
   const removerSelecao = document.querySelectorAll('li');
   for (let i = 0; i < removerSelecao.length; i += 1) {    
     removerSelecao[i].classList.remove('selected');
   }
-  if(!itemAtual) {
+  if (!itemAtual) {
     this.classList.add('selected');
   } else {
     this.classList.remove('selected');
   }
 }
 
+function jaCompletado() {
+  const verificaSelecao = event.target;
+  let jaFoiConcluido = true;
+  if (!verificaSelecao.classList.contains('completed')) {
+    jaFoiConcluido = false;
+  }
+  return jaFoiConcluido;
+}
+
 function concluido() {
+  let itemConcluido = jaCompletado();
   this.classList.remove('selected');
-  this.classList.add('completed');
+  if (!itemConcluido) {
+    this.classList.add('completed');
+  } else {
+    this.classList.remove('completed');
+  }
+ 
 }
 
 criaItem.addEventListener('click', function criaTarefa() {
