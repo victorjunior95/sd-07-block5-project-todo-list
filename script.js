@@ -5,7 +5,7 @@ add.addEventListener('click', function () {
     let iten1 = assignment.value
     let list = document.querySelector('#lista-tarefas').innerHTML += `<li class="itens">${iten1}</li>`
     assignment.value = ""
-
+    
 const listItens = document.querySelectorAll('.itens')
 
 
@@ -14,12 +14,23 @@ for ( let index = 0; index < listItens.length; index += 1){
     
     itenSelected.addEventListener('click' ,function(){
         
-        itenSelected.className='itens itensSelected'
-        i
+        itenSelected.style.backgroundColor = "rgb(128, 128, 128)"
+        
         
     
        
 })
+const clear = document.querySelector('#apaga-tudo')
+let list1 = document.getElementsByTagName('li')
+for(let index1 = 0 ; index1 < list1.length; index1 +=1){
+    let itens = list1[index1]
+clear.addEventListener('click' ,function(){
+    
+    let list = document.querySelector('#lista-tarefas')
+    
+    list.removeChild(itens)
+})
+}
 }
 })
 
