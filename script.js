@@ -16,8 +16,10 @@ function addElement() {
     itemSelecionado.addEventListener('click', function(){
       for (let index = 0; index < itensList.length; index += 1){
         let apagaCor = itensList[index];
-        apagaCor.style.backgroundColor = ''; 
+        apagaCor.style.backgroundColor = '';
+        itensList[index].classList.remove('item-selecionado'); 
     }
+    itemSelecionado.classList.add('item-selecionado');
     itemSelecionado.style.backgroundColor = 'rgb(128, 128, 128)';
 });  
 }
@@ -61,8 +63,22 @@ function apagarFinalizados() {
    }
 }
 
+function apagaSelecionado() {
+  let lista = document.getElementsByTagName('ol')[0];
+  let itens = document.getElementsByTagName('li');
+  for (let index = itens.length - 1; index >= 0; index -= 1){
+    if (itens[index].classList.contains('item-selecionado')) {
+      lista.removeChild(itens[index]);
+    }
+   }
+}
+
+
 let buttonApaga = document.getElementById('apaga-tudo');
 buttonApaga.addEventListener('click', apagarLista);
 
 let buttonRemoveFinalizados = document.getElementById('remover-finalizados');
 buttonRemoveFinalizados.addEventListener('click', apagarFinalizados);
+
+let buttonRemoveSelecionado = document.getElementById('remover-selecionado');
+buttonRemoveSelecionado.addEventListener('click', apagaSelecionado);
