@@ -6,6 +6,8 @@ const buttonCreateTask = document.getElementById('criar-tarefa');
 const buttonClearTaskList = document.getElementById('apaga-tudo');
 const buttonRemoveCompletedTasks = document.getElementById('remover-finalizados');
 const buttonRemoveSelected = document.getElementById('remover-selecionado');
+const buttonSaveTasks = document.getElementById('salvar-tarefas');
+const buttonLoadTasks = document.getElementById('carregar-tarefas');
 
 //  Ordered List Outputs
 const orderedListTasks = document.getElementById('lista-tarefas');
@@ -49,8 +51,11 @@ function elementCreator() {
   return element;
 }
 
-function addTaskToList() {
+function addTaskToList(textLoad) {
   const elementLi = elementCreator();
+  if (textLoad != event) {
+    elementLi.innerText = textLoad;
+  }
   orderedListTasks.appendChild(elementLi);
 }
 
@@ -73,8 +78,32 @@ function removeSelectedTask() {
   }
 }
 
+function saveOrderedList() {
+  const stringOfTasks = orderedListTasks.innerText;
+  localStorage.setItem('taskList', stringOfTasks);
+}
+
+function loadOrderedList() {
+  const stringOfTasks = localStorage.getItem('taskList');
+  let taskPhrase = '';
+  for (let index = 0; index < stringOfTasks.length; index += 1){
+    if (stringOfTasks[index] != '\n') {
+      taskPhrase += stringOfTasks[index];
+    } else {
+      addTaskToList(taskPhrase);
+      taskPhrase = '';
+    }
+  }
+}
+
 // Event Listeners
 buttonCreateTask.addEventListener('click', addTaskToList);
 buttonClearTaskList.addEventListener('click', clearTaskList);
 buttonRemoveCompletedTasks.addEventListener('click', removeCompletedTasks);
 buttonRemoveSelected.addEventListener('click', removeSelectedTask);
+buttonSaveTasks.addEventListener('click', saveOrderedList);
+buttonLoadTasks.addEventListener('click', loadOrderedList);
+
+//  Initializing Scripts
+
+window.onload = loadOrderedList;
