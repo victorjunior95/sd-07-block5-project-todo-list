@@ -1,6 +1,7 @@
 const button = document.getElementById('criar-tarefa');
 let entryText = document.getElementById('texto-tarefa');
 const eraser = document.getElementById('apaga-tudo');
+const complete = document.getElementById('remover-finalizados');
 button.addEventListener('click', function(){
     let list = document.getElementById('lista-tarefas');
     let item = document.createElement('li');
@@ -38,5 +39,12 @@ eraser.addEventListener('click', function() {
   let blank = document.getElementsByTagName('li'), index;
   for (index = blank.length - 1; index >= 0; index -= 1) {
     blank[index].parentNode.removeChild(blank[index]);
+  }
+})
+
+complete.addEventListener('click', function() {
+  let completeList = document.querySelectorAll('.completed'), index;
+  for (index = completeList.length - 1; index >= 0; index -= 1) {
+    completeList[index].parentNode.removeChild(completeList[index]);
   }
 })
