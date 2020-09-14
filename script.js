@@ -88,12 +88,12 @@ function saveOrderedList() {
 function loadOrderedList() {
   const stringOfTasks = localStorage.getItem('taskList');
   let taskPhrase = '';
-  for (let index = 0; index < stringOfTasks.length; index += 1) {
-    if (stringOfTasks[index] !== '\n') {
-      taskPhrase += stringOfTasks[index];
-    } else {
+  for (let index = 0; index <= stringOfTasks.length; index += 1) {
+    if (stringOfTasks[index] === '\n' || index === stringOfTasks.length) {
       addTaskToList(taskPhrase);
       taskPhrase = '';
+    } else {
+      taskPhrase += stringOfTasks[index];
     }
   }
 }
