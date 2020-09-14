@@ -4,9 +4,25 @@ const textoTarefa = document.querySelector('#texto-tarefa');
 const apagarLista = document.querySelector('#apaga-tudo');
 const apagaFinalizados = document.querySelector('#remover-finalizados');
 
-
+function jaSelecionado() {
+  const verificaSelecao = event.target;
+  let selecionado = true;
+  if (!verificaSelecao.classList.contains('selected')) {
+    selecionado = false;
+  }
+  return selecionado;
+}
 function selecionado() {
-  this.classList.add('selected');
+  const itemAtual = jaSelecionado();
+  const removerSelecao = document.querySelectorAll('li');
+  for (let i = 0; i < removerSelecao.length; i += 1) {    
+    removerSelecao[i].classList.remove('selected');
+  }
+  if(!itemAtual) {
+    this.classList.add('selected');
+  } else {
+    this.classList.remove('selected');
+  }
 }
 
 function concluido() {
@@ -17,8 +33,8 @@ function concluido() {
 criaItem.addEventListener('click', function criaTarefa() {
   const itemLista = document.createElement('li');
   itemLista.innerText = textoTarefa.value;
-  itemLista.addEventListener('click', selecionado);
   itemLista.addEventListener('dblclick', concluido);
+  itemLista.addEventListener('click', selecionado);
   lista.appendChild(itemLista);
   textoTarefa.value = '';
 });
