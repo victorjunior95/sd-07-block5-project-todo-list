@@ -38,3 +38,19 @@ document.querySelector('#remover-finalizados').addEventListener('click', functio
     li[index].remove();
   }
 })
+
+document.querySelector('#remover-selecionado').addEventListener('click', function(){
+  selected.remove()
+})
+
+document.querySelector('#mover-cima').addEventListener('click',function(){
+  const swap = selected.previousSibling.innerText;
+  selected.previousSibling.innerText = selected.innerText;
+  selected.innerText = swap;
+})
+
+document.querySelector('#mover-baixo').addEventListener('click',function(){
+  const swap = selected.nextSibling.innerText;
+  selected.nextSibling.innerText = selected.innerText;
+  selected.innerText = swap;
+})
