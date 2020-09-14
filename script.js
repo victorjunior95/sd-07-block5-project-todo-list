@@ -29,10 +29,10 @@ function listTask () {
 //Ao clicar em um item da lista, altere a cor de fundo do item para cinza rgb(128,128,128)
 function colorListSelect () {
     for (let i = 0; i < colorselect.length; i++) {
-        colorselect[i].onclick = function () {
+        colorselect[i].addEventListener('click', function () {
             colorselect[i].style.backgroundColor = 'rgb(128, 128, 128)'
-        }
-    }        
+        })
+    }       
 }
 
 
@@ -63,6 +63,6 @@ window.onload = () => {
     InputTextField ()
     listTask ()
     apagarTudo ()
-    colorListSelect ()
     removecolorListSelect ()
+    colorListSelect ()
 }
