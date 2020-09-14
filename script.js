@@ -1,6 +1,9 @@
+const botaoApagar = document.querySelector('#apaga-tudo');
+const botaoFinalizado = document.querySelector('#remover-finalizados');
 const botaoTexto = document.querySelector('#criar-tarefa');
 const caixaTexto = document.querySelector('#texto-tarefa');
 const lista = document.querySelector('#lista-tarefas');
+let itens = '';
 
 botaoTexto.addEventListener('click', () => {
   const novoItem = document.createElement('li');
@@ -8,22 +11,37 @@ botaoTexto.addEventListener('click', () => {
   novoItem.appendChild(document.createTextNode(caixaTexto.value));
   lista.appendChild(novoItem);
   caixaTexto.value = '';
-});
 
-lista.addEventListener('DOMNodeInserted', () => {
-  const itens = document.querySelectorAll('li');
-  itens.forEach((item) => {
-    item.addEventListener('click', () => {
-      removeLast();
-      item.style.backgroundColor = 'rgb(128,128,128)';
-    });
+  novoItem.addEventListener('click', () => {
+    if (!novoItem.classList.contains('selected')) {
+      itens = document.querySelectorAll('li');
+      itens.forEach((item) => {
+        item.classList.remove('selected');
+      });
+
+      novoItem.classList.add('selected');
+    }
   });
 
-  function removeLast() {
-    itens.forEach((item) => {
-      if (item.style.backgroundColor) {
-        item.style.backgroundColor = '';
-      }
-    });
-  }
+  novoItem.addEventListener('dblclick', () => {
+    if (novoItem.classList.contains('completed')) {
+      novoItem.classList.remove('completed');
+    } else {
+      novoItem.classList.add('completed');
+    }
+  });
+});
+
+botaoApagar.addEventListener('click', () => {
+  itens.forEach((item) => {
+    lista.removeChild(item);
+  });
+});
+
+botaoFinalizado.addEventListener('click', () => {
+  itens.forEach((item) => {
+    if (item.classList.contains('completed')) {
+      lista.removeChild(item);
+    }
+  });
 });
