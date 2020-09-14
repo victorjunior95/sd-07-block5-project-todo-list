@@ -7,12 +7,13 @@ const buttonCreateTask = document.getElementById('criar-tarefa');
 //  Ordered List Outputs
 const orderedListTasks = document.getElementById('lista-tarefas');
 let liTask = document.getElementsByClassName('task');
-let selectedItem = document.getElementsByClassName('selected');
+let selectedTask = document.getElementsByClassName('selected');
+let completedTasks = document.getElementsByClassName('completed')
 
 //  Functions
-function selectLi() {
-  if (selectedItem[0] !== undefined) {
-    selectedItem[0].classList.remove('selected');
+function selectOtherLi() {
+  if (selectedTask[0] !== undefined) {
+    selectedTask[0].classList.remove('selected');
     event.target.classList.add('selected');
   } else {
     event.target.classList.add('selected');
@@ -20,16 +21,20 @@ function selectLi() {
 }
 
 function unselectLi() {
-  selectedItem = document.getElementsByClassName('selected');
-  if (selectedItem[0] === event.target) {
-    selectedItem[0].classList.remove('selected');
+  selectedTask = document.getElementsByClassName('selected');
+  if (selectedTask[0] === event.target) {
+    selectedTask[0].classList.remove('selected');
   } else {
-    selectLi();
+    selectOtherLi();
   }
 }
 
 function markAsDoneLi() {
-  console.log('markAsDone');
+  if (event.target.className !== 'task completed') {
+    event.target.classList.add('completed');
+  } else {
+    event.target.classList.remove('completed');
+  }
 }
 
 function elementCreator() {
