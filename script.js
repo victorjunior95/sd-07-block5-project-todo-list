@@ -1,7 +1,6 @@
 const list = document.getElementById('lista-tarefas');
 const addNewItem = document.getElementById('criar-tarefa');
 const textInput = document.getElementById('texto-tarefa');
-const todos = document.getElementsByTagName('li');
 
 function insertItem(textItem) {
   const newItem = document.createElement('li');
@@ -9,6 +8,13 @@ function insertItem(textItem) {
   newItem.innerHTML = textItem;
   list.appendChild(newItem);
   textInput.value = '';
+  const todos = document.getElementsByTagName('li');
+  for (let i = 0; i < todos.length; i += 1) {
+    todos[i].addEventListener('click', () => {
+      todos[i].className = 'selected';
+    });
+  }
 }
 
 addNewItem.addEventListener('click', insertItem);
+
