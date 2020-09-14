@@ -109,7 +109,7 @@ function moverCima() {
     }
 } */
 
-function moverBaixo() {
+/* function moverBaixo() {
     let selecionado = document.querySelector(".selected")
     if (selecionado.nextSibling != null) {
         let atual = selecionado.innerHTML
@@ -129,4 +129,26 @@ function moverCima() {
         selecionado.previousSibling.innerHTML = atual
         selecionado.previousSibling.classList.add("selected")
     }
-}
+} */
+
+/* Codigo de uma pessoa aleatoria que funciona tanto quanto o meu: */
+
+function moverCima() {
+    const tarefaSel = document.querySelector('.selected');
+    const acima = tarefaSel.innerHTML;
+    const abaixo = tarefaSel.previousElementSibling.innerHTML;
+    tarefaSel.previousElementSibling.innerHTML = acima;
+    tarefaSel.previousElementSibling.className = 'selected';
+    tarefaSel.innerHTML = abaixo;
+    tarefaSel.classList.remove('selected');
+  };
+
+  function moverBaixo() {
+    const tarefaSel = document.querySelector('.selected');
+    const acima = tarefaSel.nextElementSibling.innerHTML;
+    const abaixo = tarefaSel.innerHTML;
+    tarefaSel.nextElementSibling.innerHTML = abaixo;
+    tarefaSel.nextElementSibling.className = 'selected';
+    tarefaSel.innerHTML = acima;
+    tarefaSel.classList.remove('selected');
+  };
