@@ -11,7 +11,6 @@ const buttonRemoveSelected = document.getElementById('remover-selecionado');
 const orderedListTasks = document.getElementById('lista-tarefas');
 let selectedTask = document.getElementsByClassName('selected');
 let completedTasks = document.querySelectorAll('.completed');
-let localStorageKey = '0';
 
 //  Functions
 function selectOtherLi() {
@@ -51,7 +50,7 @@ function elementCreator() {
 }
 
 function addTaskToList() {
-  let elementLi = elementCreator();
+  const elementLi = elementCreator();
   orderedListTasks.appendChild(elementLi);
 }
 
@@ -61,7 +60,7 @@ function clearTaskList() {
 
 function removeCompletedTasks() {
   completedTasks = document.getElementsByClassName('completed');
-  let numberMax = completedTasks.length;
+  const numberMax = completedTasks.length;
   for (let index = 0; index < numberMax; index += 1) {
     completedTasks[0].parentElement.removeChild(completedTasks[0]);
   }
