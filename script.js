@@ -7,7 +7,7 @@ function insertItem(textItem) {
   const newItem = document.createElement('li');
   textItem = textInput.value;
   newItem.innerHTML = textItem;
-  list.prepend(newItem);
+  list.appendChild(newItem);
   textInput.value = '';
 }
 
