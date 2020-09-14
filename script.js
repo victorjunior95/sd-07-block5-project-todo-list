@@ -37,13 +37,13 @@ function save() {
   localStorage.setItem('task_list', taskList.innerHTML);
 }
 
-function removeSelection() {
+function clearSelection() {
   const item = document.querySelector('.selected');
   if (item !== null) item.classList.remove('selected');
 }
 
 function selectItem(event) {
-  removeSelection();
+  clearSelection();
   event.target.classList.add('selected');
 }
 
@@ -84,6 +84,6 @@ buttonSave.addEventListener('click', save);
 buttonMoveUp.addEventListener('click', moveUp);
 buttonMoveDown.addEventListener('click', moveDown);
 buttonRemoveSelected.addEventListener('click', removeSelected);
-buttonClearSelection.addEventListener('click', removeSelection);
+buttonClearSelection.addEventListener('click', clearSelection);
 
 getList();
