@@ -45,6 +45,7 @@ salvar.addEventListener('click', criarTarefa);
 document.getElementById('apaga-tudo').addEventListener('click', () => {
   document.querySelectorAll('li').forEach((item) => {
     item.remove();
+    localStorage.clear();
   });
 });
 
@@ -52,21 +53,34 @@ document.getElementById('remover-finalizados').addEventListener('click', () => {
   document.querySelectorAll('.completed').forEach((item) => {
     item.remove();
   });
+  if (document.querySelector('li') === null) {
+    localStorage.clear();
+  }
+  salvarLista();
 });
 
 document.getElementById('remover-selecionado').addEventListener('click', () => {
   document.querySelectorAll('.selecionado').forEach((item) => {
     item.remove();
   });
+  if (document.querySelector('li') === null) {
+    localStorage.clear();
+  }
+  salvarLista();
 });
 
-document.getElementById('salvar-tarefas').addEventListener('click', () => {
+function salvarLista() {
   const itemArray = [];
   document.querySelectorAll('li').forEach((item) => {
     itemArray.push({ item: item.innerHTML, class: item.className });
     localStorage.setItem('item-list', JSON.stringify(itemArray));
   });
-});
+}
+
+document
+  .getElementById('salvar-tarefas')
+  .addEventListener('click', salvarLista);
+
 // Site usado como referencia
 // https://www.taniarascia.com/how-to-use-local-storage-with-javascript/
 function reconstruir() {
