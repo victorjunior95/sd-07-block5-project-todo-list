@@ -1,9 +1,14 @@
+window.onload = carregarTarefas
+
 let textoTarefa = document.querySelector("#texto-tarefa")
 
 
-let btnSalvarTarefas = document.querySelector("#salvar-tarefas")
+
 let btnMoverCima = document.querySelector("#mover-cima")
 let btnMoverBaixo = document.querySelector("#mover-baixo")
+
+let btnSalvarTarefas = document.querySelector("#salvar-tarefas")
+btnSalvarTarefas.addEventListener("click", salvarTarefas)
 
 let btnRemoverFinalizados = document.querySelector("#remover-finalizados")
 btnRemoverFinalizados.addEventListener("click", apagarCompleto)
@@ -32,6 +37,7 @@ function criarTarefa() {
         listaTarefas.appendChild(tarefa)
     }
 }
+
 function apagarCompleto(){
     let completos = document.querySelectorAll(".completed")
     for (let i = 0; i < completos.length; i += 1) {selecionado.remove()}
@@ -64,3 +70,24 @@ function limpaSelecionados(){
     }
 }
 
+function apagarCompleto(){
+    let tarefas = document.querySelectorAll(".tarefa")
+    for (let i of tarefas) {
+        if (i.classList.contains("completed")){
+            i.remove("selected")}
+    }    
+}
+
+function salvarTarefas(){
+    let tarefas = document.querySelector("#lista-tarefas")
+    localStorage.clear()
+    localStorage.setItem("tarefas",tarefas.innerHTML)
+}
+
+function carregarTarefas(){
+    if (localStorage.length > 0) {
+        let tarefas = localStorage.getItem("tarefas")
+        let listaTarefas = document.querySelector("#lista-tarefas")
+        listaTarefas.innerHTML = tarefas
+    }
+}
