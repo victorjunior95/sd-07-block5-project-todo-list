@@ -1,14 +1,22 @@
-function criarTarefa() {
-  const textoTarefa = document.querySelector('#texto-tarefa');
-  const listaTarefas = document.querySelector('#lista-tarefas');
+function selectTask(event) {
+  const tasks = document.querySelectorAll('#lista-tarefas li');
+  tasks.forEach(task => {
+    task.className = '';
+  });
+  event.target.className = 'selected';
+}
+function createTask() {
+  const textTask = document.querySelector('#texto-tarefa');
+  const listTasks = document.querySelector('#lista-tarefas');
 
-  const novaTarefa = document.createElement('li');
-  novaTarefa.innerText = textoTarefa.value;
-  textoTarefa.value = "";
-  listaTarefas.appendChild(novaTarefa);
+  const newTask = document.createElement('li');
+  newTask.innerText = textTask.value;
+  newTask.addEventListener('click',selectTask);
+  textTask.value = "";
+  listTasks.appendChild(newTask);
 }
 window.onload = function () {
-  const criarTarefaButton = document.querySelector("#criar-tarefa");
+  const createTaskButton = document.querySelector("#criar-tarefa");
 
-  criarTarefaButton.addEventListener('click', criarTarefa);
+  createTaskButton.addEventListener('click', createTask);
 };

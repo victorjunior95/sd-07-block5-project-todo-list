@@ -1,0 +1,11 @@
+header h1 {
+  margin-bottom: 0px;
+}
+
+header p {
+  margin-top: 0px;
+}
+
+li.selected {
+  background-color: rgb(128, 128, 128);
+}
