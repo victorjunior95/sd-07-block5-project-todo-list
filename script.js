@@ -47,7 +47,7 @@ function completedTask(listItem) {
 let newobj = document.querySelectorAll('#newtest')[0]
 console.log(newobj)
 
-newobj.addEventListener('doubleclick', function () {
+newobj.addEventListener('click', function () {
   console.log('teste')
   event.target.className = 'completed'
 })
@@ -59,9 +59,9 @@ deleteButton.addEventListener('click', function () {
   }
 })
 
-deleteButton.addEventListener('click', function () {
+buttonRemoveCompleted.addEventListener('click', function () {
   let allCompletedTasks = document.querySelectorAll('.completed')
-  for (let item = 0; item < allItem.length; item += 1) {
-    orderedList.removeChild(allItem[item])
+  for (let item = 0; item < allCompletedTasks.length; item += 1) {
+    orderedList.removeChild(allCompletedTasks[item])
   }
 })
