@@ -58,14 +58,14 @@ ol li:before {
   content: counter(muffins) ' 📌 ';
 }
 
-li.selected:before {
+.selected:before {
   color: rgb(233 , 69 , 96);
   content: counter(muffins) ' 👉 ';
   font-weight: 900;
   text-shadow: 3px 3px 3px rgb(15 , 52 , 96);
 }
 
-li.completed:before {
+.completed:before {
   content: counter(muffins) ' ✅ ';
 }
 
