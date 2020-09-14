@@ -45,7 +45,16 @@ function colorListSelect (event) {
     tarefaColorirElemento.classList.add("seleted");  
 }
 
+function apagarTudo() {
+    const todasLi = document.querySelector("#lista-tarefas");
+    while (todasLi.firstChild) {
+        todasLi.removeChild(todasLi.firstChild);
+    }
+}
 
+const botaoApagarTudo = document.querySelector("#apaga-tudo");
+botaoApagarTudo.addEventListener("click", apagarTudo);
+/*
 //Adicione um botão com id="remover-selecionado" que, quando clicado, remove o item selecionado
 const removerSelecionado = document.querySelector("#remover-selecionado");
 function removecolorListSelect () {
@@ -53,11 +62,11 @@ function removecolorListSelect () {
         li.remove();
     });
 }
-
+*/
 //id `remover-finalizados` elementos completos
 
 
-//apagar tudo
+/*//apagar tudo
 function func () {
     listaTarefas.innerHTML = "";   
 }
@@ -68,11 +77,8 @@ function apagarTudo () {
         const killLi = func();
     })
 }
-
+*/
 window.onload = () => {
     InputTextField ()
     listTask ()
-    apagarTudo ()
-    removecolorListSelect ()
-    elementoSelecionadoNaLista ()
 }
