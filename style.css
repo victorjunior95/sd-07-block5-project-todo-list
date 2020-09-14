@@ -1,18 +1,11 @@
-//elementos da lista - clique dblclick
-//Crie uma classe CSS com o nome "completed" e defina a propriedade "text-decoration" com o valor "line-through".
 
-body {
-    margin: 0;
-    padding: 0;
-}
-
-.completed { //classes dinâmicas
+.completed { 
     text-decoration: line-through;
     background-color: rgb(0, 0, 0);
     border: solid;
 }
 
-.seleted { //classes dinâmicas
+.seleted { 
     background-color: rgb(128, 128, 128);
 }
 

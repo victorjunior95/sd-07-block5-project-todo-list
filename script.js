@@ -3,7 +3,6 @@ let textoTarefa = document.querySelector("#texto-tarefa");
 let li = document.createElement('li');
 let listaTarefas = document.querySelector("#lista-tarefas");
 let colorselect = document.querySelector('#lista-tarefas').childNodes;
-            
 function InputTextField () {
     textoTarefa.addEventListener('keydown', () => {
         textoTarefa = document.querySelector("#texto-tarefa");
@@ -17,22 +16,37 @@ function listTask () {
         li.innerHTML = textoTarefa.value;
         listaTarefas.appendChild(li);
         textoTarefa.value = '';
+        li.id ='list'
+        li.className = 'selected';
+        li.addEventListener('click', colorListSelect);
+        li.addEventListener('dblclick', elementoSelecionadoNaLista)
     })
 }
 
 //### 9 - Ao clicar duas vezes em um item, ele deverá ser riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item.
 //- Será verificado que a ação pedida é disparada mediante duplo clique no elemento da lista e que os elementos da lista completos tem em si a classe `completed` e a propriedade `text-decoration` com o valor `line-through solid rgb(0, 0, 0)`
+function elementoSelecionadoNaLista () {
+    for (let i = 0; i < colorselect.length; i++) {
+        colorselect[i].ondblclick = function () {
+            colorselect[i].style.textDecoration = 'line-through';
+            colorselect[i].className = "completed";
+            colorselect[i].style.border = 'solid';
+            colorselect[i].style.backgroundColor = 'rgb(0, 0, 0)';
+        }
+    }       
+}
 
 
 //Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo.
 
 //Ao clicar em um item da lista, altere a cor de fundo do item para cinza rgb(128,128,128)
-function colorListSelect () {
-    for (let i = 0; i < colorselect.length; i++) {
-        colorselect[i].addEventListener('click', function () {
-            colorselect[i].style.backgroundColor = 'rgb(128, 128, 128)'
-        })
-    }       
+function colorListSelect (event) {
+    const tarefaColorirElemento = event.target;
+    const removeCorDeOutrosElementos = document.querySelector("li");
+    for (let i = 0; i < removeCorDeOutrosElementos.length; i++) {
+        removeCorDeOutrosElementos[i].classList.remove("seleted");
+    }
+    tarefaColorirElemento.classList.add("seleted");  
 }
 
 
@@ -64,5 +78,5 @@ window.onload = () => {
     listTask ()
     apagarTudo ()
     removecolorListSelect ()
-    colorListSelect ()
+    elementoSelecionadoNaLista ()
 }
