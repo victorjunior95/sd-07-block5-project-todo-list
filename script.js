@@ -118,9 +118,19 @@ function createLi() {
   return document.createElement('li');
 }
 
+function insertPropertyInElement({element = '', text = '', classe = ''}){
+  if (element) {
+    let myElement = element;
+    if (text) myElement.innerText = text;
+    if (classe) myElement.className = classe;
+  }
+}
+
+// armazena o li que foi splitado
 let liCurrentSplited;
 
-function addEventSplitLi(li){
+// adicionando evento de click no li
+function eventLiClick(li){
   li.addEventListener('click', function(event){
     event.target.style.backgroundColor = 'rgb(128, 128, 128)';
 
@@ -130,12 +140,18 @@ function addEventSplitLi(li){
   });
 }
 
-function insertPropertyInElement({element = '', text = '', classe = ''}){
-  if (element) {
-    let myElement = element;
-    if (text) myElement.innerText = text;
-    if (classe) myElement.className = classe;
-  }
+// adicionando evendo de double click no li
+function eventLiDblClick(li){
+  li.addEventListener('dblclick', function(){
+    li.classList.toggle('completed');
+  });
+}
+
+// adicionando eventos no li
+function addEventSplitLi(li){
+  eventLiClick(li);
+
+  eventLiDblClick(li);
 }
 
 function insertLiInOl(text){
