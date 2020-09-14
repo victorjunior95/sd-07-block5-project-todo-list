@@ -49,3 +49,11 @@ body {
   vertical-align: middle;
   z-index: 1;
 }
+
+.arrow-down {
+  text-decoration: none;
+}
+
+.arrow-up {
+  text-decoration: none;
+}

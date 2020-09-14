@@ -21,6 +21,8 @@ function selecionarItem() {
     });
     item.addEventListener('dblclick', () => {
       item.classList.add('completed');
+      item.innerHTML = item.innerHTML.concat(' ✔️');
+      item.style.color = 'green';
       item.addEventListener('dblclick', () => {
         item.classList.remove('completed');
       });
@@ -86,8 +88,8 @@ function reconstruir() {
 reconstruir();
 
 function descerItem() {
-  if(document.querySelector('.selecionado') === null){
-    return
+  if (document.querySelector('.selecionado') === null) {
+    return;
   }
   const posicao = document.querySelector('.selecionado').nextSibling;
   const selecionado = document.querySelector('.selecionado');
@@ -99,7 +101,7 @@ function descerItem() {
 }
 
 function subirItem() {
-  if(document.querySelector('.selecionado') === null){
+  if (document.querySelector('.selecionado') === null) {
     return;
   }
   const posicao = document.querySelector('.selecionado').previousSibling;
