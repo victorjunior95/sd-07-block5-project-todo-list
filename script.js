@@ -6,7 +6,7 @@ function insertItem(textItem) {
   const newItem = document.createElement('li');
   textItem = textInput.value;
   newItem.innerText = textItem;
-  list.appendChild(newItem);
+  list.prepend(newItem);
 }
 
 addNewItem.addEventListener('click', insertItem);
