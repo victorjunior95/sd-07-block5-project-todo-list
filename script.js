@@ -2,6 +2,8 @@ const addButton = document.getElementById('criar-tarefa');
 const orderedList = document.getElementById('lista-tarefas');
 const deleteButton = document.getElementById('apaga-tudo');
 const buttonRemoveCompleted = document.getElementById('remover-finalizados');
+const saveButton = document.getElementById('salvar-tarefas')
+const removeSelectedButton = document.getElementById('remover-selecionado')
 
 addButton.addEventListener('click', function () {
   let inputItem = document.getElementById('texto-tarefa');
@@ -45,14 +47,6 @@ function completedTask(listItem) {
   });
 }
 
-let newobj = document.querySelectorAll('#newtest')[0]
-console.log(newobj)
-
-newobj.addEventListener('dblclick', function () {
-  console.log('teste')
-  event.target.className = 'completed'
-})
-
 deleteButton.addEventListener('click', function () {
   let allItem = document.querySelectorAll('li')
   for (let item = 0; item < allItem.length; item += 1) {
@@ -65,4 +59,18 @@ buttonRemoveCompleted.addEventListener('click', function () {
   for (let item = 0; item < allCompletedTasks.length; item += 1) {
     orderedList.removeChild(allCompletedTasks[item])
   }
+})
+
+saveButton.addEventListener('click', function (){
+  let listItem = document.querySelectorAll('li')
+  for (index = 0; index < listItem.length; index += 1) {
+    let value = listItem[index].innerText
+    localStorage.setItem(`item${index}`, value)
+    console.log('oiiiiii')
+  }
+})
+
+removeSelectedButton.addEventListener('click', function () {
+  let selectedItem = document.querySelector('.selected')
+  orderedList.removeChild(selectedItem)
 })
