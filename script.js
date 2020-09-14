@@ -118,6 +118,12 @@ function createLi() {
   return document.createElement('li');
 }
 
+function addEventSplitLi(li){
+  li.addEventListener('click', function(event){
+    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+  });
+}
+
 function insertPropertyInElement({element = '', text = '', classe = ''}){
   if (element) {
     let myElement = element;
@@ -130,6 +136,7 @@ function insertLiInOl(text){
   let ol = getOl();
   let li = createLi();
   insertPropertyInElement({text: text, element: li});
+  addEventSplitLi(li);
   ol.appendChild(li);
 }
 
@@ -137,4 +144,5 @@ let btnAdd = getBtnAdd();
 btnAdd.addEventListener('click', function(){
   insertLiInOl(getInputValue());
   clearInputValue();
+  
 });
