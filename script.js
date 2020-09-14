@@ -1,23 +1,39 @@
-let textoTarefa = document.getElementById('texto-tarefa');
+const textoTarefa = document.getElementById('texto-tarefa');
 const salvar = document.getElementById('criar-tarefa');
 
-salvar.addEventListener('click', criarTarefa);
+function limparTexto() {
+    textoTarefa.value = '';
+  }
+
+  function selecionarItem() {
+    document.querySelectorAll('li').forEach((item) => {
+      item.addEventListener('click', () => {
+        descelecionarItem();
+        item.classList.add('backgroundItemList');
+        item.classList.add('selecionado');
+      });
+      item.addEventListener('dblclick', () => {
+        item.classList.add('completed');
+        item.addEventListener('dblclick', () => {
+          item.classList.remove('completed');
+        });
+      });
+    });
+  }
 
 function criarTarefa() {
   if (textoTarefa.value === '') {
-    return console.log('Campo vazio');
+    return
   }
-  let lista = document.getElementById('lista-tarefas');
-  let novoItem = document.createElement('li');
+  const lista = document.getElementById('lista-tarefas');
+  const novoItem = document.createElement('li');
   novoItem.innerText = textoTarefa.value;
   lista.appendChild(novoItem);
   limparTexto();
   selecionarItem();
 }
 
-function limparTexto() {
-  textoTarefa.value = '';
-}
+salvar.addEventListener('click', criarTarefa);
 
 function descelecionarItem() {
   document.querySelectorAll('li').forEach((item) => {
@@ -26,23 +42,7 @@ function descelecionarItem() {
   });
 }
 
-function selecionarItem() {
-  document.querySelectorAll('li').forEach((item) => {
-    item.addEventListener('click', () => {
-      descelecionarItem();
-      item.classList.add('backgroundItemList');
-      item.classList.add('selecionado');
-    });
-    item.addEventListener('dblclick', () => {
-      item.classList.add('completed');
-      item.addEventListener('dblclick', () => {
-        item.classList.remove('completed');
-      });
-    });
-  });
-}
-
-let limparLista = document.getElementById('apaga-tudo');
+const limparLista = document.getElementById('apaga-tudo');
 limparLista.addEventListener('click', () => {
   document.querySelectorAll('li').forEach((item) => {
     item.remove();
