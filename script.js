@@ -135,7 +135,7 @@ function moveItemUp() {
 
 function moveItemDown() {
   const itemList = document.querySelector('#selected');
-  
+
   if (itemList !== null && itemList.nextElementSibling !== null) {
     const item1 = itemList;
     const item2 = itemList.nextElementSibling;
