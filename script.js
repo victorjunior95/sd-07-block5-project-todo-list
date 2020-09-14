@@ -46,9 +46,8 @@ function checkLocalStorage() {
   if (localStorage.getItem('completeList') !== null) {
     const arrayList = localStorage.getItem('completeList').split('+,+');
     for (let index = 0; index < arrayList.length; index += 1) {
-/*       const li = document.createElement('li');
-      li.className = 'item-list';
-      list.appendChild(li); */
+      const li = document.createElement('li');
+      list.appendChild(li);
       list.lastElementChild.outerHTML = arrayList[index];
     }
   }
@@ -116,7 +115,6 @@ function removeCompletedItems() {
 
 function removeSelectedItem() {
   const itemList = document.querySelector('#selected');
-  
   list.removeChild(itemList);
 }
 
@@ -125,12 +123,11 @@ function removeSelectedItem() {
 function moveItemUp() {
   const itemList = document.querySelector('#selected');
 
-  if (itemList.previousElementSibling !== null) {
-      const item1 = itemList;
-      const item2 = itemList.previousElementSibling;
-      [item1.outerHTML, item2.outerHTML] = [item2.outerHTML, item1.outerHTML];
+  if (itemList !== null && itemList.previousElementSibling !== null) {
+    const item1 = itemList;
+    const item2 = itemList.previousElementSibling;
+    [item1.outerHTML, item2.outerHTML] = [item2.outerHTML, item1.outerHTML];
   }
-
   eventList();
 }
 
@@ -139,12 +136,11 @@ function moveItemUp() {
 function moveItemDown() {
   const itemList = document.querySelector('#selected');
   
-  if (itemList.nextElementSibling !== null) {
+  if (itemList !== null && itemList.nextElementSibling !== null) {
     const item1 = itemList;
     const item2 = itemList.nextElementSibling;
     [item1.outerHTML, item2.outerHTML] = [item2.outerHTML, item1.outerHTML];
   }
-
   eventList();
 }
 
