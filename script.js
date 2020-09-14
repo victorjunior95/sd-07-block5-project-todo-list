@@ -34,13 +34,11 @@ function addTask() {
 
 function clearAll() {
   const listItems = document.querySelectorAll('li');
-
   listItems.forEach((element) => taskList.removeChild(element));
 }
 
 function clearDone() {
   const listItems = document.querySelectorAll('.completed');
-
   listItems.forEach((element) => taskList.removeChild(element));
 }
 
@@ -49,23 +47,13 @@ function save() {
 }
 
 function moveUp() {
-  const listItems = document.querySelectorAll('li');
-
-  listItems.forEach((element) => {
-    if (element.classList[0] === 'selected' || element.classList[1] === 'selected') {
-      if (element.previousSibling !== null) element.after(element.previousSibling);
-    }
-  });
+  const item = document.querySelector('.selected');
+  if (item.previousSibling !== null) item.after(item.previousSibling);
 }
 
 function moveDown() {
-  const listItems = document.querySelectorAll('li');
-
-  listItems.forEach((element) => {
-    if (element.classList[0] === 'selected' || element.classList[1] === 'selected') {
-      if (element.nextSibling !== null) element.before(element.nextSibling);
-    }
-  });
+  const item = document.querySelector('.selected');
+  if (item.nextSibling !== null) item.before(item.nextSibling);
 }
 
 function removeSelected() {
