@@ -110,8 +110,9 @@ function moverCima() {
 } */
 
 function moverBaixo() {
+    let tarefas = document.querySelectorAll(".tarefa")
     let selecionado = document.querySelector(".selected")
-    if (selecionado.nextSibling != null) {
+    if (selecionado != tarefas[tarefas.length-1]) {
         let atual = selecionado.innerHTML
         selecionado.innerHTML = selecionado.nextSibling.innerHTML
         selecionado.classList.remove("selected")
@@ -121,8 +122,9 @@ function moverBaixo() {
 }
 
 function moverCima() {
+    let tarefas = document.querySelectorAll(".tarefa")
     let selecionado = document.querySelector(".selected")
-    if (selecionado.previousSibling != null) {
+    if (selecionado != tarefas[0]) {
         let atual = selecionado.innerHTML
         selecionado.innerHTML = selecionado.previousSibling.innerHTML
         selecionado.classList.remove("selected")
