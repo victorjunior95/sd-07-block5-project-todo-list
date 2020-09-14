@@ -1,11 +1,79 @@
+:root {
+  --darker: rgb(26, 26, 46);
+  --dark: rgb(22, 33, 62);
+  --normal: rgb(15, 52, 96);
+  --light: rgb(233, 69, 96);
+}
+
+body {
+  background-color: var(--dark);
+  color: white;
+  font-family: Nunito, sans-serif;
+  font-size: 1.5em;
+}
+
+.center {
+  margin: 30px auto;
+  text-align: center;
+  width: 900px;
+}
+
+header {
+  text-align: center;
+}
+
+input {
+  border-color: var(--normal);
+  border-radius: 4px;
+  border-width: 3px;
+  font-family: Nunito, sans-serif;
+  font-size: large;
+  height: 25px;
+  padding: 2px 8px;
+  width: 700px;
+}
+
+button {
+  border-color: var(--light);
+  border-radius: 5px;
+  border-width: 3px;
+  font-family: Nunito, sans-serif;
+  font-size: medium;
+  font-weight: 600;
+  height: 30px;
+  outline-color: var(--darker);
+  padding: 0 10px;
+  vertical-align: middle;
+}
+
+.list {
+  font-family: 'Roboto Mono', monospace;
+  margin: auto;
+  text-align: start;
+  width: 750px;
+}
+
 .selected {
   background-color: gray;
+  border-radius: 5px;
+  padding-left: 10px;
+  transition: padding 0.3s;
 }
 
 .completed {
   text-decoration: line-through solid black;
 }
 
+.options {
+  background-color: var(--darker);
+  bottom: 0;
+  left: 0;
+  padding: 20px 30px;
+  position: fixed;
+  right: 0;
+}
+
 .options button {
+  margin: 10px 30px;
   margin-right: 10px;
 }
