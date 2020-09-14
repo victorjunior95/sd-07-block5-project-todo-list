@@ -44,13 +44,25 @@ buttonAdd.addEventListener('click', addElement);
 let itensList = document.querySelectorAll('.item-list');
 
 function apagarLista(){
- let itens = document.getElementsByTagName('li'); 
+ let itens = document.getElementsByTagName('li');
  let lista = document.getElementsByTagName('ol')[0];
  for (let index = itens.length - 1; index >= 0 ; index -= 1){
     lista.removeChild(itens[index]);
  }
+}
 
+function apagarFinalizados() {
+  let lista = document.getElementsByTagName('ol')[0];
+  let itens = document.getElementsByTagName('li');
+   for (let index = itens.length - 1; index >= 0; index -= 1){
+       if (itens[index].classList.contains('completed')) {
+            lista.removeChild(itens[index]);
+       }
+   }
 }
 
 let buttonApaga = document.getElementById('apaga-tudo');
 buttonApaga.addEventListener('click', apagarLista);
+
+let buttonRemoveFinalizados = document.getElementById('remover-finalizados');
+buttonRemoveFinalizados.addEventListener('click', apagarFinalizados);
