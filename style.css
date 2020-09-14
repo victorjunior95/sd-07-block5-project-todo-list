@@ -1,0 +1,16 @@
+#funcionamento{
+    display: block;
+    margin: 20px;
+}
+
+#texto-tarefa{
+    margin: 20px;
+}
+
+#botoes{
+    margin: 20px;
+}
+
+.itens{
+   background-color: rgb(128, 128, 128);
+}
