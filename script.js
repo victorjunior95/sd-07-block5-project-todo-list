@@ -1,11 +1,8 @@
 window.onload = function() {
     carregarTarefas()
-    gambiarra()
 }
 
 let textoTarefa = document.querySelector("#texto-tarefa")
-
-
 
 let btnMoverCima = document.querySelector("#mover-cima")
 btnMoverCima.addEventListener("click", moverCima)
@@ -91,6 +88,8 @@ function salvarTarefas(){
 }
 
 function carregarTarefas(){
+    let listaTarefas = document.querySelector("#lista-tarefas")
+    listaTarefas.innerHTML = ""
     if (localStorage.length > 0) {
         let tarefas = localStorage.getItem("tarefas")
         let listaTarefas = document.querySelector("#lista-tarefas")
@@ -145,10 +144,3 @@ function moverCima() {
         }
     }
 } */
-    
-function gambiarra(){
-    let gambiarra = document.querySelector("#gambiarra")
-    console.log(gambiarra)
-    gambiarra.remove()
-
-}
