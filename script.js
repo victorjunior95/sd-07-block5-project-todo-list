@@ -5,5 +5,21 @@ button.addEventListener('click', function(){
     let item = document.createElement('li');
     item.innerText = entryText.value;
     entryText.value = '';
+    item.className = 'item-lista';
     list.appendChild(item);
+    selection();
 })
+
+function selection() {
+    const components = document.querySelectorAll('.item-lista');
+    for (let index = 0; index < components.length; index += 1) {
+        components[index].addEventListener('click', changeBG)
+}}
+
+function changeBG(event) {
+    const components = document.querySelectorAll('.item-lista');
+    for (let index = 0; index < components.length; index += 1) {
+        components[index].style.backgroundColor = 'white';
+        event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+    }
+}
