@@ -15,8 +15,14 @@ for ( let index = 0; index < listItens.length; index += 1){
     itenSelected.addEventListener('click' ,function(){
         
         itenSelected.className='itens itensSelected'
+        i
         
+    
+       
 })
 }
 })
 )
+    
+       
+
