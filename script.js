@@ -8,6 +8,8 @@ const buttonRemoveCompletedTasks = document.getElementById('remover-finalizados'
 const buttonRemoveSelected = document.getElementById('remover-selecionado');
 const buttonSaveTasks = document.getElementById('salvar-tarefas');
 const buttonLoadTasks = document.getElementById('carregar-tarefas');
+const buttonMoveUp = document.getElementById('mover-acima');
+const buttonMoveDown = document.getElementById('mover-abaixo');
 
 //  Ordered List Outputs
 const orderedListTasks = document.getElementById('lista-tarefas');
@@ -53,7 +55,7 @@ function elementCreator() {
 
 function addTaskToList(textLoad) {
   const elementLi = elementCreator();
-  if (textLoad != event) {
+  if (textLoad !== event) {
     elementLi.innerText = textLoad;
   }
   orderedListTasks.appendChild(elementLi);
@@ -86,14 +88,22 @@ function saveOrderedList() {
 function loadOrderedList() {
   const stringOfTasks = localStorage.getItem('taskList');
   let taskPhrase = '';
-  for (let index = 0; index < stringOfTasks.length; index += 1){
-    if (stringOfTasks[index] != '\n') {
+  for (let index = 0; index < stringOfTasks.length; index += 1) {
+    if (stringOfTasks[index] !== '\n') {
       taskPhrase += stringOfTasks[index];
     } else {
       addTaskToList(taskPhrase);
       taskPhrase = '';
     }
   }
+}
+
+function moveTaskUp() {
+
+}
+
+function moveTaskDown() {
+
 }
 
 // Event Listeners
@@ -103,6 +113,8 @@ buttonRemoveCompletedTasks.addEventListener('click', removeCompletedTasks);
 buttonRemoveSelected.addEventListener('click', removeSelectedTask);
 buttonSaveTasks.addEventListener('click', saveOrderedList);
 buttonLoadTasks.addEventListener('click', loadOrderedList);
+buttonMoveUp.addEventListener('click', moveTaskUp);
+buttonMoveDown.addEventListener('click', moveTaskDown);
 
 //  Initializing Scripts
 
