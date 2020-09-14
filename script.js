@@ -40,18 +40,24 @@ for (let i = 0; i < lista.length; i++) {
  }
 }
 
+// MARCAR TAREFAS COMPLETAS
 
 function tarefasCompletas(){
 let completos = document.querySelectorAll(".item")
-
+let listaCompletos =[];
 for (let i = 0; i < completos.length; i++) {
     (function(i) {
          completos[i].addEventListener("dblclick", function() {
-           console.log("veio")
+           if(listaCompletos[i]==1){
+               completos[i].classList.remove("completed")
+               console.log("tira taxado")
+               listaCompletos[i]=0;
+           }else{
+            console.log("coloca taxado")
             completos[i].classList.add("completed");
+            listaCompletos[i] =1;
+        }
         })
     })(i);
  }
 }
-
-tarefasCompletas()
