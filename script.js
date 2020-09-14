@@ -68,13 +68,6 @@ function removeSelected() {
   taskList.removeChild(item);
 }
 
-function removeDone() {
-  for (const element of document.querySelectorAll('li')) {
-    if (element.classList[0] === 'completed' || element.classList[1] === 'completed')
-      taskList.removeChild(element);
-  }
-}
-
 function getList() {
   taskList.innerHTML = localStorage.getItem('task_list');
 
