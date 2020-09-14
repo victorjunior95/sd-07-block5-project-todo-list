@@ -44,7 +44,7 @@ document
   });
 
 document.querySelector('#mover-cima').addEventListener('click', function () {
-  if(selected!=undefined){
+  if (selected !== undefined){
     if (selected.previousSibling != null) {
       selected.parentNode.insertBefore(selected, selected.previousSibling);
     }
@@ -52,7 +52,7 @@ document.querySelector('#mover-cima').addEventListener('click', function () {
 });
 
 document.querySelector('#mover-baixo').addEventListener('click', function () {
-  if(selected!=undefined){
+  if (selected !== undefined){
     if (selected.nextSibling != null) {
       selected.parentNode.insertBefore(selected.nextSibling, selected);
     }
@@ -62,5 +62,5 @@ document.querySelector('#mover-baixo').addEventListener('click', function () {
 document
   .querySelector('#salvar-tarefas')
   .addEventListener('click', function () {
-    localStorage.setItem('saved',document.querySelector('#lista-tarefas').innerHTML);
+    localStorage.setItem('saved', document.querySelector('#lista-tarefas').innerHTML);
   });
