@@ -120,4 +120,3 @@ buttonMoveDown.addEventListener('click', moveTaskDown);
 if (localStorage.length !== 0) {
   window.onload = loadOrderedList;
 }
-
