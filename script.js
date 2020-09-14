@@ -1,5 +1,6 @@
 const button = document.getElementById('criar-tarefa');
 let entryText = document.getElementById('texto-tarefa');
+const eraser = document.getElementById('apaga-tudo');
 button.addEventListener('click', function(){
     let list = document.getElementById('lista-tarefas');
     let item = document.createElement('li');
@@ -32,3 +33,10 @@ function mark(event) {
     event.target.classList.remove('completed');
   }
 }
+
+eraser.addEventListener('click', function() {
+  let blank = document.getElementsByTagName('li'), index;
+  for (index = blank.length - 1; index >= 0; index -= 1) {
+    blank[index].parentNode.removeChild(blank[index]);
+  }
+})
