@@ -86,6 +86,10 @@ function getList() {
   });
 }
 
+inputText.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') buttonAddTask.click();
+});
+
 buttonAddTask.addEventListener('click', addTask);
 buttonClearAll.addEventListener('click', clearAll);
 buttonClearDone.addEventListener('click', clearDone);
