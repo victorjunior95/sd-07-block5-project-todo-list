@@ -1,6 +1,7 @@
 const list = document.getElementById('lista-tarefas');
 const addNewItem = document.getElementById('criar-tarefa');
 const textInput = document.getElementById('texto-tarefa');
+const deleteAll = document.getElementById('apaga-tudo');
 const elements = [];
 
 function changeBackgroundColor(element) {
@@ -36,3 +37,8 @@ function insertItem(textItem) {
 }
 
 addNewItem.addEventListener('click', insertItem);
+deleteAll.addEventListener('click', () => {
+  for (let i = 0; i < elements.length; i += 1) {
+    elements[i].remove();
+  }
+} )
