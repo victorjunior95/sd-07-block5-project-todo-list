@@ -5,8 +5,9 @@ const textInput = document.getElementById('texto-tarefa');
 function insertItem(textItem) {
   const newItem = document.createElement('li');
   textItem = textInput.value;
-  newItem.innerText = textItem;
+  newItem.innerHTML = textItem;
   list.prepend(newItem);
+  textInput.value = '';
 }
 
 addNewItem.addEventListener('click', insertItem);
