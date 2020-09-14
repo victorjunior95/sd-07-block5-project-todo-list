@@ -97,3 +97,44 @@ window.onload = function () {
   automaticSplitTodoList();
 }
 */
+
+function clearInputValue() {
+  document.getElementById('texto-tarefa').value = '';
+}
+
+function getOl(){
+  return document.getElementById('lista-tarefas');
+}
+
+function getInputValue(){
+  return document.getElementById('texto-tarefa').value;
+}
+
+function getBtnAdd() {
+  return document.getElementById('criar-tarefa');
+}
+
+function createLi() {
+  return document.createElement('li');
+}
+
+function insertPropertyInElement({element = '', text = '', classe = ''}){
+  if (element) {
+    let myElement = element;
+    if (text) myElement.innerText = text;
+    if (classe) myElement.className = classe;
+  }
+}
+
+function insertLiInOl(text){
+  let ol = getOl();
+  let li = createLi();
+  insertPropertyInElement({text: text, element: li});
+  ol.appendChild(li);
+}
+
+let btnAdd = getBtnAdd();
+btnAdd.addEventListener('click', function(){
+  insertLiInOl(getInputValue());
+  clearInputValue();
+});
