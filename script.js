@@ -74,7 +74,7 @@ function moveDown() {
 
 function removeSelected() {
   const item = document.querySelector('.selected');
-  taskList.removeChild(item);
+  if (item !== null) taskList.removeChild(item);
 }
 
 function getList() {
