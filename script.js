@@ -8,7 +8,6 @@ function focusedItem(event) {
 }
 
 function markItem(event) {
-  console.log(event.target.classList);
   const eventList = event.target.classList;
   for (let i = 0; i < eventList.length; i += 1) {
     if (eventList[i] === 'completed') {
@@ -61,7 +60,7 @@ function saveItems() {
     return;
   }
   for (let i = 0; i < liItems.length; i += 1) {
-    localStorage.setItem(i, [liItems[i].innerText , liItems[i].classList]);
+    localStorage.setItem(i, [liItems[i].innerText, liItems[i].classList]);
   }
 }
 
@@ -70,7 +69,7 @@ function changeupClassList(list, i) {
     list[i].classList = 'completed';
     list[i - 1].className = 'clicked';
   } else {
-    list[i - 1].classList = 'clicked'
+    list[i - 1].classList = 'clicked';
     list[i].classList = '';
   }
 }
@@ -80,7 +79,7 @@ function changeDownClassList(list, i) {
     list[i].classList = 'completed';
     list[i + 1].className = 'clicked';
   } else {
-    list[i + 1].classList = 'clicked'
+    list[i + 1].classList = 'clicked';
     list[i].classList = '';
   }
 }
@@ -90,7 +89,7 @@ function moveUp() {
   const itemsList = document.getElementsByTagName('li');
   for (let i = 0; i < itemsList.length; i += 1) {
     if (itemsList[i].classList.value === 'clicked' && i !== 0) {
-      let temp = itemsList[i].innerText;
+      const temp = itemsList[i].innerText;
       itemsList[i].innerText = itemsList[i - 1].innerText;
       itemsList[i - 1].innerText = temp;
       changeupClassList(itemsList, i);
@@ -102,7 +101,7 @@ function moveDown() {
   const itemsList = document.getElementsByTagName('li');
   for (let i = itemsList.length - 1; i >= 0; i -= 1) {
     if (itemsList[i].classList.value === 'clicked' && i !== itemsList.length - 1) {
-      let temp = itemsList[i].innerText;
+      const temp = itemsList[i].innerText;
       itemsList[i].innerText = itemsList[i + 1].innerText;
       itemsList[i + 1].innerText = temp;
       changeDownClassList(itemsList, i);
