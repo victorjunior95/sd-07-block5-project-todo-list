@@ -118,9 +118,15 @@ function createLi() {
   return document.createElement('li');
 }
 
+let liCurrentSplited;
+
 function addEventSplitLi(li){
   li.addEventListener('click', function(event){
     event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+
+    if(liCurrentSplited) liCurrentSplited.style.backgroundColor = '';
+
+    liCurrentSplited = li;
   });
 }
 
