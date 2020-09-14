@@ -2,28 +2,35 @@ const textoTarefa = document.getElementById('texto-tarefa');
 const salvar = document.getElementById('criar-tarefa');
 
 function limparTexto() {
-    textoTarefa.value = '';
-  }
+  textoTarefa.value = '';
+}
 
-  function selecionarItem() {
-    document.querySelectorAll('li').forEach((item) => {
-      item.addEventListener('click', () => {
-        descelecionarItem();
-        item.classList.add('backgroundItemList');
-        item.classList.add('selecionado');
-      });
+function descelecionarItem() {
+  document.querySelectorAll('li').forEach((item) => {
+    item.classList.remove('backgroundItemList');
+    item.classList.remove('selecionado');
+  });
+}
+
+function selecionarItem() {
+  document.querySelectorAll('li').forEach((item) => {
+    item.addEventListener('click', () => {
+      descelecionarItem();
+      item.classList.add('backgroundItemList');
+      item.classList.add('selecionado');
+    });
+    item.addEventListener('dblclick', () => {
+      item.classList.add('completed');
       item.addEventListener('dblclick', () => {
-        item.classList.add('completed');
-        item.addEventListener('dblclick', () => {
-          item.classList.remove('completed');
-        });
+        item.classList.remove('completed');
       });
     });
-  }
+  });
+}
 
 function criarTarefa() {
   if (textoTarefa.value === '') {
-    return
+    return;
   }
   const lista = document.getElementById('lista-tarefas');
   const novoItem = document.createElement('li');
@@ -34,13 +41,6 @@ function criarTarefa() {
 }
 
 salvar.addEventListener('click', criarTarefa);
-
-function descelecionarItem() {
-  document.querySelectorAll('li').forEach((item) => {
-    item.classList.remove('backgroundItemList');
-    item.classList.remove('selecionado');
-  });
-}
 
 const limparLista = document.getElementById('apaga-tudo');
 limparLista.addEventListener('click', () => {
