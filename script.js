@@ -16,7 +16,7 @@ function jaSelecionado() {
 function selecionado() {
   const itemAtual = jaSelecionado();
   const removerSelecao = document.querySelectorAll('li');
-  for (let i = 0; i < removerSelecao.length; i += 1) {    
+  for (let i = 0; i < removerSelecao.length; i += 1) {
     removerSelecao[i].classList.remove('selected');
   }
   if (!itemAtual) {
@@ -36,14 +36,13 @@ function jaCompletado() {
 }
 
 function concluido() {
-  let itemConcluido = jaCompletado();
+  const itemConcluido = jaCompletado();
   this.classList.remove('selected');
   if (!itemConcluido) {
     this.classList.add('completed');
   } else {
     this.classList.remove('completed');
-  }
- 
+  } 
 }
 
 criaItem.addEventListener('click', function criaTarefa() {
