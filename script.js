@@ -7,14 +7,15 @@ let itens = '';
 
 botaoTexto.addEventListener('click', () => {
   const novoItem = document.createElement('li');
+  const textoParaLista = document.createTextNode(caixaTexto.value);
 
-  novoItem.appendChild(document.createTextNode(caixaTexto.value));
+  novoItem.appendChild(textoParaLista);
   lista.appendChild(novoItem);
+  itens = document.querySelectorAll('li');
   caixaTexto.value = '';
 
   novoItem.addEventListener('click', () => {
     if (!novoItem.classList.contains('selected')) {
-      itens = document.querySelectorAll('li');
       itens.forEach((item) => {
         item.classList.remove('selected');
       });
