@@ -42,7 +42,7 @@ function concluido() {
     this.classList.add('completed');
   } else {
     this.classList.remove('completed');
-  } 
+  }
 }
 
 criaItem.addEventListener('click', function criaTarefa() {
