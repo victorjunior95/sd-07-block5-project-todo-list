@@ -10,17 +10,21 @@ const buttonClearAll = document.getElementById('apaga-tudo');
 const buttonClearDone = document.getElementById('remover-finalizados');
 
 function addTask() {
-  if (inputText.value === '') {
-    alert('Digite o texto antes de adicionar à lista!');
-  } else {
-    const li = document.createElement('li');
-    li.textContent = inputText.value;
-    li.addEventListener('click', selectItem);
-    li.addEventListener('dblclick', markItem);
-    taskList.appendChild(li);
-    inputText.value = '';
-    inputText.focus();
-  }
+  (isEmpty()) ? alert('Digite o texto antes de adicionar à lista!') : createItem();
+}
+
+function isEmpty() {
+  return inputText.value === '';
+}
+
+function createItem() {
+  const li = document.createElement('li');
+  li.textContent = inputText.value;
+  li.addEventListener('click', selectItem);
+  li.addEventListener('dblclick', markItem);
+  taskList.appendChild(li);
+  inputText.value = '';
+  inputText.focus();
 }
 
 function clearAll() {
@@ -30,16 +34,16 @@ function clearAll() {
 
 function clearDone() {
   const listItems = document.querySelectorAll('.completed');
-  listItems.forEach((element) => taskList.removeChild(element));
-}
-
-function save() {
-  localStorage.setItem('task_list', taskList.innerHTML);
+  if (listItems.length !== 0) listItems.forEach((element) => taskList.removeChild(element));
 }
 
 function clearSelection() {
   const item = document.querySelector('.selected');
   if (item !== null) item.classList.remove('selected');
+}
+
+function save() {
+  localStorage.setItem('task_list', taskList.innerHTML);
 }
 
 function selectItem(event) {
