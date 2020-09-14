@@ -3,14 +3,21 @@
 let header = document.getElementsByTagName('header')[0];
 let explanation = document.getElementById('funcionamento');
 let textBox = document.getElementById('texto-tarefa');
-let list = document.getElementsByClassName('list')[0];
-let item = document.getElementsByClassName('item')[0];
+let list = document.getElementById('lista-tarefas');
+let button = document.getElementById('criar-tarefa');
 
 // 2) Define the functions:
 
-// To show the text of the box in the list:
-
-function writeList () {
-  item.innerHTML = textBox.value;
-  list.appendChild(item);
-}
+// To write the text in the list:
+button.addEventListener('click', function (event) {
+  event.preventDefault(); // To prevent the form's request
+  if (textBox.value !== "") {
+    let newTask = document.createElement('li');
+    newTask.innerText = textBox.value;
+    list.appendChild(newTask);
+    textBox.value = '';
+  }
+  else {
+    alert("Error! Please, enter a valid text")
+  }
+});

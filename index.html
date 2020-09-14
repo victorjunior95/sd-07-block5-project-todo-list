@@ -9,17 +9,12 @@
 <body>
   <header>Minha Lista de Tarefas</header>
   <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
-  <div>
-    <form>
-      <label for="texto-tarefa">Insert your text:</label>
-      <input type="text" id="texto-tarefa" name="texto-tarefa" oninput="writeList()">
-    </form>
-  </div>
-  <div>
-      <ol id="lista-tarefas" class="list">
-        <li class="item"></li>
-      </ol>
-  </div>
+  <form>
+    <label>Insert your text:</label>
+    <input type="text" id="texto-tarefa" autocomplete="off" name="texto-tarefa" placeholder="here">
+    <button id="criar-tarefa">Create Task</button>
+  </form>
+  <ol id="lista-tarefas"></ol>
 </body>
 <script src="script.js"></script>
 </html>
