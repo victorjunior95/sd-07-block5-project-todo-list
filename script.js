@@ -71,7 +71,7 @@ function limpaSelecionados(){
         if (i.classList.contains("selected")){
             i.classList.remove("selected")}
     }
-}gambiarra()
+}
 
 function apagarCompleto(){
     let tarefas = document.querySelectorAll(".tarefa")
