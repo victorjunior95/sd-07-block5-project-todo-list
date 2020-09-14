@@ -14,6 +14,7 @@ function selection() {
     const components = document.querySelectorAll('.item-lista');
     for (let index = 0; index < components.length; index += 1) {
         components[index].addEventListener('click', changeBG)
+        components[index].addEventListener('dblclick', mark);
 }}
 
 function changeBG(event) {
@@ -22,4 +23,12 @@ function changeBG(event) {
         components[index].style.backgroundColor = 'white';
         event.target.style.backgroundColor = 'rgb(128, 128, 128)';
     }
+}
+
+function mark(event) {
+  if (event.target.className !== 'item-lista completed') {
+  event.target.classList.add('completed');
+  } else {
+    event.target.classList.remove('completed');
+  }
 }
