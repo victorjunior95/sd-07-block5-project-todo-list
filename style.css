@@ -38,14 +38,12 @@ body {
 }
 
 .button {
-  -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
   background: none;
   border: none;
   color: inherit;
   font-family: Open Sans, sans-serif;
   font-size: large;
-  outline: none;
   position: relative;
   text-decoration: underline black;
   vertical-align: middle;
