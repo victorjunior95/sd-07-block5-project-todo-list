@@ -32,12 +32,12 @@ function criarTarefa() {
     let textoTarefa = document.querySelector("#texto-tarefa")
     if (textoTarefa.value != "") {
         let tarefa = document.createElement("li")
+        listaTarefas.appendChild(tarefa)
         tarefa.addEventListener("click", clicarTarefa)
         tarefa.addEventListener("dblclick", completaTarefa)
         tarefa.className = "tarefa"
         tarefa.innerText = textoTarefa.value
         textoTarefa.value = ""
-        listaTarefas.appendChild(tarefa)
     }
 }
 
@@ -97,7 +97,7 @@ function carregarTarefas(){
     }
 }
 
-function moverBaixo() {
+/* function moverBaixo() {
     let tarefas = document.querySelectorAll(".tarefa")
     let selecionado = document.querySelector(".selected")
     if (selecionado != tarefas[tarefas.length-1]) {
@@ -115,7 +115,7 @@ function moverCima() {
             selecionado.after(selecionado.previousSibling)
         }
     }
-}
+} */
 
 /* function moverBaixo() {
     let tarefas = document.querySelectorAll(".tarefa")
@@ -144,3 +144,50 @@ function moverCima() {
         }
     }
 } */
+
+function moverCima() {
+    let move = verifyMovement()
+    let elementToMove = document.querySelector('.selected')
+  
+  
+    if (move.up) {
+      let previousElement = elementToMove.previousElementSibling
+      elementToMove.parentNode.insertBefore(elementToMove, previousElement)
+    }
+  
+  }
+  
+  function moverBaixo() {
+    let move = verifyMovement()
+    let elementToMove = document.querySelector('.selected')
+  
+  
+    if (move.down) {
+      let nextElement = elementToMove.nextElementSibling
+      elementToMove.parentNode.insertBefore(nextElement, elementToMove)
+    }
+  }
+
+  function verifyMovement() {
+    let freeMove = {
+      'up': true,
+      'down': true,
+    }
+  
+    let elementList = document.querySelectorAll('li');
+    let elementToMove = document.querySelector('.selected');
+  
+    let headItem = elementList[0];
+    let tailItem = elementList [elementList.length - 1]
+  
+  
+    if (elementToMove === headItem || elementToMove === null) {
+      freeMove.up = false
+    }
+  
+    if (elementToMove === tailItem || elementToMove === null) {
+      freeMove.down = false
+    }
+  
+    return freeMove
+  }
