@@ -1,9 +1,12 @@
 let textoTarefa = document.querySelector("#texto-tarefa")
 
-let btnRemoverFinalizados = document.querySelector("#remover-finalizados")
+
 let btnSalvarTarefas = document.querySelector("#salvar-tarefas")
 let btnMoverCima = document.querySelector("#mover-cima")
 let btnMoverBaixo = document.querySelector("#mover-baixo")
+
+let btnRemoverFinalizados = document.querySelector("#remover-finalizados")
+btnRemoverFinalizados.addEventListener("click", apagarCompleto)
 
 let btnRemoverSelecionado = document.querySelector("#remover-selecionado")
 btnRemoverSelecionado.addEventListener("click", apagarSelecionado)
@@ -29,6 +32,10 @@ function criarTarefa() {
         listaTarefas.appendChild(tarefa)
     }
 }
+function apagarCompleto(){
+    let completos = document.querySelectorAll(".completed")
+    for (let i = 0; i < completos.length; i += 1) {selecionado.remove()}
+}
 
 function completaTarefa(){
     event.target.classList.toggle("completed")
@@ -43,11 +50,17 @@ function apagarTudo(){
     let listaTarefas =document.querySelector("#lista-tarefas")
     listaTarefas.innerHTML = ""
 }
+
 function clicarTarefa(){
-    if (event.target.className.includes("selected")) {limparSelecionado()}
-    else {limparSelecionado(); event.target.classList.add("selected")}   
+    if (event.target.classList.contains("selected")){limpaSelecionados()}
+    else {limpaSelecionados(); event.target.classList.add("selected")}   
 }
-function limparSelecionado() {
+   
+function limpaSelecionados(){
     let tarefas = document.querySelectorAll(".tarefa")
-    for (let i in tarefas) {tarefas[i].className = "tarefa"}
+    for (let i of tarefas) {
+        if (i.classList.contains("selected")){
+            i.classList.remove("selected")}
+    }
 }
+
