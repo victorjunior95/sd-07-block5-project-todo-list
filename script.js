@@ -119,7 +119,9 @@ function fillListItem(listItems, allListItem) {
       completed = true;
     }
     // create the item list
-    const itemList = { task: task, completed: completed };
+    const itemList = { task, completed };
+    itemList.task = task;
+    itemList.completed = completed;
     // push item list on list
     listItems.push(itemList);
   }
