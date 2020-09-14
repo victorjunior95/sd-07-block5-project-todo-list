@@ -37,7 +37,7 @@ btnApagaTudo.addEventListener('click', limparLista);
 function SelectComplet(){
  for(let index = 0; index < classeItem.length ; index ++){
         classeItem[index].addEventListener('dblclick',function(){
-            classeItem[index].className = ' ' + 'completed';
+            classeItem[index].classList.add('completed');
         });
     }
 };
