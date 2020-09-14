@@ -42,3 +42,15 @@ const buttonAdd = document.getElementById('criar-tarefa');
 buttonAdd.addEventListener('click', addElement);
 
 let itensList = document.querySelectorAll('.item-list');
+
+function apagarLista(){
+ let itens = document.getElementsByTagName('li'); 
+ let lista = document.getElementsByTagName('ol')[0];
+ for (let index = itens.length - 1; index >= 0 ; index -= 1){
+    lista.removeChild(itens[index]);
+ }
+
+}
+
+let buttonApaga = document.getElementById('apaga-tudo');
+buttonApaga.addEventListener('click', apagarLista);
