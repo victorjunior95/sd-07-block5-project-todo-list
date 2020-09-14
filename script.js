@@ -31,7 +31,8 @@ function criarTarefa() {
 }
 
 function completaTarefa(){
-    event.target.classList.toggle("completed")    
+    event.target.classList.toggle("completed")
+    event.target.classList.add("selected")
 }
 
 function apagarSelecionado(){
