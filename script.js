@@ -12,15 +12,34 @@ let botaoEntrada = document.getElementById("criar-tarefa");
     pai.appendChild(item);
     entrada.value = "";
     let lista = document.querySelectorAll(".item");
-        lista[lista.length-1].addEventListener("click", selecionar(lista.length-1   ))
-    
+    item.id = lista.length
+    criarEventos()   
+       
     }
-})
+})    
 
+function criarEventos(){
+    let lista = document.querySelectorAll(".item");
+for (let i = 0; i < lista.length; i++) {
+    (function(i) {
+         lista[i].addEventListener("click", function() {
+            let apagar = document.getElementsByClassName("selected")
+           if (apagar[0] == null){
+           lista[i].classList.add("selected");
+           } else{
+               document.getElementsByClassName("selected")[0].classList.remove("selected")
+               lista[i].classList.add("selected");
+            }
+
+        })
+    })(i);
+ }
+}
 // // Marcando itens selecionados.  
 function selecionar(index){
     let lista = document.querySelectorAll(".item");
-    lista[index].style.backgroundColor = "rgb(128, 128, 128)"
+    console.log(lista[index])
+    lista[index].classList.add ("selected")
 }
 // botaoEntrada.addEventListener("click", function(){
 //     let lista = document.querySelectorAll(".item");
