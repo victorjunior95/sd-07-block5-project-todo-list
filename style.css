@@ -1,15 +1,15 @@
 .completed {
-  text-decoration: line-through solid rgb( 0 , 0 , 0 );
+  text-decoration: line-through solid black;
 }
 
 .selected {
-  background-color: rgb( 128 , 128 , 128 );
+  background-color: gray;
 }
 
 li {
   background-color: rgb( 240 , 240 , 240 );
   border-radius: 5px;
-  margin: 10px 0px;
+  margin: 10px 0;
   padding: 5px 10px;
   width: 200px;
 }

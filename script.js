@@ -3,12 +3,11 @@ const inputTextTask = document.getElementById('texto-tarefa');
 
 //  Buttons Inputs
 const buttonCreateTask = document.getElementById('criar-tarefa');
+const buttonClearTaskList = document.getElementById('apaga-tudo');
 
 //  Ordered List Outputs
 const orderedListTasks = document.getElementById('lista-tarefas');
-let liTask = document.getElementsByClassName('task');
 let selectedTask = document.getElementsByClassName('selected');
-let completedTasks = document.getElementsByClassName('completed')
 
 //  Functions
 function selectOtherLi() {
@@ -51,5 +50,11 @@ function addTaskToList() {
   orderedListTasks.appendChild(elementCreator());
 }
 
+function clearTaskList() {
+  const taskList = document.getElementById('lista-tarefas');
+  taskList.innerHTML = '';
+}
+
 // Event Listeners
 buttonCreateTask.addEventListener('click', addTaskToList);
+buttonClearTaskList.addEventListener('click', clearTaskList);
