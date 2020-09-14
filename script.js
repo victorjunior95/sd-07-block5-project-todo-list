@@ -1,5 +1,9 @@
 // destaca item da lista selecionado com background rgb(128,128,128)
 function selectedItenList() {
+  const listItens = document.querySelectorAll('li');
+  for (let index = 0 ; index < listItens.length ; index += 1) {
+    listItens[index].removeAttribute('style');
+  }
   this.style.backgroundColor = 'rgb(128 , 128 , 128)';
 }
 
