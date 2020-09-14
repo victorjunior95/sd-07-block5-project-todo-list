@@ -100,9 +100,25 @@ let salvar = document.getElementById("salvar-tarefas")
 salvar.addEventListener("click",function(){
 
     let lista = document.querySelectorAll(".item");
+    localStorage.clear();
+    localStorage.setItem("tamanho",lista.length)
+
     for (let i=0;i<lista.length;i+=1){
-        localStorage.setItem("Tarefa "+ i+1, lista[i]);
+        localStorage.setItem(i, lista[i].outerHTML);
         console.log(lista[i]);
     }
 
 })
+
+//CARREGAR LISTA DE LOCALSTORAGE
+
+    let tamanho = localStorage.getItem("tamanho")
+
+    for(let i=0;i<tamanho;i+=1){
+        let tarefa = localStorage.getItem(i)
+        let novo = document.createElement('li')
+        pai.appendChild(novo);
+        novo.outerHTML = tarefa; 
+        
+    }
+
