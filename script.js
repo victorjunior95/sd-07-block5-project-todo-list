@@ -8,9 +8,11 @@ function selectItem(event) {
 
   for (let index = 0; index < itemList.length; index += 1) {
     itemList[index].style.backgroundColor = '';
+    itemList[index].id = 'nonselected';
   }
 
   event.style.backgroundColor = 'rgb(128, 128, 128)';
+  event.id = 'selected';
 }
 
 // Function to mark item as completed
@@ -44,9 +46,9 @@ function checkLocalStorage() {
   if (localStorage.getItem('completeList') !== null) {
     const arrayList = localStorage.getItem('completeList').split('+,+');
     for (let index = 0; index < arrayList.length; index += 1) {
-      const li = document.createElement('li');
+/*       const li = document.createElement('li');
       li.className = 'item-list';
-      list.appendChild(li);
+      list.appendChild(li); */
       list.lastElementChild.outerHTML = arrayList[index];
     }
   }
@@ -113,56 +115,36 @@ function removeCompletedItems() {
 // Function to remove selected item
 
 function removeSelectedItem() {
-  const itemList = document.querySelectorAll('.item-list');
-
-  for (let index = 0; index < itemList.length; index += 1) {
-    const cssObj = window.getComputedStyle(itemList[index], null);
-
-    if (cssObj.getPropertyValue('background-color') === 'rgb(128, 128, 128)') {
-      list.removeChild(itemList[index]);
-    }
-  }
+  const itemList = document.querySelector('#selected');
+  
+  list.removeChild(itemList);
 }
 
 // Function to swap item list selected with previous item list
 
 function moveItemUp() {
-  const itemList = document.querySelectorAll('.item-list');
-  let change = 0;
+  const itemList = document.querySelector('#selected');
 
-  for (let index = 0; index < itemList.length; index += 1) {
-    const cssObj = window.getComputedStyle(itemList[index], null);
-
-    if (cssObj.getPropertyValue('background-color') === 'rgb(128, 128, 128)') {
-      if (change === 0 && index > 0) {
-        const item1 = itemList[index];
-        const item2 = itemList[index].previousElementSibling;
-        [item1.outerHTML, item2.outerHTML] = [item2.outerHTML, item1.outerHTML];
-        change = 1;
-      }
-    }
+  if (itemList.previousElementSibling !== null) {
+      const item1 = itemList;
+      const item2 = itemList.previousElementSibling;
+      [item1.outerHTML, item2.outerHTML] = [item2.outerHTML, item1.outerHTML];
   }
+
   eventList();
 }
 
 // Function to swap item list selected with next item list
 
 function moveItemDown() {
-  const itemList = document.querySelectorAll('.item-list');
-  let change = 0;
-
-  for (let index = 0; index < itemList.length; index += 1) {
-    const cssObj = window.getComputedStyle(itemList[index], null);
-
-    if (cssObj.getPropertyValue('background-color') === 'rgb(128, 128, 128)') {
-      if (change === 0 && index < itemList.length - 1) {
-        const item1 = itemList[index];
-        const item2 = itemList[index].nextElementSibling;
-        [item1.outerHTML, item2.outerHTML] = [item2.outerHTML, item1.outerHTML];
-        change = 1;
-      }
-    }
+  const itemList = document.querySelector('#selected');
+  
+  if (itemList.nextElementSibling !== null) {
+    const item1 = itemList;
+    const item2 = itemList.nextElementSibling;
+    [item1.outerHTML, item2.outerHTML] = [item2.outerHTML, item1.outerHTML];
   }
+
   eventList();
 }
 
