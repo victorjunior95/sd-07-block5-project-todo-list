@@ -108,32 +108,32 @@ function removeAllDone() {
 }
 
 // function to fill list item
-function fillListItem(listItems) {
-  // get all list items
-  const allListItem = document.querySelectorAll('li');
-  if (allListItem !== null) {
-    // for each item at task list
-    for (let index = 0; index < allListItem.length; index += 1) {
-      // get task text
-      const task = allListItem[index].innerText;
-      // get task completed
-      let completed = false;
-      if (allListItem[index].className.indexOf('completed') >= 0) {
-        completed = true;
-      }
-      // create the item list
-      const itemList = {task: task, completed: completed};
-      // push item list on list
-      listItems.push(itemList);
+function fillListItem(listItems, allListItem) {
+  // for each item at task list
+  for (let index = 0; index < allListItem.length; index += 1) {
+    // get task text
+    const task = allListItem[index].innerText;
+    // get task completed
+    let completed = false;
+    if (allListItem[index].className.indexOf('completed') >= 0) {
+      completed = true;
     }
+    // create the item list
+    const itemList = { task: task, completed: completed };
+    // push item list on list
+    listItems.push(itemList);
   }
 }
 
 // fucntion to save task list
 function saveTaskList() {
   const itemsList = [];
-  // fill itemList
-  fillListItem(itemsList);
+  // get all list items
+  const allListItem = document.querySelectorAll('li');
+  if (allListItem !== null) {
+    // fill itemList
+    fillListItem(itemsList, allListItem);
+  }
   // save item list like tasklist
   localStorage.setItem('taskList', JSON.stringify(itemsList));
 }
@@ -156,34 +156,27 @@ function getSelectedListItem() {
   return document.querySelector('.item-selected');
 }
 
-// function to move list item
-function moveListItem(moveUp) {
+// function to move up list item
+function moveUpListItem() {
   // get selected item
   const listItem = getSelectedListItem();
   // check if exist selected item
-  if (listItem !== null) {
-    let beforeListItem;
-    // if moveUp - move up the list Item
-    if (moveUp && listItem !== taskList.firstChild) {
-      beforeListItem = listItem.previousSibling;
+  if (listItem !== null && listItem !== taskList.firstChild) {
+      let beforeListItem = listItem.previousSibling;
       taskList.removeChild(listItem);
       taskList.insertBefore(listItem, beforeListItem);
-    }
-    // if moveDown - move down the list item
-    if (!moveUp && listItem !== taskList.lastChild) {
-      beforeListItem = listItem.nextSibling.nextSibling;
-      taskList.removeChild(listItem);
-      taskList.insertBefore(listItem, beforeListItem);
-    }
   }
 }
 
-// function to move click
-function clickMove(event) {
-  if (event.target.id === 'mover-cima') {
-    moveListItem(true);
-  } else {
-    moveListItem(false);
+// function to move down list item
+function moveDownListItem() {
+  // get selected item
+  const listItem = getSelectedListItem();
+  // check if exist selected item
+  if (listItem !== null && listItem !== taskList.lastChild) {
+    let beforeListItem = listItem.nextSibling.nextSibling;
+    taskList.removeChild(listItem);
+    taskList.insertBefore(listItem, beforeListItem);
   }
 }
 
@@ -203,8 +196,8 @@ buttonAddTask.addEventListener('click', clickAddTask);
 buttonRemoveAll.addEventListener('click', removeAll);
 buttonRemoveDone.addEventListener('click', removeAllDone);
 buttonSaveTaskList.addEventListener('click', saveTaskList);
-buttonMoveUp.addEventListener('click', clickMove);
-buttonMoveDown.addEventListener('click', clickMove);
+buttonMoveUp.addEventListener('click', moveUpListItem);
+buttonMoveDown.addEventListener('click', moveDownListItem);
 buttonRemoveSelected.addEventListener('click', removeSelected);
 
 // load list from storage
