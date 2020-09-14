@@ -10,3 +10,4 @@ function insertItem(textItem) {
 }
 
 addNewItem.addEventListener('click', insertItem);
+
