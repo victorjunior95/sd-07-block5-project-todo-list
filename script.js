@@ -59,3 +59,29 @@ document.getElementById('remover-selecionado').addEventListener('click', () => {
     item.remove();
   });
 });
+
+document.getElementById('salvar-tarefas').addEventListener('click', () => {
+  let itemArray = [];
+  document.querySelectorAll('li').forEach((item) => {
+    itemArray.push({ item: item.innerHTML, class: item.className });
+    console.log(itemArray);
+    localStorage.setItem('item-list', JSON.stringify(itemArray));
+  });
+});
+
+// https://www.taniarascia.com/how-to-use-local-storage-with-javascript/
+function reconstruir() {
+  if (localStorage.getItem('item-list') !== null) {
+    let itemArray = JSON.parse(localStorage.getItem('item-list'));
+    itemArray.forEach((item) => {
+      const lista = document.getElementById('lista-tarefas');
+      const novoItem = document.createElement('li');
+      novoItem.innerText = item.item;
+      novoItem.className = item.class;
+      lista.appendChild(novoItem);
+    });
+  }
+  selecionarItem();
+}
+// <-------------------------------------------------------------------->
+reconstruir();
