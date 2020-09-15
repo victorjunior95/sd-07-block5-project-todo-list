@@ -42,18 +42,31 @@ addTask.addEventListener('click', function () {
 });
 
 // Clear list
-let clearAll = document.querySelector('#apaga-tudo')
+let clearAll = document.querySelector('#apaga-tudo');
 
 clearAll.addEventListener('click', function () {
-  document.querySelector('#lista-tarefas').innerHTML = ''
+  document.querySelector('#lista-tarefas').innerHTML = '';
 });
 
 // Clear all completed tasks
-let clearAllCompleted = document.querySelector('#remover-finalizados')
+let clearAllCompleted = document.querySelector('#remover-finalizados');
 clearAllCompleted.addEventListener('click', function () {
   let tasksCompleteds = document.querySelectorAll('#lista-tarefas .completed')
   for (let index = 0; index < tasksCompleteds.length; index += 1){
-    tasksCompleteds[index].remove()
+    tasksCompleteds[index].remove();
+  }
+});
+
+// Save tasks
+let saveButton = document.querySelector('#salvar-tarefas');
+saveButton.addEventListener('click', function () {
+  localStorage.clear()
+  let tasksToSave = document.querySelectorAll('#lista-tarefas li')
+  for (let item = 0; item < tasksToSave.length; item += 1) {
+    localStorage.setItem(`Item-${item}`, tasksToSave[item])
   }
 })
 
+window.onload = function () {
+  console.log(localStorage['Item-0'])
+}
