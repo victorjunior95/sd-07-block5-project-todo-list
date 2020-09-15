@@ -1,0 +1,7 @@
+#lista-tarefas{
+    cursor: pointer
+}
+
+.selecionado{
+    background-color: rgb(128,128,128);
+}
