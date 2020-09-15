@@ -5,11 +5,11 @@ document.querySelector('#criar-tarefa').addEventListener('click', function () {
   document.querySelector('input').value = ''; // limpando o input
 // para pintar de cinza o selecionado
   newTask.addEventListener('click', function () {
-    const isGray = document.querySelector('.gray'); // pega o que tiver com o gray
+    const isGray = document.querySelector('.selected'); // pega o que tiver com o gray
     if (isGray) { // saber se existe alguma li com o gray
-      isGray.classList.remove('gray'); // remove se tiver
+      isGray.classList.remove('selected'); // remove se tiver
     }
-    newTask.classList.add('gray'); // se não, adiciona
+      newTask.classList.add('selected'); // se não, adiciona
   });
 // para riscar o completado
   newTask.addEventListener('dblclick', function () {
@@ -24,13 +24,13 @@ document.querySelector('#criar-tarefa').addEventListener('click', function () {
 document.querySelector('#salvar-tarefas').addEventListener('click', function () {
   localStorage.clear(); // limpa o que tiver salvo para receber lista nova
   const allTasks = document.querySelector('ol'); // todas as li novas a partir do pai
-    localStorage.setItem('Task', allTasks.innerHTML);
+  localStorage.setItem('Task', allTasks.innerHTML);
 });
-
-window.onload = refresh;
+// quando a página for atualizada, ele vai trazer a lista que estiver salva no localStorage
 function refresh() {
   document.querySelector('ol').innerHTML = localStorage.getItem('Task');
 }
+window.onload = refresh;
 
 // para remover o completado
 document.querySelector('#remover-finalizados').addEventListener('click', function () {
@@ -50,3 +50,18 @@ document.querySelector('#apaga-tudo').addEventListener('click', function () {
     document.querySelector('ol').removeChild(document.querySelector('ol').firstChild);
   }
 });
+// para mover para cima
+document.querySelector('#mover-cima').addEventListener('click', function () {
+  const arrayLi = document.querySelectorAll('li');
+  if (arrayLi.length === 0 || arrayLi.length === 1) {
+    alert('Por favor, escreve 1 ou 2 tarefas!')
+  }
+  for (let i = 1; i < arrayLi.length; i += 1) {
+      const itemGray = arrayLi[i].innerHTML;
+      const toChange = arrayLi[i-1].innerHTML;
+      if (arrayLi[i].className === 'selected') {
+        arrayLi[i].innerHTML = toChange;
+        arrayLi[i-1].innerHTML = itemGray;
+      }
+  }
+})
