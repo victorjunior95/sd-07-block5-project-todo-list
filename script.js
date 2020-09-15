@@ -106,6 +106,7 @@ function loadOrderedList() {
 //  O segundo if é para filtrar se existe uma tarefa anterior.
 //  Por fim eu insiro a tarefa atual atrás da anterior.
 function moveTaskUp() {
+  selectedTask = document.getElementsByClassName('selected');
   if (selectedTask.length !== 0) {
     if (selectedTask[0].previousElementSibling != null) {
       orderedListTasks.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling);
@@ -121,6 +122,7 @@ function moveTaskUp() {
 //  Se não tem elemento posterior eu simplesmento coloco-o no final com o append.
 //  (Suspeito de bug aqui!)
 function moveTaskDown() {
+  selectedTask = document.getElementsByClassName('selected');
   if (selectedTask.length !== 0) {
     if (selectedTask[0].nextElementSibling != null) {
       const afterElement = selectedTask[0].nextElementSibling.nextElementSibling;
