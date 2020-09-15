@@ -9,9 +9,9 @@ const downButton = document.getElementById('mover-baixo');
 
 // remove selected class from the task
 function removeSelectedClassFromPrevious() {
-  let selectedItem = document.querySelector('.selected');
+  const selectedItem = document.querySelector('.selected');
   if (selectedItem) {
-    selectedItem.classList.remove('selected')
+    selectedItem.classList.remove('selected');
   }
 }
 
@@ -19,7 +19,7 @@ function addNewTaskListener(listItem) {
   listItem.addEventListener('click', function () {
     removeSelectedClassFromPrevious();
     listItem.classList.add('selected');
-  })
+  });
 }
 
 function completedTask(listItem) {
@@ -46,7 +46,7 @@ addButton.addEventListener('click', function () {
   const inputItem = document.getElementById('texto-tarefa');
   createNewTask(inputItem.value);
   inputItem.value = '';
-})
+});
 
 deleteButton.addEventListener('click', function () {
   const allItem = document.querySelectorAll('li');
@@ -64,8 +64,8 @@ buttonRemoveCompleted.addEventListener('click', function () {
 
 saveButton.addEventListener('click', function () {
   localStorage.clear('');
-  const completedTask = document.querySelectorAll('.completed')
-  if( completedTask) {
+  let completedTask = document.querySelectorAll('.completed');
+  if( completedTask ) {
     const listItem = document.querySelectorAll('li');
     for (let index = 0; index < listItem.length; index += 1) {
       const value = listItem[index].innerText;
@@ -85,11 +85,11 @@ removeSelectedButton.addEventListener('click', function () {
 upButton.addEventListener('click', function () {
   const selectedItem = document.querySelector('.selected');
   let previousTask = '';
-  if( selectedItem) {
+  if( selectedItem ) {
     previousTask = selectedItem.previousElementSibling;
   }
 
-  if( previousTask) {
+  if( previousTask ) {
     const txtSelected = selectedItem.innerText;
     const classSelected = selectedItem.className;
     const prevTxt = previousTask.innerText;
@@ -105,10 +105,10 @@ downButton.addEventListener('click', function () {
   const selectedItem = document.querySelector('.selected');
   let nextTask = '';
 
-  if (selectedItem) {
+  if ( selectedItem ) {
     nextTask = selectedItem.nextElementSibling;
   }
-  if( nextTask) {
+  if( nextTask ) {
     const txtSelected = selectedItem.innerText;
     const classSelected = selectedItem.className;
     const nextTxt = nextTask.innerText;
@@ -118,12 +118,12 @@ downButton.addEventListener('click', function () {
     selectedItem.innerText = nextTxt;
     selectedItem.className = nextClass;
   }
-})
+});
 
 function initialize() {
   let getItem = '';
   let getClass = '';
-  for( let storeItem = 0; storeItem < localStorage.length / 2; storeItem += 1) {
+  for(let storeItem = 0; storeItem < localStorage.length / 2; storeItem += 1) {
     getItem = localStorage.getItem(`item${storeItem}`);
     getClass = localStorage.getItem(`class${storeItem}`);
     const listItem = createNewTask(getItem);
