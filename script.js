@@ -31,11 +31,9 @@ function clearList() {
   taskList.innerHTML = '';
 }
 function clearCompleted() {
-  let taskListItems = taskList.children;
-  for (index = 0; index < taskListItems.length; index += 1) {
-    if (taskListItems[index].classList.contains('completed')){
-      taskListItems[index].remove();
-    }
+  let taskListItems = taskList.querySelectorAll('.completed');
+  for (let index = 0; index < taskListItems.length; index += 1) {
+      taskList.removeChild(taskListItems[index]);
   }
 }
 function saveTasks() {
