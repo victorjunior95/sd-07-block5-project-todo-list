@@ -3,10 +3,11 @@ const task = document.querySelector('#texto-tarefa');
 const btnTask = document.querySelector('#criar-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
 const btnClearAll = document.querySelector('#apaga-tudo');
+const btnClearCompleted = document.querySelector('#remover-finalizados');
 
 //  FUNÇÕES
 function addTask() {
-	const li = document.createElement('li');
+  const li = document.createElement('li');
 	li.innerText = task.value;
 	taskList.appendChild(li);
 }
@@ -28,11 +29,19 @@ function toggleCompleted(target) {
 function clearList() {
   taskList.innerHTML = '';
 }
+function clearCompleted() {
+  let taskListItems = taskList.children;
+  for (index = 0; index < taskListItems.length; index += 1) {
+    if (taskListItems[index].classList.contains('completed')){
+      taskListItems[index].remove();
+    }
+  }
+}
 
 //  EVENTOS
 //  Evento do botão criar tarefa
 btnTask.addEventListener('click', function () {
-	addTask();
+  addTask();
 	clearInput();
 });
 taskList.addEventListener('click', function (event) {
@@ -45,3 +54,6 @@ taskList.addEventListener('dblclick', function (event) {
 btnClearAll.addEventListener('click', function () {
   clearList();
 });
+btnClearCompleted.addEventListener('click', function () {
+  clearCompleted();
+})
