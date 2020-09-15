@@ -12,6 +12,7 @@ window.onload = function(){
         listMother.appendChild(listChild).innerText = textInput.value;  //Adicionado a filha/tarefa na lista ordenada
         textInput.value = "";   //Limpando o campo input
         let li = document.querySelectorAll("li");   //Selecionando as li's criadas
+        //Loop para adicionar ou remover class com bc cinza
         for(let listIndex = 0; listIndex < li.length; listIndex += 1){
             li[listIndex].addEventListener("click", function(){
                 li[listIndex].classList.add("selected");    //Adicionando uma class na li selecionada
@@ -20,8 +21,13 @@ window.onload = function(){
                         li[index].classList.remove("selected"); //Remove a class nas demais li's
                     }
                 }
-            })
-        }    
+            });
+        }
+        //Loop para adicionar ou remover class completed
+        listChild.addEventListener("dblclick", function(){
+            listChild.classList.toggle("completed");           
+        });
+        
     });
     
 }
