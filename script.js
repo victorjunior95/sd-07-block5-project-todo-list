@@ -79,16 +79,20 @@ window.onload = function () {
 
 //---------------------------------------------------------------------------//
 
-let buttonMoverCima = querySelector('#mover-cima');
+let buttonMoverCima = document.querySelector('#mover-cima');
 
-// function moveCima(event){
-// let items = listaOrdenada.ChildNodes;
-//   for(let i =0; i<){
-//      if(event.target.style.backgroundColor == 'rgb(128, 128, 128)'){
-//
-//     }
-//   }
-//
-// }
+function moveCima(event) {
+  let items = listaOrdenada.childNodes;
+  for (let i = 0; i < items.length; i += 1) {
+    if (items[i].style.backgroundColor == 'rgb(128, 128, 128)') {
+      let aux = items[i].previousElementSibling.innerHTML;
+      items[i].previousElementSibling.innerHTML = items[i].innerHTML;
+      items[i].innerHTML = aux;
+
+      items[i].style.backgroundColor = 'white';
+      items[i].previousElementSibling.style.backgroundColor = 'rgb(128, 128, 128)';
+    }
+  }
+}
 
 buttonMoverCima.addEventListener('click', moveCima);

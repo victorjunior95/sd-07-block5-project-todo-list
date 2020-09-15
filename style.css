@@ -1,6 +1,8 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 20px;
+  padding-bottom: 40px;
+  border: solid black 5px;
 }
 
 .header h1 {
