@@ -76,8 +76,14 @@ body {
   padding: 10px;
   height: 40px;
   text-transform: lowercase;
-  width: 50px;
+  width: 70px;
 }
 .btn-small:hover{
   background-color:  rgb(61, 90, 128);
+}
+.brackets {
+  color: yellow;
+}
+.selected {
+  background-color: rgb(128, 128, 128)
 }

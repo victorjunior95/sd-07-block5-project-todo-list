@@ -12,10 +12,24 @@ function addTask() {
 function clearInput() {
   task.value = '';
 }
+function clearSelection() {
+  let items = document.querySelectorAll('#lista-tarefas li');
+  for (index = 0; index < items.length; index += 1) {
+    items[index].classList.remove('selected');
+  }
+}
+function addSelection(target) {
+  target.classList.add('selected');
+}
 
 //  EVENTOS
 //  Evento do botão criar tarefa
 btnTask.addEventListener('click', function () {
 	addTask();
 	clearInput();
+});
+taskList.addEventListener('click', function (event) {
+  let target = event.target;
+  clearSelection();
+  addSelection(target);
 });
