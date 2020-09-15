@@ -5,4 +5,5 @@ criarTarefaBtn.addEventListener('click', function () {
     let criarLista = document.createElement('li');
     criarLista.innerText = document.querySelector('#texto-tarefa').value;
     listaTarefas.appendChild(criarLista);
+    document.querySelector('#texto-tarefa').value = '';
 });
