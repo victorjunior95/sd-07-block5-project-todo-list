@@ -8,5 +8,6 @@ function criarItem() {
         novoItem.innerText = inputTexto.value;
         let listaTarefas = document.getElementById("lista-tarefas");
         listaTarefas.appendChild(novoItem);
+        inputTexto.value = "";
     }
 }
