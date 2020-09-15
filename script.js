@@ -84,15 +84,19 @@ buttonSave.addEventListener('click', function () {
 // 13 - Adicione dois botões, um com id="mover-cima" e outro com id="mover-baixo", que permitam mover o item selecionado para cima ou para baixo na lista de tarefas.
 buttonUp.addEventListener('click', function () {
     let selected = document.querySelector('.selected');
-    if (selected.previousSibling !== null) {
-        list.insertBefore(selected, selected.previousSibling);
+    if (selected !== null) {
+        if (selected.previousSibling !== null) {
+            list.insertBefore(selected, selected.previousSibling);
+        }
     }
 });
 
 buttonDown.addEventListener('click', function () {
     let selected = document.querySelector('.selected');
-    if (selected.nextSibling !== null) {
-        list.insertBefore(selected.nextSibling, selected);
+    if (selected !== null) {
+        if (selected.nextSibling !== null && selected !== null) {
+            list.insertBefore(selected.nextSibling, selected);
+        }
     }
 });
 
