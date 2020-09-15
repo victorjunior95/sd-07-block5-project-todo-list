@@ -21,6 +21,13 @@ itenSelected.addEventListener('dblclick' , function (){
         itenSelected.className= 'iten'
     }
 })
+const removed = document.querySelector('#remover-finalizados')
+removed.addEventListener('click' ,function(){
+    let list = document.querySelector('#lista-tarefas')
+    if(itenSelected.className === 'completed'){
+        list.removeChild(itenSelected)
+    }
+})
 }
 
 const clear = document.querySelector('#apaga-tudo')
