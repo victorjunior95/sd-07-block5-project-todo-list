@@ -7,7 +7,7 @@
   cursor: pointer;
   font-family: monospace;
   font-size: 1.3rem;
-  font-weight: 50px;
+  font-weight: bolder;
   height: 50px;
   outline: none;
   width: 100px;
@@ -32,7 +32,7 @@ body {
   cursor: pointer;
   font-family: monospace;
   font-size: 1.3rem;
-  font-weight: 50px;
+  font-weight: bolder;
   height: 50px;
   outline: none;
   width: 100px;
@@ -50,7 +50,7 @@ header {
   color: #fff;
   font-family: 'Hind', sans-serif;
   font-size: 3rem;
-  font-weight: 50px;
+  font-weight: bolder;
   margin: 2rem 1rem;
   text-align: center;
 }

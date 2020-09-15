@@ -1,16 +1,6 @@
 const botaoAdd = document.getElementById('criar-tarefa');
 const enter = document.getElementById('texto-tarefa');
-
-// Function to add products with key Enter.
-enter.addEventListener('keyup', function (enterAdd) {
-  if (enterAdd.keyCode === 13) {
-    addProduct();
-  }
-});
-
 // Function to add products with click.
-botaoAdd.addEventListener('click', addProduct);
-
 function addProduct() {
   const lista = document.getElementById('lista-tarefas');
   const itensDigitados = document.getElementById('texto-tarefa');
@@ -20,6 +10,14 @@ function addProduct() {
     itensDigitados.value = '';
     itensDigitados.focus();
 };
+// Call the function addProduct.
+botaoAdd.addEventListener('click', addProduct);
+// Function to add products with key Enter.
+enter.addEventListener('keyup', function (enterAdd) {
+  if (enterAdd.keyCode === 13) {
+    addProduct();
+    }
+});
 // Function to remove all itens list.
 const botaoClear = document.getElementById('apaga-tudo');
 botaoClear.addEventListener('click', apagaTudo);
