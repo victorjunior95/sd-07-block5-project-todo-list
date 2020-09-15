@@ -7,7 +7,7 @@ const elements = [];
 
 function changeBackgroundColor(element) {
   element.addEventListener('click', () => {
-    if (!element.className) {
+    if (!element.classList.contains('selected')) {
       for (let i = 0; i < elements.length; i += 1) {
         elements[i].classList.remove('selected');
       }
