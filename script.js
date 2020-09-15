@@ -5,6 +5,7 @@ const taskList = document.querySelector('#lista-tarefas');
 const btnClearAll = document.querySelector('#apaga-tudo');
 const btnClearCompleted = document.querySelector('#remover-finalizados');
 const btnSaveTasks = document.querySelector('#salvar-tarefas');
+const btnRemoveSelected = document.querySelector('#remover-selecionado');
 
 //  FUNÇÕES
 function addTask() {
@@ -44,6 +45,9 @@ function loadTasks() {
   let loadedTasks = localStorage.getItem('tasks');
   taskList.innerHTML = loadedTasks;
 }
+function removeSelected(selected) {
+  taskList.removeChild(selected);
+}
 
 //  EVENTOS
 //  Evento do botão criar tarefa
@@ -55,8 +59,10 @@ btnTask.addEventListener('click', function () {
 	clearInput();
 });
 taskList.addEventListener('click', function (event) {
-  clearSelection();
+  if (event.target != taskList){
+    clearSelection();
   addSelection(event.target);
+  }
 });
 taskList.addEventListener('dblclick', function (event) {
   toggleCompleted(event.target);
@@ -69,4 +75,8 @@ btnClearCompleted.addEventListener('click', function () {
 });
 btnSaveTasks.addEventListener('click', function () {
   saveTasks();
+});
+btnRemoveSelected.addEventListener('click', function () {
+  let selected = document.querySelector('.selected');
+  removeSelected(selected);
 });
