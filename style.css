@@ -1,0 +1,13 @@
+body {
+    background: rgb(15, 163, 107);
+    color: rgb(20, 20, 20);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+    width: 100%;
+  }
+  
+  h1 , h2 {
+    display: inline-block;
+  }
