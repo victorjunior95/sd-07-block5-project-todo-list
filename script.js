@@ -1,4 +1,10 @@
 function changeBgColor() {
+  for (let checker = 0; checker < document.getElementsByTagName('li').length; checker += 1) {
+    let actualTask = document.getElementsByTagName('li')[checker];
+    if (actualTask.style.backgroundColor === "rgb(128, 128, 128)") {
+      actualTask.style.backgroundColor = "";
+    }
+  }
   return event.target.style.backgroundColor = "rgb(128, 128, 128)";
 }
 
