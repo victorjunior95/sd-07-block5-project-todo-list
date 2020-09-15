@@ -3,31 +3,27 @@ const btnCriarTarefa = document.querySelector('#criar-tarefa');
 const toDoList = document.querySelector('#lista-tarefas');
 btnCriarTarefa.addEventListener('click', function () {
     let textInput = document.querySelector('#texto-tarefa').value;
-    let listItem = document.createElement('li');
+    const listItem = document.createElement('li');
     listItem.className = 'listItem';
     listItem.innerHTML = textInput;
     toDoList.appendChild(listItem);
     document.querySelector('#texto-tarefa').value = '';
-    document.querySelectorAll('.selected')
-    changeBackground();
-    lineThrough();
+// trata evento de deixar cinza e tirar
+    listItem.addEventListener('click', function () {
+      let selectedItem = document.querySelector('.selected');
+      if (selectedItem) {
+        selectedItem.classList.remove('selected');
+      }
+      listItem.classList.add('selected');
+      })
 });
 
-// muda de cor de fundo quando clicado
 
-let list = document.getElementsByClassName('listItem');
-function changeBackground() {
-    for (let index = 0; index < list.length; index += 1) {
-      list[index].addEventListener('click', function () {
-      list[index].classList.add('selected');
-      });
-    }
-  }
 
-  function lineThrough() {
-    for (let index = 0; index < list.length; index += 1) {
-      list[index].addEventListener('dblclick', function () {
-      list[index].classList.add('completed');
-      });
-    }
-  }
+
+
+
+
+
+
+
