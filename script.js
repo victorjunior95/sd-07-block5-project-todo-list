@@ -29,3 +29,11 @@ paint.addEventListener("dblclick", mark);
 function mark() {
   event.target.className = 'completed';
 }
+
+document.getElementById('apaga-tudo').addEventListener('click', function() {
+  let list = document.getElementById("lista-tarefas")
+  let listLength = list.getElementsByTagName("li").length;
+  for (let index = 0; index < listLength; index += 1) {
+    list.removeChild(list.childNodes[0]);
+  }
+});
