@@ -4,7 +4,6 @@ let list = document.querySelector("#lista-tarefas")
 let clear = document.querySelector("#apaga-tudo")
 let rmSelecteds = document.querySelector("#remover-selecionado")
 
-
 creator.addEventListener("click", ()=>{
     let node = document.createElement("li")
     let textNode = document.createTextNode(textInput.value)
@@ -34,11 +33,11 @@ list.addEventListener("click", (event)=>{
 
 list.addEventListener("dblclick", (event)=>{
     li = event.target
-    if(li.className == "completed"){
+    if(li.classList.contains("completed")){
         li.classList.remove("completed")
     }
     else{
-        li.className = "completed"
+        li.classList.add("completed")
     }
 })
 
@@ -50,3 +49,4 @@ rmSelecteds.addEventListener("click", ()=>{
         }
     }
 })
+
