@@ -51,7 +51,10 @@ function completedItem(e){
   let completed = 'completed';
 
   if(name.includes(completed)){
-    itemDone.className = name.substring(9);
+    let auxName;
+
+    auxName = name.split('completed');
+    itemDone.className = auxName[0].trim();
   }else{
     itemDone.className += ' completed';
   }
