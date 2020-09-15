@@ -25,6 +25,14 @@ listItem.addEventListener('dblclick', function () {
   }
 });
 });
+// trata evento limpar toda a lista
+
+btnClearList = document.querySelector('#apaga-tudo');
+
+btnClearList.addEventListener('click', function () {
+  toDoList.innerHTML = '';
+})
+
 
 
 
