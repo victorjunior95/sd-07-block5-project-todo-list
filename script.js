@@ -24,6 +24,10 @@ document.querySelector("#apaga-tudo").addEventListener("click", limpando);
 
 //esta função será encarregada de mudar a cor de fundo dos itens da lista 
 
-function background (){
-    
+function background (item){
+    item = document.querySelectorAll("li");
+    item.addEventListener("click", function(){
+       item.classList.add("selected")
+       document.querySelector(".selected").style.backgroundColor = rgb(128,128,128);
+    })
 }
