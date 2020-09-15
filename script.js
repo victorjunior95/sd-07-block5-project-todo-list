@@ -5,6 +5,7 @@ let explanation = document.getElementById('funcionamento');
 let textBox = document.getElementById('texto-tarefa');
 let list = document.getElementById('lista-tarefas');
 let button = document.getElementById('criar-tarefa');
+let selection = document.querySelector('.selected');
 
 // 2) Define the functions:
 
@@ -15,6 +16,7 @@ button.addEventListener('click', function (event) {
     let newTask = document.createElement('li');
     newTask.innerText = textBox.value;
     list.appendChild(newTask);
+    selectItem(newTask);
     textBox.value = '';
   }
   else {
@@ -23,8 +25,11 @@ button.addEventListener('click', function (event) {
 });
 
 // To change the item's color:
-if (list.value !== '') {
-  list.addEventListener('click', function(item) {
-    item.target.style.backgroundColor = 'rgb(128, 128, 128)';
+function selectItem (item) {  
+  item.addEventListener('click', function() {
+    for (let i = 0; i < list.length; i += 1) {
+      list[i].classList.remove('selected')
+    }
+    item.classList.toggle('selected');
   });
 }
