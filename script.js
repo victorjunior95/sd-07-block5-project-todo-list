@@ -2,6 +2,9 @@
 buttonCriarTarefa = document.getElementById("criar-tarefa");
 buttonCriarTarefa.addEventListener("click", criarItem);
 
+let buttonlimpaSelecao = document.getElementById("remover-selecionado");
+buttonlimpaSelecao.addEventListener("click", limpaSelecao);
+
 // Função que adiciona o item e limpa o input
 function criarItem() {
     let inputTexto = document.getElementById("texto-tarefa");
@@ -15,6 +18,7 @@ function criarItem() {
     }
 }
 
+// Função que seleciona o item clicado
 function selecionaItem() {
     let itemSelecionado = document.getElementById("selected");
     if (itemSelecionado == null) {
@@ -22,5 +26,13 @@ function selecionaItem() {
     } else {
         itemSelecionado.removeAttribute("id", "selected");
         this.setAttribute("id", "selected");
+    }
+}
+
+// Função que tira a seleção de todos os itens
+function limpaSelecao() {
+    let itemSelecionado = document.getElementById("selected");
+    if (itemSelecionado != null) {
+        itemSelecionado.removeAttribute("id", "selected");
     }
 }
