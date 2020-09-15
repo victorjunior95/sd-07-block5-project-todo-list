@@ -7,10 +7,8 @@ let buttonClearAll = document.getElementById('apaga-tudo');
 let butttonClearCompleted = document.getElementById('remover-finalizados');
 let buttonSave = document.getElementById('salvar-tarefas');
 
-//recupera a ultima lista de tarefas salva
 list.innerHTML = localStorage.getItem('listSaved');
-
-// 5 - Deve haver um botão com id="criar-tarefa" e ao clicar nesse botão, um novo item deverá ser criado ao final da lista e o texto do input deve ser limpo.   
+  
 function createItem(item) {
     let liItem = document.createElement('li');
     liItem.innerText = item;
@@ -26,8 +24,6 @@ function addItem() {
 
 buttonCreate.addEventListener('click', addItem);
 
-// 7 - Ao clicar em um item da lista, altere a cor de fundo do item para cinza rgb(128,128,128).
-// 8 - Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo.    
 function addEventLastLi() {
     let lastLi = document.getElementById('lista-tarefas').lastChild;
     lastLi.addEventListener('click', function () {
@@ -43,7 +39,6 @@ function addEventLastLi() {
 
 buttonCreate.addEventListener('click', addEventLastLi);
 
-// 9 - Ao clicar duas vezes em um item, ele deverá ser riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item.
 function lineTrough() {
     let lastLi2 = document.getElementById('lista-tarefas').lastChild;
     lastLi2.addEventListener('dblclick', function () {
@@ -57,7 +52,6 @@ function lineTrough() {
 
 buttonCreate.addEventListener('click', lineTrough);
 
-// 10 - Deve haver um botão com id="apaga-tudo" que quando clicado deve apagar todos os items da lista.
 
 buttonClearAll.addEventListener('click', function () {
     listLength = list.childNodes.length;
@@ -66,7 +60,6 @@ buttonClearAll.addEventListener('click', function () {
     }
 });
 
-// 11 - Deve haver um botão com id="remover-finalizados" que quando clicado remove somente os elementos finalizados da sua lista.
 butttonClearCompleted.addEventListener('click', function () {
     let itemsCompleted = document.querySelectorAll('.completed');
     let completedLength = itemsCompleted.length;
@@ -76,12 +69,10 @@ butttonClearCompleted.addEventListener('click', function () {
     }
 });
 
-// 12 - Adicione um botão com id="salvar-tarefas" que salve o conteúdo da lista. Se você fechar e reabrir a página, a lista deve continuar no estado em que estava.
 buttonSave.addEventListener('click', function () {
     localStorage.setItem('listSaved', list.innerHTML)
 });
 
-// 13 - Adicione dois botões, um com id="mover-cima" e outro com id="mover-baixo", que permitam mover o item selecionado para cima ou para baixo na lista de tarefas.
 buttonUp.addEventListener('click', function () {
     let selected = document.querySelector('.selected');
     if (selected !== null) {
@@ -100,7 +91,6 @@ buttonDown.addEventListener('click', function () {
     }
 });
 
-// 14 - Adicione um botão com id="remover-selecionado" que, quando clicado, remove o item selecionado.
 buttonRemoveSelected.addEventListener('click', function () {
     let selected = document.querySelector('.selected');
     list.removeChild(selected);
