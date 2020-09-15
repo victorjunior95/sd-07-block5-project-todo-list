@@ -6,6 +6,9 @@ buttonAdd = buttonAdd.addEventListener("click", function lista() {
   createLi.innerText = inputAdd.value;
   listOl.appendChild(createLi);
   inputAdd.value = "";
+  createLi.setAttribute('class', 'newLi');
+  let paintLi = document.querySelector('.newLi');
+  
 });
 
 let buttonRemove = document.getElementById("apaga-tudo");
