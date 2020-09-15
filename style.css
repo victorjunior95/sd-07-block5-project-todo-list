@@ -1,11 +1,15 @@
 header h1 {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 header p {
-  margin-top: 0px;
+  margin-top: 0;
 }
 
-li.selected {
-  background-color: rgb(128, 128, 128);
+.selected {
+  background-color: grey;
+}
+
+.completed {
+  text-decoration: line-through;
 }
