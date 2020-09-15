@@ -110,6 +110,7 @@ function moveTaskUp() {
   if (selectedTask.length !== 0) {
     if (selectedTask[0].previousElementSibling != null) {
       orderedListTasks.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling);
+      selectedTask = document.getElementsByClassName('selected');
     }
   }
 }
@@ -127,8 +128,7 @@ function moveTaskDown() {
     if (selectedTask[0].nextElementSibling != null) {
       const afterElement = selectedTask[0].nextElementSibling.nextElementSibling;
       orderedListTasks.insertBefore(selectedTask[0], afterElement);
-    } else {
-      
+      selectedTask = document.getElementsByClassName('selected');
     }
   }
 }
