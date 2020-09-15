@@ -28,7 +28,6 @@ removed.addEventListener('click' ,function(){
         list.removeChild(itenSelected)
     }
 })
-}
 
 const clear = document.querySelector('#apaga-tudo')
 for(let index1 = 0 ; index1 < listItens.length; index1 +=1){
@@ -40,6 +39,9 @@ clear.addEventListener('click' ,function(){
     list.removeChild(itens)
 })
 }
+}
+
+
 })
 
     
