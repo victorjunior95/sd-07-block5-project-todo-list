@@ -74,15 +74,19 @@ removeSelectedBttn.addEventListener('click', function () {
 //  mover para cima
 moveUpBttn.addEventListener('click', function () {
   const selectedItem = document.querySelector('.selected');
-  if (selectedItem.previousElementSibling != null) {
-    list.insertBefore(selectedItem, selectedItem.previousElementSibling);
+  if (selectedItem) {
+    if (selectedItem.previousElementSibling) {
+      list.insertBefore(selectedItem, selectedItem.previousElementSibling);
+    }
   }
 });
 
 //  mover para baixo
 moveDownBttn.addEventListener('click', function () {
   const selectedItem = document.querySelector('.selected');
-  if (selectedItem.nextElementSibling != null) {
-    list.insertBefore(selectedItem, selectedItem.nextElementSibling.nextElementSibling);
+  if (selectedItem) {
+    if (selectedItem.nextElementSibling) {
+      list.insertBefore(selectedItem, selectedItem.nextElementSibling.nextElementSibling);
+    }
   }
 });
