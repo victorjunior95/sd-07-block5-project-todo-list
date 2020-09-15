@@ -66,18 +66,18 @@ buttonRemoveCompleted.addEventListener('click', function () {
 })
 
 saveButton.addEventListener('click', function (){
+  localStorage.clear('')
   let completedTask = document.querySelectorAll(".completed")
   if(completedTask) {
     let listItem = document.querySelectorAll('li')
-  for (index = 0; index < listItem.length; index += 1) {
-    let value = listItem[index].innerText
-    localStorage.setItem(`item${index}`, value)
-    let classNameItem = listItem[index].className
-    localStorage.setItem(`class${index}`, classNameItem)
+    for (index = 0; index < listItem.length; index += 1) {
+      let value = listItem[index].innerText
+      localStorage.setItem(`item${index}`, value)
+      let classNameItem = listItem[index].className
+      localStorage.setItem(`class${index}`, classNameItem)
+    }
+  alert('Lista Salva com sucesso')  
   }
-
-  }
-  
 })
 
 removeSelectedButton.addEventListener('click', function () {
