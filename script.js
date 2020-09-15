@@ -25,8 +25,8 @@ function apagaTarefas() {
 // apagar tarefas completadas da lista
 function removeTarefa() {
   const listItens = document.querySelectorAll('li');
-  for (index = 0; index < listItens.length; index += 1) {
-    if(listItens[index].className === 'completed') { 
+  for (let index = 0; index < listItens.length; index += 1) {
+    if (listItens[index].className === 'completed') {
       listItens[index].remove();
     }
   }
@@ -41,11 +41,43 @@ function adicionarTarefa(element, textInput) {
   element.insertAdjacentElement('beforeend', listaTarefa);
 }
 
+// salva as tarefas criadas no localStorage
+function salvarTarefas() {
+  if (typeof(Storage) !== "undefined") {
+    const tarefas = document.getElementsByTagName('li');
+    for (let index = 0; index < tarefas.length; index += 1) {
+      localStorage.setItem(`tarefa_${index}`, tarefas[index].innerText);
+    }
+  } else {
+    alert('Sorry! No Web Storage support.');
+  }
+}
+
+// carrega as tarefas salvas no localStorage
+function carregarTarefas() {
+  const listaTarefasOl = document.querySelector('#lista-tarefas');
+  let valueStorage = [];
+  for (let keys = 0; keys < localStorage.length; keys += 1){
+    let keyStorage = [];
+    keyStorage = (localStorage.key(keys)).split('_')
+    if (keyStorage[0] === 'tarefa') {
+      valueStorage[keyStorage[1]] = localStorage.getItem(`${keyStorage[0]}_${keyStorage[1]}`);
+    }
+  }
+  for (let index = 0; index < valueStorage.length; index += 1) {
+    adicionarTarefa(listaTarefasOl, valueStorage[index]);
+  }
+}
+
 window.onload = function () {
-  // adicionar tarefa
   const criarTarefaButton = document.querySelector('#criar-tarefa');
   const textoTarefaInput = document.querySelector('#texto-tarefa');
   const listaTarefasOl = document.querySelector('#lista-tarefas');
+
+  // carrega tarefas, caso existam, do localStorage
+  carregarTarefas();
+
+  // adicionar tarefa
   criarTarefaButton.addEventListener('click', function () {
     adicionarTarefa(listaTarefasOl, textoTarefaInput.value);
     textoTarefaInput.value = '';
@@ -58,4 +90,8 @@ window.onload = function () {
   // apaga tarefas finalizadas
   const removerFinalizadosButton = document.querySelector('#remover-finalizados');
   removerFinalizadosButton.addEventListener('click', removeTarefa);
+
+  // salvar as tarefas criadas
+  const salvarTarefasButton = document.querySelector('#salvar-tarefas');
+  salvarTarefasButton.addEventListener('click', salvarTarefas);
 };
