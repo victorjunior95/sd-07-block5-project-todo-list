@@ -5,7 +5,11 @@ const deleteAll = document.getElementById('apaga-tudo');
 const deleteConcludedTasks = document.getElementById('remover-finalizados');
 const elements = [];
 const saveTasks = document.getElementById('salvar-tarefas');
-const loadTasks = document.getElementById('carregar-tarefas');
+const clearHistory = document.getElementById('apagar-histórico');
+
+clearHistory.addEventListener('click', () => {
+  localStorage.clear();
+})
 
 function loadItens() {
   for (let i = 0; i < localStorage.length; i += 1) {
@@ -18,8 +22,6 @@ function loadItens() {
 }
 
 document.onload = loadItens();
-
-loadTasks.addEventListener('click', loadItens);
 
 function changeBackgroundColor(element) {
   element.addEventListener('click', () => {
