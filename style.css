@@ -16,5 +16,9 @@ body {
 }
 
 .dbclicked {
-  text-decoration: line-through;
+  text-decoration: line-through solid rgb(0, 0, 0);
+}
+
+#remover-finalizados {
+  margin-top: 5px;
 }

@@ -26,7 +26,26 @@ function dbclicked(event) {
   let items = event.target.classList.contains('dbclicked');
   if (items === true) {
     event.target.classList.remove('dbclicked');
-  }else{
+  } else {
     event.target.classList.add('dbclicked');
+  }
+}
+
+// function clear list
+function clearAll() {
+  let father = document.getElementById('lista-tarefas');
+  while (father.lastChild !== null) {
+    father.removeChild(father.lastElementChild);
+  }
+}
+
+// function clear all done
+function clearAllDone() {
+  let father = document.getElementById('lista-tarefas');
+  let itemsCompleted = document.querySelectorAll('.dbclicked');
+  while (itemsCompleted !== null) {
+    console.log(itemsCompleted);
+    console.log('---');
+    father.removeChild(itemsCompleted[0]);
   }
 }

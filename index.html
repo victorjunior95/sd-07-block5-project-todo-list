@@ -15,9 +15,11 @@
   <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
   <input id="texto-tarefa" type="text">
   <button id="criar-tarefa" onclick="addList()">Adicionar</button>
+  <br>
+  <button id="remover-finalizados" onclick="clearAllDone()">Remove itens completos</button>
 
   <ol id="lista-tarefas"></ol>
-
+  <button id="apaga-tudo" onclick="clearAll()">Limpar toda a lista</button>
   <script src="script.js"></script>
 </body>
 
