@@ -18,7 +18,7 @@ let completedTasks = document.querySelectorAll('.completed');
 
 //  Functions
 function selectOtherLi() {
-  if (selectedTask[0] !== undefined) {
+  if (selectedTask[0] !== undefined) { // Responsável por selecionar a li caso a desseleção caia no else
     selectedTask[0].classList.remove('selected');
     event.target.classList.add('selected');
   } else {
@@ -26,7 +26,7 @@ function selectOtherLi() {
   }
 }
 
-function unselectLi() {
+function unselectLi() { //  Responsável por deselecionar a li
   selectedTask = document.getElementsByClassName('selected');
   if (selectedTask[0] === event.target) {
     selectedTask[0].classList.remove('selected');
@@ -35,7 +35,7 @@ function unselectLi() {
   }
 }
 
-function markAsDoneLi() {
+function markAsDoneLi() { //  Marca como uma tarefa concluída. Riscando.
   if (event.target.className !== 'task completed') {
     event.target.classList.add('completed');
   } else {
@@ -43,7 +43,7 @@ function markAsDoneLi() {
   }
 }
 
-function elementCreator() {
+function elementCreator() { //  Criador de elementos li
   const element = document.createElement('li');
   element.innerText = inputTextTask.value;
   element.className = 'task';
@@ -53,19 +53,16 @@ function elementCreator() {
   return element;
 }
 
-function addTaskToList(textLoad) {
+function addTaskToList(textLoad) {  // Faz o append na lista ordenada.
   const elementLi = elementCreator();
-  if (textLoad !== event) {
-    elementLi.innerText = textLoad;
-  }
   orderedListTasks.appendChild(elementLi);
 }
 
-function clearTaskList() {
+function clearTaskList() {  //  Limpa a lista.
   orderedListTasks.innerHTML = '';
 }
 
-function removeCompletedTasks() {
+function removeCompletedTasks() { //  Tira as tarefas concluídas
   completedTasks = document.getElementsByClassName('completed');
   const numberMax = completedTasks.length;
   for (let index = 0; index < numberMax; index += 1) {
@@ -73,19 +70,19 @@ function removeCompletedTasks() {
   }
 }
 
-function removeSelectedTask() {
+function removeSelectedTask() { //  Remove a tarefa selecionada
   selectedTask = document.getElementsByClassName('selected');
   if (selectedTask[0] !== undefined) {
     orderedListTasks.removeChild(selectedTask[0]);
   }
 }
 
-function saveOrderedList() {
+function saveOrderedList() { // Salva a lista no local Storage
   const toString = JSON.stringify(orderedListTasks.innerHTML);
   localStorage.setItem('keyListTask', toString);
 }
 
-function loadOrderedList() {
+function loadOrderedList() { // Carrega a lista no local Storage
   const toHtml = JSON.parse(localStorage.getItem('keyListTask'));
   orderedListTasks.innerHTML = toHtml;
   const tasks = document.getElementsByClassName('task');
@@ -95,21 +92,21 @@ function loadOrderedList() {
   }
 }
 
-function moveTaskUp() {
-  if (selectedTask.length !== 0) {
-    if (selectedTask[0].previousElementSibling != null) {
-      orderedListTasks.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling);
+function moveTaskUp() { // Move a tarefa pra cima.
+  if (selectedTask.length !== 0) { // Esse if é responsável por saber se tem uma tarefa selecionada
+    if (selectedTask[0].previousElementSibling != null) { //  Aqui para filtrar se existe uma tarefa anterior.
+      orderedListTasks.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling); //  aqui eu insiro a tarefa atual atrás da anterior.
     }
   }
 }
 
-function moveTaskDown() {
-  if (selectedTask.length !== 0) {
-    if (selectedTask[0].nextElementSibling != null) {
-      const afterElement = selectedTask[0].nextElementSibling.nextElementSibling;
-      orderedListTasks.insertBefore(selectedTask[0], afterElement);
+function moveTaskDown() { //  Move a tarefa pra baixo.
+  if (selectedTask.length !== 0) { // Esse if é responsável por saber se tem uma tarefa selecionada 
+    if (selectedTask[0].nextElementSibling != null) { //  Aqui para filtrar se existe uma tarefa anterior.
+      const afterElement = selectedTask[0].nextElementSibling.nextElementSibling; //  Constante que recebe o elemento posterior do posterior.
+      orderedListTasks.insertBefore(selectedTask[0], afterElement); // aqui eu insiro o anterior ao posterior.
     } else {
-      orderedListTasks.appendChild(selectedTask[0]);
+      orderedListTasks.appendChild(selectedTask[0]); // Aqui caso não tenha elemento posterior eu simplesmento coloco-o no final com o append. (Suspeito de bug aqui!)
     }
   }
 }
