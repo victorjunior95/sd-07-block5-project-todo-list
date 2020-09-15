@@ -12,3 +12,10 @@ btnAdd.addEventListener('click', function () {
   document.getElementById('texto-tarefa').value = '';
 });
 
+const obj = document.getElementById('lista-tarefas');
+const btn = document.getElementById('apaga-tudo');
+btn.addEventListener('click', function () {
+  while (obj.hasChildNodes()) {
+    obj.removeChild(obj.lastChild);
+  }
+});
