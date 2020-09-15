@@ -2,6 +2,7 @@
 const task = document.querySelector('#texto-tarefa');
 const btnTask = document.querySelector('#criar-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
+const btnClearAll = document.querySelector('#apaga-tudo');
 
 //  FUNÇÕES
 function addTask() {
@@ -24,6 +25,9 @@ function addSelection(target) {
 function toggleCompleted(target) {
   target.classList.toggle('completed');
 }
+function clearList() {
+  taskList.innerHTML = '';
+}
 
 //  EVENTOS
 //  Evento do botão criar tarefa
@@ -37,4 +41,7 @@ taskList.addEventListener('click', function (event) {
 });
 taskList.addEventListener('dblclick', function (event) {
   toggleCompleted(event.target);
-})
+});
+btnClearAll.addEventListener('click', function () {
+  clearList();
+});
