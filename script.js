@@ -31,6 +31,11 @@ listatarefa.addEventListener("click",function(e) {
 
 listatarefa.addEventListener("dblclick", function(e2) {
     let element = document.querySelectorAll("#lista-tarefas");
-    e2.target.className = "completed";
+    if (e2.target.className == "completed") {
+        e2.target.className = "";
+    }
+    if (e2.target.className == "") {
+        e2.target.className = "completed";
+    }
     console.log(element);
 });
