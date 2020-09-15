@@ -11,19 +11,21 @@ document.getElementById("apaga-tudo").addEventListener("click", function () {
   document.getElementById("lista-tarefas").innerHTML = "";
 });
 
-document.getElementById('lista-tarefas').addEventListener("click", function(task) {
-  let allTasks = document.querySelectorAll('.listado')
-  for (let index = 0; index < allTasks.length; index+=1) {
-        allTasks[index].classList.remove('selected')
-  }
-  task.target.classList.add('selected')
-})
+document
+  .getElementById("lista-tarefas")
+  .addEventListener("click", function (task) {
+    let allTasks = document.querySelectorAll(".listado");
+    for (let index = 0; index < allTasks.length; index += 1) {
+      allTasks[index].classList.remove("selected");
+    }
+    task.target.classList.add("selected");
+  });
 
-document.getElementById('lista-tarefas').addEventListener("dblclick", function(task) {
-  task.target.classList.toggle("finished")
-})
-
-
+document
+  .getElementById("lista-tarefas")
+  .addEventListener("dblclick", function (task) {
+    task.target.classList.toggle("finished");
+  });
 
 // document.getElementById('color-palette').addEventListener("click", function(event) {
 //   if (event.target.classList.contains('selected')) {
