@@ -2,7 +2,7 @@ let textInput = document.querySelector("#texto-tarefa")
 let creator = document.querySelector("#criar-tarefa")
 let list = document.querySelector("#lista-tarefas")
 let clear = document.querySelector("#apaga-tudo")
-let completed = document.querySelector("#remover-finalizados")
+let rmSelecteds = document.querySelector("#remover-selecionado")
 
 
 creator.addEventListener("click", ()=>{
@@ -16,12 +16,6 @@ creator.addEventListener("click", ()=>{
 
 clear.addEventListener("click", ()=>{
     list.innerHTML = ""
-})
-
-completed.addEventListener("click", ()=>{
-    for (li in list){
-        console.log("lilil")
-    }
 })
 
 
@@ -45,5 +39,14 @@ list.addEventListener("dblclick", (event)=>{
     }
     else{
         li.className = "completed"
+    }
+})
+
+rmSelecteds.addEventListener("click", ()=>{
+    let elements = document.querySelectorAll("li")
+    for (let i = 0; i < elements.length; i++){
+        if (elements[i].classList.contains("selected")){
+            elements[i].parentNode.removeChild(elements[i])
+        }
     }
 })
