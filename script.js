@@ -2,6 +2,7 @@ let list = document.getElementById('lista-tarefas');
 let buttonCreate = document.getElementById('criar-tarefa');
 let buttonUp = document.getElementById('mover-cima');
 let buttonDown = document.getElementById('mover-baixo');
+let buttonRemoveSelected = document.getElementById('remover-selecionado');
 let buttonClearAll = document.getElementById('apaga-tudo');
 let butttonClearCompleted = document.getElementById('remover-finalizados');
 let buttonSave = document.getElementById('salvar-tarefas');
@@ -80,7 +81,7 @@ buttonSave.addEventListener('click', function () {
     localStorage.setItem('listSaved', list.innerHTML)
 });
 
-// Adicione dois botões, um com id="mover-cima" e outro com id="mover-baixo", que permitam mover o item selecionado para cima ou para baixo na lista de tarefas.
+// 13 - Adicione dois botões, um com id="mover-cima" e outro com id="mover-baixo", que permitam mover o item selecionado para cima ou para baixo na lista de tarefas.
 buttonUp.addEventListener('click', function () {
     let selected = document.querySelector('.selected');
     if (selected.previousSibling !== null) {
@@ -93,4 +94,10 @@ buttonDown.addEventListener('click', function () {
     if (selected.nextSibling !== null) {
         list.insertBefore(selected.nextSibling, selected);
     }
+});
+
+// 14 - Adicione um botão com id="remover-selecionado" que, quando clicado, remove o item selecionado.
+buttonRemoveSelected.addEventListener('click', function () {
+    let selected = document.querySelector('.selected');
+    list.removeChild(selected);
 });
