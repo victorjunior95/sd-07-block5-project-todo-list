@@ -17,8 +17,8 @@ buttonAddTarefa.addEventListener('click', function (){
 
     itemLista.addEventListener('dblclick', function(event){
         if(event.target.classList.contains('completed')){
-            let scratchedItem = document.querySelector('.completed');
-            scratchedItem.classList.remove('completed');
+            event.target.classList.remove('completed');
         } event.target.classList.add('completed')
     })
+    document.getElementById('texto-tarefa').value ='';
 });
