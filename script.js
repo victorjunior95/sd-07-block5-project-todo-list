@@ -135,3 +135,16 @@ cima.addEventListener("click",function(){
         }
     }
 })
+
+let baixo = document.getElementById("mover-baixo")
+
+baixo.addEventListener("click",function(){
+
+    let atual = document.querySelector(".selected")
+    if (atual!=null){
+        if(atual.nextElementSibling){
+            let proximo = atual.nextElementSibling;
+            atual.before(proximo)
+        }
+    }
+})
