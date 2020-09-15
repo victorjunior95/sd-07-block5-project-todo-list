@@ -7,16 +7,26 @@ function addList() {
   let text = document.createTextNode(clearText.value); // Create Text node
   node.appendChild(text); // Append the text to <li>
   node.classList.add('lista');
-  node.addEventListener('click', selected);
+  node.addEventListener('click', selected); // Add click event
+  node.addEventListener('dblclick', dbclicked); // Add double click event
   addTask.appendChild(node); // Append <li> to <ol> whit id = 'texto-tarefa'
   clearText.value = '';
 }
 
-// function to scroll through the created list
+// function to select an item that was clicked and show a background color
 function selected(event) {
   let items = document.querySelector('.selected');
   if (items !== null) {
     items.classList.remove('selected');
   }
   event.target.classList.add('selected');
+}
+// function to select an item that was double clicked and show a line through
+function dbclicked(event) {
+  let items = event.target.classList.contains('dbclicked');
+  if (items === true) {
+    event.target.classList.remove('dbclicked');
+  }else{
+    event.target.classList.add('dbclicked');
+  }
 }
