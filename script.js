@@ -17,16 +17,17 @@ let selectedTask = document.getElementsByClassName('selected');
 let completedTasks = document.querySelectorAll('.completed');
 
 //  Functions
+//  Responsável por selecionar a li caso a desseleção caia no else
 function selectOtherLi() {
-  if (selectedTask[0] !== undefined) { // Responsável por selecionar a li caso a desseleção caia no else
+  if (selectedTask[0] !== undefined) {
     selectedTask[0].classList.remove('selected');
     event.target.classList.add('selected');
   } else {
     event.target.classList.add('selected');
   }
 }
-
-function unselectLi() { //  Responsável por deselecionar a li
+//  Responsável por deselecionar a li
+function unselectLi() {
   selectedTask = document.getElementsByClassName('selected');
   if (selectedTask[0] === event.target) {
     selectedTask[0].classList.remove('selected');
@@ -35,7 +36,8 @@ function unselectLi() { //  Responsável por deselecionar a li
   }
 }
 
-function markAsDoneLi() { //  Marca como uma tarefa concluída. Riscando.
+//  Marca como uma tarefa concluída. Riscando.
+function markAsDoneLi() {
   if (event.target.className !== 'task completed') {
     event.target.classList.add('completed');
   } else {
@@ -43,7 +45,8 @@ function markAsDoneLi() { //  Marca como uma tarefa concluída. Riscando.
   }
 }
 
-function elementCreator() { //  Criador de elementos li
+//  Criador de elementos li
+function elementCreator() {
   const element = document.createElement('li');
   element.innerText = inputTextTask.value;
   element.className = 'task';
@@ -53,16 +56,19 @@ function elementCreator() { //  Criador de elementos li
   return element;
 }
 
-function addTaskToList(textLoad) {  // Faz o append na lista ordenada.
+//  Faz o append na lista ordenada.
+function addTaskToList() {
   const elementLi = elementCreator();
   orderedListTasks.appendChild(elementLi);
 }
 
-function clearTaskList() {  //  Limpa a lista.
+//  Limpa a lista.
+function clearTaskList() {
   orderedListTasks.innerHTML = '';
 }
 
-function removeCompletedTasks() { //  Tira as tarefas concluídas
+//  Tira as tarefas concluídas
+function removeCompletedTasks() {
   completedTasks = document.getElementsByClassName('completed');
   const numberMax = completedTasks.length;
   for (let index = 0; index < numberMax; index += 1) {
@@ -70,19 +76,22 @@ function removeCompletedTasks() { //  Tira as tarefas concluídas
   }
 }
 
-function removeSelectedTask() { //  Remove a tarefa selecionada
+//  Remove a tarefa selecionada
+function removeSelectedTask() {
   selectedTask = document.getElementsByClassName('selected');
   if (selectedTask[0] !== undefined) {
     orderedListTasks.removeChild(selectedTask[0]);
   }
 }
 
-function saveOrderedList() { // Salva a lista no local Storage
+//  Salva a lista no local Storage
+function saveOrderedList() {
   const toString = JSON.stringify(orderedListTasks.innerHTML);
   localStorage.setItem('keyListTask', toString);
 }
 
-function loadOrderedList() { // Carrega a lista no local Storage
+//  Carrega a lista no local Storage
+function loadOrderedList() {
   const toHtml = JSON.parse(localStorage.getItem('keyListTask'));
   orderedListTasks.innerHTML = toHtml;
   const tasks = document.getElementsByClassName('task');
@@ -92,21 +101,32 @@ function loadOrderedList() { // Carrega a lista no local Storage
   }
 }
 
-function moveTaskUp() { // Move a tarefa pra cima.
-  if (selectedTask.length !== 0) { // Esse if é responsável por saber se tem uma tarefa selecionada
-    if (selectedTask[0].previousElementSibling != null) { //  Aqui para filtrar se existe uma tarefa anterior.
-      orderedListTasks.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling); //  aqui eu insiro a tarefa atual atrás da anterior.
+// Move a tarefa pra cima.
+// O primeiro if é responsável por saber se tem uma tarefa selecionada.
+//  O segundo if é para filtrar se existe uma tarefa anterior.
+//  Por fim eu insiro a tarefa atual atrás da anterior.
+function moveTaskUp() {
+  if (selectedTask.length !== 0) { 
+    if (selectedTask[0].previousElementSibling != null) { 
+      orderedListTasks.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling); 
     }
   }
 }
 
-function moveTaskDown() { //  Move a tarefa pra baixo.
-  if (selectedTask.length !== 0) { // Esse if é responsável por saber se tem uma tarefa selecionada 
-    if (selectedTask[0].nextElementSibling != null) { //  Aqui para filtrar se existe uma tarefa anterior.
-      const afterElement = selectedTask[0].nextElementSibling.nextElementSibling; //  Constante que recebe o elemento posterior do posterior.
-      orderedListTasks.insertBefore(selectedTask[0], afterElement); // aqui eu insiro o anterior ao posterior.
+//  Move a tarefa pra baixo.
+//  O primeiro if é responsável por saber se tem uma tarefa selecionada.
+//  O segundo if para filtrar se existe uma tarefa anterior.
+//  Depois uma Constante que recebe o elemento posterior ao posterior.
+//  Então eu insiro o selecionado anteriormente ao posterior.
+//  Se não tem elemento posterior eu simplesmento coloco-o no final com o append.
+//  (Suspeito de bug aqui!)
+function moveTaskDown() {
+  if (selectedTask.length !== 0) {
+    if (selectedTask[0].nextElementSibling != null) {
+      const afterElement = selectedTask[0].nextElementSibling.nextElementSibling;
+      orderedListTasks.insertBefore(selectedTask[0], afterElement);
     } else {
-      orderedListTasks.appendChild(selectedTask[0]); // Aqui caso não tenha elemento posterior eu simplesmento coloco-o no final com o append. (Suspeito de bug aqui!)
+      orderedListTasks.appendChild(selectedTask[0]);
     }
   }
 }
