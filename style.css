@@ -42,4 +42,10 @@ body {
 
 .section-list {
   margin-top: 40px;
+  text-align: center;
+}
+
+.section-list ol {
+  display: inline-block;
+  text-align: left;
 }

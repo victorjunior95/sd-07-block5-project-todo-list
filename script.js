@@ -6,7 +6,7 @@ function adicionarItemLista() {
   let itemLista = criaItemLista('item');
   listaOrdenada.appendChild(itemLista);
   itemLista.innerHTML = input.value;
-  input.value = "";
+  input.value = '';
 }
 
 function criaItemLista(className) {
@@ -15,4 +15,13 @@ function criaItemLista(className) {
   return itemLista;
 }
 
-button.addEventListener("click", adicionarItemLista);
+button.addEventListener('click', adicionarItemLista);
+
+//-----------------------------------------------------------------//
+
+
+document.addEventListener('click', function (event) {
+  if (event.target.classList.contains('item')) {
+    event.target.style.backgroundColor = "rgb(128, 128, 128)";
+  }
+});
