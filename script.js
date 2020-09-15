@@ -2,7 +2,12 @@ let campoInsertTarefa = document.querySelector('#texto-tarefa');
 let criarLista = document.querySelector('#lista-tarefas');
 let btnCriaTarefa = document.querySelector('#criar-tarefa');
 let btnApagaTudo = document.querySelector('#apaga-tudo');
+let btnSelecionado = document.querySelector('#remover-selecionado');
+let btnFinalizado = document.querySelector('#remover-finalizados');
 let classeItem = [];
+
+
+
 
 function criaItem(){
     let item = 0;
@@ -45,8 +50,41 @@ function SelectComplet(){
 
 function itemTroca(){
     for(let index = 0; index < classeItem.length ; index ++){
+        if(classeItem[index].classList.contains('completed')){
            classeItem[index].addEventListener('click',function(){
-               classeItem[index].style.backgroundColor = 'rgb(128,128,128)';
+               classeItem[index].classList.add('selected');
            });
+        }
+        else{
+            classeItem[index].addEventListener('click',function(){
+                classeItem[index].classList.remove('selected');
+            });
+        }
        }
    };
+
+function removeSelecionado(){
+    for(let index = 0; index < classeItem.length ; index ++){
+        classeItem[index].addEventListener('click',function(){
+            if(classeItem[index].classList.contains('completed')){
+                criarLista.removeChild(classeItem[index]);
+            }
+            else{
+                alert('Nenhum item foi completo')
+            }
+        });
+    }
+};
+
+btnSelecionado.addEventListener('click',removeSelecionado);
+
+function removeFinalizados(){
+  for(let index = 0; index < classeItem.length ; index ++){
+    if(classeItem[index].classList.contains('completed')){
+            criarLista.removeChild(classeItem[index]);
+     };
+  }
+};
+
+btnFinalizado.addEventListener('click',removeFinalizados);
+
