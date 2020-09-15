@@ -33,11 +33,14 @@ function removeTarefa() {
 }
 
 // adiciona tarefa à lista ordenada conforme texto digitado
-function adicionarTarefa(element, textInput) {
+function adicionarTarefa(element, textInput, classElement) {
   const listaTarefa = document.createElement('li');
   listaTarefa.innerText = textInput;
   listaTarefa.addEventListener('click', selectedItemList);
   listaTarefa.addEventListener('dblclick', completedItemList);
+  if (classElement === 'completed') {
+    listaTarefa.className = 'completed';
+  }
   element.insertAdjacentElement('beforeend', listaTarefa);
 }
 
@@ -47,6 +50,7 @@ function salvarTarefas() {
     const tarefas = document.getElementsByTagName('li');
     for (let index = 0; index < tarefas.length; index += 1) {
       localStorage.setItem(`tarefa_${index}`, tarefas[index].innerText);
+      localStorage.setItem(`tarefaClasse_${index}`, tarefas[index].className);
     }
   } else {
     alert('Sorry! No Web Storage support.');
@@ -57,15 +61,18 @@ function salvarTarefas() {
 function carregarTarefas() {
   const listaTarefasOl = document.querySelector('#lista-tarefas');
   let valueStorage = [];
-  for (let keys = 0; keys < localStorage.length; keys += 1){
-    let keyStorage = [];
-    keyStorage = (localStorage.key(keys)).split('_')
+  let classStorage = [];
+  for (let keys = 0; keys < localStorage.length; keys += 1) {
+    let keyStorage = (localStorage.key(keys)).split('_');
     if (keyStorage[0] === 'tarefa') {
       valueStorage[keyStorage[1]] = localStorage.getItem(`${keyStorage[0]}_${keyStorage[1]}`);
     }
+    if (keyStorage[0] === 'tarefaClasse') {
+      classStorage[keyStorage[1]] = localStorage.getItem(`${keyStorage[0]}_${keyStorage[1]}`);
+    }
   }
   for (let index = 0; index < valueStorage.length; index += 1) {
-    adicionarTarefa(listaTarefasOl, valueStorage[index]);
+    adicionarTarefa(listaTarefasOl, valueStorage[index], classStorage[index]);
   }
 }
 
