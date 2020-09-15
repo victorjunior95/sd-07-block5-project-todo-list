@@ -1,6 +1,6 @@
-ol li.selected {
+li.selected {
     background-color: rgb(128, 128, 128)
 }
-ol li.completed {
+li.completed {
     text-decoration: line-through solid rgb(0, 0, 0);
 }
