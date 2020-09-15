@@ -2,11 +2,12 @@ window.onload = function () {
   let taskInput = document.querySelector('#texto-tarefa');
   let taskList = document.querySelector('#lista-tarefas');
   let taskBtn = document.querySelector('#criar-tarefa');                                                                                                                                                                                                                                                                                           
-  let selected = document.querySelector('.selected')
-  let removeAll = document.querySelector('#apaga-tudo')
+  let selected = document.querySelector('.selected');
+  let removeAll = document.querySelector('#apaga-tudo');
+  let removeCompleted = document.querySelector('#remover-finalizados')
+  
 
   // Add task button function
-
   taskBtn.addEventListener('click', function () {
     // Add new task
     let task = document.createElement('li');
@@ -52,4 +53,14 @@ window.onload = function () {
 
   removeAll.addEventListener('click', cleanAllTasks)
   
-}                                                                                                                                                                                                                                                                                                                                                                                                                   
+  let removeCompletedTasks = function () {
+    let taskListChildren = taskList.querySelectorAll('li')
+    for (let index = 0 ; index < taskListChildren.length ; index += 1) {
+      if (taskListChildren[index].classList.contains('completed')) {
+        taskList.removeChild(taskListChildren[index])
+      }
+    }
+  }
+
+  removeCompleted.addEventListener('click', removeCompletedTasks)
+}
