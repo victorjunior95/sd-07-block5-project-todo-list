@@ -2,6 +2,23 @@ const inputText = document.getElementById('texto-tarefa');
 const doList = document.getElementById('lista-tarefas');
 const lineList = document.getElementsByTagName('li');
 const buttonCreatTask = document.getElementById('criar-tarefa');
+const buttonDeleteAll = document.getElementById('apaga-tudo');
+const buttonRmTask = document.getElementById('remover-finalizados');
+const rmTaskDone = document.getElementsByClassName('completed');
+let index = 0;
+function deleteAll() {
+  do {
+    doList.removeChild(lineList[index]);
+  }
+  while (index < lineList.length);
+}
+
+function rmTask() {
+  do {
+    doList.removeChild(rmTaskDone[index]);
+  }
+  while (index < rmTaskDone.length)
+}
 
 function backgroundSelected() {
   for (let index = 0; index < lineList.length; index += 1) {
@@ -28,5 +45,5 @@ function addList() {
 }
 
 buttonCreatTask.addEventListener('click', addList);
-
-
+buttonDeleteAll.addEventListener('click', deleteAll);
+buttonRmTask.addEventListener('click', rmTask);

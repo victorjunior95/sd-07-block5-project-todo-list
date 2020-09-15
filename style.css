@@ -2,6 +2,10 @@ ol {
   background-color: rgb(255, 255, 255);
 }
 
+ol li {
+  border-bottom: 1px solid black;
+}
+
 button {
   background-color: brown;
   border: none;
@@ -15,6 +19,16 @@ button:hover {
 
 .completed {
   text-decoration: line-through;
+}
+
+.apagarLista {
+  background-color: rgb(33, 20, 220);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.rmFinalizados {
+  background-color: rgb(2, 98, 2);
 }
 
 
