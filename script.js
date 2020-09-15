@@ -128,7 +128,7 @@ function moveTaskDown() {
       const afterElement = selectedTask[0].nextElementSibling.nextElementSibling;
       orderedListTasks.insertBefore(selectedTask[0], afterElement);
     } else {
-      orderedListTasks.appendChild(selectedTask[0]);
+      
     }
   }
 }
