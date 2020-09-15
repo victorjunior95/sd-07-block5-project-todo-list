@@ -2,7 +2,7 @@ let campoInsertTarefa = document.querySelector('#texto-tarefa');
 let criarLista = document.querySelector('#lista-tarefas');
 let btnCriaTarefa = document.querySelector('#criar-tarefa');
 let btnApagaTudo = document.querySelector('#apaga-tudo');
-let btnSelecionado = document.querySelector('#remover-selecionado');
+let btnFinalizados = document.querySelector('#remover-finalizados');
 let classeItem = [];
 
 
@@ -18,13 +18,12 @@ function criaItem(){
     classeItem = document.querySelectorAll('.itens');
     SelectComplet(lista[item]);
     itemAdciona(lista[item]);
-    itemRemove(lista[item]);
-    removeFinalizados(lista[item]);
     item ++;
 }
 
 btnCriaTarefa.addEventListener('click',criaItem);
 
+// Apaga toda a lista
 
 function limparLista(){
     if(classeItem.length != 0){
@@ -39,11 +38,17 @@ function limparLista(){
 
 btnApagaTudo.addEventListener('click', limparLista);
 
+
+// Marca como tarefa completa
+
 function SelectComplet(item){
     item.addEventListener('dblclick',function(){
         item.classList.toggle('completed');
     });
 };
+
+
+// Marca item selecionado
 
 function itemAdciona(item){
     item.addEventListener('click',function(){
@@ -51,21 +56,16 @@ function itemAdciona(item){
     });
 };
 
-function itemRemove(item){
-    if(item.classList.contains('selected')){
-        item.addEventListener('click',function(){
-            item.classList.remove('selected');
-        });
-    }
+// Remove todos os
+
+function removeFinalizados(){
+    for(let index = 0; index < classeItem.length ; index ++){
+        if(classeItem[index].classList.contains('completed')){
+
+            criarLista.removeChild(classeItem[index]);
+        }
+    };
 };
 
-function removeFinalizados(item){
-    if(item.classList.contains('completed')){
-        item.addEventListener('click',function(){
-            criarLista.removeChild(item);
-        });
-    }  
-};
-
-btnSelecionado.addEventListener('click',removeFinalizados);
+btnFinalizados.addEventListener('click',removeFinalizados);
 
