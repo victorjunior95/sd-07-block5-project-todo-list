@@ -5,7 +5,8 @@ const assignment = document.querySelector('#texto-tarefa')
 
 add.addEventListener('click', function () {
     let iten1 = assignment.value
-    document.querySelector('#lista-tarefas').innerHTML += `<li class='iten'>${iten1}</li>`
+     let list = document.querySelector('#lista-tarefas')
+     list.innerHTML += `<li class='iten'>${iten1}</li>`
     assignment.value = ""
 
 // Selecionar iten da lista
@@ -52,7 +53,7 @@ removed.addEventListener('click' ,function(){
 const clear = document.querySelector('#apaga-tudo')
 
 clear.addEventListener('click' ,function(){
-    let list = document.querySelector('#lista-tarefas')
+    
     list.removeChild(itenSelected)
 })
 }
