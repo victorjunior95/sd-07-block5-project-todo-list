@@ -33,8 +33,7 @@ listatarefa.addEventListener("dblclick", function(e2) {
     let element = document.querySelectorAll("#lista-tarefas");
     if (e2.target.className == "completed") {
         e2.target.className = "";
-    }
-    if (e2.target.className == "") {
+    } else if (e2.target.className == "") {
         e2.target.className = "completed";
     }
     console.log(element);
