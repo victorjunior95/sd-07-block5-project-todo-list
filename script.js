@@ -1,28 +1,30 @@
-function moveDown () {
+function moveDown() {
   const listTasks = document.querySelector('#lista-tarefas');
   const selectedTask = document.querySelector('.selected');
-  listTasks.insertBefore(selectedTask, selectedTask.nextSibling.nextSibling)
+  listTasks.insertBefore(selectedTask, selectedTask.nextSibling.nextSibling);
 }
-function moveUp () {
+function moveUp() {
   const listTasks = document.querySelector('#lista-tarefas');
   const selectedTask = document.querySelector('.selected');
-  listTasks.insertBefore(selectedTask, selectedTask.previousSibling)
+  if (listTasks.firstChild !== selectedTask){
+    listTasks.insertBefore(selectedTask, selectedTask.previousSibling);
+  }
 }
-function remove () {
-  let selectedTask = document.querySelector('.selected');
-    selectedTask.remove();
+function remove() {
+  const selectedTask = document.querySelector('.selected');
+  selectedTask.remove();
 }
-function salvarTarefas () {
+function salvarTarefas() {
   const listTasks = document.querySelector('#lista-tarefas');
   localStorage.setItem('list', `${listTasks.innerHTML}`);
 }
-function removeCompleted () {
+function removeCompleted() {
   const listCompletedTasks = document.querySelectorAll('.completed');
   for (let index = 0; index < listCompletedTasks.length; index += 1) {
     listCompletedTasks[index].remove();
   }
 }
-function clear () {
+function clear() {
   const listTasks = document.querySelector('#lista-tarefas');
   const textTask = document.querySelector('#texto-tarefa');
   listTasks.innerHTML = '';
@@ -32,7 +34,7 @@ function completeTask(event) {
   event.target.classList.toggle('completed');
 }
 function selectTask(event) {
-  let selectedTask = document.querySelector('.selected');
+  const selectedTask = document.querySelector('.selected');
   if (selectedTask !== null) {
     selectedTask.classList.remove('selected');
   }
@@ -50,9 +52,9 @@ function createTask() {
   listTasks.appendChild(newTask);
   textTask.focus();
 }
-function addTasksEventListeners () {
+function addTasksEventListeners() {
   const listTasks = document.querySelectorAll('#lista-tarefas li');
-  listTasks.forEach(element => {
+  listTasks.forEach((element) => {
     element.addEventListener('click', selectTask);
     element.addEventListener('dblclick', completeTask);
   });
@@ -65,18 +67,18 @@ window.onload = function () {
   const textTask = document.querySelector('#texto-tarefa');
   const listTasks = document.querySelector('#lista-tarefas');
   const removeSelected = document.querySelector('#remover-selecionado');
-  const moveUpButton  = document.querySelector('#mover-cima');
+  const moveUpButton = document.querySelector('#mover-cima');
   const moveDownButton = document.querySelector('#mover-baixo');
 
   listTasks.innerHTML = localStorage.list;
   addTasksEventListeners();
-  
+
   textTask.focus();
   createTaskButton.addEventListener('click', createTask);
-  removeCompletedButton.addEventListener('click',removeCompleted);
-  clearButton.addEventListener('click',clear);
+  removeCompletedButton.addEventListener('click', removeCompleted);
+  clearButton.addEventListener('click', clear);
   salvarTarefasButton.addEventListener('click', salvarTarefas);
   removeSelected.addEventListener('click', remove);
   moveUpButton.addEventListener('click', moveUp);
-  moveDownButton.addEventListener('click', moveDown)
+  moveDownButton.addEventListener('click', moveDown);
 };
