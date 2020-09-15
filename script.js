@@ -4,13 +4,14 @@ let btnCriaTarefa = document.querySelector('#criar-tarefa');
 let btnApagaTudo = document.querySelector('#apaga-tudo');
 let btnFinalizados = document.querySelector('#remover-finalizados');
 let btnSelecionado = document.querySelector('#remover-selecionado')
+let btnMoverCima = document.querySelector('#mover-cima');
+let btnMoverBaixo = document.querySelector('#mover-baixo');
 let classeItem = [];
 
 
 
 function criaItem(){
     if( campoInsertTarefa.value != ""){
-
         let item = 0;
         let lista = [];
         lista[item] = document.createElement('li');
@@ -66,7 +67,7 @@ function selecionaItem(item){
     });
 };
 
-// Remove todos os
+// Remove todos os itens completos
 
 function removeFinalizados(){
     for(let index = 0; index < classeItem.length ; index ++){
@@ -78,6 +79,7 @@ function removeFinalizados(){
 
 btnFinalizados.addEventListener('click',removeFinalizados);
 
+// Remove apenas o item selecionado
 
 function removeSelecionado(){
     for(let index = 0; index < classeItem.length ; index ++){
@@ -89,3 +91,34 @@ function removeSelecionado(){
 
 btnSelecionado.addEventListener('click',removeSelecionado);
 
+
+function MoverCima(){
+    for(let index = 0; index < classeItem.length ; index ++){
+        if(classeItem.length != 0 && classeItem[index].classList.contains('selected')){
+            let itemProximo;
+            let itemAtual;
+            itemProximo = classeItem[index].innerText;
+            itemAtual = classeItem[index-1].innerText;
+            classeItem[index-1].innerText = itemProximo;
+            classeItem[index].innerText = itemAtual;
+        }
+    }
+};
+
+btnMoverCima.addEventListener('click', MoverCima);
+
+
+function MoverBaixo(){
+    for(let index = 0; index < classeItem.length ; index ++){
+        if(classeItem.length != 0 && classeItem[index].classList.contains('selected')){
+            let itemAnterior;
+            let itemAtual;
+            itemAnterior = classeItem[index].innerText;
+            itemAtual = classeItem[index+1].innerText;
+            classeItem[index+1].innerText = itemAnterior;
+            classeItem[index].innerText = itemAtual;
+        }
+    }
+};
+
+btnMoverBaixo.addEventListener('click', MoverBaixo);
