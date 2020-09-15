@@ -6,8 +6,21 @@ body {
 .header h1 {
   text-align: center;
 }
+
 .header p {
   color: gray;
   font-style: italic;
   text-align: center;
+}
+
+.section-input {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.section-input input {
+  height: 20px;
+  width: 250px;
+  border-radius: 10%;
+  border: gray solid 3px;
 }
