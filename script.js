@@ -5,14 +5,10 @@ function addProduct() {
   const lista = document.getElementById('lista-tarefas');
   const itensDigitados = document.getElementById('texto-tarefa');
   const liItensDigitados = document.createElement('li');
-  if (itensDigitados.value === "") {
-      alert('You can\'t add an empty item');
-  } else {
     liItensDigitados.innerText = itensDigitados.value;
     lista.appendChild(liItensDigitados);
     itensDigitados.value = '';
     itensDigitados.focus();
-  }
 };
 // Call the function addProduct.
 botaoAdd.addEventListener('click', addProduct);
