@@ -3,7 +3,7 @@ const bot = document.getElementById('criar-tarefa');
 const lista = document.getElementById('lista-tarefas');
 const filhos = lista.children;
 function apagar() {
-  for (let index = 0; index < filhos.length; index++) {
+  for (let index = 0; index < filhos.length; index += 1) {
     filhos[index].className = 'item';
   }
 }
@@ -29,4 +29,4 @@ function criarTarefa() {
 
 window.onload = function () {
   criarTarefa();
-}
+};
