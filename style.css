@@ -50,6 +50,26 @@ body {
   text-align: left;
 }
 
-.completed{
-    text-decoration: line-through solid rgb(0, 0, 0);
+.completed {
+  text-decoration: line-through solid rgb(0, 0, 0);
+}
+
+.section-buttons {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.section-buttons button {
+  background-color: #307351;
+  border: hidden;
+  border-radius: 10%;
+  color: white;
+  font-weight: 600;
+  margin-left: 20px;
+  height: 30px;
+  width: 150px;
+}
+
+.section-buttons button:hover{
+    background-color: #26413C;
 }

@@ -1,5 +1,5 @@
 let input = document.querySelector('#texto-tarefa');
-let button = document.querySelector('#criar-tarefa');
+let buttonAdicionar = document.querySelector('#criar-tarefa');
 let listaOrdenada = document.querySelector('#lista-tarefas');
 
 function adicionaItemLista() {
@@ -15,7 +15,7 @@ function criaItemLista(className) {
   return itemLista;
 }
 
-button.addEventListener('click', adicionaItemLista);
+buttonAdicionar.addEventListener('click', adicionaItemLista);
 
 //-----------------------------------------------------------------//
 
@@ -47,3 +47,16 @@ document.addEventListener('dblclick', function (event) {
     event.target.classList.add('completed');
   }
 });
+
+//------------------------------------------------------------------//
+
+let buttonApagar = document.querySelector('#apaga-tudo');
+
+function apagaItemsLista() {
+  let items = document.querySelectorAll('.item');
+  for (let i = 0; i < items.length; i += 1) {
+    listaOrdenada.removeChild(items[i]);
+  }
+}
+
+buttonApagar.addEventListener('click', apagaItemsLista);
