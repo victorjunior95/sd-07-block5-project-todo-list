@@ -18,7 +18,7 @@ header , p , .input-text {
 }
 
 main {
-  background-color: rgb(38, 100, 224);
+  background-color: rgb(38 , 100 , 224);
   height: 500px;
 }
 
@@ -28,7 +28,7 @@ body {
 }
 
 .button-content {
-  background-color: rgb(151, 36, 151);
+  background-color: rgb(151 , 36 , 151);
   margin-left: auto;
   margin-right: auto;
   margin-top: 40px;
@@ -62,11 +62,11 @@ footer img {
 }
 
 .remove-selected {
-  background-color: rgb(199, 15, 82);
+  background-color: rgb(199 , 15 , 82);
 }
 
 .move-up {
-  background-color: rgb(208, 255, 0);
+  background-color: rgb(208 , 255 , 0);
 }
 
 .move-down {
@@ -74,13 +74,13 @@ footer img {
 }
 
 .clear {
-  background-color: rgb(255, 0, 4);
+  background-color: rgb(255 , 0 , 4);
 }
 
 .finish {
-  background-color: rgb(255, 129, 1);
+  background-color: rgb(255 , 129 , 1);
 }
 
 .save {
-  background-color: rgb(77, 255, 0);
+  background-color: rgb(77 , 255 , 0);
 }
