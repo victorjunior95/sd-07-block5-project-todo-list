@@ -34,3 +34,15 @@ botaoRemoverFinalizados.addEventListener("click", function() {
         item.remove();
     })
 })
+
+let botaoSalvarTarefas = document.getElementById('salvar-tarefas');
+botaoSalvarTarefas.addEventListener("click", function() {
+    localStorage.clear();
+    let listaDeTarefas = document.getElementById('lista-tarefas');
+    localStorage.setItem("lista de tarefas", listaDeTarefas.innerHTML);
+});  
+
+window.onload = mostrarListaSalva;
+function mostrarListaSalva() {
+    document.getElementById('lista-tarefas').innerHTML = localStorage.getItem('lista de tarefas');
+}
