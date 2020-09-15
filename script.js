@@ -44,8 +44,9 @@ window.onload = function () {
   }
 
   let cleanAllTasks = function () {
-    for (let index = 0 ; index < taskList.childNodes.length ; index += 1) {
-      taskList.removeChild(index)
+    let taskListChildren = taskList.querySelectorAll('li')
+    for (let index = 0 ; index < taskListChildren.length ; index += 1) {
+      taskList.removeChild(taskListChildren[index])
     }
   }
 
