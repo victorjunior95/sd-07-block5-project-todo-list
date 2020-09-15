@@ -7,7 +7,6 @@ function criarTarefa(){
     let elemento = document.createElement("li");    
     let result =lista.appendChild(elemento);
     elemento.addEventListener('click',itemSelecionado);
-    elemento.addEventListener('dblclick',nomedafunçaonova);
     let conteudo=result.innerText = inputDoTexto.value;
     inputDoTexto.value = "";
 }
