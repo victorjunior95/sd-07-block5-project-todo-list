@@ -82,8 +82,10 @@ buttonRemoveSelecionado.addEventListener('click', apagaSelecionado);
 function moverCima() {
   let lista = document.getElementById('lista-tarefas');
   let itensList = document.getElementsByClassName('item-selecionado');
+  if (itensList[0] !== undefined){
     if (itensList[0].previousElementSibling !== null){
       lista.insertBefore(itensList[0], itensList[0].previousElementSibling);
+}
 }
 }
 
@@ -93,8 +95,10 @@ buttonMoverCima.addEventListener('click', moverCima);
 function moverBaixo() {
   let lista = document.getElementById('lista-tarefas');
   let itensList = document.getElementsByClassName('item-selecionado');
+    if (itensList[0] !== undefined){
     if (itensList[0].nextElementSibling !== null){
       lista.insertBefore(itensList[0].nextElementSibling, itensList[0]);
+}
 }
 }
 
