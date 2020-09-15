@@ -1,100 +1,95 @@
 /* Page decoration tip https://youtu.be/Gp2bUX7_WIg */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 .apaga-tudo {
-    background-color: lime;
-    border-radius: 25px;
-    border: none;    
-    color: black;
-    cursor: pointer;
-    font-family: monospace;
-    font-size: 1.3rem;
-    font-weight: 50;
-    height: 50px;
-    outline: none;
-    width: 100px; 
+  background-color: lime;
+  border-radius: 25px;
+  border: none;
+  color: black;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 1.3rem;
+  font-weight: 50px;
+  height: 50px;
+  outline: none;
+  width: 100px;
 }
 
 body {
-    background-color: #111;
-    color: white;
-    height: 100%;
-    text-align: center;
+  background-color: #111;
+  color: white;
+  height: 100%;
+  text-align: center;
 }
 
 .completed {
-    text-decoration: line-through solid black;
+  text-decoration: line-through solid black;
 }
-  
-  .criar-tarefa {    
-      background-color: lime;
-      border-radius: 25px;
-      border: none;    
-      color: black;
-      cursor: pointer;
-      font-family: monospace;
-      font-size: 1.3rem;
-      font-weight: 50;
-      height: 50px;
-      outline: none;
-      width: 100px;
-  }
+
+.criar-tarefa {
+  background-color: lime;
+  border: none;
+  border-radius: 25px;
+  color: black;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 1.3rem;
+  font-weight: 50px;
+  height: 50px;
+  outline: none;
+  width: 100px;
+}
 
 div {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 
 }
 
 header {
-    color: #fff;
-    font-family: 'Hind', sans-serif;
-    font-size: 3rem;
-    font-weight: 50;
-    margin: 2rem 1rem;
-    text-align: center;
+  color: #fff;
+  font-family: 'Hind', sans-serif;
+  font-size: 3rem;
+  font-weight: 50px;
+  margin: 2rem 1rem;
+  text-align: center;
 }
 
 li {
-    display: block;
-    line-height: 2rem;
-    font-family: monospace;
-    font-size: large;
-    margin-left: 5%;
-    text-align: left;    
+  display: block;
+  font-family: monospace;
+  font-size: large;
+  line-height: 2rem;
+  margin-left: 5%;
+  text-align: left;
 }
 
 ol {
-    background-color: indigo;
+  background-color: indigo;
 }
 
 p {
-    margin: auto;
-    text-align: center;
-    
+  margin: auto;
+  text-align: center;
 }
+
 span {
-    color: lime;
-    font-weight: 800;
-    
+  color: lime;
+  font-weight: 800;
 }
+
 .texto-tarefa {
-    background-color: #fff;
-    border: none;
-    border-radius: 25px;
-    font-size: 1.15rem;
-    height: 50px;
-    margin: 0.25rem;
-    outline: none;
-    padding: 0.5rem 1rem;
-    width: 450px;
+  background-color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.15rem;
+  height: 50px;
+  margin: 0.25rem;
+  outline: none;
+  padding: 0.5rem 1rem;
+  width: 450px;
 }
+
 .selected {
-    background-color: gray;
+  background-color: gray;
 }
