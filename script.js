@@ -12,6 +12,7 @@ function addToList(){
   list.appendChild(newItem);
 
   newItem.addEventListener('click', doneItem);
+  newItem.addEventListener('dblclick', completedItem);
 
   inputList.value = '';
 }
@@ -26,7 +27,6 @@ function removeAll(){
 }
 
 function doneItem(e){
-
   let itemDone = e.srcElement;
 
   let itemPreviousSelected = document.querySelector('.done');
@@ -41,6 +41,19 @@ function doneItem(e){
   }else{
     itemPreviousSelected.classList.remove('done');
     itemDone.className += ' done';
+  }
+
+}
+
+function completedItem(e){
+  let itemDone = e.srcElement;
+  let name = itemDone.className;
+  let completed = 'completed';
+
+  if(name.includes(completed)){
+    itemDone.className = name.substring(9);
+  }else{
+    itemDone.className += ' completed';
   }
 
 }
