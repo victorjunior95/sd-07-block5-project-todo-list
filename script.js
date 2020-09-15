@@ -79,11 +79,11 @@ function removeSelecionado(){
 btnSelecionado.addEventListener('click',removeSelecionado);
 
 function removeFinalizados(){
-  for(let index = 0; index < classeItem.length ; index ++){
     if(classeItem[index].classList.contains('completed')){
+        for(let index = 0; index < classeItem.length ; index ++){
             criarLista.removeChild(classeItem[index]);
-     };
-  }
+        };
+    }
 };
 
 btnFinalizado.addEventListener('click',removeFinalizados);
