@@ -80,9 +80,12 @@ removeSelectedButton.addEventListener('click', function () {
 
 upButton.addEventListener('click', function () {
   let selectedItem = document.querySelector('.selected')
-  let previousTask = selectedItem.previousElementSibling
+  let previousTask = ''
+  if(selectedItem) {
+    previousTask = selectedItem.previousElementSibling
+  }
 
-  if(selectedItem && previousTask) {
+  if(previousTask) {
 
     let txtSelected = selectedItem.innerText
     let classSelected = selectedItem.className
@@ -93,16 +96,17 @@ upButton.addEventListener('click', function () {
     previousTask.className = classSelected
     selectedItem.innerText = prevTxt
     selectedItem.className = prevClass
-  } else {
-
   }
 })
 
 downButton.addEventListener('click', function () {
   let selectedItem = document.querySelector('.selected')
-  let nextTask = selectedItem.nextElementSibling
+  let nextTask = ''
 
-  if(selectedItem && nextTask) {
+  if (selectedItem) {
+    nextTask = selectedItem.nextElementSibling
+  }
+  if(nextTask) {
 
     let txtSelected = selectedItem.innerText
     let classSelected = selectedItem.className
@@ -113,7 +117,7 @@ downButton.addEventListener('click', function () {
     nextTask.className = classSelected
     selectedItem.innerText = nextTxt
     selectedItem.className = nextClass
-  } else {
+  } 
 
-  }
+
 })
