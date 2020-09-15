@@ -1,5 +1,6 @@
 const CaixaTexto = document.getElementById('texto-tarefa');
 const bot = document.getElementById('criar-tarefa');
+const bota = document.getElementById('apaga-tudo');
 const lista = document.getElementById('lista-tarefas');
 const filhos = lista.children;
 function apagar() {
@@ -27,6 +28,16 @@ function criarTarefa() {
   });
 }
 
+function apagarTarefa() {
+    bota.addEventListener('click', function () {
+      let vezes = filhos.length;
+      for (let I = 0; I < vezes; I += 1) {
+        lista.removeChild(filhos[0]);
+      }
+    });
+  }
+
 window.onload = function () {
   criarTarefa();
+  apagarTarefa();
 };
