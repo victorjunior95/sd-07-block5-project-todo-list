@@ -59,7 +59,7 @@ body {
   text-align: center;
 }
 
-.section-buttons button {
+.section-buttons .apagar {
   background-color: #307351;
   border: hidden;
   border-radius: 10%;
@@ -67,9 +67,39 @@ body {
   font-weight: 600;
   margin-left: 20px;
   height: 30px;
-  width: 250px;
+  width: 200px;
 }
 
-.section-buttons button:hover {
+.section-buttons .apagar:hover {
   background-color: #26413c;
+}
+
+.section-buttons .salvar {
+  background-color: #274c77;
+  border: hidden;
+  border-radius: 10%;
+  color: white;
+  font-weight: 600;
+  margin-left: 20px;
+  height: 30px;
+  width: 150px;
+}
+
+.section-buttons .salvar:hover {
+  background-color: #447199;
+}
+
+.section-buttons .mover {
+  background-color: #f7ef99;
+  border: hidden;
+  border-radius: 10%;
+  color: black;
+  font-weight: 600;
+  margin-left: 20px;
+  height: 30px;
+  width: 150px;
+}
+
+.section-buttons .mover:hover {
+  background-color: #f4d590;
 }

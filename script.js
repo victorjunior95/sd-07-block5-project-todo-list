@@ -76,3 +76,19 @@ buttonSalvar.addEventListener('click', function () {
 window.onload = function () {
   listaOrdenada.innerHTML = localStorage.getItem('Itens-salvos');
 };
+
+//---------------------------------------------------------------------------//
+
+let buttonMoverCima = querySelector('#mover-cima');
+
+// function moveCima(event){
+// let items = listaOrdenada.ChildNodes;
+//   for(let i =0; i<){
+//      if(event.target.style.backgroundColor == 'rgb(128, 128, 128)'){
+//
+//     }
+//   }
+//
+// }
+
+buttonMoverCima.addEventListener('click', moveCima);
