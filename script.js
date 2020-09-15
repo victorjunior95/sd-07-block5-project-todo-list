@@ -1,3 +1,9 @@
+function remove () {
+  let selectedTask = document.querySelectorAll('.selected');
+  selectedTask.forEach(element => {
+    element.remove();
+  });
+}
 function salvarTarefas () {
   const listTasks = document.querySelector('#lista-tarefas');
   localStorage.setItem('list', `${listTasks.innerHTML}`);
@@ -50,6 +56,7 @@ window.onload = function () {
   const salvarTarefasButton = document.querySelector('#salvar-tarefas')
   const textTask = document.querySelector('#texto-tarefa');
   const listTasks = document.querySelector('#lista-tarefas');
+  const removeSelected = document.querySelector('#remover-selecionado');
 
   listTasks.innerHTML = localStorage.list;
   addTasksEventListeners();
@@ -59,4 +66,5 @@ window.onload = function () {
   removeCompletedButton.addEventListener('click',removeCompleted);
   clearButton.addEventListener('click',clear);
   salvarTarefasButton.addEventListener('click', salvarTarefas);
+  removeSelected.addEventListener('click', remove);
 };
