@@ -13,13 +13,13 @@ function criaItem(){
     lista[item] = document.createElement('li');
     lista[item].innerText = campoInsertTarefa.value;
     lista[item].className = 'itens';
-    lista[item].style.backgroundColor = "rgb(255, 255,255)";
     criarLista.appendChild(lista[item]);
     campoInsertTarefa.value = ""; 
     item ++;
     classeItem = document.querySelectorAll('.itens');
     SelectComplet();
-    itemTroca();
+    itemAdciona();
+    itemRemove();
 }
 
 btnCriaTarefa.addEventListener('click',criaItem);
@@ -46,32 +46,37 @@ function SelectComplet(){
     }
 };
 
-function itemTroca(){
-    for(let index = 0; index < classeItem.length ; index ++){
-        if(classeItem[index].classList.contains('completed')){
-           classeItem[index].addEventListener('click',function(){
-            classeItem[index].style.backgroundColor = 'rgb(128,128,128)';
-           });
-        }
-        else{
-            classeItem[index].addEventListener('click',function(){
-                classeItem[index].style.backgroundColor = 'rgb(128,128,128)';
-            });
-        }
-       }
-   };
-
-function removeFinalizados(){
+function itemAdciona(){
     for(let index = 0; index < classeItem.length ; index ++){
         classeItem[index].addEventListener('click',function(){
-            if(classeItem[index].classList.contains('completed')){
-                criarLista.removeChild(classeItem[index]);
-            }
-            else{
-                alert('Nenhum item foi completo')
-            }
+            classeItem[index].classList.toggle('selected');
         });
     }
+};
+
+function itemRemove(){
+    for(let index = 0; index < classeItem.length ; index ++){
+        if(classeItem[index].classList.contains('selected')){
+            classeItem[index].addEventListener('click',function(){
+            classeItem[index].classList.remove('selected');
+            });
+            console.log(fundoColor)
+        }
+    }
+};
+
+function removeFinalizados(){
+    let lista = [];
+    if(classeItem[index].classList.contains('completed')){
+
+        for(let index = 0; index < classeItem.length ; index ++){
+            classeItem[index].addEventListener('click',function(){
+                    lista[index] =  classeItem[index];
+            });
+        }
+    }
+    
+    criarLista.removeChild(lista[index]);
 };
 
 btnSelecionado.addEventListener('click',removeFinalizados);
