@@ -16,14 +16,14 @@ header {
 input {
   background-color: rgb(255 , 195 , 230);
   border: solid 2px rgb(255 , 135 , 210);
-  border-radius: 10px;
+  border-radius: 5px;
   display: inline-block;
 }
 
 button {
   background-color: rgb(255 , 195 , 230);
   border: solid 2px rgb(255 , 135 , 210);
-  border-radius: 10px;
+  border-radius: 5px;
   color: rgb(125 , 45 , 90);
   display: inline-block;
 }
@@ -34,4 +34,8 @@ input:hover {
 
 button:hover {
   background-color: rgb(255 , 190 , 225);
+}
+
+.lista-tarefas {
+  text-align: left;
 }
