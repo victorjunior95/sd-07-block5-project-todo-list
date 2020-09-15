@@ -1,51 +1,47 @@
 const list = document.getElementById('lista-tarefas');
 let listaCompleta;
 
+// marca e desmarca quando clicado 1 vez
+function marcaSelecionado(item){
+  let itemSelecionado = item.target;
+    for (let index = 0; index < listaCompleta.length; index += 1){
+      let apagaCor = listaCompleta[index];
+      apagaCor.style.backgroundColor = ''; 
+  }
+  itemSelecionado.style.backgroundColor = 'rgb(128, 128, 128)';
+  itemSelecionado.classList.add('item-selecionado');
+}
+
+// deixa tachado se clicar duas vezes
+function marcaCompleto(item) {
+  let itemFinalizado = item.target;
+    if (itemFinalizado.classList.contains('completed')){
+      itemFinalizado.classList.remove('completed');
+      itemFinalizado.style.textDecoration = '';
+    } else {
+        itemFinalizado.classList.add('completed');
+        let prop = window.getComputedStyle(itemFinalizado).getPropertyValue('text-decoration');
+        itemFinalizado.style.textDecoration = prop;
+    }
+}
+
 function addElement() {
   const textInput = document.getElementById('texto-tarefa');
   const tarefaDigitada = textInput.value;
   const elementList = document.createElement('li');
   list.appendChild(elementList).classList = 'item-list';
   elementList.textContent = tarefaDigitada;
+  elementList.addEventListener('click', marcaSelecionado);
+  elementList.addEventListener('dblclick', marcaCompleto);
+  listaCompleta = document.querySelectorAll('.item-list');
   textInput.value = '';
-
-  // marca e desmarca quando clicado 1 vez
-  let itensList = document.querySelectorAll('.item-list');
-  for (let index = 0; index < itensList.length; index += 1){
-    let itemSelecionado = itensList[index];
-    itemSelecionado.addEventListener('click', function(){
-      for (let index = 0; index < itensList.length; index += 1){
-        let apagaCor = itensList[index];
-        apagaCor.style.backgroundColor = '';
-        itensList[index].classList.remove('item-selecionado'); 
-    }
-    itemSelecionado.classList.add('item-selecionado');
-    itemSelecionado.style.backgroundColor = 'rgb(128, 128, 128)';
-});  
-}
-
-for (let index = 0; index < itensList.length; index += 1){
-    let itemDuploClique = itensList[index];
-    itemDuploClique.addEventListener('dblclick', function(){
-        if (itemDuploClique.classList.contains('completed')){
-            itemDuploClique.classList.remove('completed');
-            itemDuploClique.style.textDecoration = '';
-    } else {
-        itemDuploClique.classList.add('completed');
-        let prop = window.getComputedStyle(itemDuploClique).getPropertyValue('text-decoration');
-        itemDuploClique.style.textDecoration = prop;
-    }
-    });
-}
-   
+  textInput.focus();
 }
 
 const buttonAdd = document.getElementById('criar-tarefa');
 buttonAdd.addEventListener('click', addElement);
 
-let itensList = document.querySelectorAll('.item-list');
-
-function apagarLista(){
+ function apagarLista(){
  let itens = document.getElementsByTagName('li');
  let lista = document.getElementsByTagName('ol')[0];
  for (let index = itens.length - 1; index >= 0 ; index -= 1){
