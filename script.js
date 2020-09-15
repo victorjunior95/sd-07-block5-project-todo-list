@@ -11,7 +11,6 @@ creator.addEventListener('click', () => {
   node.appendChild(textNode);
   list.appendChild(node);
   textInput.value = '';
-  elements = document.querySelectorAll('#lista-tarefas li');
 });
 
 clear.addEventListener('click', () => {
@@ -53,7 +52,7 @@ rmCompleteds.addEventListener('click', () => {
   const elements = document.querySelectorAll('li');
   for (let i = 0; i < elements.length; i += 1) {
     if (elements[i].classList.contains('completed')) {
-        elements[i].parentNode.removeChild(elements[i]);
+      elements[i].parentNode.removeChild(elements[i]);
     }
   }
 });
