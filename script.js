@@ -1,7 +1,5 @@
-//  Text Inputs
 const inputTextTask = document.getElementById('texto-tarefa');
 
-//  Buttons Inputs
 const buttonCreateTask = document.getElementById('criar-tarefa');
 const buttonClearTaskList = document.getElementById('apaga-tudo');
 const buttonRemoveCompletedTasks = document.getElementById('remover-finalizados');
@@ -11,13 +9,10 @@ const buttonLoadTasks = document.getElementById('carregar-tarefas');
 const buttonMoveUp = document.getElementById('mover-cima');
 const buttonMoveDown = document.getElementById('mover-baixo');
 
-//  Ordered List Outputs
 const orderedListTasks = document.getElementById('lista-tarefas');
 let selectedTask = document.getElementsByClassName('selected');
 let completedTasks = document.querySelectorAll('.completed');
 
-//  Functions
-//  Responsável por selecionar a li caso a desseleção caia no else
 function selectOtherLi() {
   if (selectedTask[0] !== undefined) {
     selectedTask[0].classList.remove('selected');
@@ -26,17 +21,7 @@ function selectOtherLi() {
     event.target.classList.add('selected');
   }
 }
-//  Responsável por deselecionar a li
-function unselectLi() {
-  selectedTask = document.getElementsByClassName('selected');
-  if (selectedTask[0] === event.target) {
-    selectedTask[0].classList.remove('selected');
-  } else {
-    selectOtherLi();
-  }
-}
 
-//  Marca como uma tarefa concluída. Riscando.
 function markAsDoneLi() {
   if (event.target.className !== 'task completed') {
     event.target.classList.add('completed');
@@ -45,29 +30,25 @@ function markAsDoneLi() {
   }
 }
 
-//  Criador de elementos li
 function elementCreator() {
   const element = document.createElement('li');
   element.innerText = inputTextTask.value;
   element.className = 'task';
   inputTextTask.value = '';
-  element.addEventListener('click', unselectLi);
+  element.addEventListener('click', selectOtherLi);
   element.addEventListener('dblclick', markAsDoneLi);
   return element;
 }
 
-//  Faz o append na lista ordenada.
 function addTaskToList() {
   const elementLi = elementCreator();
   orderedListTasks.appendChild(elementLi);
 }
 
-//  Limpa a lista.
 function clearTaskList() {
   orderedListTasks.innerHTML = '';
 }
 
-//  Tira as tarefas concluídas
 function removeCompletedTasks() {
   completedTasks = document.getElementsByClassName('completed');
   const numberMax = completedTasks.length;
@@ -76,7 +57,6 @@ function removeCompletedTasks() {
   }
 }
 
-//  Remove a tarefa selecionada
 function removeSelectedTask() {
   selectedTask = document.getElementsByClassName('selected');
   if (selectedTask[0] !== undefined) {
@@ -84,24 +64,21 @@ function removeSelectedTask() {
   }
 }
 
-//  Salva a lista no local Storage
 function saveOrderedList() {
   const toString = JSON.stringify(orderedListTasks.innerHTML);
   localStorage.setItem('keyListTask', toString);
 }
 
-//  Carrega a lista no local Storage
 function loadOrderedList() {
   const toHtml = JSON.parse(localStorage.getItem('keyListTask'));
   orderedListTasks.innerHTML = toHtml;
   const tasks = document.getElementsByClassName('task');
   for (let index = 0; index < tasks.length; index += 1) {
-    tasks[index].addEventListener('click', unselectLi);
+    tasks[index].addEventListener('click', selectOtherLi);
     tasks[index].addEventListener('dblclick', markAsDoneLi);
   }
 }
 
-// Move a tarefa pra cima.
 function moveTaskUp() {
   selectedTask = document.getElementsByClassName('selected');
   if (selectedTask.length !== 0) {
@@ -112,12 +89,11 @@ function moveTaskUp() {
   }
 }
 
-//  Move a tarefa pra baixo.
 function moveTaskDown() {
   selectedTask = document.getElementsByClassName('selected');
   if (selectedTask.length !== 0) {
     if (selectedTask[0].nextElementSibling != null) {
-      orderedListTasks.insertBefore(selectedTask[0].nextElementSibling, selectedTask[0]);
+      orderedListTasks.insertBefore(selectedTask[0].nextElementSibling, selectedTask[0]); //Fernando Soares advice.
       selectedTask = document.getElementsByClassName('selected');
     }
   }
