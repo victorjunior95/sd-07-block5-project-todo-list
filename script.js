@@ -10,11 +10,6 @@ addButton.addEventListener('click', function () {
   inputText.value = '';
 });
 
-// list.addEventListener('click', function (event) {
-//   const li = event.target;
-//   li.style.backgroundColor = 'rgb(128, 128, 128)';
-// });
-
 list.addEventListener('click', function (event) {
   const li = event.target;
   for (let index = 0; index < list.childNodes.length; index += 1) {
@@ -23,4 +18,15 @@ list.addEventListener('click', function (event) {
     }
   }
   li.style.backgroundColor = 'rgb(128, 128, 128)';
+});
+
+list.addEventListener('dblclick', function (event) {
+  const li = event.target;
+  if (li.style.textDecoration === 'line-through solid rgb(0, 0, 0)') {
+    li.style.textDecoration = 'none';
+    li.classList.remove('completed');
+  } else {
+    li.style.textDecoration = 'line-through solid rgb(0, 0, 0)';
+    li.className += 'completed';
+  }
 });
