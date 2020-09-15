@@ -67,9 +67,9 @@ body {
   font-weight: 600;
   margin-left: 20px;
   height: 30px;
-  width: 150px;
+  width: 250px;
 }
 
-.section-buttons button:hover{
-    background-color: #26413C;
+.section-buttons button:hover {
+  background-color: #26413c;
 }
