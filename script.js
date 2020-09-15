@@ -102,11 +102,8 @@ function loadOrderedList() {
 }
 
 // Move a tarefa pra cima.
-// O primeiro if é responsável por saber se tem uma tarefa selecionada.
-//  O segundo if é para filtrar se existe uma tarefa anterior.
-//  Por fim eu insiro a tarefa atual atrás da anterior.
 function moveTaskUp() {
-  let selectedTask = document.getElementsByClassName('selected');
+  selectedTask = document.getElementsByClassName('selected');
   if (selectedTask.length !== 0) {
     if (selectedTask[0].previousElementSibling != null) {
       orderedListTasks.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling);
@@ -116,12 +113,8 @@ function moveTaskUp() {
 }
 
 //  Move a tarefa pra baixo.
-//  O primeiro if é responsável por saber se tem uma tarefa selecionada.
-//  O segundo if para filtrar se existe uma tarefa anterior.
-//  Depois uma Constante que recebe o elemento posterior ao posterior.
-//  Então eu insiro o selecionado anteriormente ao posterior.
 function moveTaskDown() {
-  let selectedTask = document.getElementsByClassName('selected');
+  selectedTask = document.getElementsByClassName('selected');
   if (selectedTask.length !== 0) {
     if (selectedTask[0].nextElementSibling != null) {
       const afterElement = selectedTask[0].nextElementSibling.nextElementSibling;
