@@ -97,7 +97,9 @@ function loadOrderedList() {
 
 function moveTaskUp() {
   if (selectedTask.length !== 0) {
-    orderedListTasks.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling);
+    if (selectedTask[0].previousElementSibling != null) {
+      orderedListTasks.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling);
+    }
   }
 }
 
