@@ -38,12 +38,6 @@ document.querySelector('#remover-finalizados').addEventListener('click', functio
     document.querySelector('ol').removeChild(document.querySelector('.completed'));
   }
 });
-// para remover o selecionado
-document.querySelector('#remover-selecionado').addEventListener('click', function () {
-  while (document.querySelector('.gray')) { // remove só o selecionado
-    document.querySelector('ol').removeChild(document.querySelector('.gray'));
-  }
-});
 // para remover a lista toda
 document.querySelector('#apaga-tudo').addEventListener('click', function () {
   while (document.querySelector('ol').firstChild) { // para remover todos os li
@@ -53,17 +47,23 @@ document.querySelector('#apaga-tudo').addEventListener('click', function () {
 // para mover para cima
 document.querySelector('#mover-cima').addEventListener('click', function () {
   const arrayLi = document.querySelectorAll('li');
-  if (arrayLi.length === 0 || arrayLi.length === 1) {
-    alert('Só funciona com pelo menos 2 tarefas');
+  if (arrayLi.length === 0 || arrayLi.length === 1 || arrayLi[0].className === 'selected') {
+    alert('Não é possível para para cima');
   }
   for (let i = 1; i < arrayLi.length; i += 1) {
-    const itemGray = arrayLi [i].innerHTML;
-    const toChange = arrayLi [i-1].innerHTML;
-    if (arrayLi [i].className === 'selected') {
-      arrayLi [i].innerHTML = toChange;
-      arrayLi [i-1].innerHTML = itemGray;
-      arrayLi [i].classList.remove('selected');
-      arrayLi [i-1].classList.add('selected');
+    const itemGray = arrayLi[i].innerHTML;
+    const toChange = arrayLi[i - 1].innerHTML;
+    if (arrayLi[i].className === 'selected') {
+      arrayLi[i].innerHTML = toChange;
+      arrayLi[i - 1].innerHTML = itemGray;
+      arrayLi[i].classList.remove('selected');
+      arrayLi[i - 1].classList.add('selected');
     }
+  }
+});
+// para remover o selecionado
+document.querySelector('#remover-selecionado').addEventListener('click', function () {
+  while (document.querySelector('.selected')) { // remove só o selecionado
+    document.querySelector('ol').removeChild(document.querySelector('.selected'));
   }
 });
