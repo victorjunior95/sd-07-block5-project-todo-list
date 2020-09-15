@@ -26,21 +26,12 @@ listItem.addEventListener('dblclick', function () {
 });
 });
 // trata evento limpar toda a lista
-
-btnClearList = document.querySelector('#apaga-tudo');
-
+let btnClearList = document.querySelector('#apaga-tudo');
 btnClearList.addEventListener('click', function () {
   toDoList.innerHTML = '';
-})
-
-
-
-
-
-
-
-
-
-
-
-
+});
+// trata evento limpa apenas itens sobreescritos
+let btnClearDoneList = document.querySelector('#remover-finalizados');
+btnClearDoneList.addEventListener('click', function () {
+  document.querySelectorAll('.completed').innerHTML = '';
+});
