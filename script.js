@@ -11,7 +11,7 @@ const saveListBttn = document.getElementById('salvar-tarefas');
 
 //  cria evento de click no item lista
 function createTaskEvent1(task) {
-  task.addEventListener('click', function() {
+  task.addEventListener('click', function () {
     const currentList = document.querySelectorAll('.list-element');
     for (let index = 0; index < currentList.length; index += 1) {
       currentList[index].classList.remove('selected');
