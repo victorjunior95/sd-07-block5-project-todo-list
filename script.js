@@ -20,23 +20,31 @@ document.querySelector('#criar-tarefa').addEventListener('click', function () {
     }
   });
 });
+
+document.querySelector('#salvar-tarefas').addEventListener('click', function () {
+  localStorage.clear();
+  const arrayLi = [];
+  const allTasks = document.querySelectorAll('li');
+  for(let i = 0; i < allTasks.length; i += 1) {
+    arrayLi.push(allTasks[i].outerHTML);
+  }
+  localStorage.setItem('arrayLi', arrayLi);
+});
 // para remover o completado
 document.querySelector('#remover-finalizados').addEventListener('click', function () {
   while (document.querySelector('.completed')) { // remove só os completed
     document.querySelector('ol').removeChild(document.querySelector('.completed'));
   }
 });
-
+// para remover o selecionado
 document.querySelector('#remover-selecionado').addEventListener('click', function () {
   while (document.querySelector('.gray')) { // remove só o selecionado
     document.querySelector('ol').removeChild(document.querySelector('.gray'));
   }
 });
-
 // para remover a lista toda
 document.querySelector('#apaga-tudo').addEventListener('click', function () {
-  const onlyOl = document.querySelector('ol');
-  while (onlyOl.firstChild) { // para remover todos os li
-    onlyOl.removeChild(onlyOl.firstChild);
+  while (document.querySelector('ol').firstChild) { // para remover todos os li
+    document.querySelector('ol').removeChild(document.querySelector('ol').firstChild);
   }
 });
