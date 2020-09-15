@@ -57,3 +57,14 @@ function apagaTudo() {
         todosItems[0].removeChild(todosItems[0].lastChild);
     }
 }
+
+let buttonRemoverFinalizados = document.getElementById("remover-finalizados");
+buttonRemoverFinalizados.addEventListener("click", removeFinalizados);
+
+// Função que remove os finalizados
+function removeFinalizados() {
+    let itensFinalizados = document.getElementsByClassName("completed");
+    while (itensFinalizados.length > 0) {
+        itensFinalizados[0].remove();
+    }   
+}
