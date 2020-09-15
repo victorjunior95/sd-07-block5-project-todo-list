@@ -4,13 +4,13 @@ const lista = document.getElementById('lista-tarefas');
 function criarTarefa() {
   bot.addEventListener('click', function () {
     let texto = CaixaTexto.value;
-    let item = document.createElement('li');
+    const item = document.createElement('li');
     item.innerText = texto;
     lista.appendChild(item);
-    CaixaTexto.value = ''
-  })
+    CaixaTexto.value = '';
+  });
 }
 
 window.onload = function () {
-    criarTarefa();
+  criarTarefa();
 }
