@@ -5,19 +5,20 @@ const buttonCreatTask = document.getElementById('criar-tarefa');
 const buttonDeleteAll = document.getElementById('apaga-tudo');
 const buttonRmTask = document.getElementById('remover-finalizados');
 const rmTaskDone = document.getElementsByClassName('completed');
-let index = 0;
+const check = 0;
+
 function deleteAll() {
   do {
-    doList.removeChild(lineList[index]);
+    doList.removeChild(lineList[check]);
   }
-  while (index < lineList.length);
+  while (check < lineList.length);
 }
 
 function rmTask() {
   do {
-    doList.removeChild(rmTaskDone[index]);
+    doList.removeChild(rmTaskDone[check]);
   }
-  while (index < rmTaskDone.length)
+  while (check < rmTaskDone.length);
 }
 
 function backgroundSelected() {
@@ -28,7 +29,7 @@ function backgroundSelected() {
 }
 
 function taskDone() {
-  if (this.className == '') {
+  if (this.className === '') {
     this.className = 'completed';
   } else {
     this.className = '';
