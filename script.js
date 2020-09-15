@@ -104,3 +104,17 @@ function moverBaixo() {
 
 let buttonMoverBaixo = document.getElementById('mover-baixo');
 buttonMoverBaixo.addEventListener('click', moverBaixo);
+
+function salvarTarefas() {
+  localStorage.clear();
+  let listaCompleta = document.querySelector('ol');
+  localStorage.setItem('Lista', listaCompleta.innerHTML);
+  }
+
+ window.onload = function() {
+   document.querySelector('ol').innerHTML = localStorage.getItem('Lista');
+ }
+
+
+let buttonSalvar = document.getElementById('salvar-tarefas');
+buttonSalvar.addEventListener('click', salvarTarefas);
