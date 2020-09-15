@@ -6,6 +6,7 @@ const deleteConcludedTasks = document.getElementById('remover-finalizados');
 const elements = [];
 const saveTasks = document.getElementById('salvar-tarefas');
 const clearHistory = document.getElementById('apagar-histórico');
+const removeSelected = document.getElementById('remover-selecionado');
 
 clearHistory.addEventListener('click', () => {
   localStorage.clear();
@@ -79,3 +80,7 @@ function saveAllTasks() {
 }
 
 saveTasks.addEventListener('click', saveAllTasks);
+removeSelected.addEventListener('click', () => {
+  const selected = document.getElementsByClassName('selected');
+  list.removeChild(selected[0]);
+});
