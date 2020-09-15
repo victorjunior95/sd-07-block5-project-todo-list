@@ -21,3 +21,10 @@ button.addEventListener('click', function (event) {
     alert("Error! Please, enter a valid text")
   }
 });
+
+// To change the item's color:
+if (list.value !== '') {
+  list.addEventListener('click', function(item) {
+    item.target.style.backgroundColor = 'rgb(128, 128, 128)';
+  });
+}
