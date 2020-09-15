@@ -23,12 +23,14 @@ document.querySelector('#criar-tarefa').addEventListener('click', function () {
 // para salvar todas as li no localStorage
 document.querySelector('#salvar-tarefas').addEventListener('click', function () {
   localStorage.clear(); // limpa o que tiver salvo para receber lista nova
-  
-  const allTasks = document.querySelectorAll('li'); // todas as li novas
-  for (let i = 0; i < allTasks.length; i += 1) {
-    localStorage.setItem(i, allTasks[i].outerHTML); // outerHTML retorna a <li>task</li>
-  }
+  const allTasks = document.querySelector('ol'); // todas as li novas a partir do pai
+    localStorage.setItem('Task', allTasks.innerHTML);
 });
+
+window.onload = refresh;
+function refresh() {
+  document.querySelector('ol').innerHTML = localStorage.getItem('Task');
+}
 
 // para remover o completado
 document.querySelector('#remover-finalizados').addEventListener('click', function () {
