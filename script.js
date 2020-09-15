@@ -23,29 +23,36 @@ function selected(event) {
 }
 // function to select an item that was double clicked and show a line through
 function dbclicked(event) {
-  let items = event.target.classList.contains('dbclicked');
+  let items = event.target.classList.contains('completed');
   if (items === true) {
-    event.target.classList.remove('dbclicked');
+    event.target.classList.remove('completed');
   } else {
-    event.target.classList.add('dbclicked');
+    event.target.classList.add('completed');
   }
 }
 
 // function clear list
 function clearAll() {
   let father = document.getElementById('lista-tarefas');
-  while (father.lastChild !== null) {
-    father.removeChild(father.lastElementChild);
-  }
+  father.innerHTML = '';
 }
 
 // function clear all done
 function clearAllDone() {
   let father = document.getElementById('lista-tarefas');
-  let itemsCompleted = document.querySelectorAll('.dbclicked');
-  while (itemsCompleted !== null) {
-    console.log(itemsCompleted);
-    console.log('---');
-    father.removeChild(itemsCompleted[0]);
+  let itemsCompleted = document.querySelectorAll('.completed');
+  let counter = itemsCompleted.length - 1;
+  while (counter >= 0) {
+    father.removeChild(itemsCompleted[counter]);
+    counter -= 1;
+  }
+}
+
+// function remove Selected
+function removeSelected(){
+  let selected = document.querySelector('.selected');
+  if (selected !== null){
+  let father = document.getElementById('lista-tarefas');
+  father.removeChild(selected);
   }
 }
