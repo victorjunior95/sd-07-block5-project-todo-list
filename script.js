@@ -8,7 +8,10 @@ function addToList(){
   let newItem = document.createElement('li');
 
   newItem.innerText = inputList.value;
+  newItem.className = 'item';
   list.appendChild(newItem);
+
+  newItem.addEventListener('click', doneItem);
 
   inputList.value = '';
 }
@@ -18,6 +21,26 @@ function removeAll(){
 
   for(let i = 0; i < items.length; i += 1){
     list.removeChild(items[i]);
+  }
+
+}
+
+function doneItem(e){
+
+  let itemDone = e.srcElement;
+
+  let itemPreviousSelected = document.querySelector('.done');
+
+  if(itemDone ===  itemPreviousSelected){
+    itemPreviousSelected.classList.remove('done');
+    return;
+  }
+
+  if(itemPreviousSelected === null){
+    itemDone.className += ' done';
+  }else{
+    itemPreviousSelected.classList.remove('done');
+    itemDone.className += ' done';
   }
 
 }
