@@ -5,3 +5,15 @@ body {
 .base {
   background-color: aqua;
 }
+
+.div {
+  background-color: aquamarine;
+}
+
+.item {
+  background-color: aquamarine;
+}
+
+.slecionado {
+  background-color: rgb(128,128,128);
+}
