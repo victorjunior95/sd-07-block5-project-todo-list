@@ -5,10 +5,10 @@ const assignment = document.querySelector('#texto-tarefa')
 
 add.addEventListener('click', function () {
     let iten1 = assignment.value
-    let list = document.querySelector('#lista-tarefas').innerHTML += `<li class='iten'>${iten1}</li>`
+    document.querySelector('#lista-tarefas').innerHTML += `<li class='iten'>${iten1}</li>`
     assignment.value = ""
-    
-// Selecionar 
+
+// Selecionar iten da lista
 
 const listItens = document.getElementsByTagName('li')
 
@@ -24,6 +24,8 @@ for ( let index = 0; index < listItens.length; index += 1){
     
 })
 
+//Marca tarefa como completa!
+
 itenSelected.addEventListener('dblclick' , function (){
     
     if(itenSelected.classList.contains('completed') ){
@@ -33,6 +35,9 @@ itenSelected.addEventListener('dblclick' , function (){
     }
     
 })
+
+//Remover tarefa completa!
+
 const removed = document.querySelector('#remover-finalizados')
 removed.addEventListener('click' ,function(){
     let list = document.querySelector('#lista-tarefas')
@@ -41,18 +46,21 @@ removed.addEventListener('click' ,function(){
     }
 })
 
+
+//Apagar lista
+
 const clear = document.querySelector('#apaga-tudo')
-for(let index1 = 0 ; index1 < listItens.length; index1 +=1){
-    let itens = listItens[index1]
+
 clear.addEventListener('click' ,function(){
     
     let list = document.querySelector('#lista-tarefas')
     
-    list.removeChild(itens)
+    list.removeChild(itenSelected)
 })
-}
+
 }
 })
+
 
     
        
