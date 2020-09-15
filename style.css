@@ -3,11 +3,11 @@ body {
 }
 
 .criar-tarefa {
-  height: 30px;
-  width: 60px;
+  height: 20px;
+  width: 90px;
 }
-  
-  /* .lista-tarefas {
+
+/* .lista-tarefas {
     display: flex;
     flex-direction: column-reverse
   } */
