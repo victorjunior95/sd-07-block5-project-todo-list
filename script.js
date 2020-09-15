@@ -4,6 +4,9 @@ const deleteButton = document.getElementById('apaga-tudo');
 const buttonRemoveCompleted = document.getElementById('remover-finalizados');
 const saveButton = document.getElementById('salvar-tarefas')
 const removeSelectedButton = document.getElementById('remover-selecionado')
+const upButton = document.getElementById('mover-cima')
+const downButton = document.getElementById('mover-baixo')
+
 
 addButton.addEventListener('click', function () {
   let inputItem = document.getElementById('texto-tarefa');
@@ -73,4 +76,44 @@ saveButton.addEventListener('click', function (){
 removeSelectedButton.addEventListener('click', function () {
   let selectedItem = document.querySelector('.selected')
   orderedList.removeChild(selectedItem)
+})
+
+upButton.addEventListener('click', function () {
+  let selectedItem = document.querySelector('.selected')
+  let previousTask = selectedItem.previousElementSibling
+
+  if(selectedItem && previousTask) {
+
+    let txtSelected = selectedItem.innerText
+    let classSelected = selectedItem.className
+    let prevTxt = previousTask.innerText
+    let prevClass = previousTask.className
+
+    previousTask.innerText = txtSelected
+    previousTask.className = classSelected
+    selectedItem.innerText = prevTxt
+    selectedItem.className = prevClass
+  } else {
+
+  }
+})
+
+downButton.addEventListener('click', function () {
+  let selectedItem = document.querySelector('.selected')
+  let nextTask = selectedItem.nextElementSibling
+
+  if(selectedItem && nextTask) {
+
+    let txtSelected = selectedItem.innerText
+    let classSelected = selectedItem.className
+    let nextTxt = nextTask.innerText
+    let nextClass = nextTask.className
+
+    nextTask.innerText = txtSelected
+    nextTask.className = classSelected
+    selectedItem.innerText = nextTxt
+    selectedItem.className = nextClass
+  } else {
+
+  }
 })
