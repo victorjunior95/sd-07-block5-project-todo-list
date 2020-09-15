@@ -92,7 +92,7 @@ function moveTaskUp() {
 function moveTaskDown() {
   selectedTask = document.getElementsByClassName('selected');
   if (selectedTask.length !== 0) {
-    if (selectedTask[0].nextElementSibling != null) {  //Fernando Soares advice.
+    if (selectedTask[0].nextElementSibling != null) {  // Fernando Soares advice.
       orderedListTasks.insertBefore(selectedTask[0].nextElementSibling, selectedTask[0]);
       selectedTask = document.getElementsByClassName('selected');
     }
