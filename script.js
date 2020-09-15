@@ -95,12 +95,29 @@ function loadOrderedList() {
   }
 }
 
-function moveTaskUp() {
+function isSelected() {
+  selectedTask = document.getElementsByClassName('selected');
+  if (selectedTask > 0) {
+    return true;
+  }
+}
 
+function moveTaskUp() {
+  if (selectedTask.length != 0){
+    if (selectedTask[0].previousElementSibling != null){
+      orderedListTasks.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling);
+    }
+  }
 }
 
 function moveTaskDown() {
-
+  if (selectedTask.length != 0) {
+  if (selectedTask[0].nextElementSibling != null){
+    orderedListTasks.insertBefore(selectedTask[0], selectedTask[0].nextElementSibling.nextElementSibling);
+  } else {
+      orderedListTasks.appendChild(selectedTask[0]);
+    }
+  }
 }
 
 // Event Listeners
