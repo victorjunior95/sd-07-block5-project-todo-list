@@ -7,6 +7,7 @@ function criarTarefa(){
     let elemento = document.createElement("li");    
     let result =lista.appendChild(elemento);
     let conteudo=result.innerText = inputDoTexto.value;
+    inputDoTexto.value = "";
 }
 botao.addEventListener("click", criarTarefa);
 
