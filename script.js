@@ -22,16 +22,16 @@ for ( let index = 0; index < listItens.length; index += 1){
 })
 
 itenSelected.addEventListener('dblclick' , function (){
-    if(itenSelected.className ==='iten'){
-        itenSelected.className='completed'
+    if(itenSelected.id ===''){
+        itenSelected.id='completed'
     } else {
-        itenSelected.className= 'iten'
+        itenSelected.id= ''
     }
 })
 const removed = document.querySelector('#remover-finalizados')
 removed.addEventListener('click' ,function(){
     let list = document.querySelector('#lista-tarefas')
-    if(itenSelected.className === 'completed'){
+    if(itenSelected.id === 'completed'){
         list.removeChild(itenSelected)
     }
 })
@@ -47,8 +47,6 @@ clear.addEventListener('click' ,function(){
 })
 }
 }
-
-
 })
 
     
