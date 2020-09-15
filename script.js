@@ -23,16 +23,31 @@ window.onload=function(){
 
         //Limpa o nome de classes dos itens da lista
         for(i=0; i<listaTarefas.childElementCount; i+=1){
-            if (listaTarefas.children[i].className){
-                listaTarefas.children[i].className=''
+            if (listaTarefas.children[i].classList.contains('selecionado')){
+                listaTarefas.children[i].classList.remove('selecionado')
             }
         }
 
         //Adiciona a classe selecionado ao item clicado
         if (item.id != 'lista-tarefas'){
-            item.className='selecionado';
+            item.classList.add('selecionado');
         }
     })
     //------------------------------------------------------------------------------------------
+
+    //Este bloco é responsável pela funcionalidade de duplo clique que indica que a tarefa foi finalizada
+    listaTarefas.addEventListener('dblclick',function(){
+        let item=event.target
+
+        //Limpa a classe completed caso ela já exista
+            if (item.classList.contains('completed')){
+                item.classList.remove('completed')
+            } else {
+                //Adiciona a classe completed ao item clicado
+                    if (item.id != 'lista-tarefas'){
+                        item.classList.add('completed');
+                    }
+                }                        
+            })
 
 }
