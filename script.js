@@ -22,10 +22,9 @@ function completeTasks(element) {
   });
 }
 
-function insertItem(textItem) {
+function insertItem() {
   const newItem = document.createElement('li');
-  textItem = textInput.value;
-  newItem.innerHTML = textItem;
+  newItem.innerText = textInput.value;
   changeBackgroundColor(newItem);
   completeTasks(newItem);
   list.appendChild(newItem);
@@ -42,7 +41,7 @@ deleteAll.addEventListener('click', () => {
 
 deleteConcludedTasks.addEventListener('click', () => {
   for (let i = 0; i < elements.length; i += 1) {
-    if (elements[i].className === 'completed') {
+    if (elements[i].classList.contains('completed')) {
       elements[i].remove();
     }
   }
