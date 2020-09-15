@@ -1,6 +1,7 @@
 let btnAddList = document.getElementById('criar-tarefa');
 let btnRemoveAll = document.getElementById('apaga-tudo');
 let btnRemoveCompleted = document.getElementById('remover-finalizados');
+let btnRemoveSelected = document.getElementById('remover-selecionados');
 let list = document.getElementById('lista-tarefas');
 let inputList = document.getElementById('texto-tarefa');
 
@@ -12,7 +13,7 @@ function addToList(){
   newItem.className = 'item';
   list.appendChild(newItem);
 
-  newItem.addEventListener('click', doneItem);
+  newItem.addEventListener('click', selectedItem);
   newItem.addEventListener('dblclick', completedItem);
 
   inputList.value = '';
@@ -27,21 +28,21 @@ function removeAll(){
 
 }
 
-function doneItem(e){
+function selectedItem(e){
   let itemDone = e.srcElement;
 
-  let itemPreviousSelected = document.querySelector('.done');
+  let itemPreviousSelected = document.querySelector('.selected');
 
   if(itemDone ===  itemPreviousSelected){
-    itemPreviousSelected.classList.remove('done');
+    itemPreviousSelected.classList.remove('selected');
     return;
   }
 
   if(itemPreviousSelected === null){
-    itemDone.className += ' done';
+    itemDone.className += ' selected';
   }else{
-    itemPreviousSelected.classList.remove('done');
-    itemDone.className += ' done';
+    itemPreviousSelected.classList.remove('selected');
+    itemDone.className += ' selected';
   }
 
 }
@@ -73,6 +74,18 @@ function removeCompleted(){
 
 }
 
+function removeSelected(){
+  let items = document.querySelectorAll('.selected');
+
+  if(items.length > 0){
+    for( let i = 0; i < items.length; i += 1){
+      list.removeChild(items[i]);
+    }
+  }
+
+}
+
 btnAddList.addEventListener('click', addToList);
 btnRemoveAll.addEventListener('click', removeAll);
 btnRemoveCompleted.addEventListener('click', removeCompleted);
+btnRemoveSelected.addEventListener('click', removeSelected);
