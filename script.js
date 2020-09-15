@@ -17,17 +17,38 @@ buttonToAdd.addEventListener('click', function () {
   });
 
   elementLi.addEventListener('dblclick', function (event) {
-    counter +=1;
+    counter += 1;
+    console.log
     if (counter == 1) {
       event.target.classList.add("completed");
     } else {
       event.target.classList.remove("completed");
-      counter=0;
+      counter = 0;
     }
   })
 
   orderedListElement.appendChild(elementLi).innerHTML = textTasks.value;
   textTasks.value = "";
+})
+
+let removeAll = document.getElementById("apaga-tudo");
+
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+
+  }
+}
+
+function clearArrayContent(array){
+ for (let index = 0; index < array.length; index++) {
+   array.pop();
+ }
+}
+
+removeAll.addEventListener('click', function () {
+  removeAllChildNodes(orderedListElement);
+  clearArrayContent(array);
 })
 
 
