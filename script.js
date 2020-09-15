@@ -5,7 +5,6 @@ const deleteAll = document.getElementById('apaga-tudo');
 const deleteConcludedTasks = document.getElementById('remover-finalizados');
 const elements = [];
 const saveTasks = document.getElementById('salvar-tarefas');
-const tasksToSave = document.getElementsByTagName('li');
 const loadTasks = document.getElementById('carregar-tarefas');
 
 function loadItens() {
