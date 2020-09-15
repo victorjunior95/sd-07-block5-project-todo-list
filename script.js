@@ -3,6 +3,7 @@ let criarLista = document.querySelector('#lista-tarefas');
 let btnCriaTarefa = document.querySelector('#criar-tarefa');
 let btnApagaTudo = document.querySelector('#apaga-tudo');
 let btnFinalizados = document.querySelector('#remover-finalizados');
+let btnSelecionado = document.querySelector('#remover-selecionado')
 let classeItem = [];
 
 
@@ -68,4 +69,15 @@ function removeFinalizados(){
 };
 
 btnFinalizados.addEventListener('click',removeFinalizados);
+
+
+function removeSelecionado(){
+    for(let index = 0; index < classeItem.length ; index ++){
+        if(classeItem[index].classList.contains('selected')){
+            criarLista.removeChild(classeItem[index]);
+        }
+    };
+};
+
+btnSelecionado.addEventListener('click',removeSelecionado);
 
