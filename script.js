@@ -4,6 +4,23 @@ const textInput = document.getElementById('texto-tarefa');
 const deleteAll = document.getElementById('apaga-tudo');
 const deleteConcludedTasks = document.getElementById('remover-finalizados');
 const elements = [];
+const saveTasks = document.getElementById('salvar-tarefas');
+const tasksToSave = document.getElementsByTagName('li');
+const loadTasks = document.getElementById('carregar-tarefas');
+
+function loadItens() {
+  for (let i = 0; i < localStorage.length; i += 1) {
+    const savedElement = JSON.parse(localStorage.getItem(`item${i}`));
+    const newItem = document.createElement('li');
+    newItem.innerText = savedElement.text;
+    newItem.className = savedElement.objectClass;
+    list.appendChild(newItem);
+  }
+}
+
+document.onload = loadItens();
+
+loadTasks.addEventListener('click', loadItens);
 
 function changeBackgroundColor(element) {
   element.addEventListener('click', () => {
@@ -46,3 +63,18 @@ deleteConcludedTasks.addEventListener('click', () => {
     }
   }
 });
+
+function saveAllTasks() {
+  const toSave = document.getElementsByTagName('li');
+  localStorage.clear();
+  for (let i = 0; i < toSave.length; i += 1) {
+    const itens = toSave[i];
+    const finalToSave = {
+      text: itens.innerHTML,
+      objectClass: itens.className,
+    };
+    localStorage.setItem(`item${i}`, JSON.stringify(finalToSave));
+  }
+}
+
+saveTasks.addEventListener('click', saveAllTasks);
