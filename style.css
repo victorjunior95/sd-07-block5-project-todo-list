@@ -18,7 +18,7 @@ header , p , .input-text {
 }
 
 main {
-  background-color: #007fff;
+  background-color: rgb(38, 100, 224);
   height: 500px;
 }
 
@@ -28,7 +28,7 @@ body {
 }
 
 .button-content {
-  background-color: #7f00ff;
+  background-color: rgb(151, 36, 151);
   margin-left: auto;
   margin-right: auto;
   margin-top: 40px;
@@ -62,11 +62,11 @@ footer img {
 }
 
 .remove-selected {
-  background-color: #ff00b3;
+  background-color: rgb(199, 15, 82);
 }
 
 .move-up {
-  background-color: #d0ff00;
+  background-color: rgb(208, 255, 0);
 }
 
 .move-down {
@@ -74,13 +74,13 @@ footer img {
 }
 
 .clear {
-  background-color: #ff0004;
+  background-color: rgb(255, 0, 4);
 }
 
 .finish {
-  background-color: #ff8101;
+  background-color: rgb(255, 129, 1);
 }
 
 .save {
-  background-color: #4dff00;
+  background-color: rgb(77, 255, 0);
 }
