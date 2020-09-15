@@ -1,5 +1,5 @@
 function completeTask(event) {
-  event.target.classList.toggle('completed',true);
+  event.target.classList.toggle('completed');
 }
 function selectTask(event) {
   // const tasks = document.querySelectorAll('#lista-tarefas li');
@@ -7,7 +7,7 @@ function selectTask(event) {
   if (selectedTask !== null) {
     selectedTask.classList.remove('selected');
   }
-  event.target.classList.toggle('selected',true);
+  event.target.classList.add('selected');
 }
 function createTask() {
   const textTask = document.querySelector('#texto-tarefa');
