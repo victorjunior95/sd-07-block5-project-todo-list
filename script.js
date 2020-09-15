@@ -10,8 +10,15 @@ const listItens = document.getElementsByTagName('li')
 
 for ( let index = 0; index < listItens.length; index += 1){
     const itenSelected = listItens[index]
+    
     itenSelected.addEventListener('click' ,function(){
-    itenSelected.id='selected'
+        const selected = document.querySelector('.selected')
+
+    if(selected){
+        selected.classList.remove('selected')
+    }
+    itenSelected.classList.add('selected')
+    
 })
 
 itenSelected.addEventListener('dblclick' , function (){
