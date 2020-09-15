@@ -35,8 +35,25 @@ itensList.addEventListener('click', function (itensList) {
         itensList.target.classList.toggle('selected');
     }
 });
+// Function to mark as completed.
 itensList.addEventListener('dblclick', function (itensList) {
     if (itensList.target.tagName === 'LI') {
         itensList.target.classList.toggle('completed');
     }
 });
+// Function to remove finished item.
+const removerFinalizados = document.querySelector('#remover-finalizados');
+removerFinalizados.addEventListener('click', function () {
+    const linhas = document.querySelectorAll('.completed');
+    for (let count = 0; count < linhas.length; count += 1) {
+      linhas[count].remove();
+    }
+  });
+// Function to remove completed item.
+const removerSelecionado = document.querySelector('#remover-selecionado');
+removerSelecionado.addEventListener('click', function () {
+    const linhas = document.querySelectorAll('.selected');
+    for (let count = 0; count < linhas.length; count += 1) {
+      linhas[count].remove();
+    }
+  });

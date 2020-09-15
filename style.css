@@ -20,11 +20,7 @@ body {
   text-align: center;
 }
 
-.completed {
-  text-decoration: line-through solid black;
-}
-
-.criar-tarefa {
+button {
   background-color: lime;
   border: none;
   border-radius: 25px;
@@ -34,8 +30,15 @@ body {
   font-size: 1.3rem;
   font-weight: bolder;
   height: 50px;
+  margin-left: 20px;
   outline: none;
-  width: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: auto;
+}
+
+.completed {
+  text-decoration: line-through solid black;
 }
 
 div {
@@ -56,6 +59,7 @@ header {
 }
 
 li {
+  display: block;
   font-family: monospace;
   font-size: large;
   line-height: 2rem;
