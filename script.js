@@ -47,6 +47,7 @@ function adicionarTarefa(element, textInput, classElement) {
 // salva as tarefas criadas no localStorage
 function salvarTarefas() {
   if (typeof(Storage) !== "undefined") {
+    // localStorage.clear();
     const tarefas = document.getElementsByTagName('li');
     for (let index = 0; index < tarefas.length; index += 1) {
       localStorage.setItem(`tarefa_${index}`, tarefas[index].innerText);
@@ -76,6 +77,28 @@ function carregarTarefas() {
   }
 }
 
+// move tareva selecionada uma posição para cima
+function moverCimaTarefa() {
+  const listaTarefasOl = document.querySelector('#lista-tarefas');
+  const listItens = document.querySelectorAll('li');
+  for (let index = 1; index < listItens.length; index += 1) {
+    if (listItens[index].style.backgroundColor === 'rgb(128, 128, 128)') {
+      listItens[index] = listaTarefasOl.insertBefore(listItens[index], listItens[index - 1]);
+    }
+  }
+}
+
+// move tareva selecionada uma posição para baixo
+function moverBaixoTarefa() {
+  const listaTarefasOl = document.querySelector('#lista-tarefas');
+  const listItens = document.querySelectorAll('li');
+  for (let index = 0; index < listItens.length - 1; index += 1) {
+    if (listItens[index].style.backgroundColor === 'rgb(128, 128, 128)') {
+      listItens[index + 1] = listaTarefasOl.insertBefore(listItens[index +1], listItens[index]);
+    }
+  }
+}
+
 window.onload = function () {
   const criarTarefaButton = document.querySelector('#criar-tarefa');
   const textoTarefaInput = document.querySelector('#texto-tarefa');
@@ -101,4 +124,10 @@ window.onload = function () {
   // salvar as tarefas criadas
   const salvarTarefasButton = document.querySelector('#salvar-tarefas');
   salvarTarefasButton.addEventListener('click', salvarTarefas);
+
+  // mover itens da lista de tarefa para cima ou para baixo
+  const moverCimaButton = document.querySelector('#mover-cima');
+  const moverBaixoButton = document.querySelector('#mover-baixo');
+  moverCimaButton.addEventListener('click', moverCimaTarefa);
+  moverBaixoButton.addEventListener('click', moverBaixoTarefa);
 };
