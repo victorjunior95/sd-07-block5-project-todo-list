@@ -1,4 +1,4 @@
-const storage = {
+const storageTodoList = {
   index: function () {
     let todoList = JSON.parse(localStorage.getItem('todo-list'));
 
@@ -7,12 +7,11 @@ const storage = {
 
   insert: function (todoList) {
     localStorage.setItem('todo-list', JSON.stringify(todoList));
-  },
-
-  delete: function (id) {
-    localStorage.removeItem(todoList.id)
   }
 }
+
+// lista de tarefas
+let todoList = [];
 
 function clearInputValue() {
   document.getElementById('texto-tarefa').value = '';
@@ -38,6 +37,10 @@ function getBtnRemoveAll() {
   return document.getElementById('apaga-tudo');
 }
 
+function getBtnSave() {
+  return document.getElementById('salvar-tarefas');
+}
+
 function createLi() {
   return document.createElement('li');
 }
@@ -46,7 +49,7 @@ function getLiAll() {
   return document.getElementsByTagName('li');
 }
 
-function getLiCompleted(){
+function getLiCompleted() {
   return document.querySelectorAll('.completed');
 }
 
@@ -56,6 +59,7 @@ function removeLi(li) {
 }
 
 function insertPropertyInElement({ element = '', text = '', classe = '' }) {
+  
   if (element) {
     let myElement = element;
     if (text) myElement.innerText = text;
@@ -79,8 +83,12 @@ function eventLiClick(li) {
 
 // adicionando evendo de double click no li
 function eventLiDblClick(li) {
-  li.addEventListener('dblclick', function () {
+  li.addEventListener('dblclick', function (event) {
     li.classList.toggle('completed');
+    let lis = getLiAll()
+    for(let index = 0; index < lis.length; index += 1){
+      if(lis[index].className == 'completed') todoList[index].classes = 'completed';
+    }
   });
 }
 
@@ -91,12 +99,14 @@ function addEventSplitLi(li) {
   eventLiDblClick(li);
 }
 
-function insertLiInOl(text) {
+function insertLiInOl(text, classe) {
+  console.log(classe)
   let ol = getOl();
   let li = createLi();
-  insertPropertyInElement({ text: text, element: li });
+  insertPropertyInElement({ text: text, element: li, classe: classe });
   addEventSplitLi(li);
   ol.appendChild(li);
+  todoList.push({value: text, classes: ''});
 }
 
 let btnAdd = getBtnAdd();
@@ -120,3 +130,20 @@ btnRemoveAll.addEventListener('click', function () {
   let ol = getOl();
   ol.innerHTML = '';
 });
+
+// save storage
+
+const btnSave = getBtnSave();
+btnSave.addEventListener('click', function () {
+  if (todoList) storageTodoList.insert(todoList);
+});
+
+window.onload = function () {
+  let todoList = storageTodoList.index();
+
+  if (todoList) {
+    for (let index = 0; index < todoList.length; index += 1) {
+      insertLiInOl(todoList[index].value, todoList[index].classes);
+    }
+  }
+}
