@@ -2,7 +2,10 @@ let list = document.getElementById('lista-tarefas');
 let buttonCreate = document.getElementById('criar-tarefa');
 let buttonClearAll = document.getElementById('apaga-tudo');
 let butttonClearCompleted = document.getElementById('remover-finalizados');
+let buttonSave = document.getElementById('salvar-tarefas');
 
+//recupera a ultima lista de tarefas salva
+list.innerHTML = localStorage.getItem('listSaved');
 
 // 5 - Deve haver um botão com id="criar-tarefa" e ao clicar nesse botão, um novo item deverá ser criado ao final da lista e o texto do input deve ser limpo.   
 function createItem(item) {
@@ -68,4 +71,9 @@ butttonClearCompleted.addEventListener('click', function () {
         itemsCompleted = document.querySelectorAll('.completed');
         list.removeChild(itemsCompleted[0]);
     }
+});
+
+// 12 - Adicione um botão com id="salvar-tarefas" que salve o conteúdo da lista. Se você fechar e reabrir a página, a lista deve continuar no estado em que estava.
+buttonSave.addEventListener('click', function () {
+    localStorage.setItem('listSaved', list.innerHTML)
 });
