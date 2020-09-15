@@ -1,6 +1,8 @@
+let list = document.getElementById('lista-tarefas');
 let buttonCreate = document.getElementById('criar-tarefa');
 let buttonClearAll = document.getElementById('apaga-tudo');
-let list = document.getElementById('lista-tarefas');
+let butttonClearCompleted = document.getElementById('remover-finalizados');
+
 
 // 5 - Deve haver um botão com id="criar-tarefa" e ao clicar nesse botão, um novo item deverá ser criado ao final da lista e o texto do input deve ser limpo.   
 function createItem(item) {
@@ -55,5 +57,15 @@ buttonClearAll.addEventListener('click', function () {
     listLength = list.childNodes.length;
     for (index = 0; index < listLength; index += 1) {
         list.removeChild(list.firstChild);
+    }
+});
+
+// 11 - Deve haver um botão com id="remover-finalizados" que quando clicado remove somente os elementos finalizados da sua lista.
+butttonClearCompleted.addEventListener('click', function () {
+    let itemsCompleted = document.querySelectorAll('.completed');
+    let completedLength = itemsCompleted.length;
+    for (index = 0; index < completedLength; index += 1) {
+        itemsCompleted = document.querySelectorAll('.completed');
+        list.removeChild(itemsCompleted[0]);
     }
 });
