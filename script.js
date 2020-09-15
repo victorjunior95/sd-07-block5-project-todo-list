@@ -16,7 +16,16 @@ btnCriarTarefa.addEventListener('click', function () {
       }
       listItem.classList.add('selected');
       })
+// trata evento de deixar riscado e tirar
+listItem.addEventListener('dblclick', function () {
+  if (listItem.classList.contains('completed')) {
+    listItem.classList.remove('completed');
+  } else {
+    listItem.classList.add('completed');
+  }
 });
+});
+
 
 
 
