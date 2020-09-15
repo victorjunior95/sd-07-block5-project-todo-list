@@ -2,9 +2,6 @@
 buttonCriarTarefa = document.getElementById("criar-tarefa");
 buttonCriarTarefa.addEventListener("click", criarItem);
 
-let buttonlimpaSelecao = document.getElementById("limpa-selecao");
-buttonlimpaSelecao.addEventListener("click", limpaSelecao);
-
 // Função que adiciona o item e limpa o input
 function criarItem() {
     let inputTexto = document.getElementById("texto-tarefa");
@@ -30,6 +27,9 @@ function selecionaItem() {
     }
 }
 
+let buttonLimpaSelecao = document.getElementById("limpa-selecao");
+buttonLimpaSelecao.addEventListener("click", limpaSelecao);
+
 // Função que tira a seleção de todos os itens
 function limpaSelecao() {
     let itemSelecionado = document.getElementById("selected");
@@ -37,11 +37,23 @@ function limpaSelecao() {
         itemSelecionado.removeAttribute("id", "selected");
     }
 }
-
+// Função que marca como item completado
 function completaItem() {
     if (this.classList[0] == "completed") {
         this.classList.remove("completed")
     } else {
         this.classList.add("completed");
+    }
+}
+
+let buttonApagaTudo = document.getElementById("apaga-tudo");
+buttonApagaTudo.addEventListener("click", apagaTudo);
+
+// Função que limpa todos os itens
+function apagaTudo() {
+    let todosItems = document.getElementsByTagName("ol");
+    // Utilizei o while que encontrei no link: https://stackoverflow.com/questions/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
+    while (todosItems[0].firstChild) {
+        todosItems[0].removeChild(todosItems[0].lastChild);
     }
 }
