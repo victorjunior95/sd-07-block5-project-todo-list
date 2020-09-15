@@ -21,6 +21,7 @@ function createNewTask(newTask) {
   ;
   addNewTaskListener(listItem)
   completedTask(listItem)
+  return listItem
 }
 
 function addNewTaskListener(listItem) {
@@ -65,12 +66,18 @@ buttonRemoveCompleted.addEventListener('click', function () {
 })
 
 saveButton.addEventListener('click', function (){
-  let listItem = document.querySelectorAll('li')
+  let completedTask = document.querySelectorAll(".completed")
+  if(completedTask) {
+    let listItem = document.querySelectorAll('li')
   for (index = 0; index < listItem.length; index += 1) {
     let value = listItem[index].innerText
     localStorage.setItem(`item${index}`, value)
-    console.log('oiiiiii')
+    let classNameItem = listItem[index].className
+    localStorage.setItem(`class${index}`, classNameItem)
   }
+
+  }
+  
 })
 
 removeSelectedButton.addEventListener('click', function () {
@@ -118,6 +125,20 @@ downButton.addEventListener('click', function () {
     selectedItem.innerText = nextTxt
     selectedItem.className = nextClass
   } 
-
-
 })
+
+function initialize() {
+  let getItem = ''
+  let classItemName = ''
+  let getClass = ''
+  for(let storeItem = 0; storeItem < localStorage.length / 2; storeItem += 1) {
+    getItem = localStorage.getItem(`item${storeItem}`)
+    getClass = localStorage.getItem(`class${storeItem}`)
+    let listItem = createNewTask(getItem)
+    listItem.className = getClass
+  }
+}
+
+
+
+initialize()
