@@ -106,9 +106,9 @@ function loadOrderedList() {
 //  O segundo if é para filtrar se existe uma tarefa anterior.
 //  Por fim eu insiro a tarefa atual atrás da anterior.
 function moveTaskUp() {
-  if (selectedTask.length !== 0) { 
-    if (selectedTask[0].previousElementSibling != null) { 
-      orderedListTasks.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling); 
+  if (selectedTask.length !== 0) {
+    if (selectedTask[0].previousElementSibling != null) {
+      orderedListTasks.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling);
     }
   }
 }
