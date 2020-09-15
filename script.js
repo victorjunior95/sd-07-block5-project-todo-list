@@ -14,7 +14,11 @@ criartarefa.addEventListener("click", function() {
     let divNova = document.createElement("li");
     conteudoNovo = document.createTextNode(textotarefa.value);
     divNova.appendChild(conteudoNovo);
-    console.log(divNova);
     listatarefa.appendChild(divNova);
     textotarefa.value="";
+})
+
+listatarefa.addEventListener("click",function(e) {
+    let elements = document.querySelector("#lista-tarefas");
+    e.target.style.backgroundColor = "rgb(128, 128, 128)";
 })
