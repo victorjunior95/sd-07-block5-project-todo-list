@@ -2,7 +2,7 @@ let inputText = document.getElementById("texto-tarefa")
 let list = document.getElementById("lista-tarefas")
 let button = document.getElementById("criar-tarefa")
 
-// -------------- ADCIONANDO OS TODOS ---------------- //
+// -------------- ADCIONANDO OS TODOs ---------------- //
 
 button.addEventListener("click", function() {
     let novoTodo = document.createElement('li')
@@ -20,7 +20,7 @@ button.addEventListener("click", function() {
     })
 })
 
-// -------------- RISCANDO TODOS COMPLETADOS ---------------- //
+// -------------- RISCANDO TODOs FINALIZADOS ---------------- //
 
 function riscaTodo(event) {
     const eventList = event.target.classList;
@@ -33,7 +33,7 @@ function riscaTodo(event) {
   event.target.classList.add('completed');
 }
 
-// -------------- BOTÂO REMOVE TODOS ---------------- //
+// -------------- BOTÂO REMOVE TODOS OS TODOs ---------------- //
 
 let buttonRemoveAll = document.getElementById("apaga-tudo")
 buttonRemoveAll.addEventListener("click", function() {
@@ -42,10 +42,20 @@ buttonRemoveAll.addEventListener("click", function() {
   }
 })
 
-// -------------- BOTÂO TODO SELECIONADO ---------------- //
+// -------------- BOTÂO REMOVE TODO SELECIONADO ---------------- //
 
 let buttonRemoveSelected = document.getElementById("remover-selecionado")
 let selecionado = document.getElementsByClassName("selected")
 buttonRemoveSelected.addEventListener("click", function() {
   list.removeChild(selecionado[0])
+})
+
+// -------------- BOTÂO REMOVE TODOs FINALIZADOS ---------------- //
+
+let buttonRemoveCompleted = document.getElementById("remover-finalizados")
+let finalizados = document.getElementsByClassName("completed")
+buttonRemoveCompleted.addEventListener("click", function() {
+  while (list.hasChildNodes()) {  
+    list.removeChild(finalizados[0]);
+  }
 })
