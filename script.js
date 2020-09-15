@@ -7,17 +7,16 @@ function addList() {
   let text = document.createTextNode(clearText.value); // Create Text node
   node.appendChild(text); // Append the text to <li>
   node.classList.add('lista');
+  node.addEventListener('click', selected);
   addTask.appendChild(node); // Append <li> to <ol> whit id = 'texto-tarefa'
   clearText.value = '';
 }
 
 // function to scroll through the created list
-function selection() {
-  let list = document.querySelectorAll('lista');
-  list.forEach(function (index) {
-    index.addEventListener('click', function (){
-      index.style.backgroundColor = 'rgb(128, 128, 128)';
-    })
-  });
+function selected(event) {
+  let items = document.querySelector('.selected');
+  if (items !== null) {
+    items.classList.remove('selected');
+  }
+  event.target.classList.add('selected');
 }
-
