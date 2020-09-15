@@ -27,4 +27,10 @@ listatarefa.addEventListener("click",function(e) {
 
     let element = document.querySelector("#lista-tarefas");
     e.target.style.backgroundColor = "rgb(128, 128, 128)";
-})
+});
+
+listatarefa.addEventListener("dblclick", function(e2) {
+    let element = document.querySelectorAll("#lista-tarefas");
+    e2.target.className = "completed";
+    console.log(element);
+});
