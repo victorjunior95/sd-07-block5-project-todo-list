@@ -1,5 +1,7 @@
 let list = document.getElementById('lista-tarefas');
 let buttonCreate = document.getElementById('criar-tarefa');
+let buttonUp = document.getElementById('mover-cima');
+let buttonDown = document.getElementById('mover-baixo');
 let buttonClearAll = document.getElementById('apaga-tudo');
 let butttonClearCompleted = document.getElementById('remover-finalizados');
 let buttonSave = document.getElementById('salvar-tarefas');
@@ -76,4 +78,19 @@ butttonClearCompleted.addEventListener('click', function () {
 // 12 - Adicione um botão com id="salvar-tarefas" que salve o conteúdo da lista. Se você fechar e reabrir a página, a lista deve continuar no estado em que estava.
 buttonSave.addEventListener('click', function () {
     localStorage.setItem('listSaved', list.innerHTML)
+});
+
+// Adicione dois botões, um com id="mover-cima" e outro com id="mover-baixo", que permitam mover o item selecionado para cima ou para baixo na lista de tarefas.
+buttonUp.addEventListener('click', function () {
+    let selected = document.querySelector('.selected');
+    if (selected.previousSibling !== null) {
+        list.insertBefore(selected, selected.previousSibling);
+    }
+});
+
+buttonDown.addEventListener('click', function () {
+    let selected = document.querySelector('.selected');
+    if (selected.nextSibling !== null) {
+        list.insertBefore(selected.nextSibling, selected);
+    }
 });
