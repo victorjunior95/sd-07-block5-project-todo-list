@@ -1,6 +1,7 @@
 const add = document.querySelector('#criar-tarefa')
 const assignment = document.querySelector('#texto-tarefa')
 
+
 //Adicionar lista de tarefas
 
 add.addEventListener('click', function () {
@@ -62,7 +63,7 @@ add.addEventListener('click', function () {
     
     save.addEventListener('click', function () {
         for (let index1 = 0; index1 < listItens.length; index1 += 1){
-        localStorage.setItem('Tarefas',listItens[index1].innerHTML)
+        localStorage.setItem('Tarefas',list.innerHTML)
         }
     })
 
@@ -70,3 +71,5 @@ add.addEventListener('click', function () {
 
 
 })
+const saved = document.querySelector('#lista-tarefas')
+saved.innerHTML = localStorage.getItem('Tarefas')
