@@ -13,7 +13,7 @@ const orderedListTasks = document.getElementById('lista-tarefas');
 let selectedTask = document.getElementsByClassName('selected');
 let completedTasks = document.querySelectorAll('.completed');
 
-function selectOtherLi() {
+function selectOtherLi() {  //  Luiz F. Mariz Advice
   if (selectedTask[0] !== undefined) {
     selectedTask[0].classList.remove('selected');
     event.target.classList.add('selected');
@@ -23,10 +23,10 @@ function selectOtherLi() {
 }
 
 function markAsDoneLi() {
-  if (event.target.className !== 'task completed') {
-    event.target.classList.add('completed');
-  } else {
+  if (event.target.classList.contains('completed')) {
     event.target.classList.remove('completed');
+  } else {
+    event.target.classList.add('completed');
   }
 }
 
@@ -92,8 +92,8 @@ function moveTaskUp() {
 function moveTaskDown() {
   selectedTask = document.getElementsByClassName('selected');
   if (selectedTask.length !== 0) {
-    if (selectedTask[0].nextElementSibling != null) {
-      orderedListTasks.insertBefore(selectedTask[0].nextElementSibling, selectedTask[0]); //Fernando Soares advice.
+    if (selectedTask[0].nextElementSibling != null) {  //Fernando Soares advice.
+      orderedListTasks.insertBefore(selectedTask[0].nextElementSibling, selectedTask[0]);
       selectedTask = document.getElementsByClassName('selected');
     }
   }
