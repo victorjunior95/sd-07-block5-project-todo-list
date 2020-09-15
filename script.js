@@ -8,8 +8,8 @@ const buttonRemoveCompletedTasks = document.getElementById('remover-finalizados'
 const buttonRemoveSelected = document.getElementById('remover-selecionado');
 const buttonSaveTasks = document.getElementById('salvar-tarefas');
 const buttonLoadTasks = document.getElementById('carregar-tarefas');
-const buttonMoveUp = document.getElementById('mover-acima');
-const buttonMoveDown = document.getElementById('mover-abaixo');
+const buttonMoveUp = document.getElementById('mover-cima');
+const buttonMoveDown = document.getElementById('mover-baixo');
 
 //  Ordered List Outputs
 const orderedListTasks = document.getElementById('lista-tarefas');
