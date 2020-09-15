@@ -117,8 +117,7 @@ function moveTaskDown() {
   selectedTask = document.getElementsByClassName('selected');
   if (selectedTask.length !== 0) {
     if (selectedTask[0].nextElementSibling != null) {
-      const afterElement = selectedTask[0].nextElementSibling.nextElementSibling;
-      orderedListTasks.insertBefore(selectedTask[0], afterElement);
+      orderedListTasks.insertBefore(selectedTask[0].nextElementSibling, selectedTask[0]);
       selectedTask = document.getElementsByClassName('selected');
     }
   }
