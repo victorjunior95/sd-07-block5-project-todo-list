@@ -6,7 +6,9 @@ let botaoApagarLista = document.querySelector("#apaga-tudo")
 botaoTarefa.addEventListener('click', function(){
     let novoElemento = document.createElement("li")
     novoElemento.innerHTML = entradaTexto.value
+    novoElemento.classList.add("list-group-item")
     listaTarefas.appendChild(novoElemento)  
+    
     novoElemento.addEventListener('click', selecionarItem);// se o novo elemento for clicado a funçao é chamada
     novoElemento.addEventListener('dblclick', riscarSelecionado)
     document.getElementById('texto-tarefa').value='';
@@ -31,6 +33,7 @@ function riscarSelecionado(event){
 function selecionarItem(event) {
   apagarSelecionado();
   event.target.classList.add('selected');//adicionar a classe selected
+  
   //essa classe é colocada 
 }
 
