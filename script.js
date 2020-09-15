@@ -9,3 +9,18 @@ addButton.addEventListener('click', function () {
   elementList.innerText = inputText.value;
   inputText.value = '';
 });
+
+// list.addEventListener('click', function (event) {
+//   const li = event.target;
+//   li.style.backgroundColor = 'rgb(128, 128, 128)';
+// });
+
+list.addEventListener('click', function (event) {
+  const li = event.target;
+  for (let index = 0; index < list.childNodes.length; index += 1) {
+    if (list.childNodes[index] !== li) {
+      list.childNodes[index].style.backgroundColor = 'rgb(255, 195, 230)';
+    }
+  }
+  li.style.backgroundColor = 'rgb(128, 128, 128)';
+});
