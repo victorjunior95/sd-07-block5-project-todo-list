@@ -6,6 +6,7 @@ function marcaSelecionado(item){
   let itemSelecionado = item.target;
     for (let index = 0; index < listaCompleta.length; index += 1){
       let apagaCor = listaCompleta[index];
+      apagaCor.classList.remove('item-selecionado');
       apagaCor.style.backgroundColor = ''; 
   }
   itemSelecionado.style.backgroundColor = 'rgb(128, 128, 128)';
@@ -24,7 +25,7 @@ function marcaCompleto(item) {
         itemFinalizado.style.textDecoration = prop;
     }
 }
-
+// Adiciona o elemento da lista e monitora o clique e o duplo-clique assim que ele é criado
 function addElement() {
   const textInput = document.getElementById('texto-tarefa');
   const tarefaDigitada = textInput.value;
@@ -49,6 +50,9 @@ buttonAdd.addEventListener('click', addElement);
  }
 }
 
+let buttonApaga = document.getElementById('apaga-tudo');
+buttonApaga.addEventListener('click', apagarLista);
+
 function apagarFinalizados() {
   let lista = document.getElementsByTagName('ol')[0];
   let itens = document.getElementsByTagName('li');
@@ -58,6 +62,9 @@ function apagarFinalizados() {
        }
    }
 }
+
+let buttonRemoveFinalizados = document.getElementById('remover-finalizados');
+buttonRemoveFinalizados.addEventListener('click', apagarFinalizados);
 
 function apagaSelecionado() {
   let lista = document.getElementsByTagName('ol')[0];
@@ -69,12 +76,27 @@ function apagaSelecionado() {
    }
 }
 
-
-let buttonApaga = document.getElementById('apaga-tudo');
-buttonApaga.addEventListener('click', apagarLista);
-
-let buttonRemoveFinalizados = document.getElementById('remover-finalizados');
-buttonRemoveFinalizados.addEventListener('click', apagarFinalizados);
-
 let buttonRemoveSelecionado = document.getElementById('remover-selecionado');
 buttonRemoveSelecionado.addEventListener('click', apagaSelecionado);
+
+function moverCima() {
+  let lista = document.getElementById('lista-tarefas');
+  let itensList = document.getElementsByClassName('item-selecionado');
+    if (itensList[0].previousElementSibling !== null){
+      lista.insertBefore(itensList[0], itensList[0].previousElementSibling);
+}
+}
+
+let buttonMoverCima = document.getElementById('mover-cima');
+buttonMoverCima.addEventListener('click', moverCima);
+
+function moverBaixo() {
+  let lista = document.getElementById('lista-tarefas');
+  let itensList = document.getElementsByClassName('item-selecionado');
+    if (itensList[0].nextElementSibling !== null){
+      lista.insertBefore(itensList[0].nextElementSibling, itensList[0]);
+}
+}
+
+let buttonMoverBaixo = document.getElementById('mover-baixo');
+buttonMoverBaixo.addEventListener('click', moverBaixo);
