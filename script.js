@@ -37,6 +37,10 @@ function getBtnRemoveAll() {
   return document.getElementById('apaga-tudo');
 }
 
+function getBtnRemoveSelected(){
+  return document.getElementById('remover-selecionado');
+}
+
 function getBtnSave() {
   return document.getElementById('salvar-tarefas');
 }
@@ -73,9 +77,9 @@ let liCurrentSplited;
 // adicionando evento de click no li
 function eventLiClick(li) {
   li.addEventListener('click', function (event) {
-    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+    event.target.classList.add('selected');
 
-    if (liCurrentSplited) liCurrentSplited.style.backgroundColor = '';
+    if (liCurrentSplited) liCurrentSplited.classList.remove('selected');
 
     liCurrentSplited = li;
   });
@@ -111,7 +115,7 @@ function insertLiInOl(text, classe) {
 
 let btnAdd = getBtnAdd();
 btnAdd.addEventListener('click', function () {
-  insertLiInOl(getInputValue());
+  if(getInputValue()) insertLiInOl(getInputValue());
   clearInputValue();
 });
 
@@ -132,10 +136,19 @@ btnRemoveAll.addEventListener('click', function () {
 });
 
 // save storage
-
 const btnSave = getBtnSave();
 btnSave.addEventListener('click', function () {
   if (todoList) storageTodoList.insert(todoList);
+});
+
+const btnRemoveSelected = getBtnRemoveSelected();
+btnRemoveSelected.addEventListener('click', function(){
+  let selected = document.getElementsByClassName('selected')[0];
+  
+  if(selected) {
+    removeLi(selected);
+    todoList = [];
+  }
 });
 
 window.onload = function () {
