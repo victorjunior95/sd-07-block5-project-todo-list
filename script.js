@@ -20,16 +20,16 @@ document.querySelector('#criar-tarefa').addEventListener('click', function () {
     }
   });
 });
-
+// para salvar todas as li no localStorage
 document.querySelector('#salvar-tarefas').addEventListener('click', function () {
-  localStorage.clear();
-  const arrayLi = [];
-  const allTasks = document.querySelectorAll('li');
-  for(let i = 0; i < allTasks.length; i += 1) {
-    arrayLi.push(allTasks[i].outerHTML);
+  localStorage.clear(); // limpa o que tiver salvo para receber lista nova
+  
+  const allTasks = document.querySelectorAll('li'); // todas as li novas
+  for (let i = 0; i < allTasks.length; i += 1) {
+    localStorage.setItem(i, allTasks[i].outerHTML); // outerHTML retorna a <li>task</li>
   }
-  localStorage.setItem('arrayLi', arrayLi);
 });
+
 // para remover o completado
 document.querySelector('#remover-finalizados').addEventListener('click', function () {
   while (document.querySelector('.completed')) { // remove só os completed
