@@ -3,6 +3,7 @@ let creator = document.querySelector("#criar-tarefa")
 let list = document.querySelector("#lista-tarefas")
 let clear = document.querySelector("#apaga-tudo")
 let rmSelecteds = document.querySelector("#remover-selecionado")
+let rmCompleteds = document.querySelector("#remover-finalizados")
 
 creator.addEventListener("click", ()=>{
     let node = document.createElement("li")
@@ -45,6 +46,16 @@ rmSelecteds.addEventListener("click", ()=>{
     let elements = document.querySelectorAll("li")
     for (let i = 0; i < elements.length; i++){
         if (elements[i].classList.contains("selected")){
+            elements[i].parentNode.removeChild(elements[i])
+        }
+    }
+})
+
+
+rmCompleteds.addEventListener("click", ()=>{
+    let elements = document.querySelectorAll("li")
+    for (let i = 0; i < elements.length; i++){
+        if (elements[i].classList.contains("completed")){
             elements[i].parentNode.removeChild(elements[i])
         }
     }
