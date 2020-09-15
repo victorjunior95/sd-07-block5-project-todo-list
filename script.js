@@ -9,7 +9,7 @@ document.querySelector('#criar-tarefa').addEventListener('click', function () {
     if (isGray) { // saber se existe alguma li com o gray
       isGray.classList.remove('selected'); // remove se tiver
     }
-      newTask.classList.add('selected'); // se não, adiciona
+    newTask.classList.add('selected'); // se não, adiciona
   });
 // para riscar o completado
   newTask.addEventListener('dblclick', function () {
@@ -54,14 +54,16 @@ document.querySelector('#apaga-tudo').addEventListener('click', function () {
 document.querySelector('#mover-cima').addEventListener('click', function () {
   const arrayLi = document.querySelectorAll('li');
   if (arrayLi.length === 0 || arrayLi.length === 1) {
-    alert('Por favor, escreve 1 ou 2 tarefas!')
+    alert('Só funciona com pelo menos 2 tarefas');
   }
   for (let i = 1; i < arrayLi.length; i += 1) {
-      const itemGray = arrayLi[i].innerHTML;
-      const toChange = arrayLi[i-1].innerHTML;
-      if (arrayLi[i].className === 'selected') {
-        arrayLi[i].innerHTML = toChange;
-        arrayLi[i-1].innerHTML = itemGray;
-      }
+    const itemGray = arrayLi [i].innerHTML;
+    const toChange = arrayLi [i-1].innerHTML;
+    if (arrayLi [i].className === 'selected') {
+      arrayLi [i].innerHTML = toChange;
+      arrayLi [i-1].innerHTML = itemGray;
+      arrayLi [i].classList.remove('selected');
+      arrayLi [i-1].classList.add('selected');
+    }
   }
-})
+});
