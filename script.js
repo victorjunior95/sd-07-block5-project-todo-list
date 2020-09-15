@@ -18,12 +18,7 @@ function changeBackgroundColor(element) {
 
 function completeTasks(element) {
   element.addEventListener('dblclick', () => {
-    if (element.className !=='completed') {
-      element.classList.add('completed');
-
-    } else {
-      element.classList.remove('completed');
-    }
+    element.classList.toggle('completed');
   });
 }
 
