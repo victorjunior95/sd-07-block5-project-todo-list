@@ -23,7 +23,7 @@ function apagaTarefas() {
 }
 
 // apagar tarefas completadas da lista
-function removeTarefa() {
+function removeTodasTarefa() {
   const listItens = document.querySelectorAll('li');
   for (let index = 0; index < listItens.length; index += 1) {
     if (listItens[index].className === 'completed') {
@@ -46,7 +46,7 @@ function adicionarTarefa(element, textInput, classElement) {
 
 // salva as tarefas criadas no localStorage
 function salvarTarefas() {
-  if (typeof(Storage) !== "undefined") {
+  if (typeof (Storage) !== 'undefined') {
     // localStorage.clear();
     const tarefas = document.getElementsByTagName('li');
     for (let index = 0; index < tarefas.length; index += 1) {
@@ -61,10 +61,10 @@ function salvarTarefas() {
 // carrega as tarefas salvas no localStorage
 function carregarTarefas() {
   const listaTarefasOl = document.querySelector('#lista-tarefas');
-  let valueStorage = [];
-  let classStorage = [];
+  const valueStorage = [];
+  const classStorage = [];
   for (let keys = 0; keys < localStorage.length; keys += 1) {
-    let keyStorage = (localStorage.key(keys)).split('_');
+    const keyStorage = (localStorage.key(keys)).split('_');
     if (keyStorage[0] === 'tarefa') {
       valueStorage[keyStorage[1]] = localStorage.getItem(`${keyStorage[0]}_${keyStorage[1]}`);
     }
@@ -77,7 +77,7 @@ function carregarTarefas() {
   }
 }
 
-// move tareva selecionada uma posição para cima
+// move tarefa selecionada uma posição para cima
 function moverCimaTarefa() {
   const listaTarefasOl = document.querySelector('#lista-tarefas');
   const listItens = document.querySelectorAll('li');
@@ -88,13 +88,23 @@ function moverCimaTarefa() {
   }
 }
 
-// move tareva selecionada uma posição para baixo
+// move tarefa selecionada uma posição para baixo
 function moverBaixoTarefa() {
   const listaTarefasOl = document.querySelector('#lista-tarefas');
   const listItens = document.querySelectorAll('li');
   for (let index = 0; index < listItens.length - 1; index += 1) {
     if (listItens[index].style.backgroundColor === 'rgb(128, 128, 128)') {
-      listItens[index + 1] = listaTarefasOl.insertBefore(listItens[index +1], listItens[index]);
+      listItens[index + 1] = listaTarefasOl.insertBefore(listItens[index + 1], listItens[index]);
+    }
+  }
+}
+
+// remove tarefa selecionada
+function removeTarefa() {
+  const listItens = document.querySelectorAll('li');
+  for (let index = 0; index < listItens.length; index += 1) {
+    if (listItens[index].style.backgroundColor === 'rgb(128, 128, 128)') {
+      listItens[index].remove();
     }
   }
 }
@@ -119,7 +129,7 @@ window.onload = function () {
 
   // apaga tarefas finalizadas
   const removerFinalizadosButton = document.querySelector('#remover-finalizados');
-  removerFinalizadosButton.addEventListener('click', removeTarefa);
+  removerFinalizadosButton.addEventListener('click', removeTodasTarefa);
 
   // salvar as tarefas criadas
   const salvarTarefasButton = document.querySelector('#salvar-tarefas');
@@ -130,4 +140,8 @@ window.onload = function () {
   const moverBaixoButton = document.querySelector('#mover-baixo');
   moverCimaButton.addEventListener('click', moverCimaTarefa);
   moverBaixoButton.addEventListener('click', moverBaixoTarefa);
+
+  // remove item selecionado da lista de tarefa
+  const removerSelecionadoButton = document.querySelector('#remover-selecionado');
+  removerSelecionadoButton.addEventListener('click', removeTarefa);
 };
