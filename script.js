@@ -10,7 +10,7 @@ function selectedItemList() {
 // marcação de itens completos
 function completedItemList() {
   if (this.hasAttribute('class')) {
-    this.removeAttribute('class')
+    this.removeAttribute('class');
   } else this.className = 'completed';
 }
 
@@ -19,6 +19,16 @@ function apagaTarefas() {
   const tarefas = document.getElementsByTagName('li');
   while (tarefas.length > 0) {
     tarefas[0].remove();
+  }
+}
+
+// apagar tarefas completadas da lista
+function removeTarefa() {
+  const listItens = document.querySelectorAll('li');
+  for (index = 0; index < listItens.length; index += 1) {
+    if(listItens[index].className === 'completed') { 
+      listItens[index].remove();
+    }
   }
 }
 
@@ -43,5 +53,9 @@ window.onload = function () {
 
   // limpar lista de tarefas
   const apagaTudoButton = document.querySelector('#apaga-tudo');
-  apagaTudoButton.addEventListener('click', apagaTarefas)
+  apagaTudoButton.addEventListener('click', apagaTarefas);
+
+  // apaga tarefas finalizadas
+  const removerFinalizadosButton = document.querySelector('#remover-finalizados');
+  removerFinalizadosButton.addEventListener('click', removeTarefa);
 };
