@@ -19,6 +19,12 @@ criartarefa.addEventListener("click", function() {
 })
 
 listatarefa.addEventListener("click",function(e) {
-    let elements = document.querySelector("#lista-tarefas");
+
+    let elements = document.querySelector("#lista-tarefas").children;
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].style.backgroundColor = "";
+    }
+
+    let element = document.querySelector("#lista-tarefas");
     e.target.style.backgroundColor = "rgb(128, 128, 128)";
 })
