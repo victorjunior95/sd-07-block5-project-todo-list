@@ -21,6 +21,9 @@ function clearSelection() {
 function addSelection(target) {
   target.classList.add('selected');
 }
+function toggleCompleted(target) {
+  target.classList.toggle('completed');
+}
 
 //  EVENTOS
 //  Evento do botão criar tarefa
@@ -29,7 +32,9 @@ btnTask.addEventListener('click', function () {
 	clearInput();
 });
 taskList.addEventListener('click', function (event) {
-  let target = event.target;
   clearSelection();
-  addSelection(target);
+  addSelection(event.target);
 });
+taskList.addEventListener('dblclick', function (event) {
+  toggleCompleted(event.target);
+})
