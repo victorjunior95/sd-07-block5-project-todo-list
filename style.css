@@ -1,27 +1,18 @@
 /* Page decoration tip https://youtu.be/Gp2bUX7_WIg */
-.apaga-tudo {
-  background-color: lime;
-  border: none;
-  border-radius: 25px;
-  color: black;
-  cursor: pointer;
-  font-family: monospace;
-  font-size: 1.3rem;
-  font-weight: bolder;
-  height: 50px;
-  outline: none;
-  width: 100px;
+.apagar {
+  background-color: rgb(248 , 67 , 35);
+  color: white;
 }
 
 body {
-  background-color: #111;
+  background-color: black;
   color: white;
   height: 100%;
   text-align: center;
 }
 
 button {
-  background-color: lime;
+  background-color: rgb(0 , 255 , 0);
   border: none;
   border-radius: 25px;
   color: black;
@@ -50,7 +41,7 @@ div {
 }
 
 header {
-  color: #fff;
+  color: white;
   font-family: 'Hind', sans-serif;
   font-size: 3rem;
   font-weight: bolder;
@@ -65,7 +56,7 @@ li {
   line-height: 2rem;
   margin-left: 5%;
   text-align: left;
-  width: 500px;
+  width: 100%;
 }
 
 ol {
@@ -83,7 +74,7 @@ span {
 }
 
 .texto-tarefa {
-  background-color: #fff;
+  background-color: white;
   border: none;
   border-radius: 25px;
   font-size: 1.15rem;
