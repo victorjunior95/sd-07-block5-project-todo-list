@@ -23,3 +23,9 @@ paint.addEventListener("click", function() {
     event.target.className = 'selected';
   }
 });
+
+paint.addEventListener("dblclick", mark);
+
+function mark() {
+  event.target.className = 'completed';
+}
