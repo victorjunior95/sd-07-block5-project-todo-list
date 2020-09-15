@@ -56,12 +56,12 @@ header {
 }
 
 li {
-  display: block;
   font-family: monospace;
   font-size: large;
   line-height: 2rem;
   margin-left: 5%;
   text-align: left;
+  width: 500px;
 }
 
 ol {
