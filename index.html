@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header><h2>Minha Lista de Tarefas</h2></header>
-    <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
-    <input id="texto-tarefa" type="text">
-    <button id="criar-tarefa" onclick="addList()">Adicionar</button>
 
-    <ol id="lista-tarefas"></ol>
-    
-    <script src="script.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h2>Minha Lista de Tarefas</h2>
+  </header>
+  <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+  <input id="texto-tarefa" type="text">
+  <button id="criar-tarefa" onclick="addList()">Adicionar</button>
+
+  <ol id="lista-tarefas" onclick="selection()"></ol>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
