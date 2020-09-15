@@ -2,20 +2,20 @@
 const btnCriarTarefa = document.querySelector('#criar-tarefa');
 const toDoList = document.querySelector('#lista-tarefas');
 btnCriarTarefa.addEventListener('click', function () {
-    let textInput = document.querySelector('#texto-tarefa').value;
-    const listItem = document.createElement('li');
-    listItem.className = 'listItem';
-    listItem.innerHTML = textInput;
-    toDoList.appendChild(listItem);
-    document.querySelector('#texto-tarefa').value = '';
+  let textInput = document.querySelector('#texto-tarefa').value;
+  const listItem = document.createElement('li');
+  listItem.className = 'listItem';
+  listItem.innerHTML = textInput;
+  toDoList.appendChild(listItem);
+  document.querySelector('#texto-tarefa').value = '';
 // trata evento de deixar cinza e tirar
-    listItem.addEventListener('click', function () {
-      let selectedItem = document.querySelector('.selected');
-      if (selectedItem) {
-        selectedItem.classList.remove('selected');
-      }
-      listItem.classList.add('selected');
-      })
+listItem.addEventListener('click', function () {
+  let selectedItem = document.querySelector('.selected');
+  if (selectedItem) {
+    selectedItem.classList.remove('selected');
+  }
+    listItem.classList.add('selected');
+  })
 // trata evento de deixar riscado e tirar
 listItem.addEventListener('dblclick', function () {
   if (listItem.classList.contains('completed')) {
