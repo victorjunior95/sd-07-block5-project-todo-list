@@ -12,7 +12,7 @@ for ( let index = 0; index < listItens.length; index += 1){
     const itenSelected = listItens[index]
     
     itenSelected.addEventListener('click' ,function(){
-        const selected = document.querySelector('.selected')
+     const selected = document.querySelector('.selected')
 
     if(selected){
         selected.classList.remove('selected')
@@ -22,11 +22,13 @@ for ( let index = 0; index < listItens.length; index += 1){
 })
 
 itenSelected.addEventListener('dblclick' , function (){
-    if(itenSelected.id ===''){
-        itenSelected.id='completed'
-    } else {
-        itenSelected.id= ''
+    
+    if(itenSelected.classList.contains('completed') ){
+        itenSelected.classList.remove('completed')
+    }else{
+       itenSelected.classList.add('completed')
     }
+    
 })
 const removed = document.querySelector('#remover-finalizados')
 removed.addEventListener('click' ,function(){
