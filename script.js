@@ -1,4 +1,4 @@
-let click = document.getElementById('criar-tarefa');
+const click = document.getElementById('criar-tarefa');
 
 click.addEventListener("click", function() {
   let textInput = document.getElementById('texto-tarefa').value;  
@@ -9,6 +9,17 @@ click.addEventListener("click", function() {
   document.getElementById('texto-tarefa').value = "";
 });
 
-document.getElementById('lista-tarefas').addEventListener("click", function(e) {
-    e.target.style.backgroundColor = 'rgb(128, 128, 128)';
+
+const paint = document.getElementById('lista-tarefas');
+
+paint.addEventListener("click", function() {
+  if (document.getElementsByClassName('selected')[0] === undefined) {
+    event.target.className = 'selected';
+    event.target.style.backgroundColor = 'rgb(128, 128, 128';
+  } else {
+    document.getElementsByClassName('selected')[0].style.backgroundColor = 'white';
+    document.getElementsByClassName('selected')[0].className = undefined;
+    event.target.style.backgroundColor = 'rgb(128, 128, 128';
+    event.target.className = 'selected';
+  }
 });
