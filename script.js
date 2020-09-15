@@ -18,12 +18,18 @@ function addItem() {
 buttonCreate.addEventListener('click', addItem);
 
 // 7 - Ao clicar em um item da lista, altere a cor de fundo do item para cinza rgb(128,128,128).
-//cada vez que houver um click para adicionar um item também será adicionado um eventListener nele
+// 8 - Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo.
 
 function addEventLastLi() {
     let lastLi = document.getElementById('lista-tarefas').lastChild;
     lastLi.addEventListener('click', function () {
-        lastLi.style.backgroundColor = 'rgb(128, 128, 128)';
+        if (document.querySelector('.selected') !== null) {
+            let selected = document.querySelector('.selected');
+            selected.classList.remove('selected');
+            lastLi.classList.add('selected');
+        } else {
+            lastLi.classList.add('selected');
+        }
     })
 }
 
