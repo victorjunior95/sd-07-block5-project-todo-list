@@ -98,9 +98,14 @@ function MoverCima(){
             let itemProximo;
             let itemAtual;
             itemProximo = classeItem[index].innerText;
-            itemAtual = classeItem[index-1].innerText;
-            classeItem[index-1].innerText = itemProximo;
-            classeItem[index].innerText = itemAtual;
+            if(classeItem[index-1] != undefined){
+                itemAtual = classeItem[index-1].innerText;
+                classeItem[index-1].innerText = itemProximo;
+                classeItem[index].innerText = itemAtual;
+            }
+            else{
+                alert('Este item não pode ser movido');
+            }
         }
     }
 };
@@ -114,9 +119,14 @@ function MoverBaixo(){
             let itemAnterior;
             let itemAtual;
             itemAnterior = classeItem[index].innerText;
-            itemAtual = classeItem[index+1].innerText;
-            classeItem[index+1].innerText = itemAnterior;
-            classeItem[index].innerText = itemAtual;
+            if(classeItem[index+1] != undefined){
+                itemAtual = classeItem[index+1].innerText;
+                classeItem[index+1].innerText = itemAnterior;
+                classeItem[index].innerText = itemAtual;
+            }
+            else{
+                alert('Este item não pode ser movido');
+            }
         }
     }
 };
