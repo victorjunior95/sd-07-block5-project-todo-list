@@ -15,6 +15,7 @@ for ( let index = 0; index < listItens.length; index += 1){
     itenSelected.addEventListener('click' ,function(){
         
         itenSelected.style.backgroundColor = "rgb(128, 128, 128)"
+        listItens.style.backgroundColor=''
         
         
     
@@ -29,7 +30,9 @@ clear.addEventListener('click' ,function(){
     let list = document.querySelector('#lista-tarefas')
     
     list.removeChild(itens)
+
 })
+
 }
 }
 })
