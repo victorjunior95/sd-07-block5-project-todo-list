@@ -1,7 +1,7 @@
 window.onload = function(){
     //Declarando variáveis
     let btnNewTask = document.getElementById("criar-tarefa");
-    let taskSelect = document.querySelectorAll("li");
+    let btnClear = document.getElementById("apaga-tudo");
     
     //Adicionando evento de colocar o input na lista
     btnNewTask.addEventListener("click", function(){
@@ -23,11 +23,18 @@ window.onload = function(){
                 }
             });
         }
-        //Loop para adicionar ou remover class completed
+        //Adicionando completed
         listChild.addEventListener("dblclick", function(){
             listChild.classList.toggle("completed");           
         });
-        
     });
+    btnClear.addEventListener("click", function(){
+        let listMother = document.getElementById("lista-tarefas");//Declarando node mãe
+        let listChild = document.querySelectorAll("li");//Declarando listas filhas
+        for(let index = 0; index < listChild.length; index += 1){//Loop para deletar todas listas
+            listMother.removeChild(listChild[index]);
+        }
+
+    })
     
 }
