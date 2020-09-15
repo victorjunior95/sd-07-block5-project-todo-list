@@ -103,7 +103,7 @@ function isSelected() {
 }
 
 function moveTaskUp() {
-  if (selectedTask.length != 0){
+  if (selectedTask.length !== 0) {
     if (selectedTask[0].previousElementSibling != null){
       orderedListTasks.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling);
     }
@@ -111,10 +111,11 @@ function moveTaskUp() {
 }
 
 function moveTaskDown() {
-  if (selectedTask.length != 0) {
-  if (selectedTask[0].nextElementSibling != null){
-    orderedListTasks.insertBefore(selectedTask[0], selectedTask[0].nextElementSibling.nextElementSibling);
-  } else {
+  if (selectedTask.length !== 0) {
+    if (selectedTask[0].nextElementSibling != null) {
+      const afterElement = selectedTask[0].nextElementSibling.nextElementSibling;
+      orderedListTasks.insertBefore(selectedTask[0], afterElement);
+    } else {
       orderedListTasks.appendChild(selectedTask[0]);
     }
   }
