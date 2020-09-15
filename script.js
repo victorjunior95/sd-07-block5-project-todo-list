@@ -19,7 +19,7 @@ function atributo() {
 
 function criarTarefa() {
   bot.addEventListener('click', function () {
-    let texto = CaixaTexto.value;
+    const texto = CaixaTexto.value;
     const item = document.createElement('li');
     item.innerText = texto;
     lista.appendChild(item);
@@ -29,13 +29,13 @@ function criarTarefa() {
 }
 
 function apagarTarefa() {
-    bota.addEventListener('click', function () {
-      let vezes = filhos.length;
-      for (let I = 0; I < vezes; I += 1) {
-        lista.removeChild(filhos[0]);
-      }
-    });
-  }
+  bota.addEventListener('click', function () {
+    const vezes = filhos.length;
+    for (let I = 0; I < vezes; I += 1) {
+      lista.removeChild(filhos[0]);
+    }
+  });
+}
 
 window.onload = function () {
   criarTarefa();
