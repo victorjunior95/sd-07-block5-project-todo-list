@@ -11,16 +11,17 @@ function changeBackgroundColor(element) {
       for (let i = 0; i < elements.length; i += 1) {
         elements[i].classList.remove('selected');
       }
-      element.className = 'selected';
+      element.classList.add('selected');
     }
   });
 }
 
 function completeTasks(element) {
   element.addEventListener('dblclick', () => {
-    if (element.className !== 'completed') {
-      element.className = 'completed';
-    } else if (element.className === 'completed') {
+    if (element.className !=='completed') {
+      element.classList.add('completed');
+
+    } else {
       element.classList.remove('completed');
     }
   });
