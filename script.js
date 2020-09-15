@@ -2,12 +2,21 @@ window.onload=function(){
 
     let botaoAdicionar=document.getElementById('criar-tarefa');
     let botaoApagaTudo=document.getElementById('apaga-tudo');
+    let botaoApagaFinalizados=document.getElementById('remover-finalizados');
     let novaTarefa=document.getElementById('texto-tarefa');
     let listaTarefas=document.getElementById('lista-tarefas');    
 
     botaoAdicionar.addEventListener('click',function(){
         let tarefa=novaTarefa.value;
         adicionaTarefa(tarefa);
+    })
+
+    botaoApagaFinalizados.addEventListener('click',function(){
+        for(i=listaTarefas.childElementCount-1; i>=0; i-=1){
+            if (listaTarefas.children[i].classList.contains('completed')){
+                listaTarefas.children[i].remove();
+            }
+        }
     })
 
     botaoApagaTudo.addEventListener('click',function(){
