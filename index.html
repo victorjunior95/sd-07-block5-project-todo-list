@@ -4,17 +4,31 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Todo List</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <header>
-            <h1>Minha Lista de Tarefas</h1>
-            <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+        <header class="cabecalho">
+            <h1 class="titulo">Minha Lista de Tarefas</h1>
+            <p class="function" id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
         </header>
-        <section>
-            <input id="texto-tarefa" type="text">
-            <button id="criar-tarefa">Adicionar</button>
-            <ol id="lista-tarefas"></ol>
-        </section>
+            <div class="container">
+                <section class="form">
+                    <input class="input-large" id="texto-tarefa" type="text">
+                    <button class="btn-large" id="criar-tarefa">Adicionar</button>
+                </section>
+                <section>
+                    <ol class="task-list" id="lista-tarefas"></ol>
+                </section>
+                <section class="actions">
+                    <button class="btn-small btn-remove-selected" id="remover-selecionado">X</button>
+                    <button class="btn-small btn-item-down" id="mover-cima">up</button>
+                    <button class="btn-small btn-item-up" id="mover-baixo">do</button>
+                    <button class="btn-large btn-remove-completed" id="remover-finalizados">Limpar Completos</button>
+                    <button class="btn-large btn-remove-all" id="apaga-tudo">Limpar Lista</button>
+                    <button class="btn-large btn-save-list" id="salvar-tarefas">Salvar Lista</button>
+                </section>
+            </div>
         <script src="script.js"></script>
     </body>
 </html>
