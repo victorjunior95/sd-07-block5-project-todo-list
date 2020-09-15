@@ -30,8 +30,6 @@ document.addEventListener('click', function (event) {
   }
 });
 
-//--------------------------------------------------------------------//
-
 document.addEventListener('dblclick', function (event) {
   if (event.target.classList.contains('completed')) {
     event.target.style.backgroundColor = 'white';
@@ -65,3 +63,16 @@ function apagaSelecionado() {
   }
 }
 buttonApagarSelecionados.addEventListener('click', apagaSelecionado);
+
+//---------------------------------------------------------------------------//
+
+let buttonSalvar = document.querySelector('#salvar-tarefas');
+
+buttonSalvar.addEventListener('click', function () {
+  localStorage.clear();
+  localStorage.setItem('Itens-salvos', listaOrdenada.innerHTML);
+});
+
+window.onload = function () {
+  listaOrdenada.innerHTML = localStorage.getItem('Itens-salvos');
+};
