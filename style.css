@@ -18,11 +18,26 @@ body {
   text-align: center;
 }
 
+.section-input button {
+  background-color: #03cea4;
+  border: hidden;
+  border-radius: 10%;
+  color: white;
+  font-weight: 600;
+  margin-left: 20px;
+  height: 30px;
+  width: 150px;
+}
+
+.section-input button:hover {
+  background-color: #64b6ac;
+}
+
 .section-input input {
+  border: gray solid 3px;
+  border-radius: 10%;
   height: 20px;
   width: 250px;
-  border-radius: 10%;
-  border: gray solid 3px;
 }
 
 .section-list {
