@@ -18,8 +18,7 @@ function addItem() {
 buttonCreate.addEventListener('click', addItem);
 
 // 7 - Ao clicar em um item da lista, altere a cor de fundo do item para cinza rgb(128,128,128).
-// 8 - Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo.
-
+// 8 - Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo.    
 function addEventLastLi() {
     let lastLi = document.getElementById('lista-tarefas').lastChild;
     lastLi.addEventListener('click', function () {
@@ -35,4 +34,17 @@ function addEventLastLi() {
 
 buttonCreate.addEventListener('click', addEventLastLi);
 
+// 9 - Ao clicar duas vezes em um item, ele deverá ser riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item.
+function lineTrough() {
+    let lastLi2 = document.getElementById('lista-tarefas').lastChild;
+    lastLi2.addEventListener('dblclick', function () {
+        if (lastLi2.classList.contains('completed') === true) {
+            lastLi2.classList.remove('completed');
+        } else {
+            lastLi2.classList.add('completed');
+        }
+    });
+}
+
+buttonCreate.addEventListener('click', lineTrough);
 
