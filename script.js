@@ -31,7 +31,12 @@ function refresh() {
   document.querySelector('ol').innerHTML = localStorage.getItem('Task');
 }
 window.onload = refresh;
-
+// para remover o selecionado
+document.querySelector('#remover-selecionado').addEventListener('click', function () {
+  while (document.querySelector('.selected')) { // remove só o selecionado
+    document.querySelector('ol').removeChild(document.querySelector('.selected'));
+  }
+});
 // para remover o completado
 document.querySelector('#remover-finalizados').addEventListener('click', function () {
   while (document.querySelector('.completed')) { // remove só os completed
@@ -53,17 +58,37 @@ document.querySelector('#mover-cima').addEventListener('click', function () {
   for (let i = 1; i < arrayLi.length; i += 1) {
     const itemGray = arrayLi[i].innerHTML;
     const toChange = arrayLi[i - 1].innerHTML;
-    if (arrayLi[i].className === 'selected') {
+    if (arrayLi[i].classList.contains('selected')) {
       arrayLi[i].innerHTML = toChange;
       arrayLi[i - 1].innerHTML = itemGray;
       arrayLi[i].classList.remove('selected');
       arrayLi[i - 1].classList.add('selected');
     }
+    if (arrayLi[i].classList.contains('completed')) {
+      arrayLi[i].classList.remove('completed');
+      arrayLi[i - 1].classList.add('completed');
+    }
   }
 });
-// para remover o selecionado
-document.querySelector('#remover-selecionado').addEventListener('click', function () {
-  while (document.querySelector('.selected')) { // remove só o selecionado
-    document.querySelector('ol').removeChild(document.querySelector('.selected'));
+// mover para baixo
+document.querySelector('#mover-baixo').addEventListener('click', function () {
+  const arrayLi = document.querySelectorAll('li');
+  const theLast = arrayLi.length - 1;
+  if (arrayLi.length === 0 || arrayLi.length === 1 || arrayLi[theLast].className === 'selected') {
+    alert('Não é possível para para baixo');
+  }
+  for (let i = 0; i < arrayLi.length - 2 ; i += 1) {
+    const itemGray = arrayLi[i].innerHTML;
+    const toChange = arrayLi[i + 1].innerHTML;
+    if (arrayLi[i].classList.contains('selected')) {
+      arrayLi[i].innerHTML = toChange;
+      arrayLi[i + 1].innerHTML = itemGray;
+      arrayLi[i].classList.remove('selected');
+      arrayLi[i + 1].classList.add('selected');
+    }
+    if (arrayLi[i].classList.contains('completed')) {
+      arrayLi[i].classList.remove('completed');
+      arrayLi[i + 1].classList.add('completed');
+    }
   }
 });
