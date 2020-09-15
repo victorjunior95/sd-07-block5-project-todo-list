@@ -3,7 +3,7 @@ const inputTask = document.querySelector('#texto-tarefa');
 const orderedlist = document.querySelector('#lista-tarefas');
 
 function makeTaskList() {
-  const ul = document.createElement('ul');
+  const ul = document.createElement('li');
   ul.className = 'task-item';
   ul.innerText = inputTask.value;
   orderedlist.appendChild(ul);
