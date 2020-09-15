@@ -106,11 +106,11 @@ function loadOrderedList() {
 //  O segundo if é para filtrar se existe uma tarefa anterior.
 //  Por fim eu insiro a tarefa atual atrás da anterior.
 function moveTaskUp() {
-  selectedTask = document.getElementsByClassName('selected');
-  if (selectedTask.length !== 0) {
-    if (selectedTask[0].previousElementSibling != null) {
-      orderedListTasks.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling);
-      selectedTask = document.getElementsByClassName('selected');
+  let actualTask = document.getElementsByClassName('selected');
+  if (actualTask.length !== 0) {
+    if (actualTask[0].previousElementSibling != null) {
+      orderedListTasks.insertBefore(actualTask[0], actualTask[0].previousElementSibling);
+      actualTask = document.getElementsByClassName('selected');
     }
   }
 }
@@ -120,15 +120,13 @@ function moveTaskUp() {
 //  O segundo if para filtrar se existe uma tarefa anterior.
 //  Depois uma Constante que recebe o elemento posterior ao posterior.
 //  Então eu insiro o selecionado anteriormente ao posterior.
-//  Se não tem elemento posterior eu simplesmento coloco-o no final com o append.
-//  (Suspeito de bug aqui!)
 function moveTaskDown() {
-  selectedTask = document.getElementsByClassName('selected');
-  if (selectedTask.length !== 0) {
-    if (selectedTask[0].nextElementSibling != null) {
-      const afterElement = selectedTask[0].nextElementSibling.nextElementSibling;
-      orderedListTasks.insertBefore(selectedTask[0], afterElement);
-      selectedTask = document.getElementsByClassName('selected');
+  let actualTask = document.getElementsByClassName('selected');
+  if (actualTask.length !== 0) {
+    if (actualTask[0].nextElementSibling != null) {
+      const afterElement = actualTask[0].nextElementSibling.nextElementSibling;
+      orderedListTasks.insertBefore(actualTask[0], afterElement);
+      actualTask = document.getElementsByClassName('selected');
     }
   }
 }
