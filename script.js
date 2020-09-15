@@ -8,11 +8,24 @@ window.onload = function () {
 
   listaTarefas.addEventListener('click', function () {
     event.stopPropagation();
+    const liEvent = event.target;
+
     console.log(event.target.className)
-    if (event.target.nodeName === 'LI') {
-      alteraCorFundo(event.target);
+    if (liEvent.nodeName === 'LI') {
+      limpaSeleao();
+      alteraCorFundo(liEvent);
+      liEvent.style.width = liEvent.value.lenght + 'px';
+      console.log(liEvent.value.lenght + 'px')
     }
   })
+
+  function limpaSeleao() {
+    let itensLista = document.querySelectorAll('ol>li');
+    itensLista.forEach((element) => {
+      element.style.backgroundColor = 'white';
+    });
+  }
+
 
   function criaLi() {
     let novoLi = document.createElement('li');
