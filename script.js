@@ -10,7 +10,7 @@ add.addEventListener('click', function () {
 
 // Selecionar iten da lista
 
-const listItens = document.getElementsByTagName('li')
+const listItens = document.querySelectorAll('li')
 
 for ( let index = 0; index < listItens.length; index += 1){
     const itenSelected = listItens[index]
@@ -52,12 +52,9 @@ removed.addEventListener('click' ,function(){
 const clear = document.querySelector('#apaga-tudo')
 
 clear.addEventListener('click' ,function(){
-    
     let list = document.querySelector('#lista-tarefas')
-    
     list.removeChild(itenSelected)
 })
-
 }
 })
 
