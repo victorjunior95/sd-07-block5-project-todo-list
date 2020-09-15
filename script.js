@@ -1,4 +1,4 @@
-//  variáveis
+//  variáveis dos elementos
 const createTaskBttn = document.getElementById('criar-tarefa');
 const taskInput = document.getElementById('texto-tarefa');
 const list = document.getElementById('lista-tarefas');
@@ -7,6 +7,7 @@ const removeCompletedBttn = document.getElementById('remover-finalizados');
 const removeSelectedBttn = document.getElementById('remover-selecionado');
 const moveUpBttn = document.getElementById('mover-cima');
 const moveDownBttn = document.getElementById('mover-baixo');
+const saveListBttn = document.getElementById('salvar-tarefas');
 
 //  cria evento de click no item lista
 function createTaskEvent1(task) {
@@ -21,7 +22,6 @@ function createTaskEvent1(task) {
 
 //  funçao auxiliar para criação de evento de duplo clique
 function checkCompleted(taskClasses) {
-  console.log(taskClasses)
   for (let index = 0; index < taskClasses.length; index += 1) {
     if (taskClasses[index] === 'completed') {
       return true;
@@ -68,7 +68,9 @@ removeCompletedBttn.addEventListener('click', function () {
 //  remover item selecionado
 removeSelectedBttn.addEventListener('click', function () {
   const selectedItem = document.querySelector('.selected');
-  selectedItem.remove();
+  if (selectedItem) {
+    selectedItem.remove();
+  }
 });
 
 //  mover para cima
@@ -90,3 +92,21 @@ moveDownBttn.addEventListener('click', function () {
     }
   }
 });
+
+//  salvar tarefas em local storage
+saveListBttn.addEventListener('click', function () {
+  localStorage.clear();
+  if (list.innerHTML !== '') {
+    const listString = JSON.stringify(list.innerHTML);
+    localStorage.setItem('taskList', listString);
+  }
+});
+
+//  carrega lista salva
+const savedList = JSON.parse(localStorage.getItem('taskList'));
+list.innerHTML = savedList;
+const listElements = document.querySelectorAll('.list-element');
+for (let index = 0; index < listElements.length; index += 1) {
+  createTaskEvent1(listElements[index]);
+  createTaskEvent2(listElements[index]);
+}
