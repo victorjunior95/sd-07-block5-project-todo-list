@@ -15,36 +15,34 @@ creator.addEventListener('click', () => {
 });
 
 clear.addEventListener('click', () => {
-    list.innerHTML = '';
+  list.innerHTML = '';
 });
 
 
 list.addEventListener('click', (event) => {
   const selected = document.querySelector('.selected');
   const li = event.target;
-  if (selected != null){
+  if (selected != null) {
     selected.classList.remove('selected');
     li.classList.add('selected');
+  } else {
+    li.classList.add('selected');
   }
-  else {
-    li.classList.add('selected')
-  }
-})
+});
 
 list.addEventListener('dblclick', (event) => {
-  let li = event.target;
-  if (li.classList.contains('completed')){
-      li.classList.remove('completed');
-  }
-  else {
-      li.classList.add('completed');
+  const li = event.target;
+  if (li.classList.contains('completed')) {
+    li.classList.remove('completed');
+  } else {
+    li.classList.add('completed');
   }
 });
 
 rmSelecteds.addEventListener('click', () => {
-  let elements = document.querySelectorAll('li');
-  for (let i = 0; i < elements.length; i = i + 1) {
-    if (elements[i].classList.contains('selected')){
+  const elements = document.querySelectorAll('li');
+  for (let i = 0; i < elements.length; i += 1) {
+    if (elements[i].classList.contains('selected')) {
       elements[i].parentNode.removeChild(elements[i]);
     }
   }
@@ -53,9 +51,9 @@ rmSelecteds.addEventListener('click', () => {
 
 rmCompleteds.addEventListener('click', () => {
   const elements = document.querySelectorAll('li');
-  for (let i = 0; i < elements.length; i = i + 1) {
-      if (elements[i].classList.contains('completed')){
-          elements[i].parentNode.removeChild(elements[i]);
-      }
+  for (let i = 0; i < elements.length; i += 1) {
+    if (elements[i].classList.contains('completed')) {
+        elements[i].parentNode.removeChild(elements[i]);
+    }
   }
 });
