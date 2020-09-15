@@ -5,3 +5,10 @@
 .selected {
   background-color: rgb(128, 128, 128);
 }
+
+.todo-list-item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
