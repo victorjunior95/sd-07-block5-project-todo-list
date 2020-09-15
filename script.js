@@ -1,7 +1,7 @@
 let btnAddList = document.getElementById('criar-tarefa');
 let btnRemoveAll = document.getElementById('apaga-tudo');
 let btnRemoveCompleted = document.getElementById('remover-finalizados');
-let btnRemoveSelected = document.getElementById('remover-selecionados');
+let btnRemoveSelected = document.getElementById('remover-selecionado');
 let list = document.getElementById('lista-tarefas');
 let inputList = document.getElementById('texto-tarefa');
 
