@@ -16,7 +16,7 @@ let list = document.getElementsByClassName('listItem');
 function changeBackground() {
     for (let index = 0; index < list.length; index += 1) {
       list[index].addEventListener('click', function () {
-        list[index].style.backgroundColor = 'rgb(128, 128, 128)';
-      });
-    }
+      list[index].classList.add('selected');
+    });
   }
+}
