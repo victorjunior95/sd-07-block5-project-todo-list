@@ -1,8 +1,8 @@
 /* Page decoration tip https://youtu.be/Gp2bUX7_WIg */
 .apaga-tudo {
   background-color: lime;
-  border-radius: 25px;
   border: none;
+  border-radius: 25px;
   color: black;
   cursor: pointer;
   font-family: monospace;
