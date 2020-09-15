@@ -10,7 +10,7 @@ button.addEventListener("click", function() {
     list.appendChild(novoTodo)
     inputText.value = ""
     inputText.focus()
-    novoTodo.addEventListener("dblclick", duploclick)
+    novoTodo.addEventListener("dblclick", riscaTodo)
     novoTodo.addEventListener("click", function() {    
         const previousItem = document.getElementsByClassName('selected');
         if (previousItem.length > 0) {
@@ -22,7 +22,7 @@ button.addEventListener("click", function() {
 
 // -------------- RISCANDO TODOS COMPLETADOS ---------------- //
 
-function duploclick(event) {
+function riscaTodo(event) {
     const eventList = event.target.classList;
   for (let i = 0; i < eventList.length; i += 1) {
     if (eventList[i] === 'completed') {
@@ -33,3 +33,19 @@ function duploclick(event) {
   event.target.classList.add('completed');
 }
 
+// -------------- BOTÂO REMOVE TODOS ---------------- //
+
+let buttonRemoveAll = document.getElementById("apaga-tudo")
+buttonRemoveAll.addEventListener("click", function() {
+  while (list.hasChildNodes()) {  
+    list.removeChild(list.firstChild);
+  }
+})
+
+// -------------- BOTÂO TODO SELECIONADO ---------------- //
+
+let buttonRemoveSelected = document.getElementById("remover-selecionado")
+let selecionado = document.getElementsByClassName("selected")
+buttonRemoveSelected.addEventListener("click", function() {
+  list.removeChild(selecionado[0])
+})
