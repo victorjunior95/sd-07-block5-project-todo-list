@@ -2,12 +2,12 @@ const list = document.getElementById('lista-tarefas');
 let listaCompleta;
 
 // marca e desmarca quando clicado 1 vez
-function marcaSelecionado(item){
-  let itemSelecionado = item.target;
-    for (let index = 0; index < listaCompleta.length; index += 1){
-      let apagaCor = listaCompleta[index];
-      apagaCor.classList.remove('item-selecionado');
-      apagaCor.style.backgroundColor = ''; 
+function marcaSelecionado(item) {
+  const itemSelecionado = item.target;
+  for (let index = 0; index < listaCompleta.length; index += 1) {
+    const apagaCor = listaCompleta[index];
+    apagaCor.classList.remove('item-selecionado');
+    apagaCor.style.backgroundColor = '';
   }
   itemSelecionado.style.backgroundColor = 'rgb(128, 128, 128)';
   itemSelecionado.classList.add('item-selecionado');
@@ -15,14 +15,14 @@ function marcaSelecionado(item){
 
 // deixa tachado se clicar duas vezes
 function marcaCompleto(item) {
-  let itemFinalizado = item.target;
-    if (itemFinalizado.classList.contains('completed')){
-      itemFinalizado.classList.remove('completed');
-      itemFinalizado.style.textDecoration = '';
-    } else {
-        itemFinalizado.classList.add('completed');
-        let prop = window.getComputedStyle(itemFinalizado).getPropertyValue('text-decoration');
-        itemFinalizado.style.textDecoration = prop;
+  const itemFinalizado = item.target;
+  if (itemFinalizado.classList.contains('completed')) {
+    itemFinalizado.classList.remove('completed');
+    itemFinalizado.style.textDecoration = '';
+  } else {
+      itemFinalizado.classList.add('completed');
+      let prop = window.getComputedStyle(itemFinalizado).getPropertyValue('text-decoration');
+      itemFinalizado.style.textDecoration = prop;
     }
 }
 // Adiciona o elemento da lista e monitora o clique e o duplo-clique assim que ele é criado
@@ -42,79 +42,78 @@ function addElement() {
 const buttonAdd = document.getElementById('criar-tarefa');
 buttonAdd.addEventListener('click', addElement);
 
- function apagarLista(){
- let itens = document.getElementsByTagName('li');
- let lista = document.getElementsByTagName('ol')[0];
- for (let index = itens.length - 1; index >= 0 ; index -= 1){
+function apagarLista() {
+  const itens = document.getElementsByTagName('li');
+  const lista = document.getElementsByTagName('ol')[0];
+  for (let index = itens.length - 1; index >= 0; index -= 1) {
     lista.removeChild(itens[index]);
- }
+  }
 }
 
-let buttonApaga = document.getElementById('apaga-tudo');
+const buttonApaga = document.getElementById('apaga-tudo');
 buttonApaga.addEventListener('click', apagarLista);
 
 function apagarFinalizados() {
-  let lista = document.getElementsByTagName('ol')[0];
-  let itens = document.getElementsByTagName('li');
-   for (let index = itens.length - 1; index >= 0; index -= 1){
-       if (itens[index].classList.contains('completed')) {
-            lista.removeChild(itens[index]);
-       }
-   }
+  const lista = document.getElementsByTagName('ol')[0];
+  const itens = document.getElementsByTagName('li');
+  for (let index = itens.length - 1; index >= 0; index -= 1) {
+    if (itens[index].classList.contains('completed')) {
+      lista.removeChild(itens[index]);
+    }
+  }
 }
 
-let buttonRemoveFinalizados = document.getElementById('remover-finalizados');
+const buttonRemoveFinalizados = document.getElementById('remover-finalizados');
 buttonRemoveFinalizados.addEventListener('click', apagarFinalizados);
 
 function apagaSelecionado() {
-  let lista = document.getElementsByTagName('ol')[0];
-  let itens = document.getElementsByTagName('li');
-  for (let index = itens.length - 1; index >= 0; index -= 1){
+  const lista = document.getElementsByTagName('ol')[0];
+  const itens = document.getElementsByTagName('li');
+  for (let index = itens.length - 1; index >= 0; index -= 1) {
     if (itens[index].classList.contains('item-selecionado')) {
       lista.removeChild(itens[index]);
     }
-   }
+  }
 }
 
-let buttonRemoveSelecionado = document.getElementById('remover-selecionado');
+const buttonRemoveSelecionado = document.getElementById('remover-selecionado');
 buttonRemoveSelecionado.addEventListener('click', apagaSelecionado);
 
 function moverCima() {
-  let lista = document.getElementById('lista-tarefas');
-  let itensList = document.getElementsByClassName('item-selecionado');
-  if (itensList[0] !== undefined){
-    if (itensList[0].previousElementSibling !== null){
+  const lista = document.getElementById('lista-tarefas');
+  const itensList = document.getElementsByClassName('item-selecionado');
+  if (itensList[0] !== undefined) {
+    if (itensList[0].previousElementSibling !== null) {
       lista.insertBefore(itensList[0], itensList[0].previousElementSibling);
-}
-}
+    }
+  }
 }
 
-let buttonMoverCima = document.getElementById('mover-cima');
+const buttonMoverCima = document.getElementById('mover-cima');
 buttonMoverCima.addEventListener('click', moverCima);
 
 function moverBaixo() {
-  let lista = document.getElementById('lista-tarefas');
-  let itensList = document.getElementsByClassName('item-selecionado');
-    if (itensList[0] !== undefined){
-    if (itensList[0].nextElementSibling !== null){
+  const lista = document.getElementById('lista-tarefas');
+  const itensList = document.getElementsByClassName('item-selecionado');
+  if (itensList[0] !== undefined) {
+    if (itensList[0].nextElementSibling !== null) {
       lista.insertBefore(itensList[0].nextElementSibling, itensList[0]);
-}
-}
+    }
+  }
 }
 
-let buttonMoverBaixo = document.getElementById('mover-baixo');
+const buttonMoverBaixo = document.getElementById('mover-baixo');
 buttonMoverBaixo.addEventListener('click', moverBaixo);
 
 function salvarTarefas() {
   localStorage.clear();
-  let listaCompleta = document.querySelector('ol');
-  localStorage.setItem('Lista', listaCompleta.innerHTML);
-  }
+  const listaTotal = document.querySelector('ol');
+  localStorage.setItem('Lista', listaTotal.innerHTML);
+}
 
- window.onload = function() {
-   document.querySelector('ol').innerHTML = localStorage.getItem('Lista');
- }
-
+window.onload = function () {
+  document.querySelector('ol').innerHTML = localStorage.getItem('Lista');
+};
 
 let buttonSalvar = document.getElementById('salvar-tarefas');
 buttonSalvar.addEventListener('click', salvarTarefas);
