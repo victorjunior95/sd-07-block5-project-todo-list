@@ -2,9 +2,9 @@ let makeTask = document.querySelector('#criar-tarefa');
 let inputTask = document.querySelector('#texto-tarefa');
 let orderedlist = document.querySelector('#lista-tarefas')
 
- function teste () {
-    alert (inputTask.value)
-    }
+//  function teste () {
+//     alert (inputTask.value)
+//     }
   makeTask.addEventListener('click' , makeTaskList)
 
   function makeTaskList () {
