@@ -14,7 +14,7 @@ function criarLi () {
 function changeBackgroundColor() {
     allItens = document.querySelectorAll('li');    
     for (let i = 0; i < allItens.length; i += 1) {
-        allItens[i].addEventListener('dblclick', function () {
+        allItens[i].addEventListener('click', function () {
             if (allItens[i].style.backgroundColor === 'white') {
                 allItens[i].style.backgroundColor = 'rgb(128,128,128)';
             }
