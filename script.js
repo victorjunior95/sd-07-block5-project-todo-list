@@ -10,12 +10,28 @@ click.addEventListener("click", function() {
 });
 
 
-const paint = document.getElementById('lista-tarefas');
+const item = document.getElementById('lista-tarefas');
 
-paint.addEventListener("click", function() {
-  if (document.getElementsByClassName('selected')[0] === undefined) {
+item.addEventListener("click", function() {
+
+  if (event.target.className === 'completed') {
+    document.getElementsByClassName('selected')[0].style.backgroundColor = 'white';
+
+  } else if (document.getElementsByClassName('selected')[0] === undefined) {
     event.target.className = 'selected';
     event.target.style.backgroundColor = 'rgb(128, 128, 128';
+
+    
+    
+
+    let completedLenth = document.querySelectorAll('#lista-tarefas .completed').length;
+
+    for (index = 0; index < completedLenth; index += 1) {
+      document.getElementsByClassName('completed')[index].style.backgroundColor = 'white';
+
+    }
+    
+
   } else {
     document.getElementsByClassName('selected')[0].style.backgroundColor = 'white';
     document.getElementsByClassName('selected')[0].className = undefined;
@@ -24,11 +40,13 @@ paint.addEventListener("click", function() {
   }
 });
 
-paint.addEventListener("dblclick", mark);
-
-function mark() {
-  event.target.className = 'completed';
-}
+item.addEventListener("dblclick", function() {
+  if (event.target.className != 'completed') {
+    event.target.className = 'completed';
+  } else if (event.target.className === 'completed') {
+    event.target.className = '';
+  }
+});
 
 document.getElementById('apaga-tudo').addEventListener('click', function() {
   let list = document.getElementById("lista-tarefas")
