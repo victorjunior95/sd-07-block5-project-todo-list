@@ -3,9 +3,7 @@ let criarLista = document.querySelector('#lista-tarefas');
 let btnCriaTarefa = document.querySelector('#criar-tarefa');
 let btnApagaTudo = document.querySelector('#apaga-tudo');
 let btnSelecionado = document.querySelector('#remover-selecionado');
-let btnFinalizado = document.querySelector('#remover-finalizados');
 let classeItem = [];
-
 
 
 
@@ -52,18 +50,18 @@ function itemTroca(){
     for(let index = 0; index < classeItem.length ; index ++){
         if(classeItem[index].classList.contains('completed')){
            classeItem[index].addEventListener('click',function(){
-               classeItem[index].classList.add('selected');
+            classeItem[index].style.backgroundColor = 'rgb(128,128,128)';
            });
         }
         else{
             classeItem[index].addEventListener('click',function(){
-                classeItem[index].classList.remove('selected');
+                classeItem[index].style.backgroundColor = 'rgb(128,128,128)';
             });
         }
        }
    };
 
-function removeSelecionado(){
+function removeFinalizados(){
     for(let index = 0; index < classeItem.length ; index ++){
         classeItem[index].addEventListener('click',function(){
             if(classeItem[index].classList.contains('completed')){
@@ -76,15 +74,5 @@ function removeSelecionado(){
     }
 };
 
-btnSelecionado.addEventListener('click',removeSelecionado);
-
-function removeFinalizados(){
-    if(classeItem[index].classList.contains('completed')){
-        for(let index = 0; index < classeItem.length ; index ++){
-            criarLista.removeChild(classeItem[index]);
-        };
-    }
-};
-
-btnFinalizado.addEventListener('click',removeFinalizados);
+btnSelecionado.addEventListener('click',removeFinalizados);
 
