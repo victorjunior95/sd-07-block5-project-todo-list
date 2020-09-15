@@ -99,7 +99,6 @@ function moveTaskDown() {
   }
 }
 
-// Event Listeners
 buttonCreateTask.addEventListener('click', addTaskToList);
 buttonClearTaskList.addEventListener('click', clearTaskList);
 buttonRemoveCompletedTasks.addEventListener('click', removeCompletedTasks);
@@ -109,7 +108,6 @@ buttonLoadTasks.addEventListener('click', loadOrderedList);
 buttonMoveUp.addEventListener('click', moveTaskUp);
 buttonMoveDown.addEventListener('click', moveTaskDown);
 
-//  Initializing Scripts
 if (localStorage.length !== 0) {
   window.onload = loadOrderedList;
 }
