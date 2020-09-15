@@ -95,16 +95,9 @@ function loadOrderedList() {
   }
 }
 
-function isSelected() {
-  selectedTask = document.getElementsByClassName('selected');
-  if (selectedTask > 0) {
-    return true;
-  }
-}
-
 function moveTaskUp() {
   if (selectedTask.length !== 0) {
-    if (selectedTask[0].previousElementSibling != null){
+    if (selectedTask[0].previousElementSibling != null) {
       orderedListTasks.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling);
     }
   }
