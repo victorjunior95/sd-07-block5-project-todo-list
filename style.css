@@ -1,13 +1,14 @@
 body {
-    margin-left: 10px;
-  }
-  
-  .criar-tarefa {
-    height: 30px;
-    width: 60px;
-  }
-
-#lista-tarefas {
-  display: flex;
-  flex-direction: column-reverse
+  margin-left: 10px;
 }
+
+.criar-tarefa {
+  height: 30px;
+  width: 60px;
+}
+  
+  /* .lista-tarefas {
+    display: flex;
+    flex-direction: column-reverse
+  } */
+  
