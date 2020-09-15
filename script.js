@@ -9,7 +9,7 @@ const clearHistory = document.getElementById('apagar-histórico');
 
 clearHistory.addEventListener('click', () => {
   localStorage.clear();
-})
+});
 
 function loadItens() {
   for (let i = 0; i < localStorage.length; i += 1) {
