@@ -8,15 +8,26 @@ btnCriarTarefa.addEventListener('click', function () {
     listItem.innerHTML = textInput;
     toDoList.appendChild(listItem);
     document.querySelector('#texto-tarefa').value = '';
+    document.querySelectorAll('.selected')
     changeBackground();
+    lineThrough();
 });
 
 // muda de cor de fundo quando clicado
+
 let list = document.getElementsByClassName('listItem');
 function changeBackground() {
     for (let index = 0; index < list.length; index += 1) {
       list[index].addEventListener('click', function () {
       list[index].classList.add('selected');
-    });
+      });
+    }
   }
-}
+
+  function lineThrough() {
+    for (let index = 0; index < list.length; index += 1) {
+      list[index].addEventListener('dblclick', function () {
+      list[index].classList.add('completed');
+      });
+    }
+  }
