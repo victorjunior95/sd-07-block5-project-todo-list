@@ -24,3 +24,7 @@ body {
   border-radius: 10%;
   border: gray solid 3px;
 }
+
+.section-list {
+  margin-top: 40px;
+}
