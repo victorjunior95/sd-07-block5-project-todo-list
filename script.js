@@ -7,24 +7,40 @@ botaoTarefa.addEventListener('click', function(){
     let novoElemento = document.createElement("li")
     novoElemento.innerHTML = entradaTexto.value
     listaTarefas.appendChild(novoElemento)  
-    novoElemento.addEventListener('click', selectItem);
+    novoElemento.addEventListener('click', selecionarItem);// se o novo elemento for clicado a funçao é chamada
+    novoElemento.addEventListener('dblclick', riscarSelecionado)
     document.getElementById('texto-tarefa').value='';
+    return novoElemento
         
 })
 
-function clearSelection() {
-    const item = document.querySelector('.selected');
-    if (item !== null) item.classList.remove('selected');
+
+
+function riscarSelecionado(event){
+  event.target.classList.add('completed')
+  let novoElementoRiscado = document.querySelector('.completed')
+  console.log(novoElementoRiscado)
+  novoElementoRiscado.addEventListener('dblclick', function(){
+    if (novoElementoRiscado !== null) novoElementoRiscado.classList.remove('completed')
+
+  })
+}
+
+
+
+function selecionarItem(event) {
+  apagarSelecionado();
+  event.target.classList.add('selected');//adicionar a classe selected
+  //essa classe é colocada 
+}
+
+
+function apagarSelecionado() {
+    const item = document.querySelector('.selected');//se tiver a classe entra no item
+    if (item !== null) item.classList.remove('selected');//se não for nulo remove a classe , o item permanece mais a classe é removida
   }
   
-  function selectItem(event) {
-    clearSelection();
-    event.target.classList.add('selected');
-  }
-
-
-
-
+  
 botaoApagarLista.addEventListener('click', function(){
    listaTarefas.innerHTML = ''
 })
