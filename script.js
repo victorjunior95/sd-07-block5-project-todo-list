@@ -8,4 +8,14 @@ button.addEventListener("click", function() {
     list.appendChild(novoTodo)
     inputText.value = ""
     inputText.focus()
+    novoTodo.addEventListener("click", function() {    
+        const previousItem = document.getElementsByClassName('selected');
+        if (previousItem.length > 0) {
+        previousItem[0].classList.remove('selected');
+        }
+        this.className = "selected"
+    })
 })
+
+
+
