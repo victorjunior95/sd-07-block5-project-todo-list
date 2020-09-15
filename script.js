@@ -2,11 +2,10 @@ let listaTarefas = document.getElementById('lista-tarefas');
 let buttonAddTarefa = document.getElementById('criar-tarefa');
 
 buttonAddTarefa.addEventListener('click', function (){
-//Adicionando tarefas na lista
     let itemLista = document.createElement('li');
     itemLista.innerText = document.getElementById('texto-tarefa').value;
     listaTarefas.appendChild(itemLista);
-//Adiciona cor ao elemento clicado   
+
     itemLista.addEventListener('click', function(event){
         let selectedItem = document.querySelector('.selected');
         if(selectedItem !== null){
@@ -18,7 +17,32 @@ buttonAddTarefa.addEventListener('click', function (){
     itemLista.addEventListener('dblclick', function(event){
         if(event.target.classList.contains('completed')){
             event.target.classList.remove('completed');
-        } event.target.classList.add('completed')
+        } 
+        else {
+            event.target.classList.add('completed')
+        }
     })
     document.getElementById('texto-tarefa').value ='';
+});
+//Limpando a lista
+//baseado em https://app.betrybe.com/course/fundamentals/javascript/dom-manipulation/js-part-6
+
+let buttonClear = document.getElementById('apaga-tudo')
+buttonClear.addEventListener('click', function(){
+    let itemsList = document.querySelectorAll('li')
+
+    for(let index = 0; index< itemsList.length; index += 1) {
+    let item = itemsList[index];
+    listaTarefas.removeChild(item);
+    }
+});
+
+let buttonFinished = document.getElementById('remover-finalizados')
+buttonFinished.addEventListener('click', function(){
+    let checkList = document.querySelectorAll('.completed')
+
+    for(let index = 0; index< checkList.length; index += 1) {
+    let checkItem = itemsCheck[index];
+    listaTarefas.removeChild(checkItem);
+    }
 });
