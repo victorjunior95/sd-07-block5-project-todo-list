@@ -4,6 +4,9 @@ const taskInput = document.getElementById('texto-tarefa');
 const list = document.getElementById('lista-tarefas');
 const deleteListBttn = document.getElementById('apaga-tudo');
 const removeCompletedBttn = document.getElementById('remover-finalizados');
+const removeSelectedBttn = document.getElementById('remover-selecionado');
+const moveUpBttn = document.getElementById('mover-cima');
+const moveDownBttn = document.getElementById('mover-baixo');
 
 //  cria evento de click no item lista
 function createTaskEvent1(task) {
@@ -59,5 +62,27 @@ removeCompletedBttn.addEventListener('click', function () {
   const completedTasks = document.querySelectorAll('.completed');
   for (let index = 0; index < completedTasks.length; index += 1) {
     completedTasks[index].remove();
+  }
+});
+
+//  remover item selecionado
+removeSelectedBttn.addEventListener('click', function () {
+  const selectedItem = document.querySelector('.selected');
+  selectedItem.remove();
+});
+
+//  mover para cima
+moveUpBttn.addEventListener('click', function () {
+  const selectedItem = document.querySelector('.selected');
+  if (selectedItem.previousElementSibling != null) {
+    list.insertBefore(selectedItem, selectedItem.previousElementSibling);
+  }
+});
+
+//  mover para baixo
+moveDownBttn.addEventListener('click', function () {
+  const selectedItem = document.querySelector('.selected');
+  if (selectedItem.nextElementSibling != null) {
+    list.insertBefore(selectedItem, selectedItem.nextElementSibling.nextElementSibling);
   }
 });
