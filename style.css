@@ -1,11 +1,7 @@
-#lista-tarefas {
-    top: 200px;
-}
-
 .completed {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 .selected {
-    background-color: rgb(128,128,128)
+  background-color: gray;
 }
