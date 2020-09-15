@@ -3,26 +3,27 @@ const assignment = document.querySelector('#texto-tarefa')
 
 add.addEventListener('click', function () {
     let iten1 = assignment.value
-    let list = document.querySelector('#lista-tarefas').innerHTML += `<li>${iten1}</li>`
+    let list = document.querySelector('#lista-tarefas').innerHTML += `<li class='iten'>${iten1}</li>`
     assignment.value = ""
     
 const listItens = document.getElementsByTagName('li')
 
-
 for ( let index = 0; index < listItens.length; index += 1){
     const itenSelected = listItens[index]
-    let itens =[]
-    itens = listItens[index]
     itenSelected.addEventListener('click' ,function(){
-       
-        itenSelected.style.backgroundColor = "rgb(128, 128, 128)"
-       
-        
-    
-       
+    itenSelected.id='selected'
 })
-const clear = document.querySelector('#apaga-tudo')
 
+itenSelected.addEventListener('dblclick' , function (){
+    if(itenSelected.className ==='iten'){
+        itenSelected.className='completed'
+    } else {
+        itenSelected.className= 'iten'
+    }
+})
+}
+
+const clear = document.querySelector('#apaga-tudo')
 for(let index1 = 0 ; index1 < listItens.length; index1 +=1){
     let itens = listItens[index1]
 clear.addEventListener('click' ,function(){
@@ -30,10 +31,7 @@ clear.addEventListener('click' ,function(){
     let list = document.querySelector('#lista-tarefas')
     
     list.removeChild(itens)
-
 })
-
-}
 }
 })
 
