@@ -1,9 +1,10 @@
 let buttonCreate = document.getElementById('criar-tarefa');
+let buttonClearAll = document.getElementById('apaga-tudo');
+let list = document.getElementById('lista-tarefas');
 
 // 5 - Deve haver um botão com id="criar-tarefa" e ao clicar nesse botão, um novo item deverá ser criado ao final da lista e o texto do input deve ser limpo.   
 function createItem(item) {
     let liItem = document.createElement('li');
-    let list = document.getElementById('lista-tarefas');
     liItem.innerText = item;
     list.appendChild(liItem);
 }
@@ -48,3 +49,11 @@ function lineTrough() {
 
 buttonCreate.addEventListener('click', lineTrough);
 
+// 10 - Deve haver um botão com id="apaga-tudo" que quando clicado deve apagar todos os items da lista.
+
+buttonClearAll.addEventListener('click', function () {
+    listLength = list.childNodes.length;
+    for (index = 0; index < listLength; index += 1) {
+        list.removeChild(list.firstChild);
+    }
+});
