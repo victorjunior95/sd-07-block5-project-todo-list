@@ -43,7 +43,8 @@ body {
   background-color:  rgb(20, 33, 61);
   border-radius: 20px;
   border: solid 3px rgb(61, 90, 128);
-  color: white;
+  color: yellow;
+  font-size: 1em;
   padding: 10px;
   margin-right: 10px;
   height: 20px;
