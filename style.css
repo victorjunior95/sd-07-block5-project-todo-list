@@ -42,3 +42,7 @@ header {
   padding-bottom: 20px;
   width: fit-content;
 }
+
+.completed {
+  text-decoration: line-through;
+}

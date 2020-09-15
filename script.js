@@ -19,6 +19,12 @@ document.addEventListener('click', (event) => {
   }
 });
 
+document.addEventListener('dblclick', (event) => {
+  if (event.target.classList.contains('task-item')) {
+    event.target.classList.toggle('completed');
+  }
+});
+
 btnCreateTask.addEventListener('click', createTask);
 taskTextInput.addEventListener('keyup', (event) => {
   if (event.key === 'Enter') {
