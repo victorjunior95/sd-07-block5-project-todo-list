@@ -9,17 +9,23 @@ let classeItem = [];
 
 
 function criaItem(){
-    let item = 0;
-    let lista = [];
-    lista[item] = document.createElement('li');
-    lista[item].innerText = campoInsertTarefa.value;
-    lista[item].className = 'itens';
-    criarLista.appendChild(lista[item]);
-    campoInsertTarefa.value = ""; 
-    classeItem = document.querySelectorAll('.itens');
-    SelectComplet(lista[item]);
-    itemAdciona(lista[item]);
-    item ++;
+    if( campoInsertTarefa.value != ""){
+
+        let item = 0;
+        let lista = [];
+        lista[item] = document.createElement('li');
+        lista[item].innerText = campoInsertTarefa.value;
+        lista[item].className = 'itens';
+        criarLista.appendChild(lista[item]);
+        campoInsertTarefa.value = ""; 
+        classeItem = document.querySelectorAll('.itens');
+        SelectComplet(lista[item]);
+        selecionaItem(lista[item]);
+        item ++;
+    }
+    else{
+        alert('O campo está vázio, é necessário inserir uma tarefa!')
+    }
 }
 
 btnCriaTarefa.addEventListener('click',criaItem);
@@ -51,9 +57,12 @@ function SelectComplet(item){
 
 // Marca item selecionado
 
-function itemAdciona(item){
+function selecionaItem(item){
     item.addEventListener('click',function(){
-        item.classList.toggle('selected');
+        for(let index = 0; index < classeItem.length ; index ++){
+                classeItem[index].classList.remove('selected');
+           }
+           item.classList.toggle('selected');
     });
 };
 
@@ -62,7 +71,6 @@ function itemAdciona(item){
 function removeFinalizados(){
     for(let index = 0; index < classeItem.length ; index ++){
         if(classeItem[index].classList.contains('completed')){
-
             criarLista.removeChild(classeItem[index]);
         }
     };
