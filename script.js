@@ -14,6 +14,14 @@ function completedItemList() {
   } else this.className = 'completed';
 }
 
+// apagar todas as tarefas da lista
+function apagaTarefas() {
+  const tarefas = document.getElementsByTagName('li');
+  while (tarefas.length > 0) {
+    tarefas[0].remove();
+  }
+}
+
 // adiciona tarefa à lista ordenada conforme texto digitado
 function adicionarTarefa(element, textInput) {
   const listaTarefa = document.createElement('li');
@@ -32,4 +40,8 @@ window.onload = function () {
     adicionarTarefa(listaTarefasOl, textoTarefaInput.value);
     textoTarefaInput.value = '';
   });
+
+  // limpar lista de tarefas
+  const apagaTudoButton = document.querySelector('#apaga-tudo');
+  apagaTudoButton.addEventListener('click', apagaTarefas)
 };
