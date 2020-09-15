@@ -1,3 +1,4 @@
+//  fonte: https://github.com/Marxneves/Trybe/blob/master/Projetos/to-do-list/script.js
 const inputText = document.querySelector('#texto-tarefa');
 const addButton = document.querySelector('#criar-tarefa');
 const list = document.querySelector('#lista-tarefas');
