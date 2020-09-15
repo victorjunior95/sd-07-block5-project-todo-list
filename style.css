@@ -1,7 +1,6 @@
 .selected {
   background-color: grey;
   border-radius: 2px;
-  width: 200px;
 }
 
 .completed {
