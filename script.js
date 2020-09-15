@@ -15,11 +15,12 @@ function criaItem(){
     lista[item].className = 'itens';
     criarLista.appendChild(lista[item]);
     campoInsertTarefa.value = ""; 
-    item ++;
     classeItem = document.querySelectorAll('.itens');
-    SelectComplet();
-    itemAdciona();
-    itemRemove();
+    SelectComplet(lista[item]);
+    itemAdciona(lista[item]);
+    itemRemove(lista[item]);
+    removeFinalizados(lista[item]);
+    item ++;
 }
 
 btnCriaTarefa.addEventListener('click',criaItem);
@@ -38,45 +39,32 @@ function limparLista(){
 
 btnApagaTudo.addEventListener('click', limparLista);
 
-function SelectComplet(){
- for(let index = 0; index < classeItem.length ; index ++){
-        classeItem[index].addEventListener('dblclick',function(){
-            classeItem[index].classList.toggle('completed');
+function SelectComplet(item){
+    item.addEventListener('dblclick',function(){
+        item.classList.toggle('completed');
+    });
+};
+
+function itemAdciona(item){
+    item.addEventListener('click',function(){
+        item.classList.toggle('selected');
+    });
+};
+
+function itemRemove(item){
+    if(item.classList.contains('selected')){
+        item.addEventListener('click',function(){
+            item.classList.remove('selected');
         });
     }
 };
 
-function itemAdciona(){
-    for(let index = 0; index < classeItem.length ; index ++){
-        classeItem[index].addEventListener('click',function(){
-            classeItem[index].classList.toggle('selected');
+function removeFinalizados(item){
+    if(item.classList.contains('completed')){
+        item.addEventListener('click',function(){
+            criarLista.removeChild(item);
         });
-    }
-};
-
-function itemRemove(){
-    for(let index = 0; index < classeItem.length ; index ++){
-        if(classeItem[index].classList.contains('selected')){
-            classeItem[index].addEventListener('click',function(){
-            classeItem[index].classList.remove('selected');
-            });
-            console.log(fundoColor)
-        }
-    }
-};
-
-function removeFinalizados(){
-    let lista = [];
-    if(classeItem[index].classList.contains('completed')){
-
-        for(let index = 0; index < classeItem.length ; index ++){
-            classeItem[index].addEventListener('click',function(){
-                    lista[index] =  classeItem[index];
-            });
-        }
-    }
-    
-    criarLista.removeChild(lista[index]);
+    }  
 };
 
 btnSelecionado.addEventListener('click',removeFinalizados);
