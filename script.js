@@ -6,6 +6,8 @@ function criarTarefa(){
     let botao = document.querySelector("#criar-tarefa");
     let elemento = document.createElement("li");    
     let result =lista.appendChild(elemento);
+    elemento.addEventListener('click',itemSelecionado);
+    elemento.addEventListener('dblclick',nomedafunçaonova);
     let conteudo=result.innerText = inputDoTexto.value;
     inputDoTexto.value = "";
 }
@@ -24,10 +26,18 @@ document.querySelector("#apaga-tudo").addEventListener("click", limpando);
 
 //esta função será encarregada de mudar a cor de fundo dos itens da lista 
 
-function background (item){
+/*function background (item){
     item = document.querySelectorAll("li");
     item.addEventListener("click", function(){
        item.classList.add("selected")
        document.querySelector(".selected").style.backgroundColor = rgb(128,128,128);
     })
+}*/
+let item = document.querySelectorAll("li");
+function itemSelecionado (){
+    let selecao = document.querySelector(".selecionado");
+    if(selecao !== null){
+        selecao.classList.remove("selecionado");
+    }
+    event.target.classList.add("selecionado");
 }
