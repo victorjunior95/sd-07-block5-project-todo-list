@@ -14,9 +14,15 @@ botao.addEventListener("click", criarTarefa);
 function limpando (){
 let lista = document.querySelector('ol');
 let li = document.querySelectorAll("li");
-for(let i = 0; i <= li.length; i += 1){
+for(let i = 0; i < li.length; i += 1){
     let isso= li[i]
     lista.removeChild(isso);
 }
 }
 document.querySelector("#apaga-tudo").addEventListener("click", limpando);
+
+//esta função será encarregada de mudar a cor de fundo dos itens da lista 
+
+function background (){
+    
+}
