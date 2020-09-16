@@ -14,10 +14,10 @@ body {
 }
 .titulo {
   font-size: 2.7em;
+  width: 90%;
 }
 .function {
   color: rgb(231, 29, 54);
-  font-style: italic;
   font-size: 1.3em;
 }
 .container {
@@ -54,32 +54,28 @@ body {
   width: 500px;
 }
 .btn-large {
-  background-color: white;
-  border: solid 3px rgb(1, 22, 39);
+  background-color: rgb(1, 22, 39);
   border-radius: 20px;
-  color: rgb(1, 22, 39);
+  color: white;
   font-size: 1em;
   font-weight: 600;
   margin-right: 10px;
   padding: 10px;
   height: 40px;
-  text-transform: lowercase;
   width: 180px;
 }
 .btn-large:hover{
-  background-color:  rgb(1, 22, 39);
+  background-color:  rgb(61, 90, 128);
 }
 .btn-small {
-  background-color: white;
-  border: solid 3px rgb(46, 196, 182);
+  background-color: rgb(1, 22, 39);
   border-radius: 20px;
-  color: rgb(1, 22, 39);
+  color: white;
   font-size: 1em;
   font-weight: 600;
   margin-right: 10px;
   padding: 10px;
   height: 40px;
-  text-transform: lowercase;
   width: 70px;
 }
 .btn-small:hover{

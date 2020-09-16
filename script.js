@@ -50,12 +50,22 @@ function loadTasks() {
 function removeSelected(selected) {
   taskList.removeChild(selected);
 }
-/*  function moveUp(selected) {
-
+function moveUp(before, selected) {
+  let after = before.innerHTML;
+  before.innerHTML = selected.innerHTML;
+  selected.innerHTML = after;
+  let classAfter = before.className;
+  before.className = selected.className;
+  selected.className = classAfter;
 }
-  function moveDown(selected) {
-
-}*/
+function moveDown(after, selected) {
+  let before = after.innerHTML;
+  after.innerHTML = selected.innerHTML;
+  selected.innerHTML = before;
+  let classBefore = after.className;
+  after.className = selected.className;
+  selected.className = classBefore;
+}
 
 //  EVENTOS
 //  Evento do botão criar tarefa
@@ -69,7 +79,7 @@ btnTask.addEventListener('click', function () {
 taskList.addEventListener('click', function (event) {
   if (event.target != taskList){
     clearSelection();
-  addSelection(event.target);
+    addSelection(event.target);
   }
 });
 taskList.addEventListener('dblclick', function (event) {
@@ -88,12 +98,15 @@ btnRemoveSelected.addEventListener('click', function () {
   let selected = document.querySelector('.selected');
   removeSelected(selected);
 });
-/*
 btnMoveUp.addEventListener('click', function () {
-  moveUp();
+  let selected = document.querySelector('.selected');
+  let before = selected.previousElementSibling;
+  if (before != null) {
+    moveUp(before, selected);
+  }
 });
 btnMoveDown.addEventListener('click', function () {
   let selected = document.querySelector('.selected');
-  moveDown(selected);
+  let after = selected.nextElementSibling;
+  moveDown(after, selected);
 });
-*/
