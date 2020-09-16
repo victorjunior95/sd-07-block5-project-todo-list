@@ -6,6 +6,7 @@ let btnFinalizados = document.querySelector('#remover-finalizados');
 let btnSelecionado = document.querySelector('#remover-selecionado')
 let btnMoverCima = document.querySelector('#mover-cima');
 let btnMoverBaixo = document.querySelector('#mover-baixo');
+let btnSalvaLista = document.querySelector('#salvar-tarefas');
 let classeItem = [];
 
 
@@ -34,10 +35,12 @@ btnCriaTarefa.addEventListener('click',criaItem);
 // Apaga toda a lista
 
 function limparLista(){
-    if(classeItem.length != 0){
+    console.log(criarLista.length);
+    if(criarLista.length != undefined || classeItem.length != 0){
         for(let index = 0; index < classeItem.length ; index ++){
             criarLista.removeChild(classeItem[index]);
         };
+        console.log(criarLista.length);
     }
     else{
         alert('Não tem itens nessa lista');
@@ -141,3 +144,24 @@ function MoverBaixo(){
 };
 
 btnMoverBaixo.addEventListener('click', MoverBaixo);
+
+
+
+function SalvaLista(){
+    for(let index = 0; index < classeItem.length ; index ++){
+        localStorage.setItem('item' + index, classeItem[index].outerHTML);
+    }
+}
+
+window.onbeforeunload = RecuperaLista();
+
+function RecuperaLista(){
+    for(let index = 0; index < localStorage.length ; index ++){
+        let itens = [];
+        itens[index] = document.createElement('li');
+        criarLista.appendChild(itens[index]);
+        itens[index].outerHTML = localStorage.getItem('item' + [index]);
+    }
+}
+
+btnSalvaLista.addEventListener('click', SalvaLista);
