@@ -14,3 +14,22 @@ header {
   width: 100%;
   z-index: 2;
 }
+
+p {
+  font-weight: 800;
+  font-size: 20px;
+}
+.fatherbuttonformat {
+  background-color: rgba(35 , 177 , 232 , 0.91);
+  border-radius: 15%;
+  height: 100px;
+  margin-top: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 35px;
+  text-align: center;
+  width: 250px;
+}
+
+
+

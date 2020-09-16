@@ -10,9 +10,21 @@
   <body>
     <header>
       <h1>Minha Lista de Tarefas</h1>
-        <p id = 'funcionamento'>Clique duas vezes em um item para marcá-lo como completo" explicando o funcionamento da lista para o usuário.</p>
+        <p id = 'funcionamento'>Clique duas vezes em um item para marcá-lo como completo!</p>
     </header>
-    <main></main>
+    <main>
+      <div class = 'fatherbuttonformat'>
+        <input  type = 'text' id = 'texto-tarefa' name = 'criar-tarefa' maxlength = '60' style = 'width: 200px;' required placeholder = 'Digite seu texto aqui'>
+        <br>
+        <br>
+        <button id = 'criar-tarefa'>Adicionar</button>
+      </div>
+      <section>
+        <ol id = 'lista-tarefas'>
+          
+        </ol>
+      </section>
+    </main>
     <footer></footer>
     <script src = 'script.js'></script>
   </body>
