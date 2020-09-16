@@ -140,6 +140,11 @@ window.onload = function () {
         console.log(jobList);
         if (localStorage.getItem("ListaTarefas") !== "undefined" || localStorage.getItem("ListaTarefas") !== "null") {
             jobList.innerHTML = localStorage.getItem("ListaTarefas");
+            let elementInsert = document.querySelectorAll("li");
+            for (index = 0; index < elementInsert.length; index += 1) {
+                elementInsert[index].addEventListener("click", hooverFunction);
+                elementInsert[index].addEventListener("dblclick", strikeOut);
+            }
         }
     }
 
