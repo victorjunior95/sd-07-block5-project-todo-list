@@ -1,22 +1,30 @@
 let criarTarefa = document.getElementById('criar-tarefa');
-let listarTarefas = document.getElementById('lista-tarefas');
+let listaTarefas = document.getElementById('lista-tarefas');
 let campoToDo = document.querySelector('input');
 
-let todos = [];
+// window.onload = renderizarTodos (); 
 
-window.onload = renderizarTodos ();
-
-function renderizarTodos () {
-  for (let todo of todos) {
-    let itemLista = document.createElement('li');
-    listarTarefas.appendChild(itemLista).innerText = todo;
-  }
-}
+function renderizarTodos (novoToDo) {
+  let itemLista = document.createElement('li');
+  listaTarefas.appendChild(itemLista)
+  .setAttribute('class', 'todo');
+  itemLista.innerText = novoToDo;
+};
 
 criarTarefa.addEventListener('click', function () {
-  listarTarefas.innerHTML = '';
-  let novoTodo = campoToDo.value;
-  todos.push(novoTodo);
+  let outroToDo = campoToDo.value;
   campoToDo.value = '';
-  renderizarTodos();
+  renderizarTodos(outroToDo);
+  let itemLista = document.querySelectorAll('li');
+  
+  for(let item of itemLista) {
+    item.addEventListener('click', function () {
+      item.style.backgroundColor = 'rgb(128, 128, 128)';
+    }); 
+  };
 });
+
+
+
+
+
