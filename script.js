@@ -3,9 +3,11 @@ window.onload=function(){
     let botaoAdicionar=document.getElementById('criar-tarefa');
     let botaoApagaTudo=document.getElementById('apaga-tudo');
     let botaoApagaFinalizados=document.getElementById('remover-finalizados');
+    let botaoApagaSelecionado=document.getElementById('remover-selecionado');
     let botaoSalvaLista=document.getElementById('salvar-tarefas');    
     let novaTarefa=document.getElementById('texto-tarefa');
-    let listaTarefas=document.getElementById('lista-tarefas');    
+    let listaTarefas=document.getElementById('lista-tarefas');
+    let itemSelecionado=document.getElementsByClassName('selecionado')
 
     botaoAdicionar.addEventListener('click',function(){
         let tarefa=novaTarefa.value;
@@ -39,6 +41,10 @@ window.onload=function(){
                 }
                 //console.log(todosItens[index].innerText)
             }
+    })
+
+    botaoApagaSelecionado.addEventListener('click',function(){
+        itemSelecionado[0].remove();
     })
 
     loadList();
