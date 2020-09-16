@@ -18,7 +18,7 @@ function criarLi() {
       if (li.classList.contains('completed')) {
         li.classList.remove('completed');
       } else {
-      li.classList.add('completed');
+        li.classList.add('completed');
       }
     });
     listaTarefas.appendChild(li);
