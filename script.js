@@ -88,11 +88,25 @@ removeSelected.addEventListener('click', () => {
 });
 
 function moveTaskUp() {
-  list.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling);
+  const listLength = document.getElementsByTagName('li');
+  if (listLength.length === 0 || selectedTask === null) {
+    alert('Ops, não há elementos na lista');
+  } else if (selectedTask[0].previousElementSibling === null) {
+    alert('ops, não há mais tarefas acima');
+  } else {
+    list.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling);
+  }
 }
 
 function moveTaskDown() {
-  list.insertBefore(selectedTask[0].nextElementSibling, selectedTask[0]);
+  const listLength = document.getElementsByTagName('li');
+  if (listLength.length === 0 || selectedTask === null) {
+    alert('Ops, não há elementos na lista');
+  } else if (selectedTask[0].nextElementSibling === null) {
+    alert('ops, não há mais tarefas acima');
+  } else {
+    list.insertBefore(selectedTask[0].nextElementSibling, selectedTask[0]);
+  }
 }
 
 moveUp.addEventListener('click', moveTaskUp);
