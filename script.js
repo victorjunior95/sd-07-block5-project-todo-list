@@ -1,4 +1,4 @@
-//	DEFINIÇÕES INICIAIS
+//  DEFINIÇÕES INICIAIS
 const task = document.querySelector('#texto-tarefa');
 const btnTask = document.querySelector('#criar-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
@@ -12,15 +12,15 @@ const btnMoveDown = document.querySelector('#mover-baixo');
 //  FUNÇÕES
 function addTask() {
   const li = document.createElement('li');
-	li.innerText = task.value;
-	taskList.appendChild(li);
+  li.innerText = task.value;
+  taskList.appendChild(li);
 }
 function clearInput() {
   task.value = '';
 }
 function clearSelection() {
-  let items = document.querySelectorAll('#lista-tarefas li');
-  for (index = 0; index < items.length; index += 1) {
+  const items = document.querySelectorAll('#lista-tarefas li');
+  for (let index = 0; index < items.length; index += 1) {
     items[index].classList.remove('selected');
   }
 }
@@ -34,35 +34,35 @@ function clearList() {
   taskList.innerHTML = '';
 }
 function clearCompleted() {
-  let taskListItems = taskList.querySelectorAll('.completed');
+  const taskListItems = taskList.querySelectorAll('.completed');
   for (let index = 0; index < taskListItems.length; index += 1) {
-      taskList.removeChild(taskListItems[index]);
+    taskList.removeChild(taskListItems[index]);
   }
 }
 function saveTasks() {
-  let tasks = taskList.innerHTML;
+  const tasks = taskList.innerHTML;
   localStorage.setItem('tasks', tasks);
 }
 function loadTasks() {
-  let loadedTasks = localStorage.getItem('tasks');
+  const loadedTasks = localStorage.getItem('tasks');
   taskList.innerHTML = loadedTasks;
 }
 function removeSelected(selected) {
   taskList.removeChild(selected);
 }
 function moveUp(before, selected) {
-  let after = before.innerHTML;
+  const after = before.innerHTML;
   before.innerHTML = selected.innerHTML;
   selected.innerHTML = after;
-  let classAfter = before.className;
+  const classAfter = before.className;
   before.className = selected.className;
   selected.className = classAfter;
 }
 function moveDown(after, selected) {
-  let before = after.innerHTML;
+  const before = after.innerHTML;
   after.innerHTML = selected.innerHTML;
   selected.innerHTML = before;
-  let classBefore = after.className;
+  const classBefore = after.className;
   after.className = selected.className;
   selected.className = classBefore;
 }
@@ -74,10 +74,10 @@ window.onload = function () {
 };
 btnTask.addEventListener('click', function () {
   addTask();
-	clearInput();
+  clearInput();
 });
 taskList.addEventListener('click', function (event) {
-  if (event.target != taskList){
+  if (event.target !== taskList) {
     clearSelection();
     addSelection(event.target);
   }
@@ -95,22 +95,22 @@ btnSaveTasks.addEventListener('click', function () {
   saveTasks();
 });
 btnRemoveSelected.addEventListener('click', function () {
-  let selected = document.querySelector('.selected');
+  const selected = document.querySelector('.selected');
   removeSelected(selected);
 });
 btnMoveUp.addEventListener('click', function () {
-  let selected = document.querySelector('.selected');
+  const selected = document.querySelector('.selected');
   if (selected != null) {
-    let before = selected.previousElementSibling;
+    const before = selected.previousElementSibling;
     if (before != null) {
       moveUp(before, selected);
     }
   }
 });
 btnMoveDown.addEventListener('click', function () {
-  let selected = document.querySelector('.selected');
+  const selected = document.querySelector('.selected');
   if (selected != null) {
-    let after = selected.nextElementSibling;
+    const after = selected.nextElementSibling;
     if (after != null) {
       moveDown(after, selected);
     }
