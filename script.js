@@ -19,20 +19,20 @@ function selected(listada) {
     for (let index = 0; index < listada.length; index += 1) {
         lista.querySelectorAll('li')[index].addEventListener('click' , function () {
             for (let sel = 0; sel < listada.length; sel += 1) {
-                if (lista.querySelectorAll('li')[sel].className === 'selected' ||
-                lista.querySelectorAll('li')[sel].className === 'completed') {
-                    lista.querySelectorAll('li')[sel].classList.remove('selected');
-                    lista.querySelectorAll('li')[sel].style.backgroundColor = '';                        
+                if (listada[sel].className === 'selected' ||
+                listada[sel].className === 'completed') {
+                    listada[sel].classList.remove('selected');
+                    listada[sel].style.backgroundColor = '';                        
                 }
             }
-            if (lista.querySelectorAll('li')[index].className === 'completed') {
-                lista.querySelectorAll('li')[index].className = 'completed';               
+            if (listada[index].className === 'completed') {
+                listada[index].className = 'completed';               
             } else {
-                lista.querySelectorAll('li')[index].className = 'selected';
+                listada[index].className = 'selected';
             }
-            if (lista.querySelectorAll('li')[index].className === 'selected' || 
-            lista.querySelectorAll('li')[index].className === 'completed') {
-                lista.querySelectorAll('li')[index].style.backgroundColor = 'rgb(128,128,128)';
+            if (listada[index].className === 'selected' || 
+            listada[index].className === 'completed') {
+                listada[index].style.backgroundColor = 'rgb(128,128,128)';
             }                 
         });
     }        
@@ -41,35 +41,30 @@ function selected(listada) {
 
 function completed(listada) {
     for (let index = 0; index < listada.length; index += 1) {
-        lista.querySelectorAll('li')[index].addEventListener('dblclick' , function () {
-
-        lista.querySelectorAll('li')[index].className = 'completed';
-        if (lista.querySelectorAll('li')[index].className === 'completed') {
-            lista.querySelectorAll('li')[index].style.textDecoration = 'line-through solid rgb(0, 0, 0)';
-        }     
+        listada[index].addEventListener('dblclick' , function () {
+            if (listada[index].className === 'completed') {
+                listada[index].className = 'selected'; 
+            } else if (listada[index].className === 'selected') {
+                listada[index].className = 'completed';
+            }            
         });
-    }       
-
+    } 
 }
 
-function disable(listada) {  
+/*function disable(listada) {  
     for (let index = 0; index < listada.length; index += 1) {
-        lista.querySelectorAll('li')[index].addEventListener('mouseup' , function () {
-            if (lista.querySelectorAll('li')[index].className === 'completed') {
-                lista.querySelectorAll('li')[index].className = '';
-                lista.querySelectorAll('li')[index].style.textDecoration = '';
-            }
+        lista.querySelectorAll('li')[index].addEventListener('dblclick' , function () {
+                listada[index].className = 'selected';          
         })
     }
-}
+}*/
 
 adicionar.addEventListener('click', function () {
     criaLista(inputText);    
     let listada =  document.querySelectorAll('#lista-tarefas li');
     selected(listada);
     completed(listada);
-    disable(listada);
-    
+    //disable(listada);            
 });
 
 botaoLimpa.addEventListener('click', function () {
@@ -85,8 +80,8 @@ botaoLimpa.addEventListener('click', function () {
 botaoCompleto.addEventListener('click', function () {
     let listada =  document.querySelectorAll('#lista-tarefas li');
     for (let index = 0; index < listada.length; index += 1) {
-        if (lista.querySelectorAll('li')[index].className === 'completed') {
-            listada[index].remove();
-        }         
+        if (listada[index].className === 'completed') {
+            listada[index].remove(document.getElementsByClassName('completed'));                  
+        }
     }
 });
