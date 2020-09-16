@@ -14,24 +14,37 @@ buttonRemove = buttonRemove.addEventListener("click", function remove() {
   removeLi.innerHTML = "";
 });
 
+const listLi = document.querySelector("#lista-tarefas");
 
-let listLi = document.querySelector("#lista-tarefas");
-function changeColorJob() {
+function clickAndChangeColor() {
   listLi.addEventListener("click", function (event) {
-    
     let li = event.target;
     let children = listLi.children;
-    children = document.querySelector("li").classList.add('selected');
-    
+    children = document.querySelector("li").classList.add("selected");
+
     for (let i in children) {
-      children[i].style.backgroundColor = "";
+      children += children[i];
     }
-    
+
     li.style.backgroundColor = "rgb(128, 128, 128)";
-    
   });
 }
-changeColorJob();
+clickAndChangeColor();
 
-  // classList.remove("selected")
-  // classList.add("selected");
+function doubleClick() {
+  listLi.addEventListener("dblclick", function (e) {
+    let li = event.target;
+    let children = listLi.children;
+    children = document.querySelector("li").classList.add("selected");
+
+    for (let i in children) {
+      children += children[i];
+    }
+
+    li.style.backgroundColor = "rgb(255,255,255)";
+  });
+}
+doubleClick();
+
+// classList.remove("selected")
+// classList.add("selected");
