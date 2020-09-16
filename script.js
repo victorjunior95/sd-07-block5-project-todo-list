@@ -5,7 +5,7 @@ const orderedList = document.querySelector('#lista-tarefas');
 
 addBtn.addEventListener('click', function () {
     elementLi = document.createElement('li');
-    elementLi.innerHTML = textInput.value;
+    elementLi.inneText = textInput.value;
     orderedList.appendChild(elementLi);
     
     textInput.value = ' ';
