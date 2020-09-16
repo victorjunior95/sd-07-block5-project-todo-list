@@ -10,14 +10,14 @@ function makeTaskList() {
   orderedList.appendChild(li);
   inputTask.value = '';
 
-  let classLi = document.querySelector('#lista-tarefas').children;
-    for (i = 0; i < classLi.length; i += 1) {
-     let sel = classLi[i];
+  const classLi = document.querySelector('#lista-tarefas').children;
+  function setCor() {
+    sel.style.background = 'rgb(128, 128, 128)';
+    }
+  for (let i = 0; i < classLi.length; i += 1) {
+      const sel = classLi[i];
   sel.addEventListener('click', setCor);
-    function setCor() {
-      sel.style.background = 'rgb(128, 128, 128)';
-     }
-   }
+    }
 
 }
 
