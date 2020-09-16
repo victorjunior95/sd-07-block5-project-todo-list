@@ -5,20 +5,25 @@ const apagarLista = document.querySelector('#apaga-tudo');
 const apagaFinalizados = document.querySelector('#remover-finalizados');
 const moveParaBaixo = document.querySelector('#mover-baixo');
 const moverParaCima = document.querySelector('#mover-cima');
+const removerSelecionado = document.querySelector('#remover-selecionado');
 
 moveParaBaixo.addEventListener('click', function () {
   const movido = document.querySelector('.selected');
-  if(movido.nextElementSibling) {
-    const baixo = movido.nextElementSibling;    
-    movido.before(baixo);
+  if (movido != null) {
+    if(movido.nextElementSibling) {
+      const baixo = movido.nextElementSibling;    
+      movido.before(baixo);
+    }
   }
 })
 
 moverParaCima.addEventListener('click', function () {
   const movido = document.querySelector('.selected');
-  if(movido.previousElementSibling) {
-    const cima = movido.previousElementSibling;   
-    cima.before(movido);
+  if (movido != null) {
+    if(movido.previousElementSibling) {
+      const cima = movido.previousElementSibling;   
+      cima.before(movido);
+    }
   }
 })
 
@@ -88,3 +93,8 @@ apagaFinalizados.addEventListener('click', function apagaConcluidos() {
     lista.removeChild(concluidoRemovido);
   }
 });
+
+removerSelecionado.addEventListener('click', function (){
+  const selecionado = document.querySelector('.selected');
+  lista.removeChild(selecionado);
+})
