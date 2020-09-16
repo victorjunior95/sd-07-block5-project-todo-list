@@ -10,12 +10,12 @@ const salvarLista = document.querySelector('#salvar-tarefas');
 
 salvarLista.addEventListener('click', function () {
   const tamanhoLista = document.querySelectorAll('li');
-  localStorage.setItem('listLength', `${tamanhoLista.length}`)
+  localStorage.setItem('listLength', `${tamanhoLista.length}`);
   for (let i = 0; i < tamanhoLista.length; i += 1) {
     localStorage.setItem(`item${i}`, `${tamanhoLista[i].innerText}`);
     localStorage.setItem(`class${i}`, `${tamanhoLista[i].className}`);
-  }  
-})
+  }
+});
 
 moverParaCima.addEventListener('click', function () {
   const movido = document.querySelector('.selected');
@@ -23,33 +23,23 @@ moverParaCima.addEventListener('click', function () {
     if (movido.previousElementSibling === null) {
       alert('Você já está no primeiro item');
     } else {
-      const cima = movido.previousElementSibling;   
+      const cima = movido.previousElementSibling;
       cima.before(movido);
-   }
+    }
   }
-})
+});
 
 moveParaBaixo.addEventListener('click', function () {
   const movido = document.querySelector('.selected');
-  console.log(movido);
   if (movido !== null) {
     if (movido.nextElementSibling === null) {
       alert('Você já está no último item');
     } else {
-      const baixo = movido.nextElementSibling;    
+      const baixo = movido.nextElementSibling;
       movido.before(baixo);
     }
   }
-})
-
-function jaSelecionado() {
-  const verificaSelecao = event.target;
-  let jaFoiSelecionado = true;
-  if (!verificaSelecao.classList.contains('selected')) {
-    jaFoiSelecionado = false;
-  }
-  return jaFoiSelecionado;
-}
+});
 
 function selecionado() {
   const removerSelecao = document.querySelectorAll('li');
@@ -122,7 +112,7 @@ apagaFinalizados.addEventListener('click', function apagaConcluidos() {
   }
 });
 
-removerSelecionado.addEventListener('click', function (){
+removerSelecionado.addEventListener('click', function () {
   const selecionadoParaRemover = document.querySelector('.selected');
   lista.removeChild(selecionadoParaRemover);
-})
+});
