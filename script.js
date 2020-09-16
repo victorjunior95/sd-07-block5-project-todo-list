@@ -14,4 +14,9 @@ function criarLista() {
     }
 }
 
+function selecionar(e) {
+    e.target.style.backgroundColor = 'red';
+}
+
 botao.addEventListener('click', criarLista);
+lista.addEventListener('click', selecionar);
