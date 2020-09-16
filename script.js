@@ -9,4 +9,16 @@ window.onload = function () {
     let moveBottom = document.querySelector("mover-baixo");
     let removeSelected = document.querySelector("remover-selecionado");
 
-}
+    createJob.addEventListener("click", addElementList);
+
+    function addElementList() {
+        let elementInsert = document.createElement("li");
+        let textElement = inputText.value;
+        elementInsert.innerText = textElement;
+        jobList.appendChild(elementInsert);
+        /* .setAttribute("", ""); */
+        console.log(textElement);
+        inputText.value = "";
+    }
+
+}             
