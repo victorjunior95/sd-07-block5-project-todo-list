@@ -23,3 +23,40 @@ function changeColorJob() {
   });
 }
 changeColorJob();
+
+function completedJob() {
+  list.addEventListener("dblclick", function (event) {
+    let li = event.target;
+    if (li.classList.contains("completed")) {
+      li.classList.remove("completed");
+    } else {
+      li.classList.add("completed");
+      console.log(li.classList);
+    }
+  });
+}
+completedJob();
+
+const buttonRemoveJob = document.querySelector("#apaga-tudo");
+
+function removeJob() {
+  buttonRemoveJob.addEventListener("click", function () {
+    list.innerHTML = "";
+  });
+}
+removeJob();
+
+const buttonRemoveCompletedJob = document.querySelector("#remover-finalizados");
+
+function removeCompletedJob() {
+  buttonRemoveCompletedJob.addEventListener("click", function () {
+    let li = list.children;
+    for (let i = 0; i < li.length; i += 1) {
+      let liCompleted = li[i].classList.contains("completed");
+      if (liCompleted == true) {
+        li[i].parentNode.removeChild(li[i]);
+      }
+    }
+  });
+}
+removeCompletedJob();
