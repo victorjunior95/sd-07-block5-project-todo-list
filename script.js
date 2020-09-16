@@ -3,7 +3,14 @@ let inputTaskBtn = document.querySelector("#criar-tarefa");
 let orderedList = document.querySelector("#lista-tarefas");
 let indexTask = 0;
 let firstTime = true;
+let removerBtn = document.querySelector("#remover-finalizados");
 
+removerBtn.addEventListener("click", function() {
+  let completed = document.querySelectorAll(".completed");
+  for (index = 0; index < completed.length; index += 1) {
+    orderedList.removeChild(completed[index]);
+  }
+})
 inputTaskBtn.addEventListener("click", function() {
   indexTask += 1;
   let id = "task-li" + indexTask;
