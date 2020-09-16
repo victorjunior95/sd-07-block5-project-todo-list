@@ -78,14 +78,14 @@ function liGenerate(data) {
     for (let index = 0; index < data.length; index += 1) {
       const itemLi = document.createElement('li');
       itemLi.className = 'item-tarefa';
-      itemLi.setAttribute('id', index);
+      itemLi.setAttribute('id', `li-tarefa-${index}`);
       itemLi.innerText = data[index];
       olTag.appendChild(itemLi);
     }
   }
 }
 
-function insertDataOl() {
+function getDataImput() {
   const lisExistentes = document.querySelectorAll('.item-tarefa');
   const newLiReturn = [];
   for (let index = 0; index < lisExistentes.length; index += 1) {
@@ -100,32 +100,36 @@ function insertDataOl() {
       inputData.value = '';
     }
   });
-
-  const getKeyEnter = document.querySelector('#texto-tarefa');
-  getKeyEnter.addEventListener('keydown', function (event) {
-    const inputDataWitchEnter = document.querySelector('#texto-tarefa');
-    if (inputDataWitchEnter.value && event.keyCode === 13) {
-      newLiReturn.push(inputDataWitchEnter.value);
-      liGenerate(newLiReturn);
-      inputDataWitchEnter.value = '';
-      // console.log(event.keyCode)
-    }
-  });
 }
-insertDataOl();
+getDataImput();
 
-function alterPropertiesLi() {
-  document.body.addEventListener('click', function (event) {
-    if (event.target.nodeName === 'LI') {
-      const liSelected = document.querySelectorAll('.selected')[0];
-      const liClicked = event.target;
-      if (liSelected) {
-        liSelected.classList.remove('selected');
-        liClicked.classList.add('selected');
-      } else {
-        liClicked.classList.add('selected');
-      }
+const getKeyEnter = document.querySelector('#texto-tarefa');
+getKeyEnter.addEventListener('keydown', function (event) {
+  const inputDataWitchEnter = document.querySelector('#texto-tarefa');
+  if (inputDataWitchEnter.value && event.keyCode === 13) {
+    newLiReturn.push(inputDataWitchEnter.value);
+    liGenerate(newLiReturn);
+    inputDataWitchEnter.value = '';
+  }
+});
+
+document.body.addEventListener('click', function (event) {
+  if (event.target.nodeName === 'LI') {
+    const liSelected = document.querySelectorAll('.selected')[0];
+    const liClicked = event.target;
+    if (liSelected) {
+      liSelected.classList.remove('selected');
+      liClicked.classList.add('selected');
+    } else {
+      liClicked.classList.add('selected');
     }
-  });
-}
-alterPropertiesLi();
+  }
+});
+
+
+document.body.addEventListener('dblclick', function (event) {
+  if (event.target.nodeName === 'LI') {
+    const liClicked = event.target;
+    const getClicketCheck = liClicked.classList.toggle('completed');
+  }
+});
