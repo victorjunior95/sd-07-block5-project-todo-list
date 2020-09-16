@@ -4,12 +4,13 @@ let header = document.getElementsByTagName('header')[0];
 let explanation = document.getElementById('funcionamento');
 let textBox = document.getElementById('texto-tarefa');
 let list = document.getElementById('lista-tarefas');
-let button = document.getElementById('criar-tarefa');
+let button1 = document.getElementById('criar-tarefa');
+let button2 = document.getElementById('apaga-tudo');
 
 // 2) Define the functions:
 
 // To write the text in the list:
-button.addEventListener('click', function (event) {
+button1.addEventListener('click', function (event) {
   event.preventDefault(); // To prevent the form's request
   if (textBox.value !== "") {
     let newTask = document.createElement('li');
@@ -45,3 +46,10 @@ function doubleSelection(item) {
     item.classList.toggle('completed');
   })
 }
+
+// To clean the list:
+button2.addEventListener('click', function (event) {
+  event.preventDefault();
+  let li = document.getElementsByTagName('li');
+  
+})
