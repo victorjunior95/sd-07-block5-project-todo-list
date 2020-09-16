@@ -11,7 +11,7 @@ buttonCreateToDo.addEventListener("click", function () {
   li.innerText = inputTextToDo.value;
   olToDoList.appendChild(li);
   clearInputTextToDo();
-  olToDoList.addEventListener("click", changeBGColorListItem);
+  changeBGColorListItem();
 });
 
 function changeBGColorListItem(event) {
