@@ -7,22 +7,31 @@ function clearInputTextToDo() {
 }
 
 buttonCreateToDo.addEventListener("click", function () {
-  const li = document.createElement("li");
-  li.innerText = inputTextToDo.value;
-  olToDoList.appendChild(li);
+  const liTask = document.createElement("li");
+  liTask.innerText = inputTextToDo.value;
+  olToDoList.appendChild(liTask);
   clearInputTextToDo();
-  changeBGColorListItem();
+  changeBGColorTask(liTask);
+  addAndRemoveCompletedTask(liTask);
 });
 
-function changeBGColorListItem(event) {
-  for (let index = 0; index < olToDoList.childElementCount; index += 1) {
-    olToDoList.children[index].addEventListener("click", function (event) {
-      for (let j = 0; j < olToDoList.childElementCount; j += 1) {
-        if (olToDoList.children[j] !== event.target) {
-          olToDoList.children[j].style.backgroundColor = "";
-        }
+function changeBGColorTask(task) {
+  task.addEventListener("click", function (event) {
+    for (let index = 0; index < olToDoList.childElementCount; index += 1) {
+      if (olToDoList.children[index] !== event.target) {
+        olToDoList.children[index].style.backgroundColor = "";
       }
-      event.target.style.backgroundColor = "rgb(128, 128, 128)";
-    });
-  }
+    }
+    event.target.style.backgroundColor = "rgb(128, 128, 128)";
+  });
+}
+
+function addAndRemoveCompletedTask(task) {
+  task.addEventListener("dblclick", function () {
+    if (task.classList.value === "completed") {
+      task.classList.remove("completed");
+    } else {
+      task.classList.add("completed");
+    }
+  });
 }
