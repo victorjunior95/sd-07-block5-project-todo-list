@@ -1,7 +1,7 @@
 window.onload = function () {
     let inputText = document.querySelector("#texto-tarefa");
     let createJob = document.querySelector("#criar-tarefa");
-    let jobList = document.querySelector("#lista-tarefas");
+    let jobList = document.querySelector("#lista-tarefas"); /* ol */
     let clearAll = document.querySelector("#apaga-tudo");
     let removeDone = document.querySelector("#remover-finalizados");
     let saveJobs = document.querySelector("#salvar-tarefas");
@@ -71,18 +71,42 @@ window.onload = function () {
     }
 
     /* Salvar lista de tarefas */
-    saveJobs.addEventListener("click", saveList)
+/*     saveJobs.addEventListener("click", saveList)
     
     function saveList() {
+        localStorage.setItem("Lista de tarefas", jobList.innerHTML);
         
+    } */
+
+    /* Mover para cima */
+    moveTop.addEventListener("click", moveUpFunction);
+
+    function moveUpFunction() {
+        let selectionUp = event.target;
+        let aux = "";
+        let previousSibling = selectionUp.previousElementSibling;
+        aux.innerHTML = previousSibling.innerHTML;
+        previousSibling.innerHTML = selectionUp.innerHTML;
+        selectionUp.innerHTML = aux.innerHTML;
     }
 
+    /* Mover para baixo */
+    moveBottom.addEventListener("click", moveDownFunction);
 
-
-
-
-
-
-
+    function moveDownFunction() {
+        let selectionDown = event.target;
+        let aux = "";
+        let nextSibling = selectionDown.nextElementSibling;
+        aux.innerHTML = nextSibling.innerHTML;
+        nextSibling.innerHTML = selectionDown.innerHTML;
+        selectionDown.innerHTML = aux.innerHTML;
+    }
     
+    /* Remover item selecionado */
+    removeSelected.addEventListener("click", removeSelectedItem)
+
+    function removeSelectedItem() {
+        let itemToBeRemoved = event.target;
+        itemToBeRemoved.innerHTML = "";
+    }
 }             
