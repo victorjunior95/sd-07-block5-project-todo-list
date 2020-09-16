@@ -79,24 +79,25 @@ window.onload = function () {
     moveTop.addEventListener("click", moveUpFunction);
 
     function moveUpFunction() {
-        let listItemsHoover = document.querySelector(".hoover");
-        let aux = "";
-        let selectionUp = listItemsHoover;
-        let firstItem = listItemsHoover.parentNode.firstElementChild;
-        let previousSibling = listItemsHoover.previousElementSibling;
-        console.log(firstItem);
-        if (firstItem !== listItemsHoover) {
-            aux = previousSibling.innerHTML;
-            previousSibling.innerHTML = selectionUp.innerHTML;
-            selectionUp.innerHTML = aux;
-            if (selectionUp.classList.contains("completed")) {
-                selectionUp.classList.remove("hoover");
-                selectionUp.classList.remove("completed");
-                previousSibling.classList.add("hoover");
-                previousSibling.classList.add("completed");
-            } else {
-                selectionUp.classList.remove("hoover");
-                previousSibling.classList.add("hoover");
+        let selectionUp = document.querySelector(".hoover");
+        if (selectionUp != null) {
+            let aux = "";
+            let firstItem = selectionUp.parentNode.firstElementChild;
+            let previousSibling = selectionUp.previousElementSibling;
+            console.log(firstItem);
+            if (firstItem !== selectionUp) {
+                aux = previousSibling.innerHTML;
+                previousSibling.innerHTML = selectionUp.innerHTML;
+                selectionUp.innerHTML = aux;
+                if (selectionUp.classList.contains("completed")) {
+                    selectionUp.classList.remove("hoover");
+                    selectionUp.classList.remove("completed");
+                    previousSibling.classList.add("hoover");
+                    previousSibling.classList.add("completed");
+                } else {
+                    selectionUp.classList.remove("hoover");
+                    previousSibling.classList.add("hoover");
+                }
             }
         }
     }
@@ -105,23 +106,24 @@ window.onload = function () {
     moveBottom.addEventListener("click", moveDownFunction);
 
     function moveDownFunction() {
-        let listItemsHoover = document.querySelector(".hoover");
-        let aux = "";
-        let selectionDown = listItemsHoover;
-        let nextSibling = listItemsHoover.nextElementSibling;
-        let lastItem = listItemsHoover.parentNode.lastElementChild;
-        if (lastItem !== listItemsHoover) {
-            aux = nextSibling.innerHTML;
-            nextSibling.innerHTML = selectionDown.innerHTML;
-            selectionDown.innerHTML = aux;
-            if (selectionDown.classList.contains("completed")) {
-                selectionDown.classList.remove("hoover");
-                selectionDown.classList.remove("completed");
-                nextSibling.classList.add("hoover");
-                nextSibling.classList.add("completed");
-            } else {
-                selectionDown.classList.remove("hoover");
-                nextSibling.classList.add("hoover");
+        let selectionDown = document.querySelector(".hoover");
+        if (selectionDown != null) {
+            let aux = "";
+            let nextSibling = selectionDown.nextElementSibling;
+            let lastItem = selectionDown.parentNode.lastElementChild;
+            if (lastItem !== selectionDown) {
+                aux = nextSibling.innerHTML;
+                nextSibling.innerHTML = selectionDown.innerHTML;
+                selectionDown.innerHTML = aux;
+                if (selectionDown.classList.contains("completed")) {
+                    selectionDown.classList.remove("hoover");
+                    selectionDown.classList.remove("completed");
+                    nextSibling.classList.add("hoover");
+                    nextSibling.classList.add("completed");
+                } else {
+                    selectionDown.classList.remove("hoover");
+                    nextSibling.classList.add("hoover");
+                }
             }
         }
     }
