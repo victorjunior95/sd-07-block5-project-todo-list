@@ -39,18 +39,9 @@ botaoRemoverFinalizados.addEventListener("click", function() {
     });
 });  
 
-//function retornaListaASalvar() {
-//    let listaASalvar = [];
-//    document.querySelectorAll('li').forEach(function(item) {
-//        listaASalvar.push(criaTarefa(item));
-//    });
-//    return listaASalvar;
-//}
-
 let botaoSalvarTarefas = document.getElementById('salvar-tarefas');
 botaoSalvarTarefas.addEventListener("click", function() {
     localStorage.clear();
-    //let listaDeTarefas = retornaListaASalvar();
     let listaDeTarefas = document.getElementById('lista-tarefas');
     localStorage.setItem("lista de tarefas", listaDeTarefas.innerHTML);
 });
@@ -73,12 +64,16 @@ let botaoMoverParaCima = document.getElementById('mover-cima');
 botaoMoverParaCima.addEventListener("click", function() {
     let itemSelecionado = document.querySelector('.selected')
     let listaDeTarefas = document.getElementById('lista-tarefas');
-    listaDeTarefas.insertBefore(itemSelecionado, itemSelecionado.previousElementSibling);
+    if (itemSelecionado.previousElementSibling != null) {
+        listaDeTarefas.insertBefore(itemSelecionado, itemSelecionado.previousElementSibling);
+    }
 });
 
 let botaoMoverParaBaixo = document.getElementById('mover-baixo');
 botaoMoverParaBaixo.addEventListener("click", function() {
     let itemSelecionado = document.querySelector('.selected')
     let listaDeTarefas = document.getElementById('lista-tarefas');
-    listaDeTarefas.insertBefore(itemSelecionado.nextElementSibling, itemSelecionado);
+    if (itemSelecionado.nextElementSibling != null) {
+        listaDeTarefas.insertBefore(itemSelecionado.nextElementSibling, itemSelecionado);
+    }
 });
