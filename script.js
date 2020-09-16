@@ -12,14 +12,12 @@ function makeTaskList() {
 
   const classLi = document.querySelector('#lista-tarefas').children;
   for (let i = 0; i < classLi.length; i += 1) {
-      const sel = classLi[i];
+    const sel = classLi[i];
     function setCor() {
       sel.style.background = 'rgb(128, 128, 128)';
-      }
-  sel.addEventListener('click', setCor);
-
     }
-
+    sel.addEventListener('click', setCor);
+  }
 }
 
 function eraseAll() {
