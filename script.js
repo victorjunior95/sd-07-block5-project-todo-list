@@ -57,4 +57,11 @@ window.onload = function () {
       item.remove();
     })
   });
+
+  document.getElementById('remover-finalizados').addEventListener('click', function(){
+    const itensCompletos = document.querySelectorAll('.completed');
+    itensCompletos.forEach((item) => {
+      item.remove();
+    })
+  });
 }
