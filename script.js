@@ -12,13 +12,20 @@ btCreate.addEventListener("click", function(){
     
 });
 
-
-/*li.addEventListener('dblclick', function () {
-    lineThrough = document.querySelector('.item-list');
-      if (li.classList.contains('item-list')) {
-        li.classList.remove('item-list')
-      }
-      else {
-        li.classList.add('item-list');
+orderList.addEventListener("click" , function(event){
+    let anterior = document.querySelector(".selecionado");
+    if(anterior != null){
+        anterior.classList.remove("selecionado");
     }
-});*/
+    let register = event.target;
+    register.classList.add("selecionado")
+    
+});
+orderList.addEventListener('dblclick', function (event) {
+    let register = event.target;
+    if(register.classList.contains("completed")){
+        register.classList.add("notCompleted");
+    } else {
+        register.classList.add("completed"); 
+    }
+});
