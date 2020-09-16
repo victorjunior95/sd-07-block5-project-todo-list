@@ -41,6 +41,18 @@ document.querySelector('#remover-selecionado').addEventListener('click', functio
 });
 
 
+document.querySelector('#salvar-tarefas').addEventListener('click', function saveList() {
+  let workList = document.querySelector('#lista-tarefas').innerHTML;
+  localStorage.setItem('saveList', workList);
+});
+
+function refresh() {
+  document.querySelector('#lista-tarefas').innerHTML = localStorage.getItem('saveList');
+}
+window.onload = refresh;
+
+
+
 
 
 
