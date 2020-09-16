@@ -53,12 +53,14 @@ function upTodo() {
   let myLiForUp = getLiSelected();
 
   if (myOl.childNodes[0] == myLiForUp) return;
+  console.log(myOl.childNodes[0]);
 
   let myLiForDown = myLiForUp.previousSibling;
   myOl.insertBefore(myLiForUp, myLiForDown);
 
   let myLiValue = myLiForUp.innerText;
   let index = todoList.findIndex((a) => a.value == myLiValue);
+  
   todoList.splice(index - 1, 0, todoList[index]);
   todoList.splice(index + 1, 1);
 }
@@ -66,7 +68,7 @@ function upTodo() {
 function downTodo() {
   let myOl = getOl();
   let myLiForDown = getLiSelected();
-  
+
   if (myOl.childNodes[myOl.childNodes.length - 1] == myLiForDown) return;
 
   let myLiForUp = myLiForDown.nextSibling;
@@ -74,6 +76,7 @@ function downTodo() {
 
   let myLiValue = myLiForDown.innerText;
   let index = todoList.findIndex((todo) => todo.value == myLiValue);
+
   todoList.splice(index + 2, 0, todoList[index]);
   todoList.splice(index, 1);
 }
@@ -91,6 +94,7 @@ btnBaixo.addEventListener('click', function () {
 function insertPropertyInElement({ element = '', text = '', classe = '' }) {
   if (element) {
     let myElement = element;
+
     if (text) myElement.innerText = text;
     if (classe) myElement.className = classe;
   }
@@ -114,9 +118,10 @@ function eventLiClick(li) {
 function eventLiDblClick(li) {
   li.addEventListener('dblclick', function (event) {
     li.classList.toggle('completed');
-    let lis = getLiAll()
-    for(let index = 0; index < lis.length; index += 1){
-      if(lis[index].className == 'completed') todoList[index].classes = 'completed';
+    let lis = getLiAll();
+
+    for (let index = 0; index < lis.length; index += 1) {
+      if (lis[index].className == 'completed') todoList[index].classes = 'completed';
     }
   });
 }
@@ -129,18 +134,20 @@ function addEventSplitLi(li) {
 }
 
 function insertLiInOl(text, classe) {
-  console.log(classe)
   let ol = getOl();
   let li = createLi();
+
   insertPropertyInElement({ text: text, element: li, classe: classe });
   addEventSplitLi(li);
+
   ol.appendChild(li);
-  todoList.push({value: text, classes: ''});
+  todoList.push({ value: text, classes: '' });
 }
 
 let btnAdd = getBtnAdd();
 btnAdd.addEventListener('click', function () {
-  if(getInputValue()) insertLiInOl(getInputValue());
+  if (getInputValue()) insertLiInOl(getInputValue());
+
   clearInputValue();
 });
 
@@ -148,6 +155,7 @@ btnAdd.addEventListener('click', function () {
 let btnRemoveFinalized = getBtnRemoveFinalized();
 btnRemoveFinalized.addEventListener('click', function () {
   let li = getLiCompleted();
+
   for (let index = 0; index < li.length; index += 1) {
     if (li[index].className == 'completed') removeLi(li[index]);
   }
@@ -157,6 +165,7 @@ btnRemoveFinalized.addEventListener('click', function () {
 const btnRemoveAll = getBtnRemoveAll();
 btnRemoveAll.addEventListener('click', function () {
   let ol = getOl();
+
   ol.innerHTML = '';
 });
 
@@ -167,10 +176,10 @@ btnSave.addEventListener('click', function () {
 });
 
 const btnRemoveSelected = getBtnRemoveSelected();
-btnRemoveSelected.addEventListener('click', function(){
+btnRemoveSelected.addEventListener('click', function () {
   let selected = document.getElementsByClassName('selected')[0];
-  
-  if(selected) {
+
+  if (selected) {
     removeLi(selected);
     todoList = [];
   }
