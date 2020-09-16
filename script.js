@@ -8,6 +8,7 @@ function createJob() {
     li.innerText = inputText.value;
     list.appendChild(li);
     inputText.value = "";
+    // console.log(list);
   });
 }
 createJob();
@@ -31,7 +32,7 @@ function completedJob() {
       li.classList.remove("completed");
     } else {
       li.classList.add("completed");
-      console.log(li.classList);
+      // console.log(li.classList);
     }
   });
 }
@@ -50,13 +51,25 @@ const buttonRemoveCompletedJob = document.querySelector("#remover-finalizados");
 
 function removeCompletedJob() {
   buttonRemoveCompletedJob.addEventListener("click", function () {
-    let li = list.children;
-    for (let i = 0; i < li.length; i += 1) {
-      let liCompleted = li[i].classList.contains("completed");
-      if (liCompleted == true) {
-        li[i].parentNode.removeChild(li[i]);
-      }
+    let li = document.getElementsByClassName("completed");
+    for (let i = li.length - 1; i >= 0; i -= 1) {
+      list.removeChild(li[i]);
+      // console.log(li.length);
     }
   });
 }
 removeCompletedJob();
+
+// const buttonSaveJob = document.querySelector("#salvar-tarefas");
+
+// function saveJob() {
+//   buttonSaveJob.addEventListener("click", function () {
+//     localStorage.setItem("list", list);
+//   });
+// }
+// saveJob();
+
+// function currentSaveList () {
+//   list = localStorage.getItem("list");
+// }
+// currentSaveList();
