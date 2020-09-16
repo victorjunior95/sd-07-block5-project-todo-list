@@ -2,32 +2,32 @@
 let listaTarefas = document.querySelector('#lista-tarefas');
 let criarTarefaBtn = document.querySelector('#criar-tarefa');
 let allItens = '';
+let itemSelect = '';
+let lineThrough = '';
 function criarLi () {
     criarTarefaBtn.addEventListener('click', function () {
-        let criarLista = document.createElement('li');
-        criarLista.innerText = document.querySelector('#texto-tarefa').value;
-        listaTarefas.appendChild(criarLista);
-        document.querySelector('#texto-tarefa').value = '';
-        changeBackgroundColor()    
-    });
-}
-function changeBackgroundColor() {
-    allItens = document.querySelectorAll('li');    
-    for (let i = 0; i < allItens.length; i += 1) {
-        allItens[i].addEventListener('click', function () {
-            let itemSelect = document.querySelector('.selected');
-            if (itemSelect == null) {
-                allItens[i].classList.add('selected');
-                console.log('estou aqui')
+        let li = document.createElement('li');
+        li.innerText = document.querySelector('#texto-tarefa').value;
+        li.addEventListener('click', function () {
+            itemSelect = document.querySelector('.selected');            
+            if (itemSelect != null) {                
+                itemSelect.classList.remove('selected');                
+            }
+            li.classList.add('selected');
+            itemSelect = li;
+            //console.log(itemSelect);           
+        });
+        li.addEventListener('dblclick', function () {
+            //lineThrough = document.querySelector('.lineThrough');
+            if (li.classList.contains('lineThrough')) {
+                li.classList.remove('lineThrough')
             }
             else {
-                if (itemSelect != allItens[i]) {
-                    itemSelect.classList.remove('selected');
-                    allItens[i].classList.add('selected');
-                    console.log('estou aqui2');
-                }
-            }     
+                li.classList.add('lineThrough');
+            }
         });
-    }
+        listaTarefas.appendChild(li);
+        document.querySelector('#texto-tarefa').value = '';
+    });
 }
 criarLi();
