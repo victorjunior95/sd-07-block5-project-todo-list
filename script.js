@@ -4,6 +4,7 @@ const list = document.querySelector('#lista-tarefas');
 const clear = document.querySelector('#apaga-tudo');
 const rmSelecteds = document.querySelector('#remover-selecionado');
 const rmCompleteds = document.querySelector('#remover-finalizados');
+const saveList = document.querySelector('#salvar-tarefas');
 
 creator.addEventListener('click', () => {
   const node = document.createElement('li');
@@ -56,3 +57,14 @@ rmCompleteds.addEventListener('click', () => {
     }
   }
 });
+
+saveList.addEventListener('click', () => {
+  const elements = list.innerHTML;
+  localStorage.setItem('list', elements);
+})
+
+window.addEventListener('load', () => {
+  const elements = localStorage.getItem('list');
+  list.innerHTML = elements
+})
+
