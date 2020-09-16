@@ -20,4 +20,22 @@ function createListItem (){
     list.appendChild(listItem);
     inputText.value = '';
 }
+
+function removeListItems(){
+    let listElements = document.querySelectorAll("li");
+    for (let index = 0; index < listElements.length; index += 1){
+        listElements[index].remove();
+    }
+}
+
+function removeCompletedItems(){
+    let completedItems = document.querySelectorAll(".completed");
+    for (let index = 0; index < completedItems.length; index += 1){
+        completedItems[index].remove();
+    }
+}
 button.addEventListener("click", createListItem);
+
+rmAll.addEventListener("click", removeListItems);
+
+rmSelected.addEventListener("click", removeCompletedItems);
