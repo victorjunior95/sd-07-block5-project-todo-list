@@ -100,18 +100,19 @@ function getDataImput() {
       inputData.value = '';
     }
   });
+
+  const getKeyEnter = document.querySelector('#texto-tarefa');
+  getKeyEnter.addEventListener('keydown', function (event) {
+    const inputDataWitchEnter = document.querySelector('#texto-tarefa');
+    if (inputDataWitchEnter.value && event.keyCode === 13) {
+      newLiReturn.push(inputDataWitchEnter.value);
+      liGenerate(newLiReturn);
+      inputDataWitchEnter.value = '';
+    }
+  });
 }
 getDataImput();
 
-const getKeyEnter = document.querySelector('#texto-tarefa');
-getKeyEnter.addEventListener('keydown', function (event) {
-  const inputDataWitchEnter = document.querySelector('#texto-tarefa');
-  if (inputDataWitchEnter.value && event.keyCode === 13) {
-    newLiReturn.push(inputDataWitchEnter.value);
-    liGenerate(newLiReturn);
-    inputDataWitchEnter.value = '';
-  }
-});
 
 document.body.addEventListener('click', function (event) {
   if (event.target.nodeName === 'LI') {
@@ -130,6 +131,6 @@ document.body.addEventListener('click', function (event) {
 document.body.addEventListener('dblclick', function (event) {
   if (event.target.nodeName === 'LI') {
     const liClicked = event.target;
-    const getClicketCheck = liClicked.classList.toggle('completed');
+    liClicked.classList.toggle('completed');
   }
 });
