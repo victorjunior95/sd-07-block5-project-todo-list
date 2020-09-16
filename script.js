@@ -40,6 +40,7 @@ removerSelect.addEventListener('click', function () {
 })
 
 movCima.addEventListener('click', function () {
+    if(document.querySelector('.selected') != null){
     const select = document.querySelector('.selected')
     const selectedName = select.innerText
     const classSelectedName = select.className
@@ -56,10 +57,12 @@ movCima.addEventListener('click', function () {
     select.style.textDecoration = previousElement.style.textDecoration
     previousElement.style.textDecoration = outlineElement
 }
+    }
     })
 
 
 movBaixo.addEventListener('click', function () {
+    if(document.querySelector('.selected') != null){
     const select = document.querySelector('.selected')
     const selectedName = select.innerText
     const classSelectedName = select.className
@@ -76,6 +79,7 @@ movBaixo.addEventListener('click', function () {
     select.style.textDecoration = nextElement.style.textDecoration
     nextElement.style.textDecoration = outlineElement
     }
+}
     })
 
 
