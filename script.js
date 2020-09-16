@@ -1,5 +1,6 @@
 window.onload = function () {
     insertTextBuildListField();
+    clearField();
 
 
     function insertTextBuildListField() {
@@ -16,5 +17,18 @@ window.onload = function () {
                 text.focus();
             }
         });
+    }
+
+    function clearField() {
+        document.querySelector('.btnClear').addEventListener('click', function () {
+            let li = document.getElementsByTagName('ol');
+            for (let item = 0; item < li.length; item += 1) {
+                li[item].innerHTML = '';
+            }
+            // li.forEach(item => {
+            //     item.value = '';
+            // });
+        });
+
     }
 }

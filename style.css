@@ -1,5 +1,5 @@
 body{
-    background-color: #E0FFFF;
+    background-color: white;
 }
 #card {
     border: 20px solid;
@@ -28,7 +28,11 @@ header{
     top: 20px;
     left: 30px;
 }
-
+.btnClear{
+position: absolute;
+    top: 410px;
+    left: -63px;
+}
 .borderInput{
     left: 50px;
     bottom:50px;
