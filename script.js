@@ -1,7 +1,7 @@
 //  cria a tarefa e apaga do input-box
-const btnCriarTarefa = document.querySelector('#criar-tarefa');
+const btnNewItem = document.querySelector('#criar-tarefa');
 const toDoList = document.querySelector('#lista-tarefas');
-btnCriarTarefa.addEventListener('click', function () {
+btnNewItem.addEventListener('click', function () {
   let textInput = document.querySelector('#texto-tarefa').value;
   const listItem = document.createElement('li');
   listItem.className = 'listItem';
@@ -35,11 +35,23 @@ btnClearDoneList.addEventListener('click', function () {
     }
   }
 });
+
+// trata evento salvar lista
+let btnSaveList = document.querySelector('#salvar-tarefas');
+btnSaveList.addEventListener('click', function () {
+  localStorage.setItem('finalList', toDoList);
+});
 });
 // trata evento limpar toda a lista
 let btnClearList = document.querySelector('#apaga-tudo');
 btnClearList.addEventListener('click', function () {
   toDoList.innerHTML = '';
 });
-// trata evento limpa apenas itens sobreescritos
+// recuperar lista salva 
+if (toDoList.length !== 0) {
+  window.onload = function () {
+    localStorage.getItem('toDoList');
+  }
+};
+
 
