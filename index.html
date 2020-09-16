@@ -14,11 +14,13 @@
   </header>
   <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
   <input id="texto-tarefa" type="text">
-  <button id="criar-tarefa" onclick="addList()">Adicionar</button>
+  <button class="button" id="criar-tarefa" onclick="addItemInList()">Adicionar</button>
   <ol id="lista-tarefas"></ol>
-  <button id="remover-finalizados" onclick="clearAllDone()">Remove itens completos</button>
-  <button id="remover-selecionado" onclick="removeSelected()">Remove Selecionado</button>
-  <button id="apaga-tudo" onclick="clearAll()">Limpar toda a lista</button>
+  <button class="button" id="mover-cima" onclick="moveItemUp()">↑</button>
+  <button class="button" id="mover-baixo" onclick="moveItemDown()">↓</button>
+  <button class="button" id="remover-selecionado" onclick="removeSelected()">Remove Selecionado</button>
+  <button class="button" id="remover-finalizados" onclick="clearAllDone()">Remove itens completos</button>
+  <button class="button" id="apaga-tudo" onclick="clearAll()">Limpar toda a lista</button>
   <script src="script.js"></script>
 </body>
 
