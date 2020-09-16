@@ -15,29 +15,33 @@
 
       <div class="entradaDados">
         <input type="text" placeholder="Tarefa" id="texto-tarefa" />
-      </div>
-      <button
+     
+        <button
         alt="Executar Tarefa"
-        onclick="todoListController.salvar()"
+        onclick="controller.adicionarTarefa()"
         id="criar-tarefa"
       >
         criar Tarefa
       </button>
-    </div>
+      </div>
+     
+    
 
     <div class="lista">
-      <!-- lista de a farzeres -->
+      <!-- lista de afazeres -->
     </div>
 
     <section class="botoes">
-
-      <button type="button" class="" id="removerSelecionado">remover selecionado</button>
+      <button type="button" class="" id="removerSelecionado">
+        remover selecionado
+      </button>
       <button type="button" class="" id="moverParaCima">para cima</button>
       <button type="button" class="" id="moverParaBaixa">para baixo</button>
       <button type="button" class="" id="Apagar">Apagar Tudo</button>
       <button type="button" class="" id="Salvartarefas">Salvar Tarefas</button>
       <button type="button" class="" id="Apagar">Apagar Tudo</button>
-      
     </section>
+    <footer></footer>
+  </div>
   </body>
 </html>
