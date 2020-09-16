@@ -35,7 +35,7 @@ window.onload = function () {
 }
 moverParaCima.addEventListener('click', function () {
   const movido = document.querySelector('.selected');
-  if (movido.previousElementSibling === null) {
+  if (movido.previousElementSibling === 'null') {
     alert('Você já está no primeiro item');
   } else {
     const cima = movido.previousElementSibling;   
@@ -45,7 +45,7 @@ moverParaCima.addEventListener('click', function () {
 
 moveParaBaixo.addEventListener('click', function () {
   const movido = document.querySelector('.selected');
-  if (movido.nextElementSibling === null) {
+  if (movido.nextElementSibling === 'null') {
     alert('Você já está no último item');
   } else {
     const baixo = movido.nextElementSibling;    
