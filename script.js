@@ -41,9 +41,8 @@ function createListItem() {
   });
 
   newTaskListItem.addEventListener('dblclick', function () {
-    newTaskListItem.classList.add('completed');
+    newTaskListItem.classList.contains('completed') ? newTaskListItem.classList.remove('completed') : newTaskListItem.classList.add('completed');
     completedTaskListItens = document.querySelectorAll('.completed');
-    uncheckedCompletedTaskListItem(completedTaskListItens);
   });
 }
 
