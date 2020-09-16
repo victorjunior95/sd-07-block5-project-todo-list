@@ -99,6 +99,12 @@ function carregarTarefas(){
         let listaTarefas = document.querySelector("#lista-tarefas")
         listaTarefas.innerHTML = tarefas
     }
+    let tarefa = document.querySelectorAll(".tarefa")
+    for (let i = 0; i < tarefa.length; i += 1){
+        tarefa[i].addEventListener("click", clicarTarefa)
+        tarefa[i].addEventListener("dblclick", completaTarefa)
+    }
+
 }
 
 function moverBaixo() {
