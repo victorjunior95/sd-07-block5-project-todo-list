@@ -61,23 +61,27 @@ function removeSelected() {
 // fuction move item up
 function moveItemUp() {
   let item = document.querySelector('.selected');
-  if (item.previousSibling !== null || item === null) {
-    let previousItem = item.previousSibling.innerHTML;
-    item.previousSibling.innerHTML = item.innerHTML;
-    item.innerHTML = previousItem;
-    item.classList.remove('selected');
-    item.previousSibling.classList.add('selected');
+  if (item !== null) {
+    if (item === null || item.previousSibling !== null) {
+      let previousItem = item.previousSibling.innerHTML;
+      item.previousSibling.innerHTML = item.innerHTML;
+      item.innerHTML = previousItem;
+      item.classList.remove('selected');
+      item.previousSibling.classList.add('selected');
+    }
   }
 }
 
 // fuction move item up
 function moveItemDown() {
   let item = document.querySelector('.selected');
-  if (item.nextSibling !== null || item === null) {
-    let previousItem = item.nextSibling.innerHTML;
-    item.nextSibling.innerHTML = item.innerHTML;
-    item.innerHTML = previousItem;
-    item.classList.remove('selected');
-    item.nextSibling.classList.add('selected');
+  if (item !== null) {
+    if (item.nextSibling !== null) {
+      let previousItem = item.nextSibling.innerHTML;
+      item.nextSibling.innerHTML = item.innerHTML;
+      item.innerHTML = previousItem;
+      item.classList.remove('selected');
+      item.nextSibling.classList.add('selected');
+    }
   }
 }
