@@ -1,5 +1,6 @@
 let createTask = document.getElementById("criar-tarefa");
 let listTask = document.getElementById("lista-tarefas");
+let selectedClass;
 
 createTask.addEventListener("click", function () {
   let createElementList = document.createElement("li");
@@ -13,3 +14,18 @@ createTask.addEventListener("click", function () {
     recordValue.value = "";
   }
 });
+
+listTask.addEventListener("click", function (event) {
+  if (selectedClass === undefined) {
+    event.target.classList.add("selected")
+    selectedClass = document.getElementsByClassName("selected")[0];
+    console.log(event.target.classList)
+  } else if (event.target.classList[0] == "selected") {
+    event.target.classList.toggle("selected")
+    selectedClass = document.getElementsByClassName("selected")[0];
+  } else {
+    selectedClass.classList.remove("selected")
+    event.target.classList.add("selected")
+    selectedClass = document.getElementsByClassName("selected")[0];
+  }
+})
