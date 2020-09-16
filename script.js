@@ -1,5 +1,5 @@
 let criarTarefa = document.getElementById('criar-tarefa');
-let toDos = document.getElementById('lista-tarefas').children;
+
 
 // window.onload = renderizarTodos (); 
 
@@ -19,11 +19,22 @@ criarTarefa.addEventListener('click', function () {
   let itemLista = renderizarTodos(outroToDo);
   
   itemLista.addEventListener('click', function () {
-  for (let toDo of toDos) {
-    toDo.classList.remove('selected');
-  }  
+    let toDos = document.getElementById('lista-tarefas').children;
+    for (let toDo of toDos) {
+      toDo.classList.remove('selected');
+    }  
     itemLista.classList.add('selected');
-  }); 
+  });
+  
+  itemLista.addEventListener('dblclick', function () {
+    if (!itemLista.classList.contains('completed')) {
+      itemLista.classList.add('completed');
+      itemLista.classList.remove('selected');
+    }else {
+      itemLista.classList.remove('completed');
+      itemLista.classList.remove('selected');
+    }
+  });
 });
 
 
