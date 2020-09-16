@@ -9,7 +9,10 @@ let criartarefa = document.getElementById("criar-tarefa");
 let listatarefa = document.getElementById("lista-tarefas");
 let textotarefa = document.getElementById("texto-tarefa");
 let clearall    = document.getElementById("apaga-tudo");
-let finalizados = document.getElementById("remover-finalizados")
+let finalizados = document.getElementById("remover-finalizados");
+let save        = document.getElementById("salvar-tarefas");
+
+listatarefa.innerHTML = localStorage.getItem("itens");
 
 criartarefa.addEventListener("click", function() {
 
@@ -52,4 +55,9 @@ finalizados.addEventListener("click",function() {
             element.removeChild(element.children[i]);
         };
     }
+})
+
+save.addEventListener("click",function() {
+    localStorage.setItem("itens",listatarefa.innerHTML);
+    console.log(localStorage);
 })
