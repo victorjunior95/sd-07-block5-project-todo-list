@@ -2,6 +2,8 @@ let entradaTexto = document.querySelector('#texto-tarefa')
 let botaoTarefa = document.querySelector("#criar-tarefa")
 let listaTarefas = document.querySelector("#lista-tarefas")
 let botaoApagarLista = document.querySelector("#apaga-tudo")
+let botaoApagarRiscado = document.querySelector("#remover-finalizados")
+
 
 botaoTarefa.addEventListener('click', function(){
     let novoElemento = document.createElement("li")
@@ -16,7 +18,13 @@ botaoTarefa.addEventListener('click', function(){
         
 })
 
-
+botaoApagarRiscado.addEventListener('click' , function(){
+  let listaRiscados = document.querySelectorAll('.completed')
+  console.log(listaRiscados)
+  for(let elementos = 0 ; elementos <= listaRiscados.length ; elementos += 1)
+    listaRiscados[elementos].parentNode.removeChild(listaRiscados[elementos]);
+  
+})
 
 function riscarSelecionado(event){
   event.target.classList.add('completed')
@@ -26,8 +34,8 @@ function riscarSelecionado(event){
     if (novoElementoRiscado !== null) novoElementoRiscado.classList.remove('completed')
 
   })
+  return novoElementoRiscado
 }
-
 
 
 function selecionarItem(event) {
@@ -51,3 +59,5 @@ botaoApagarLista.addEventListener('click', function(){
 
 
 // document.body.insertBefore(divNova, divAtual);
+
+
