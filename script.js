@@ -53,8 +53,10 @@ document.querySelector('#apaga-tudo').addEventListener('click', function () {
 document.querySelector('#mover-cima').addEventListener('click', function () {
   const allTask = document.querySelectorAll('li');
   const justSelected = document.querySelector('.selected');
-  if (allTask.length === 0 || justSelected.previousElementSibling === null) {
-    alert('Não é possível mover para cima');
+  if (allTask.length === 0 || justSelected === null) {
+    alert('Escreva e selecione uma tarefa');
+  } else if (justSelected.previousElementSibling === null) {
+    alert('Escreva mais uma tarefa');
   } else {
     document.querySelector('ol').insertBefore(justSelected, justSelected.previousElementSibling);
   }
@@ -63,9 +65,11 @@ document.querySelector('#mover-cima').addEventListener('click', function () {
 document.querySelector('#mover-baixo').addEventListener('click', function () {
   const allTask = document.querySelectorAll('li');
   const justSelected = document.querySelector('.selected');
-  if (allTask.length === 0 || justSelected.nextElementSibling === null) {
-    alert('Não é possível mover para baixo');
-  } else if (justSelected.nextElementSibling !== null) {
+  if (allTask.length === 0 || justSelected === null) {
+    alert('Escreva e selecione uma tarefa');
+  } else if (justSelected.nextElementSibling === null) {
+    alert('Escreva mais uma tarefa');
+  } else {
     document.querySelector('ol').insertBefore(justSelected.nextElementSibling, justSelected);
   }
 });
