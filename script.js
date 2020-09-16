@@ -1,5 +1,5 @@
 let criarTarefa = document.getElementById('criar-tarefa');
-
+let apagaTudo = document.getElementById('apaga-tudo');
 
 // window.onload = renderizarTodos (); 
 
@@ -29,13 +29,13 @@ criarTarefa.addEventListener('click', function () {
   itemLista.addEventListener('dblclick', function () {
     if (!itemLista.classList.contains('completed')) {
       itemLista.classList.add('completed');
-      itemLista.classList.remove('selected');
     }else {
       itemLista.classList.remove('completed');
-      itemLista.classList.remove('selected');
     }
   });
 });
+
+
 
 
 
