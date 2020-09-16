@@ -17,7 +17,7 @@ function criaLista(inputText) {
 
 function selected(listada) {
     for (let index = 0; index < listada.length; index += 1) {
-        lista.querySelectorAll('li')[index].addEventListener('click' , function () {
+        listada[index].addEventListener('click', (event) => {
             for (let sel = 0; sel < listada.length; sel += 1) {
                 if (listada[sel].className === 'selected' ||
                 listada[sel].className === 'completed') {
@@ -26,45 +26,31 @@ function selected(listada) {
                 }
             }
             if (listada[index].className === 'completed') {
-                listada[index].className = 'completed';               
+                listada[index].className = 'completed'
             } else {
                 listada[index].className = 'selected';
             }
-            if (listada[index].className === 'selected' || 
-            listada[index].className === 'completed') {
+            if (listada[index].className === 'completed' ||
+            listada[index].className === 'selected') {
                 listada[index].style.backgroundColor = 'rgb(128,128,128)';
-            }                 
+            }                              
         });
-    }        
-
-}
-
-function completed(listada) {
-    for (let index = 0; index < listada.length; index += 1) {
-        listada[index].addEventListener('dblclick' , function () {
-            if (listada[index].className === 'completed') {
-                listada[index].className = 'selected'; 
-            } else if (listada[index].className === 'selected') {
-                listada[index].className = 'completed';
-            }            
-        });
-    } 
-}
-
-/*function disable(listada) {  
-    for (let index = 0; index < listada.length; index += 1) {
-        lista.querySelectorAll('li')[index].addEventListener('dblclick' , function () {
-                listada[index].className = 'selected';          
-        })
     }
-}*/
+}        
+
+
+lista.addEventListener('dblclick' , (event) => {
+    if (event.target.className === 'completed') {
+         event.target.className = 'selected';                                              
+    } else  {
+        event.target.className = 'completed'; 
+    }                                                        
+});
 
 adicionar.addEventListener('click', function () {
     criaLista(inputText);    
     let listada =  document.querySelectorAll('#lista-tarefas li');
-    selected(listada);
-    completed(listada);
-    //disable(listada);            
+    selected(listada);       
 });
 
 botaoLimpa.addEventListener('click', function () {
