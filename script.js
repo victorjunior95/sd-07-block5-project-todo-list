@@ -80,5 +80,5 @@ let botaoMoverParaBaixo = document.getElementById('mover-baixo');
 botaoMoverParaBaixo.addEventListener("click", function() {
     let itemSelecionado = document.querySelector('.selected')
     let listaDeTarefas = document.getElementById('lista-tarefas');
-    listaDeTarefas.insertBefore(itemSelecionado.previousElementSibling, itemSelecionado);
+    listaDeTarefas.insertBefore(itemSelecionado.nextElementSibling, itemSelecionado);
 });
