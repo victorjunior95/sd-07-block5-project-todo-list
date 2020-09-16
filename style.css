@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 .body {
-  background-color: rgb(66, 91, 118);
+  background-color: purple;
 }
 
 .main-title {
   font-family: 'Indie Flower', cursive;
   font-size: 3em;
   text-align: center;
+  text-decoration: underline;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.26);
 }
 .main {
@@ -17,9 +18,10 @@
   color: rgb(71, 71, 71);
   font-family: 'Roboto', sans-serif;
   font-size: 1.1em;
-  height: 700px;
+  height: 600px;
   margin: auto;
-  padding: 20px 30px;
+  padding: 10px 30px;
+  position: relative;
   width: 80%;
 }
 
@@ -56,4 +58,17 @@
 
 .clean {
   background-color: rgb(251, 121, 89);
+}
+
+.list {
+  float: left;
+  width: 50%;
+}
+
+.image {
+  bottom: 10px;
+  float: right;
+  position: absolute;
+  right: 5px;
+  width: 35%;
 }

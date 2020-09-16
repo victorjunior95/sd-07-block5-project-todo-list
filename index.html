@@ -12,17 +12,27 @@
     <h1 class='main-title'>Minha Lista de Tarefas</h1>
     <p id='funcionamento'>Clique duas vezes em um item para marcá-lo como completo</p>
 </header>
-    <input id='texto-tarefa' class='input-box' type="text">
-    <button id=criar-tarefa class='button add'>Adiciona tarefa na lista</button>
-    <div class='button-list-add'>
-        <button id=salvar-tarefas class='button add'>Salvar a lista</button>
-    </div>
-    <div class='button-list-clean'>
-        <button id=remover-selecionado class='button clean'>Remover item selecionado</button>
-        <button id='remover-finalizados' class='button clean'>Remove os itens executados</button>
-        <button id='apaga-tudo' class='button clean'>Limpar lista</button>
-    </div>
-        <ol id='lista-tarefas'></ol>
+    <section class='topOf'>
+        <input id='texto-tarefa' class='input-box' type="text">
+        <button id=criar-tarefa class='button add'>Adiciona tarefa na lista</button>
+        <div class='button-list-add'>
+            <button id=salvar-tarefas class='button add'>Salvar a lista</button>
+        </div>
+        <div class='button-list-clean'>
+            <button id=remover-selecionado class='button clean'>Remover item selecionado</button>
+            <button id='remover-finalizados' class='button clean'>Remove os itens executados</button>
+            <button id='apaga-tudo' class='button clean'>Limpar lista</button>
+        </div>
+    </section>
+
+        <section class='bottom'>
+
+                <ol id='lista-tarefas' class='list'></ol>
+           
+                <img class='image' src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/24101/color-pencil-clipart-md.png" alt="Imagem decorativa de lápis de cor">
+
+        </section>
+
     <script type="text/javascript" src="script.js"></script>
 </main>
 </body>
