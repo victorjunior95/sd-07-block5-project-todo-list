@@ -17,7 +17,7 @@ function criaItemLista(className) {
 
 buttonAdicionar.addEventListener('click', adicionaItemLista);
 
-//-----------------------------------------------------------------//
+//-------------------------------------------------------------------------------------------
 
 document.addEventListener('click', function (event) {
   let items = document.querySelectorAll('.item');
@@ -40,7 +40,7 @@ document.addEventListener('dblclick', function (event) {
   }
 });
 
-//------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------
 
 let buttonApagarTudo = document.querySelector('#apaga-tudo');
 
@@ -52,9 +52,9 @@ function apagaItemsLista() {
 }
 buttonApagarTudo.addEventListener('click', apagaItemsLista);
 
-let buttonApagarSelecionados = document.querySelector('#remover-finalizados');
+let buttonApagarFinalizados = document.querySelector('#remover-finalizados');
 
-function apagaSelecionado() {
+function apagaFinalizado() {
   let items = document.querySelectorAll('.item');
   for (let i = 0; i < items.length; i += 1) {
     if (items[i].classList.contains('completed')) {
@@ -62,9 +62,9 @@ function apagaSelecionado() {
     }
   }
 }
-buttonApagarSelecionados.addEventListener('click', apagaSelecionado);
+buttonApagarFinalizados.addEventListener('click', apagaFinalizado);
 
-//---------------------------------------------------------------------------//
+//------------------------------------------------------------------------------------------------
 
 let buttonSalvar = document.querySelector('#salvar-tarefas');
 
@@ -77,7 +77,7 @@ window.onload = function () {
   listaOrdenada.innerHTML = localStorage.getItem('Itens-salvos');
 };
 
-//---------------------------------------------------------------------------//
+//----------------------------------------------------------------------------------------------
 
 let buttonMoverCima = document.querySelector('#mover-cima');
 
@@ -124,5 +124,18 @@ function moveBaixo() {
     }
   }
 }
-
 buttonMoverBaixo.addEventListener('click', moveBaixo);
+
+//-----------------------------------------------------------------------------------------------
+
+let buttonApagarSelecionados = document.querySelector('#remover-selecionado');
+
+function apagaSelecionado() {
+  let items = document.querySelectorAll('.item');
+  for (let i = 0; i < items.length; i += 1) {
+    if (items[i].style.backgroundColor == 'rgb(128, 128, 128)') {
+      listaOrdenada.removeChild(items[i]);
+    }
+  }
+}
+buttonApagarSelecionados.addEventListener('click', apagaSelecionado);
