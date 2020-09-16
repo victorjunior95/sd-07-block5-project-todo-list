@@ -4,7 +4,9 @@ window.onload=function(){
     let botaoApagaTudo=document.getElementById('apaga-tudo');
     let botaoApagaFinalizados=document.getElementById('remover-finalizados');
     let botaoApagaSelecionado=document.getElementById('remover-selecionado');
-    let botaoSalvaLista=document.getElementById('salvar-tarefas');    
+    let botaoSalvaLista=document.getElementById('salvar-tarefas');
+    let botaoUp=document.getElementById('mover-cima');
+    let botaoDown=document.getElementById('mover-baixo');
     let novaTarefa=document.getElementById('texto-tarefa');
     let listaTarefas=document.getElementById('lista-tarefas');
     let itemSelecionado=document.getElementsByClassName('selecionado')
@@ -45,6 +47,32 @@ window.onload=function(){
 
     botaoApagaSelecionado.addEventListener('click',function(){
         itemSelecionado[0].remove();
+    })
+
+    botaoUp.addEventListener('click',function(){
+        let selecionado=document.getElementsByClassName('selecionado');
+        let todosItens=document.getElementsByTagName('li');
+            for(let i=0; i<todosItens.length; i+=1){
+                if (selecionado[0]===todosItens[i]){
+                    if(i>0){
+                        listaTarefas.insertBefore(selecionado[0],listaTarefas.childNodes[i-1]);
+                    }
+                }
+            }
+    })
+
+    botaoDown.addEventListener('click',function(){
+        let selecionado=document.getElementsByClassName('selecionado');
+        let todosItens=document.getElementsByTagName('li');
+            for(let i=todosItens.length-1; i>=0; i-=1){
+                if (selecionado[0]===todosItens[i]){
+                    if(i<todosItens.length-1){
+                        //alert(`entrei no ultimo if ${i}`)
+                        listaTarefas.insertBefore(selecionado[0],listaTarefas.childNodes[i+1].nextSibling);
+                        //alert(listaTarefas.childNodes[i+1].innerText)
+                    }
+                }
+            }
     })
 
     loadList();
