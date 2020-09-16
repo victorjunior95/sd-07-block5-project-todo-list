@@ -36,15 +36,15 @@ btnNewItem.addEventListener('click', function () {
     }
   });
 // trata evento remover item com selected
-const btnClearSelectedItem = document.querySelector('#remover-selecionado');
-btnClearSelectedItem.addEventListener('click', function () {
-  const listItens = document.querySelectorAll('li');
-  for (let index = 0; index < listItens.length; index += 1) {
-    let listSelected = listItens[index];
-    if (listSelected.classList.contains('selected')) {
-      toDoList.removeChild(listSelected);
+  const btnClearSelectedItem = document.querySelector('#remover-selecionado');
+  btnClearSelectedItem.addEventListener('click', function () {
+    const listItens = document.querySelectorAll('li');
+    for (let index = 0; index < listItens.length; index += 1) {
+      const listSelected = listItens[index];
+      if (listSelected.classList.contains('selected')) {
+        toDoList.removeChild(listSelected);
+      }
     }
-  }
 });
 // trata evento salvar lista
   const btnSaveList = document.querySelector('#salvar-tarefas');
