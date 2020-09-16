@@ -19,11 +19,6 @@ function clickAndChangeColor() {
     let li = event.target;
     let children = listLi.children;
     children = document.querySelector("li").classList.add("selected");
-
-    for (let i = 0; i < children; i += 1) {
-      children = children[i];
-    }
-
     li.style.backgroundColor = "rgb(128, 128, 128)";
   });
 }
@@ -34,6 +29,7 @@ function doubleClick() {
     let li = event.target;
     let children = listLi.children;
     children = document.querySelector("li").classList.remove("selected");
+    children = document.querySelector("li").classList.add("completed");
     li.style.backgroundColor = "";
   });
 }
