@@ -32,6 +32,13 @@ document.querySelector('#remover-finalizados').addEventListener('click', functio
     }
   });
 
+document.querySelector('#remover-selecionado').addEventListener('click', function deleteSelected() {
+  let deleteLi = document.querySelector('#lista-tarefas');
+  let selectedLi = document.querySelectorAll('.selected');
+    for (let index in selectedLi) {
+      deleteLi.removeChild(selectedLi[index]);
+    }
+});
 
 
 
