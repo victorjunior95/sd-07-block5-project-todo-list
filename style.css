@@ -1,19 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 .body {
-  background-color: rgb(176, 123, 172);
+  background-color: rgb(66, 91, 118);
 }
 
 .main-title {
-  color: rgb(49, 49, 49);
   font-family: 'Indie Flower', cursive;
   font-size: 3em;
+  text-align: center;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.26);
 }
 .main {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.966);
   border-radius: 15px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.432);
+  color: rgb(71, 71, 71);
   font-family: 'Roboto', sans-serif;
+  font-size: 1.1em;
   height: 700px;
   margin: auto;
   padding: 20px 30px;
@@ -30,7 +33,7 @@
 
 .input-box {
   font-size: 1em;
-  height: 20px;
+  height: 25px;
   margin: 5px;
   width: 550px;
 }
@@ -40,16 +43,17 @@
   border-radius: 5px;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.356);
   color: rgb(49, 49, 49);
-  font-family: 'Roboto', sans-serif;;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8em;
   font-weight: 600;
   margin: 5px;
   padding: 7px 15px;
 }
 
 .add {
-  background-color:rgba(73, 212, 156, 0.664);
+  background-color:rgb(48, 179, 174);
 }
 
 .clean {
-  background-color: rgba(252, 235, 82, 0.664);
+  background-color: rgb(251, 121, 89);
 }
