@@ -13,57 +13,82 @@ const storageTodoList = {
 // lista de tarefas
 let todoList = [];
 
-function clearInputValue() {
-  document.getElementById('texto-tarefa').value = '';
-}
+const clearInputValue = () => document.getElementById('texto-tarefa').value = '';
 
-function getOl() {
-  return document.getElementById('lista-tarefas');
-}
+const getOl = () => document.getElementById('lista-tarefas');
 
-function getInputValue() {
-  return document.getElementById('texto-tarefa').value;
-}
+const getInputValue = () => document.getElementById('texto-tarefa').value;
 
-function getBtnAdd() {
-  return document.getElementById('criar-tarefa');
-}
+const getBtnAdd = () => document.getElementById('criar-tarefa');
 
-function getBtnRemoveFinalized() {
-  return document.getElementById('remover-finalizados');
-}
+const getBtnRemoveFinalized = () => document.getElementById('remover-finalizados');
 
-function getBtnRemoveAll() {
-  return document.getElementById('apaga-tudo');
-}
+const getBtnRemoveAll = () => document.getElementById('apaga-tudo');
 
-function getBtnRemoveSelected(){
-  return document.getElementById('remover-selecionado');
-}
+const getBtnRemoveSelected = () => document.getElementById('remover-selecionado');
 
-function getBtnSave() {
-  return document.getElementById('salvar-tarefas');
-}
+const getBtnSave = () => document.getElementById('salvar-tarefas');
 
-function createLi() {
-  return document.createElement('li');
-}
+const getLiAll = () => document.getElementsByTagName('li');
 
-function getLiAll() {
-  return document.getElementsByTagName('li');
-}
+const getLiCompleted = () => document.querySelectorAll('.completed');
 
-function getLiCompleted() {
-  return document.querySelectorAll('.completed');
-}
+const getLiSelected = () => document.querySelectorAll('.selected');
+
+const createLi = () => document.createElement('li');
+
+const getBtnCima = () => document.getElementById('mover-cima');
+
+const getBtnBaixo = () => document.getElementById('mover-baixo');
+
+const createDiv = () => document.createElement('div');
 
 function removeLi(li) {
   let ols = getOl();
   ols.removeChild(li);
 }
 
-function insertPropertyInElement({ element = '', text = '', classe = '' }) {
+function upTodo() {
+  let myOl = getOl()
+  let myLiForUp = getLiSelected();
+
+  if (myOl.childNodes[0] == myLiForUp) return;
+
+  let myLiForDown = myLiForUp.previousSibling;
+  myOl.insertBefore(myLiForUp, myLiForDown);
+
+  let myLiValue = myLiForUp.innerText;
+  let index = todoList.findIndex((a) => a.value == myLiValue);
+  todoList.splice(index - 1, 0, todoList[index]);
+  todoList.splice(index + 1, 1);
+}
+
+function downTodo() {
+  let myOl = getOl();
+  let myLiForDown = getLiSelected();
   
+  if (myOl.childNodes[myOl.childNodes.length - 1] == myLiForDown) return;
+
+  let myLiForUp = myLiForDown.nextSibling;
+  myOl.insertBefore(myLiForUp, myLiForDown);
+
+  let myLiValue = myLiForDown.innerText;
+  let index = todoList.findIndex((todo) => todo.value == myLiValue);
+  todoList.splice(index + 2, 0, todoList[index]);
+  todoList.splice(index, 1);
+}
+
+let btnCima = getBtnCima();
+btnCima.addEventListener('click', function () {
+  upTodo();
+});
+
+let btnBaixo = getBtnBaixo();
+btnBaixo.addEventListener('click', function () {
+  downTodo();
+});
+
+function insertPropertyInElement({ element = '', text = '', classe = '' }) {
   if (element) {
     let myElement = element;
     if (text) myElement.innerText = text;
