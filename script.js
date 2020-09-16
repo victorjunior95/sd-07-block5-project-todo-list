@@ -4,9 +4,13 @@ const addBtn = document.querySelector('#criar-tarefa');
 const orderedList = document.querySelector('#lista-tarefas');
 
 addBtn.addEventListener('click', function () {
-    const elementLi = document.createElement('li');
-    elementLi.innerText = textInput.value;
+    let elementLi = document.createElement('li');
+    elementLi.innerHTML = textInput.value;
     orderedList.appendChild(elementLi);
     
     textInput.value = ' ';
-})
+});
+
+
+// Button to delele all items from the list;
+const deleteAllBtn = document.getElementById('apaga-tudo');
