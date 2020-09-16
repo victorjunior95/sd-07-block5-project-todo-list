@@ -58,12 +58,27 @@ botaoSalvarTarefas.addEventListener("click", function() {
 window.onload = mostrarListaSalva;
 function mostrarListaSalva() {
     let listaSalva = localStorage.getItem('lista de tarefas');
-    document.getElementById('lista-tarefas').innerHTML = listaSalva;
+    if (listaSalva.length != 0) {
+        document.getElementById('lista-tarefas').innerHTML = listaSalva;
+    }
 }
 
 let botaoRemoverSelecionado = document.getElementById('remover-selecionado');
 botaoRemoverSelecionado.addEventListener("click", function() {
-    document.querySelectorAll('.selected').forEach(function(item) {
-        item.remove();
-    });
+    let itemSelecionado = document.querySelector('.selected');
+    itemSelecionado.remove();
+});
+
+let botaoMoverParaCima = document.getElementById('mover-cima');
+botaoMoverParaCima.addEventListener("click", function() {
+    let itemSelecionado = document.querySelector('.selected')
+    let listaDeTarefas = document.getElementById('lista-tarefas');
+    listaDeTarefas.insertBefore(itemSelecionado, itemSelecionado.previousElementSibling);
+});
+
+let botaoMoverParaBaixo = document.getElementById('mover-baixo');
+botaoMoverParaBaixo.addEventListener("click", function() {
+    let itemSelecionado = document.querySelector('.selected')
+    let listaDeTarefas = document.getElementById('lista-tarefas');
+    listaDeTarefas.insertBefore(itemSelecionado.previousElementSibling, itemSelecionado);
 });
