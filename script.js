@@ -7,6 +7,7 @@ function criarTarefa(){
     let elemento = document.createElement("li");    
     let result =lista.appendChild(elemento);
     elemento.addEventListener('click',itemSelecionado);
+    elemento.addEventListener("dblclick", itemCompleto)
     let conteudo=result.innerText = inputDoTexto.value;
     inputDoTexto.value = "";
 }
@@ -24,14 +25,6 @@ for(let i = 0; i < li.length; i += 1){
 document.querySelector("#apaga-tudo").addEventListener("click", limpando);
 
 //esta função será encarregada de mudar a cor de fundo dos itens da lista 
-
-/*function background (item){
-    item = document.querySelectorAll("li");
-    item.addEventListener("click", function(){
-       item.classList.add("selected")
-       document.querySelector(".selected").style.backgroundColor = rgb(128,128,128);
-    })
-}*/
 let item = document.querySelectorAll("li");
 function itemSelecionado (){
     let selecao = document.querySelector(".selecionado");
@@ -40,3 +33,23 @@ function itemSelecionado (){
     }
     event.target.classList.add("selecionado");
 }
+
+function itemCompleto (event){
+        let i = event.target.classList.contains("completed");
+        if(i === true){
+            event.target.classList.remove("completed");
+        }
+        else{
+        event.target.classList.add("completed");
+        }
+}
+
+/*function removeFinaliados(){
+    let selecao = document.querySelector(".completed");
+    let lista = document.querySelector('ol');
+    let li = document.querySelectorAll("li");
+    for(let i = 0; i < li.length; i += 1){
+    lista.removeChild(selecao);
+}
+let bot = document.querySelector("#remover-finalizados");
+bot.addEventListener("click", removeFinaliados);*/
