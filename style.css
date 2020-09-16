@@ -17,11 +17,14 @@
   text-decoration: underline;
   text-shadow: 1px 1px 1px rgba(0 , 0 , 0 , 0.26);
 }
+
 .funcionamento {
+  border: dashed 1px black;
+  padding: 5px;
   text-align: center;
-  margin-top: 0;
-  margin-bottom: 20px;
+  margin: 0 7px 20px 7px;
 }
+
 .main {
   background-color: rgba(255, 255, 255, 0.884);
   border-radius: 15px;
