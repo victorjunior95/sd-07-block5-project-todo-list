@@ -72,20 +72,18 @@ botaoRemoverSelecionado.addEventListener("click", function() {
     itemSelecionado.remove();
 });
 
+let itemSelecionado = document.querySelector('.selected')
+let listaDeTarefas = document.getElementById('lista-tarefas');
 let botaoMoverParaCima = document.getElementById('mover-cima');
 botaoMoverParaCima.addEventListener("click", function() {
-    let itemSelecionado = document.querySelector('.selected')
-    let listaDeTarefas = document.getElementById('lista-tarefas');
-    if (itemSelecionado.previousElementSibling != null && itemSelecionado.length != 0) {
+    if (itemSelecionado.previousElementSibling != null && itemSelecionado != null && listaDeTarefas.length != 0) {
         listaDeTarefas.insertBefore(itemSelecionado, itemSelecionado.previousElementSibling);
     }
 });
 
 let botaoMoverParaBaixo = document.getElementById('mover-baixo');
 botaoMoverParaBaixo.addEventListener("click", function() {
-    let itemSelecionado = document.querySelector('.selected')
-    let listaDeTarefas = document.getElementById('lista-tarefas');
-    if (itemSelecionado.nextElementSibling != null && itemSelecionado.length != 0) {
+    if (itemSelecionado.nextElementSibling != null && itemSelecionado != null && listaDeTarefas.length != 0) {
         listaDeTarefas.insertBefore(itemSelecionado.nextElementSibling, itemSelecionado);
     }
 });
