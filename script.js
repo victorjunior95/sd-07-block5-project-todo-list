@@ -100,15 +100,19 @@ btnRemoveSelected.addEventListener('click', function () {
 });
 btnMoveUp.addEventListener('click', function () {
   let selected = document.querySelector('.selected');
-  let before = selected.previousElementSibling;
-  if (before != null) {
-    moveUp(before, selected);
+  if (selected != null) {
+    let before = selected.previousElementSibling;
+    if (before != null) {
+      moveUp(before, selected);
+    }
   }
 });
 btnMoveDown.addEventListener('click', function () {
   let selected = document.querySelector('.selected');
-  let after = selected.nextElementSibling;
-  if (after != null) {
-    moveDown(after, selected);
+  if (selected != null) {
+    let after = selected.nextElementSibling;
+    if (after != null) {
+      moveDown(after, selected);
+    }
   }
 });
