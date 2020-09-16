@@ -1,19 +1,31 @@
-const makeTask = document.querySelector('#criar-tarefa');
+const makeTaskButton = document.querySelector('#criar-tarefa');
 const inputTask = document.querySelector('#texto-tarefa');
-const orderedlist = document.querySelector('#lista-tarefas');
+const orderedList = document.querySelector('#lista-tarefas');
 const eraseAllButton = document.querySelector('#apaga-tudo');
 
 function makeTaskList() {
-  const ul = document.createElement('li');
-  ul.className = 'task-item';
-  ul.innerText = inputTask.value;
-  orderedlist.appendChild(ul);
+  const li = document.createElement('li');
+  li.className = 'task-item';
+  li.innerText = inputTask.value;
+  orderedList.appendChild(li);
   inputTask.value = '';
+
+  let classLi = document.querySelector('#lista-tarefas').children;
+    for (i = 0; i < classLi.length; i += 1) {
+     let sel = classLi[i];
+  sel.addEventListener('click', setCor);
+    function setCor() {
+      sel.style.background = 'rgb(128, 128, 128)';
+     }
+   }
+
 }
+
 function eraseAll() {
-  while (orderedlist.firstChild) {
-    orderedlist.removeChild(orderedlist.firstChild);
-    }
+  while (orderedList.firstChild) {
+    orderedList.removeChild(orderedList.firstChild);
+  }
 }
-makeTask.addEventListener('click', makeTaskList);
+
+makeTaskButton.addEventListener('click', makeTaskList);
 eraseAllButton.addEventListener('click', eraseAll);
