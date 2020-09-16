@@ -4,6 +4,9 @@ const list = document.querySelector('#lista-tarefas');
 const apagar = document.querySelector('#apaga-tudo')
 const apagarSelect = document.querySelector('#remover-finalizados')
 const removerSelect = document.querySelector('#remover-selecionado')
+const movCima = document.querySelector('#mover-cima')
+const movBaixo = document.querySelector('#mover-baixo')
+let verify = false
 
 
 addTarefa.addEventListener('click', function () {
@@ -35,6 +38,49 @@ removerSelect.addEventListener('click', function () {
  const select = document.querySelector('.selected')
     select.remove()
 })
+
+movCima.addEventListener('click', function () {
+    const select = document.querySelector('.selected')
+    const selectedName = select.innerText
+    const classSelectedName = select.className
+    const previousElement = select.previousElementSibling
+    const backColorElement = select.style.backgroundColor
+    const outlineElement = select.style.textDecoration
+    if (previousElement != null){
+    select.innerText = previousElement.innerText
+    previousElement.innerText = selectedName
+    select.className = select.previousElementSibling.className
+    select.previousElementSibling.className = classSelectedName
+    select.style.backgroundColor = previousElement.style.backgroundColor
+    previousElement.style.backgroundColor = backColorElement
+    select.style.textDecoration = previousElement.style.textDecoration
+    previousElement.style.textDecoration = outlineElement
+}
+    })
+
+
+movBaixo.addEventListener('click', function () {
+    const select = document.querySelector('.selected')
+    const selectedName = select.innerText
+    const classSelectedName = select.className
+    const nextElement = select.nextElementSibling
+    const backColorElement = select.style.backgroundColor
+    const outlineElement = select.style.textDecoration
+    if (nextElement != null){
+    select.innerText = nextElement.innerText
+    nextElement.innerText = selectedName
+    select.className = select.nextElementSibling.className
+    select.nextElementSibling.className = classSelectedName
+    select.style.backgroundColor = nextElement.style.backgroundColor
+    nextElement.style.backgroundColor = backColorElement
+    select.style.textDecoration = nextElement.style.textDecoration
+    nextElement.style.textDecoration = outlineElement
+    }
+    })
+
+
+
+
 
 
 function addColor () {
