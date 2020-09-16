@@ -1,6 +1,7 @@
 const inputTextToDo = document.querySelector(".texto-tarefa");
 const buttonCreateToDo = document.querySelector(".criar-tarefa");
 let olToDoList = document.querySelector(".lista-tarefas");
+const buttonClearAllTaksInTheList = document.querySelector('#apaga-tudo');
 
 function clearInputTextToDo() {
   inputTextToDo.value = "";
@@ -35,3 +36,7 @@ function addAndRemoveCompletedTask(task) {
     }
   });
 }
+
+buttonClearAllTaksInTheList.addEventListener('click', function () {
+  olToDoList.innerHTML = '';
+})
