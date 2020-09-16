@@ -14,7 +14,7 @@ window.onload = function() {
                   
        });
 
-    /*------------------------------------------------------*/
+    
     
     /*------------------------------------------------------*/
     apagaTudo.addEventListener('click', function(){     
@@ -37,13 +37,15 @@ window.onload = function() {
     criarTarefa.addEventListener('click', function(){
      let tarefa = textoTarefa.value;
      let novaTarefa = document.createElement('li');
-     novaTarefa.innerText=tarefa;
+     novaTarefa.innerText=tarefa;     
      listaTarefas.appendChild(novaTarefa);
      textoTarefa.value ="";
      textoTarefa.focus(); 
     /*-------------------------*/
+    
     let todasTarefas = document.querySelectorAll('li');
-        for(let index=0; index < todasTarefas.length; index +=1){           
+        for(let index=0; index < todasTarefas.length; index +=1){
+            /*-------------------------------------------------------*/           
             todasTarefas[index].addEventListener('click', function () {
                 let selecionado = document.querySelector('.selecionado');
                 if(selecionado){
@@ -54,7 +56,20 @@ window.onload = function() {
                 this.style.backgroundColor = 'rgb(128, 128, 128)'; 
                                           
               });
-        }             
+            }
+            /*-------------------------------------------------------*/
+            for(let index=0; index < todasTarefas.length; index +=1){                
+                todasTarefas[index].addEventListener('dblclick', function () {
+                    if(this.style.textDecoration=="line-through"){
+                        this.style.textDecoration='none';
+                    }else{
+                        this.style.textDecoration="line-through";  
+                    }                                       
+                  });
+                
+            }    
+            
+                     
     });
 
     /*xxxxxxxxxxxxxxxxxxxxxxx*/
