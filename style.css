@@ -1,0 +1,10 @@
+.side-by-side {
+    display: inline-block;
+}
+
+#criar-tarefa {
+    height: 21px;
+    width: 90px;
+    background-color: gray;
+    color: white;
+}
