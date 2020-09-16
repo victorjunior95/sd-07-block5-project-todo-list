@@ -12,6 +12,8 @@ let clearall    = document.getElementById("apaga-tudo");
 let finalizados = document.getElementById("remover-finalizados");
 let save        = document.getElementById("salvar-tarefas");
 let selecionado = document.getElementById("remover-selecionado");
+let cima        = document.getElementById("mover-cima");
+let baixo       = document.getElementById("mover-baixo");
 
 listatarefa.innerHTML = localStorage.getItem("itens");
 
@@ -60,7 +62,6 @@ finalizados.addEventListener("click",function() {
 
 save.addEventListener("click",function() {
     localStorage.setItem("itens",listatarefa.innerHTML);
-    console.log(localStorage);
 });
 
 selecionado.addEventListener("click",function() {
@@ -71,3 +72,34 @@ selecionado.addEventListener("click",function() {
         };
     }
 });
+
+cima.addEventListener("click",function() {
+    let element = document.getElementById("lista-tarefas");
+    let position = 0;
+    if (element.children.length >=2 ){
+        for (let i = element.children.length - 1;i >= 0; i--) {
+            if (element.children[i].style.backgroundColor == "rgb(128, 128, 128)") {
+                position = i;
+            };
+        }
+        if (position > 0) {
+            element.insertBefore(element.children[position],element.children[position-1]);
+        }
+    }
+})
+
+baixo.addEventListener("click",function() {
+    let element = document.getElementById("lista-tarefas");
+    let position = 0;
+    if (element.children.length >=2 ){
+        for (let i = element.children.length - 1;i >= 0; i--) {
+            if (element.children[i].style.backgroundColor == "rgb(128, 128, 128)") {
+                position = i+1;
+            };
+        }
+
+        if (position < element.children.length) {
+            element.insertBefore(element.children[position],element.children[position-1]);
+        }
+    }
+})
