@@ -61,7 +61,7 @@ function removeSelected() {
 // fuction move item up
 function moveItemUp() {
   let item = document.querySelector('.selected');
-  if (item.previousSibling !== null) {
+  if (item.previousSibling !== null || item === null) {
     let previousItem = item.previousSibling.innerHTML;
     item.previousSibling.innerHTML = item.innerHTML;
     item.innerHTML = previousItem;
@@ -73,7 +73,7 @@ function moveItemUp() {
 // fuction move item up
 function moveItemDown() {
   let item = document.querySelector('.selected');
-  if (item.nextSibling !== null) {
+  if (item.nextSibling !== null || item === null) {
     let previousItem = item.nextSibling.innerHTML;
     item.nextSibling.innerHTML = item.innerHTML;
     item.innerHTML = previousItem;
