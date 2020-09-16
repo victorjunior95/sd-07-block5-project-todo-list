@@ -18,3 +18,16 @@ body {
     border-radius: 15px;
     display: inline-block;
 }
+
+.list {
+    text-align: left;
+}
+
+.hoover {
+    background-color: rgb(128,128,128);
+    text-align: left;
+}
+
+.completed {
+    text-decoration: line-through solid rgb(0, 0, 0);
+}
