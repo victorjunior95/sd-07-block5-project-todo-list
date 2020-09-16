@@ -7,28 +7,13 @@ let taskListItens = document.querySelectorAll('li');
 let completedTaskListItens = document.querySelectorAll('.completed');
 let inputValue = '';
 
-input.addEventListener('keyup', function () {
-  inputValue = input.value;
-});
-
-function uncheckedTaskListItem(selectedPosition) {
+function uncheckedTaskListItem(position) {
   for (let index = 0; index < taskListItens.length; index += 1) {
-    if (index !== selectedPosition) {
+    if (taskListItens[index] !== position) {
       taskListItens[index].classList.remove('selected');
     }
   }
 }
-
-function selectedTaskListItens() {
-  for (let index = 0; index < taskListItens.length; index += 1) {
-    taskListItens[index].addEventListener('click', function () {
-      taskListItens[index].classList.add('selected');
-      uncheckedTaskListItem(index);
-    });
-  }
-}
-
-selectedTaskListItens();
 
 buttonClearCompletedTaskListItem.addEventListener('click', function (event) {
   event.preventDefault();
@@ -37,18 +22,7 @@ buttonClearCompletedTaskListItem.addEventListener('click', function (event) {
   }
 });
 
-function completedTaskListItem() {
-  for (let index = 0; index < taskListItens.length; index += 1) {
-    taskListItens[index].addEventListener('dblclick', function () {
-      taskListItens[index].classList.add('completed');
-      completedTaskListItens = document.querySelectorAll('.completed');
-    });
-  }
-}
-
-completedTaskListItem();
-
-  // http://devfuria.com.br/javascript/dom-insert-before/ - insertBefore, similar ao appendChild, porém após inserir a variável desejada deve colocar antes de qual child você pretende acrescerntar dessa forma (newTaskListItem, taskListItens[0]) newTaskListItem sendo a variável que será adicionada e taskListItens[0] sendo o filho de taskList que antecederá a variável.
+  // http://devfuria.com.br/javascript/dom-insert-before/ - insertBefore, similar ao appendChild, porém após inserir a variável desejada deve colocar antes de qual child você pretende acrescerntar dessa forma (newTaskListItem, taskListItens[0]) newTaskListItem sendo a variável que será adicionada e taskListItens[0] sendo o filho de taskList que antecederá a variável que será adicionada.
 
 function createListItem() {
   let newTaskListItem = document.createElement('li');
@@ -56,8 +30,17 @@ function createListItem() {
   taskList.insertBefore(newTaskListItem, taskListItens[0]);
   input.value = '';
   taskListItens = document.querySelectorAll('li');
-  selectedTaskListItens();
-  completedTaskListItem();
+
+  newTaskListItem.addEventListener('click', function (event) {
+    newTaskListItem.classList.add('selected');
+    let position = event.target
+    uncheckedTaskListItem(position);
+  });
+
+  newTaskListItem.addEventListener('dblclick', function () {
+    newTaskListItem.classList.add('completed');
+    completedTaskListItens = document.querySelectorAll('.completed');
+  });
 }
 
 buttonCreateTask.addEventListener('click', function (event) {
@@ -74,4 +57,8 @@ buttonClearList.addEventListener('click', function (event) {
   while (taskList.firstChild) {
     taskList.removeChild(taskList.firstChild);
   }
+});
+
+input.addEventListener('keyup', function () {
+  inputValue = input.value;
 });
