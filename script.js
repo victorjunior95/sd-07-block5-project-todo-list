@@ -4,20 +4,24 @@
 let botaoEntrada = document.getElementById("criar-tarefa");
 
 botaoEntrada.addEventListener("click", function(){
-  let tarefa = document.getElementById("texto-tarefa").value;
-  criarTarefas(tarefa);
+  let tarefa = document.getElementById("texto-tarefa").value;   
+  criarTarefas(tarefa,0);
+  
 });
 
-function criarTarefas(entrada) {
+function criarTarefas(entrada,classe) {
   if (entrada != "") {
+
+    
     let item = document.createElement("li");
-    item.classList = "item";
-    item.innerHTML = entrada;
+    item.innerText = entrada;
+    if(classe ==1){
+      item.classList.add("completed");
+    }
     let pai = document.getElementById("lista-tarefas");
+    
     pai.appendChild(item);
-    entrada = "";
-    let lista = document.querySelectorAll(".item");
-    item.id = lista.length;
+
     criarEventos();
     tarefasCompletas();
   }
@@ -26,7 +30,7 @@ function criarTarefas(entrada) {
 // Marcando itens selecionados.
 
 function criarEventos() {
-  let lista = document.querySelectorAll(".item");
+  let lista = document.querySelectorAll("li");
   for (let i = 0; i < lista.length; i++) {
     (function (i) {
       lista[i].addEventListener("click", function () {
@@ -47,7 +51,7 @@ function criarEventos() {
 // MARCAR TAREFAS COMPLETAS
 
 function tarefasCompletas() {
-  let completos = document.querySelectorAll(".item");
+  let completos = document.querySelectorAll("li");
   let listaCompletos = [];
   for (let i = 0; i < completos.length; i++) {
     (function (i) {
@@ -76,7 +80,7 @@ apagar.addEventListener("click", function () {
 let apagarCompletos = document.getElementById("remover-finalizados");
 apagarCompletos.addEventListener("click", function () {
   let pai = document.getElementById("lista-tarefas");
-  let lista = document.querySelectorAll(".item");
+  let lista = document.querySelectorAll("li");
 
   for (let i = 0; i < lista.length; i += 1) {
     if (lista[i].classList.contains("completed") == true) {
@@ -99,11 +103,20 @@ removerSelecionado.addEventListener("click", function () {
 
 let salvar = document.getElementById("salvar-tarefas");
 salvar.addEventListener("click", function () {
-  let lista = document.querySelectorAll(".item");
+  let lista = document.querySelectorAll("li");
   localStorage.clear();
+   
+  
   localStorage.setItem("tamanho", lista.length);
 
   for (let i = 0; i < lista.length; i += 1) {
+    
+    if (lista[i].classList.contains("completed")){
+      localStorage.setItem("c"+i, 1);
+    } else{
+      localStorage.setItem("c"+i, 0);
+    }
+    
     localStorage.setItem(i, lista[i].innerText);
     console.log(lista[i]);
   }
@@ -114,11 +127,14 @@ let tamanho = localStorage.getItem("tamanho");
 console.log(tamanho)
 
 for (let i = 0; i < tamanho; i += 1) {
+
+  
   let tarefa = localStorage.getItem(i);
-  criarTarefas(tarefa);
-
+  let classe = localStorage.getItem("c"+i)
+   console.log(tarefa)
+  
+  criarTarefas(tarefa,classe);
 }
-
 
 // MOVER PARA CIMA OU PARA BAIXO
 

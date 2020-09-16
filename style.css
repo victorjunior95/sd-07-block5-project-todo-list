@@ -7,6 +7,8 @@ header{
 }
 li{
     margin:auto;
+    padding: 10px 30px 10px 10px;
+    padding
 }
 #fundo{
     text-align: center;
@@ -15,7 +17,15 @@ li{
     display: center;
     margin-top: 10%;
 }
-
+#lista-tarefas{
+    width: fit-content;
+    background-color: lightblue; 
+    margin: auto;
+    height: fit-content;
+    border-radius: 25px;
+    margin-top: 10px;
+    
+}
 .item{
     width: fit-content;
     
