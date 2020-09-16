@@ -9,41 +9,36 @@ buttonAdd = buttonAdd.addEventListener("click", function lista() {
 });
 const listLi = document.querySelector("#lista-tarefas");
 let buttonRemove = document.getElementById("apaga-tudo");
-buttonRemove = buttonRemove.addEventListener("click", function remove() {
+buttonRemove = buttonRemove.addEventListener("click", function () {
   let removeLi = document.getElementById("lista-tarefas");
   removeLi.innerHTML = "";
 });
 
-function clickAndChangeColor() {
-  listLi.addEventListener("click", function (event) {
-    let li = event.target;
-    let children = listLi.children;
-    children = document.querySelector("li").classList.add("selected");
-    li.style.backgroundColor = "rgb(128, 128, 128)";
-    
-  });
-}
-clickAndChangeColor();
-
-function clickDesmark() {
-  listLi.addEventListener("mousemove", function(e2) {
-    let li = e2.target;
-    li.style.backgroundColor = "";
-  }
-  )}
-  clickDesmark();
-
-
 function doubleClick() {
-  listLi.addEventListener("dblclick", function (e) {
+  listLi.addEventListener("dblclick", function (event) {
+    let listando = document.querySelectorAll(".completed");
     let li = event.target;
-    let children = listLi.children;
-    children = document.querySelector("li").classList.remove("selected");
-    children = document.querySelector("li").classList.add("completed");
-    li.style.backgroundColor = "";
+ if(listando[0] === li) {
+   listando[0].classList.remove('completed')
+ } else {
+   event.target.classList.add('completed');
+ }
   });
 }
 doubleClick();
 
-// classList.remove("")
-// classList.add("");
+
+function clickAndChangeColor() {
+  listLi.addEventListener("click", function (event) {
+    let listando = document.querySelectorAll(".selected");
+    let li = event.target;
+ if(listando[0] === li) {
+   listando[0].classList.remove('selected')
+ } else {
+   event.target.classList.add('selected');
+ }
+  });
+}
+clickAndChangeColor();
+
+
