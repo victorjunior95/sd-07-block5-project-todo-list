@@ -7,6 +7,18 @@ btCreate.addEventListener("click", function(){
     var textnode = document.createTextNode(inpuText.value);  // Create a text node
     node.appendChild(textnode);                              // Append the text to <li>
     orderList.appendChild(node);
+    node.classList.add('item-list')
     inpuText.value =' ';
     
+});
+
+
+li.addEventListener('dblclick', function () {
+    lineThrough = document.querySelector('.item-list');
+      if (li.classList.contains('item-list')) {
+        li.classList.remove('item-list')
+      }
+      else {
+        li.classList.add('item-list');
+    }
 });
