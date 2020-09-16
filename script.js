@@ -117,12 +117,14 @@ insertDataOl();
 function alterPropertiesLi() {
   document.body.addEventListener('click', function (event) {
     if (event.target.nodeName === 'LI') {
+      const liSelected = document.querySelectorAll('.selected')[0];
       const liClicked = event.target;
-      if (!liClicked.style.backgroundColor) {
-        liClicked.style.backgroundColor = 'rgb(128, 128, 128)';
+      if (liSelected) {
+      console.log(liSelected)
+        liSelected.classList.remove('selected');
+        liClicked.classList.add('selected');
       } else {
-        //liClicked.style.backgroundColor = 'rgb(255, 255, 255)'
-        liClicked.removeAttribute('style');
+        liClicked.classList.add('selected');
       }
     }
   });
