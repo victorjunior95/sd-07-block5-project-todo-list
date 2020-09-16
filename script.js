@@ -85,7 +85,7 @@ window.onload = function () {
       lista.appendChild(itemNovo);
     }
   }
-}
+};
 
 criaItem.addEventListener('click', function criaTarefa() {
   const itemLista = document.createElement('li');
