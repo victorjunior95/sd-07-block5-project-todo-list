@@ -39,7 +39,7 @@ function selectTask(event) {
   const selectedTask = document.querySelector('.selected');
   if (selectedTask === null) {
     event.target.classList.add('selected');
-  } else if (selectedTask !== event.target ) {
+  } else if (selectedTask !== event.target) {
     selectedTask.classList.remove('selected');
     event.target.classList.add('selected');
   } else {
