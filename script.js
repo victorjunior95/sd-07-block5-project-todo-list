@@ -1,8 +1,10 @@
 const input = document.querySelector('#texto-tarefa');
-const createTask = document.querySelector('#criar-tarefa');
+const buttonCreateTask = document.querySelector('#criar-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
-const clearList = document.querySelector('#apaga-tudo');
+const buttonClearList = document.querySelector('#apaga-tudo');
+const buttonClearCompletedTaskListItem = document.querySelector('#remover-finalizados');
 let taskListItens = document.querySelectorAll('li');
+let completedTaskListItens = document.querySelectorAll('.completed');
 let inputValue = '';
 
 input.addEventListener('keyup', function () {
@@ -26,13 +28,25 @@ function selectedTaskListItens() {
   }
 }
 
+selectedTaskListItens();
+
+buttonClearCompletedTaskListItem.addEventListener('click', function (event) {
+  event.preventDefault();
+  for (let index = 0; index < completedTaskListItens.length; index += 1) {
+    taskList.removeChild(completedTaskListItens[index]);
+  }
+});
+
 function completedTaskListItem() {
   for (let index = 0; index < taskListItens.length; index += 1) {
     taskListItens[index].addEventListener('dblclick', function () {
       taskListItens[index].classList.add('completed');
+      completedTaskListItens = document.querySelectorAll('.completed');
     });
   }
 }
+
+completedTaskListItem();
 
 function createListItem() {
   let newTaskListItem = document.createElement('li');
@@ -44,7 +58,7 @@ function createListItem() {
   completedTaskListItem();
 }
 
-createTask.addEventListener('click', function (event) {
+buttonCreateTask.addEventListener('click', function (event) {
   event.preventDefault();
   if (inputValue === '') {
     alert('Campo vazio!');
@@ -53,7 +67,7 @@ createTask.addEventListener('click', function (event) {
   }
 });
 
-clearList.addEventListener('click', function (event) {
+buttonClearList.addEventListener('click', function (event) {
   event.preventDefault();
   while (taskList.firstChild) {
     taskList.removeChild(taskList.firstChild);
