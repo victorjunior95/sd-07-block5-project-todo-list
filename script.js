@@ -7,16 +7,6 @@ const moveParaBaixo = document.querySelector('#mover-baixo');
 const moverParaCima = document.querySelector('#mover-cima');
 const removerSelecionado = document.querySelector('#remover-selecionado');
 
-moveParaBaixo.addEventListener('click', function () {
-  const movido = document.querySelector('.selected');
-  if (movido != null) {
-    if(movido.nextElementSibling) {
-      const baixo = movido.nextElementSibling;    
-      movido.before(baixo);
-    }
-  }
-})
-
 moverParaCima.addEventListener('click', function () {
   const movido = document.querySelector('.selected');
   if (movido != null) {
@@ -27,6 +17,16 @@ moverParaCima.addEventListener('click', function () {
   }
 })
 
+
+moveParaBaixo.addEventListener('click', function () {
+  const movido = document.querySelector('.selected');
+  if (movido != null) {
+    if(movido.nextElementSibling) {
+      const baixo = movido.nextElementSibling;    
+      movido.before(baixo);
+    }
+  }
+})
 
 function jaSelecionado() {
   const verificaSelecao = event.target;
