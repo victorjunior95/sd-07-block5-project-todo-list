@@ -81,8 +81,9 @@ window.onload = function () {
 
 let buttonMoverCima = document.querySelector('#mover-cima');
 
-function moveCima(event) {
+function moveCima() {
   let items = listaOrdenada.childNodes;
+
   for (let i = 0; i < items.length; i += 1) {
     if (items[i].style.backgroundColor == 'rgb(128, 128, 128)') {
       let aux = items[i].previousElementSibling.innerHTML;
@@ -90,9 +91,38 @@ function moveCima(event) {
       items[i].innerHTML = aux;
 
       items[i].style.backgroundColor = 'white';
-      items[i].previousElementSibling.style.backgroundColor = 'rgb(128, 128, 128)';
+      items[i].previousElementSibling.style.backgroundColor =
+        'rgb(128, 128, 128)';
+
+      if (items[i].classList.contains('completed') == true) {
+        items[i].previousElementSibling.classList.add('completed');
+        items[i].classList.remove('completed');
+      }
+    }
+  }
+}
+buttonMoverCima.addEventListener('click', moveCima);
+
+let buttonMoverBaixo = document.querySelector('#mover-baixo');
+
+function moveBaixo() {
+  let items = listaOrdenada.childNodes;
+
+  for (let i = items.length - 1; i >= 0; i -= 1) {
+    if (items[i].style.backgroundColor == 'rgb(128, 128, 128)') {
+      let aux = items[i].nextElementSibling.innerHTML;
+      items[i].nextElementSibling.innerHTML = items[i].innerHTML;
+      items[i].innerHTML = aux;
+
+      items[i].style.backgroundColor = 'white';
+      items[i].nextElementSibling.style.backgroundColor = 'rgb(128, 128, 128)';
+
+      if (items[i].classList.contains('completed') == true) {
+        items[i].nextElementSibling.classList.add('completed');
+        items[i].classList.remove('completed');
+      }
     }
   }
 }
 
-buttonMoverCima.addEventListener('click', moveCima);
+buttonMoverBaixo.addEventListener('click', moveBaixo);
