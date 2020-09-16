@@ -1,0 +1,20 @@
+body {
+    background-image: url(https://miro.medium.com/max/3840/1*TkU7i6Jkr9iqQCELBmzbAQ.jpeg);
+    background-size: 100%;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.buttons {
+    background-color: rgb(51, 114, 103);
+    border: 2px solid white;
+    color: white;
+    font-weight: bold;
+    height: 35px;
+    padding: 5px;
+    width: 155px;
+    border-radius: 15px;
+    display: inline-block;
+}
