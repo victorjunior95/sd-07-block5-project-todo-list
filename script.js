@@ -41,20 +41,19 @@ const createDiv = () => document.createElement('div');
 
 function removeLi(li) {
   let ols = getOl();
-  ols.removeChild(li);
+  ols.removeChild(li.parentNode);
 }
 
 function upTodo(event) {
   let myOl = event.target.parentNode.parentNode.parentNode;
-  let myDivForUp = event.target.parentNode.parentNode;
+  let myLiForUp = event.target.parentNode.parentNode;
 
-  if (myOl.childNodes[0] == myDivForUp) return;
+  if (myOl.childNodes[0] == myLiForUp) return;
 
-  let myDivForDown = event.target.parentNode.parentNode.previousSibling;
-  myOl.insertBefore(myDivForUp, myDivForDown);
+  let myLiForDown = event.target.parentNode.parentNode.previousSibling;
+  myOl.insertBefore(myLiForUp, myLiForDown);
 
-  let myLiValue = event.target.parentNode.parentNode.childNodes[0].innerText;
-
+  let myLiValue = event.target.parentNode.parentNode.innerText.split('\n')[0];
   let index = todoList.findIndex((a) => a.value == myLiValue);
   todoList.splice(index - 1, 0, todoList[index]);
   todoList.splice(index + 1, 1);
@@ -62,16 +61,17 @@ function upTodo(event) {
 
 function downTodo(event) {
   let myOl = event.target.parentNode.parentNode.parentNode;
-  let myDivForDown = event.target.parentNode.parentNode;
+  
+  let myLiForDown = event.target.parentNode.parentNode;
+  
+  if (myOl.childNodes[myOl.childNodes.length - 1] == myLiForDown) return;
 
-  if (myOl.childNodes[myOl.childNodes.length - 1] == myDivForDown) return;
+  let myLiForUp = event.target.parentNode.parentNode.nextSibling;
+  myOl.insertBefore(myLiForUp, myLiForDown);
 
-  let myDivForUp = event.target.parentNode.parentNode.nextSibling;
-  myOl.insertBefore(myDivForUp, myDivForDown);
-
-  let myLiValue = event.target.parentNode.parentNode.childNodes[0].innerText;
-
-  let index = todoList.findIndex((a) => a.value == myLiValue);
+  // pega o valor do li. como o li tem elementos button dentro entao usei o split e peguei a primeira posição
+  let myLiValue = event.target.parentNode.parentNode.innerText.split('\n')[0];
+  let index = todoList.findIndex((todo) => todo.value == myLiValue);
   todoList.splice(index + 2, 0, todoList[index]);
   todoList.splice(index, 1);
 }
@@ -79,7 +79,8 @@ function downTodo(event) {
 // insere evento em botao up
 function insertBtnUp() {
   let btn = createBtn();
-  btn.innerText = 'up';
+  btn.innerHTML = 'up &uarr;';
+  btn.id = 'mover-cima';
   btn.addEventListener('click', function (event) {
     upTodo(event);
   });
@@ -89,7 +90,8 @@ function insertBtnUp() {
 // insere event em botao down
 function insertBtnDown() {
   let btn = createBtn();
-  btn.innerText = 'down';
+  btn.innerHTML = 'down &darr;';
+  btn.id = 'mover-baixo';
   btn.addEventListener('click', function (event) {
     downTodo(event);
   });
@@ -120,9 +122,9 @@ function eventLiClick(li) {
 
 // adicionando evendo de double click no li
 function eventLiDblClick(li) {
-  li.addEventListener('dblclick', function (event) {
+  li.addEventListener('dblclick', function () {
     li.classList.toggle('completed');
-    let lis = getLiAll()
+    let lis = getLiAll();
     for (let index = 0; index < lis.length; index += 1) {
       if (lis[index].className == 'completed') todoList[index].classes = 'completed';
     }
@@ -150,7 +152,7 @@ function insertBtnUpDown() {
 
 function insertLiInOl(text, classe) {
   let divForLi = createDiv();
-  divForLi.className = 'todo-list-item'
+  divForLi.className = 'todo-list-item';
 
   let ol = getOl();
   let li = createLi();
@@ -160,15 +162,18 @@ function insertLiInOl(text, classe) {
   insertPropertyInElement({ text: text, element: li, classe: classe });
   addEventSplitLi(li);
 
-  divForLi.appendChild(li);
-  divForLi.appendChild(divForButton);
+  li.appendChild(divForButton);
 
-  ol.appendChild(divForLi);
+  ol.appendChild(li);
   todoList.push({ value: text, classes: '' });
 }
 
 let btnAdd = getBtnAdd();
 btnAdd.addEventListener('click', function () {
+  let lis = getLiAll();
+  for(let index = 0; index < lis.length; index += 1){
+    if(getInputValue() == lis[index].innerText) return clearInputValue();
+  }
   if (getInputValue()) insertLiInOl(getInputValue());
   clearInputValue();
 });
