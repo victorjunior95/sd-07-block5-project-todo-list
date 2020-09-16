@@ -1,0 +1,1 @@
+let criarTarefa = document.getElementById("criar-tarefa");
