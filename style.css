@@ -1,0 +1,18 @@
+body {
+    background-color: rgb(253 , 251 , 251);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  header {
+    background-color: cyan;
+    color: rgba(91 , 100 , 107 , 0.9);
+    height: 50px;
+    left: 0;
+    padding-bottom: 25px;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+  }
+  
