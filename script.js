@@ -8,7 +8,10 @@ window.onload = function () {
   let moveUpBtn = document.querySelector('#mover-cima')
   let moveDownBtn = document.querySelector('#mover-baixo')
   let removeSelected = document.querySelector('#remover-selecionado')
+  let saveTasks = document.querySelector('#salvar-tarefas')
 
+
+  
   // Add task button function
   taskBtn.addEventListener('click', function () {
     // Add new task
@@ -90,5 +93,33 @@ window.onload = function () {
   }
 
   removeSelected.addEventListener('click', getSelectedRemoved)
+
+  let saveAllTasks = function () {
+    if (taskList.querySelector('.selected') !== null) {
+      let oldSelected = taskList.querySelector('.selected')
+      oldSelected.classList.remove('selected')
+    }
+    localStorage.setItem('savedTasks', taskList.innerHTML)
+  }
+
+  saveTasks.addEventListener('click', saveAllTasks)
+
+  let checkSavedTasks = function () {
+    if (localStorage.length !== 0) {
+      taskList.innerHTML = localStorage.getItem('savedTasks')
+      console.log(taskList)
+      let taskListChildren = taskList.querySelectorAll('li')
+      taskListChildren.forEach((task) => {
+        // Adding click event selected in task
+      task.addEventListener('click', getSelected);
+
+      // Adding double click event completed in task
+      task.addEventListener('dblclick', getCompleted);
+      });
+    }
+  
+  }
+
+  checkSavedTasks() 
 
 }
