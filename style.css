@@ -3,14 +3,21 @@ html {
 }
 body {
 	background-color: rgb(245, 245, 220);
-	margin: 0;
-	padding: 0;
+	margin: 100px;
+	padding: 50px;
+}
+ol {
+	margin-left: 45px;
 }
 .cabecalho {
 	text-align: center;
 }
+#apaga-tudo {
+	display: inline-block;
+	margin-left: 25px;
+}
 .wrapper {
 	display: inline-block;
-	margin: 100px;
-	padding: 50px;
+	margin-top: 15px;
+	margin-left: 400px;
 }
