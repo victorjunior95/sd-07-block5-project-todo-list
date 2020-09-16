@@ -8,55 +8,38 @@ const moverParaCima = document.querySelector('#mover-cima');
 const removerSelecionado = document.querySelector('#remover-selecionado');
 const salvarLista = document.querySelector('#salvar-tarefas');
 
-salvarLista.addEventListener('click', function (){
+salvarLista.addEventListener('click', function () {
   const tamanhoLista = document.querySelectorAll('li');
   localStorage.setItem('listLength', `${tamanhoLista.length}`)
-  for(let i = 0; i < tamanhoLista.length; i += 1) {
-    localStorage.setItem(`item${i}`, `${tamanhoLista[i].innerText}`)
-    localStorage.setItem(`class${i}`, `${tamanhoLista[i].className}`);   
-  }
-  
+  for (let i = 0; i < tamanhoLista.length; i += 1) {
+    localStorage.setItem(`item${i}`, `${tamanhoLista[i].innerText}`);
+    localStorage.setItem(`class${i}`, `${tamanhoLista[i].className}`);
+  }  
 })
 
-window.onload = function () {
-  const listLength = localStorage.getItem('listLength');
-  if (localStorage.length <= 1) {
-    alert('preencha sua lista');
-  } else {
-    for (let j = 0; j < listLength; j += 1) {
-      let itemNovo = document.createElement('li');
-      itemNovo.innerText = localStorage.getItem(`item${j}`);
-      itemNovo.className = localStorage.getItem(`class${j}`);
-      itemNovo.addEventListener('dblclick', concluido);
-      itemNovo.addEventListener('click', selecionado);
-      lista.appendChild(itemNovo)
-    }
-  }
-}
 moverParaCima.addEventListener('click', function () {
   const movido = document.querySelector('.selected');
-  console.log(movido);
-  if(movido !== null) {
+  if (movido !== null) {
     if (movido.previousElementSibling === null) {
       alert('Você já está no primeiro item');
     } else {
-    const cima = movido.previousElementSibling;   
-    cima.before(movido);    
+      const cima = movido.previousElementSibling;   
+      cima.before(movido);
    }
-  } 
+  }
 })
 
 moveParaBaixo.addEventListener('click', function () {
   const movido = document.querySelector('.selected');
   console.log(movido);
-  if(movido !== null) {
+  if (movido !== null) {
     if (movido.nextElementSibling === null) {
       alert('Você já está no último item');
     } else {
       const baixo = movido.nextElementSibling;    
-      movido.before(baixo);    
-    }  
-  }  
+      movido.before(baixo);
+    }
+  }
 })
 
 function jaSelecionado() {
@@ -68,7 +51,7 @@ function jaSelecionado() {
   return jaFoiSelecionado;
 }
 
-function selecionado() {  
+function selecionado() {
   const removerSelecao = document.querySelectorAll('li');
   for (let i = 0; i < removerSelecao.length; i += 1) {
     if (removerSelecao[i] === this) {
@@ -76,7 +59,7 @@ function selecionado() {
     } else {
       removerSelecao[i].classList.remove('selected');
     }
-  }    
+  }
 }
 
 function jaCompletado() {
@@ -95,6 +78,22 @@ function concluido() {
     this.classList.add('completed');
   } else {
     this.classList.remove('completed');
+  }
+}
+
+window.onload = function () {
+  const listLength = localStorage.getItem('listLength');
+  if (localStorage.length <= 1) {
+    alert('preencha sua lista');
+  } else {
+    for (let j = 0; j < listLength; j += 1) {
+      const itemNovo = document.createElement('li');
+      itemNovo.innerText = localStorage.getItem(`item${j}`);
+      itemNovo.className = localStorage.getItem(`class${j}`);
+      itemNovo.addEventListener('dblclick', concluido);
+      itemNovo.addEventListener('click', selecionado);
+      lista.appendChild(itemNovo);
+    }
   }
 }
 
