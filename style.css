@@ -16,20 +16,22 @@ header {
 }
 
 p {
-  font-weight: 800;
   font-size: 20px;
+  font-weight: 800;
 }
+
 .fatherbuttonformat {
   background-color: rgba(35 , 177 , 232 , 0.91);
   border-radius: 15%;
   height: 100px;
-  margin-top: 120px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 120px;
   padding-top: 35px;
   text-align: center;
   width: 250px;
 }
 
-
-
+.complete {
+  text-decoration: line-through solid black;
+}
