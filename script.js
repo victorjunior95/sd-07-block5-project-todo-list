@@ -4,18 +4,15 @@ let array = [];
 let li = document.getElementsByTagName("li");
 
 buttonToAdd.addEventListener('click', function () {
-
   let textTasks = document.getElementById("texto-tarefa");
   array.push(textTasks.value);
   let elementLi = document.createElement("li")
   elementLi.className = "tarefa";
   let counter = 0;
-
   elementLi.addEventListener('click', function (event) {
     removeSelected(li);
     elementLi.classList.add("selecionada");
   });
-
   elementLi.addEventListener('dblclick', function (event) {
     counter += 1;
     if (counter == 1) {
@@ -25,14 +22,89 @@ buttonToAdd.addEventListener('click', function () {
       counter = 0;
     }
   })
-
   orderedListElement.appendChild(elementLi).innerHTML = textTasks.value;
   textTasks.value = "";
 })
 
-//Deixar apenas um elemento selecionado:
+//Função Mover pra cima:
+let moveUp = document.getElementById("mover-cima");
 
-function removeSelected(li){
+moveUp.addEventListener('click', function () {
+
+  let indexElement = 0;
+  let contentSelect = "";
+  let contentChange = "";
+
+  for (let index = 0; index < li.length; index++) {
+    if (li[index].classList.contains("selecionada")) {
+      indexElement = index;
+      contentSelect = li[index].innerText;
+    }
+  }
+
+  for (let index = 0; index < li.length; index++) {
+    if (index == (indexElement - 1)) {
+      contentChange = li[index].innerText;
+    }
+  }
+
+  for (let index = 0; index < li.length; index++) {
+    if (index == indexElement) {
+      removeSelected(li);
+    }
+  }
+
+  if (indexElement >= 1) {
+    li[indexElement - 1].className = "tarefa selecionada";
+    li[indexElement - 1].innerText = contentSelect;
+    li[indexElement].innerText = contentChange;
+    console.log(indexElement);
+  } else {
+    li[0].className = "tarefa selecionada";
+  }
+})
+
+//Função Mover pra baixo:
+
+let moveDown = document.getElementById("mover-baixo");
+
+moveDown.addEventListener('click', function () {
+
+  let indexElement = 0;
+  let contentSelect = "";
+  let contentChange = "";
+
+  for (let index = 0; index < li.length; index++) {
+    if (li[index].classList.contains("selecionada")) {
+      indexElement = index;
+      contentSelect = li[index].innerText;
+    }
+  }
+
+  for (let index = 0; index < li.length; index++) {
+    if (index == (indexElement + 1)) {
+      contentChange = li[index].innerText;
+    }
+  }
+
+  for (let index = 0; index < li.length; index++) {
+    if (index == indexElement) {
+      removeSelected(li);
+    }
+  }
+
+  if (indexElement <= li.length - 2) {
+    li[indexElement + 1].className = "tarefa selecionada";
+    li[indexElement + 1].innerText = contentSelect;
+    li[indexElement].innerText = contentChange;;
+  } else {
+    li[li.length - 1].className = "tarefa selecionada";
+  }
+})
+
+//Remove todos os elementos com a classe selecionada:
+
+function removeSelected(li) {
   for (let index = 0; index < li.length; index++) {
     li[index].classList.remove("selecionada");
   }
@@ -49,10 +121,10 @@ function removeAllChildNodes(parent) {
   }
 }
 
-function clearArrayContent(array){
- for (let index = 0; index < array.length; index++) {
-   array.pop();
- }
+function clearArrayContent(array) {
+  for (let index = 0; index < array.length; index++) {
+    array.pop();
+  }
 }
 
 //Após clicar no botão, tudo dentro da lista será removido:
@@ -71,8 +143,8 @@ let buttonRemoveClassCompleted = document.getElementById("remover-finalizados");
 //quer dizer que ainda há elementos pertencentes à classe completed dentro do array. Desta forma, dentro da estrutura, o elemento raiz do elemento filho será acessado, sendo removido o primeiro filho.
 //Isto será executado até não haver mais elementos filhos dentro do array.
 
-buttonRemoveClassCompleted.addEventListener('click',function(){
-  while(elementsClassCompleted.length>0){
+buttonRemoveClassCompleted.addEventListener('click', function () {
+  while (elementsClassCompleted.length > 0) {
     elementsClassCompleted[0].parentNode.removeChild(elementsClassCompleted[0]);
   }
 })
@@ -81,9 +153,8 @@ buttonRemoveClassCompleted.addEventListener('click',function(){
 let elemetsClassSelecionada = document.getElementsByClassName("selecionada");
 let buttonRemoveClassSelecionada = document.getElementById("remover-selecionado");
 
-buttonRemoveClassSelecionada.addEventListener('click', function(){
-  while(elemetsClassSelecionada.length>0){
+buttonRemoveClassSelecionada.addEventListener('click', function () {
+  while (elemetsClassSelecionada.length > 0) {
     elemetsClassSelecionada[0].parentNode.removeChild(elemetsClassSelecionada[0]);
   }
 })
-
