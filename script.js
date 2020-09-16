@@ -35,7 +35,17 @@ btnClearDoneList.addEventListener('click', function () {
     }
   }
 });
-
+// trata evento remover item com selected
+let btnClearSelectedItem = document.querySelector('#remover-selecionado')
+btnClearSelectedItem.addEventListener('click', function () {
+  let listItens = document.querySelectorAll('li');
+  for(let index = 0; index < listItens.length; index += 1) {
+    let listSelected = listItens[index];
+    if (listSelected.classList.contains('selected')){
+      toDoList.removeChild(listSelected);
+    }
+  }
+});
 // trata evento salvar lista
 let btnSaveList = document.querySelector('#salvar-tarefas');
 btnSaveList.addEventListener('click', function () {
@@ -47,11 +57,11 @@ let btnClearList = document.querySelector('#apaga-tudo');
 btnClearList.addEventListener('click', function () {
   toDoList.innerHTML = '';
 });
-// recuperar lista salva 
-if (toDoList.length !== 0) {
-  window.onload = function () {
-    localStorage.getItem('toDoList');
-  }
-};
+// // recuperar lista salva
+// if (toDoList.length !== 0) {
+//   window.onload = function () {
+//     localStorage.getItem('toDoList');
+//   }
+// };
 
 
