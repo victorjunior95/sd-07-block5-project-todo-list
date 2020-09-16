@@ -16,8 +16,21 @@ window.onload = function () {
   taskList.innerHTML = localStorage.getItem('saveTaskList');
 };
 
-buttonSaveTaskList.addEventListener('click', function (event) {
-  
+buttonItemMoveUp.addEventListener('click', function (event) {
+  event.preventDefault();
+  let selectedItem = document.querySelector('.selected');
+  let selectedPreviousItem = selectedItem.previousElementSibling;
+  selectedPreviousItem.before(selectedItem);
+});
+
+buttonItemMoveDown.addEventListener('click', function (event) {
+  event.preventDefault();
+  let selectedItem = document.querySelector('.selected');
+  let selectedNextItem = selectedItem.nextElementSibling
+  selectedNextItem.after(selectedItem);
+});
+
+buttonSaveTaskList.addEventListener('click', function () {
   localStorage.setItem('saveTaskList', taskList.innerHTML);
 });
 
@@ -68,6 +81,8 @@ buttonCreateTask.addEventListener('click', function (event) {
     createListItem();
   }
 });
+
+
 
 input.addEventListener('keyup', function () {
   inputValue = input.value;
