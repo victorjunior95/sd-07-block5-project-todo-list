@@ -33,7 +33,7 @@ const getLiAll = () => document.getElementsByTagName('li');
 
 const getLiCompleted = () => document.querySelectorAll('.completed');
 
-const getLiSelected = () => document.querySelectorAll('.selected');
+const getLiSelected = () => document.querySelectorAll('.selected')[0];
 
 const createLi = () => document.createElement('li');
 
