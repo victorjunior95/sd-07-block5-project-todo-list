@@ -6,6 +6,7 @@ let textBox = document.getElementById('texto-tarefa');
 let list = document.getElementById('lista-tarefas');
 let button1 = document.getElementById('criar-tarefa');
 let button2 = document.getElementById('apaga-tudo');
+let button3 = document.getElementById('remover-finalizados');
 
 // 2) Define the functions:
 
@@ -50,6 +51,13 @@ function doubleSelection(item) {
 // To clean the list:
 button2.addEventListener('click', function (event) {
   event.preventDefault();
-  let li = document.getElementsByTagName('li');
-  
+  while (list.lastChild) {
+    list.removeChild(list.lastChild);
+  }
+});
+
+// To clean completed taks only:
+button3.addEventListener('click', function() {
+  event.preventDefault();
+
 })
