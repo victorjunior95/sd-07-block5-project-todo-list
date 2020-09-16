@@ -5,7 +5,8 @@ window.onload = function () {
   let selected = document.querySelector('.selected');
   let removeAll = document.querySelector('#apaga-tudo');
   let removeCompleted = document.querySelector('#remover-finalizados')
-  
+  let moveUpBtn = document.querySelector('#mover-cima')
+  let moveDownBtn = document.querySelector('#mover-baixo')
 
   // Add task button function
   taskBtn.addEventListener('click', function () {
@@ -21,9 +22,6 @@ window.onload = function () {
     // Adding double click event completed in task
     task.addEventListener('dblclick', getCompleted);
   });
-
- 
-
 
   let getSelected = function (event) {
     if (selected !== null) {
@@ -63,4 +61,23 @@ window.onload = function () {
   }
 
   removeCompleted.addEventListener('click', removeCompletedTasks)
+
+  let moveUp = function () {
+    if (selected.previousSibling !== null) {
+      selected.parentNode.insertBefore(selected, selected.previousSibling)
+    }
+  }
+
+  moveUpBtn.addEventListener('click', moveUp)
+
+
+  //https://www.javascripttutorial.net/javascript-dom/javascript-insertafter/
+  let moveDown = function () {
+    if (selected.nextSibling !== null) {
+      selected.parentNode.insertBefore(selected.nextSibling, selected)
+    }
+  }
+
+  moveDownBtn.addEventListener('click', moveDown)
+
 }
