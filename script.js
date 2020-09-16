@@ -13,7 +13,7 @@ btCreate.addEventListener("click", function(){
 });
 
 
-li.addEventListener('dblclick', function () {
+/*li.addEventListener('dblclick', function () {
     lineThrough = document.querySelector('.item-list');
       if (li.classList.contains('item-list')) {
         li.classList.remove('item-list')
@@ -21,4 +21,4 @@ li.addEventListener('dblclick', function () {
       else {
         li.classList.add('item-list');
     }
-});
+});*/
