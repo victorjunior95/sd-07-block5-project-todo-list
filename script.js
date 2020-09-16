@@ -69,7 +69,7 @@ function moveItemUp() {
       item.classList.remove('selected');
       item.previousSibling.classList.add('selected');
     }
-  }
+  } 
 }
 
 // fuction move item up
@@ -84,4 +84,11 @@ function moveItemDown() {
       item.nextSibling.classList.add('selected');
     }
   }
+}
+
+// funtion to save file
+function save() {
+  let myStorage = window.localStorage;
+  let files = document.querySelectorAll('.lista');
+  myStorage.setItem('files',files);
 }
