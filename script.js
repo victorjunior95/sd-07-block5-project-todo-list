@@ -8,11 +8,16 @@ addBtn.addEventListener('click', function () {
     elementLi.innerText = textInput.value;
     orderedList.appendChild(elementLi);
     
-    textInput.value = ' ';
+    textInput.value = '';
 });
 
 
 
-// let deleteAllBtn = document.getElementById('apaga-tudo');
 
-// deleteAllBtn.addEventListener('click', function () {
+
+// Button delete all list's items
+let deleteAllBtn = document.getElementById('apaga-tudo');
+
+deleteAllBtn.addEventListener('click', function () {
+    orderedList.innerHTML = '';
+})
