@@ -20,9 +20,19 @@ function clickAndChangeColor() {
     let children = listLi.children;
     children = document.querySelector("li").classList.add("selected");
     li.style.backgroundColor = "rgb(128, 128, 128)";
+    
   });
 }
 clickAndChangeColor();
+
+function clickDesmark() {
+  listLi.addEventListener("mousemove", function(e2) {
+    let li = e2.target;
+    li.style.backgroundColor = "";
+  }
+  )}
+  clickDesmark();
+
 
 function doubleClick() {
   listLi.addEventListener("dblclick", function (e) {
