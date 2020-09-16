@@ -2,8 +2,10 @@
 const listaTarefas = document.querySelector('#lista-tarefas');
 const criarTarefaBtn = document.querySelector('#criar-tarefa');
 const apagarTudoBtn = document.querySelector('#apaga-tudo');
+const apagarFinalizadosBtn = document.querySelector('#remover-finalizados');
 let itemSelect = '';
 let paiLista = '';
+let finalizados = '';
 function criarLi() {
   criarTarefaBtn.addEventListener('click', function () {
     const li = document.createElement('li');
@@ -27,11 +29,18 @@ function criarLi() {
     document.querySelector('#texto-tarefa').value = '';
   });
 }
-apagarTudoBtn.addEventListener('click', apagarLi);
 function apagarLi() {
   paiLista = document.querySelector('li').parentElement;
   while (paiLista.hasChildNodes()) {
-    paiLista.removeChild(paiLista.childNodes[0])
+    paiLista.removeChild(paiLista.childNodes[0]);
   }
 }
+apagarTudoBtn.addEventListener('click', apagarLi);
+function apagarFinalizados() {
+  finalizados = document.querySelectorAll('.completed');
+  for (let i = 0; i < finalizados.length; i += 1) {
+    finalizados[i].remove();
+  }    
+}
+apagarFinalizadosBtn.addEventListener('click', apagarFinalizados);
 criarLi();
