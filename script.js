@@ -6,6 +6,7 @@ let botaoEntrada = document.getElementById("criar-tarefa");
 botaoEntrada.addEventListener("click", function(){
   let tarefa = document.getElementById("texto-tarefa").value;   
   criarTarefas(tarefa,0);
+  document.getElementById("texto-tarefa").value =""; //zerar o input
   
 });
 
