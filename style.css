@@ -1,8 +1,8 @@
+
 body {
-  background-color: rgb(148, 217, 145);
+  background: rgb(148, 217, 145);
   background-size: 1366px 768px;
   font-family: Roboto, sans-serif;
-
 }
 
 main {
@@ -55,19 +55,19 @@ button {
 }
 
 .add {
-  background-color: rgb(4, 157, 217);
+  background: rgb(4, 157, 217);
 }
 
 .clean {
-  background-color: rgb(140, 27, 36);
+  background: rgb(140, 27, 36);
 }
 
 .cleanComplet {
-  background-color: rgb(4, 157, 217);
+  background: rgb(4, 157, 217);
 }
 
 .save {
-  background-color: rgb(66, 166, 63);
+  background: rgb(66, 166, 63);
 }
 
 .list {
@@ -76,7 +76,7 @@ button {
 }
 
 .rodape {
-  background-color: black;
+  background: black;
   border: 2px;
   color: white;
   margin-top: 72px;
