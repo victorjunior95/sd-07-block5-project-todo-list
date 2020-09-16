@@ -1,0 +1,110 @@
+body {
+  background-color: rgb(34, 56, 67);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+header {
+  background-color: rgb(239, 241, 243);
+  font-family: Kufam, cursive;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 20px 0;
+  text-align: center;
+}
+
+main {
+  display: grid;
+  font-family: Ubuntu Mono, monospace;
+  grid-template-columns: 780px 499px;
+}
+
+section {
+  align-items: center;
+  background-color: rgb(215, 122, 97);
+  border-radius: 0 0 0 30px;
+  color: rgb(219, 211, 216);
+  display: grid;
+  justify-content: center;
+  padding: 20px;
+  height: 500px;
+}
+
+.dbclick {
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.4s;
+  text-decoration: underline;
+}
+
+.dbclick:hover {
+  color: rgb(34, 56, 67);
+}
+
+form {
+  background-color: rgb(216, 180, 160);
+  color: rgb(34, 56, 67);
+  display: block;
+  padding: 10px;
+  text-align: center;
+}
+
+input {
+  border: none;
+  width: 200px;
+}
+
+input::placeholder {
+  font-family: Ubuntu, sans-serif;;
+  text-align: center;
+  
+}
+
+button {
+  border: none;
+  color: rgb(34, 56, 67);
+  cursor: pointer;
+  font-family: Ubuntu, sans-serif;
+  height: 40px;
+  transition: 0.4s;
+  width: 200px;
+}
+
+button:hover {
+  background-color: rgb(34, 56, 67);
+  color: white;
+}
+
+aside {
+  align-items: center;
+  background-color: rgb(216, 180, 160);
+  border-radius: 0 30px 0 0;
+  color: rgb(34, 56, 67);
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+li {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+li:hover {
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+.selected {
+  background-color: rgb(128, 128, 128);
+  display: flex;
+}
+
+.completed {
+  text-decoration: line-through solid rgb(0, 0, 0);
+}
+
+footer {
+  clear: both;
+}
