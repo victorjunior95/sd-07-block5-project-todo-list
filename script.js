@@ -5,6 +5,8 @@ const clear = document.querySelector('#apaga-tudo');
 const rmSelecteds = document.querySelector('#remover-selecionado');
 const rmCompleteds = document.querySelector('#remover-finalizados');
 const saveList = document.querySelector('#salvar-tarefas');
+const moveUp = document.querySelector('#mover-cima');
+const moveDown = document.querySelector('#mover-baixo')
 
 creator.addEventListener('click', () => {
   const node = document.createElement('li');
@@ -58,13 +60,37 @@ rmCompleteds.addEventListener('click', () => {
   }
 });
 
+moveUp.addEventListener('click', () => {
+  const elements = document.querySelectorAll('li');
+  for (let i = 0; i < elements.length; i += 1) {
+    if (elements[i].classList.contains('selected')){
+      if (i != 0) {
+        list.insertBefore(elements[i], elements[i-1]);
+      }
+    }
+  }
+});
+
+moveDown.addEventListener('click', () => {
+  const elements = document.querySelectorAll('li');
+  for (let i = 0; i < elements.length; i += 1) {
+    if (elements[i].classList.contains('selected')){
+      if (i != (elements.length-1)){
+        list.insertBefore(elements[i+1], elements[i]);
+      }
+    }
+  }
+});
+
+
 saveList.addEventListener('click', () => {
   const elements = list.innerHTML;
   localStorage.setItem('list', elements);
-})
+});
 
 window.addEventListener('load', () => {
   const elements = localStorage.getItem('list');
-  list.innerHTML = elements
-})
+  list.innerHTML = elements;
+});
+
 
