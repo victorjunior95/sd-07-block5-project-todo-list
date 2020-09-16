@@ -32,6 +32,11 @@ add.addEventListener('click', function () {
     }
   })
 
+  document.querySelector("#remover-selecionado").addEventListener('click' , function(){ 
+  if (itensList.classList.contains('selected')) {
+    document.querySelector('ol').removeChild(itensList)
+  }
+})
   //Remover tarefa completa!
 
   const removed = document.querySelector('#remover-finalizados')
@@ -40,24 +45,16 @@ add.addEventListener('click', function () {
       document.querySelector('ol').removeChild(itensList)
     }
   })
-
-
-  //Apagar lista
-  const listAll = document.querySelectorAll('li')
-  for (let index = 0; index < listAll.length; index += 1) {
-    const itensClear = listAll[index]
-    const clear = document.querySelector('#apaga-tudo')
-    clear.addEventListener('click', function clearList() {
-      list.removeChild(itensClear)
-
-    })
-
-
-
-    
-  }
-
 })
+//Apagar lista
+  
+const clear = document.querySelector('#apaga-tudo')
+    clear.addEventListener('click', function clearList() {
+      const listAll = document.querySelector('ol')
+      while(listAll.firstChild){
+      listAll.removeChild(listAll.firstChild)
+      }
+    })
 
 
 const down = document.querySelector('#mover-baixo')
