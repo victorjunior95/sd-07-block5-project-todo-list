@@ -6,4 +6,9 @@ criar.addEventListener("click", function() {
     let li = document.createElement("li");
     li.innerText = texto.value;
     lista.appendChild(li);
+    apagarTexto();
 });
+
+function apagarTexto() {
+    texto.value = "";
+}
