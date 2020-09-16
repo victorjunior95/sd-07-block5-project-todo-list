@@ -88,12 +88,10 @@ h2 {
 
 li {
   cursor: pointer;
-  transition: 0.3s;
 }
 
 li:hover {
   font-size: 20px;
-  text-decoration: underline;
 }
 
 .selected {
