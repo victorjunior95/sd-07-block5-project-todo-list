@@ -15,12 +15,18 @@ function changeBackgroundColor() {
     allItens = document.querySelectorAll('li');    
     for (let i = 0; i < allItens.length; i += 1) {
         allItens[i].addEventListener('click', function () {
-            if (allItens[i].style.backgroundColor === 'white') {
-                allItens[i].style.backgroundColor = 'rgb(128,128,128)';
+            let itemSelect = document.querySelector('.selected');
+            if (itemSelect == null) {
+                allItens[i].classList.add('selected');
+                console.log('estou aqui')
             }
             else {
-                allItens[i].style.backgroundColor = 'white';
-            }
+                if (itemSelect != allItens[i]) {
+                    itemSelect.classList.remove('selected');
+                    allItens[i].classList.add('selected');
+                    console.log('estou aqui2');
+                }
+            }     
         });
     }
 }
