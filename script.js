@@ -7,14 +7,12 @@ buttonAdd = buttonAdd.addEventListener("click", function lista() {
   listOl.appendChild(createLi);
   inputAdd.value = "";
 });
-
+const listLi = document.querySelector("#lista-tarefas");
 let buttonRemove = document.getElementById("apaga-tudo");
 buttonRemove = buttonRemove.addEventListener("click", function remove() {
   let removeLi = document.getElementById("lista-tarefas");
   removeLi.innerHTML = "";
 });
-
-const listLi = document.querySelector("#lista-tarefas");
 
 function clickAndChangeColor() {
   listLi.addEventListener("click", function (event) {
@@ -22,8 +20,8 @@ function clickAndChangeColor() {
     let children = listLi.children;
     children = document.querySelector("li").classList.add("selected");
 
-    for (let i in children) {
-      children += children[i];
+    for (let i = 0; i < children; i += 1) {
+      children = children[i];
     }
 
     li.style.backgroundColor = "rgb(128, 128, 128)";
@@ -35,16 +33,11 @@ function doubleClick() {
   listLi.addEventListener("dblclick", function (e) {
     let li = event.target;
     let children = listLi.children;
-    children = document.querySelector("li").classList.add("selected");
-
-    for (let i in children) {
-      children += children[i];
-    }
-
-    li.style.backgroundColor = "rgb(255,255,255)";
+    children = document.querySelector("li").classList.remove("selected");
+    li.style.backgroundColor = "";
   });
 }
 doubleClick();
 
-// classList.remove("selected")
-// classList.add("selected");
+// classList.remove("")
+// classList.add("");
