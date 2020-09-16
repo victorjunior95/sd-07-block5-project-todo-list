@@ -22,7 +22,7 @@ function changeBGColorListItem(event) {
           olToDoList.children[j].style.backgroundColor = "";
         }
       }
-      olToDoList.children[index].style.backgroundColor = "rgb(128, 128, 128)";
+      event.target.style.backgroundColor = "rgb(128, 128, 128)";
     });
   }
 }
