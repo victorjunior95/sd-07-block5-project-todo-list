@@ -30,3 +30,11 @@ body {
     display: grid;
     grid-template-columns: 60% 40%;
 }
+
+.view {
+    border: solid 1px black;
+}
+
+.control {
+    border: solid 1px black;
+}
