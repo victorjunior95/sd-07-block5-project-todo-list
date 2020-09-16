@@ -11,8 +11,3 @@ addBtn.addEventListener('click', function () {
     textInput.value = ' ';
 })
 
-// function resetInput () {
-//     textInput.value = ' ';
-//  }
- 
-// textInput.addEventListener('change', resetInput);
