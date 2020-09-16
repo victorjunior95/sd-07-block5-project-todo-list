@@ -57,9 +57,7 @@ const btnClearList = document.querySelector('#apaga-tudo');
 btnClearList.addEventListener('click', function () {
   toDoList.innerHTML = '';
 });
-// recuperar lista salva
-window.onload = function () {
-if (toDoList.length !== 0) {
-    localStorage.getItem('finalList');
-  }
-};
+// // recuperar lista salva
+// window.onload = function () {
+//     localStorage.getItem('finalList');
+// };
