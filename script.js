@@ -37,10 +37,14 @@ function completeTask(event) {
 }
 function selectTask(event) {
   const selectedTask = document.querySelector('.selected');
-  if (selectedTask !== null) {
+  if (selectedTask === null) {
+    event.target.classList.add('selected');
+  } else if (selectedTask !== event.target ) {
     selectedTask.classList.remove('selected');
+    event.target.classList.add('selected');
+  } else {
+    event.target.classList.remove('selected');
   }
-  event.target.classList.add('selected');
 }
 function createTask() {
   const textTask = document.querySelector('#texto-tarefa');
