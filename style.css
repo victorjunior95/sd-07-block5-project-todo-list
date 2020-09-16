@@ -1,9 +1,67 @@
+body{
+    background-color: #dfdfdf;
+    font-family: sans-serif;
+}
+
+
 .principal {
-    width: 30%;
+    width: 70%;
     margin: auto;
+    padding: 20px;
+    background-color: white;
+    margin: 30px auto;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
+}
+
+.entradaDados {
     padding: 20px;
 }
 
-.entradaDados{
-    
+.entradaDados input {
+    width: 70%;
+}
+
+.botoes {
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  button {
+    border: none;
+    padding: 10px 25px;
+    color: white;
+    border-radius: 5px;
+  }
+
+  
+.btn-tarefa{
+    background-color: rgb(255, 0, 0);
+}
+  .btn{
+    background-color: rgb(255, 0, 0);
+
+  }
+  .btn1{
+    background-color: rgb(255, 0, 0);
+  }
+  .btn2{
+    background-color: rgb(255, 0, 0);
+  }
+.btn3{
+    background-color: rgb(255, 0, 0);
+}
+.btn4{
+    background-color: rgb(255, 0, 0);
+}
+.btn5{
+    background-color: rgb(255, 0, 0);
+
+}
+  .lista {
+    width: 30%;
+    margin: auto;
+    padding: 10px;
 }

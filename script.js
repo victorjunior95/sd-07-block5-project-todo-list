@@ -10,7 +10,9 @@ lerTarefa(){}
 
 validar(tarefa){}
 
-adicionarTarefa(tarefa) {}
+adicionarTarefa(tarefa) {
+    console.log('tarefa sendo adiconada!!!')
+}
 
 salvarEdicao(){}
 
@@ -23,6 +25,10 @@ excluir(id){}
 editar(id){}
 
 alterarStatus(id){}
+
+moverParaCima(id){}
+moverParaBaixo(id){}
+
 }
 
 const controller = new TodoListController();
