@@ -7,6 +7,7 @@ window.onload = function () {
   let removeCompleted = document.querySelector('#remover-finalizados')
   let moveUpBtn = document.querySelector('#mover-cima')
   let moveDownBtn = document.querySelector('#mover-baixo')
+  let removeSelected = document.querySelector('#remover-selecionado')
 
   // Add task button function
   taskBtn.addEventListener('click', function () {
@@ -62,22 +63,32 @@ window.onload = function () {
 
   removeCompleted.addEventListener('click', removeCompletedTasks)
 
+  // https://developer.mozilla.org/pt-BR/docs/Web/API/Node/insertBefore
   let moveUp = function () {
-    if (selected.previousSibling !== null) {
-      selected.parentNode.insertBefore(selected, selected.previousSibling)
+    if (selected !== null) {
+      if (selected.previousSibling !== null) {
+        selected.parentNode.insertBefore(selected, selected.previousSibling)
+      }
     }
   }
 
   moveUpBtn.addEventListener('click', moveUp)
 
-
-  //https://www.javascripttutorial.net/javascript-dom/javascript-insertafter/
+  // https://www.javascripttutorial.net/javascript-dom/javascript-insertafter/
   let moveDown = function () {
-    if (selected.nextSibling !== null) {
-      selected.parentNode.insertBefore(selected.nextSibling, selected)
+    if (selected !== null) {
+      if (selected.nextSibling !== null) {
+        selected.parentNode.insertBefore(selected.nextSibling, selected)
+      }
     }
   }
 
   moveDownBtn.addEventListener('click', moveDown)
+
+  let getSelectedRemoved = function () {
+    taskList.removeChild(selected)
+  }
+
+  removeSelected.addEventListener('click', getSelectedRemoved)
 
 }
