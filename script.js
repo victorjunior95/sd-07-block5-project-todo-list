@@ -8,6 +8,7 @@
 let criartarefa = document.getElementById("criar-tarefa");
 let listatarefa = document.getElementById("lista-tarefas");
 let textotarefa = document.getElementById("texto-tarefa");
+let clearall    = document.getElementById("apaga-tudo");
 
 criartarefa.addEventListener("click", function() {
 
@@ -37,4 +38,9 @@ listatarefa.addEventListener("dblclick", function(e2) {
         e2.target.className = "completed";
     }
     console.log(element);
+});
+
+clearall.addEventListener("click",function() {
+    let element = document.getElementById("lista-tarefas");
+    element.innerHTML = "";
 });
