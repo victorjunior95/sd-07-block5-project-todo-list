@@ -27,7 +27,7 @@ document.querySelector('#apaga-tudo').addEventListener('click', function deleteL
 document.querySelector('#remover-finalizados').addEventListener('click', function deleteCompleted() {
   let deleteLi = document.querySelector('#lista-tarefas');
   let completedLi = document.querySelectorAll('.completed');
-    for (let index in completedLi) {
+    for (let index = 0; index < completedLi.length; index += 1) {
       deleteLi.removeChild(completedLi[index]);
     }
   });
@@ -35,7 +35,7 @@ document.querySelector('#remover-finalizados').addEventListener('click', functio
 document.querySelector('#remover-selecionado').addEventListener('click', function deleteSelected() {
   let deleteLi = document.querySelector('#lista-tarefas');
   let selectedLi = document.querySelectorAll('.selected');
-    for (let index in selectedLi) {
+    for (let index = 0; index < selectedLi.length; index += 1) {
       deleteLi.removeChild(selectedLi[index]);
     }
 });
