@@ -1,10 +1,14 @@
 .side-by-side {
-    display: inline-block;
+  display: inline-block;
 }
 
 #criar-tarefa {
-    height: 21px;
-    width: 90px;
-    background-color: gray;
-    color: white;
+  height: 21px;
+  width: 90px;
+  background-color: gray;
+  color: white;
+}
+
+.selected {
+    background-color: rgb (128, 128, 128);
 }
