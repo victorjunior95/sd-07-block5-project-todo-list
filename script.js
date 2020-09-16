@@ -49,20 +49,19 @@ btnNewItem.addEventListener('click', function () {
 // trata evento salvar lista
   const btnSaveList = document.querySelector('#salvar-tarefas');
   btnSaveList.addEventListener('click', function () {
-    const listItens = document.querySelectorAll('li');
-    localStorage.setItem('finalList', listItens);
+    localStorage.clear;
+    localStorage.setItem('finalList', document.querySelectorAll('ol').innerHTML);
   });
+// recuperar lista salva
+window.onbeforeload = function () {
+  localStorage.getItem('finalList');
+};
 });
 // trata evento limpar toda a lista
 const btnClearList = document.querySelector('#apaga-tudo');
 btnClearList.addEventListener('click', function () {
   toDoList.innerHTML = '';
 });
-// recuperar lista salva
-const listItens = document.querySelectorAll('li');
-if (listItens !== null) {
-  window.onload = function () {
-    localStorage.getItem('finalList');
-};
-}
+
+
 
