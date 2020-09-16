@@ -10,9 +10,8 @@ buttonComand.addEventListener("click", function (){
     let listSelect = document.querySelectorAll("li");
 
     for (let i = 0; i < listSelect.length; i += 1) {
-        listSelect[i].addEventListener("click", function (event) {
-            let color = document.querySelector(".color")
-            event.target.className += "color"
+        listSelect[i].addEventListener("click", function () {
+            listSelect[i].classList.add("color")
             for (let j = 0; j < listSelect.length; j += 1) {
                 if (listSelect [i] !== listSelect[j]) {
                     listSelect[j].classList.remove("color");
