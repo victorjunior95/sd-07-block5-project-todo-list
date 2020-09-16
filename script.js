@@ -89,6 +89,15 @@ window.onload = function () {
             aux = previousSibling.innerHTML;
             previousSibling.innerHTML = selectionUp.innerHTML;
             selectionUp.innerHTML = aux;
+            if (selectionUp.classList.contains("completed")) {
+                selectionUp.classList.remove("hoover");
+                selectionUp.classList.remove("completed");
+                previousSibling.classList.add("hoover");
+                previousSibling.classList.add("completed");
+            } else {
+                selectionUp.classList.remove("hoover");
+                previousSibling.classList.add("hoover");
+            }
         }
     }
 
@@ -99,12 +108,21 @@ window.onload = function () {
         let listItemsHoover = document.querySelector(".hoover");
         let aux = "";
         let selectionDown = listItemsHoover;
-        let lastItem = listItemsHoover.parentNode.lastElementChild;
         let nextSibling = listItemsHoover.nextElementSibling;
+        let lastItem = listItemsHoover.parentNode.lastElementChild;
         if (lastItem !== listItemsHoover) {
             aux = nextSibling.innerHTML;
             nextSibling.innerHTML = selectionDown.innerHTML;
             selectionDown.innerHTML = aux;
+            if (selectionDown.classList.contains("completed")) {
+                selectionDown.classList.remove("hoover");
+                selectionDown.classList.remove("completed");
+                nextSibling.classList.add("hoover");
+                nextSibling.classList.add("completed");
+            } else {
+                selectionDown.classList.remove("hoover");
+                nextSibling.classList.add("hoover");
+            }
         }
     }
     
