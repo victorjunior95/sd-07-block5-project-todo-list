@@ -19,4 +19,7 @@ buttonComand.addEventListener("click", function (){
             }
         })
       }
+      addOnOl.addEventListener("dblclick", function(){
+        addOnOl.classList.toggle("completed"); //o elemento toggle alterna entra mostra e esconder o elemento selecionado   
+    });
 })
