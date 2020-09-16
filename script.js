@@ -68,7 +68,7 @@ function createOrdenateList() {
 createOrdenateList();
 // *********** FIM DA CRIAÇAO DO HTML **********
 
-function liGenerate(data){
+function liGenerate(data) {
   if (data.length !== 0) {
     const parentOfOl = document.getElementById('first-section');
     const getOl = document.querySelector('#lista-tarefas');
@@ -78,11 +78,9 @@ function liGenerate(data){
     for (let index = 0; index < data.length; index += 1) {
       const itemLi = document.createElement('li');
       itemLi.className = 'item-tarefa';
+      itemLi.setAttribute('id', index);
+      itemLi.innerText = data[index];
       olTag.appendChild(itemLi);
-      const spanLi = document.createElement('span')
-      spanLi.setAttribute('id', index)
-      spanLi.innerText = data[index];
-      itemLi.appendChild(spanLi);
     }
   }
 }
@@ -90,18 +88,18 @@ function liGenerate(data){
 function insertDataOl() {
   const lisExistentes = document.querySelectorAll('.item-tarefa');
   let newLiReturn = [];
-  for (let index = 0; index < lisExistentes.length; index += 1){
+  for (let index = 0; index < lisExistentes.length; index += 1) {
     newLiReturn.push(lisExistentes[index].innerText);
   }
   const getInsertButton = document.querySelector('#criar-tarefa');
-  getInsertButton.addEventListener('click', function (event) {
+  getInsertButton.addEventListener('click', function () {
     const inputData = document.querySelector('#texto-tarefa');
     if (inputData.value) {
       newLiReturn.push(inputData.value);
       liGenerate(newLiReturn);
       inputData.value = '';
     }
-  })
+  });
 
   const getKeyEnter = document.querySelector('#texto-tarefa');
   getKeyEnter.addEventListener('keydown', function (event) {
@@ -112,20 +110,21 @@ function insertDataOl() {
       inputDataWitchEnter.value = '';
       // console.log(event.keyCode)
     }
-})
+});
 }
 insertDataOl();
 
 function alterPropertiesLi() {
   document.body.addEventListener('click', function (event) {
-    if (event.target.nodeName === 'SPAN') {
+    if (event.target.nodeName === 'LI') {
       const liClicked = event.target;
       if (!liClicked.style.backgroundColor) {
-        liClicked.style.backgroundColor = 'rgb(128, 128, 128)'
+        liClicked.style.backgroundColor = 'rgb(128, 128, 128)';
       } else {
-        liClicked.removeAttribute("style");
+        //liClicked.style.backgroundColor = 'rgb(255, 255, 255)'
+        liClicked.removeAttribute('style');
       }
     }
-  })
+  });
 }
-alterPropertiesLi()
+alterPropertiesLi();
