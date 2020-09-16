@@ -3,6 +3,11 @@ const buttonCreateTask = document.querySelector('#criar-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
 const buttonClearList = document.querySelector('#apaga-tudo');
 const buttonClearCompletedTaskListItem = document.querySelector('#remover-finalizados');
+const buttonItemMoveUp = document.querySelector('#mover-cima');
+const buttonItemMoveDown = document.querySelector('#mover-baixo');
+const buttonSaveTaskList = document.querySelector('#salvar-tarefas');
+const buttonRemoveSelectedItem = document.querySelector('#remover-selecionado');
+
 let taskListItens = document.querySelectorAll('li');
 let completedTaskListItens = document.querySelectorAll('.completed');
 let inputValue = '';
