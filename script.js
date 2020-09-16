@@ -32,13 +32,16 @@ function apagaTudo() {
   lista.innerHTML = '<h3>Itens Adicinados</h3>';
 }
 botaoClear.addEventListener('click', apagaTudo);
-// Function to select itens.
+// Function to select indivudual item.
 const itensList = document.querySelector('ol');
-itensList.addEventListener('click', function (itensList) {
-  if (itensList.target.tagName === 'LI') {
-    itensList.target.classList.toggle('selected');
+function selected(clickIten) {
+  let itemList = document.querySelector('.selected');
+  if (itemList !== null) {
+    itemList.classList.remove('selected');
   }
-});
+  clickIten.target.classList.add('selected');
+}
+itensList.addEventListener('click', selected)
 // Function to mark as completed.
 itensList.addEventListener('dblclick', function (itensList) {
   if (itensList.target.tagName === 'LI') {
