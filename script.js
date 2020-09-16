@@ -90,13 +90,14 @@ cima.addEventListener("click",function() {
 
 baixo.addEventListener("click",function() {
     let element = document.getElementById("lista-tarefas");
-    let position = 0;
+    let position = element.children.length;
     if (element.children.length >=2 ){
         for (let i = element.children.length - 1;i >= 0; i--) {
             if (element.children[i].style.backgroundColor == "rgb(128, 128, 128)") {
                 position = i+1;
             };
         }
+        console.log(position);
 
         if (position < element.children.length) {
             element.insertBefore(element.children[position],element.children[position-1]);
