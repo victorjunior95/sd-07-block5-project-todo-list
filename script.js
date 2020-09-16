@@ -89,14 +89,16 @@ removeSelected.addEventListener('click', () => {
 
 function moveTaskUp() {
   const listLength = document.getElementsByTagName('li');
-  if (listLength.length > 0 && selectedTask[0].previousElementSibling !== null) {
+  if (selectedTask.length > 0 &&
+      listLength.length > 0 && selectedTask[0].previousElementSibling !== null) {
     list.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling);
   }
 }
 
 function moveTaskDown() {
   const listLength = document.getElementsByTagName('li');
-  if (listLength.length > 0 && selectedTask[0].nextElementSibling !== null) {
+  if (selectedTask.length > 0 &&
+      listLength.length > 0 && selectedTask[0].nextElementSibling !== null) {
     list.insertBefore(selectedTask[0].nextElementSibling, selectedTask[0]);
   }
 }
