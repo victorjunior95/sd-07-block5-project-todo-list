@@ -89,23 +89,15 @@ removeSelected.addEventListener('click', () => {
 
 function moveTaskUp() {
   const listLength = document.getElementsByTagName('li');
-  if (listLength.length === 0 || selectedTask === null) {
-    alert('Ops, não há elementos na lista');
-  } else if (selectedTask[0].previousElementSibling === null) {
-    alert('ops, não há mais tarefas acima');
-  } else {
+  if (listLength > 0 && selectedTask[0].previousElementSibling !== null) {
     list.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling);
   }
 }
 
 function moveTaskDown() {
   const listLength = document.getElementsByTagName('li');
-  if (listLength.length === 0 || selectedTask === null) {
-    alert('Ops, não há elementos na lista');
-  } else if (selectedTask[0].nextElementSibling === null) {
-    alert('ops, não há mais tarefas acima');
-  } else {
-    list.insertBefore(selectedTask[0].nextElementSibling, selectedTask[0]);
+  if (listLength > 0 && selectedTask[0].nextElementSibling !== null) {
+    list.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling);
   }
 }
 
