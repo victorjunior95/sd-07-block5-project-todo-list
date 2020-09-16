@@ -10,12 +10,12 @@ btnNewItem.addEventListener('click', function () {
   document.querySelector('#texto-tarefa').value = '';
 // trata evento de deixar cinza e tirar
   listItem.addEventListener('click', function () {
-    let selectedItem = document.querySelector('.selected');
+    const selectedItem = document.querySelector('.selected');
     if (selectedItem) {
       selectedItem.classList.remove('selected');
     }
-      listItem.classList.add('selected');
-  })
+    listItem.classList.add('selected');
+  });
 // trata evento de deixar riscado e tirar
   listItem.addEventListener('dblclick', function () {
     if (listItem.classList.contains('completed')) {
@@ -25,35 +25,35 @@ btnNewItem.addEventListener('click', function () {
     }
   });
 // remove itens com check
-let btnClearDoneList = document.querySelector('#remover-finalizados');
-btnClearDoneList.addEventListener('click', function () {
-  let listItens = document.querySelectorAll('li');
-  for(let index = 0; index < listItens.length; index += 1) {
-    let listCheck = listItens[index];
-    if (listCheck.classList.contains('completed')){
-      toDoList.removeChild(listCheck);
+  const btnClearDoneList = document.querySelector('#remover-finalizados');
+  btnClearDoneList.addEventListener('click', function () {
+    const listItens = document.querySelectorAll('li');
+    for (let index = 0; index < listItens.length; index += 1) {
+      const listCheck = listItens[index];
+      if (listCheck.classList.contains('completed')) {
+        toDoList.removeChild(listCheck);
+      }
     }
-  }
-});
+  });
 // trata evento remover item com selected
-let btnClearSelectedItem = document.querySelector('#remover-selecionado')
+const btnClearSelectedItem = document.querySelector('#remover-selecionado');
 btnClearSelectedItem.addEventListener('click', function () {
-  let listItens = document.querySelectorAll('li');
-  for(let index = 0; index < listItens.length; index += 1) {
+  const listItens = document.querySelectorAll('li');
+  for (let index = 0; index < listItens.length; index += 1) {
     let listSelected = listItens[index];
-    if (listSelected.classList.contains('selected')){
+    if (listSelected.classList.contains('selected')) {
       toDoList.removeChild(listSelected);
     }
   }
 });
 // trata evento salvar lista
-let btnSaveList = document.querySelector('#salvar-tarefas');
-btnSaveList.addEventListener('click', function () {
-  localStorage.setItem('finalList', toDoList);
-});
+  const btnSaveList = document.querySelector('#salvar-tarefas');
+  btnSaveList.addEventListener('click', function () {
+    localStorage.setItem('finalList', toDoList);
+  });
 });
 // trata evento limpar toda a lista
-let btnClearList = document.querySelector('#apaga-tudo');
+const btnClearList = document.querySelector('#apaga-tudo');
 btnClearList.addEventListener('click', function () {
   toDoList.innerHTML = '';
 });
