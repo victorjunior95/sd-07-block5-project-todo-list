@@ -108,5 +108,7 @@ btnMoveUp.addEventListener('click', function () {
 btnMoveDown.addEventListener('click', function () {
   let selected = document.querySelector('.selected');
   let after = selected.nextElementSibling;
-  moveDown(after, selected);
+  if (after != null) {
+    moveDown(after, selected);
+  }
 });
