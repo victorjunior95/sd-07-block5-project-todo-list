@@ -50,4 +50,11 @@ window.onload = function () {
   }
 
   document.getElementById('criar-tarefa').addEventListener('click', criaLi);
+
+  document.getElementById('apaga-tudo').addEventListener('click', function(){
+    const listaLi = document.querySelectorAll('ol>li');
+    listaLi.forEach((item) => {
+      item.remove();
+    })
+  });
 }
