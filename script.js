@@ -2,6 +2,7 @@ const addTarefa = document.querySelector('#criar-tarefa');
 const inputTarefa = document.querySelector('#texto-tarefa');
 const list = document.querySelector('#lista-tarefas');
 const apagar = document.querySelector('#apaga-tudo')
+const apagarSelect = document.querySelector('#remover-finalizados')
 
 addTarefa.addEventListener('click', function () {
     const elementLi = document.createElement('li');
@@ -19,6 +20,14 @@ apagar.addEventListener('click', function () {
     while(list.firstElementChild){
         list.removeChild(list.firstElementChild)
     }
+})
+
+apagarSelect.addEventListener('click', function () {
+    const selected = document.querySelectorAll('.completed')
+    selected.forEach(key => {
+        key.remove()
+    })
+
 })
 
 
