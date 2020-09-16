@@ -4,6 +4,7 @@ const btnNewTask = document.querySelector('#criar-tarefa');
 const btnClearList = document.querySelector('#apaga-tudo');
 
 const ol = document.createElement('ol');
+ol.id='lista-tarefas';
 containerList.appendChild(ol);
 
 btnNewTask.addEventListener('click', function () {
