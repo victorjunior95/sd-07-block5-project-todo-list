@@ -16,6 +16,7 @@ button.addEventListener('click', function (event) {
     newTask.innerText = textBox.value;
     list.appendChild(newTask);
     selectItem(newTask);
+    doubleSelection(newTask)
     textBox.value = '';
   }
   else {
@@ -23,8 +24,8 @@ button.addEventListener('click', function (event) {
   }
 });
 
-// To select only one item:
-function selectItem (item) {
+// To select only one item of the list:
+function selectItem(item) {
   let li = document.getElementsByTagName('li');
   item.addEventListener('click', function() {
     for (let i = 0; i < li.length; i += 1) {
@@ -34,3 +35,13 @@ function selectItem (item) {
   });
 }
 
+// To complete a task using double-click:
+function doubleSelection(item) {
+  let li = document.getElementsByTagName('li');
+  item.addEventListener('dblclick', function() {
+    for (let i = 0; i < li.length; i += 1) {
+      li[i].classList.remove('selected');
+    }
+    item.classList.toggle('completed');
+  })
+}
