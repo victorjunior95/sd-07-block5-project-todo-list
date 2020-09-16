@@ -4,9 +4,12 @@ header {
 
 #lista-tarefas {
     display: inline-block;
-    background-color: gray;
 }
 
 section {
     background-color: red;
+}
+
+#apagar-tudo {
+    display: inline
 }
