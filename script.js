@@ -45,7 +45,7 @@ btnNewItem.addEventListener('click', function () {
         toDoList.removeChild(listSelected);
       }
     }
-});
+  });
 // trata evento salvar lista
   const btnSaveList = document.querySelector('#salvar-tarefas');
   btnSaveList.addEventListener('click', function () {
@@ -57,9 +57,9 @@ const btnClearList = document.querySelector('#apaga-tudo');
 btnClearList.addEventListener('click', function () {
   toDoList.innerHTML = '';
 });
-// // recuperar lista salva
-// if (toDoList.length !== 0) {
-//   window.onload = function () {
-//     localStorage.getItem('toDoList');
-//   }
-// };
+// recuperar lista salva
+window.onload = function () {
+if (toDoList.length !== 0) {
+    localStorage.getItem('finalList');
+  }
+};
