@@ -9,6 +9,7 @@ let criartarefa = document.getElementById("criar-tarefa");
 let listatarefa = document.getElementById("lista-tarefas");
 let textotarefa = document.getElementById("texto-tarefa");
 let clearall    = document.getElementById("apaga-tudo");
+let finalizados = document.getElementById("remover-finalizados")
 
 criartarefa.addEventListener("click", function() {
 
@@ -37,10 +38,18 @@ listatarefa.addEventListener("dblclick", function(e2) {
     } else if (e2.target.className == "") {
         e2.target.className = "completed";
     }
-    console.log(element);
 });
 
 clearall.addEventListener("click",function() {
     let element = document.getElementById("lista-tarefas");
     element.innerHTML = "";
 });
+
+finalizados.addEventListener("click",function() {
+    let element = document.getElementById("lista-tarefas");
+    for (let i = element.children.length - 1;i >= 0; i--) {
+        if (element.children[i].className == "completed") {
+            element.removeChild(element.children[i]);
+        };
+    }
+})
