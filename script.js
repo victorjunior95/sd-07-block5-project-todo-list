@@ -12,6 +12,15 @@ let taskListItens = document.querySelectorAll('li');
 let completedTaskListItens = document.querySelectorAll('.completed');
 let inputValue = '';
 
+window.onload = function () {
+  taskList.innerHTML = localStorage.getItem('saveTaskList');
+};
+
+buttonSaveTaskList.addEventListener('click', function (event) {
+  
+  localStorage.setItem('saveTaskList', taskList.innerHTML);
+});
+
 function uncheckedTaskListItem(position) {
   for (let index = 0; index < taskListItens.length; index += 1) {
     if (taskListItens[index] !== position) {
