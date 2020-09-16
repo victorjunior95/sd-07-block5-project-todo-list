@@ -13,89 +13,53 @@ const storageTodoList = {
 // lista de tarefas
 let todoList = [];
 
-const clearInputValue = () => document.getElementById('texto-tarefa').value = '';
+function clearInputValue() {
+  document.getElementById('texto-tarefa').value = '';
+}
 
-const getOl = () => document.getElementById('lista-tarefas');
+function getOl() {
+  return document.getElementById('lista-tarefas');
+}
 
-const getInputValue = () => document.getElementById('texto-tarefa').value;
+function getInputValue() {
+  return document.getElementById('texto-tarefa').value;
+}
 
-const getBtnAdd = () => document.getElementById('criar-tarefa');
+function getBtnAdd() {
+  return document.getElementById('criar-tarefa');
+}
 
-const getBtnRemoveFinalized = () => document.getElementById('remover-finalizados');
+function getBtnRemoveFinalized() {
+  return document.getElementById('remover-finalizados');
+}
 
-const getBtnRemoveAll = () => document.getElementById('apaga-tudo');
+function getBtnRemoveAll() {
+  return document.getElementById('apaga-tudo');
+}
 
-const getBtnRemoveSelected = () => document.getElementById('remover-selecionado');
+function getBtnRemoveSelected(){
+  return document.getElementById('remover-selecionado');
+}
 
-const getBtnSave = () => document.getElementById('salvar-tarefas');
+function getBtnSave() {
+  return document.getElementById('salvar-tarefas');
+}
 
-const getLiAll = () => document.getElementsByTagName('li');
+function createLi() {
+  return document.createElement('li');
+}
 
-const getLiCompleted = () => document.querySelectorAll('.completed');
+function getLiAll() {
+  return document.getElementsByTagName('li');
+}
 
-const createLi = () => document.createElement('li');
-
-const createBtn = () => document.createElement('button');
-
-const createDiv = () => document.createElement('div');
+function getLiCompleted() {
+  return document.querySelectorAll('.completed');
+}
 
 function removeLi(li) {
   let ols = getOl();
   ols.removeChild(li);
-}
-
-function upTodo(event) {
-  let myOl = event.target.parentNode.parentNode.parentNode;
-  let myLiForUp = event.target.parentNode.parentNode;
-
-  if (myOl.childNodes[0] == myLiForUp) return;
-
-  let myLiForDown = event.target.parentNode.parentNode.previousSibling;
-  myOl.insertBefore(myLiForUp, myLiForDown);
-
-  let myLiValue = event.target.parentNode.parentNode.innerText.split('\n')[0];
-  let index = todoList.findIndex((a) => a.value == myLiValue);
-  todoList.splice(index - 1, 0, todoList[index]);
-  todoList.splice(index + 1, 1);
-}
-
-function downTodo(event) {
-  let myOl = event.target.parentNode.parentNode.parentNode;
-  
-  let myLiForDown = event.target.parentNode.parentNode;
-  
-  if (myOl.childNodes[myOl.childNodes.length - 1] == myLiForDown) return;
-
-  let myLiForUp = event.target.parentNode.parentNode.nextSibling;
-  myOl.insertBefore(myLiForUp, myLiForDown);
-
-  // pega o valor do li. como o li tem elementos button dentro entao usei o split e peguei a primeira posição
-  let myLiValue = event.target.parentNode.parentNode.innerText.split('\n')[0];
-  let index = todoList.findIndex((todo) => todo.value == myLiValue);
-  todoList.splice(index + 2, 0, todoList[index]);
-  todoList.splice(index, 1);
-}
-
-// insere evento em botao up
-function insertBtnUp() {
-  let btn = createBtn();
-  btn.innerHTML = 'up &uarr;';
-  btn.id = 'mover-cima';
-  btn.addEventListener('click', function (event) {
-    upTodo(event);
-  });
-  return btn;
-}
-
-// insere event em botao down
-function insertBtnDown() {
-  let btn = createBtn();
-  btn.innerHTML = 'down &darr;';
-  btn.id = 'mover-baixo';
-  btn.addEventListener('click', function (event) {
-    downTodo(event);
-  });
-  return btn;
 }
 
 function insertPropertyInElement({ element = '', text = '', classe = '' }) {
@@ -103,7 +67,7 @@ function insertPropertyInElement({ element = '', text = '', classe = '' }) {
   if (element) {
     let myElement = element;
     if (text) myElement.innerText = text;
-    if (classe) myElement.classList.add(classe)
+    if (classe) myElement.className = classe;
   }
 }
 
@@ -123,7 +87,7 @@ function eventLiClick(li) {
 
 // adicionando evendo de double click no li
 function eventLiDblClick(li) {
-  li.addEventListener('dblclick', function () {
+  li.addEventListener('dblclick', function (event) {
     li.classList.toggle('completed');
     let lis = getLiAll()
     for(let index = 0; index < lis.length; index += 1){
@@ -139,46 +103,21 @@ function addEventSplitLi(li) {
   eventLiDblClick(li);
 }
 
-function insertBtnUpDown() {
-  let btnUp = insertBtnUp();
-  let btnDown = insertBtnDown();
-  let divForButton = createDiv();
-
-  divForButton.className = 'item-button';
-  divForButton.appendChild(btnUp);
-  divForButton.appendChild(btnDown);
-
-  return divForButton;
-}
-
 function insertLiInOl(text, classe) {
-  let divForLi = createDiv();
-  divForLi.className = 'todo-list-item';
-
+  console.log(classe)
   let ol = getOl();
   let li = createLi();
-
-  let divForButton = insertBtnUpDown();
-
   insertPropertyInElement({ text: text, element: li, classe: classe });
   addEventSplitLi(li);
-
-  li.appendChild(divForButton);
-
   ol.appendChild(li);
-  todoList.push({ value: text, classes: '' });
+  todoList.push({value: text, classes: ''});
 }
 
 let btnAdd = getBtnAdd();
 btnAdd.addEventListener('click', function () {
-  let lis = getLiAll();
-  for(let index = 0; index < lis.length; index += 1){
-    if(getInputValue() == lis[index].innerText) return clearInputValue();
-  }
-  if (getInputValue()) insertLiInOl(getInputValue());
+  if(getInputValue()) insertLiInOl(getInputValue());
   clearInputValue();
 });
-
 
 // remove finalizados
 let btnRemoveFinalized = getBtnRemoveFinalized();
@@ -203,10 +142,10 @@ btnSave.addEventListener('click', function () {
 });
 
 const btnRemoveSelected = getBtnRemoveSelected();
-btnRemoveSelected.addEventListener('click', function () {
+btnRemoveSelected.addEventListener('click', function(){
   let selected = document.getElementsByClassName('selected')[0];
-
-  if (selected) {
+  
+  if(selected) {
     removeLi(selected);
     todoList = [];
   }
