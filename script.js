@@ -2,7 +2,6 @@ var texto = document.querySelector("#texto-tarefa");
 var lista = document.querySelector("#lista-tarefas");
 var botao = document.querySelector("#criar-tarefa");
 
-
 function criarLista() {
 
     if (texto.value != "") {
@@ -14,9 +13,20 @@ function criarLista() {
     }
 }
 
-function selecionar(e) {
-    e.target.style.backgroundColor = 'red';
+function selecionar(target) {
+    target.classList.add('selected');
+}
+
+function limparSelecionar() {
+    let items = document.querySelectorAll('#lista-tarefas li');
+    for (index = 0; index < items.length; index += 1) {
+        items[index].classList.remove('selected');
+    }
+
 }
 
 botao.addEventListener('click', criarLista);
-lista.addEventListener('click', selecionar);
+lista.addEventListener('click', function (e) {
+    limparSelecionar();
+    selecionar(e.target)
+});
