@@ -53,7 +53,7 @@ buttonRemoveAll.addEventListener('click', function () {
   clearArrayContent(array);
 })
 
-//Após clicar no botão, os itens com a classe "selecionada", serão removidos.
+//Após clicar no botão, os itens com a classe "completed", serão removidos.
 //Fonte: https://stackoverflow.com/questions/4777077/removing-elements-by-class-name
 
 let elementsClassCompleted = document.getElementsByClassName("completed");
@@ -66,6 +66,16 @@ let buttonRemoveClassCompleted = document.getElementById("remover-finalizados");
 buttonRemoveClassCompleted.addEventListener('click',function(){
   while(elementsClassCompleted.length>0){
     elementsClassCompleted[0].parentNode.removeChild(elementsClassCompleted[0]);
+  }
+})
+
+//Após clicar no botão, os itens com a classe "selecionada", serão removidos.
+let elemetsClassSelecionada = document.getElementsByClassName("selecionada");
+let buttonRemoveClassSelecionada = document.getElementById("remover-selecionado");
+
+buttonRemoveClassSelecionada.addEventListener('click', function(){
+  while(elemetsClassSelecionada.length>0){
+    elemetsClassSelecionada[0].parentNode.removeChild(elemetsClassSelecionada[0]);
   }
 })
 
