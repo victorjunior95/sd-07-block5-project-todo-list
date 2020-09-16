@@ -3,6 +3,25 @@ const criaItem = document.querySelector('#criar-tarefa');
 const textoTarefa = document.querySelector('#texto-tarefa');
 const apagarLista = document.querySelector('#apaga-tudo');
 const apagaFinalizados = document.querySelector('#remover-finalizados');
+const moveParaBaixo = document.querySelector('#mover-baixo');
+const moverParaCima = document.querySelector('#mover-cima');
+
+moveParaBaixo.addEventListener('click', function () {
+  const movido = document.querySelector('.selected');
+  if(movido.nextElementSibling) {
+    const baixo = movido.nextElementSibling;    
+    movido.before(baixo);
+  }
+})
+
+moverParaCima.addEventListener('click', function () {
+  const movido = document.querySelector('.selected');
+  if(movido.previousElementSibling) {
+    const cima = movido.previousElementSibling;   
+    cima.before(movido);
+  }
+})
+
 
 function jaSelecionado() {
   const verificaSelecao = event.target;
