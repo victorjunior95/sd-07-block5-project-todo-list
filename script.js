@@ -1,4 +1,4 @@
-function basicStructure(){
+function basicStructure() {
   const headerPage = document.createElement('header');
   headerPage.className = 'head-class';
   document.body.appendChild(headerPage);
@@ -42,7 +42,7 @@ function textForInstruction() {
 }
 textForInstruction();
 
-function insertItemToDo() {
+function tagsForInsertData() {
   const parentSectionFirst = document.getElementById('first-section');
   const inputTextItem = document.createElement('input');
   inputTextItem.setAttribute('type', 'text');
@@ -53,26 +53,50 @@ function insertItemToDo() {
   const sendTextItem = document.createElement('button');
   sendTextItem.className = 'criar-tarefa';
   sendTextItem.setAttribute('id', 'criar-tarefa');
-  sendTextItem.innerText = 'Adicionar Nova Tarefa'
+  sendTextItem.innerText = 'Adicionar Nova Tarefa';
   parentSectionFirst.appendChild(sendTextItem);
 }
-insertItemToDo();
+tagsForInsertData();
 
-function createOrdenateList(data){
+function createOrdenateList() {
   const parentItemSection = document.getElementById('first-section');
   const ordenateListToDo = document.createElement('ol');
   ordenateListToDo.setAttribute('id', 'lista-tarefas');
   ordenateListToDo.className = 'lista-tarefas';
   parentItemSection.appendChild(ordenateListToDo);
-  
+}
+createOrdenateList();
+// *********** FIM DA CRIAÇAO DO HTML **********
+
+function liGenerate(data){
   if (data.length !== 0) {
-    let dataLi = [];
+    const parentOfOl = document.getElementById('first-section');
+    const getOl = document.querySelector('#lista-tarefas');
+    parentOfOl.removeChild(getOl);
+    createOrdenateList();
+    const olTag = document.getElementById('lista-tarefas');
     for (let index = 0; index < data.length; index += 1) {
       const itemLi = document.createElement('li');
       itemLi.className = 'item-tarefa';
       itemLi.innerText = data[index];
-      ordenateListToDo.appendChild(itemLi);
+      olTag.appendChild(itemLi);
     }
   }
 }
-createOrdenateList(['teste1', 'teste2', 'teste3', 'teste4']);
+liGenerate(0)
+
+function insertDataOl() {
+  const lisExistentes = document.querySelectorAll('.item-tarefa');
+  let newLiReturn = [];
+  for (let index = 0; index < lisExistentes.length; index += 1){
+    newLiReturn.push(lisExistentes[index].innerText);
+  }
+  const getInsertButton = document.querySelector('#criar-tarefa');
+  getInsertButton.addEventListener('click', function (event) {
+    const inputData = document.querySelector('#texto-tarefa');
+    newLiReturn.push(inputData.value);
+    liGenerate(newLiReturn);
+    inputData.value = '';
+  })
+}
+insertDataOl();
