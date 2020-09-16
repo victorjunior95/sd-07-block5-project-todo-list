@@ -35,14 +35,12 @@ orderList.addEventListener('dblclick', function (event) {
 btErase.addEventListener("click", function(){
     let orderList = document.querySelectorAll(".item-list");
     for(let i = 0; i < orderList.length; i += 1){
-
         orderList[i].remove();
     }
 })
 btFinalized.addEventListener("click", function(){
     let orderList = document.querySelectorAll(".completed");
     for(let i = 0; i < orderList.length; i += 1){
-
         orderList[i].remove();
     }
 })
