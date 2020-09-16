@@ -1,23 +1,34 @@
 window.onload = function () {
+  let contaClick = 0;
 
-  const textoTarefa = document.getElementById('texto-tarefa');
-  const criarTarefa = document.getElementById('criar-tarefa'); // botão
-  const listaTarefas = document.getElementById('lista-tarefas');
+  const tarefaInput = document.getElementById('texto-tarefa');
+  const listaOrdenada = document.getElementById('lista-tarefas');
 
-  textoTarefa.focus();
+  tarefaInput.focus();
 
-  listaTarefas.addEventListener('click', function () {
+  listaOrdenada.addEventListener('click', function () {
     event.stopPropagation();
-    const liEvent = event.target;
+    const itemSelecionado = event.target;
 
-    console.log(event.target.className)
-    if (liEvent.nodeName === 'LI') {
+    if (itemSelecionado.nodeName === 'LI') {
       limpaSeleao();
-      alteraCorFundo(liEvent);
-      liEvent.style.width = liEvent.value.lenght + 'px';
-      console.log(liEvent.value.lenght + 'px')
+      alteraCorFundo(itemSelecionado);
     }
   })
+
+  listaOrdenada.addEventListener('dblclick', function () {
+    event.stopPropagation();
+    const itemSelecionado = event.target;
+
+    if (itemSelecionado.nodeName === 'LI') {
+      if (itemSelecionado.className === 'completed') {
+        itemSelecionado.className = '';
+      } else {
+        itemSelecionado.className = 'completed';
+      }
+    }
+    limpaSeleao();
+  });
 
   function limpaSeleao() {
     let itensLista = document.querySelectorAll('ol>li');
@@ -26,21 +37,17 @@ window.onload = function () {
     });
   }
 
-
   function criaLi() {
     let novoLi = document.createElement('li');
-    novoLi.className = 'lista-tarefas-item'
-    novoLi.textContent = textoTarefa.value;
-    listaTarefas.appendChild(novoLi);
-    textoTarefa.value = '';
-    textoTarefa.focus();
+    novoLi.textContent = tarefaInput.value;
+    listaOrdenada.appendChild(novoLi);
+    tarefaInput.value = '';
+    tarefaInput.focus();
   }
 
   function alteraCorFundo(elem) {
     elem.style.backgroundColor = 'rgb(128, 128, 128)';
   }
 
-  criarTarefa.addEventListener('click', criaLi);
-
-  let itensLi = document.querySelectorAll('ol>li');
+  document.getElementById('criar-tarefa').addEventListener('click', criaLi);
 }
