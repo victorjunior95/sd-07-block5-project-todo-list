@@ -44,9 +44,9 @@ function Load() {
 
 const removed = document.querySelector('#remover-finalizados');//Remover tarefa completa!
 removed.addEventListener('click', function () {
-  const completed = document.querySelector('.completed');
-  while (completed) {
-    document.querySelector('ol').removeChild(completed);
+   
+  while (document.querySelector('.completed')) {
+    document.querySelector('ol').removeChild(document.querySelector('.completed'));
   };
 });
 
