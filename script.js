@@ -6,7 +6,7 @@ let firstTime = true;
 let removerBtn = document.querySelector("#remover-finalizados");
 
 removerBtn.addEventListener("click", function() {
-  let completed = document.querySelectorAll(".completed");
+  let completed = document.getElementByClassName("completed");
   for (index = 0; index < completed.length; index += 1) {
     orderedList.removeChild(completed[index]);
   }
