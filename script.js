@@ -119,8 +119,9 @@ window.onload = function () {
     getSavedList();
 
     function getSavedList() {
-        if (localStorage.getItem("Lista de tarefas") !== "undefined" || localStorage.getItem("Lista de tarefas") !== "null") {
-            jobList.innerHTML = localStorage.getItem("Lista de Tarefas");
+        console.log(jobList);
+        if (localStorage.getItem("ListaTarefas") !== "undefined" || localStorage.getItem("ListaTarefas") !== "null") {
+            jobList.innerHTML = localStorage.getItem("ListaTarefas");
         }
     }
 
@@ -129,7 +130,8 @@ window.onload = function () {
     /* Salvar lista de tarefas */
 
     function saveList() {
-        localStorage.setItem("Lista de tarefas", jobList.innerHTML);
+        localStorage.setItem("ListaTarefas", jobList.innerHTML);
         alert("Tarefas salvas");
     }
+
 }             

@@ -3,7 +3,6 @@ body {
     background-size: 100%;
     width: 80%;
     margin: 0 auto;
-/*     text-align: center; */
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -21,6 +20,22 @@ ol {
     text-align: left;
 }
 
+#listOfLis {
+    width: 70%;
+    margin: 0 auto;
+}
+
+#texto-tarefa {
+    padding: 4px;
+    width: 35%;
+    background-color: white;
+    color: black;
+    text-align: center;
+    margin: 0 auto;
+    cursor: text;
+    border: solid 2px black;
+}
+
 .buttons {
     background-color: rgb(51, 114, 103);
     border: 2px solid white;
@@ -31,10 +46,12 @@ ol {
     width: 155px;
     border-radius: 15px;
     display: inline-block;
+    cursor: pointer;
 }
 
 .list {
     text-align: left;
+    cursor: cell;
 }
 
 .hoover {
@@ -45,11 +62,6 @@ ol {
 .completed {
     text-decoration: line-through solid rgb(0, 0, 0);
 }
-
-/* .hooverCompleted {
-    text-decoration: line-through solid rgb(0, 0, 0);
-    background-color: rgb(128,128,128);
-} */
 
 p {
     background-color: rgb(217, 127, 51);
