@@ -12,8 +12,8 @@ function makeTaskList() {
 
   const classLi = document.querySelector('#lista-tarefas').children;
   for (let i = 0; i < classLi.length; i += 1) {
-    /*eslint no-inner-declarations: "error"*/
     const sel = classLi[i];
+    /*eslint no-inner-declarations: "error"*/
     function setCor() {
       sel.style.background = 'rgb(128, 128, 128)';
     }
