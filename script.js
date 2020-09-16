@@ -21,10 +21,14 @@ botaoTarefa.addEventListener('click', function(){
 botaoApagarRiscado.addEventListener('click' , function(){
   let listaRiscados = document.querySelectorAll('.completed')
   console.log(listaRiscados)
-  for(let elementos = 0 ; elementos <= listaRiscados.length ; elementos += 1)
-    listaRiscados[elementos].parentNode.removeChild(listaRiscados[elementos]);
-  
+  if(listaRiscados.length !== 0){
+    listaRiscados.forEach(function(cadaItem){ // com o for each eu tenho um loop onde eu aplico para cada item a funçao estabelecida
+      listaTarefas.removeChild(cadaItem)
+    })
+    }
+      
 })
+
 
 function riscarSelecionado(event){
   event.target.classList.add('completed')
