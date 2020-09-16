@@ -5,7 +5,6 @@ let explanation = document.getElementById('funcionamento');
 let textBox = document.getElementById('texto-tarefa');
 let list = document.getElementById('lista-tarefas');
 let button = document.getElementById('criar-tarefa');
-let selection = document.querySelector('.selected');
 
 // 2) Define the functions:
 
@@ -24,12 +23,14 @@ button.addEventListener('click', function (event) {
   }
 });
 
-// To change the item's color:
-function selectItem (item) {  
+// To select only one item:
+function selectItem (item) {
+  let li = document.getElementsByTagName('li');
   item.addEventListener('click', function() {
-    for (let i = 0; i < list.length; i += 1) {
-      list[i].classList.remove('selected')
+    for (let i = 0; i < li.length; i += 1) {
+      li[i].classList.remove('selected');
     }
     item.classList.toggle('selected');
   });
 }
+
