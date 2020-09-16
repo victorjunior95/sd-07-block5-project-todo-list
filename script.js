@@ -3,6 +3,8 @@ const inputTarefa = document.querySelector('#texto-tarefa');
 const list = document.querySelector('#lista-tarefas');
 const apagar = document.querySelector('#apaga-tudo')
 const apagarSelect = document.querySelector('#remover-finalizados')
+const removerSelect = document.querySelector('#remover-selecionado')
+
 
 addTarefa.addEventListener('click', function () {
     const elementLi = document.createElement('li');
@@ -29,6 +31,10 @@ apagarSelect.addEventListener('click', function () {
     })
 
 })
+removerSelect.addEventListener('click', function () {
+ const select = document.querySelector('.selected')
+    select.remove()
+})
 
 
 function addColor () {
@@ -36,6 +42,7 @@ function addColor () {
     item.forEach(key => {
         key.addEventListener('click', function () {
             removeColor()
+            key.classList.add('selected')
             key.style.backgroundColor = 'rgb(128 , 128 , 128)';
         })
 })
@@ -44,6 +51,7 @@ function addColor () {
 function removeColor () {
     const item = document.querySelectorAll('.task')
     item.forEach(key => {
+        key.classList.remove('selected')
         key.style.backgroundColor = 'white';
 })
 }
