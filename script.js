@@ -48,16 +48,15 @@ addButton.addEventListener('click', createListItem);
 
 // Função para apagar toda a lista
 
-// // function clearAll() {
-// //   let ol = document.getElementById('lista-tarefas');
-// //   let childrenOl = ol.children;
+function clearAll() {
+  let ol = document.getElementById("lista-tarefas");
 
-// //   for(let indice = 0; indice < childrenOl.length; indice += 1){
+  //ideia baseada no site: https://medium.com/front-end-weekly/remove-all-children-of-the-node-in-javascript-968ad8f120eb
+  while (ol.firstChild) {
+      ol.removeChild(ol.firstChild);
+  }
+}
 
-// //   }
+let clearButton = document.getElementById('apaga-tudo');
 
-// //   }
-
-// let clearButton = document.getElementById('apaga-tudo');
-
-// clearButton.addEventListener('click', clearAll)
+clearButton.addEventListener('click', clearAll)
