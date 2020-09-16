@@ -97,11 +97,15 @@ function MoverCima(){
         if(classeItem.length != 0 && classeItem[index].classList.contains('selected')){
             let itemProximo;
             let itemAtual;
-            itemProximo = classeItem[index].innerText;
             if(classeItem[index-1] != undefined){
+                itemProximo = classeItem[index].innerText;
                 itemAtual = classeItem[index-1].innerText;
                 classeItem[index-1].innerText = itemProximo;
+                classeItem[index-1].classList.toggle('selected');
+                classeItem[index-1].classList.toggle('completed');
                 classeItem[index].innerText = itemAtual;
+                classeItem[index].classList.remove('selected');
+                classeItem[index].classList.remove('completed');
             }
             else{
                 alert('Este item não pode ser movido');
@@ -118,11 +122,16 @@ function MoverBaixo(){
         if(classeItem.length != 0 && classeItem[index].classList.contains('selected')){
             let itemAnterior;
             let itemAtual;
-            itemAnterior = classeItem[index].innerText;
             if(classeItem[index+1] != undefined){
+                itemAnterior = classeItem[index].innerText;
                 itemAtual = classeItem[index+1].innerText;
                 classeItem[index+1].innerText = itemAnterior;
+                classeItem[index+1].classList.toggle('selected');
+                classeItem[index+1].classList.toggle('completed');
                 classeItem[index].innerText = itemAtual;
+                classeItem[index].classList.remove('selected');
+                classeItem[index].classList.remove('completed');
+
             }
             else{
                 alert('Este item não pode ser movido');
