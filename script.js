@@ -91,8 +91,5 @@ window.onload = function(){
                 listMother.removeChild(listChild[index]);
             }
         }
-    });
-       
-    
-        
+    });        
 }
