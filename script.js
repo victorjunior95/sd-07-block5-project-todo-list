@@ -24,6 +24,17 @@ listItem.addEventListener('dblclick', function () {
     listItem.classList.add('completed');
   }
 });
+// remove itens com check
+let btnClearDoneList = document.querySelector('#remover-finalizados');
+btnClearDoneList.addEventListener('click', function () {
+  let listItens = document.querySelectorAll('li');
+  for(let index = 0; index < listItens.length; index += 1) {
+    let listCheck = listItens[index];
+    if (listCheck.classList.contains('completed')){
+      toDoList.removeChild(listCheck);
+    }
+  }
+});
 });
 // trata evento limpar toda a lista
 let btnClearList = document.querySelector('#apaga-tudo');
@@ -31,7 +42,4 @@ btnClearList.addEventListener('click', function () {
   toDoList.innerHTML = '';
 });
 // trata evento limpa apenas itens sobreescritos
-let btnClearDoneList = document.querySelector('#remover-finalizados');
-btnClearDoneList.addEventListener('click', function () {
-  document.querySelectorAll('.completed').innerHTML = '';
-});
+
