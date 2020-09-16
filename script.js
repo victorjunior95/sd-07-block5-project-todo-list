@@ -7,16 +7,32 @@ window.onload = function(){
     let btnUp = document.getElementById("mover-cima");
     let btnDown = document.getElementById("mover-baixo");
     let removeSelected = document.getElementById("remover-selecionado");
+    let listMother = document.getElementById("lista-tarefas"); 
     
     //Adicionando evento de colocar o input na lista
     btnNewTask.addEventListener("click", function(){
-        //Declarando variáveis participantes do evento
         let textInput = document.getElementById("texto-tarefa");
         let listMother = document.getElementById("lista-tarefas");
         let listChild = document.createElement("li");
         listMother.appendChild(listChild).innerText = textInput.value;
         textInput.value = "";
         let li = document.querySelectorAll("li");
+
+        //Adicionando completed
+        listChild.addEventListener("dblclick", function(){
+            listChild.classList.toggle("completed");
+        });
+
+        //Evento do botão salvando as tarefas
+        btnSave.addEventListener("click", function(){
+            for(let index = 0; index < li.length; index += 1){
+                li[index].classList.remove("selected");
+            }
+            localStorage.clear();
+            let saveList = document.getElementById("lista-tarefas").innerHTML;
+            localStorage.setItem("saveList", saveList);
+        });
+
         //Loop para adicionar ou remover class com bc cinza
         for(let listIndex = 0; listIndex < li.length; listIndex += 1){
             li[listIndex].addEventListener("click", function(){
@@ -28,40 +44,55 @@ window.onload = function(){
                 }
             });
         }
-        //Adicionando completed
-        listChild.addEventListener("dblclick", function(){
-            listChild.classList.toggle("completed");
-        });
-        //Evento do botão salvando as tarefas
-        btnSave.addEventListener("click", function(){
-            let listMother = document.getElementById("lista-tarefas").childNodes;
-            for(let index = 0; index < listMother.length; index += 1){
-                localStorage.setItem(index, listMother[index].value);
-                console.log(localStorage.getItem(index));
+    });
+    //Fora do evento criar tarefa:
+
+    //Carregando itens salvos
+    if(localStorage.getItem("saveList").length > 1){
+        listMother.innerHTML = localStorage.getItem("saveList");
+    } 
+    let li = document.querySelectorAll("li");
+
+    //Loop para adicionar ou remover class com bc cinza
+    for(let listIndex = 0; listIndex < li.length; listIndex += 1){
+        li[listIndex].addEventListener("click", function(){
+            li[listIndex].classList.add("selected");
+            for(let index = 0; index < li.length; index += 1){
+                if(li[index] !== li[listIndex]){
+                    li[index].classList.remove("selected");
+                }
             }
         });
+    }
 
-        //Evento do botão limpa todas as tarefas
-        btnClear.addEventListener("click", function(){
-            let listMother = document.getElementById("lista-tarefas");
-            let listChild = document.querySelectorAll("li");
-            for(let index = 0; index < listChild.length; index += 1){
+    //Adicionando completed
+    let listChild = document.querySelectorAll("li");
+    for(let indexChild = 0; indexChild < listChild.length; indexChild += 1){
+        listChild[indexChild].addEventListener("dblclick", function(){
+            listChild[indexChild].classList.toggle("completed");    
+        });
+    }
+
+    //Evento do botão limpa todas as tarefas
+    btnClear.addEventListener("click", function(){
+        let listMother = document.getElementById("lista-tarefas");
+        let listChild = document.querySelectorAll("li");
+        for(let index = 0; index < listChild.length; index += 1){
+            listMother.removeChild(listChild[index]);
+        }
+    });
+
+    //Evento do botão limpa tarefas finalizadas
+    btnEnd.addEventListener("click", function(){
+        let listMother = document.getElementById("lista-tarefas");
+        let listChild = document.querySelectorAll("li");
+        for(let index = 0; index < listChild.length; index += 1){
+            if(listChild[index].classList.contains("completed")){
                 listMother.removeChild(listChild[index]);
             }
-        });
-
-        //Evento do botão limpa tarefas finalizadas
-        btnEnd.addEventListener("click", function(){
-            let listMother = document.getElementById("lista-tarefas");
-            let listChild = document.querySelectorAll("li");
-            for(let index = 0; index < listChild.length; index += 1){
-                if(listChild[index].classList.contains("completed")){
-                    listMother.removeChild(listChild[index]);
-                }
-
-            }
-        });
-    
+        }
     });
+       
+    
         
 }
