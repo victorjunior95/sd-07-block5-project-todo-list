@@ -76,7 +76,7 @@ let botaoMoverParaCima = document.getElementById('mover-cima');
 botaoMoverParaCima.addEventListener("click", function() {
     let itemSelecionado = document.querySelector('.selected')
     let listaDeTarefas = document.getElementById('lista-tarefas');
-    if (itemSelecionado.previousElementSibling != null) {
+    if (itemSelecionado.previousElementSibling != null && itemSelecionado != null) {
         listaDeTarefas.insertBefore(itemSelecionado, itemSelecionado.previousElementSibling);
     }
 });
@@ -85,7 +85,7 @@ let botaoMoverParaBaixo = document.getElementById('mover-baixo');
 botaoMoverParaBaixo.addEventListener("click", function() {
     let itemSelecionado = document.querySelector('.selected')
     let listaDeTarefas = document.getElementById('lista-tarefas');
-    if (itemSelecionado.nextElementSibling != null) {
+    if (itemSelecionado.nextElementSibling != null && itemSelecionado != null) {
         listaDeTarefas.insertBefore(itemSelecionado.nextElementSibling, itemSelecionado);
     }
 });
