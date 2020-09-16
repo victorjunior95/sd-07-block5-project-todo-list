@@ -22,12 +22,15 @@ buttonClearCompletedTaskListItem.addEventListener('click', function (event) {
   }
 });
 
-  // http://devfuria.com.br/javascript/dom-insert-before/ - insertBefore, similar ao appendChild, porém após inserir a variável desejada deve colocar antes de qual child você pretende acrescerntar dessa forma (newTaskListItem, taskListItens[0]) newTaskListItem sendo a variável que será adicionada e taskListItens[0] sendo o filho de taskList que antecederá a variável que será adicionada.
+buttonClearList.addEventListener('click', function (event) {
+  event.preventDefault();
+  taskList.innerText = '';
+});
 
 function createListItem() {
   let newTaskListItem = document.createElement('li');
   newTaskListItem.innerText = inputValue;
-  taskList.insertBefore(newTaskListItem, taskListItens[0]);
+  taskList.appendChild(newTaskListItem);
   input.value = '';
   taskListItens = document.querySelectorAll('li');
 
@@ -40,6 +43,7 @@ function createListItem() {
   newTaskListItem.addEventListener('dblclick', function () {
     newTaskListItem.classList.add('completed');
     completedTaskListItens = document.querySelectorAll('.completed');
+    uncheckedCompletedTaskListItem(completedTaskListItens);
   });
 }
 
@@ -49,13 +53,6 @@ buttonCreateTask.addEventListener('click', function (event) {
     alert('Campo vazio!');
   } else {
     createListItem();
-  }
-});
-
-buttonClearList.addEventListener('click', function (event) {
-  event.preventDefault();
-  while (taskList.firstChild) {
-    taskList.removeChild(taskList.firstChild);
   }
 });
 
