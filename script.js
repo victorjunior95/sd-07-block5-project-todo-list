@@ -1,6 +1,7 @@
 let buttonToAdd = document.getElementById("criar-tarefa")
 let orderedListElement = document.getElementById("lista-tarefas")
 let array = [];
+let li = document.getElementsByTagName("li");
 
 buttonToAdd.addEventListener('click', function () {
 
@@ -11,13 +12,12 @@ buttonToAdd.addEventListener('click', function () {
   let counter = 0;
 
   elementLi.addEventListener('click', function (event) {
-    event.target.style.backgroundColor = "rgb(128,128,128)";
+    removeSelected(li);
     elementLi.classList.add("selecionada");
   });
 
   elementLi.addEventListener('dblclick', function (event) {
     counter += 1;
-    console.log
     if (counter == 1) {
       event.target.classList.add("completed");
     } else {
@@ -29,6 +29,14 @@ buttonToAdd.addEventListener('click', function () {
   orderedListElement.appendChild(elementLi).innerHTML = textTasks.value;
   textTasks.value = "";
 })
+
+//Deixar apenas um elemento selecionado:
+
+function removeSelected(li){
+  for (let index = 0; index < li.length; index++) {
+    li[index].classList.remove("selecionada");
+  }
+}
 
 //Função para apagar tudo:
 
