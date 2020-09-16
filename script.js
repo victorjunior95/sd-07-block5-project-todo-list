@@ -11,6 +11,7 @@ let textotarefa = document.getElementById("texto-tarefa");
 let clearall    = document.getElementById("apaga-tudo");
 let finalizados = document.getElementById("remover-finalizados");
 let save        = document.getElementById("salvar-tarefas");
+let selecionado = document.getElementById("remover-selecionado");
 
 listatarefa.innerHTML = localStorage.getItem("itens");
 
@@ -21,7 +22,7 @@ criartarefa.addEventListener("click", function() {
     divNova.appendChild(conteudoNovo);
     listatarefa.appendChild(divNova);
     textotarefa.value="";
-})
+});
 
 listatarefa.addEventListener("click",function(e) {
 
@@ -55,9 +56,18 @@ finalizados.addEventListener("click",function() {
             element.removeChild(element.children[i]);
         };
     }
-})
+});
 
 save.addEventListener("click",function() {
     localStorage.setItem("itens",listatarefa.innerHTML);
     console.log(localStorage);
-})
+});
+
+selecionado.addEventListener("click",function() {
+    let element = document.getElementById("lista-tarefas");
+    for (let i = element.children.length - 1;i >= 0; i--) {
+        if (element.children[i].style.backgroundColor == "rgb(128, 128, 128)") {
+            element.removeChild(element.children[i]);
+        };
+    }
+});
