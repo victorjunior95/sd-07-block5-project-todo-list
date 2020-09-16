@@ -6,7 +6,7 @@ function moveDown() {
 function moveUp() {
   const listTasks = document.querySelector('#lista-tarefas');
   const selectedTask = document.querySelector('.selected');
-  if (listTasks.firstChild !== selectedTask){
+  if (listTasks.firstChild !== selectedTask) {
     listTasks.insertBefore(selectedTask, selectedTask.previousSibling);
   }
 }
@@ -63,7 +63,7 @@ window.onload = function () {
   const createTaskButton = document.querySelector('#criar-tarefa');
   const removeCompletedButton = document.querySelector('#remover-finalizados');
   const clearButton = document.querySelector('#apaga-tudo');
-  const salvarTarefasButton = document.querySelector('#salvar-tarefas')
+  const salvarTarefasButton = document.querySelector('#salvar-tarefas');
   const textTask = document.querySelector('#texto-tarefa');
   const listTasks = document.querySelector('#lista-tarefas');
   const removeSelected = document.querySelector('#remover-selecionado');
