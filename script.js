@@ -59,5 +59,8 @@ button2.addEventListener('click', function (event) {
 // To clean completed taks only:
 button3.addEventListener('click', function() {
   event.preventDefault();
-
+  let completedItens = document.getElementsByClassName('completed');
+  for (j = 0; j < completedItens.length; j += 0) {
+    list.removeChild(completedItens[j]);
+  }
 })
