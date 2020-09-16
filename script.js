@@ -87,7 +87,7 @@ function liGenerate(data) {
 
 function insertDataOl() {
   const lisExistentes = document.querySelectorAll('.item-tarefa');
-  let newLiReturn = [];
+  const newLiReturn = [];
   for (let index = 0; index < lisExistentes.length; index += 1) {
     newLiReturn.push(lisExistentes[index].innerText);
   }
@@ -110,7 +110,7 @@ function insertDataOl() {
       inputDataWitchEnter.value = '';
       // console.log(event.keyCode)
     }
-});
+  });
 }
 insertDataOl();
 
@@ -120,7 +120,6 @@ function alterPropertiesLi() {
       const liSelected = document.querySelectorAll('.selected')[0];
       const liClicked = event.target;
       if (liSelected) {
-      console.log(liSelected)
         liSelected.classList.remove('selected');
         liClicked.classList.add('selected');
       } else {
