@@ -78,12 +78,14 @@ function liGenerate(data){
     for (let index = 0; index < data.length; index += 1) {
       const itemLi = document.createElement('li');
       itemLi.className = 'item-tarefa';
-      itemLi.innerText = data[index];
       olTag.appendChild(itemLi);
+      const spanLi = document.createElement('span')
+      spanLi.setAttribute('id', index)
+      spanLi.innerText = data[index];
+      itemLi.appendChild(spanLi);
     }
   }
 }
-liGenerate(0)
 
 function insertDataOl() {
   const lisExistentes = document.querySelectorAll('.item-tarefa');
@@ -94,9 +96,36 @@ function insertDataOl() {
   const getInsertButton = document.querySelector('#criar-tarefa');
   getInsertButton.addEventListener('click', function (event) {
     const inputData = document.querySelector('#texto-tarefa');
-    newLiReturn.push(inputData.value);
-    liGenerate(newLiReturn);
-    inputData.value = '';
+    if (inputData.value) {
+      newLiReturn.push(inputData.value);
+      liGenerate(newLiReturn);
+      inputData.value = '';
+    }
   })
+
+  const getKeyEnter = document.querySelector('#texto-tarefa');
+  getKeyEnter.addEventListener('keydown', function (event) {
+    const inputDataWitchEnter = document.querySelector('#texto-tarefa');
+    if (inputDataWitchEnter.value && event.keyCode === 13) {
+      newLiReturn.push(inputDataWitchEnter.value);
+      liGenerate(newLiReturn);
+      inputDataWitchEnter.value = '';
+      // console.log(event.keyCode)
+    }
+})
 }
 insertDataOl();
+
+function alterPropertiesLi() {
+  document.body.addEventListener('click', function (event) {
+    if (event.target.nodeName === 'SPAN') {
+      const liClicked = event.target;
+      if (!liClicked.style.backgroundColor) {
+        liClicked.style.backgroundColor = 'rgb(128, 128, 128)'
+      } else {
+        liClicked.removeAttribute("style");
+      }
+    }
+  })
+}
+alterPropertiesLi()
