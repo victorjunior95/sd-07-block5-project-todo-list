@@ -3,6 +3,12 @@ body{
     font-family: sans-serif;
 }
 
+img {
+    width: 25px;
+    cursor: pointer;
+    padding: 5px;
+    vertical-align: middle;
+}
 
 .principal {
     width: 70%;
@@ -24,9 +30,9 @@ body{
 
 .botoes {
     width: 100%;
-    margin: auto;
+    margin: 10px;
     padding: 20px;
-    text-align: center;
+    text-align: left;
   }
   
   button {
@@ -61,7 +67,7 @@ body{
 
 }
   .lista {
-    width: 30%;
+    width: 100%;
     margin: auto;
     padding: 10px;
 }

@@ -53,7 +53,7 @@ class TodoListController {
   }
 
   construirLista() {
-    let tabela = document.getElementById("tabelaTarefas");
+    let tabela = document.getElementById("lista-tarefas");
     tabela.innerHTML = "";
 
     for (let i = 0; i < this.lista.length; i++) {
@@ -74,7 +74,7 @@ class TodoListController {
 
       imgConcluida.setAttribute(
         "onclick",
-        `todoListController.alterarStatus(${this.lista[i].id})`
+        `controller.alterarStatus(${this.lista[i].id})`
       );
 
       celulaConcluida.appendChild(imgConcluida);
@@ -96,14 +96,31 @@ class TodoListController {
 
       if (achou) {
         this.lista.splice(i, 1);
-        this.construirTabela();
+        this.construirLista();
       }
     }
   }
 
   editar(id) {}
 
-  alterarStatus(id) {}
+  alterarStatus(id) {
+    if (confirm("Tem certeza que deseja alterar o status dessa tarefa?")) {
+        let i = 0;
+        let achou = false;
+
+        while (i < this.lista.length && !achou) {
+            if (this.lista[i].id == id) {
+                achou = true
+                this.lista[i].concluida = !this.lista[i].concluida
+            } else {
+                i++
+            }
+        }
+
+        this.construirLista();
+
+    }
+  }
 
   moverParaCima(id) {}
   moverParaBaixo(id) {}
