@@ -49,7 +49,8 @@ btnNewItem.addEventListener('click', function () {
 // trata evento salvar lista
   const btnSaveList = document.querySelector('#salvar-tarefas');
   btnSaveList.addEventListener('click', function () {
-    localStorage.setItem('finalList', toDoList);
+    const listItens = document.querySelectorAll('li');
+    localStorage.setItem('finalList', listItens);
   });
 });
 // trata evento limpar toda a lista
@@ -57,7 +58,11 @@ const btnClearList = document.querySelector('#apaga-tudo');
 btnClearList.addEventListener('click', function () {
   toDoList.innerHTML = '';
 });
-// // recuperar lista salva
-// window.onload = function () {
-//     localStorage.getItem('finalList');
-// };
+// recuperar lista salva
+const listItens = document.querySelectorAll('li');
+if (listItens !== null) {
+  window.onload = function () {
+    localStorage.getItem('finalList');
+};
+}
+
