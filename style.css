@@ -6,8 +6,11 @@ body {
 	margin: 100px;
 	padding: 50px;
 }
+p {
+	margin-left: 80px;
+}
 ol {
-	margin-left: 45px;
+	margin-left: 10px;
 }
 .cabecalho {
 	text-align: center;
