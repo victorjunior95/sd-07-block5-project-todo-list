@@ -1,6 +1,6 @@
 .body {
   background-attachment: fixed;
-  background-image: url(https://images.unsplash.com/photo-1513617855986-6ad7b0dfb9f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80);
+  background-image: url('https://images.unsplash.com/photo-1513617855986-6ad7b0dfb9f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80');
   background-repeat: no-repeat;
   background-size: 1366px 768px;
 }
@@ -16,13 +16,13 @@
 
 .funcionamento {
   border: dashed 1px black;
-  margin: 0 7px 20px 7px;
+  margin: 0 7px 20px;
   padding: 5px;
   text-align: center;
 }
 
 .main {
-  background-color: rgba(255, 255, 255, 0.884);
+  background-color: rgba(255 , 255 , 255 , 0.884);
   border-radius: 15px;
   box-shadow: 1px 1px 10px rgba(0 , 0 , 0 , 0.432);
   color: black;
@@ -63,11 +63,11 @@
 }
 
 .add {
-  background-color: rgb(59, 66, 66);
+  background-color: rgb(59 , 66 , 66);
 }
 
 .clean {
-  background-color: rgb(148, 120, 113);
+  background-color: rgb(148 , 120 , 113);
 }
 
 .list {

@@ -50,11 +50,10 @@ btnNewItem.addEventListener('click', function () {
   const btnSaveList = document.querySelector('#salvar-tarefas');
   btnSaveList.addEventListener('click', function () {
     localStorage.clear();
-    let allItens = document.querySelector('ol').innerHTML;
+    const allItens = document.querySelector('ol').innerHTML;
     localStorage.setItem('finalList', allItens);
   });
 // recuperar lista salva
-
 });
 // trata evento limpar toda a lista
 const btnClearList = document.querySelector('#apaga-tudo');
@@ -64,5 +63,3 @@ btnClearList.addEventListener('click', function () {
 window.onload = function () {
   document.querySelector('ol').innerHTML = localStorage.getItem('finalList');
 };
-
-
