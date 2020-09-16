@@ -86,6 +86,10 @@ function moveCima() {
 
   for (let i = 0; i < items.length; i += 1) {
     if (items[i].style.backgroundColor == 'rgb(128, 128, 128)') {
+      if (items[i].previousElementSibling == null) {
+        break;
+      }
+
       let aux = items[i].previousElementSibling.innerHTML;
       items[i].previousElementSibling.innerHTML = items[i].innerHTML;
       items[i].innerHTML = aux;
@@ -110,6 +114,10 @@ function moveBaixo() {
 
   for (let i = items.length - 1; i >= 0; i -= 1) {
     if (items[i].style.backgroundColor == 'rgb(128, 128, 128)') {
+      if (items[i].nextElementSibling == null) {
+        break;
+      }
+
       let aux = items[i].nextElementSibling.innerHTML;
       items[i].nextElementSibling.innerHTML = items[i].innerHTML;
       items[i].innerHTML = aux;
