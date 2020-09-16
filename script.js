@@ -23,8 +23,8 @@ document.querySelector('#criar-tarefa').addEventListener('click', function () {
 // para salvar todas as li no localStorage
 document.querySelector('#salvar-tarefas').addEventListener('click', function () {
   localStorage.clear(); // limpa o que tiver salvo para receber lista nova
-  const allTasks = document.querySelector('ol'); // todas as li novas a partir do pai
-  localStorage.setItem('Task', allTasks.innerHTML);
+  const allList = document.querySelector('ol'); // todas as li novas a partir do pai
+  localStorage.setItem('Task', allList.innerHTML);
 });
 // quando a página for atualizada, ele vai trazer a lista que estiver salva no localStorage
 function refresh() {
@@ -51,44 +51,24 @@ document.querySelector('#apaga-tudo').addEventListener('click', function () {
 });
 // para mover para cima
 document.querySelector('#mover-cima').addEventListener('click', function () {
-  const arrayLi = document.querySelectorAll('li');
-  if (arrayLi.length === 0 || arrayLi.length === 1 || arrayLi[0].className === 'selected') {
-    alert('Não é possível para para cima');
-  }
-  for (let i = 1; i < arrayLi.length; i += 1) {
-    const itemGray = arrayLi[i].innerHTML;
-    const toChange = arrayLi[i - 1].innerHTML;
-    if (arrayLi[i].classList.contains('selected')) {
-      arrayLi[i].innerHTML = toChange;
-      arrayLi[i - 1].innerHTML = itemGray;
-      arrayLi[i].classList.remove('selected');
-      arrayLi[i - 1].classList.add('selected');
-    }
-    if (arrayLi[i].classList.contains('completed')) {
-      arrayLi[i].classList.remove('completed');
-      arrayLi[i - 1].classList.add('completed');
-    }
+  const allTask = document.querySelectorAll('li');
+  const justSelected = document.querySelector('.selected');
+  if (allTask.length == 0 || allTask.length == 1 || allTask[0].classList.contains('selected')) {
+    alert('Não é possível mover para cima');
+  } else {
+    document.querySelector('ol').insertBefore(justSelected, justSelected.previousElementSibling);
   }
 });
-// mover para baixo
+// // mover para baixo
 document.querySelector('#mover-baixo').addEventListener('click', function () {
-  const arrayLi = document.querySelectorAll('li');
-  const theLast = arrayLi.length - 1;
-  if (arrayLi.length === 0 || arrayLi.length === 1 || arrayLi[theLast].className === 'selected') {
-    alert('Não é possível para para baixo');
-  }
-  for (let i = 0; i < arrayLi.length - 2 ; i += 1) {
-    const itemGray = arrayLi[i].innerHTML;
-    const toChange = arrayLi[i + 1].innerHTML;
-    if (arrayLi[i].classList.contains('selected')) {
-      arrayLi[i].innerHTML = toChange;
-      arrayLi[i + 1].innerHTML = itemGray;
-      arrayLi[i].classList.remove('selected');
-      arrayLi[i + 1].classList.add('selected');
-    }
-    if (arrayLi[i].classList.contains('completed')) {
-      arrayLi[i].classList.remove('completed');
-      arrayLi[i + 1].classList.add('completed');
-    }
+  const allTask = document.querySelectorAll('li');
+  const justSelected = document.querySelector('.selected');
+  const theLastTask = allTask.length - 1;
+  if (allTask.length == 0 || allTask.length == 1 || allTask[theLastTask].classList.contains('selected')) {
+    alert('Não é possível mover para baixo');
+  } else {
+    document.querySelector('ol').insertBefore(justSelected.nextElementSibling, justSelected);
   }
 });
+/* insertBefore busca o pai e diz: o filho do 1º parâmetro vai mudar de lugar com o filho do 2º parâmetro
+referência https://developer.mozilla.org/pt-BR/docs/Web/API/Node/insertBefore*/
