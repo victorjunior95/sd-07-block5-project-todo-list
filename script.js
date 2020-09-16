@@ -68,17 +68,15 @@ function jaSelecionado() {
   return jaFoiSelecionado;
 }
 
-function selecionado() {
-  const itemAtual = jaSelecionado();
+function selecionado() {  
   const removerSelecao = document.querySelectorAll('li');
   for (let i = 0; i < removerSelecao.length; i += 1) {
-    removerSelecao[i].classList.remove('selected');
-  }
-  if (!itemAtual) {
-    this.classList.add('selected');
-  } else {
-    this.classList.remove('selected');
-  }
+    if (removerSelecao[i] === this) {
+      this.classList.add('selected');
+    } else {
+      removerSelecao[i].classList.remove('selected');
+    }
+  }    
 }
 
 function jaCompletado() {
