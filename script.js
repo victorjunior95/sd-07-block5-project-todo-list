@@ -3,6 +3,16 @@ window.onload = function() {
     const textoTarefa = document.getElementById('texto-tarefa');
     const listaTarefas = document.getElementById('lista-tarefas');
     const salvarTarefas = document.getElementById('salvar-tarefas');
+    const apagaTudo = document.getElementById('apaga-tudo');
+    /*------------------------------------------------------*/
+    apagaTudo.addEventListener('click', function(){     
+        let todasTarefas = document.querySelectorAll('li');
+        for(let index=0; index < todasTarefas.length; index +=1){
+            todasTarefas[index].remove();                     
+        }
+        localStorage.clear();   
+       });
+
     /*------------------------------------------------------*/
     salvarTarefas.addEventListener('click', function(){     
      let todasTarefas = document.querySelectorAll('li');
