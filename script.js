@@ -75,7 +75,7 @@ moveDown.addEventListener('click', () => {
   const elements = document.querySelectorAll('li');
   for (let i = 0; i < elements.length; i += 1) {
     if (elements[i].classList.contains('selected')) {
-      if (i !== (elements.length - 1)){
+      if (i !== (elements.length - 1)) {
         list.insertBefore(elements[i + 1], elements[i]);
       }
     }
