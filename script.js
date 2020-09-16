@@ -6,7 +6,33 @@ const apagaFinalizados = document.querySelector('#remover-finalizados');
 const moveParaBaixo = document.querySelector('#mover-baixo');
 const moverParaCima = document.querySelector('#mover-cima');
 const removerSelecionado = document.querySelector('#remover-selecionado');
+const salvarLista = document.querySelector('#salvar-tarefas');
 
+salvarLista.addEventListener('click', function (){
+  const tamanhoLista = document.querySelectorAll('li');
+  localStorage.setItem('listLength', `${tamanhoLista.length}`)
+  for(let i = 0; i < tamanhoLista.length; i += 1) {
+    localStorage.setItem(`item${i}`, `${tamanhoLista[i].innerText}`)
+    localStorage.setItem(`class${i}`, `${tamanhoLista[i].className}`);   
+  }
+  
+})
+
+window.onload = function () {
+  const listLength = localStorage.getItem('listLength');
+  if (localStorage.length <= 1) {
+    alert('preencha sua lista');
+  } else {
+    for (let j = 0; j < listLength; j += 1) {
+      let itemNovo = document.createElement('li');
+      itemNovo.innerText = localStorage.getItem(`item${j}`);
+      itemNovo.className = localStorage.getItem(`class${j}`);
+      itemNovo.addEventListener('dblclick', concluido);
+      itemNovo.addEventListener('click', selecionado);
+      lista.appendChild(itemNovo)
+    }
+  }
+}
 moverParaCima.addEventListener('click', function () {
   const movido = document.querySelector('.selected');
   if (movido.previousElementSibling === null) {
@@ -16,7 +42,6 @@ moverParaCima.addEventListener('click', function () {
     cima.before(movido);    
   }
 })
-
 
 moveParaBaixo.addEventListener('click', function () {
   const movido = document.querySelector('.selected');
@@ -95,6 +120,6 @@ apagaFinalizados.addEventListener('click', function apagaConcluidos() {
 });
 
 removerSelecionado.addEventListener('click', function (){
-  const selecionado = document.querySelector('.selected');
-  lista.removeChild(selecionado);
+  const selecionadoParaRemover = document.querySelector('.selected');
+  lista.removeChild(selecionadoParaRemover);
 })
