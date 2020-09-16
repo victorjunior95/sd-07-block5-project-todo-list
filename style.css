@@ -3,8 +3,22 @@ body {
     background-size: 100%;
     width: 80%;
     margin: 0 auto;
-    text-align: center;
+/*     text-align: center; */
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+}
+
+#main {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
+ol {
+    text-align: left;
 }
 
 .buttons {
@@ -30,4 +44,19 @@ body {
 
 .completed {
     text-decoration: line-through solid rgb(0, 0, 0);
+}
+
+/* .hooverCompleted {
+    text-decoration: line-through solid rgb(0, 0, 0);
+    background-color: rgb(128,128,128);
+} */
+
+p {
+    background-color: rgb(217, 127, 51);
+    padding: 5px;
+    width: 50%;
+    margin: 10px auto;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
 }

@@ -1,4 +1,5 @@
 window.onload = function () {
+
     let inputText = document.querySelector("#texto-tarefa");
     let createJob = document.querySelector("#criar-tarefa");
     let jobList = document.querySelector("#lista-tarefas"); /* ol */
@@ -8,48 +9,52 @@ window.onload = function () {
     let moveTop = document.querySelector("#mover-cima");
     let moveBottom = document.querySelector("#mover-baixo");
     let removeSelected = document.querySelector("#remover-selecionado");
-    
+ 
     /* Criar lista de tarefas */
     createJob.addEventListener("click", addElementList);
 
     function addElementList() {
-        let elementInsert = document.createElement("li");
         let textElement = inputText.value;
-        elementInsert.innerText = textElement;
-        elementInsert.setAttribute("class", "list");
-        jobList.appendChild(elementInsert);
-        console.log(elementInsert);
-        console.log(textElement);
-        inputText.value = "";
-        let listItem = document.querySelectorAll("li");
-        console.log(listItem);
-        return listItem;
+        if (textElement != "") {
+            let elementInsert = document.createElement("li");
+            elementInsert.innerText = textElement;
+            elementInsert.setAttribute("class", "list");
+            jobList.appendChild(elementInsert);
+            elementInsert.addEventListener("click", hooverFunction);
+            elementInsert.addEventListener("dblclick", strikeOut);
+            /* elementInsert.addEventListener("dblclick", strikeOutRemove); */
+            inputText.value = ""; 
+        }
     }
 
     /* Mudar cor de fundo de item selecionado */
-    callHoover()
-
-    function callHoover() {
-        let listItem = document.querySelectorAll(".li");
-        for (index = 0; index < listItem.length; index += 1)
-            listItem[index].addEventListener("click", hooverFunction);
-            listItem[index].addEventListener("dblclick", strikeOut);
-    }
-
     function hooverFunction() {
         let setLineHoover = event.target;
-        listItem.classList.remove("hoover");
-        setLineHoover.classList.remove("list");
-        setLineHoover.setAttribute("class", "hoover");
+        console.log(setLineHoover);
+        let listItem = document.getElementsByTagName("li");
+        console.log(listItem);
+        for (index = 0; index < listItem.length; index += 1) {
+            /* let listItem = document.getElementsByClassName("li"); */
+            if (listItem[index].classList.contains("hoover")) {
+                listItem[index].classList.remove("hoover");
+                /* setLineHoover.classList.remove("list"); */
+                setLineHoover.classList.add("hoover");
+                /* usar classList.add */            
+            } else {
+                /* setLineHoover.classList.remove("list"); */
+                setLineHoover.classList.add("hoover");
+            }
+        }
     }
 
     /* Riscar itens selecionados */
     function strikeOut() {
         let setJobDone = event.target;
-        if (setJobDone.classList.contains !== "completed") {
-            setJobDone.setAttribute("class", "completed");
-        } else {
+        if (setJobDone.classList.contains("completed")) {
             setJobDone.classList.remove("completed");
+            console.log(setJobDone);
+        } else {
+            setJobDone.classList.add("completed");
         }
     }
 
@@ -64,49 +69,67 @@ window.onload = function () {
 
     /* Remover itens riscados */
     function clearDone() {
-        doneList = querySelectorAll(".completed");
+        let doneList = document.querySelectorAll(".completed");
         for (index = 0; index < doneList.length; index += 1) {
-            doneList[index].innerHTML = "";
+            doneList[index].remove();
         }
     }
-
-    /* Salvar lista de tarefas */
-/*     saveJobs.addEventListener("click", saveList)
-    
-    function saveList() {
-        localStorage.setItem("Lista de tarefas", jobList.innerHTML);
-        
-    } */
 
     /* Mover para cima */
     moveTop.addEventListener("click", moveUpFunction);
 
     function moveUpFunction() {
-        let selectionUp = event.target;
+        let listItemsHoover = document.querySelector(".hoover");
         let aux = "";
-        let previousSibling = selectionUp.previousElementSibling;
-        aux.innerHTML = previousSibling.innerHTML;
-        previousSibling.innerHTML = selectionUp.innerHTML;
-        selectionUp.innerHTML = aux.innerHTML;
+        let selectionUp = listItemsHoover;
+        let firstItem = listItemsHoover.parentNode.firstElementChild;
+        let previousSibling = listItemsHoover.previousElementSibling;
+        console.log(firstItem);
+        if (firstItem !== listItemsHoover) {
+            aux = previousSibling.innerHTML;
+            previousSibling.innerHTML = selectionUp.innerHTML;
+            selectionUp.innerHTML = aux;
+        }
     }
 
     /* Mover para baixo */
     moveBottom.addEventListener("click", moveDownFunction);
 
     function moveDownFunction() {
-        let selectionDown = event.target;
+        let listItemsHoover = document.querySelector(".hoover");
         let aux = "";
-        let nextSibling = selectionDown.nextElementSibling;
-        aux.innerHTML = nextSibling.innerHTML;
-        nextSibling.innerHTML = selectionDown.innerHTML;
-        selectionDown.innerHTML = aux.innerHTML;
+        let selectionDown = listItemsHoover;
+        let lastItem = listItemsHoover.parentNode.lastElementChild;
+        let nextSibling = listItemsHoover.nextElementSibling;
+        if (lastItem !== listItemsHoover) {
+            aux = nextSibling.innerHTML;
+            nextSibling.innerHTML = selectionDown.innerHTML;
+            selectionDown.innerHTML = aux;
+        }
     }
     
     /* Remover item selecionado */
     removeSelected.addEventListener("click", removeSelectedItem)
 
     function removeSelectedItem() {
-        let itemToBeRemoved = event.target;
-        itemToBeRemoved.innerHTML = "";
+        let itemToBeRemoved = document.querySelector(".hoover");
+        itemToBeRemoved.remove();
+    }
+
+    getSavedList();
+
+    function getSavedList() {
+        if (localStorage.getItem("Lista de tarefas") !== "undefined" || localStorage.getItem("Lista de tarefas") !== "null") {
+            jobList.innerHTML = localStorage.getItem("Lista de Tarefas");
+        }
+    }
+
+    saveJobs.addEventListener("click", saveList);
+
+    /* Salvar lista de tarefas */
+
+    function saveList() {
+        localStorage.setItem("Lista de tarefas", jobList.innerHTML);
+        alert("Tarefas salvas");
     }
 }             
