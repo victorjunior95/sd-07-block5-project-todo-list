@@ -23,3 +23,8 @@ buttonComand.addEventListener("click", function (){
         addOnOl.classList.toggle("completed"); //o elemento toggle alterna entra mostra e esconder o elemento selecionado   
     });
 })
+let buttonClear = document.getElementById("apaga-tudo")
+buttonClear.addEventListener("click", function () {
+    organizedList.innerHTML = "";
+       
+})
