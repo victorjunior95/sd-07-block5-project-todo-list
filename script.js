@@ -1,7 +1,9 @@
 // criar a lista
 const listaTarefas = document.querySelector('#lista-tarefas');
 const criarTarefaBtn = document.querySelector('#criar-tarefa');
+const apagarTudoBtn = document.querySelector('#apaga-tudo');
 let itemSelect = '';
+let paiLista = '';
 function criarLi() {
   criarTarefaBtn.addEventListener('click', function () {
     const li = document.createElement('li');
@@ -24,5 +26,12 @@ function criarLi() {
     listaTarefas.appendChild(li);
     document.querySelector('#texto-tarefa').value = '';
   });
+}
+apagarTudoBtn.addEventListener('click', apagarLi);
+function apagarLi() {
+  paiLista = document.querySelector('li').parentElement;
+  while (paiLista.hasChildNodes()) {
+    paiLista.removeChild(paiLista.childNodes[0])
+  }
 }
 criarLi();
