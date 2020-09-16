@@ -41,7 +41,7 @@ const createDiv = () => document.createElement('div');
 
 function removeLi(li) {
   let ols = getOl();
-  ols.removeChild(li.parentNode);
+  ols.removeChild(li);
 }
 
 function upTodo(event) {
@@ -99,10 +99,11 @@ function insertBtnDown() {
 }
 
 function insertPropertyInElement({ element = '', text = '', classe = '' }) {
+  
   if (element) {
     let myElement = element;
     if (text) myElement.innerText = text;
-    if (classe) myElement.classList.add(classe);
+    if (classe) myElement.classList.add(classe)
   }
 }
 
@@ -124,9 +125,9 @@ function eventLiClick(li) {
 function eventLiDblClick(li) {
   li.addEventListener('dblclick', function () {
     li.classList.toggle('completed');
-    let lis = getLiAll();
-    for (let index = 0; index < lis.length; index += 1) {
-      if (lis[index].className == 'completed') todoList[index].classes = 'completed';
+    let lis = getLiAll()
+    for(let index = 0; index < lis.length; index += 1){
+      if(lis[index].className == 'completed') todoList[index].classes = 'completed';
     }
   });
 }
@@ -177,6 +178,7 @@ btnAdd.addEventListener('click', function () {
   if (getInputValue()) insertLiInOl(getInputValue());
   clearInputValue();
 });
+
 
 // remove finalizados
 let btnRemoveFinalized = getBtnRemoveFinalized();
