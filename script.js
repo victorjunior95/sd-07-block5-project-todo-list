@@ -1,17 +1,37 @@
+window.onload = function () {
+  updateList();
+  createJob();
+  changeColorJob();
+  completedJob();
+  removeJob();
+  removeCompletedJob();
+  saveJob();
+  moveUp();
+  moveDown();
+};
+
 const inputText = document.querySelector("#texto-tarefa");
 const buttonCreateJob = document.querySelector("#criar-tarefa");
 const list = document.querySelector("#lista-tarefas");
 
 function createJob() {
   buttonCreateJob.addEventListener("click", function () {
-    let li = document.createElement("li");
-    li.innerText = inputText.value;
-    list.appendChild(li);
-    inputText.value = "";
-    // console.log(list);
+    createLi(inputText.value);
   });
 }
-createJob();
+
+function createLi(valueLi) {
+  let li = document.createElement("li");
+  list.appendChild(li);
+  li.classList.add("li");
+  li.innerText = valueLi;
+  clearInput();
+  // console.log(li);
+}
+
+function clearInput() {
+  inputText.value = "";
+}
 
 function changeColorJob() {
   list.addEventListener("click", function (event) {
@@ -23,7 +43,6 @@ function changeColorJob() {
     li.style.backgroundColor = "rgb(128, 128, 128)";
   });
 }
-changeColorJob();
 
 function completedJob() {
   list.addEventListener("dblclick", function (event) {
@@ -36,16 +55,15 @@ function completedJob() {
     }
   });
 }
-completedJob();
 
 const buttonRemoveJob = document.querySelector("#apaga-tudo");
 
 function removeJob() {
   buttonRemoveJob.addEventListener("click", function () {
     list.innerHTML = "";
+    localStorage.clear();
   });
 }
-removeJob();
 
 const buttonRemoveCompletedJob = document.querySelector("#remover-finalizados");
 
@@ -54,22 +72,78 @@ function removeCompletedJob() {
     let li = document.getElementsByClassName("completed");
     for (let i = li.length - 1; i >= 0; i -= 1) {
       list.removeChild(li[i]);
-      // console.log(li.length);
     }
   });
 }
-removeCompletedJob();
 
-// const buttonSaveJob = document.querySelector("#salvar-tarefas");
+const buttonSaveJob = document.querySelector("#salvar-tarefas");
 
-// function saveJob() {
-//   buttonSaveJob.addEventListener("click", function () {
-//     localStorage.setItem("list", list);
-//   });
-// }
-// saveJob();
+function saveJob() {
+  buttonSaveJob.addEventListener("click", function () {
+    let li = document.querySelectorAll(".li");
+    for (let i = li.length - 1; i >= 0; i -= 1) {
+      let object = {
+        text: li[i].innerText,
+        classList: li[i].classList.contains("completed"),
+      };
+      localStorage.setItem(i, object.text);
 
-// function currentSaveList () {
-//   list = localStorage.getItem("list");
-// }
-// currentSaveList();
+      // if (li[i].classList.contains("completed")) {
+      // Armazei minha classList no Objeto, mas como vou armazenar outro valor no storage ?
+      // }
+      console.log(object.classList);
+    }
+  });
+}
+
+function updateList() {
+  let localStorageLength = localStorage.length;
+
+  for (let i = 0; i < localStorageLength; i += 1) {
+    createLi(localStorage.getItem(i));
+  }
+}
+
+const buttonMoveUp = document.querySelector("#mover-cima");
+
+function moveUp() {
+  buttonMoveUp.addEventListener("click", function () {
+    let li = document.getElementsByTagName("li");
+
+    for (let i = 0; i < li.length; i += 1) {
+      if (
+        li[i].style.backgroundColor == "rgb(128, 128, 128)" &&
+        li[i] < li[1]
+      ) {
+        li[i] = li[0];
+      } else if (
+        li[i].style.backgroundColor == "rgb(128, 128, 128)" &&
+        li[i] >= li[1]
+      ) {
+        list.insertBefore(li[i], li[i - 1]);
+      }
+    }
+  });
+}
+
+const buttonMoveDown = document.querySelector("#mover-baixo");
+
+function moveDown() {
+  buttonMoveDown.addEventListener("click", function () {
+    let li = document.getElementsByTagName("li");
+
+    for (let i = 0; i < li.length; i += 1) {
+      if (
+        li[i].style.backgroundColor == "rgb(128, 128, 128)" &&
+        li[i] > li[li.length - 2]
+      ) {
+        li[i] = li[li.length - 1];
+      } else if (
+        li[i].style.backgroundColor == "rgb(128, 128, 128)" &&
+        li[i] < li[li.length - 1]
+      ) {
+        list.insertBefore(li[i], li[i + 1].nextSibling);
+      }
+    }
+  });
+}
