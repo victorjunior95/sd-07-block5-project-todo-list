@@ -57,7 +57,7 @@ botaoSalvarTarefas.addEventListener("click", function() {
 window.onload = mostrarListaSalva;
 function mostrarListaSalva() {
     let listaSalva = localStorage.getItem('lista de tarefas');
-    if (listaSalva.length != 0) {
+    if (listaSalva != null) {
         document.getElementById('lista-tarefas').innerHTML = listaSalva;
         document.querySelectorAll('li').forEach(function(item) {
             permiteSelecionarItem(item);
