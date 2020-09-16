@@ -7,6 +7,9 @@ const elements = [];
 const saveTasks = document.getElementById('salvar-tarefas');
 const clearHistory = document.getElementById('apagar-histórico');
 const removeSelected = document.getElementById('remover-selecionado');
+const selectedTask = document.getElementsByClassName('selected');
+const moveUp = document.getElementById('mover-cima');
+const moveDown = document.getElementById('mover-baixo');
 
 clearHistory.addEventListener('click', () => {
   localStorage.clear();
@@ -81,6 +84,16 @@ function saveAllTasks() {
 
 saveTasks.addEventListener('click', saveAllTasks);
 removeSelected.addEventListener('click', () => {
-  const selected = document.getElementsByClassName('selected');
-  list.removeChild(selected[0]);
+  list.removeChild(selectedTask[0]);
 });
+
+function moveTaskUp() {
+  list.insertBefore(selectedTask[0], selectedTask[0].previousElementSibling);
+}
+
+function moveTaskDown() {
+  list.insertBefore(selectedTask[0].nextElementSibling, selectedTask[0]);
+}
+
+moveUp.addEventListener('click', moveTaskUp);
+moveDown.addEventListener('click', moveTaskDown);
