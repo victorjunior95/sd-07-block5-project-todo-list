@@ -1,7 +1,8 @@
 const inputTextToDo = document.querySelector(".texto-tarefa");
 const buttonCreateToDo = document.querySelector(".criar-tarefa");
 let olToDoList = document.querySelector(".lista-tarefas");
-const buttonClearAllTaksInTheList = document.querySelector('#apaga-tudo');
+const buttonClearAllTasksInTheList = document.querySelector(".apaga-tudo");
+const buttonClearDoneTasks = document.querySelector(".remover-finalizados");
 
 function clearInputTextToDo() {
   inputTextToDo.value = "";
@@ -37,6 +38,14 @@ function addAndRemoveCompletedTask(task) {
   });
 }
 
-buttonClearAllTaksInTheList.addEventListener('click', function () {
-  olToDoList.innerHTML = '';
-})
+buttonClearAllTasksInTheList.addEventListener("click", function () {
+  olToDoList.innerHTML = "";
+});
+
+buttonClearDoneTasks.addEventListener("click", function () {
+  let allDoneTasks = document.querySelectorAll(".completed");
+  for (let index = 0; index < olToDoList.childElementCount; index += 1) {
+    if (olToDoList.children[index].classList.value === "completed")
+      olToDoList.children[index].remove();
+  }
+});
