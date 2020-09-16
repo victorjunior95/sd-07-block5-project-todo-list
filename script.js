@@ -1,20 +1,31 @@
 const list = document.querySelector("#lista-tarefas");
 const button = document.querySelector("#criar-tarefa");
 const inputText = document.querySelector("#texto-tarefa");
-const selected = document.querySelector(".selected");
-const rmSelected = document.querySelector("#remover-finalizados");
+const rmCompleted = document.querySelector("#remover-finalizados");
 const rmAll = document.querySelector("#apaga-tudo");
+const rmSelected = document.querySelector("#remover-selecionado");
 
-function selectItem(){
-   event.target.classList.toggle('selected');
+// créditos pro Hercules Gabriel pela lógica da função deselectItem
+function deselectItem(){
+    const selectedItem = document.querySelector('.selected');
+    if (selectedItem !== null) {
+        selectedItem.classList.remove('selected');
+    }
+}
+
+function selectItem() {
+    deselectItem();
+    event.target.classList.add('selected');
 }
 
 function toggleComplete(event){
     event.target.classList.toggle('completed');
 }
+
 function createListItem (){
     const listItem = document.createElement("li");
     listItem.innerText = inputText.value;
+    if (inputText.value === '') {return alert('input vazio');}
     listItem.addEventListener("click", selectItem);
     listItem.addEventListener("dblclick", toggleComplete);
     list.appendChild(listItem);
@@ -34,8 +45,18 @@ function removeCompletedItems(){
         completedItems[index].remove();
     }
 }
+
+function removeSelectedItem(){
+    let selectedItems = document.querySelectorAll(".selected");
+    for (let index = 0; index < selectedItems.length; index += 1){
+        selectedItems[index].remove();
+    }
+}
+
 button.addEventListener("click", createListItem);
 
 rmAll.addEventListener("click", removeListItems);
 
-rmSelected.addEventListener("click", removeCompletedItems);
+rmCompleted.addEventListener("click", removeCompletedItems);
+
+rmSelected.addEventListener("click", removeSelectedItem);
