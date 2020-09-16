@@ -18,5 +18,9 @@ document.querySelector('#criar-tarefa').addEventListener('click', function newLi
 });
 
 
+document.querySelector('#apaga-tudo').addEventListener('click', function deleteList() {
+  let deleteOl = document.querySelector('#lista-tarefas');
+  deleteOl.innerHTML = '';
+});
 
 
