@@ -25,3 +25,18 @@ for (let i=0; i<listItens.length; i += 1) {
       listItens[i].classList.add('selected');
   }
 }
+
+let selectedItem = '';
+const listItens = document.querySelectorAll('.listItem');
+selectedItem = document.querySelector('.completed');
+
+for (let i=0; i<listItens.length; i += 1) {
+  listItens[i].addEventListener('click', graySelected);
+  function graySelected() {
+      selectedItem = document.querySelector('.selected');
+      selectedItem.classList.remove('selected');
+      listItens[i].classList.add('selected');
+  }
+}
+
+
