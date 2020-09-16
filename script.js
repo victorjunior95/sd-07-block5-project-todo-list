@@ -32,8 +32,15 @@ window.onload = function() {
     /*-------------------------*/
     let todasTarefas = document.querySelectorAll('li');
         for(let index=0; index < todasTarefas.length; index +=1){           
-            todasTarefas[index].addEventListener('click', function () {            
-                this.style.backgroundColor = 'rgb(128, 128, 128)';                           
+            todasTarefas[index].addEventListener('click', function () {
+                let selecionado = document.querySelector('.selecionado');
+                if(selecionado){
+                    selecionado.classList.remove('selecionado');
+                    selecionado.style.backgroundColor ='transparent';
+                } 
+                this.classList.add('selecionado');                  
+                this.style.backgroundColor = 'rgb(128, 128, 128)'; 
+                                          
               });
         }             
     });
