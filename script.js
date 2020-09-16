@@ -35,22 +35,27 @@ window.onload = function () {
 }
 moverParaCima.addEventListener('click', function () {
   const movido = document.querySelector('.selected');
-  if (movido.previousElementSibling === 'null') {
-    alert('Você já está no primeiro item');
-  } else {
-    const cima = movido.previousElementSibling;   
-    cima.before(movido);    
+  if(movido !== 'null') {
+    if (movido.previousElementSibling === 'null') {
+      alert('Você já está no primeiro item');
+    } else {
+      const cima = movido.previousElementSibling;   
+      cima.before(movido);    
+    }
   }
+  
 })
 
 moveParaBaixo.addEventListener('click', function () {
   const movido = document.querySelector('.selected');
-  if (movido.nextElementSibling === 'null') {
-    alert('Você já está no último item');
-  } else {
-    const baixo = movido.nextElementSibling;    
-    movido.before(baixo);    
-  }
+  if(movido !== 'null') {
+    if (movido.nextElementSibling === 'null') {
+      alert('Você já está no último item');
+    } else {
+      const baixo = movido.nextElementSibling;    
+      movido.before(baixo);    
+    }
+  }  
 })
 
 function jaSelecionado() {
