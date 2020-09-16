@@ -9,21 +9,19 @@ function criarLi () {
         let li = document.createElement('li');
         li.innerText = document.querySelector('#texto-tarefa').value;
         li.addEventListener('click', function () {
-            itemSelect = document.querySelector('.selected');            
-            if (itemSelect != null) {                
-                itemSelect.classList.remove('selected');                
+            itemSelect = document.querySelector('.selected');
+            if (itemSelect != null) {
+                itemSelect.classList.remove('selected');
             }
             li.classList.add('selected');
             itemSelect = li;
-            //console.log(itemSelect);           
         });
         li.addEventListener('dblclick', function () {
-            //lineThrough = document.querySelector('.lineThrough');
-            if (li.classList.contains('lineThrough')) {
-                li.classList.remove('lineThrough')
+            if (li.classList.contains('completed')) {
+                li.classList.remove('completed')
             }
             else {
-                li.classList.add('lineThrough');
+                li.classList.add('completed');
             }
         });
         listaTarefas.appendChild(li);
