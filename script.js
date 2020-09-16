@@ -4,17 +4,12 @@ const inputText = document.querySelector('#texto-tarefa');
 
 addButton.addEventListener('click', addTask);
 
-document.querySelectorAll('li').forEach((item) => {
-  document.querySelectorAll('li')[item].addEventListener('click', changeItemBackground);
-});
-
 function addTask() {
   const addedItem = document.createElement('li');
   addedItem.innerText = inputText.value;
+  addedItem.addEventListener('click', function () {
+    addedItem.style.backgroundColor = 'rgb(128,128,128)'
+  });
   taskList.appendChild(addedItem);
   inputText.value = '';
-}
-
-function changeItemBackground() {
-event.
 }
