@@ -15,9 +15,20 @@ window.onload = function() {
         let todasTarefas = document.querySelectorAll('li');
         for(let index=0; index < todasTarefas.length; index +=1){
             localStorage.setItem(index, todasTarefas[index].innerText);
-            todasTarefas[index].addEventListener('click', function () {      
-                this.style.backgroundColor = 'rgb(128, 128, 128)';
-                localStorage.setItem(index, todasTarefas[index]);                               
+            todasTarefas[index].addEventListener('click', function () {
+                
+                //localStorage.setItem(index, todasTarefas[index]); 
+                /*
+                for (let i = 0; i< todasTarefas.length; i+=1){
+                    if(todasTarefas[i].style.backgroundColor){
+                        this.style.backgroundColor="";
+                    }
+                
+                
+                } 
+                 */ 
+                  
+                this.style.backgroundColor = 'rgb(128, 128, 128)';                           
               });
         }
 
@@ -27,11 +38,23 @@ window.onload = function() {
     /*xxxxxxxxxxxxxxxxxxxxxxx*/
     // iterate localStorage
     //https://stackoverflow.com/questions/17745292/how-to-retrieve-all-localstorage-items-without-knowing-the-keys-in-advance
+   
     for (let index = 0; index < localStorage.length; index += 1) {
         let key = localStorage.key(index);
         let value = localStorage.getItem(key);
         let novaTarefa = document.createElement('li');
         novaTarefa.innerText=value;
         listaTarefas.appendChild(novaTarefa);
+        
+        
     }
+    /*-----------------------------------------------------------*/
+    const todasTarefas = document.querySelectorAll('li');
+    for(let index=0; index < todasTarefas.length; index +=1){        
+        todasTarefas[index].addEventListener('click', function () {                     
+            this.style.backgroundColor ='rgb(128, 128, 128)';                           
+          });
+        }
+     
+    
   };
