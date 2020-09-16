@@ -1,6 +1,8 @@
 const inputText = document.querySelector('#texto-tarefa');
 const lista = document.querySelector('#lista-tarefas');
 const adicionar = document.querySelector('#criar-tarefa');
+const botaoLimpa = document.querySelector('#apaga-tudo');
+const botaoCompleto = document.querySelector('#remover-finalizados');
 
 function criaLista(inputText) {
     if (inputText.value === '') {
@@ -50,7 +52,7 @@ function completed(listada) {
 
 }
 
-function disable(listada) {
+function disable(listada) {  
     for (let index = 0; index < listada.length; index += 1) {
         lista.querySelectorAll('li')[index].addEventListener('mouseup' , function () {
             if (lista.querySelectorAll('li')[index].className === 'completed') {
@@ -67,22 +69,24 @@ adicionar.addEventListener('click', function () {
     selected(listada);
     completed(listada);
     disable(listada);
+    
 });
 
-/*for (let index = 0; index < listada.length; index += 1) {
-        lista.querySelectorAll('li')[index].addEventListener('dblclick' , function () {
-            console.log('clique duplo');
-        for (let com = 0; com < listada.length; com += 1) {
-            if (lista.querySelectorAll('li')[com].className === 'completed') {
-                lista.querySelectorAll('li')[com].classList.remove('completed');
-                lista.querySelectorAll('li')[com].style.textDecoration = '';                
-            } 
+botaoLimpa.addEventListener('click', function () {
+    let listada =  document.querySelectorAll('#lista-tarefas li');
+    for (let index = 0; index < listada.length; index += 1) {
+        if (listada.length > 0) {
+            listada[index].remove();
         }
-        if (lista.querySelectorAll('li')[index].className !== 'completed') {
-            lista.querySelectorAll('li')[index].classList.add('completed');
-            lista.querySelectorAll('li')[index].style.textDecoration = 'line-through solid rgb(0, 0, 0)';
-        } 
+        
+    }
+});
 
-        });
-    }        
-*/
+botaoCompleto.addEventListener('click', function () {
+    let listada =  document.querySelectorAll('#lista-tarefas li');
+    for (let index = 0; index < listada.length; index += 1) {
+        if (lista.querySelectorAll('li')[index].className === 'completed') {
+            listada[index].remove();
+        }         
+    }
+});
