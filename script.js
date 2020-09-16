@@ -1,38 +1,31 @@
 window.onload = function() {
-    const btCriarTarefa = document.getElementById('criar-tarefa');
+    const criarTarefa = document.getElementById('criar-tarefa');
     const textoTarefa = document.getElementById('texto-tarefa');
     const listaTarefas = document.getElementById('lista-tarefas');
-    
+    const salvarTarefas = document.getElementById('salvar-tarefas');
+    /*------------------------------------------------------*/
+    salvarTarefas.addEventListener('click', function(){     
+     let todasTarefas = document.querySelectorAll('li');
+     for(let index=0; index < todasTarefas.length; index +=1){
+         localStorage.setItem(index, todasTarefas[index].innerText);         
+     }   
+    });
+    /*------------------------------------------------------*/
 
-    btCriarTarefa.addEventListener('click', function(){
-        let tarefa = textoTarefa.value;
-        let novaTarefa = document.createElement('li');
-        novaTarefa.innerText=tarefa;
-        listaTarefas.appendChild(novaTarefa);
-        textoTarefa.value ="";
-        textoTarefa.focus(); 
-        /*-------------------------*/
-        let todasTarefas = document.querySelectorAll('li');
-        for(let index=0; index < todasTarefas.length; index +=1){
-            localStorage.setItem(index, todasTarefas[index].innerText);
-            todasTarefas[index].addEventListener('click', function () {
-                
-                //localStorage.setItem(index, todasTarefas[index]); 
-                /*
-                for (let i = 0; i< todasTarefas.length; i+=1){
-                    if(todasTarefas[i].style.backgroundColor){
-                        this.style.backgroundColor="";
-                    }
-                
-                
-                } 
-                 */ 
-                  
+    criarTarefa.addEventListener('click', function(){
+     let tarefa = textoTarefa.value;
+     let novaTarefa = document.createElement('li');
+     novaTarefa.innerText=tarefa;
+     listaTarefas.appendChild(novaTarefa);
+     textoTarefa.value ="";
+     textoTarefa.focus(); 
+    /*-------------------------*/
+    let todasTarefas = document.querySelectorAll('li');
+        for(let index=0; index < todasTarefas.length; index +=1){           
+            todasTarefas[index].addEventListener('click', function () {            
                 this.style.backgroundColor = 'rgb(128, 128, 128)';                           
               });
-        }
-
-             
+        }             
     });
 
     /*xxxxxxxxxxxxxxxxxxxxxxx*/
