@@ -51,35 +51,45 @@ add.addEventListener('click', function () {
       list.removeChild(itensClear)
 
     })
+
+
+
+    
+  }
+
+})
+
+
+const down = document.querySelector('#mover-baixo')
+
+down.addEventListener('click', function () {
+  const listSelected = document.querySelectorAll('li')
+  const selected = document.querySelector('.selected')
+  if(listSelected.length === 0 || selected === null){
+    alert('Selecione a tarefa')
+  }else if(selected.nextElementSibling === null){
+    alert('Fim')
+  }else {
+    document.querySelector('ol').insertBefore(selected.nextElementSibling , selected)
+  }
+
   
- 
-    
-    const up = document.querySelector('#mover-cima');
-  up.addEventListener('click', function () {
-    
-    const selected = document.querySelector('.selected')
-      document.querySelector('ol').insertBefore(selected , selected.previousElementSibling)
-    
-
-  })
-
-  const down = document.querySelector('#mover-baixo')
-
-  down.addEventListener('click' ,function (){
-    const selected = document.querySelector('selected')
-    document.querySelector('ol').insertBefore(selected , selected.nextElementSibling)
-  })
-}
-
-})
-const save = document.querySelector('#salvar-tarefas')
-
-save.addEventListener('click', function () {
-  localStorage.clear();
-  let list1 = document.querySelector('#lista-tarefas')
-  localStorage.setItem('Tarefas', list1.innerHTML)
+  
 })
 
+const up = document.querySelector('#mover-cima');
+    up.addEventListener('click', function () {
+       const listSelected = document.querySelectorAll('li')
+      const selected = document.querySelector('.selected')
+      if(listSelected.length === 0 || selected === null){
+        alert('Selecione uma tarefa')
+      } else if( selected.previousElementSibling === null){
+        alert('Fim')
+      } else {
+      document.querySelector('ol').insertBefore(selected, selected.previousElementSibling)
+      }
+
+    })
 
 
 window.onload = function () {
@@ -90,3 +100,14 @@ function Load() {
   document.querySelector('#lista-tarefas').innerHTML = localStorage.getItem('Tarefas')
 
 }
+const save = document.querySelector('#salvar-tarefas')
+
+save.addEventListener('click', function () {
+  localStorage.clear();
+  let list1 = document.querySelector('#lista-tarefas')
+  localStorage.setItem('Tarefas', list1.innerHTML)
+})
+
+
+
+
