@@ -53,7 +53,7 @@ document.querySelector('#apaga-tudo').addEventListener('click', function () {
 document.querySelector('#mover-cima').addEventListener('click', function () {
   const allTask = document.querySelectorAll('li');
   const justSelected = document.querySelector('.selected');
-  if (allTask.length === 0 || allTask.length === 1 || justSelected.previousElementSibling === null) {
+  if (allTask.length === 0 || justSelected.previousElementSibling === null) {
     alert('Não é possível mover para cima');
   } else {
     document.querySelector('ol').insertBefore(justSelected, justSelected.previousElementSibling);
@@ -63,11 +63,11 @@ document.querySelector('#mover-cima').addEventListener('click', function () {
 document.querySelector('#mover-baixo').addEventListener('click', function () {
   const allTask = document.querySelectorAll('li');
   const justSelected = document.querySelector('.selected');
-  if (allTask.length === 0 || allTask.length === 1 || justSelected.nextElementSibling === null) {
+  if (allTask.length === 0 || justSelected.nextElementSibling === null) {
     alert('Não é possível mover para baixo');
-  } else {
+  } else if (justSelected.nextElementSibling !== null) {
     document.querySelector('ol').insertBefore(justSelected.nextElementSibling, justSelected);
   }
 });
-// insertBefore busca o pai e diz: o filho do 1º parâmetro vai mudar de lugar com o filho do 2º parâmetro
-//referência https://developer.mozilla.org/pt-BR/docs/Web/API/Node/insertBefore
+// insertBefore busca o pai e diz: o filho do 1º parâmetro vai mudar de lugar com o filho do 2º
+// referência https://developer.mozilla.org/pt-BR/docs/Web/API/Node/insertBefore
