@@ -4,6 +4,18 @@ window.onload = function() {
     const listaTarefas = document.getElementById('lista-tarefas');
     const salvarTarefas = document.getElementById('salvar-tarefas');
     const apagaTudo = document.getElementById('apaga-tudo');
+    const removerSelecionado = document.getElementById('remover-selecionado');
+    /*------------------------------------------------------*/
+    removerSelecionado.addEventListener('click', function(){     
+        let selecionado = document.querySelector('.selecionado');
+                if(selecionado){
+                    selecionado.remove();                    
+                }
+                  
+       });
+
+    /*------------------------------------------------------*/
+    
     /*------------------------------------------------------*/
     apagaTudo.addEventListener('click', function(){     
         let todasTarefas = document.querySelectorAll('li');
