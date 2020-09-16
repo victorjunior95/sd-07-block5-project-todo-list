@@ -19,7 +19,6 @@ listTask.addEventListener("click", function (event) {
   if (selectedClass === undefined) {
     event.target.classList.add("selected")
     selectedClass = document.getElementsByClassName("selected")[0];
-    console.log(event.target.classList)
   } else if (event.target.classList[0] == "selected") {
     event.target.classList.toggle("selected")
     selectedClass = document.getElementsByClassName("selected")[0];
@@ -28,4 +27,8 @@ listTask.addEventListener("click", function (event) {
     event.target.classList.add("selected")
     selectedClass = document.getElementsByClassName("selected")[0];
   }
+})
+
+listTask.addEventListener("dblclick", function (event) {
+    event.target.classList.toggle("completed")
 })
