@@ -2,6 +2,7 @@ let textoTarefa = document.getElementById("texto-tarefa").value;
 let botaoAdicionar = document.getElementById("criar-tarefa");
 let listaTarefas = document.getElementById("lista-tarefas");
 let itensLista = document.getElementsByClassName("selecionado")
+let itensCompletados = document.getElementsByClassName("completed")
 
 botaoAdicionar.addEventListener("click", function() {
     let textoTarefa = document.getElementById("texto-tarefa").value;
@@ -16,6 +17,9 @@ botaoAdicionar.addEventListener("click", function() {
                 itensLista[index].classList.remove("selecionado")};
             }
             elementoLista.classList.add("selecionado")
+        })
+        elementoLista.addEventListener("dblclick", function() {
+            elementoLista.classList.toggle("completed")
         })
 })
 
