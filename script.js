@@ -13,7 +13,7 @@ function apagarTexto() {
     texto.value = "";
 }
 
-let apagarLista = document.querySelector("#apagar-tudo");
+let apagarLista = document.querySelector("#apaga-tudo");
 apagarLista.addEventListener("click", function() {
     ////daqui pra baixo, a solução foi retirada e adaptada de https://www.w3schools.com/JSREF/met_node_removechild.asp
     let list = document.getElementById("lista-tarefas");
