@@ -1,12 +1,14 @@
 function moveDown() {
   const listTasks = document.querySelector('#lista-tarefas');
   const selectedTask = document.querySelector('.selected');
-  listTasks.insertBefore(selectedTask, selectedTask.nextSibling.nextSibling);
+  if (selectedTask !== null && listTasks.lastChild !== selectedTask) {
+    listTasks.insertBefore(selectedTask, selectedTask.nextSibling.nextSibling);
+  }
 }
 function moveUp() {
   const listTasks = document.querySelector('#lista-tarefas');
   const selectedTask = document.querySelector('.selected');
-  if (listTasks.firstChild !== selectedTask) {
+  if (selectedTask !== null && listTasks.firstChild !== selectedTask) {
     listTasks.insertBefore(selectedTask, selectedTask.previousSibling);
   }
 }
