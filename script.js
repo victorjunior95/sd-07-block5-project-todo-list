@@ -3,6 +3,7 @@ const listaTarefas = document.querySelector('#lista-tarefas');
 const criarTarefaBtn = document.querySelector('#criar-tarefa');
 const apagarTudoBtn = document.querySelector('#apaga-tudo');
 const apagarFinalizadosBtn = document.querySelector('#remover-finalizados');
+const removerSelecionadoBtn = document.querySelector('#remover-selecionado');
 let itemSelect = '';
 let paiLista = '';
 let finalizados = '';
@@ -40,7 +41,12 @@ function apagarFinalizados() {
   finalizados = document.querySelectorAll('.completed');
   for (let i = 0; i < finalizados.length; i += 1) {
     finalizados[i].remove();
-  }    
+  }
 }
 apagarFinalizadosBtn.addEventListener('click', apagarFinalizados);
+function removerSelecionado() {
+  itemSelect = document.querySelector('.selected');
+  itemSelect.remove();
+}
+removerSelecionadoBtn.addEventListener('click', removerSelecionado);
 criarLi();
