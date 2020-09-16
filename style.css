@@ -74,3 +74,12 @@ button {
   float: left;
   width: 50%;
 }
+
+.rodape {
+  background-color: black;
+  border: 2px;
+  color: white;
+  margin-top: 72px;
+  padding: 1px;
+  text-align: center;
+}
