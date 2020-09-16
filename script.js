@@ -24,3 +24,17 @@ document.querySelector('#apaga-tudo').addEventListener('click', function deleteL
 });
 
 
+document.querySelector('#remover-finalizados').addEventListener('click', function deleteCompleted() {
+  let deleteLi = document.querySelector('#lista-tarefas');
+  let completedLi = document.querySelectorAll('.completed');
+    for (let index in completedLi) {
+      deleteLi.removeChild(completedLi[index]);
+    }
+  });
+
+
+
+
+
+
+
