@@ -2,7 +2,10 @@ window.onload = function () {
   const tarefaInput = document.getElementById('texto-tarefa');
   const listaDeTarefas = document.getElementById('lista-tarefas');
   const botaoSalvar = document.getElementById('salvar-tarefas');
+  const areaDeAvisos = document.getElementById('avisos');
+
   let itemClicado = null;
+
   carregaItensSalvos();
 
   tarefaInput.focus();
@@ -12,7 +15,7 @@ window.onload = function () {
   function itemSelecionado() {
     event.stopPropagation();
     const itemSelecionado = event.target;
-    console.log(itemSelecionado.innerHTML)
+    console.log(itemSelecionado)
 
     if (itemSelecionado.nodeName === 'LI') {
       limpaSeleao();
@@ -57,6 +60,7 @@ window.onload = function () {
         itemSelecionado.className = 'completed';
       }
     }
+
     limpaSeleao();
   });
 
@@ -64,6 +68,7 @@ window.onload = function () {
     let itensLista = document.querySelectorAll('ol>li');
     itensLista.forEach((element) => {
       element.style.backgroundColor = 'white';
+      itemClicado = null
     });
   }
 
