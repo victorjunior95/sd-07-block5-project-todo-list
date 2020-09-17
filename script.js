@@ -9,7 +9,6 @@ function changeSelected(event) {
       selected.classList.remove('selected');
     }
   }
-
   event.target.classList.add('selected');
 }
 
@@ -60,3 +59,21 @@ function clearAll() {
 let clearButton = document.getElementById('apaga-tudo');
 
 clearButton.addEventListener('click', clearAll)
+
+//Função para apagar somente tarefas concluidas
+
+function clearCompletedList(){
+  let ol = document.getElementById("lista-tarefas");
+  let completed = document.querySelectorAll('.completed');
+
+  let index = 0;
+
+  while(index < completed.length){
+    ol.removeChild(completed[index]);
+    index += 1;
+  }
+}
+
+let completedListButton = document.getElementById('remover-finalizados');
+
+completedListButton.addEventListener('click', clearCompletedList);
