@@ -1,33 +1,37 @@
-const addTask = document.querySelector('#criar-tarefa');
-const listElementDad = document.querySelector('#lista-tarefas');
-const task = document.querySelector('#texto-tarefa');
-const elementList = document.createElement('li');
+const creatorButton = document.getElementById('criar-tarefa');
+const olList = document.getElementById('lista-tarefas');
 
-addTask.addEventListener('click', function () {
-  pitchTask(task.value);
-  task.value = '';
-});
-
-function taskPerformed(elementList) {
-    elementList.addEventListener('dblclick', function () {
-      if (elementList.classList.contains('complete')) {
-        elementList.classList.remove('complete');
-      } else {
-        elementList.classList.add('complete');
-      }
-    });
-  }
-  
-function pitchTask(task) {
-  elementList.innerText = task;
-  listElementDad.appendChild(elementList);
+function newEventListener(elementList) {
   elementList.addEventListener('click', function () {
     const selectedItem = document.querySelector('.selected');
   if (selectedItem) {
     selectedItem.classList.remove('selected');
-  }
+  } else {
     elementList.classList.add('selected');
+  }});
+}
+
+function completedTask(elementList) {
+  elementList.addEventListener('dblclick', function () {
+    if (elementList.classList.contains('completed')) {
+      elementList.classList.remove('completed');
+    } else {
+      elementList.classList.add('completed');
+    }
   });
-  taskPerformed(elementList);
+}
+
+function launcherTask(task) {
+  const elementList = document.createElement('li');
+  elementList.innerText = task;
+  olList.appendChild(elementList);
+  newEventListener(elementList);
+  completedTask(elementList);
   return elementList;
 }
+
+creatorButton.addEventListener('click', function () {
+  const elementLi = document.getElementById('texto-tarefa');
+  launcherTask(elementLi.value);
+  elementLi.value = '';
+});
