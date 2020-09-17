@@ -54,7 +54,7 @@ removerSelecionadoBtn.addEventListener('click', removerSelecionado);
 function moverUp() {
   itemSelect = document.querySelector('.selected');
   if (itemSelect === null) {
-    alert('Nenhum item selecionado!')
+    alert('Nenhum item selecionado!');
   } else {
     const anteriorElemento = itemSelect.previousSibling;
     if (itemSelect === paiLista.firstChild) {
@@ -68,7 +68,7 @@ moverUpBtn.addEventListener('click', moverUp);
 function moverDown() {
   itemSelect = document.querySelector('.selected');
   if (itemSelect === null) {
-    alert('Nenhum item selecionado!')
+    alert('Nenhum item selecionado!');
   } else {
     const proximoElemento = itemSelect.nextSibling;
     if (itemSelect === paiLista.lastChild) {
