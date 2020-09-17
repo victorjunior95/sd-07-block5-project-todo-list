@@ -57,9 +57,6 @@ const btnMoveUp = document.querySelector('#mover-cima');
         if (selected.previousElementSibling !== null) {
           document.querySelector('ol').insertBefore(selected, selected.previousElementSibling);
         }
-        else {
-          alert('Insira mais uma tarefa');
-        }
       }
     }
   });
@@ -71,9 +68,6 @@ btnMoveDown.addEventListener('click', function () {
       if (toDoList.length !== 0) {
         if (selected.nextElementSibling !== null) {
           document.querySelector('ol').insertBefore(selected.nextElementSibling, selected);
-        }
-        else {
-          alert('Insira mais uma tarefa');
         }
       }
     }
