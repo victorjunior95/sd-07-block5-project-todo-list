@@ -2,7 +2,7 @@ window.onload = function () {
   const tarefaInput = document.getElementById('texto-tarefa');
   const listaDeTarefas = document.getElementById('lista-tarefas');
   const botaoSalvar = document.getElementById('salvar-tarefas');
-  let atual = null;
+  let itemClicado = null;
   carregaItensSalvos();
 
   tarefaInput.focus();
@@ -17,7 +17,7 @@ window.onload = function () {
     if (itemSelecionado.nodeName === 'LI') {
       limpaSeleao();
       alteraCorFundo(itemSelecionado);
-      atual = itemSelecionado;
+      itemClicado = itemSelecionado;
     }
   }
 
@@ -25,20 +25,20 @@ window.onload = function () {
   document.getElementById('mover-cima').addEventListener('click', moverParaCima);
 
   function moveParaBaixo() {
-    let proximo = atual.nextSibling;
+    let proximo = itemClicado.nextSibling;
     if (proximo != null) {
-      listaDeTarefas.insertBefore(atual, proximo);
-      listaDeTarefas.insertBefore(proximo, atual);
+      listaDeTarefas.insertBefore(itemClicado, proximo);
+      listaDeTarefas.insertBefore(proximo, itemClicado);
     } else {
       alert('Fim da lista!');
     }
   }
 
   function moverParaCima(){
-    let anterior = atual.previousElementSibling;
+    let anterior = itemClicado.previousElementSibling;
     if (anterior != null) {
-      listaDeTarefas.insertBefore(anterior, atual);
-      listaDeTarefas.insertBefore(atual, anterior);      
+      listaDeTarefas.insertBefore(anterior, itemClicado);
+      listaDeTarefas.insertBefore(itemClicado, anterior);      
     } else {
       alert('Fim da lista!');
     }
@@ -103,5 +103,8 @@ window.onload = function () {
     console.log(botaoSalvar.innerHTML);
   }
 
+  document.getElementById('remover-selecionado').addEventListener('click', function(){
+    itemClicado.remove();
+  });
 
 }
