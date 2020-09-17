@@ -64,7 +64,7 @@ const btnMoveDown = document.querySelector('#mover-baixo');
     const selected = document.getElementsByClassName('selected')[0];
     if (selected !== null) {
     if (selected.nextSibling !== null) {
-      document.querySelector('ol').insertBefore(selected.previousElementSibling, selected);
+      document.querySelector('ol').insertBefore(selected.nextElementSibling, selected);
       }
     }
   });
