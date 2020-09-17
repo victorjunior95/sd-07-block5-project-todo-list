@@ -24,12 +24,7 @@ orderList.addEventListener("click" , function(event){
     
 });
 orderList.addEventListener('dblclick', function (event) {
-    let register = event.target;
-    if(register.classList.contains("completed")){
-        register.classList.add("notCompleted");
-    } else {
-        register.classList.add("completed"); 
-    }
+    event.target.classList.toggle("completed");
 });
 
 btErase.addEventListener("click", function(){
@@ -37,10 +32,10 @@ btErase.addEventListener("click", function(){
     for(let i = 0; i < orderList.length; i += 1){
         orderList[i].remove();
     }
-})
+});
 btFinalized.addEventListener("click", function(){
     let orderList = document.querySelectorAll(".completed");
     for(let i = 0; i < orderList.length; i += 1){
         orderList[i].remove();
     }
-})
+});
