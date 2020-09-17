@@ -61,6 +61,7 @@ buttonSaveTaskList.addEventListener('click', function () {
 });
 
 function uncheckedTaskListItem(position) {
+  taskListItens = document.querySelectorAll('li');
   for (let index = 0; index < taskListItens.length; index += 1) {
     if (taskListItens[index] !== position) {
       taskListItens[index].classList.remove('selected');
