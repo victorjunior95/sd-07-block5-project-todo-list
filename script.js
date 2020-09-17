@@ -9,16 +9,21 @@ function makeTaskList() {
   li.innerText = inputTask.value;
   orderedList.appendChild(li);
   inputTask.value = '';
+  li.addEventListener('click', setCor);
+}  
 
+
+function setCor() {
   const classLi = document.querySelector('#lista-tarefas').children;
-  for (let i = 0; i < classLi.length; i += 1) {
-    const sel = classLi[i];
-    function setCor() {
-      sel.style.background = 'rgb(128, 128, 128)';
+  for ( li of classLi) {
+    if (li.classList.contains('selected')){
+      li.classList.remove('selected');
     }
-    sel.addEventListener('click', setCor);
   }
+      // this.classList.add('selected');
+      this.className += ' selected';     
 }
+
 
 function eraseAll() {
   while (orderedList.firstChild) {
