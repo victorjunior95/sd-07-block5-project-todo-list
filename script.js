@@ -63,7 +63,7 @@ btnNewItem.addEventListener('click', function () {
     const selected = document.getElementsByClassName('selected')[0];
     if (selected !== null) {
     if (selected.nextSibling !== null) {
-      selected.before(selected.nextSibling)
+      selected.parentElement.insertBefore(selected, selected.nextSibling)
     }
   }
   });
