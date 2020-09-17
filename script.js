@@ -10,18 +10,18 @@ function makeTaskList() {
   orderedList.appendChild(li);
   inputTask.value = '';
   li.addEventListener('click', setCor);
-}  
+}
 
 
 function setCor() {
   const classLi = document.querySelector('#lista-tarefas').children;
-  for ( li of classLi) {
-    if (li.classList.contains('selected')){
+  for (let li of classLi) {
+    if (li.classList.contains('selected')) {
       li.classList.remove('selected');
     }
   }
       // this.classList.add('selected');
-      this.className += ' selected';     
+  this.className += ' selected';
 }
 
 
