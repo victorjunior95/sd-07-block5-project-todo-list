@@ -2,6 +2,7 @@ const makeTaskButton = document.querySelector('#criar-tarefa');
 const inputTask = document.querySelector('#texto-tarefa');
 const orderedList = document.querySelector('#lista-tarefas');
 const eraseAllButton = document.querySelector('#apaga-tudo');
+/* eslint no-restricted-syntax: ["error", "FunctionExpression", "WithStatement", "BinaryExpression[operator='in']"] */
 
 function setCor() {
   const classLi = document.querySelector('#lista-tarefas').children;
@@ -22,10 +23,6 @@ function makeTaskList() {
   inputTask.value = '';
   li.addEventListener('click', setCor);
 }
-
-
-
-
 
 function eraseAll() {
   while (orderedList.firstChild) {
