@@ -1,5 +1,6 @@
 const buttonAddTarefa = document.querySelector('#criar-tarefa');
 const buttonDeletaTarefas = document.querySelector('#apaga-tudo');
+const buttonDeletaTarefasConcluidas = document.querySelector('#remover-finalizados');
 
 function finishItem(object) {
   const tarefa = object.target;
@@ -18,14 +19,22 @@ function selectItem(object) {
   tarefa.classList.add('selected');
 }
 
+buttonDeletaTarefasConcluidas.addEventListener('click', () => {
+  const tarefas = document.querySelectorAll('.completed');
+  const listTarefa = document.querySelector('#lista-tarefas');
+  for (let i = 0; i < tarefas.length; i += 1) {
+    listTarefa.removeChild(tarefas[i]);
+  }
+});
+
+
 buttonDeletaTarefas.addEventListener('click', () => {
   const tarefas = document.querySelectorAll('.item');
   const listTarefa = document.querySelector('#lista-tarefas');
   for (let i = 0; i < tarefas.length; i += 1) {
     listTarefa.removeChild(tarefas[i]);
   }
-
-})
+});
 
 buttonAddTarefa.addEventListener('click', () => {
   const listTarefa = document.querySelector('#lista-tarefas');
