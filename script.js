@@ -1,27 +1,45 @@
 window.onload = function() {
 
-  const buttonAd = document.querySelector('#criar-tarefa').addEventListener('click', newItem);
-  let complete = [];
+  let listAssignment = document.querySelector('#lista-tarefas');
 
-  function newItem(){
+  const buttonAd = document.querySelector('#criar-tarefa').addEventListener('click', function(){
 
-      let listAssignment = document.querySelector('#lista-tarefas');
-      let textlist = document.querySelector('#texto-tarefa').value;
-      let itemList = document.createElement('li');
-      itemList.textContent = textlist;
-      listAssignment.appendChild(itemList);
-      complete.push(itemList);
+  let textlist = document.querySelector('#texto-tarefa').value;
+  let itemList = document.createElement('li');
+  itemList.textContent = textlist;
+  listAssignment.appendChild(itemList);
+  document.querySelector('#texto-tarefa').value = '';
 
-      for (let i = 0; i < complete.length; i++) {
+  itemList.addEventListener('click', function(){
 
-         complete[i].addEventListener('click', function(element){
-               element.target.style.backgroundColor = 'rgb(128, 128, 128)';
-         })
+      let selected = document.querySelector('.selected');
+      selected ? selected.classList.remove('selected') : selected;
+      itemList.classList.add('selected')
 
-      }
+   })
 
-      document.querySelector('#texto-tarefa').value = '';
-   }
+  itemList.addEventListener('dblclick', function(e){
+
+         if(e.target.classList.contains('completed')){
+
+            itemList.classList.remove('completed');
+
+          }else{
+
+            itemList.classList.add('completed');
+
+          }
+        })
+
+    })
+
+btEmpty = document.querySelector('#apaga-tudo').addEventListener('click', function(){
+
+    if(listAssignment.children.length > 0){
+       listAssignment.innerHTML = '';
+    }
+
+})
 
 
 }
