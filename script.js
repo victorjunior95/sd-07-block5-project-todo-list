@@ -15,16 +15,6 @@ function setColorBackgroundLi() {
       // this.classList.add('selected');
   this.className += ' selected';
 }
-function setlinethrough() {
-  const classLi = document.querySelector('#lista-tarefas').children;
-  for (const li of classLi) {
-    if (li.classList.contains('completed')) {
-      this.classList.remove('completed');
-    }else{
-      this.classList.add('completed');
-    }
-  }
-}
 
 function makeTaskList() {
   const li = document.createElement('li');
@@ -33,7 +23,15 @@ function makeTaskList() {
   orderedList.appendChild(li);
   inputTask.value = '';
   li.addEventListener('click', setColorBackgroundLi);
-  li.addEventListener('dblclick', setlinethrough);
+
+  function setlinethrough() {
+      if (li.classList.contains('completed')) {
+        li.classList.remove('completed');
+      }else{
+        li.classList.add('completed');
+      }
+    }
+    li.addEventListener('dblclick', setlinethrough);
 }
 
 function eraseAll() {
