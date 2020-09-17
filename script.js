@@ -4,6 +4,7 @@ const adicionar = document.querySelector('#criar-tarefa');
 const botaoLimpa = document.querySelector('#apaga-tudo');
 const botaoCompleto = document.querySelector('#remover-finalizados');
 const botaoSalvar = document.querySelector('#salvar-tarefas');
+const botaoRemover = document.querySelector('#remover-selecionado');
 
 function criaLista(inputText) {
     if (inputText.value === '') {
@@ -93,3 +94,12 @@ function render() {
         selected();
     }
 }
+
+botaoRemover.addEventListener('click', function () {
+    let listada =  document.querySelectorAll('#lista-tarefas li');
+    for (let index = 0; index < listada.length; index += 1) {
+        if (listada[index].className === 'selected') {
+            listada[index].remove(document.getElementsByClassName('selected'));                  
+        }
+    }
+});
