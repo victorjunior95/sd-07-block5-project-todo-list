@@ -9,6 +9,7 @@ createTaskBtn.addEventListener('click', function(){
   toDoList.appendChild(item);
   taskName.value = '';
   taskName.focus();
+  
   item.addEventListener('click', function(){
     let selectedItem = document.querySelector('.selected');
     if (selectedItem) {
@@ -17,4 +18,10 @@ createTaskBtn.addEventListener('click', function(){
     item.classList.add('selected');
     // console.log(item)
   });
+
+  item.addEventListener('dblclick', function(){
+    let completedItem = document.querySelector('.completed');
+    item.classList.add('completed');
+  })
+
 });
