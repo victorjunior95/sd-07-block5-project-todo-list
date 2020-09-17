@@ -1,19 +1,20 @@
 // Add a li in an ol and reset input text value;
 const textInput = document.getElementById('texto-tarefa');
 const addBtn = document.getElementById('criar-tarefa');
-let orderedList = document.getElementById('lista-tarefas');
+let orderedList = document.querySelector('.lista-tarefas');
 
 addBtn.addEventListener('click', function () {
-    let elementLi = document.createElement('li');
-    elementLi.innerText = textInput.value;
-    orderedList.appendChild(elementLi);
+    let listItems = document.createElement('li');
+    listItems.innerText = textInput.value;
+    orderedList.appendChild(listItems);
     
     textInput.value = '';
+
+    listItems.addEventListener('click', function () {
+        let selected = document.querySelector('.selected');
+            listItems.classList.toggle('selected')
+    })
 });
-
-
-
-
 
 // Button delete all list's items
 let deleteAllBtn = document.getElementById('apaga-tudo');
