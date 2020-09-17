@@ -27,13 +27,13 @@ buttonDeletaTarefasConcluidas.addEventListener('click', () => {
   }
 });
 
-
 buttonDeletaTarefas.addEventListener('click', () => {
   const tarefas = document.querySelectorAll('.item');
   const listTarefa = document.querySelector('#lista-tarefas');
   for (let i = 0; i < tarefas.length; i += 1) {
     listTarefa.removeChild(tarefas[i]);
   }
+  return this;
 });
 
 buttonAddTarefa.addEventListener('click', () => {
@@ -49,6 +49,5 @@ buttonAddTarefa.addEventListener('click', () => {
   tarefa.addEventListener('dblclick', (object) => finishItem(object));
   listTarefa.appendChild(tarefa);
   textoTarefa.value = '';
+  return this;
 });
-
-
