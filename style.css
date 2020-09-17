@@ -9,7 +9,15 @@ body {
 h2 {
 	text-align: center;
 }
-
+#remover-selecionado {
+	margin-left: 1px ;
+}
+#remover-finalizados {
+	margin-left: -10x;
+}
+#apaga-tudo{
+	margin-left: -50px;
+}
 #funcionamento {
 	text-align: center;
 }
@@ -18,12 +26,7 @@ h2 {
 	margin-left: 80px;
 }
 ol {
-	margin-left: 10px;
-	background-color:rgb(128,128,128);
-}
-#apaga-tudo {
-	display: inline-block;
-	margin-left: 25px;
+	margin-left: -65px;
 }
 .wrapper {
 	display: inline-block;

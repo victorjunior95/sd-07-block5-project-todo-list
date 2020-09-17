@@ -18,6 +18,7 @@ function criarLi() {
       }
       li.classList.add('selected');
       itemSelect = li;
+      event.target.style.backgroundColor = 'rgb(128, 128, 128)';
     });
     li.addEventListener('dblclick', function () {
       if (li.classList.contains('completed')) {
