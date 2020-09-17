@@ -23,6 +23,10 @@ document.addEventListener('click', function (event) {
 
 document.addEventListener('dblclick', function (event) {
   if (event.target.classList.contains('ordered-list')) {
-    event.target.classList.add('completed');
+    if (event.target.classList.contains('completed')) {
+      event.target.classList.remove('completed');
+    } else {
+        event.target.classList.add('completed');
+    }
   }
 });
