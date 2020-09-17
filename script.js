@@ -44,7 +44,7 @@ lista.addEventListener("click", function(event) {
     }
 });
 
-let apagarItem = document.querySelector("#salvar-tarefas");
+let apagarItem = document.querySelector("#remover-finalizados");
 
 apagarItem.addEventListener("click", function() {
     let list = document.getElementsByClassName("selecionado");
