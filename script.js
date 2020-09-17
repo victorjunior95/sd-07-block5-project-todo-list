@@ -20,10 +20,10 @@ function createJob() {
   });
 }
 
-function createLi(valueLi) {
+function createLi(valueLi, liClass) {
   let li = document.createElement("li");
   list.appendChild(li);
-  li.classList.add("li");
+  li.classList.add("li", liClass);
   li.innerText = valueLi;
   clearInput();
   // console.log(li);
@@ -86,12 +86,10 @@ function saveJob() {
         text: li[i].innerText,
         classList: li[i].classList.contains("completed"),
       };
-      localStorage.setItem(i, object.text);
 
-      // if (li[i].classList.contains("completed")) {
-      // Armazei minha classList no Objeto, mas como vou armazenar outro valor no storage ?
-      // }
-      console.log(object.classList);
+      let stringStorage = JSON.stringify(object);
+      localStorage.setItem(i, stringStorage);
+      // console.log(localStorage.getItem(i));
     }
   });
 }
@@ -100,7 +98,13 @@ function updateList() {
   let localStorageLength = localStorage.length;
 
   for (let i = 0; i < localStorageLength; i += 1) {
-    createLi(localStorage.getItem(i));
+    let objectStorage = JSON.parse(localStorage.getItem(i));
+    
+    if (objectStorage.classList == true) {
+      createLi(objectStorage.text, "completed");
+    } else {
+      createLi(objectStorage.text);
+    }
   }
 }
 
@@ -113,14 +117,9 @@ function moveUp() {
     for (let i = 0; i < li.length; i += 1) {
       if (
         li[i].style.backgroundColor == "rgb(128, 128, 128)" &&
-        li[i] < li[1]
+        li[i].previousElementSibling !== null
       ) {
-        li[i] = li[0];
-      } else if (
-        li[i].style.backgroundColor == "rgb(128, 128, 128)" &&
-        li[i] >= li[1]
-      ) {
-        list.insertBefore(li[i], li[i - 1]);
+        list.insertBefore(li[i], li[i].previousElementSibling);
       }
     }
   });
@@ -135,14 +134,9 @@ function moveDown() {
     for (let i = 0; i < li.length; i += 1) {
       if (
         li[i].style.backgroundColor == "rgb(128, 128, 128)" &&
-        li[i] > li[li.length - 2]
+        li[i].nextElementSibling !== null
       ) {
-        li[i] = li[li.length - 1];
-      } else if (
-        li[i].style.backgroundColor == "rgb(128, 128, 128)" &&
-        li[i] < li[li.length - 1]
-      ) {
-        list.insertBefore(li[i], li[i + 1].nextSibling);
+        list.insertBefore(li[i].nextElementSibling, li[i]);
       }
     }
   });
