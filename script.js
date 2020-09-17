@@ -1,5 +1,6 @@
 const botaoApagarLista = document.querySelector("#apaga-tudo");
 const botaoRemoverSelecionado = document.querySelector("#remover-selecionado");
+const botaoRemoverFinalizados = document.querySelector("#remover-finalizados");
 const buttoncriarTarefa = document.querySelector("#criar-tarefa");
 let textoTarefa = document.querySelector("#texto-tarefa");
 var listOl = document.querySelector('ol');
@@ -52,19 +53,13 @@ function apagarTudo() {
     }
 }
 
-
-
-/*
-//Adicione um botão com id="remover-selecionado" que, quando clicado, remove o item selecionado
-const removerSelecionado = document.querySelector("#remover-selecionado");
-function removecolorListSelect () {
-    removerSelecionado.addEventListener("click", () => {
-        li.remove();
-    });
+botaoRemoverFinalizados.addEventListener('click', apagarFinalizados);
+function apagarFinalizados () {
+    const finalizados = document.querySelectorAll(".completed");
+    for (let index = 0; index < finalizados.length; index += 1) {
+        finalizados[index].remove();
+    }    
 }
-*/
-//id `remover-finalizados` elementos completos
-
 
 window.onload = () => {
     InputTextField ()
