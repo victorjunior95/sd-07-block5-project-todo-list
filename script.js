@@ -26,10 +26,10 @@ function makeTaskList() {
 
   function setlinethrough() {
     if (li.classList.contains('completed')) {
-        li.classList.remove('completed');
-      } else {
-        li.classList.add('completed');
-      }
+      li.classList.remove('completed');
+    } else {
+      li.classList.add('completed');
+    }
   }
   li.addEventListener('dblclick', setlinethrough);
 }
