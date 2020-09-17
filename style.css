@@ -106,12 +106,12 @@ li:hover {
 }
 
 .selected {
-  background-color: rgb(128, 128, 128);
+  background-color: grey;
   color: white;
 }
 
 .completed {
-  text-decoration: line-through solid rgb(0, 0, 0);
+  text-decoration: line-through solid black;
 }
 
 footer {

@@ -13,9 +13,28 @@ let completedTaskListItens = document.querySelectorAll('.completed');
 let selectedItem = document.querySelector('.selected');
 let inputValue = '';
 
+// https://github.com/tryber/sd-07-block5-project-todo-list/pull/14/files (Thiago Pederzolli) (11 - 18 | 74 - 88);
+
 window.onload = function () {
-  taskList.innerHTML = localStorage.getItem('saveTaskList');
+  const storageLength = localStorage.getItem('storageLength');
+  for (let index = 0; index < storageLength; index += 1) {
+    let newTaskListItem = document.createElement('li');
+    newTaskListItem.innerText = localStorage.getItem(`item${index}`);
+    newTaskListItem.className = localStorage.getItem(`itemClass${index}`);
+    taskList.appendChild(newTaskListItem);
+    selectItem(newTaskListItem);
+    checkItem(newTaskListItem);
+  }
 };
+
+buttonSaveTaskList.addEventListener('click', function (event) {
+  event.preventDefault();
+  localStorage.setItem('storageLength', taskListItens.length);
+  for (let index = 0; index < taskListItens.length; index += 1) {
+    localStorage.setItem(`item${index}`, taskListItens[index].innerText);
+    localStorage.setItem(`itemClass${index}`, taskListItens[index].className);
+  }
+});
 
 buttonRemoveSelectedItem.addEventListener('click', function (event) {
   event.preventDefault();
@@ -61,6 +80,21 @@ buttonClearList.addEventListener('click', function (event) {
   taskList.innerText = '';
 });
 
+function selectItem(newTaskListItem) {
+  newTaskListItem.addEventListener('click', function (event) {
+    newTaskListItem.classList.add('selected');
+    let position = event.target;
+    uncheckedTaskListItem(position);
+  });
+}
+
+function checkItem(newTaskListItem) {
+  newTaskListItem.addEventListener('dblclick', function () {
+    newTaskListItem.classList.contains('completed') ? newTaskListItem.classList.remove('completed') : newTaskListItem.classList.add('completed');
+    completedTaskListItens = document.querySelectorAll('.completed');
+  });
+}
+
 function createListItem() {
   let newTaskListItem = document.createElement('li');
   newTaskListItem.innerText = inputValue;
@@ -68,17 +102,10 @@ function createListItem() {
   input.value = '';
   taskListItens = document.querySelectorAll('li');
 
-  newTaskListItem.addEventListener('click', function (event) {
-    newTaskListItem.classList.add('selected');
-    let position = event.target
-    uncheckedTaskListItem(position);
-  });
-
-  newTaskListItem.addEventListener('dblclick', function () {
-    newTaskListItem.classList.contains('completed') ? newTaskListItem.classList.remove('completed') : newTaskListItem.classList.add('completed');
-    completedTaskListItens = document.querySelectorAll('.completed');
-  });
+  selectItem(newTaskListItem);
+  checkItem(newTaskListItem);
 }
+
 
 buttonCreateTask.addEventListener('click', function (event) {
   event.preventDefault();
