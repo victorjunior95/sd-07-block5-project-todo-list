@@ -5,6 +5,8 @@ const botaoLimpa = document.querySelector('#apaga-tudo');
 const botaoCompleto = document.querySelector('#remover-finalizados');
 const botaoSalvar = document.querySelector('#salvar-tarefas');
 const botaoRemover = document.querySelector('#remover-selecionado');
+const botaoCima = document.querySelector('#mover-cima');
+const botaoBaixo = document.querySelector('#mover-baixo');
 
 function criaLista(inputText) {
     if (inputText.value === '') {
@@ -102,4 +104,43 @@ botaoRemover.addEventListener('click', function () {
             listada[index].remove(document.getElementsByClassName('selected'));                  
         }
     }
+});
+
+botaoCima.addEventListener('click', function () {
+    let listada =  document.querySelectorAll('#lista-tarefas li');
+    for (let index = 0; index < listada.length; index += 1) {
+        if (listada[index].className === 'selected') {
+            if (listada[index].previousElementSibling === null) {
+                alert("Você é o primeiro!");
+            } else {
+                listada[index].previousElementSibling.before(listada[index]);  
+            }                           
+        }
+    }
+});
+
+/*botaoBaixo.addEventListener('click', function () {
+    let listada =  document.querySelectorAll('#lista-tarefas li');
+    for (let index = 0; index < listada.length; index += 1) {
+        if (listada[index].className === 'selected') {
+            if (listada[index].nextElementSibling === null) {
+                alert("Você é o ultimo!");
+            } else {
+                listada[index].nextElementSibling.before(listada[index]);  
+            }                           
+        }
+    }
+});*/
+
+botaoBaixo.addEventListener('click', function () {
+    let move =  document.querySelector('.selected');
+         if(move !== null) {
+            if (move.nextElementSibling === null) {
+                alert("Você é o ultimo!");
+            } else {
+                let baixo = move.nextElementSibling;  
+                move.before(baixo);
+            }
+         }
+        
 });
