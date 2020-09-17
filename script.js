@@ -86,7 +86,7 @@ botaoSalvar.addEventListener('click', (event) => {
 window.onload = render;
 function render() {    
     let listTodo = JSON.parse(localStorage.getItem('lista-todos'));
-    if (listTodo !== null || listTodo !== undefined) {
+    if (listTodo !== null) {
         for (let index = 0; index < listTodo.length; index += 1) {
             lista.innerHTML += listTodo[index];
         }
