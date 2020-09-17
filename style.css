@@ -18,6 +18,7 @@ main {
   display: grid;
   font-family: Ubuntu Mono, monospace;
   grid-template-columns: 780px 499px;
+  margin-bottom: 20px;
 }
 
 section {
@@ -54,7 +55,6 @@ input {
 input::placeholder {
   font-family: Ubuntu, sans-serif;;
   text-align: center;
-  
 }
 
 button {
@@ -115,5 +115,19 @@ li:hover {
 }
 
 footer {
-  clear: both;
+  border-top: 20px dotted rgb(239, 241, 243);
+  text-align: center;
+}
+
+h3 {
+  color: rgb(215, 122, 97);
+  font-family: Ubuntu Mono, monospace;
+}
+
+.social-media {
+  background-color: rgb(239, 241, 243);
+  margin: auto;
+  padding: 10px;
+  width: 300px;
+  vertical-align: middle;
 }
