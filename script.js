@@ -1,10 +1,10 @@
-const botaoApagar = document.querySelector('#apaga-tudo');
 const botaoSalvar = document.querySelector('#salvar-tarefas');
-const botaoTexto = document.querySelector('#criar-tarefa');
+const criarTarefa = document.querySelector('#criar-tarefa');
 const caixaTexto = document.querySelector('#texto-tarefa');
 const lista = document.querySelector('#lista-tarefas');
-const removerFinalizado = document.querySelector('#remover-finalizados');
 const removerSelecionado = document.querySelector('#remover-selecionado');
+const removerFinalizado = document.querySelector('#remover-finalizados');
+const removerTudo = document.querySelector('#apaga-tudo');
 const paraCima = document.querySelector('#mover-cima');
 const paraBaixo = document.querySelector('#mover-baixo');
 let itens = document.querySelectorAll('li');
@@ -42,20 +42,21 @@ function novoItemLista(texto) {
   novoItemDoubleClick(novoItem);
 }
 
-botaoTexto.addEventListener('click', () => {
-  novoItemLista(caixaTexto.value);
-  caixaTexto.value = '';
-});
-
 window.addEventListener('load', () => {
   if (localStorage.getItem('listagem') !== null) {
     lista.innerHTML = localStorage.getItem('listagem');
     itens = document.querySelectorAll('li');
+
     itens.forEach((item) => {
       novoItemClick(item);
       novoItemDoubleClick(item);
     });
   }
+});
+
+criarTarefa.addEventListener('click', () => {
+  novoItemLista(caixaTexto.value);
+  caixaTexto.value = '';
 });
 
 botaoSalvar.addEventListener('click', () => {
@@ -78,7 +79,7 @@ removerFinalizado.addEventListener('click', () => {
   });
 });
 
-botaoApagar.addEventListener('click', () => {
+removerTudo.addEventListener('click', () => {
   itens.forEach((item) => {
     lista.removeChild(item);
   });
