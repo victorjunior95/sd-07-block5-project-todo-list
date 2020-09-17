@@ -1,0 +1,19 @@
+button {
+    width: 140px;
+}
+
+div {
+    padding: 20px;
+}
+
+header {
+    padding: 20px;
+}
+
+.selected {
+    background-color: rgb(128, 128, 128);
+}
+
+.completed {
+    text-decoration: line-through;
+}
