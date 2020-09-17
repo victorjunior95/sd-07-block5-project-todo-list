@@ -1,37 +1,37 @@
-header {
-    background-color: rgba(127, 255, 212, 0.3);
-    font-size: 50px;
-    color: rgb(97, 89, 89);
-}
-
-#lista-tarefas {
-    display: inline-block;
-}
-
-p {
-    font-size: 20px;
-    color: rgb(97, 89, 89);
-}
-
-body {
-    background-image: url("https://i.zst.com.br/images/as-4-melhores-cadeiras-para-escritorio-em-2019-photo745722425-44-7-37.jpg");
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-#apaga-tudo {
-    display: inline-block;
-}
-
-.completed {
-    text-decoration: line-through;
-}
-
-.selecionado {
-    background-color: background-color: rgb(128, 128, 128)
-}
-
-#fundobranco {
-    width: 60%;
-    background-color: honeydew;
-}
+    header {
+        background-color: rgba(127, 255, 212, 0.3);
+        font-size: 50px;
+        color: rgb(97, 89, 89);
+    }
+    
+    #lista-tarefas {
+        display: inline-block;
+    }
+    
+    p {
+        font-size: 20px;
+        color: rgb(97, 89, 89);
+    }
+    
+    body {
+        background-image: url("https://i.zst.com.br/images/as-4-melhores-cadeiras-para-escritorio-em-2019-photo745722425-44-7-37.jpg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    
+    #apaga-tudo {
+        display: inline-block;
+    }
+    
+    .completed {
+        text-decoration: line-through;
+    }
+    
+    .selecionado {
+        background-color: gray;
+    }
+    
+    #fundobranco {
+        width: 60%;
+        background-color: honeydew;
+    }
