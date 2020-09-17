@@ -46,6 +46,18 @@ btnNewItem.addEventListener('click', function () {
       }
     }
   });
+// trata evento mover item da lista para cima
+  const btnMoveUp = document.querySelector('#mover-cima');
+  btnMoveUp.addEventListener('click', function () {
+    let allList = document.querySelector('ol').innerHTML;
+    for (let index = 0; index < allList.length; index += 1) {
+      const nListSelected = allList[index];
+      if (nListSelected.classList.contains('selected')) {
+        nListSelected.insertBefore(nListSelected, nListSelected.previousElementSibling);
+      }
+    }
+  });
+
 // trata evento salvar lista
   const btnSaveList = document.querySelector('#salvar-tarefas');
   btnSaveList.addEventListener('click', function () {
@@ -53,13 +65,13 @@ btnNewItem.addEventListener('click', function () {
     const allItens = document.querySelector('ol').innerHTML;
     localStorage.setItem('finalList', allItens);
   });
-// recuperar lista salva
 });
 // trata evento limpar toda a lista
 const btnClearList = document.querySelector('#apaga-tudo');
 btnClearList.addEventListener('click', function () {
   toDoList.innerHTML = '';
 });
+// recuperar lista salva
 window.onload = function () {
   document.querySelector('ol').innerHTML = localStorage.getItem('finalList');
 };
