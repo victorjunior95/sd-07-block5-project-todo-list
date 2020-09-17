@@ -24,11 +24,11 @@ function uncheckedTaskListItem(position) {
 
 function checkItem(newTaskListItem) {
   newTaskListItem.addEventListener('dblclick', function () {
-    if(newTaskListItem.classList.contains('completed')) {
+    if (newTaskListItem.classList.contains('completed')) {
       newTaskListItem.classList.remove('completed');
     } else {
       newTaskListItem.classList.add('completed');
-    } 
+    }
     completedTaskListItens = document.querySelectorAll('.completed');
   });
 }
@@ -70,6 +70,8 @@ buttonRemoveSelectedItem.addEventListener('click', function (event) {
   taskList.removeChild(selectedItem);
 });
 
+// https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/before;
+
 buttonItemMoveUp.addEventListener('click', function (event) {
   event.preventDefault();
   selectedItem = document.querySelector('.selected');
@@ -80,6 +82,8 @@ buttonItemMoveUp.addEventListener('click', function (event) {
     }
   }
 });
+
+// https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/after;
 
 buttonItemMoveDown.addEventListener('click', function (event) {
   event.preventDefault();
