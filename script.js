@@ -2,6 +2,7 @@ let createTaskBtn = document.getElementById('criar-tarefa');
 let toDoList = document.getElementById('lista-tarefas');
 let taskName = document.getElementById('texto-tarefa');
 let clearBtn = document.getElementById('apaga-tudo');
+let removeCompletedBtn = document.getElementById('remover-finalizados');
 taskName.focus();
 
 createTaskBtn.addEventListener('click', function(){
@@ -30,6 +31,11 @@ createTaskBtn.addEventListener('click', function(){
   clearBtn.addEventListener('click', function(){
     toDoList.innerText = '';
   })
-
+  
+  removeCompletedBtn.addEventListener('click', function(){
+    if (item.classList.contains('completed')){
+      toDoList.removeChild(item);
+    }
+  })
 })
 
