@@ -53,7 +53,7 @@ const btnMoveUp = document.querySelector('#mover-cima');
   btnMoveUp.addEventListener('click', function () {
     const selected = document.getElementsByClassName('selected')[0];
     if (selected) {
-      if (toDoList.length) {
+      if (toDoList.length !== 0) {
         if (selected.previousElementSibling !== null) {
           document.querySelector('ol').insertBefore(selected, selected.previousElementSibling);
         }
@@ -65,7 +65,7 @@ const btnMoveDown = document.querySelector('#mover-baixo');
 btnMoveDown.addEventListener('click', function () {
     const selected = document.getElementsByClassName('selected')[0];
     if (selected) {
-      if (toDoList.length) {
+      if (toDoList.length !== 0) {
         if (selected.nextElementSibling !== null) {
           document.querySelector('ol').insertBefore(selected.nextElementSibling, selected);
         }
