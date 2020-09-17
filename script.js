@@ -38,8 +38,7 @@ function selected() {
             }                              
         });
     }
-}        
-
+}
 
 lista.addEventListener('dblclick' , (event) => {
     if (event.target.className === 'completed') {
@@ -87,8 +86,10 @@ botaoSalvar.addEventListener('click', (event) => {
 window.onload = render;
 function render() {    
     let listTodo = JSON.parse(localStorage.getItem('lista-todos'));
-    for (let index = 0; index < listTodo.length; index += 1) {
-        lista.innerHTML += listTodo[index];
+    if (listTodo.length > 0) {
+        for (let index = 0; index < listTodo.length; index += 1) {
+            lista.innerHTML += listTodo[index];
+        }
+        selected();
     }
-    selected();
 }
