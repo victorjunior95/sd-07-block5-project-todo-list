@@ -24,17 +24,26 @@ buttonComand.addEventListener("click", function (){
     });
     let buttonDone = document.getElementById("remover-finalizados")
     buttonDone.addEventListener("click", function () {
-        const listItens = document.querySelectorAll('li')
-        for (let i = 0; i < listItens.length; i += 1) {
-            const listCheck = listItens[i]
-        if (listCheck.classList.contains("completed")) {
-            organizedList.removeChild(listCheck)
+        const listDone = document.querySelectorAll('li')
+        for (let i = 0; i < listDone.length; i += 1) {
+            const listOk = listDone[i]
+        if (listOk.classList.contains("completed")) {
+            organizedList.removeChild(listOk)
         }
     }
 })
+let buttonSave = document.getElementById("salvar-tarefas");
+buttonSave.addEventListener("click", function () {
+    localStorage.clear;
+    let remanigList = document.querySelector("ol").innerHTML
+    localStorage.setItem("undoneList", remanigList)
 })
+})
+
 let buttonClear = document.getElementById("apaga-tudo")
 buttonClear.addEventListener("click", function () {
     organizedList.innerHTML = "";
-       
 })
+window.onload = function () {
+    document.querySelector("ol").innerHTML = localStorage.getItem("undoneList")
+}
