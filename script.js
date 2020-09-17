@@ -8,6 +8,7 @@ window.onload = function () {
   saveJob();
   moveUp();
   moveDown();
+  removeSelected();
 };
 
 const inputText = document.querySelector("#texto-tarefa");
@@ -141,4 +142,18 @@ function moveDown() {
       }
     }
   });
+}
+
+const buttonRemoveSelected = document.querySelector("#remover-selecionado");
+
+function removeSelected () {
+  buttonRemoveSelected.addEventListener("click", function () {
+    let li = document.getElementsByTagName("li");
+    for ( let i = 0; i< li.length; i += 1) {
+      if (li[i].style.backgroundColor == "rgb(128, 128, 128)") {
+        list.removeChild(li[i]);
+      }
+    }
+  })
+
 }
