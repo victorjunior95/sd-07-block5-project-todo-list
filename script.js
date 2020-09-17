@@ -33,3 +33,13 @@ lista.addEventListener("dblclick", function(event) {
     }
 });
 //solução adaptada a partir de https://github.com/tryber/sd-07-block5-project-todo-list/blob/749e0a187fda8965fd829f3b488dd175defa6c70/script.js
+
+lista.addEventListener("click", function(event) {
+    let riscado = document.querySelector(".selecionado");
+    if (riscado != null) {
+        riscado.classList.remove("selecionado");
+    } else {
+        let register = event.target;
+        register.classList.add("selecionado");
+    }
+});

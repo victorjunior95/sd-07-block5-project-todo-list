@@ -17,3 +17,7 @@ section {
 .completed {
     text-decoration: line-through;
 }
+
+.selecionado {
+    background-color: gray;
+}
