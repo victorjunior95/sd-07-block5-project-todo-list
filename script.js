@@ -6,6 +6,8 @@ const apagarSelect = document.querySelector('#remover-finalizados')
 const removerSelect = document.querySelector('#remover-selecionado')
 const movCima = document.querySelector('#mover-cima')
 const movBaixo = document.querySelector('#mover-baixo')
+const saveTask = document.querySelector('#salvar-tarefas')
+updateList()
 let verify = false
 
 
@@ -82,7 +84,9 @@ movBaixo.addEventListener('click', function () {
 }
     })
 
-
+saveTask.addEventListener('click', function () {
+    getToStorage() 
+})
 
 
 
@@ -131,4 +135,38 @@ function emptyCheck () {
             key.classList.remove('empty')
         })
     }
+}
+
+function getToStorage () {
+    const item = document.querySelectorAll('.task');
+    let numberName = 0
+    let values = [];
+    localStorage.clear();
+    item.forEach(key => {
+        numberName += 1
+        values.push(key.className)
+        values.push(key.innerText)
+        values.push(key.style.backgroundColor)
+        values.push(key.style.textDecoration)
+        localStorage.setItem(numberName, values)
+        values = [];
+    })    
+}
+
+function updateList () {
+    let storaged = localStorage;
+    for(index = 1; index < storaged.length + 1; index += 1){
+        let store = storaged[index].split(',');
+        let storageColor = (`${store[2]} , ${store[3]} , ${store[4]}`)
+        const elementLi = document.createElement('li');
+        elementLi.innerText = `${store[1]}`
+        elementLi.className = `${store[0]}`
+        elementLi.style.backgroundColor = storageColor;
+        elementLi.style.textDecoration = `${store[store.length - 1]}`
+        elementLi.classList.add('empty');
+        list.appendChild(elementLi);
+        addColor();
+        completed();
+        emptyCheck();
+    }   
 }
