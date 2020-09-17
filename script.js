@@ -1,19 +1,25 @@
 const listaTarefas = document.getElementById("lista-tarefas"); 
-const textoTarefa = document.getElementById("texto-tarefa");
 const btnCriarTarefa = document.getElementById("criar-tarefa");
 const apagaTudo = document.getElementById("apaga-tudo")
 const salvarTarefas = document.getElementById('salvar-tarefas');
 
 
-btnCriarTarefa.addEventListener('click', addProduto);
+
+btnCriarTarefa.addEventListener('click', function(){
     
-function addProduto() {
-    var item = '<li>' + textoTarefa.value + '</li>';
-    listaTarefas.innerHTML += item;
-    textoTarefa.value = '';
-    textoTarefa.focus();
-    
-};
+    const item = document.createElement('li');
+    document.querySelector('ol').appendChild(item);
+    item.innerText = document.querySelector('input').value;
+    document.querySelector('input').value = '';
+
+    item.addEventListener('click', function () {
+      const isGray = document.querySelector('.selecionado');
+      if (isGray) {
+        isGray.classList.remove('selected'); 
+      }
+      item.classList.add('selecionado'); 
+    });
+})
 
 
 document.querySelector('#salvar-tarefas').addEventListener('click', function () {

@@ -1,0 +1,7 @@
+.completo {
+    text-decoration: line-through solid black;
+  }
+  
+.selecionado {
+    background-color: gray;
+  }
