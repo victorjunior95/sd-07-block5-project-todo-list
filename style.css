@@ -1,3 +1,12 @@
+body {
+    margin: 0;
+    background-color: wheat;
+}
+
+header{
+    text-align: center;
+}
+
 #funcionamento{
 
 }
@@ -11,7 +20,7 @@
 }
 
 #criar-tarefa{
-    
+    background-color: green;
 }
 
 .color {
@@ -20,4 +29,12 @@
 
 .completed {
     text-decoration: line-through solid rgb(0, 0, 0)
+}
+
+#apaga-tudo {
+    background-color: red;
+}
+
+#remover-finalizados {
+    background-color: yellow;
 }

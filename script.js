@@ -22,6 +22,16 @@ buttonComand.addEventListener("click", function (){
       addOnOl.addEventListener("dblclick", function(){
         addOnOl.classList.toggle("completed"); //o elemento toggle alterna entra mostra e esconder o elemento selecionado   
     });
+    let buttonDone = document.getElementById("remover-finalizados")
+    buttonDone.addEventListener("click", function () {
+        const listItens = document.querySelectorAll('li')
+        for (let i = 0; i < listItens.length; i += 1) {
+            const listCheck = listItens[i]
+        if (listCheck.classList.contains("completed")) {
+            organizedList.removeChild(listCheck)
+        }
+    }
+})
 })
 let buttonClear = document.getElementById("apaga-tudo")
 buttonClear.addEventListener("click", function () {
