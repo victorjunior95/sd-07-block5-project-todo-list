@@ -2,7 +2,6 @@
 
 let taskInput = document.querySelector('#texto-tarefa');
 // console.log(taskInput);
-
 let buttonCreateTask = document.querySelector('#criar-tarefa');
 buttonCreateTask.addEventListener("click",addTask);
 
@@ -10,11 +9,14 @@ function addTask () {
   let ol = document.getElementById("lista-tarefas");
   let li = document.createElement("li");
   li.innerHTML = taskInput.value;
+  li.classList.add('listItem');
   ol.appendChild(li);
   taskInput.value = '';
+  li.addEventListener('click', graySelected);
+  li.addEventListener('dblclick', lineThroughSelected);
 }
 
-const listItens = document.querySelectorAll('.listItem');
+let listItens = document.querySelectorAll('.listItem');
 let selectedItem = document.querySelector('.selected');
 let completedItem = document.querySelector('.completed');
 
