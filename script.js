@@ -9,4 +9,13 @@ createTaskBtn.addEventListener('click', function(){
   toDoList.appendChild(item);
   taskName.value = '';
   taskName.focus();
+  item.addEventListener('click', function(){
+    let selectedItem = document.querySelector('.selected');
+    if (selectedItem) {
+      selectedItem.classList.remove('selected');
+    } else {
+      item.classList.add('selected');
+    }
+    console.log(item)
+  });
 });
