@@ -60,7 +60,7 @@ const btnMoveUp = document.querySelector('#mover-cima');
   });
 // trata evento mover item da lista para baixo
 const btnMoveDown = document.querySelector('#mover-baixo');
-  btnMoveUp.addEventListener('click', function () {
+btnMoveDown.addEventListener('click', function () {
     const selected = document.getElementsByClassName('selected')[0];
     if (selected !== null) {
     if (selected.nextSibling !== null) {
