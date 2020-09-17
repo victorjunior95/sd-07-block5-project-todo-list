@@ -1,6 +1,7 @@
 let createTaskBtn = document.getElementById('criar-tarefa');
 let toDoList = document.getElementById('lista-tarefas');
 let taskName = document.getElementById('texto-tarefa');
+let clearBtn = document.getElementById('apaga-tudo');
 taskName.focus();
 
 createTaskBtn.addEventListener('click', function(){
@@ -25,4 +26,10 @@ createTaskBtn.addEventListener('click', function(){
       item.classList.add('completed');
     }
   })
+
+  clearBtn.addEventListener('click', function(){
+    toDoList.innerText = '';
+  })
+
 })
+
