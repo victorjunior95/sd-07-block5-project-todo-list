@@ -15,12 +15,12 @@ botaoCriarTarefa.addEventListener("click", function () {
 
 // Pintando intens da lista de cinza
 listaTarefas.addEventListener("click", function (event) {
-  if (document.getElementsByClassName("selected")[0]==undefined){
+  if (document.getElementsByClassName("selected")[0] == undefined) {
     event.target.classList.add("selected");
   } else {
     let itemARemover = document.getElementsByClassName("selected")[0];
     itemARemover.classList.remove("selected");
-    event.target.classList.add("selected")
+    event.target.classList.add("selected");
   }
 });
 
