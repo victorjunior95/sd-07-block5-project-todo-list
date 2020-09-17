@@ -53,21 +53,29 @@ function removerSelecionado() {
 removerSelecionadoBtn.addEventListener('click', removerSelecionado);
 function moverUp() {
   itemSelect = document.querySelector('.selected');
-  const anteriorElemento = itemSelect.previousSibling;
-  if (itemSelect === paiLista.firstChild) {
-    alert('Impossível mover esse item para cima');
+  if (itemSelect === null) {
+    alert('Nenhum item selecionado!')
   } else {
-    paiLista.insertBefore(itemSelect, anteriorElemento);
+    const anteriorElemento = itemSelect.previousSibling;
+    if (itemSelect === paiLista.firstChild) {
+      alert('Impossível mover esse item para cima');
+    } else {
+      paiLista.insertBefore(itemSelect, anteriorElemento);
+    }
   }
 }
 moverUpBtn.addEventListener('click', moverUp);
 function moverDown() {
   itemSelect = document.querySelector('.selected');
-  const proximoElemento = itemSelect.nextSibling;
-  if (itemSelect === paiLista.lastChild) {
-    alert('Impossível mover esse item para baixo');
+  if (itemSelect === null) {
+    alert('Nenhum item selecionado!')
   } else {
-    paiLista.insertBefore(proximoElemento, itemSelect);
+    const proximoElemento = itemSelect.nextSibling;
+    if (itemSelect === paiLista.lastChild) {
+      alert('Impossível mover esse item para baixo');
+    } else {
+      paiLista.insertBefore(proximoElemento, itemSelect);
+    }
   }
 }
 moverDownBtn.addEventListener('click', moverDown);
