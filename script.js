@@ -74,3 +74,21 @@ botaoCompleto.addEventListener('click', function () {
     }
 });
 
+botaoSalvar.addEventListener('click', (event) => {
+    let listada = document.querySelectorAll('#lista-tarefas li');
+    let todo = [];
+    for (let index = 0; index < listada.length; index += 1) {
+        /*todo.push(listada[index].outerText);*/
+        todo.push(listada[index].outerHTML); /* Retorna as tags e todos nomes de atributos da tag*/            
+   }
+   localStorage.setItem(`lista-todos`, JSON.stringify(todo));
+})
+
+window.onload = render;
+function render() {    
+    let listTodo = JSON.parse(localStorage.getItem('lista-todos'));
+    for (let index = 0; index < listTodo.length; index += 1) {
+        lista.innerHTML += listTodo[index];
+    }
+    selected();
+}
