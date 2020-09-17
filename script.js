@@ -31,6 +31,13 @@ listTask.addEventListener("click", function (event) {
   }
 });
 
+clearCompleted.addEventListener("click", function () {
+  let completed = document.getElementsByClassName("completed");
+  while (completed.length > 0) {
+    listTask.removeChild(completed[0]);
+  }
+});
+
 listTask.addEventListener("dblclick", function (event) {
   event.target.classList.toggle("completed");
 });
@@ -38,12 +45,5 @@ listTask.addEventListener("dblclick", function (event) {
 taskClear.addEventListener("click", function () {
   while (listTask.firstChild) {
     listTask.removeChild(listTask.firstChild);
-  }
-});
-
-clearCompleted.addEventListener("click", function () {
-  let completed = document.getElementsByClassName("completed");
-  for (let index = 0; index < completed.length; index += 1) {
-    listTask.removeChild(completed[index]);
   }
 });
