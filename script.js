@@ -14,9 +14,15 @@ document.addEventListener('click', function (event) {
   if (event.target.classList.contains('ordered-list')) {
     const selectedAllTasks = document.getElementsByClassName('ordered-list');
     for (let index = 0; index < selectedAllTasks.length; index += 1) {
-      selectedAllTasks[index].className = 'ordered-list';
+      selectedAllTasks[index].classList.remove('selected');
     }
     const selectedTask = event.target;
-    selectedTask.className = 'ordered-list selected';
+    selectedTask.classList.add('selected');
+  }
+});
+
+document.addEventListener('dblclick', function (event) {
+  if (event.target.classList.contains('ordered-list')) {
+    event.target.classList.add('completed');
   }
 });
