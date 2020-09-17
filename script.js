@@ -42,12 +42,12 @@ function apagarFinalizados() {
   finalizados = document.querySelectorAll('.completed');
   for (let i = 0; i < finalizados.length; i += 1) {
     finalizados[i].remove();
-  }    
+  }
 }
 apagarFinalizadosBtn.addEventListener('click', apagarFinalizados);
 function removerSelecionado() {
-    itemSelect = document.querySelector('.selected');
-    itemSelect.remove();
-  }
-  removerSelecionadoBtn.addEventListener('click', removerSelecionado);
-  criarLi();
+  itemSelect = document.querySelector('.selected');
+  itemSelect.remove();
+}
+removerSelecionadoBtn.addEventListener('click', removerSelecionado);
+criarLi();
