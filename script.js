@@ -64,25 +64,25 @@ btnClearList.addEventListener('click', function () {
 const btnMoveUp = document.querySelector('#mover-cima');
 btnMoveUp.addEventListener('click', function () {
   const selected = document.querySelector('.selected');
-    if (selected) {
-      if (toDoList.length !== 0) {
-        if (selected.previousElementSibling !== null) {
-          document.querySelector('ol').insertBefore(selected, selected.previousElementSibling);
-        }
+  if (selected) {
+    if (toDoList.length !== 0) {
+      if (selected.previousElementSibling !== null) {
+        document.querySelector('ol').insertBefore(selected, selected.previousElementSibling);
       }
     }
+  }
 });
 // trata evento mover item da lista para baixo
 const btnMoveDown = document.querySelector('#mover-baixo');
 btnMoveDown.addEventListener('click', function () {
   const selected = document.querySelector('.selected');
-    if (selected) {
-      if (toDoList.length !== 0) {
-        if (selected.nextElementSibling !== null) {
-          document.querySelector('ol').insertBefore(selected.nextElementSibling, selected);
-        }
+  if (selected) {
+    if (toDoList.length !== 0) {
+      if (selected.nextElementSibling !== null) {
+        document.querySelector('ol').insertBefore(selected.nextElementSibling, selected);
       }
     }
+  }
 });
 // recuperar lista salva
 window.onload = function () {
