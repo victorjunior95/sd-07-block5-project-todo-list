@@ -126,8 +126,25 @@ h3 {
 
 .social-media {
   background-color: rgb(239, 241, 243);
+  border: 3px solid rgb(216, 180, 160);
   margin: auto;
   padding: 10px;
   width: 300px;
-  vertical-align: middle;
+}
+
+.social-media a {
+  display: inline-block;
+  transition: 0.5s;
+}
+
+.social-media a:hover {
+  transform: rotate(1turn);
+}
+
+.icons-link {
+  color: rgb(239, 241, 243);
+}
+
+.icons-link a {
+  color: rgb(239, 241, 243);
 }
