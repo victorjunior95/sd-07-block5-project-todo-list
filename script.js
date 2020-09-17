@@ -51,13 +51,18 @@ sendTextItem.innerText = 'Adicionar Nova Tarefa';
 parentSectionFirst.appendChild(sendTextItem);
 // Section Second Select
 const parentSectionSecond = document.getElementById('second-section');
-// botton for erase task
-const eraseAll = document.createElement('button');
-eraseAll.className = 'apaga-tudo';
-eraseAll.setAttribute('id', 'apaga-tudo');
-eraseAll.innerText = 'Apagar Tudo';
-parentSectionSecond.appendChild(eraseAll);
+// botton for erase all task
+const eraseAllTasksButton = document.createElement('button');
+eraseAllTasksButton.className = 'apaga-tudo';
+eraseAllTasksButton.setAttribute('id', 'apaga-tudo');
+eraseAllTasksButton.innerText = 'Apagar Tudo';
+parentSectionSecond.appendChild(eraseAllTasksButton);
 
+const eraseTaskCompleted = document.createElement('button');
+eraseTaskCompleted.className = 'remover-finalizados';
+eraseTaskCompleted.setAttribute('id', 'remover-finalizados');
+eraseTaskCompleted.innerText = 'Apagar Itens Finalizados';
+parentSectionSecond.appendChild(eraseTaskCompleted);
 // *********** FIM DA CRIAÇAO DO HTML **********
 
 function createOrdenateList() {
@@ -79,7 +84,7 @@ function liGenerate(data) {
     for (let index = 0; index < data.length; index += 1) {
       const itemLi = document.createElement('li');
       itemLi.className = 'item-tarefa';
-      itemLi.setAttribute('id', `li-tarefa-${index}`);
+      itemLi.setAttribute('id', index);
       itemLi.innerText = data[index];
       olTag.appendChild(itemLi);
     }
@@ -127,10 +132,22 @@ if (event.target.nodeName === 'LI') {
 }
 });
 
-const getEraseButton = document.querySelector('#apaga-tudo');
-getEraseButton.addEventListener('click', function () {
-const listOrdenateTarget = document.querySelector('#first-section');
-listOrdenateTarget.removeChild(listOrdenateTarget.lastElementChild);
-createOrdenateList();
-newLiReturn = [];
+const getEraseAllButton = document.querySelector('#apaga-tudo');
+getEraseAllButton.addEventListener('click', function () {
+  const listOrdenateTarget = document.querySelector('#lista-tarefas');
+  while (listOrdenateTarget.lastElementChild) {
+    listOrdenateTarget.removeChild(listOrdenateTarget.lastElementChild);
+  }
+  newLiReturn = [];
+});
+
+const getEraseItemButton = document.querySelector('#remover-finalizados');
+getEraseItemButton.addEventListener('click', function () {
+  const completedRemove = document.querySelectorAll('.completed');
+  for (let index = 0; index < completedRemove.length; index += 1) {
+    let find = completedRemove[index].innerText;
+    let indexOfItem = newLiReturn.indexOf(find);
+    newLiReturn.splice(indexOfItem, 1);
+  }
+  liGenerate(newLiReturn);
 });
