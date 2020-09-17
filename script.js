@@ -43,3 +43,10 @@ lista.addEventListener("click", function(event) {
         register.classList.add("selecionado");
     }
 });
+
+let apagarItem = document.querySelector("#salvar-tarefas");
+
+apagarItem.addEventListener("click", function() {
+    let list = document.getElementsByClassName("selecionado");
+    list[0].remove();
+});
