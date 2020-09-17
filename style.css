@@ -6,15 +6,21 @@ body {
 	margin: 100px;
 	padding: 50px;
 }
-p {
+h2 {
+	text-align: center;
+}
+
+#funcionamento {
+	text-align: center;
+}
+
+.paragraph{
 	margin-left: 80px;
 }
 ol {
 	margin-left: 10px;
 }
-.cabecalho {
-	text-align: center;
-}
+
 #apaga-tudo {
 	display: inline-block;
 	margin-left: 25px;
