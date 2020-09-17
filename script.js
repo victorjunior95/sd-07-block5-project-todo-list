@@ -52,9 +52,9 @@ btnNewItem.addEventListener('click', function () {
 const btnMoveUp = document.querySelector('#mover-cima');
   btnMoveUp.addEventListener('click', function () {
     const selected = document.getElementsByClassName('selected')[0];
-    if (selected !== null) {
-    if (selected.previousElementSibling !== null) {
-      document.querySelector('ol').insertBefore(selected, selected.previousElementSibling);
+    if (selected) {
+      if (selected.previousElementSibling !== null) {
+        document.querySelector('ol').insertBefore(selected, selected.previousElementSibling);
       }
     }
   });
@@ -62,9 +62,9 @@ const btnMoveUp = document.querySelector('#mover-cima');
 const btnMoveDown = document.querySelector('#mover-baixo');
 btnMoveDown.addEventListener('click', function () {
     const selected = document.getElementsByClassName('selected')[0];
-    if (selected !== null) {
-    if (selected.nextElementSibling !== null) {
-      document.querySelector('ol').insertBefore(selected.nextElementSibling, selected);
+    if (selected) {
+      if (selected.nextElementSibling !== null) {
+        document.querySelector('ol').insertBefore(selected.nextElementSibling, selected);
       }
     }
   });
