@@ -2,36 +2,50 @@ let botaoAddTarefa = document.querySelector("#criar-tarefa");
 let caixaTextoTarefa = document.querySelector("#texto-tarefa");
 let listaDeTarefas = document.querySelector("#lista-tarefas");
 
+let todasAsLis = [];
 
 
 botaoAddTarefa.addEventListener('click',function adicionandoTarefa(){ 
-    let novaTarefa  = document.createElement('li')
-    novaTarefa.innerText = caixaTextoTarefa.value
-    novaTarefa.addEventListener('click', selecionar);
-    novaTarefa.addEventListener('dblclick', concluir); 
-    listaDeTarefas.appendChild(novaTarefa);
-    novaTarefa.classList.add("itens")
+    let index = 0;
+    let novaTarefa = [];
+    novaTarefa[index] = document.createElement('li') 
+    novaTarefa[index].classList.add("novaTarefa")
+    novaTarefa[index].innerText = caixaTextoTarefa.value
+    listaDeTarefas.appendChild(novaTarefa[index]);  
     caixaTextoTarefa.value = '';
-    novaTarefa.addEventListener('click', function selecionarItem(){
-      let selecionado = document.querySelector('.itens')
-      selecionado.style.backgroundColor = 'rgb(128,128,128)';
-    });
+    todasAsLis = document.querySelectorAll('.novaTarefa');
+
+    selecionarItem(novaTarefa[index]);
+    tarefaCompleta(novaTarefa[index]);
+    apagarTudo(novaTarefa[index]);
+    index++;
+
+   
 });
-
-function selecionar() {
-    this.classList.add('selected');
-
-}
   
-function concluir() {
-    this.classList.remove('selected');
-    this.classList.add('completed');
+function tarefaCompleta(novaTarefa){
+    novaTarefa.addEventListener('dblclick', function (){
+        novaTarefa.classList.toggle('finalizado');
+    });
 }
 
+function selecionarItem(novaTarefa){
+    novaTarefa.addEventListener('click', function (){
+        for (let index = 0; index < todasAsLis.length; index ++){
+            todasAsLis[index].classList.remove('selecionado');
+        }
+          novaTarefa.classList.toggle('selecionado');
+    });
+}
+
+
+
+function apagarTudo(novaTarefa){
 let apagaTudo = document.querySelector("#apaga-tudo");
 apagaTudo.addEventListener('click', function apagarLista() {
-  let itens = document.querySelectorAll(".itens");
+  let itens = document.querySelectorAll(".novaTarefa");
     for (let i = 0; i < itens.length; i += 1){
           itens[i].remove();
     }
 });
+}
