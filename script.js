@@ -10,15 +10,22 @@ const buttonRemoveSelectedItem = document.querySelector('#remover-selecionado');
 
 let taskListItens = document.querySelectorAll('li');
 let completedTaskListItens = document.querySelectorAll('.completed');
+let selectedItem = document.querySelector('.selected');
 let inputValue = '';
 
 window.onload = function () {
   taskList.innerHTML = localStorage.getItem('saveTaskList');
 };
 
+buttonRemoveSelectedItem.addEventListener('click', function (event) {
+  event.preventDefault();
+  selectedItem = document.querySelector('.selected');
+  taskList.removeChild(selectedItem);
+});
+
 buttonItemMoveUp.addEventListener('click', function (event) {
   event.preventDefault();
-  let selectedItem = document.querySelector('.selected');
+  selectedItem = document.querySelector('.selected');
   let selectedPreviousItem = selectedItem.previousElementSibling;
   selectedPreviousItem.before(selectedItem);
 });
