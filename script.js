@@ -31,6 +31,7 @@ window.onload = function () {
     if (proximo != null ) {
       listaDeTarefas.insertBefore(itemClicado, proximo);
       listaDeTarefas.insertBefore(proximo, itemClicado);
+      salvarLista();
     } else {
       avisos.textContent = 'Fim da lista!';
     }
@@ -41,7 +42,8 @@ window.onload = function () {
     let anterior = itemClicado.previousElementSibling;
     if (anterior != null) {
       listaDeTarefas.insertBefore(anterior, itemClicado);
-      listaDeTarefas.insertBefore(itemClicado, anterior);      
+      listaDeTarefas.insertBefore(itemClicado, anterior);
+      salvarLista();     
     } else {
       avisos.textContent = 'Fim da lista!';
     }
@@ -97,10 +99,12 @@ window.onload = function () {
     })
   });
 
-  botaoSalvar.addEventListener('click', function () {
+  botaoSalvar.addEventListener('click', salvarLista);
+  
+  function salvarLista() {
     localStorage.clear();
     localStorage.setItem('listaTarefas', listaDeTarefas.innerHTML);
-  });
+  }
 
   function carregaItensSalvos() {
     document.querySelector('ol').innerHTML = localStorage.getItem('listaTarefas');
