@@ -1,29 +1,37 @@
 html {
 	font-family: BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
+
 body {
-	background-color:rgb(245, 245, 220);
+	background-color: beige;
 	margin: 100px;
 	padding: 50px;
 }
+
 h2 {
 	text-align: center;
 }
+
 .remover-selecionado {
-	margin-left: 1px ;
+	margin-left: 1px;
 }
-.apaga-tudo{
+
+.apaga-tudo {
 	margin-left: -50px;
 }
+
 .funcionamento {
 	text-align: center;
 }
-.paragraph{
+
+.paragraph {
 	margin-left: 80px;
 }
+
 ol {
 	margin-left: -65px;
 }
+
 .wrapper {
 	display: inline-block;
 	margin-left: 400px;
