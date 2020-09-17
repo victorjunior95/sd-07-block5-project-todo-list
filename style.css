@@ -1,3 +1,27 @@
+header {
+  font-family: Verdana, Tahoma, sans-serif;
+  background-color: greenyellow;
+  width: 100%;
+  height: 10%;
+}
+
 .completed {
-    text-decoration: line-through;
+  text-decoration: line-through;
+}
+
+.button {
+ font-family: Verdana, Tahoma, sans-serif;
+ cursor: pointer;
+}
+
+main {
+  background-color: red;
+  height: 80%;
+  width: 100%;
+}
+
+footer {
+  background-color: greenyellow;
+  width: 100%;
+  height: 10%;
 }
