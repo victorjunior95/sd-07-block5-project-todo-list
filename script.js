@@ -1,3 +1,5 @@
+const backgroundColor = 'rgb(128, 128, 128)';
+
 function AddItemList(item) {
   const itemList = document.createElement('li');
   itemList.innerText = item;
@@ -17,15 +19,23 @@ document.getElementById('criar-tarefa').addEventListener('click', function () {
   clearInputValue(item);
 });
 
-function chanceBackgroundColorItemList(itensList) {
-  const backgroundColor = 'rgb(128, 128, 128)';
-  itensList.style.backgroundColor = backgroundColor;
+function chanceBackgroundColorItemList(boolean, itensList) {
+  if (boolean) {
+    itensList.style.backgroundColor = backgroundColor;
+  }
+}
+
+function checkIfExistItemSelectedInList (itensList) {
+  for (let index = 0; index < itensList.length; index += 1) {
+    if (itensList[index].style.backgroundColor === backgroundColor) {
+      return false;
+    }
+  }
+  return true;
 }
 
 document.getElementById('lista-tarefas').addEventListener('click', function (event){
   const getItensList = document.getElementsByTagName('li');
-  chanceBackgroundColorItemList(event.target);
+  const resultCheck = checkIfExistItemSelectedInList(getItensList);
+  chanceBackgroundColorItemList(resultCheck, event.target);
 });
-
-
-
