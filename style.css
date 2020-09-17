@@ -33,6 +33,12 @@ position: absolute;
     top: 410px;
     left: -63px;
 }
+.clearReadyBtn{
+    position: absolute;
+    top: 410px;
+    left: 15px;
+
+}
 .borderInput{
     left: 50px;
     bottom:50px;
@@ -60,7 +66,7 @@ label{
     z-index: 9;
     left: 1px;
 }
-.btnAdd{
+.btn{
     position: absolute;
     top: 249px;
     left: 615px
