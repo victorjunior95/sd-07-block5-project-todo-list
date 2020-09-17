@@ -25,13 +25,13 @@ function makeTaskList() {
   li.addEventListener('click', setColorBackgroundLi);
 
   function setlinethrough() {
-      if (li.classList.contains('completed')) {
+    if (li.classList.contains('completed')) {
         li.classList.remove('completed');
-      }else{
+      } else {
         li.classList.add('completed');
       }
-    }
-    li.addEventListener('dblclick', setlinethrough);
+  }
+  li.addEventListener('dblclick', setlinethrough);
 }
 
 function eraseAll() {
