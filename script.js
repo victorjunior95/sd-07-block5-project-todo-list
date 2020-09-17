@@ -23,40 +23,42 @@ function basicStructure() {
   document.body.appendChild(footerPage);
 }
 basicStructure();
+// Add title into tag header
+const getHeader = document.getElementsByTagName('header')[0];
+const titlePage = document.createElement('h1');
+titlePage.className = 'title';
+titlePage.innerText = 'Minha Lista de Tarefas';
+getHeader.appendChild(titlePage);
+// Add paragraph for nav
+const getNav = document.getElementsByTagName('nav')[0];
+const paragraphInformactive = document.createElement('p');
+paragraphInformactive.setAttribute('id', 'funcionamento');
+paragraphInformactive.innerText = 'Clique duas vezes em um item para marcá-lo como completo';
+getNav.appendChild(paragraphInformactive);
+// Section First Select
+const parentSectionFirst = document.getElementById('first-section');
+// Input
+const inputTextItem = document.createElement('input');
+inputTextItem.setAttribute('type', 'text');
+inputTextItem.setAttribute('id', 'texto-tarefa');
+inputTextItem.className = 'texto-tarefa';
+parentSectionFirst.appendChild(inputTextItem);
+// Button for add task
+const sendTextItem = document.createElement('button');
+sendTextItem.className = 'criar-tarefa';
+sendTextItem.setAttribute('id', 'criar-tarefa');
+sendTextItem.innerText = 'Adicionar Nova Tarefa';
+parentSectionFirst.appendChild(sendTextItem);
+// Section Second Select
+const parentSectionSecond = document.getElementById('second-section');
+// botton for erase task
+const eraseAll = document.createElement('button');
+eraseAll.className = 'apaga-tudo';
+eraseAll.setAttribute('id', 'apaga-tudo');
+eraseAll.innerText = 'Apagar Tudo';
+parentSectionSecond.appendChild(eraseAll);
 
-function titleOfheader() {
-  const getHeader = document.getElementsByTagName('header')[0];
-  const titlePage = document.createElement('h1');
-  titlePage.className = 'title';
-  titlePage.innerText = 'Minha Lista de Tarefas';
-  getHeader.appendChild(titlePage);
-}
-titleOfheader();
-
-function textForInstruction() {
-  const getNav = document.getElementsByTagName('nav')[0];
-  const paragraphInformactive = document.createElement('p');
-  paragraphInformactive.setAttribute('id', 'funcionamento');
-  paragraphInformactive.innerText = 'Clique duas vezes em um item para marcá-lo como completo';
-  getNav.appendChild(paragraphInformactive);
-}
-textForInstruction();
-
-function tagsForInsertData() {
-  const parentSectionFirst = document.getElementById('first-section');
-  const inputTextItem = document.createElement('input');
-  inputTextItem.setAttribute('type', 'text');
-  inputTextItem.setAttribute('id', 'texto-tarefa');
-  inputTextItem.className = 'texto-tarefa';
-  parentSectionFirst.appendChild(inputTextItem);
-  // Button
-  const sendTextItem = document.createElement('button');
-  sendTextItem.className = 'criar-tarefa';
-  sendTextItem.setAttribute('id', 'criar-tarefa');
-  sendTextItem.innerText = 'Adicionar Nova Tarefa';
-  parentSectionFirst.appendChild(sendTextItem);
-}
-tagsForInsertData();
+// *********** FIM DA CRIAÇAO DO HTML **********
 
 function createOrdenateList() {
   const parentItemSection = document.getElementById('first-section');
@@ -66,7 +68,6 @@ function createOrdenateList() {
   parentItemSection.appendChild(ordenateListToDo);
 }
 createOrdenateList();
-// *********** FIM DA CRIAÇAO DO HTML **********
 
 function liGenerate(data) {
   if (data.length !== 0) {
@@ -85,9 +86,9 @@ function liGenerate(data) {
   }
 }
 
-function getDataImput() {
+function alterDataForLi() {
   const lisExistentes = document.querySelectorAll('.item-tarefa');
-  const newLiReturn = [];
+  let newLiReturn = [];
   for (let index = 0; index < lisExistentes.length; index += 1) {
     newLiReturn.push(lisExistentes[index].innerText);
   }
@@ -110,9 +111,16 @@ function getDataImput() {
       inputDataWitchEnter.value = '';
     }
   });
-}
-getDataImput();
 
+  const getEraseButton = document.querySelector('#apaga-tudo');
+  getEraseButton.addEventListener('click', function () {
+    const listOrdenateTarget = document.querySelector('#first-section');
+    listOrdenateTarget.removeChild(listOrdenateTarget.lastElementChild);
+    createOrdenateList();
+    newLiReturn = [];
+  });
+}
+alterDataForLi();
 
 document.body.addEventListener('click', function (event) {
   if (event.target.nodeName === 'LI') {
@@ -126,7 +134,6 @@ document.body.addEventListener('click', function (event) {
     }
   }
 });
-
 
 document.body.addEventListener('dblclick', function (event) {
   if (event.target.nodeName === 'LI') {
