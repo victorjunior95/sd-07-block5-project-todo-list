@@ -5,7 +5,7 @@ const eraseAllButton = document.querySelector('#apaga-tudo');
 /* eslint no-restricted-syntax: ["error", "FunctionExpression",
  "WithStatement", "BinaryExpression[operator='in']"] */
 
-function setCor() {
+function setColorBackgroundLi() {
   const classLi = document.querySelector('#lista-tarefas').children;
   for (const li of classLi) {
     if (li.classList.contains('selected')) {
@@ -15,6 +15,16 @@ function setCor() {
       // this.classList.add('selected');
   this.className += ' selected';
 }
+function setlinethrough() {
+  const classLi = document.querySelector('#lista-tarefas').children;
+  for (const li of classLi) {
+    if (li.classList.contains('completed')) {
+      this.classList.remove('completed');
+    }else{
+      this.classList.add('completed');
+    }
+  }
+}
 
 function makeTaskList() {
   const li = document.createElement('li');
@@ -22,7 +32,8 @@ function makeTaskList() {
   li.innerText = inputTask.value;
   orderedList.appendChild(li);
   inputTask.value = '';
-  li.addEventListener('click', setCor);
+  li.addEventListener('click', setColorBackgroundLi);
+  li.addEventListener('dblclick', setlinethrough);
 }
 
 function eraseAll() {
