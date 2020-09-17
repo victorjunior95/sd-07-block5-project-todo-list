@@ -19,8 +19,8 @@ h2 {
 }
 ol {
 	margin-left: 10px;
+	background-color:rgb(128,128,128);
 }
-
 #apaga-tudo {
 	display: inline-block;
 	margin-left: 25px;
