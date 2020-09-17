@@ -16,12 +16,13 @@ createTaskBtn.addEventListener('click', function(){
       selectedItem.classList.remove('selected');
     } 
     item.classList.add('selected');
-    // console.log(item)
   });
 
   item.addEventListener('dblclick', function(){
-    let completedItem = document.querySelector('.completed');
-    item.classList.add('completed');
+    if (item.classList.contains('completed')){
+      item.classList.remove('completed');
+    } else {
+      item.classList.add('completed');
+    }
   })
-
-});
+})
