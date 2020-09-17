@@ -26,7 +26,8 @@ window.onload = function () {
 
   function moveParaBaixo() {
     let proximo = itemClicado.nextSibling;
-    if (proximo != null) {
+    if (proximo != null && proximo.style.backgroundColor === 
+      "rgb(128, 128, 128)") {
       listaDeTarefas.insertBefore(itemClicado, proximo);
       listaDeTarefas.insertBefore(proximo, itemClicado);
     } else {
@@ -36,7 +37,8 @@ window.onload = function () {
 
   function moverParaCima(){
     let anterior = itemClicado.previousElementSibling;
-    if (anterior != null) {
+    if (anterior != null && anterior.style.backgroundColor === 
+      "rgb(128, 128, 128)") {
       listaDeTarefas.insertBefore(anterior, itemClicado);
       listaDeTarefas.insertBefore(itemClicado, anterior);      
     } else {
