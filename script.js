@@ -8,19 +8,20 @@ botaoCriarTarefa.addEventListener("click", function () {
   let itemParaAdicionar = document.createElement("li");
   itemParaAdicionar.classList.add("lista");
   itemParaAdicionar.innerText = textoTarefa.value;
-  console.log(itemParaAdicionar);
-  arrayListaComTodasTarefas.push(itemParaAdicionar);
+  arrayListaComTodasTarefas.push(itemParaAdicionar.innerText);
   listaTarefas.appendChild(itemParaAdicionar);
   textoTarefa.value = "";
-  console.log(textoTarefa.value);
-  for (index = 0; index < classeLista.length; classeLista += 1) {
-     classeLista[index].style.backgroundColor = "yellow";
-   }
 });
 
+// Pintando intens da lista de cinza
 listaTarefas.addEventListener("click", function (event) {
-  let classeLista = document.getElementsByClassName("lista");
-  console.log(classeLista.className);
-  
-  event.target.style.backgroundColor = "blue";
+  if (document.getElementsByClassName("selected")[0]==undefined){
+    event.target.classList.add("selected");
+  } else {
+    let itemARemover = document.getElementsByClassName("selected")[0];
+    itemARemover.classList.remove("selected");
+    event.target.classList.add("selected")
+  }
 });
+
+console.log(arrayListaComTodasTarefas);
