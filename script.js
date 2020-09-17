@@ -9,19 +9,28 @@ window.onload = function(){
             alert('adicione um nome ao item da lista')
         }else{
             let li = document.createElement('li');
-            li.addEventListener('click',function(){
-                li.classList.add('selected');
-            })
+            li.addEventListener('click',toggleSelected)
             li.innerText = inputTextTask.value;
             taskList.appendChild(li);
             inputTextTask.value = '';
         }
     }
+
+    function toggleSelected(event){
+        const selectedItem = document.querySelector('.selected');
+        
+        if(selectedItem){
+            selectedItem.classList.remove('selected')
+        }
+        
+        event.target.classList.add('selected');
+
+    }
     
 
 
 
-    buttonCreateTask.addEventListener('click', addItemToTaskList)
+    buttonCreateTask.addEventListener('click', addItemToTaskList);
    
     
     
