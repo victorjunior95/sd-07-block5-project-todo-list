@@ -1,10 +1,13 @@
 // Seleciona elemento da lista
 function selectionListItem(event) {
-  const selectedItem = event.target;
-  const liSelected = document.querySelector('.turn-gray');
-  
-  selectedItem.classList.add('turn-gray');
-  liSelected.classList.remove('turn-gray'); 
+  let selectedItem = event.target;
+  selectedItem.style.backgroundColor = 'rgb(128, 128, 128)';
+}
+
+// Risca o elemento da lista
+function crossOutListItem(event) {
+  let crossOutItem = event.target;
+  crossOutItem.className = 'completed';
 }
 
 // Criar elemento na lista
@@ -13,9 +16,8 @@ const list = document.querySelector('#lista-tarefas');
 function createListItem() {
   const listItem = document.createElement('li');
   list.appendChild(listItem);
-  listItem.className = 'tarefa';
   listItem.addEventListener('click', selectionListItem);
-  // listItem.addEventListener('dblclick', )
+  listItem.addEventListener('dblclick', crossOutListItem);
   
   return listItem;
 }
@@ -35,8 +37,20 @@ taskButton.addEventListener('click', inputText);
 // Apaga itens da lista
 const clearButton = document.querySelector('#apaga-tudo');
 
-function removeListItem() {
+function deleteListItens() {
   list.innerHTML = '';
 }
 
-clearButton.addEventListener('click', removeListItem);
+clearButton.addEventListener('click', deleteListItens);
+
+// Remove itens riscados
+const removeButton = document.querySelector('#remover-finalizados');
+
+function removeCrossOutItem() {
+  const completedItem = document.querySelectorAll('.completed');
+  for (let i in completedItem) {
+    completedItem[i].remove();
+  }
+}
+
+removeButton.addEventListener('click', removeCrossOutItem);
