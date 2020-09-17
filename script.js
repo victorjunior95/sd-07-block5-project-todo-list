@@ -13,12 +13,27 @@ let completedTaskListItens = document.querySelectorAll('.completed');
 let selectedItem = document.querySelector('.selected');
 let inputValue = '';
 
+function selectItem(newTaskListItem) {
+  newTaskListItem.addEventListener('click', function (event) {
+    newTaskListItem.classList.add('selected');
+    const position = event.target;
+    uncheckedTaskListItem(position);
+  });
+}
+
+function checkItem(newTaskListItem) {
+  newTaskListItem.addEventListener('dblclick', function () {
+    newTaskListItem.classList.contains('completed') ? newTaskListItem.classList.remove('completed') : newTaskListItem.classList.add('completed');
+    completedTaskListItens = document.querySelectorAll('.completed');
+  });
+}
+
 // https://github.com/tryber/sd-07-block5-project-todo-list/pull/14/files (Thiago Pederzolli) (11 - 18 | 74 - 88);
 
 window.onload = function () {
   const storageLength = localStorage.getItem('storageLength');
   for (let index = 0; index < storageLength; index += 1) {
-    let newTaskListItem = document.createElement('li');
+    const newTaskListItem = document.createElement('li');
     newTaskListItem.innerText = localStorage.getItem(`item${index}`);
     newTaskListItem.className = localStorage.getItem(`itemClass${index}`);
     taskList.appendChild(newTaskListItem);
@@ -46,7 +61,7 @@ buttonItemMoveUp.addEventListener('click', function (event) {
   event.preventDefault();
   selectedItem = document.querySelector('.selected');
   if (selectedItem !== null) {
-    let selectedPreviousItem = selectedItem.previousElementSibling;
+    const selectedPreviousItem = selectedItem.previousElementSibling;
     if (selectedPreviousItem !== null) {
       selectedPreviousItem.before(selectedItem);
     }
@@ -57,7 +72,7 @@ buttonItemMoveDown.addEventListener('click', function (event) {
   event.preventDefault();
   selectedItem = document.querySelector('.selected');
   if (selectedItem !== null) {
-    let selectedNextItem = selectedItem.nextElementSibling;
+    const selectedNextItem = selectedItem.nextElementSibling;
     if (selectedNextItem !== null) {
       selectedNextItem.after(selectedItem);
     }
@@ -85,23 +100,8 @@ buttonClearList.addEventListener('click', function (event) {
   taskList.innerText = '';
 });
 
-function selectItem(newTaskListItem) {
-  newTaskListItem.addEventListener('click', function (event) {
-    newTaskListItem.classList.add('selected');
-    let position = event.target;
-    uncheckedTaskListItem(position);
-  });
-}
-
-function checkItem(newTaskListItem) {
-  newTaskListItem.addEventListener('dblclick', function () {
-    newTaskListItem.classList.contains('completed') ? newTaskListItem.classList.remove('completed') : newTaskListItem.classList.add('completed');
-    completedTaskListItens = document.querySelectorAll('.completed');
-  });
-}
-
 function createListItem() {
-  let newTaskListItem = document.createElement('li');
+  const newTaskListItem = document.createElement('li');
   newTaskListItem.innerText = inputValue;
   taskList.appendChild(newTaskListItem);
   input.value = '';
@@ -111,7 +111,6 @@ function createListItem() {
   checkItem(newTaskListItem);
 }
 
-
 buttonCreateTask.addEventListener('click', function (event) {
   event.preventDefault();
   if (inputValue === '') {
@@ -120,8 +119,6 @@ buttonCreateTask.addEventListener('click', function (event) {
     createListItem();
   }
 });
-
-
 
 input.addEventListener('keyup', function () {
   inputValue = input.value;
