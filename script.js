@@ -3,6 +3,7 @@ const inputTask = document.querySelector('#texto-tarefa');
 const orderedList = document.querySelector('#lista-tarefas');
 const eraseAllButton = document.querySelector('#apaga-tudo');
 const removeFinishedButton = document.querySelector('#remover-finalizados');
+const removeSelectedButton = document.querySelector('#remover-selecionado');
 
 /* eslint no-restricted-syntax: ["error", "FunctionExpression",
  "WithStatement", "BinaryExpression[operator='in']"] */
@@ -41,7 +42,11 @@ function removeFinished() {
     orderedList.removeChild(document.querySelector('.completed'));
   }
 }
-
+function removeSelected() {
+  while (document.querySelector('.selected')) {
+    orderedList.removeChild(document.querySelector('.selected'));
+  }
+}
 function eraseAll() {
   while (orderedList.firstChild) {
     orderedList.removeChild(orderedList.firstChild);
@@ -51,3 +56,4 @@ function eraseAll() {
 makeTaskButton.addEventListener('click', makeTaskList);
 eraseAllButton.addEventListener('click', eraseAll);
 removeFinishedButton.addEventListener('click', removeFinished);
+removeSelectedButton.addEventListener('click', removeSelected);
