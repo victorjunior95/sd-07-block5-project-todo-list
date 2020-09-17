@@ -3,6 +3,7 @@ const lista = document.querySelector('#lista-tarefas');
 const adicionar = document.querySelector('#criar-tarefa');
 const botaoLimpa = document.querySelector('#apaga-tudo');
 const botaoCompleto = document.querySelector('#remover-finalizados');
+const botaoSalvar = document.querySelector('#salvar-tarefas');
 
 function criaLista(inputText) {
     if (inputText.value === '') {
@@ -15,7 +16,8 @@ function criaLista(inputText) {
     }
 }
 
-function selected(listada) {
+function selected() {
+    let listada =  document.querySelectorAll('#lista-tarefas li');
     for (let index = 0; index < listada.length; index += 1) {
         listada[index].addEventListener('click', (event) => {
             for (let sel = 0; sel < listada.length; sel += 1) {
@@ -47,10 +49,10 @@ lista.addEventListener('dblclick' , (event) => {
     }                                                        
 });
 
+
 adicionar.addEventListener('click', function () {
-    criaLista(inputText);    
-    let listada =  document.querySelectorAll('#lista-tarefas li');
-    selected(listada);       
+    criaLista(inputText);
+    selected();           
 });
 
 botaoLimpa.addEventListener('click', function () {
@@ -71,3 +73,22 @@ botaoCompleto.addEventListener('click', function () {
         }
     }
 });
+
+botaoSalvar.addEventListener('click', (event) => {
+    let listada = document.querySelectorAll('#lista-tarefas li');
+    let todo = [];
+    for (let index = 0; index < listada.length; index += 1) {
+        //todo.push(listada[index].outerText);
+        todo.push(listada[index].outerHTML); // Retorna as tags e todos nomes de atributos da tag            
+   }
+   localStorage.setItem(`lista-todos`, JSON.stringify(todo));
+})
+
+window.onload = render;
+function render() {    
+    let listTodo = JSON.parse(localStorage.getItem('lista-todos'));
+    for (let index = 0; index < listTodo.length; index += 1) {
+        lista.innerHTML += listTodo[index];
+    }
+    selected();
+}
