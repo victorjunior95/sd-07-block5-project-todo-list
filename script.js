@@ -43,9 +43,9 @@ buttonClearAllTasksInTheList.addEventListener("click", function () {
 });
 
 buttonClearDoneTasks.addEventListener("click", function () {
-  let allDoneTasks = document.querySelectorAll(".completed");
-  for (let index = 0; index < olToDoList.childElementCount; index += 1) {
-    if (olToDoList.children[index].classList.value === "completed")
-      olToDoList.children[index].remove();
-  }
-});
+   let doneTasks = document.querySelectorAll('.completed');
+   doneTasks.forEach(item => {
+     // usei esse link pra resolver essa parte: https://developer.mozilla.org/pt-BR/docs/Web/API/Node/removeChild
+     olToDoList.removeChild(item);
+   })
+})
