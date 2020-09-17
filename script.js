@@ -46,14 +46,18 @@ buttonItemMoveUp.addEventListener('click', function (event) {
   event.preventDefault();
   selectedItem = document.querySelector('.selected');
   let selectedPreviousItem = selectedItem.previousElementSibling;
-  selectedPreviousItem.before(selectedItem);
+  if (selectedPreviousItem !== null) {
+    selectedPreviousItem.before(selectedItem);
+  }
 });
 
 buttonItemMoveDown.addEventListener('click', function (event) {
   event.preventDefault();
-  let selectedItem = document.querySelector('.selected');
-  let selectedNextItem = selectedItem.nextElementSibling
-  selectedNextItem.after(selectedItem);
+  selectedItem = document.querySelector('.selected');
+  let selectedNextItem = selectedItem.nextElementSibling;
+  if (selectedNextItem !== null){
+    selectedNextItem.after(selectedItem);
+  }
 });
 
 buttonSaveTaskList.addEventListener('click', function () {
