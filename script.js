@@ -57,8 +57,7 @@ btnNewItem.addEventListener('click', function () {
     }
   }
   });
-  move(this.nextElementSibling, 10)
-  // trata evento mover item da lista para cima
+   // trata evento mover item da lista para cima
   const btnMoveDown = document.querySelector('#mover-baixo');
   btnMoveDown.addEventListener('click', function () {
     const selected = document.getElementsByClassName('selected')[0];
