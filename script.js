@@ -45,23 +45,23 @@ buttonRemoveSelectedItem.addEventListener('click', function (event) {
 buttonItemMoveUp.addEventListener('click', function (event) {
   event.preventDefault();
   selectedItem = document.querySelector('.selected');
-  let selectedPreviousItem = selectedItem.previousElementSibling;
-  if (selectedPreviousItem !== null  && selectedItem !== null) {
-    selectedPreviousItem.before(selectedItem);
+  if (selectedItem !== null) {
+    let selectedPreviousItem = selectedItem.previousElementSibling;
+    if (selectedPreviousItem !== null) {
+      selectedPreviousItem.before(selectedItem);
+    }
   }
 });
 
 buttonItemMoveDown.addEventListener('click', function (event) {
   event.preventDefault();
   selectedItem = document.querySelector('.selected');
-  let selectedNextItem = selectedItem.nextElementSibling;
-  if (selectedNextItem !== null && selectedItem !== null){
-    selectedNextItem.after(selectedItem);
+  if (selectedItem !== null) {
+    let selectedNextItem = selectedItem.nextElementSibling;
+    if (selectedNextItem !== null) {
+      selectedNextItem.after(selectedItem);
+    }
   }
-});
-
-buttonSaveTaskList.addEventListener('click', function () {
-  localStorage.setItem('saveTaskList', taskList.innerHTML);
 });
 
 function uncheckedTaskListItem(position) {
