@@ -1,7 +1,11 @@
 // Seleciona elemento da lista
 function selectionListItem(event) {
-  let selectedItem = event.target;
-  selectedItem.style.backgroundColor = 'rgb(128, 128, 128)';
+  const selectedItem = event.target;
+  const liSelected = document.querySelector('.turn-gray');
+  
+  selectedItem.className = 'turn-gray';
+  liSelected.classList.remove('turn-gray');
+  selectedItem.classList.add('turn-gray');
 }
 
 // Criar elemento na lista
