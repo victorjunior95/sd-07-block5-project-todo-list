@@ -3,9 +3,8 @@ function selectionListItem(event) {
   const selectedItem = event.target;
   const liSelected = document.querySelector('.turn-gray');
   
-  selectedItem.className = 'turn-gray';
-  liSelected.classList.remove('turn-gray');
   selectedItem.classList.add('turn-gray');
+  liSelected.classList.remove('turn-gray'); 
 }
 
 // Criar elemento na lista
@@ -14,7 +13,7 @@ const list = document.querySelector('#lista-tarefas');
 function createListItem() {
   const listItem = document.createElement('li');
   list.appendChild(listItem);
-  // listItem.className = 'tarefa';
+  listItem.className = 'tarefa';
   listItem.addEventListener('click', selectionListItem);
   // listItem.addEventListener('dblclick', )
   
@@ -32,10 +31,6 @@ function inputText() {
 }
 
 taskButton.addEventListener('click', inputText);
-
-
-
-
 
 // Apaga itens da lista
 const clearButton = document.querySelector('#apaga-tudo');
