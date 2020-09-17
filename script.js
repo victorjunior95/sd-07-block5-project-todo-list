@@ -63,7 +63,7 @@ const btnMoveDown = document.querySelector('#mover-baixo');
 btnMoveDown.addEventListener('click', function () {
     const selected = document.getElementsByClassName('selected')[0];
     if (selected !== null) {
-    if (selected.previousElementSibling !== null) {
+    if (selected.nextElementSibling !== null) {
       document.querySelector('ol').insertBefore(selected.nextElementSibling, selected);
       }
     }
