@@ -3,6 +3,7 @@ let toDoList = document.getElementById('lista-tarefas');
 let taskName = document.getElementById('texto-tarefa');
 let clearBtn = document.getElementById('apaga-tudo');
 let removeCompletedBtn = document.getElementById('remover-finalizados');
+let removeSelectedBtn = document.getElementById('remover-selecionado');
 taskName.focus();
 
 createTaskBtn.addEventListener('click', function(){
@@ -37,5 +38,12 @@ createTaskBtn.addEventListener('click', function(){
       toDoList.removeChild(item);
     }
   })
+
+  removeSelectedBtn.addEventListener('click', function(){
+    if (item.classList.contains('selected')){
+      toDoList.removeChild(item);
+    }
+  });
+
 })
 
