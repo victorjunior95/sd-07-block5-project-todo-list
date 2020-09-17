@@ -51,7 +51,7 @@ btnNewItem.addEventListener('click', function () {
 
 const btnMoveUp = document.querySelector('#mover-cima');
   btnMoveUp.addEventListener('click', function () {
-    const selected = document.getElementsByClassName('selected')[0];
+    const selected = document.querySelector('.selected');
     if (selected) {
       if (toDoList.length !== 0) {
         if (selected.previousElementSibling !== null) {
@@ -63,7 +63,7 @@ const btnMoveUp = document.querySelector('#mover-cima');
 // trata evento mover item da lista para baixo
 const btnMoveDown = document.querySelector('#mover-baixo');
 btnMoveDown.addEventListener('click', function () {
-    const selected = document.getElementsByClassName('selected')[0];
+  const selected = document.querySelector('.selected');
     if (selected) {
       if (toDoList.length !== 0) {
         if (selected.nextElementSibling !== null) {
@@ -72,6 +72,7 @@ btnMoveDown.addEventListener('click', function () {
       }
     }
   });
+
 // trata evento salvar lista
   const btnSaveList = document.querySelector('#salvar-tarefas');
   btnSaveList.addEventListener('click', function () {
