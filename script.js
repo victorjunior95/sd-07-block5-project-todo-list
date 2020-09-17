@@ -86,58 +86,51 @@ function liGenerate(data) {
   }
 }
 
-function alterDataForLi() {
-  const lisExistentes = document.querySelectorAll('.item-tarefa');
-  let newLiReturn = [];
-  for (let index = 0; index < lisExistentes.length; index += 1) {
-    newLiReturn.push(lisExistentes[index].innerText);
-  }
-  const getInsertButton = document.querySelector('#criar-tarefa');
-  getInsertButton.addEventListener('click', function () {
-    const inputData = document.querySelector('#texto-tarefa');
-    if (inputData.value) {
-      newLiReturn.push(inputData.value);
-      liGenerate(newLiReturn);
-      inputData.value = '';
-    }
-  });
-
-  const getKeyEnter = document.querySelector('#texto-tarefa');
-  getKeyEnter.addEventListener('keydown', function (event) {
-    const inputDataWitchEnter = document.querySelector('#texto-tarefa');
-    if (inputDataWitchEnter.value && event.keyCode === 13) {
-      newLiReturn.push(inputDataWitchEnter.value);
-      liGenerate(newLiReturn);
-      inputDataWitchEnter.value = '';
-    }
-  });
-
-  const getEraseButton = document.querySelector('#apaga-tudo');
-  getEraseButton.addEventListener('click', function () {
-    const listOrdenateTarget = document.querySelector('#first-section');
-    listOrdenateTarget.removeChild(listOrdenateTarget.lastElementChild);
-    createOrdenateList();
-    newLiReturn = [];
-  });
-}
-alterDataForLi();
-
-document.body.addEventListener('click', function (event) {
-  if (event.target.nodeName === 'LI') {
-    const liSelected = document.querySelectorAll('.selected')[0];
-    const liClicked = event.target;
-    if (liSelected) {
-      liSelected.classList.remove('selected');
-      liClicked.classList.add('selected');
-    } else {
-      liClicked.classList.add('selected');
-    }
+let newLiReturn = []
+const getInsertButton = document.querySelector('#criar-tarefa');
+getInsertButton.addEventListener('click', function () {
+  const inputData = document.querySelector('#texto-tarefa');
+  if (inputData.value) {
+    newLiReturn.push(inputData.value);
+    liGenerate(newLiReturn);
+    inputData.value = '';
   }
 });
 
-document.body.addEventListener('dblclick', function (event) {
-  if (event.target.nodeName === 'LI') {
-    const liClicked = event.target;
-    liClicked.classList.toggle('completed');
+const getKeyEnter = document.querySelector('#texto-tarefa');
+getKeyEnter.addEventListener('keydown', function (event) {
+  const inputDataWitchEnter = document.querySelector('#texto-tarefa');
+  if (inputDataWitchEnter.value && event.keyCode === 13) {
+    newLiReturn.push(inputDataWitchEnter.value);
+    liGenerate(newLiReturn);
+    inputDataWitchEnter.value = '';
   }
+});
+
+document.body.addEventListener('click', function (event) {
+if (event.target.nodeName === 'LI') {
+  const liSelected = document.querySelectorAll('.selected')[0];
+  const liClicked = event.target;
+  if (liSelected) {
+    liSelected.classList.remove('selected');
+    liClicked.classList.add('selected');
+  } else {
+    liClicked.classList.add('selected');
+  }
+}
+});
+
+document.body.addEventListener('dblclick', function (event) {
+if (event.target.nodeName === 'LI') {
+  const liClicked = event.target;
+  liClicked.classList.toggle('completed');
+}
+});
+
+const getEraseButton = document.querySelector('#apaga-tudo');
+getEraseButton.addEventListener('click', function () {
+const listOrdenateTarget = document.querySelector('#first-section');
+listOrdenateTarget.removeChild(listOrdenateTarget.lastElementChild);
+createOrdenateList();
+newLiReturn = [];
 });
