@@ -39,10 +39,9 @@ buttonClear.addEventListener('click', function(){
 
 let buttonFinished = document.getElementById('remover-finalizados')
 buttonFinished.addEventListener('click', function(){
-    let checkList = document.querySelectorAll('.completed')
-
-    for(let index = 0; index< checkList.length; index += 1) {
-    let checkItem = itemsCheck[index];
+    let checkList = document.getElementsByClassName('completed')
+    for(let index = checkList.length -1; index >= 0; index -= 1) {
+    let checkItem = checkList[index];
     listaTarefas.removeChild(checkItem);
     }
 });
