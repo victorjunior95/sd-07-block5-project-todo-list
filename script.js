@@ -9,7 +9,6 @@ const moverDownBtn = document.querySelector('#mover-baixo');
 let itemSelect = '';
 let paiLista = document.querySelector('ol');
 let finalizados = '';
-let allItens = '';
 function criarLi() {
   criarTarefaBtn.addEventListener('click', function () {
     const li = document.createElement('li');
@@ -54,22 +53,20 @@ function removerSelecionado() {
 removerSelecionadoBtn.addEventListener('click', removerSelecionado);
 function moverUp() {
   itemSelect = document.querySelector('.selected');
-  let anteriorElemento = itemSelect.previousSibling;
+  const anteriorElemento = itemSelect.previousSibling;
   if (itemSelect === paiLista.firstChild) {
     alert('Impossível mover esse item para cima');
-  }
-  else {
+  } else {
     paiLista.insertBefore(itemSelect, anteriorElemento);
   }
 }
 moverUpBtn.addEventListener('click', moverUp);
 function moverDown() {
   itemSelect = document.querySelector('.selected');
-  let proximoElemento = itemSelect.nextSibling;
+  const proximoElemento = itemSelect.nextSibling;
   if (itemSelect === paiLista.lastChild) {
     alert('Impossível mover esse item para baixo');
-  }
-  else {
+  } else {
     paiLista.insertBefore(proximoElemento, itemSelect);
   }
 }
