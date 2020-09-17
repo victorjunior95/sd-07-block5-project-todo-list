@@ -46,7 +46,7 @@ buttonItemMoveUp.addEventListener('click', function (event) {
   event.preventDefault();
   selectedItem = document.querySelector('.selected');
   let selectedPreviousItem = selectedItem.previousElementSibling;
-  if (selectedPreviousItem !== null) {
+  if (selectedPreviousItem !== null  && selectedItem !== null) {
     selectedPreviousItem.before(selectedItem);
   }
 });
@@ -55,7 +55,7 @@ buttonItemMoveDown.addEventListener('click', function (event) {
   event.preventDefault();
   selectedItem = document.querySelector('.selected');
   let selectedNextItem = selectedItem.nextElementSibling;
-  if (selectedNextItem !== null){
+  if (selectedNextItem !== null && selectedItem !== null){
     selectedNextItem.after(selectedItem);
   }
 });
