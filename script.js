@@ -137,6 +137,7 @@ function moveDown() {
         li[i].nextElementSibling !== null
       ) {
         list.insertBefore(li[i].nextElementSibling, li[i]);
+        break;
       }
     }
   });
