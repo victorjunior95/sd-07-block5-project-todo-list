@@ -2,10 +2,8 @@ window.onload = function () {
   const tarefaInput = document.getElementById('texto-tarefa');
   const listaDeTarefas = document.getElementById('lista-tarefas');
   const botaoSalvar = document.getElementById('salvar-tarefas');
-  const areaDeAvisos = document.getElementById('avisos');
-
+  const avisos = document.getElementById('avisos');
   let itemClicado = null;
-
   carregaItensSalvos();
 
   tarefaInput.focus();
@@ -15,7 +13,7 @@ window.onload = function () {
   function itemSelecionado() {
     event.stopPropagation();
     const itemSelecionado = event.target;
-    console.log(itemSelecionado)
+    console.log(itemSelecionado.innerHTML)
 
     if (itemSelecionado.nodeName === 'LI') {
       limpaSeleao();
@@ -28,24 +26,24 @@ window.onload = function () {
   document.getElementById('mover-cima').addEventListener('click', moverParaCima);
 
   function moveParaBaixo() {
+    avisos.textContent = '';
     let proximo = itemClicado.nextSibling;
-    if (proximo != null && proximo.style.backgroundColor === 
-      "rgb(128, 128, 128)") {
+    if (proximo != null ) {
       listaDeTarefas.insertBefore(itemClicado, proximo);
       listaDeTarefas.insertBefore(proximo, itemClicado);
     } else {
-      alert('Fim da lista!');
+      avisos.textContent = 'Fim da lista!';
     }
   }
 
   function moverParaCima(){
+    avisos.textContent = '';
     let anterior = itemClicado.previousElementSibling;
-    if (anterior != null && anterior.style.backgroundColor === 
-      "rgb(128, 128, 128)") {
+    if (anterior != null) {
       listaDeTarefas.insertBefore(anterior, itemClicado);
       listaDeTarefas.insertBefore(itemClicado, anterior);      
     } else {
-      alert('Fim da lista!');
+      avisos.textContent = 'Fim da lista!';
     }
   }
 
@@ -60,15 +58,14 @@ window.onload = function () {
         itemSelecionado.className = 'completed';
       }
     }
-
     limpaSeleao();
   });
 
   function limpaSeleao() {
     let itensLista = document.querySelectorAll('ol>li');
     itensLista.forEach((element) => {
+      itemClicado = null;
       element.style.backgroundColor = 'white';
-      itemClicado = null
     });
   }
 
