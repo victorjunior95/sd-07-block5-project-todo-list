@@ -46,33 +46,6 @@ btnNewItem.addEventListener('click', function () {
       }
     }
   });
-// trata evento mover item da lista para cima
-// source:https://pt.stackoverflow.com/questions/96648/after-jquery-em-js-puro#:~:text=after()%20insere%20um%20elemento,insertBefore()%20%2C%20segundo%20a%20documenta%C3%A7%C3%A3o%3A&text=N%C3%A3o%20existe%20um%20m%C3%A9todo%20insertAfter,antes%20do%20pr%C3%B3ximo%20elemento%20irm%C3%A3o.
-
-const btnMoveUp = document.querySelector('#mover-cima');
-  btnMoveUp.addEventListener('click', function () {
-    let selected = document.querySelector('.selected');
-    if (selected) {
-      if (toDoList.length !== 0) {
-        if (selected.previousElementSibling !== null) {
-          document.querySelector('ol').insertBefore(selected, selected.previousElementSibling);
-        }
-      }
-    }
-  });
-// trata evento mover item da lista para baixo
-const btnMoveDown = document.querySelector('#mover-baixo');
-btnMoveDown.addEventListener('click', function () {
-  let selected = document.querySelector('.selected');
-    if (selected) {
-      if (toDoList.length !== 0) {
-        if (selected.nextElementSibling !== null) {
-          document.querySelector('ol').insertBefore(selected.nextElementSibling, selected);
-        }
-      }
-    }
-  });
-
 // trata evento salvar lista
   const btnSaveList = document.querySelector('#salvar-tarefas');
   btnSaveList.addEventListener('click', function () {
@@ -85,6 +58,31 @@ btnMoveDown.addEventListener('click', function () {
 const btnClearList = document.querySelector('#apaga-tudo');
 btnClearList.addEventListener('click', function () {
   toDoList.innerHTML = '';
+});
+// trata evento mover item da lista para cima
+// source:https://pt.stackoverflow.com/questions/96648/after-jquery-em-js-puro#:~:text=after()%20insere%20um%20elemento,insertBefore()%20%2C%20segundo%20a%20documenta%C3%A7%C3%A3o%3A&text=N%C3%A3o%20existe%20um%20m%C3%A9todo%20insertAfter,antes%20do%20pr%C3%B3ximo%20elemento%20irm%C3%A3o.
+const btnMoveUp = document.querySelector('#mover-cima');
+  btnMoveUp.addEventListener('click', function () {
+    let selected = document.querySelector('.selected');
+    if (selected) {
+      if (toDoList.length !== 0) {
+        if (selected.previousElementSibling !== null) {
+          document.querySelector('ol').insertBefore(selected, selected.previousElementSibling);
+        }
+      }
+    }
+});
+// trata evento mover item da lista para baixo
+const btnMoveDown = document.querySelector('#mover-baixo');
+btnMoveDown.addEventListener('click', function () {
+  let selected = document.querySelector('.selected');
+    if (selected) {
+      if (toDoList.length !== 0) {
+        if (selected.nextElementSibling !== null) {
+          document.querySelector('ol').insertBefore(selected.nextElementSibling, selected);
+        }
+      }
+    }
 });
 // recuperar lista salva
 window.onload = function () {
