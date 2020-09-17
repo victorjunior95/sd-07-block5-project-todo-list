@@ -4,9 +4,12 @@ const criarTarefaBtn = document.querySelector('#criar-tarefa');
 const apagarTudoBtn = document.querySelector('#apaga-tudo');
 const apagarFinalizadosBtn = document.querySelector('#remover-finalizados');
 const removerSelecionadoBtn = document.querySelector('#remover-selecionado');
+const moverUpBtn = document.querySelector('#mover-cima');
+const moverDownBtn = document.querySelector('#mover-baixo');
 let itemSelect = '';
-let paiLista = '';
+let paiLista = document.querySelector('ol');
 let finalizados = '';
+let allItens = '';
 function criarLi() {
   criarTarefaBtn.addEventListener('click', function () {
     const li = document.createElement('li');
@@ -49,4 +52,26 @@ function removerSelecionado() {
   itemSelect.remove();
 }
 removerSelecionadoBtn.addEventListener('click', removerSelecionado);
+function moverUp() {
+  itemSelect = document.querySelector('.selected');
+  let anteriorElemento = itemSelect.previousSibling;
+  if (itemSelect === paiLista.firstChild) {
+    alert('Impossível mover esse item para cima');
+  }
+  else {
+    paiLista.insertBefore(itemSelect, anteriorElemento);
+  }
+}
+moverUpBtn.addEventListener('click', moverUp);
+function moverDown() {
+  itemSelect = document.querySelector('.selected');
+  let proximoElemento = itemSelect.nextSibling;
+  if (itemSelect === paiLista.lastChild) {
+    alert('Impossível mover esse item para baixo');
+  }
+  else {
+    paiLista.insertBefore(proximoElemento, itemSelect);
+  }
+}
+moverDownBtn.addEventListener('click', moverDown);
 criarLi();
