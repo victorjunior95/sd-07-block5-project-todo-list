@@ -57,19 +57,40 @@ buttonToSalveList.addEventListener("click", function () {
   let listToSaveLocalStorage = [];
   for (let index = 0; index < olToDoList.childElementCount; index += 1) {
     let innerTextTaskList = olToDoList.children[index].innerText;
-    let taskStorage = { task: innerTextTaskList };
+    let completedTrueOrFalse = false;
+    if (olToDoList.children[index].classList.contains("completed")) {
+      completedTrueOrFalse = true;
+    } else {
+      completedTrueOrFalse = false;
+    }
+    let taskStorage = {
+      task: innerTextTaskList,
+      completed: completedTrueOrFalse,
+    };
     listToSaveLocalStorage.push(taskStorage);
   }
   localStorage.setItem("Tasks", JSON.stringify(listToSaveLocalStorage));
 });
 
+function createLILocalStorage(taskText, taskClass) {
+  const liTask = document.createElement("li");
+  liTask.innerText = taskText;
+  olToDoList.appendChild(liTask);
+  changeBGColorTask(liTask);
+  addAndRemoveCompletedTask(liTask);
+  if (taskClass === true) {
+    liTask.classList.add("completed");
+  }
+}
+
 if (localStorage.getItem("Tasks") !== null) {
+  let jsonParseGetItem = JSON.parse(localStorage.getItem("Tasks"));
+  let lengthLocalStorageList = jsonParseGetItem.length;
   for (
     let index = 0;
-    index < JSON.parse(localStorage.getItem("Tasks")).length;
+    index < lengthLocalStorageList;
     index += 1
   ) {
-    inputTextToDo.value = JSON.parse(localStorage.getItem("Tasks"))[index].task;
-    createLI();
+    createLILocalStorage(jsonParseGetItem[index].task, jsonParseGetItem[index].completed);
   }
 }
