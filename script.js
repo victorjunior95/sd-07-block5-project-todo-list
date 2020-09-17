@@ -1,3 +1,4 @@
+
 const listaTarefas = document.querySelector('#lista-tarefas');
 const criarTarefaBtn = document.querySelector('#criar-tarefa');
 const apagarTudoBtn = document.querySelector('#apaga-tudo');
@@ -29,10 +30,10 @@ function criarLi() {
   });
 }
 function apagarLi() {
-    paiLista = document.querySelector('li').parentElement;
-    while (paiLista.hasChildNodes()) {
-        paiLista.removeChild(paiLista.childNodes[0]);
-    }
+  paiLista = document.querySelector('li').parentElement;
+  while (paiLista.hasChildNodes()) {
+    paiLista.removeChild(paiLista.childNodes[0]);
+  }
 }
 apagarTudoBtn.addEventListener('click', apagarLi);
 function apagarFinalizados() {
