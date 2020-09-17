@@ -38,7 +38,7 @@ function makeTaskList() {
 
 function removeFinished() {
   while (document.querySelector('.completed')) {
-    document.querySelector('ol').removeChild(document.querySelector('.completed'));
+    orderedList.removeChild(document.querySelector('.completed'));
   }
 }
 
