@@ -1,5 +1,5 @@
 .add {
-background-color: rgb(95 , 170 , 189);
+  background-color: rgb(95 , 170 , 189);
 }
 
 body {
@@ -24,6 +24,7 @@ body {
 .clear {
   background-color: cornsilk;
 }
+
 header {
   font-size: 25px;
   font-weight: 700;
@@ -32,7 +33,7 @@ header {
 }
 
 p {
-  margin-top: 0;  
+  margin-top: 0;
 }
 
 .remove {
@@ -40,7 +41,7 @@ p {
 }
 
 .selected {
-  background-color: rgb(128, 128, 128);
+  background-color: gray;
 }
 
 .completed {

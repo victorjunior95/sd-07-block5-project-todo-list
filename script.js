@@ -10,15 +10,15 @@ buttonAddTarefa.addEventListener('click', function () {
     let selectedItem = document.querySelector('.selected');
     if (selectedItem !== null) {
         selectedItem.classList.remove('selected');
-        } event.target.classList.add('selected');
-    });
+    } event.target.classList.add('selected');
+  });
 
-  itemLista.addEventListener('dblclick', function(event){
-      if(event.target.classList.contains('completed')){
+  itemLista.addEventListener('dblclick', function (event) {
+      if (event.target.classList.contains('completed')){
           event.target.classList.remove('completed');
       }
       else {
-          event.target.classList.add('completed');
+        event.target.classList.add('completed');
       }
   });
   document.getElementById('texto-tarefa').value = '';
@@ -27,19 +27,19 @@ buttonAddTarefa.addEventListener('click', function () {
 
 const buttonClear = document.getElementById('apaga-tudo')
 buttonClear.addEventListener('click', function () {
-    let itemsList = document.querySelectorAll('li')
+  const itemsList = document.querySelectorAll('li')
 
-    for(let index = 0; index< itemsList.length; index += 1) {
-    let item = itemsList[index];
-    listaTarefas.removeChild(item);
-    }
+  for (let index = 0; index< itemsList.length; index += 1) {
+      const item = itemsList[index];
+      listaTarefas.removeChild(item);
+  }
 });
 
-let buttonFinished = document.getElementById('remover-finalizados')
-buttonFinished.addEventListener('click', function(){
-    let checkList = document.getElementsByClassName('completed')
-    for(let index = checkList.length -1; index >= 0; index -= 1) {
-    let checkItem = checkList[index];
-    listaTarefas.removeChild(checkItem);
+const buttonFinished = document.getElementById('remover-finalizados');
+buttonFinished.addEventListener('click', function () {
+    const checkList = document.getElementsByClassName('completed')
+  for(let index = checkList.length - 1; index >= 0; index -= 1) {
+      const checkItem = checkList[index];
+       listaTarefas.removeChild(checkItem);
     }
 });
