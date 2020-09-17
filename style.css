@@ -33,8 +33,19 @@ body {
 
 .view {
     border: solid 1px black;
+    text-align: center;
 }
 
 .control {
     border: solid 1px black;
+}
+
+#lista-tarefas li {
+    margin: 3px;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: rgb(128, 128, 128);
+    
 }
