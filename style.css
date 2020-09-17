@@ -137,14 +137,14 @@ h3 {
   transition: 0.5s;
 }
 
-.social-media a:hover {
-  transform: rotate(1turn);
-}
-
 .icons-link {
   color: rgb(239 , 241 , 243);
 }
 
 .icons-link a {
   color: rgb(239 , 241 , 243);
+}
+
+.social-media a:hover {
+  transform: rotate(1turn);
 }

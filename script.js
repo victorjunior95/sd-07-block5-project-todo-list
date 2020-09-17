@@ -13,18 +13,31 @@ let completedTaskListItens = document.querySelectorAll('.completed');
 let selectedItem = document.querySelector('.selected');
 let inputValue = '';
 
+function uncheckedTaskListItem(position) {
+  taskListItens = document.querySelectorAll('li');
+  for (let index = 0; index < taskListItens.length; index += 1) {
+    if (taskListItens[index] !== position) {
+      taskListItens[index].classList.remove('selected');
+    }
+  }
+}
+
+function checkItem(newTaskListItem) {
+  newTaskListItem.addEventListener('dblclick', function () {
+    if(newTaskListItem.classList.contains('completed')) {
+      newTaskListItem.classList.remove('completed');
+    } else {
+      newTaskListItem.classList.add('completed');
+    } 
+    completedTaskListItens = document.querySelectorAll('.completed');
+  });
+}
+
 function selectItem(newTaskListItem) {
   newTaskListItem.addEventListener('click', function (event) {
     newTaskListItem.classList.add('selected');
     const position = event.target;
     uncheckedTaskListItem(position);
-  });
-}
-
-function checkItem(newTaskListItem) {
-  newTaskListItem.addEventListener('dblclick', function () {
-    newTaskListItem.classList.contains('completed') ? newTaskListItem.classList.remove('completed') : newTaskListItem.classList.add('completed');
-    completedTaskListItens = document.querySelectorAll('.completed');
   });
 }
 
@@ -78,15 +91,6 @@ buttonItemMoveDown.addEventListener('click', function (event) {
     }
   }
 });
-
-function uncheckedTaskListItem(position) {
-  taskListItens = document.querySelectorAll('li');
-  for (let index = 0; index < taskListItens.length; index += 1) {
-    if (taskListItens[index] !== position) {
-      taskListItens[index].classList.remove('selected');
-    }
-  }
-}
 
 buttonClearCompletedTaskListItem.addEventListener('click', function (event) {
   event.preventDefault();
