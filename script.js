@@ -47,6 +47,6 @@ lista.addEventListener("click", function(event) {
 let apagarItem = document.querySelector("#remover-finalizados");
 
 apagarItem.addEventListener("click", function() {
-    let list = document.getElementsByClassName("selecionado");
+    let list = document.getElementsByClassName("completed");
     list[0].remove();
 });
