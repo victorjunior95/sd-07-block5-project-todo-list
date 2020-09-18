@@ -10,7 +10,7 @@ const butMovAbai = document.querySelector('#mover-baixo');
 const butRemSelecionado = document.querySelector('#remover-selecionado');
 
 function levaParaLista() {
-  let tarefa = document.createElement('li');
+  const tarefa = document.createElement('li');
   tarefa.innerText = textoTarefa.value;
   inicioListaTarefas.appendChild(tarefa);
   textoTarefa.value = '';
