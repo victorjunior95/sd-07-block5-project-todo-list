@@ -69,6 +69,12 @@ saveTask.className = 'salvar-tarefas';
 saveTask.setAttribute('id', 'salvar-tarefas');
 saveTask.innerText = 'Salvar Lista';
 parentSectionSecond.appendChild(saveTask);
+
+const removeSelectedButton = document.createElement('button');
+removeSelectedButton.className = 'remover-selecionado';
+removeSelectedButton.setAttribute('id', 'remover-selecionado');
+removeSelectedButton.innerText = 'Remover Selecionado';
+parentSectionSecond.appendChild(removeSelectedButton);
 // *********** FIM DA CRIAÇAO DO HTML **********
 
 // Create OL
@@ -80,7 +86,7 @@ function createOrdenateList() {
   parentItemSection.appendChild(ordenateListToDo);
 }
 createOrdenateList();
-
+// Get data LocalStorage
 function getLocalStorage() {
   let propagationDataStorage = [];
   let tasksLoadeds = localStorage.getItem('task');
@@ -248,4 +254,4 @@ saveTasksButton.addEventListener('click', function () {
     arrayForLocalStorage.push(taskLocalStorage)
   }
   localStorage.setItem('task', JSON.stringify(arrayForLocalStorage));
-});  
+}); 
