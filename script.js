@@ -15,10 +15,10 @@ buttonAddTarefa.addEventListener('click', function () {
 
   itemLista.addEventListener('dblclick', function (event) {
     if (event.target.classList.contains('completed')) {
-       event.target.classList.remove('completed');
+        event.target.classList.remove('completed');
     }
     else {
-      event.target.classList.add('completed');
+       event.target.classList.add('completed');
     }
   });
   document.getElementById('texto-tarefa').value = '';
@@ -40,6 +40,6 @@ buttonFinished.addEventListener('click', function () {
   const checkList = document.getElementsByClassName('completed');
   for (let index = checkList.length - 1; index >= 0; index -= 1) {
       const checkItem = checkList[index];
-       listaTarefas.removeChild(checkItem);
+        listaTarefas.removeChild(checkItem);
     }
 });
