@@ -4,4 +4,5 @@ botaoAddTarefa.addEventListener('click', function () {
   const novoItem = document.createElement('li');
   const itemTarefa = document.getElementById('lista-tarefas');
   itemTarefa.appendChild(novoItem).innerHTML = tarefa;
+  document.getElementById('texto-tarefa').value = '';
 });
