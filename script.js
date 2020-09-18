@@ -1,68 +1,57 @@
 window.onload = function () {
   const tarefaInput = document.getElementById('texto-tarefa');
   const listaDeTarefas = document.getElementById('lista-tarefas');
-  const botaoSalvar = document.getElementById('salvar-tarefas');
   const avisos = document.getElementById('avisos');
   let itemClicado = null;
   carregaItensSalvos();
-
   tarefaInput.focus();
 
-  listaDeTarefas.addEventListener('click', itemSelecionado);
-
-  function itemSelecionado() {
+  const itemSelecionado = function (event) {
     event.stopPropagation();
-    const itemSelecionado = event.target;
-    console.log(itemSelecionado.innerHTML)
-
-    if (itemSelecionado.nodeName === 'LI') {
+    if (event.target.nodeName === 'LI') {
       limpaSeleao();
-      alteraCorFundo(itemSelecionado);
-      itemClicado = itemSelecionado;
+      alteraCorFundo(event.target);
+      itemClicado = event.target;
     }
   }
 
-  document.getElementById('mover-baixo').addEventListener('click', moveParaBaixo);
-  document.getElementById('mover-cima').addEventListener('click', moverParaCima);
-
-  function moveParaBaixo() {
+  const moveParaBaixo = function () {
     avisos.textContent = '';
     let proximo = itemClicado.nextSibling;
-    if (proximo != null ) {
+    if (proximo != null) {
       listaDeTarefas.insertBefore(itemClicado, proximo);
       listaDeTarefas.insertBefore(proximo, itemClicado);
-      salvarLista();
+      salvarLista;
     } else {
       avisos.textContent = 'Fim da lista!';
     }
   }
 
-  function moverParaCima(){
+  const moverParaCima = function () {
     avisos.textContent = '';
     let anterior = itemClicado.previousElementSibling;
     if (anterior != null) {
       listaDeTarefas.insertBefore(anterior, itemClicado);
       listaDeTarefas.insertBefore(itemClicado, anterior);
-      salvarLista();     
+      salvarLista;
     } else {
       avisos.textContent = 'Fim da lista!';
     }
   }
 
-  listaDeTarefas.addEventListener('dblclick', function () {
+  const marcarCompleto = function (event) {
     event.stopPropagation();
-    const itemSelecionado = event.target;
-
-    if (itemSelecionado.nodeName === 'LI') {
-      if (itemSelecionado.className === 'completed') {
-        itemSelecionado.className = '';
+    if (event.target.nodeName === 'LI') {
+      if (event.target.className === 'completed') {
+        event.target.className = '';
       } else {
-        itemSelecionado.className = 'completed';
+        event.target.className = 'completed';
       }
     }
     limpaSeleao();
-  });
+  };
 
+  /**Se criar uma variavel e atribuir a função não vai funcionar o desmarque quando marcar como compelto */
   function limpaSeleao() {
     let itensLista = document.querySelectorAll('ol>li');
     itensLista.forEach((element) => {
@@ -71,7 +60,7 @@ window.onload = function () {
     });
   }
 
-  function criaLi() {
+  const criaLi = function () {
     let novoLi = document.createElement('li');
     novoLi.textContent = tarefaInput.value;
     listaDeTarefas.appendChild(novoLi);
@@ -79,11 +68,19 @@ window.onload = function () {
     tarefaInput.focus();
   }
 
-  function alteraCorFundo(elem) {
+  const alteraCorFundo = function (elem) {
     elem.style.backgroundColor = 'rgb(128, 128, 128)';
   }
 
-  document.getElementById('criar-tarefa').addEventListener('click', criaLi);
+  const salvarLista = function () {
+    localStorage.clear();
+    localStorage.setItem('listaTarefas', listaDeTarefas.innerHTML);
+  }
+
+  /**Não consigo fazer essa função ser auto executavel. Por quê? */
+  function carregaItensSalvos() {
+    document.querySelector('ol').innerHTML = localStorage.getItem('listaTarefas');
+  }
 
   document.getElementById('apaga-tudo').addEventListener('click', function () {
     const listaLi = document.querySelectorAll('ol>li');
@@ -99,20 +96,15 @@ window.onload = function () {
     })
   });
 
-  botaoSalvar.addEventListener('click', salvarLista);
-  
-  function salvarLista() {
-    localStorage.clear();
-    localStorage.setItem('listaTarefas', listaDeTarefas.innerHTML);
-  }
-
-  function carregaItensSalvos() {
-    document.querySelector('ol').innerHTML = localStorage.getItem('listaTarefas');
-    console.log(botaoSalvar.innerHTML);
-  }
-
-  document.getElementById('remover-selecionado').addEventListener('click', function(){
+  document.getElementById('remover-selecionado').addEventListener('click', function () {
     itemClicado.remove();
+    salvarLista();
   });
 
+  listaDeTarefas.addEventListener('click', itemSelecionado);
+  document.getElementById('mover-baixo').addEventListener('click', moveParaBaixo);
+  document.getElementById('mover-cima').addEventListener('click', moverParaCima);
+  listaDeTarefas.addEventListener('dblclick', marcarCompleto);
+  document.getElementById('criar-tarefa').addEventListener('click', criaLi);
+  document.getElementById('salvar-tarefas').addEventListener('click', salvarLista);
 }
