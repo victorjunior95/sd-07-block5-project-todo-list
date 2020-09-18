@@ -61,10 +61,17 @@ parentSectionSecond.appendChild(eraseAllTasksButton);
 const eraseTaskCompleted = document.createElement('button');
 eraseTaskCompleted.className = 'remover-finalizados';
 eraseTaskCompleted.setAttribute('id', 'remover-finalizados');
-eraseTaskCompleted.innerText = 'Apagar Itens Finalizados';
+eraseTaskCompleted.innerText = 'Apagar Tarefas Finalizadas';
 parentSectionSecond.appendChild(eraseTaskCompleted);
+
+const saveTask = document.createElement('button');
+saveTask.className = 'salvar-tarefas';
+saveTask.setAttribute('id', 'salvar-tarefas');
+saveTask.innerText = 'Salvar Lista';
+parentSectionSecond.appendChild(saveTask);
 // *********** FIM DA CRIAÇAO DO HTML **********
 
+// Create OL
 function createOrdenateList() {
   const parentItemSection = document.getElementById('first-section');
   const ordenateListToDo = document.createElement('ol');
@@ -74,8 +81,21 @@ function createOrdenateList() {
 }
 createOrdenateList();
 
-function liGenerate(data) {
-  if (data.length !== 0) {
+function getLocalStorage() {
+  let propagationDataStorage = [];
+  let tasksLoadeds = localStorage.getItem('task');
+  propagationDataStorage = JSON.parse(tasksLoadeds);
+  loadListItem(propagationDataStorage);
+ 
+  if (propagationDataStorage === null) {
+    return propagationDataStorage = [];
+  } 
+    return propagationDataStorage;
+}
+let arrayFullDataTasks = getLocalStorage();
+
+function loadListItem(data) {
+  if (data !== null) {
     const parentOfOl = document.getElementById('first-section');
     const getOl = document.querySelector('#lista-tarefas');
     parentOfOl.removeChild(getOl);
@@ -83,35 +103,85 @@ function liGenerate(data) {
     const olTag = document.getElementById('lista-tarefas');
     for (let index = 0; index < data.length; index += 1) {
       const itemLi = document.createElement('li');
-      itemLi.className = 'item-tarefa';
-      itemLi.setAttribute('id', index);
-      itemLi.innerText = data[index];
+      itemLi.setAttribute('id', data[index].id);
+      itemLi.className = data[index].class;
+      itemLi.innerText = data[index].content;
+      olTag.appendChild(itemLi);
+    }
+  }
+}
+loadListItem(arrayFullDataTasks);
+
+console.log(arrayFullDataTasks)
+// Lis Generator
+function createListItem(data) {
+  if (data.length !== 0) {
+    const parentOfOl = document.getElementById('first-section');
+    const getOl = document.querySelector('#lista-tarefas');
+    parentOfOl.removeChild(getOl);
+    createOrdenateList();
+    const olTag = document.getElementById('lista-tarefas');
+    for (let index = 0; index < data.length; index += 1) {
+      let id = index;
+      let classSet = 'item-tarefa';
+      if (data[index].class.length > 11){
+        classSet = data[index].class
+      }
+      const itemLi = document.createElement('li');
+      itemLi.className = classSet;
+      itemLi.setAttribute('id', id);
+      itemLi.innerText = data[index].content;
       olTag.appendChild(itemLi);
     }
   }
 }
 
-let newLiReturn = []
+// insert task with click
 const getInsertButton = document.querySelector('#criar-tarefa');
 getInsertButton.addEventListener('click', function () {
   const inputData = document.querySelector('#texto-tarefa');
   if (inputData.value) {
-    newLiReturn.push(inputData.value);
-    liGenerate(newLiReturn);
+    let task = {
+      id: 0,
+      class: '',
+      content: inputData.value
+    };
+    arrayFullDataTasks.push(task)
+    createListItem(arrayFullDataTasks)
     inputData.value = '';
   }
 });
 
+// insert task with enter
 const getKeyEnter = document.querySelector('#texto-tarefa');
 getKeyEnter.addEventListener('keydown', function (event) {
   const inputDataWitchEnter = document.querySelector('#texto-tarefa');
   if (inputDataWitchEnter.value && event.keyCode === 13) {
-    newLiReturn.push(inputDataWitchEnter.value);
-    liGenerate(newLiReturn);
+    task = {
+      id: 0,
+      class: '',
+      content: inputDataWitchEnter.value
+    };
+    arrayFullDataTasks.push(task)
+    createListItem(arrayFullDataTasks)
     inputDataWitchEnter.value = '';
   }
 });
 
+// Remove all
+const getEraseAllButton = document.querySelector('#apaga-tudo');
+getEraseAllButton.addEventListener('click', function () {
+const listOrdenateTarget = document.querySelector('#lista-tarefas');
+while (listOrdenateTarget.lastElementChild) {
+  listOrdenateTarget.removeChild(listOrdenateTarget.lastElementChild);
+}
+while (arrayFullDataTasks.length) {
+  arrayFullDataTasks.pop();
+}
+localStorage.clear();
+});
+
+// Marck checked item clicked as selected
 document.body.addEventListener('click', function (event) {
 if (event.target.nodeName === 'LI') {
   const liSelected = document.querySelectorAll('.selected')[0];
@@ -125,29 +195,45 @@ if (event.target.nodeName === 'LI') {
 }
 });
 
+// Marck checked item double clicked as completed
 document.body.addEventListener('dblclick', function (event) {
-if (event.target.nodeName === 'LI') {
+  if (event.target.nodeName === 'LI') {
   const liClicked = event.target;
   liClicked.classList.toggle('completed');
 }
 });
 
-const getEraseAllButton = document.querySelector('#apaga-tudo');
-getEraseAllButton.addEventListener('click', function () {
-  const listOrdenateTarget = document.querySelector('#lista-tarefas');
-  while (listOrdenateTarget.lastElementChild) {
-    listOrdenateTarget.removeChild(listOrdenateTarget.lastElementChild);
-  }
-  newLiReturn = [];
-});
-
+// Remove item completed
 const getEraseItemButton = document.querySelector('#remover-finalizados');
 getEraseItemButton.addEventListener('click', function () {
   const completedRemove = document.querySelectorAll('.completed');
   for (let index = 0; index < completedRemove.length; index += 1) {
-    let find = completedRemove[index].innerText;
-    let indexOfItem = newLiReturn.indexOf(find);
-    newLiReturn.splice(indexOfItem, 1);
+    const indexRemove = completedRemove[index].id;
+    arrayFullDataTasks.splice(indexRemove, 1);
   }
-  liGenerate(newLiReturn);
+  createListItem(arrayFullDataTasks);
 });
+
+// Local stored itens
+const saveTasksButton = document.querySelector('#salvar-tarefas');
+saveTasksButton.addEventListener('click', function () {
+  const itemsForSave = document.querySelectorAll('.item-tarefa')
+  for (let index = 0; index < itemsForSave.length; index += 1) {
+    if (itemsForSave[index].classList.contains('selected')) {
+      itemsForSave[index].classList.remove('selected');
+    }
+  }
+  
+  console.log(itemsForSave)
+
+  let arrayForLocalStorage = []
+  for (let index = 0; index < itemsForSave.length; index += 1) {
+    let taskLocalStorage = {
+      id: itemsForSave[index].id,
+      class: itemsForSave[index].className,
+      content: itemsForSave[index].innerText
+    }
+    arrayForLocalStorage.push(taskLocalStorage)
+  }
+  localStorage.setItem('task', JSON.stringify(arrayForLocalStorage));
+});  
