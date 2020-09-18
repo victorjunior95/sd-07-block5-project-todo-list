@@ -5,8 +5,8 @@ const butCriaTarefa = document.querySelector('#criar-tarefa');
 const butApagaLista = document.querySelector('#apaga-tudo');
 const butRemCompletos = document.querySelector('#remover-finalizados');
 const butSalvaLista = document.querySelector('#salvar-tarefas');
-const butMovAcima = document.querySelector('#mover-acima');
-const butMovAbai = document.querySelector('#mover-abaixo');
+const butMovAcima = document.querySelector('#mover-cima');
+const butMovAbai = document.querySelector('#mover-baixo');
 const butRemSelecionado = document.querySelector('#remover-selecionado');
 
 function levaParaLista() {
@@ -18,10 +18,9 @@ function levaParaLista() {
 
 function recriaLista() {
   for (let elemento = 0; elemento < localStorage.length; elemento += 1) {
-    let starefa = localStorage.getItem(elemento);
-    let tarefa = document.createElement('li');
+    const starefa = localStorage.getItem(elemento);
+    const tarefa = document.createElement('li');
     const objetoTarefa = JSON.parse(starefa);
-    console.log(objetoTarefa);
     tarefa.innerText = objetoTarefa.task;
     if (objetoTarefa.status === 'completed') {
       tarefa.classList.toggle('completed');
@@ -54,7 +53,7 @@ function apagaLista() {
 
 function selecao() {
   inicioListaTarefas.addEventListener('click', function (event) {
-    let lista = document.getElementsByTagName('li');
+    const lista = document.getElementsByTagName('li');
     for (let index = 0; index < lista.length; index += 1) {
       if (lista[index].classList.contains('selected')) {
         lista[index].classList.toggle('selected');
@@ -75,7 +74,7 @@ function completos() {
 }
 
 function removeCompletos() {
-  let lista = document.getElementsByTagName('li');
+  const lista = document.getElementsByTagName('li');
   for (let index = lista.length - 1; index >= 0; index -= 1) {
     if (lista[index].classList.contains('completed')) {
       inicioListaTarefas.removeChild(lista[index]);
@@ -84,22 +83,21 @@ function removeCompletos() {
 }
 
 function removeSelecionado() {
-  let lista = document.querySelector('.selected');
-  inicioListaTarefas.removeChild(lista);
+  const item = document.querySelector('.selected');
+  inicioListaTarefas.removeChild(item);
 }
 
 function moveAcima() {
-  let lista = document.querySelector('.selected');
-  console.log(lista);
-  if (lista !== null && lista !== inicioListaTarefas.firstChild.nextSibling) {
-    inicioListaTarefas.insertBefore(lista, lista.previousSibling);
+  const item = document.querySelector('.selected');
+  if (item !== null && item !== inicioListaTarefas.firstChild.nextSibling) {
+    inicioListaTarefas.insertBefore(item, item.previousSibling);
   }
 }
 
 function moveAbaixo() {
-  let lista = document.querySelector('.selected');
-  if (lista !== null && lista !== inicioListaTarefas.lastChild) {
-    inicioListaTarefas.insertBefore(lista.nextSibling, lista);
+  const item = document.querySelector('.selected');
+  if (item !== null && item !== inicioListaTarefas.lastChild) {
+    inicioListaTarefas.insertBefore(item.nextSibling, item);
   }
 }
 
