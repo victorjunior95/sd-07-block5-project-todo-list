@@ -1,20 +1,55 @@
+let textInput = document.getElementById('texto-tarefa'),
+    taskList  = document.getElementById('lista-tarefas'),
+    clearBtn  = document.getElementById('remover-finalizados'),
+    addBtn    = document.getElementById("criar-tarefa"),
+    rmvBtn    = document.getElementById('apaga-tudo');
+
+function createItem () {
+
+  let element = taskList ,
+      text = textInput.value;
+  textInput.value = "";
+
+  if( text == "" ){
+    
+    textInput.className = "errorClass";
+  
+  }
+  else {
+
+    let item = document.createElement('li');
+    item.innerHTML = text;
+    item.addEventListener("click", getClickItem );
+    element.appendChild(item);
+
+    textInput.className = "inputClass";
+
+  };
+};
+
+//11 - - Será verificado que, ao clicar no botão, todos os elementos marcados como feitos são removidos da lista
+function deleteList () {};
+
+//- 10 - Será verificado que, dado que uma lista possui tarefas, um clique no botão a deixa vazia
+function clearList () {};
+
+function itemSelected (elementClass) {
+
+
+    
 /*
-5 -
-- No campo de input será digitado o texto de uma tarefa qualquer e, em seguida, clicar-se-á no botão de criar tarefa. Será verificado que, após o clique, o texto digitado aparece na lista e desaparece do input.
-
-6 -
-- A adição de elementos na lista será feita algumas vezes, e será checado se todos os itens criados permanecem na lista na medida em que novos são adicionados.
-
-- Três itens serão criados na lista e será checado se eles estão ordenados por ordem de criação - ou seja, primeiro o primeiro item criado, depois o segundo, e assim por diante.
-
-### 7 - Ao clicar em um item da lista, altere a cor de fundo do item para cinza rgb(128,128,128).
-
 ### 8 - Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo.
 ##### As seguintes verificações serão feitas:
 
 - Será verificado que, quando um elemento da lista é selecionado, o elemento selecionado previamente deixa de sê-lo. Isso é verificado através da presença ou não do estilo `background-color: rgb(128, 128, 128)` no elemento.
 
-### 9 - Ao clicar duas vezes em um item, ele deverá ser riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item.
+### 7 - Ao clicar em um item da lista, altere a cor de fundo do item para cinza rgb(128,128,128).
+
+*/
+
+  /*
+  
+  ### 9 - Ao clicar duas vezes em um item, ele deverá ser riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item.
 
     Pontos importantes sobre este requisito:
 
@@ -27,10 +62,48 @@
 - Será verificado que, antes da ação ser disparada, o elemento adicionado à lista não tem nem a classe `completed` nem o estilo `line-through solid rgb(0, 0, 0)`.
 - Será verificado que a ação pedida é disparada mediante duplo clique no elemento da lista e que os elementos da lista completos tem em si a classe `completed` e a propriedade `text-decoration` com o valor `line-through solid rgb(0, 0, 0)`
 - Será verificado que, com um segundo duplo clique, um elemento completo deixa de sê-lo
-
-- 10 - Será verificado que, dado que uma lista possui tarefas, um clique no botão a deixa vazia
-
-11 - - Será verificado que, ao clicar no botão, todos os elementos marcados como feitos são removidos da lista
+  
+  */
 
 
-*/
+
+};
+
+function  getClickItem(element) {
+
+  let elementClass = element.target.className,
+      item = element;
+
+  switch (elementClass) {
+
+    case 'selected' :
+      item.target.className = 'completed';
+      break
+
+    case 'completed' :
+      item.target.className = '';
+      break
+
+    default : 
+      item.target.className = 'selected';
+
+  };
+
+
+};
+
+function createEvents () {
+
+  addBtn.addEventListener("click", createItem );
+
+  rmvBtn.addEventListener("click", deleteList );
+
+  clearBtn.addEventListener("click", clearList );
+
+};
+
+window.addEventListener('DOMContentLoaded', () => { 
+
+  createEvents ();
+
+});
