@@ -3,9 +3,14 @@ const getItensList = document.getElementsByTagName('li');
 const comparedClass = 'completed';
 const arrayItensList = [];
 
-
-function addItemListOnLocalStorage(item) {
-  arrayItensList.push(item);
+function salveItensListOnLocalStorage() {
+  if (getItensList.length === 0) {
+    alert('Lista vazia')
+  } else {
+    for (let index = 0; index < getItensList.length; index += 1) {
+      arrayItensList.push(getItensList[index].innerHTML);
+    }
+  }
   localStorage.setItem('itensList', JSON.stringify(arrayItensList));
 }
 
@@ -19,13 +24,12 @@ function createItemList(arrayItens) {
     const itemList = document.createElement('li');
     itemList.innerText = item;
     addItemListInOrderList(itemList);
-    addItemListOnLocalStorage(item);
   });
 }
 
 function loadingListItemsOnLocalstorage() {
   const getArrayList = JSON.parse(localStorage.getItem('itensList'));
-  createItemList(getArrayList);
+  if (getArrayList !== null) createItemList(getArrayList);
 }
 
 loadingListItemsOnLocalstorage();
@@ -91,3 +95,8 @@ document.getElementById('lista-tarefas').addEventListener('dblclick', function (
 document.getElementById('apaga-tudo').addEventListener('click', function () {
   deleteAllItensList(document.getElementById('lista-tarefas'));
 });
+
+document.getElementById('salvar-tarefas').addEventListener('click', function () {
+  salveItensListOnLocalStorage();
+});
+
