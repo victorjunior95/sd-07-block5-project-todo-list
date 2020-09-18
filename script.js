@@ -13,13 +13,21 @@ btnCriarTarefa.addEventListener('click', function(){
     document.querySelector('input').value = '';
 
     item.addEventListener('click', function () {
-      const isGray = document.querySelector('.selecionado');
-      if (isGray) {
-        isGray.classList.remove('selected'); 
+      const pintarCinza = document.querySelector('.selecionado');
+      if (pintarCinza) {
+        pintarCinza.classList.remove('selecionado'); 
       }
-      item.classList.add('selecionado'); 
+      item.classList.add('selecionado');
+      
     });
-})
+    item.addEventListener('dblclick', function () {
+      if (item.classList.contains('completo')) { 
+        item.classList.remove('completo');
+      } else {
+        item.classList.add('completo');
+      }
+    });
+});
 
 
 document.querySelector('#salvar-tarefas').addEventListener('click', function () {
