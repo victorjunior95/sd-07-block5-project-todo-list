@@ -14,6 +14,16 @@ addBtn.addEventListener('click', function () {
         let selected = document.querySelector('.selected');
             listItems.classList.toggle('selected')
     })
+
+    listItems.addEventListener('dblclick', function(event) {
+        let completed = document.querySelector('.completed');
+    //     if (event.target.classList.contains('completed')) {
+    //         event.target.classList.remove('completed');
+    //     } else {
+    //         event.target.classList.add('selected');
+    // }     
+    listItems.classList.toggle('completed');
+    })
 });
 
 // Button delete all list's items
