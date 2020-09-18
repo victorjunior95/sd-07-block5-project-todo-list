@@ -206,12 +206,26 @@ document.body.addEventListener('dblclick', function (event) {
 // Remove item completed
 const getEraseItemButton = document.querySelector('#remover-finalizados');
 getEraseItemButton.addEventListener('click', function () {
-  const completedRemove = document.querySelectorAll('.completed');
+  let completedRemove = document.querySelectorAll('.item-tarefa')
   for (let index = 0; index < completedRemove.length; index += 1) {
-    const indexRemove = completedRemove[index].id;
-    arrayFullDataTasks.splice(indexRemove, 1);
+    if (completedRemove[index].classList.contains('selected')) {
+      completedRemove[index].classList.remove('selected');
+    }
   }
-  createListItem(arrayFullDataTasks);
+  
+  let arrayFilter = [];
+  for (let outherIndex = 0; outherIndex < completedRemove.length; outherIndex += 1) {
+    arrayFilter.push({
+      'id': completedRemove[outherIndex].id,
+      'class': completedRemove[outherIndex].className,
+      'content': completedRemove[outherIndex].innerText
+    });
+  }
+  function filterCase(data) {
+    return data.class !== 'item-tarefa completed';
+  }
+  let filtredItensCompleted = arrayFilter.filter(filterCase);
+  createListItem(filtredItensCompleted);
 });
 
 // Local stored itens
@@ -223,8 +237,6 @@ saveTasksButton.addEventListener('click', function () {
       itemsForSave[index].classList.remove('selected');
     }
   }
-  
-  console.log(itemsForSave)
 
   let arrayForLocalStorage = []
   for (let index = 0; index < itemsForSave.length; index += 1) {
