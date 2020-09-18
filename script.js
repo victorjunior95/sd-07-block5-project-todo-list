@@ -1,29 +1,48 @@
 const backgroundColor = 'rgb(128, 128, 128)';
 const getItensList = document.getElementsByTagName('li');
 const comparedClass = 'completed';
+let arrayItensList = [];
 
-function AddItemList(item) {
-  const itemList = document.createElement('li');
-  itemList.innerText = item;
-  return itemList;
+
+function addItemListOnLocalStorage(item) {
+  arrayItensList.push(item);
+  localStorage.setItem("itensList", JSON.stringify(arrayItensList));
 }
+
+function addItemListInOrderList(itemList){
+  const orderList = document.getElementById('lista-tarefas');
+  orderList.appendChild(itemList);
+}
+
+function createItemList(arrayItens) {
+  arrayItens.forEach((item) => {
+    const itemList = document.createElement('li');
+    itemList.innerText = item;
+    addItemListInOrderList(itemList);
+    addItemListOnLocalStorage(item);
+  });
+}
+
+function loadingListItemsOnLocalstorage() {
+  const getArrayList = JSON.parse(localStorage.getItem('itensList'));
+  createItemList(getArrayList);
+}
+
+loadingListItemsOnLocalstorage();
 
 function clearInputValue(item) {
   item.value = '';
 }
 
 document.getElementById('criar-tarefa').addEventListener('click', function () {
-  const item = document.getElementById('texto-tarefa');
-  const itemList = AddItemList(item.value);
-
-  const orderList = document.getElementById('lista-tarefas');
-  orderList.appendChild(itemList);
-  clearInputValue(item);
+  const inputItem = document.getElementById('texto-tarefa');
+  const arrayItens = [inputItem.value];
+  const arrayItemList = createItemList(arrayItens);
 });
 
-function chanceBackgroundColorItemList(boolean, itensList) {
+function chanceBackgroundColorItemList(boolean, itemList) {
   if (boolean) {
-    itensList.style.backgroundColor = backgroundColor;
+    itemList.style.backgroundColor = backgroundColor;
   }
 }
 
