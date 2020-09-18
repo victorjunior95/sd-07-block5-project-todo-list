@@ -40,7 +40,7 @@ document.querySelector("#criar-tarefa").addEventListener("click", function(){
     document.querySelector("#texto-tarefa").value = "";
 })
 
-document.querySelector("#apagar-tudo").addEventListener("click", function(){
+document.querySelector("#apaga-tudo").addEventListener("click", function(){
     document.querySelectorAll("li").forEach(item => {
         item.parentNode.removeChild(item);
 })
