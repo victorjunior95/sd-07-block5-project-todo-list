@@ -1,4 +1,6 @@
 // Projeto TO Do List
+
+// Variables
 let listItens = document.querySelectorAll('.listItem');
 let selectedItem = document.querySelector('.selected');
 let completedItem = document.querySelector('.completed');
@@ -7,10 +9,19 @@ let ol;
 let li;
 let itemForErase;
 // console.log(taskInput);
+
+// Buttons
 let buttonCreateTask = document.querySelector('#criar-tarefa');
 buttonCreateTask.addEventListener("click",addTask);
 let buttonEraseAll = document.querySelector('#apaga-tudo');
 buttonEraseAll.addEventListener("click",eraseAll);
+let buttonRemoveCompleted = document.querySelector('#remover-finalizados');
+buttonRemoveCompleted.addEventListener("click",removeCompleted);
+
+for (let i=0; i<listItens.length; i += 1) {
+  listItens[i].addEventListener('click', graySelected);
+  listItens[i].addEventListener('dblclick', lineThroughSelected);
+}
 
 function addTask () {
   ol = document.getElementById("lista-tarefas");
@@ -22,11 +33,6 @@ function addTask () {
   li.addEventListener('click', graySelected);
   li.addEventListener('dblclick', lineThroughSelected);
   listItens = document.querySelectorAll('.listItem');
-}
-
-for (let i=0; i<listItens.length; i += 1) {
-  listItens[i].addEventListener('click', graySelected);
-  listItens[i].addEventListener('dblclick', lineThroughSelected);
 }
 
 function graySelected(event) {
@@ -47,7 +53,16 @@ function eraseAll(event) {
   ol = document.getElementById("lista-tarefas");
   for (let i=0; i<listItens.length; i += 1) {
   itemForErase = document.querySelector('.listItem');
-  console.log(itemForErase);
+  // console.log(itemForErase);
   ol.removeChild(itemForErase);
+  }
+}
+
+function removeCompleted() {
+  ol = document.getElementById("lista-tarefas");
+  for (let i=0; i<listItens.length; i += 1) {
+  itemForRemove = document.querySelector('.completed');
+  console.log(itemForRemove);
+  ol.removeChild(itemForRemove);
   }
 }
