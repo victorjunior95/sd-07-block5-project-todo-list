@@ -8,6 +8,8 @@ document.getElementById("criar-tarefa").addEventListener("click", function (e){
   liElement.innerHTML = task.value;
   task.value = "";
   liElement.addEventListener("click", function(e) {
+    let origin = document.querySelector(".grey");
+    origin !== null ? origin.classList.remove("grey"):'';
     e.target.classList.add("grey");
   });
   taskList.push(liElement);
