@@ -56,9 +56,19 @@ function addClasseCompleted(itemList) {
 function removeClasseCompleted(itemList) {
   itemList.classList.remove(comparedClass);
 }
+
+function deleteAllItensList (parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
 document.getElementById('lista-tarefas').addEventListener('dblclick', function (event) {
   const resultBoolean = existClassCompleted(event.target);
   if (resultBoolean) {
     removeClasseCompleted(event.target);
   } else addClasseCompleted(event.target);
+});
+
+document.getElementById('apaga-tudo').addEventListener('click', function () {
+  deleteAllItensList(document.getElementById('lista-tarefas'));
 });
