@@ -60,18 +60,18 @@ function itemSelected(element) {
 
   let item = element;
 
-  if (lastElementSelected == null) {
-    console.log(`null ${item.target.className}`);
-
-
-
-  }
-  else if (item.target.className === 'selected') {
-    console.log(`defalt ${item.target.className}`);
-
+  if (lastElementSelected === undefined ) {
+    item.target.className = 'selected';
+    lastElementSelected = item;
 
   }
-  else { console.log('WTF'); };
+  else if ( item.target.className === undefined || item.target.className === '' ){ 
+    console.log(lastElementSelected)
+    lastElementSelected.target.className = '';
+    item.target.className = 'selected';
+    lastElementSelected = item;
+
+   };
 
 };
 
@@ -79,23 +79,17 @@ function getClickItem(element) {
 
   let elementClass = element.target.className,
     item = element;
-
   switch (elementClass) {
-
-    case '':
-      lastElementSelected = item,
-        item.target.className = 'selected';
-      break
 
     case 'selected':
       lastElementSelected.target.className = '';
-      lastElementSelected = item;
       item.target.className = 'completed';
+      lastElementSelected = item;
       break;
 
     case 'completed':
       item.target.className = '';
-      console.log(`completed ${item.target.className}`);
+      lastElementSelected = undefined ; 
       break;
 
     default: itemSelected(item);
