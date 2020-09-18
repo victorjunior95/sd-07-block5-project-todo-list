@@ -4,8 +4,6 @@ let olToDoList = document.querySelector(".lista-tarefas");
 const buttonClearAllTasksInTheList = document.querySelector(".apaga-tudo");
 const buttonClearDoneTasks = document.querySelector(".remover-finalizados");
 const buttonToSalveList = document.querySelector(".salvar-tarefas");
-const buttonRemoveSelectedTask = document.querySelector('.remover-selecionado')
-
 
 function clearInputTextToDo() {
   inputTextToDo.value = "";
@@ -29,7 +27,7 @@ function changeBGColorTask(task) {
         olToDoList.children[index].style.backgroundColor = "";
       }
     }
-    event.target.classList.add('selected');
+    event.target.style.backgroundColor = "rgb(128, 128, 128)";
   });
 }
 
@@ -88,19 +86,10 @@ function createLILocalStorage(taskText, taskClass) {
 if (localStorage.getItem("Tasks") !== null) {
   let jsonParseGetItem = JSON.parse(localStorage.getItem("Tasks"));
   let lengthLocalStorageList = jsonParseGetItem.length;
-  for (
-    let index = 0;
-    index < lengthLocalStorageList;
-    index += 1
-  ) {
-    createLILocalStorage(jsonParseGetItem[index].task, jsonParseGetItem[index].completed);
+  for (let index = 0; index < lengthLocalStorageList; index += 1) {
+    createLILocalStorage(
+      jsonParseGetItem[index].task,
+      jsonParseGetItem[index].completed
+    );
   }
 }
-
-buttonRemoveSelectedTask.addEventListener('click', function () {
-    for (let index = 0; index < olToDoList.childElementCount; index += 1) {
-      if (olToDoList.children[index].classList.contains('selected')) {
-        olToDoList.removeChild(olToDoList.children[index]);
-      }
-    }
-})
