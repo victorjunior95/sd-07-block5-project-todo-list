@@ -1,6 +1,7 @@
 let listOrdered = document.querySelector("#lista-tarefas");
 let selectedjob = document.querySelector(".selected");
 
+
 document.querySelector("#criar-tarefa").addEventListener("click", function(){
     let inputText = document.createTextNode(document.querySelector("#texto-tarefa").value);
     let listItem = document.createElement("li");
@@ -21,6 +22,19 @@ document.querySelector("#criar-tarefa").addEventListener("click", function(){
             }
         }
     })
+    listItem.addEventListener("dblclick", function (){
+        listItem.classList.add("completed");
+    })
     listOrdered.appendChild(listItem);
     document.querySelector("#texto-tarefa").value = ""
+})
+
+document.querySelector("#apagar-tudo").addEventListener("click", function(){
+    listOrdered.innerHTML = "";
+})
+
+document.querySelector("#remover-finalizados").addEventListener("click",function(){
+    document.querySelectorAll(".completed").forEach(item => {
+        item.parentNode.removeChild(item);
+    })
 })
