@@ -42,7 +42,6 @@ document.getElementById('lista-tarefas').addEventListener('click', function (eve
 });
 
 function existClassCompleted(itemList) {
-  const comparedClass = 'completed';
   if (itemList.getAttribute('class') === comparedClass) {
     return true;
   }
