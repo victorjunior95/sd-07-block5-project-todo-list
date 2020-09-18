@@ -80,6 +80,21 @@ class TodoListController {
       celulaConcluida.appendChild(imgConcluida);
     }
   }
+/*   construirList() {
+    let listas = document.getElementById("lista-tarefas");
+    listas.innerHTML = '';
+
+    for (let i = 0; i < this.listas.length; i++) {
+      
+        let linha = document.createElement('li');
+        linha.innerText = this.lista[i].descricao;
+             
+        
+      
+     /* funçao para injetar  a tita cuja */
+
+     
+   
 
   excluir(id) {
     if (confirm("Tem certeza que deseja excluir essa tarefa?")) {
@@ -101,7 +116,7 @@ class TodoListController {
     }
   }
 
-  editar(id) {}
+ 
 
   alterarStatus(id) {
     if (confirm("Tem certeza que deseja alterar o status dessa tarefa?")) {
@@ -122,8 +137,22 @@ class TodoListController {
     }
   }
 
+  editar(id) {}
+
+  selecionar(id){ }
+  completarTarefa(id){}
+
   moverParaCima(id) {}
   moverParaBaixo(id) {}
+
+
+
+ 
+  
+
+
+
+
 }
 
 const controller = new TodoListController();
