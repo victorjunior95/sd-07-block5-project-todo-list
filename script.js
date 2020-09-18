@@ -1,5 +1,5 @@
 const buton = document.getElementById('criar-tarefa');
-const list = document.getElementById('texto-tarefas');
+const list = document.getElementById('lista-tarefas');
 buton.addEventListener('click', function(){
     let aFazer = document.querySelector("#texto-tarefa").value;
     frase = document.createElement("li")
