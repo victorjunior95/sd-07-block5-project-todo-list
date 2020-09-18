@@ -1,15 +1,15 @@
 const backgroundColor = 'rgb(128, 128, 128)';
 const getItensList = document.getElementsByTagName('li');
 const comparedClass = 'completed';
-let arrayItensList = [];
+const arrayItensList = [];
 
 
 function addItemListOnLocalStorage(item) {
   arrayItensList.push(item);
-  localStorage.setItem("itensList", JSON.stringify(arrayItensList));
+  localStorage.setItem('itensList', JSON.stringify(arrayItensList));
 }
 
-function addItemListInOrderList(itemList){
+function addItemListInOrderList(itemList) {
   const orderList = document.getElementById('lista-tarefas');
   orderList.appendChild(itemList);
 }
@@ -37,7 +37,8 @@ function clearInputValue(item) {
 document.getElementById('criar-tarefa').addEventListener('click', function () {
   const inputItem = document.getElementById('texto-tarefa');
   const arrayItens = [inputItem.value];
-  const arrayItemList = createItemList(arrayItens);
+  createItemList(arrayItens);
+  clearInputValue(inputItem);
 });
 
 function chanceBackgroundColorItemList(boolean, itemList) {
@@ -75,7 +76,7 @@ function removeClasseCompleted(itemList) {
   itemList.classList.remove(comparedClass);
 }
 
-function deleteAllItensList (parent) {
+function deleteAllItensList(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }
