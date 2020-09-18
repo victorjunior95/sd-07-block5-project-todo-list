@@ -1,19 +1,32 @@
 button {
-    width: 140px;
+  height: 25px;
+  margin: 5px 0 5px 5px;
+  padding: 2px;
+  width: 150px;
 }
 
 div {
-    padding: 20px;
+  padding: 20px;
 }
 
 header {
-    padding: 20px;
+  padding: 20px;
+}
+
+input {
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+  height: 26px;
+  margin: 5px;
+  padding: 2px;
+  width: 300px;
 }
 
 .selected {
-    background-color: rgb(128, 128, 128);
+  background-color: rgb(128, 128, 128);
 }
 
 .completed {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
