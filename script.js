@@ -1,6 +1,6 @@
-let buttonAdd = document.getElementById('criar-tarefa');
-let textTask = document.getElementById('texto-tarefa');
-let listTasks = document.getElementById('lista-tarefas');
+const buttonAdd = document.getElementById('criar-tarefa');
+const textTask = document.getElementById('texto-tarefa');
+const listTasks = document.getElementById('lista-tarefas');
 
 function addingTask() {
   if (textTask.value !== '') {
@@ -28,4 +28,3 @@ listTasks.addEventListener('dblclick', (event) => {
     event.target.classList.add('completed');
   }
 });
-
