@@ -27,7 +27,7 @@ function makeTaskList() {
   li.className = 'task-item';
   li.innerText = inputTask.value;
   orderedList.appendChild(li);
-  inputTask.value = ';
+  inputTask.value = '';
   li.addEventListener('click', setColorBackgroundLi);
 
   function setlinethrough() {
