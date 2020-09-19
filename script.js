@@ -12,5 +12,13 @@ function addingTask() {
 }
 buttonAdd.addEventListener('click', addingTask);
 
+listTasks.addEventListener('click', (event) => {
+  if (document.querySelector('.selected') !== null) {
+    document.querySelector('.selected').style.backgroundColor = 'white';
+    document.querySelector('.selected').classList.remove('selected');
+  }
+  event.target.style.backgroundColor = 'rgb(128,128,128)';
+  event.target.classList.add('selected');
+});
 
 
