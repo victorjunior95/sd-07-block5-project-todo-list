@@ -34,7 +34,7 @@ class TodoListController {
       }
 
       this.limpar();
-      this.construirLista();
+      this.construirTarefa();
     }
   }
 
@@ -51,7 +51,7 @@ class TodoListController {
     document.getElementById("texto-tarefa").value = "";
     this.idEdicao = null;
   }
-
+/* 
   construirLista() {
     let tabela = document.getElementById("lista-tarefas");
     tabela.innerHTML = "";
@@ -79,21 +79,16 @@ class TodoListController {
 
       celulaConcluida.appendChild(imgConcluida);
     }
-  }
-/*   construirList() {
-    let listas = document.getElementById("lista-tarefas");
-    listas.innerHTML = '';
+  } */
 
-    for (let i = 0; i < this.listas.length; i++) {
-      
-        let linha = document.createElement('li');
-        linha.innerText = this.lista[i].descricao;
-             
-        
-      
-     /* funçao para injetar  a tita cuja */
-
-     
+  construirTarefa(){
+    let parent = document.getElementById("lista");
+    
+    var li = document.createElement("li");
+    var text = document.createTextNode("consegui grande dia!!!");
+    li.appendChild(text);
+    parent.firstElementChild.appendChild(li);
+     }
    
 
   excluir(id) {
@@ -111,11 +106,16 @@ class TodoListController {
 
       if (achou) {
         this.lista.splice(i, 1);
-        this.construirLista();
+        this.construirTarefa();
       }
     }
   }
 
+  apagarTudo(){
+    let tabela = document.getElementById("lista-tarefas");
+    tabela.innerHTML = '';
+    this.lista=[];
+  }
  
 
   alterarStatus(id) {
@@ -139,11 +139,45 @@ class TodoListController {
 
   editar(id) {}
 
-  selecionar(id){ }
-  completarTarefa(id){}
+  selecionar(id){ 
+    listItem.addEventListener('click', function () {
+      const selectedItem = document.querySelector('.selected');
+      if (selectedItem) {
+        selectedItem.classList.remove('selected');
+      }
+      listItem.classList.add('selected');
+    });
 
-  moverParaCima(id) {}
-  moverParaBaixo(id) {}
+  }
+  completarTarefa(){
+   
+    this.lista.addEventListener('dblclick', function () {
+      if (lista.classList.contains('completed')) {
+        lista.classList.remove('completed');
+      } else {
+        lista.classList.add('completed');
+      }
+    });
+  }
+
+  moverParaCima() {
+    const btnMoveUp = document.querySelector('#mover-cima');
+    btnMoveUp.addEventListener('click', function () {
+      let allList = document.querySelector('ol').innerHTML;
+      for (let index = 0; index < allList.length; index += 1) {
+        const nListSelected = allList[index];
+        if (nListSelected.classList.contains('selected')) {
+          nListSelected.insertBefore(nListSelected, nListSelected.previousElementSibling);
+        }
+      }
+  
+    });
+
+  }
+  moverParaBaixo(id) {
+
+
+  }
 
 
 
