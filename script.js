@@ -21,4 +21,11 @@ listTasks.addEventListener('click', (event) => {
   event.target.classList.add('selected');
 });
 
+listTasks.addEventListener('dblclick', (event) => {
+  if (event.target.classList.contains('completed')) {
+    event.target.classList.remove('completed');
+  } else {
+    event.target.classList.add('completed');
+  }
+});
 

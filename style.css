@@ -6,15 +6,6 @@ h1 {
   display: inline-block;
 }
 
-.add{
-	outline: none;
-    border: none;
-    height: 50px;
-    border-radius: 25px;
-    width: 50px;
-    background-color: lime;
-    color: white;
-    cursor: pointer;
-    transition: .5s;
-    margin: 0.25rem;
+.completed {
+  text-decoration: line-through;
 }
