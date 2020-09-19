@@ -1,8 +1,10 @@
 const taskList = document.querySelector('#lista-tarefas');
 const addButton = document.querySelector('#criar-tarefa');
 const inputText = document.querySelector('#texto-tarefa');
+const clearButton =  document.querySelector('#apaga-tudo');
 
 addButton.addEventListener('click', addTask);
+clearButton.addEventListener('click', clearTaskList);
 
 function addTask() {
   const addedItem = document.createElement('li');
@@ -20,10 +22,14 @@ function changeItemColor() {
     if (item.classList.contains('item-background')) {
       item.classList.remove('item-background');
     }
-  })
+  });
   this.classList.toggle('item-background');
 }
 
 function completedItem() {
   this.classList.toggle('completed');
+}
+
+function clearTaskList() {
+  taskList.innerHTML = '';
 }
