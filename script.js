@@ -1,7 +1,16 @@
 let goalText = document.getElementById('texto-tarefa');
 let goalList = document.getElementById('lista-tarefas');
+let goalsItens = document.getElementsByTagName('li')
+
+
 let addGoalButton = document.getElementById('criar-tarefa');
 let addGoalToList = addGoalButton.addEventListener('click', addGoal);
+
+let removeGoals = document.getElementById('apaga-tudo');
+let removeGoalsItens = removeGoals.addEventListener('click', removeAllGoals);
+
+let removeComplet = document.getElementById('remover-finalizados');
+let removeCompletItens = removeComplet.addEventListener('click', removeAllComplet);
 
 function addGoal() {
     let goalTextToAdd = document.createElement('li')
@@ -35,5 +44,17 @@ function completItem() {
         elementTarget.classList.remove('completed')
     } else {
         elementTarget.classList.add('completed')
+    }
+}
+
+function removeAllGoals() {
+    goalList.innerHTML = ''
+}
+
+function removeAllComplet() {
+    for (let index = 0; index < goalsItens.length; index += 1) {
+        if (goalsItens[index].classList.contains('completed')) {
+            goalsItens[index].remove()
+        }
     }
 }
