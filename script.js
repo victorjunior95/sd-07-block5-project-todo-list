@@ -56,15 +56,15 @@ window.onload = refresh;
 document.querySelector('#mover-cima').addEventListener('click', function upItem() {
   let move = document.querySelector('#lista-tarefas');
   let item = document.querySelector('.selected');
-  if (move.previousElementSibling) {
-    move.insertBefore(item, item.previousElementSibling);
+  if (item !== null && item !== move.firstChild) {
+    move.insertBefore(item, item.previousSibling);
   }
 });
 
 document.querySelector('#mover-baixo').addEventListener('click', function downItem() {
   let move = document.querySelector('#lista-tarefas');
   let item = document.querySelector('.selected');
-  if (move.nextElementSibling) {
+  if (item !== null && item !== move.lastChild.nextElementSibling) {
     move.insertBefore(item.nextElementSibling, item);
   }
 });
