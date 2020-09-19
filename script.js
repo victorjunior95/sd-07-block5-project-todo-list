@@ -29,22 +29,22 @@ botaoCriarTarefa.addEventListener ("click", function() {
 
 function tarefaCompleta(event){
     let itemSelecionado = event.target;
-    if(itemSelecionado.classList.contains('completed')){
-        itemSelecionado.classList.remove('completed');
+    if(itemSelecionado.classList.contains("completed")){
+        itemSelecionado.classList.remove("completed");
     } else {
         itemSelecionado.className += ' completed';
     };
 };
 
-botaoApagar.addEventListener('click', apagaTudo);
+botaoApagar.addEventListener("click", apagaTudo);
 function apagaTudo(){
     listaTarefas.innerHTML = '';
 }
 
 function apagaFinalizadas(){
-    let arrayAtualizada = document.querySelectorAll('.completed');
+    let arrayAtualizada = document.querySelectorAll(".completed");
     for(index = 0; index < arrayAtualizada.length; index += 1){
         listaTarefas.removeChild(arrayAtualizada[index]);
     }
 }
-botaoFinalizadas.addEventListener('click', apagaFinalizadas);
+botaoFinalizadas.addEventListener("click", apagaFinalizadas);
