@@ -71,6 +71,13 @@ ol:hover {
   cursor: pointer;
 }
 
+.botao:active {
+  box-shadow: 1px 1px 8px gray;
+  left: 2px;
+  position: relative;
+  top: 2px;
+}
+
 .botoes-container:after {
   content: '';
   display: inline-block;
