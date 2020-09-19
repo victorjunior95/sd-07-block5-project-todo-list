@@ -17,13 +17,15 @@
         <input  type = 'text' id = 'texto-tarefa' name = 'criar-tarefa' maxlength = '60' style = 'width: 200px;' required placeholder = 'Digite sua tarefa aqui'>
         <br>
         <br>
+      <section class = 'inline-block-center'>
         <button id = 'criar-tarefa'>Adicionar</button>
-      </div>
-      <section>
-        <ol id = 'lista-tarefas' class = 'tasklist'>
-          
-        </ol>
+        <button id = 'apaga-tudo'>Limpar Lista</button>
       </section>
+      </div>
+      
+      <aside class = 'tasklist'>
+        <ol id = 'lista-tarefas'></ol>
+      </aside>
     </main>
     <footer></footer>
     <script src = 'script.js'></script>
