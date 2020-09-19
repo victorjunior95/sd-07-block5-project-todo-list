@@ -7,9 +7,18 @@ addButton.addEventListener('click', addTask);
 function addTask() {
   const addedItem = document.createElement('li');
   addedItem.innerText = inputText.value;
-  addedItem.addEventListener('click', function () {
-    addedItem.style.backgroundColor = 'rgb(128,128,128)'
-  });
+  addedItem.addEventListener('click', changeItemColor);
   taskList.appendChild(addedItem);
   inputText.value = '';
+}
+
+function changeItemColor() {
+  const checkSelected = document.querySelectorAll('.item-background');
+
+  checkSelected.forEach(item => {
+    if (item.classList.contains('item-background')) {
+      item.classList.remove('item-background');
+    }
+  })
+  this.classList.toggle('item-background');
 }
