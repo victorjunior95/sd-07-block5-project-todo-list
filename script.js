@@ -2,8 +2,7 @@ const creatorButton = document.getElementById('criar-tarefa');
 const olList = document.getElementById('lista-tarefas');
 const cleanAllButton = document.querySelector('#apaga-tudo');
 const removeFinished = document.querySelector('#remover-finalizados');
-
-
+const removeSelected = document.querySelector('#remover-selecionado');
 function newEventListener(elementList) {
   elementList.addEventListener('click', function () {
     const selectedItem = document.querySelector('.selected');
@@ -44,8 +43,15 @@ cleanAllButton.addEventListener('click', function () {
   const allLi = document.querySelectorAll('li');
   allLi.forEach(element => { olList.removeChild(element) })});
 
-  removeFinished.addEventListener('click', function () {
-    const allFinished = document.querySelectorAll('.completed');
-    allFinished.forEach(element => { olList.removeChild(element) })});
+removeFinished.addEventListener('click', function () {
+  const allFinished = document.querySelectorAll('.completed');
+  allFinished.forEach(element => { olList.removeChild(element) })});
+
+removeSelected.addEventListener('click', function() {
+  const removeSelectedElement = document.querySelector('.selected')
+  olList.removeChild(removeSelectedElement);
+})
+
+
 
   
