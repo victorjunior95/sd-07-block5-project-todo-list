@@ -66,12 +66,11 @@ save.addEventListener('click', function () {
 function start() {
   let getElement;
   let getClass;
-  for (let elementStore = 0; elementStore < localStorage.length; elementStore += 1) {
+  for (let elementStore = 0; elementStore < localStorage.length / 2; elementStore += 1) {
     getElement = localStorage.getItem(`item${elementStore}`);
     getClass = localStorage.getItem(`class${elementStore}`);
-    const elementList = createNewTask(getItem);
+    const elementList = launcherTask(getElement);
     elementList.className = getClass;
   }
 }
-
 start()
