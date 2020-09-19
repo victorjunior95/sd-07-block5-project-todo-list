@@ -1,14 +1,14 @@
-/*body {
+body {
     background-color: darkolivegreen;
 }
 
 .sessao {
     background-color: rgb(181, 210, 235);
-    border-radius: 5%;
+    border-radius: 20px;
+    margin: auto; 
     margin-top: 100px;
     padding: 50px;
-    width: 50%;
-    margin-left: 300px;   
+    width: 63%;      
 }
 
 .head {
@@ -44,28 +44,60 @@
     background-color: rgb(166, 103, 190);
     color: aliceblue;
     margin-left: 5px;
-}*/
+}
 
 .selected {
     background-color: rgb(128,128,128);
+    width: 81%;
 }
 
 .completed {
     text-decoration: line-through solid rgb(0, 0, 0);
 }
-/*
+
 .limpa {
-    font-size: 20px;
+    font-size: 18px;
     font-style: oblique;
     background-color: rgb(65, 98, 158);
     color: aliceblue;
-    margin-left: 30px;
+    margin-left: 20px;
 }
 
 .final {
-    font-size: 20px;
+    font-size: 18px;
     font-style: oblique;
     background-color: rgb(163, 126, 30);
     color: aliceblue;
-    margin-left: 25px;
-}*/
+    margin-left: 20px;
+}
+.salva {
+    font-size: 18px;
+    font-style: oblique;
+    background-color: rgb(56, 136, 24);
+    color: aliceblue;
+    margin-left: 20px;
+}
+
+.remover {
+    font-size: 18px;
+    font-style: oblique;
+    background-color: rgb(163, 30, 30);
+    color: aliceblue;
+    margin-left: 20px;
+}
+
+.cima {
+    font-size: 18px;
+    font-style: oblique;
+    background-color: rgb(38, 109, 109);
+    color: aliceblue;
+    margin-left: 20px;
+}
+
+.baixo {
+    font-size: 18px;
+    font-style: oblique;
+    background-color: rgb(163, 79, 30);
+    color: aliceblue;
+    margin-left: 20px;
+}
