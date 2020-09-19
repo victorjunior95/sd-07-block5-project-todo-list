@@ -70,12 +70,16 @@ function eraseAll() {
 //   reload()
 function moveUp() {
   const toMoveUpLi = document.querySelector(".selected");
-  orderedList.insertBefore(toMoveUpLi, toMoveUpLi.previousElementSibling);
+  if (toMoveUpLi.previousElementSibling !== null) {
+    orderedList.insertBefore(toMoveUpLi, toMoveUpLi.previousElementSibling);
+  }
 }
 
 function moveDown() {
   const toMoveDownLi = document.querySelector(".selected");
-  orderedList.insertBefore(toMoveDownLi.nextElementSibling, toMoveDownLi);
+  if (toMoveDownLi.nextElementSibling !== null) {
+    orderedList.insertBefore(toMoveDownLi.nextElementSibling, toMoveDownLi);
+  }
 }
 
 makeTaskButton.addEventListener("click", makeTaskList);
