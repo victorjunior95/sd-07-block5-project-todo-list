@@ -8,6 +8,14 @@ const movCima = document.querySelector('#mover-cima');
 const movBaixo = document.querySelector('#mover-baixo');
 const saveTask = document.querySelector('#salvar-tarefas');
 
+function removeColor() {
+  const item = document.querySelectorAll('.task');
+  item.forEach((key) => {
+    key.classList.remove('selected');
+    key.style.backgroundColor = 'white';
+  });
+}
+
 function addColor() {
   const item = document.querySelectorAll('.empty');
   item.forEach((key) => {
@@ -19,21 +27,13 @@ function addColor() {
   });
 }
 
-function removeColor() {
-  const item = document.querySelectorAll('.task');
-  item.forEach((key) => {
-    key.classList.remove('selected');
-    key.style.backgroundColor = 'white';
-  });
-}
-
 function completed() {
-  let item = document.querySelectorAll('.empty');
+  const item = document.querySelectorAll('.empty');
   item.forEach((key) => {
     key.addEventListener('dblclick', function addEvent() {
       key.classList.remove('empty');
       key.classList.add('completed');
-      if (key.style.textDecoration == 'line-through solid black') {
+      if (key.style.textDecoration === 'line-through solid black') {
         key.classList.remove('completed');
         key.style.textDecoration = 'none';
       } else {
@@ -44,7 +44,7 @@ function completed() {
 }
 
 function emptyCheck() {
-  let item = document.querySelectorAll('.empty');
+  const item = document.querySelectorAll('.empty');
   if (document.querySelectorAll('.empty')) {
     item.forEach((key) => {
       key.classList.remove('empty');
@@ -70,9 +70,9 @@ function getToStorage() {
 
 function updateList() {
   const storaged = localStorage;
-  for (index = 1; index < storaged.length + 1; index += 1) {
+  for (let index = 1; index < storaged.length + 1; index += 1) {
     const store = storaged[index].split(',');
-    let storageColor = `${store[2]} , ${store[3]} , ${store[4]}`;
+    const storageColor = `${store[2]} , ${store[3]} , ${store[4]}`;
     const elementLi = document.createElement('li');
     elementLi.innerText = `${store[1]}`;
     elementLi.className = `${store[0]}`;
@@ -87,7 +87,7 @@ function updateList() {
 }
 
 updateList();
-let verify = false;
+const verify = false;
 
 addTarefa.addEventListener('click', function () {
   const elementLi = document.createElement('li');
