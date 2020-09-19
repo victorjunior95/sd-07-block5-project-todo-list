@@ -25,19 +25,19 @@ document.querySelector('#apaga-tudo').addEventListener('click', function deleteL
 
 
 document.querySelector('#remover-finalizados').addEventListener('click', function deleteCompleted() {
-  let deleteLi = document.querySelector('#lista-tarefas');
+  const deleteLi = document.querySelector('#lista-tarefas');
   const completedLi = document.querySelectorAll('.completed');
   for (let index = 0; index < completedLi.length; index += 1) {
-      deleteLi.removeChild(completedLi[index]);
-    }
+    deleteLi.removeChild(completedLi[index]);
+  }
 });
 
 document.querySelector('#remover-selecionado').addEventListener('click', function deleteSelected() {
   const deleteLi = document.querySelector('#lista-tarefas');
   const selectedLi = document.querySelectorAll('.selected');
   for (let index = 0; index < selectedLi.length; index += 1) {
-      deleteLi.removeChild(selectedLi[index]);
-    }
+    deleteLi.removeChild(selectedLi[index]);
+  }
 });
 
 
