@@ -21,12 +21,12 @@ const criaTarefa = function () {
 
 const limpaSelecao = function () {
   const itensLista = document.querySelectorAll('ol>li');
-  for (const item of itensLista) {
-    if (item.className.indexOf('selected') != -1) {
+  itensLista.forEach((item) => {
+    if (item.className.indexOf('selected') !== -1) {
       item.className = item.className.replace('selected', '');
     }
     item.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-  }
+  });
 };
 
 const selecionaItemLista = function (event) {
@@ -68,7 +68,7 @@ const apagaTudo = function () {
   const listaLi = document.querySelectorAll('ol>li');
   listaLi.forEach((item) => {
     item.remove();
-  })
+  });
   salvarLista();
 };
 
@@ -109,7 +109,7 @@ const removerFinalizados = function () {
   const itensCompletos = document.querySelectorAll('.completed');
   itensCompletos.forEach((item) => {
     item.remove();
-  })
+  });
   salvarLista();
 };
 
@@ -121,7 +121,7 @@ const removerSelecionados = function () {
 
 window.onload = function () {
   carregaItensSalvos();
-  document.addEventListener('click', limparSelecaoClickFora)
+  document.addEventListener('click', limparSelecaoClickFora);
   document.getElementById('criar-tarefa').addEventListener('click', criaTarefa);
   listaOrdenadaDeTarefas.addEventListener('dblclick', marcarCompleto);
   listaOrdenadaDeTarefas.addEventListener('click', selecionaItemLista);
