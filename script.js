@@ -4,7 +4,7 @@ const orderedList = document.querySelector('#lista-tarefas');
 const eraseAllButton = document.querySelector('#apaga-tudo');
 const removeFinishedButton = document.querySelector('#remover-finalizados');
 const removeSelectedButton = document.querySelector('#remover-selecionado');
-const saveTasksButton = document.querySelector('#salvar-tarefas');
+// const saveTasksButton = document.querySelector('#salvar-tarefas');
 const moveUpButton = document.querySelector('#mover-cima');
 const moveDownButton = document.querySelector('#mover-baixo');
 
