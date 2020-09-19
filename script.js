@@ -300,8 +300,7 @@ document.body.addEventListener('click', function (event) {
     }
     const arrayReceived = document.getElementsByClassName('selected');
     if (arrayReceived.length !== 0) {
-      let itemFrom = document.getElementsByClassName('selected')[0].id;
-      itemFrom = parseInt(itemFrom);
+      const itemFrom = parseInt(arrayReceived[0].id, 10);
       let itemTo = 0;
       if (event.target.id === 'mover-cima') {
         itemTo = itemFrom - 1;
