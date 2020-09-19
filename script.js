@@ -1,28 +1,35 @@
-function basicStructure() {
-  const headerPage = document.createElement('header');
-  headerPage.className = 'head-class';
-  document.body.appendChild(headerPage);
-  const navPage = document.createElement('nav');
-  document.body.appendChild(navPage);
-  const mainPage = document.createElement('main');
-  mainPage.className = 'main-class';
-  document.body.appendChild(mainPage);
-  const articlePage = document.createElement('article');
-  mainPage.appendChild(articlePage);
-  const sectionFirst = document.createElement('section');
-  sectionFirst.className = 'first-section';
-  sectionFirst.setAttribute('id', 'first-section');
-  articlePage.appendChild(sectionFirst);
-  const sectionSecond = document.createElement('section');
-  sectionSecond.className = 'second-section';
-  sectionSecond.setAttribute('id', 'second-section');
-  articlePage.appendChild(sectionSecond);
-  const asidePage = document.createElement('aside');
-  mainPage.appendChild(asidePage);
-  const footerPage = document.createElement('footer');
-  document.body.appendChild(footerPage);
-}
-basicStructure();
+// ********* Base HTML *********
+const headerPage = document.createElement('header');
+headerPage.className = 'head-class';
+document.body.appendChild(headerPage);
+
+const navPage = document.createElement('nav');
+document.body.appendChild(navPage);
+
+const mainPage = document.createElement('main');
+mainPage.className = 'main-class';
+document.body.appendChild(mainPage);
+
+const articlePage = document.createElement('article');
+mainPage.appendChild(articlePage);
+
+const sectionFirst = document.createElement('section');
+sectionFirst.className = 'first-section';
+sectionFirst.setAttribute('id', 'first-section');
+articlePage.appendChild(sectionFirst);
+
+const sectionSecond = document.createElement('section');
+sectionSecond.className = 'second-section';
+sectionSecond.setAttribute('id', 'second-section');
+articlePage.appendChild(sectionSecond);
+
+const asidePage = document.createElement('aside');
+mainPage.appendChild(asidePage);
+
+const footerPage = document.createElement('footer');
+document.body.appendChild(footerPage);
+// ********* End Base HTML *********
+// ********* Init Items of page - html *********
 // Add title into tag header
 const getHeader = document.getElementsByTagName('header')[0];
 const titlePage = document.createElement('h1');
@@ -87,7 +94,7 @@ moveDownButton.className = 'remover-selecionado';
 moveDownButton.setAttribute('id', 'mover-baixo');
 moveDownButton.innerText = 'Down';
 parentSectionSecond.appendChild(moveDownButton);
-// *********** FIM DA CRIAÇAO DO HTML **********
+// ********* Init Items of page - html *********
 
 // Create OL
 function createOrdenateList() {
@@ -98,7 +105,7 @@ function createOrdenateList() {
   parentItemSection.appendChild(ordenateListToDo);
 }
 createOrdenateList();
-
+// Remove OL
 function removeOrdenateList() {
   const parentOfOl = document.getElementById('first-section');
   const getOl = document.querySelector('#lista-tarefas');
