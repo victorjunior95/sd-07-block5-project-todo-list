@@ -218,7 +218,7 @@ document.body.addEventListener('dblclick', function (event) {
 // Remove item completed
 const getEraseItemButton = document.querySelector('#remover-finalizados');
 getEraseItemButton.addEventListener('click', function () {
-  let completedRemove = document.querySelectorAll('.item-tarefa')
+  const completedRemove = document.querySelectorAll('.item-tarefa');
   for (let index = 0; index < completedRemove.length; index += 1) {
     if (completedRemove[index].classList.contains('selected')) {
       completedRemove[index].classList.remove('selected');
@@ -227,15 +227,15 @@ getEraseItemButton.addEventListener('click', function () {
   const arrayFilter = [];
   for (let outherIndex = 0; outherIndex < completedRemove.length; outherIndex += 1) {
     arrayFilter.push({
-    id: completedRemove[outherIndex].id,
-    class: completedRemove[outherIndex].className,
-    content: completedRemove[outherIndex].innerText,
+      id: completedRemove[outherIndex].id,
+      class: completedRemove[outherIndex].className,
+      content: completedRemove[outherIndex].innerText,
     });
   }
   function filterCase(data) {
     return data.class !== 'item-tarefa completed';
   }
-  let filtredItensCompleted = arrayFilter.filter(filterCase);
+  const filtredItensCompleted = arrayFilter.filter(filterCase);
   createListItem(filtredItensCompleted);
 });
 // Local stored itens
@@ -298,9 +298,10 @@ document.body.addEventListener('click', function (event) {
         content: selectedItemMoveUp[index].innerText,
       });
     }
-    const arrayReceived = document.getElementsByClassName('selected');
+    let arrayReceived = document.getElementsByClassName('selected');
     if (arrayReceived.length !== 0) {
-      const itemFrom = parseInt(arrayReceived[0].id);
+      arrayReceived = arrayReceived[0].id
+      const itemFrom = parseInt(arrayReceived);
       let itemTo = 0;
       if (event.target.id === 'mover-cima') {
         itemTo = itemFrom - 1;
