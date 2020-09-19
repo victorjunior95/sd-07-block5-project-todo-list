@@ -52,8 +52,20 @@ function refresh() {
 window.onload = refresh;
 
 
+// https://stackoverflow.com/questions/34913953/move-an-element-one-place-up-or-down-in-the-dom-tree-with-javascript
+document.querySelector('#mover-cima').addEventListener('click', function upItem() {
+  let move = document.querySelector('#lista-tarefas');
+  let item = document.querySelector('.selected');
+  if (move.previousElementSibling) {
+    move.insertBefore(item, item.previousElementSibling);
+  }
+});
 
-
-
-
-
+document.querySelector('#mover-baixo').addEventListener('click', function downItem() {
+  let move = document.querySelector('#lista-tarefas');
+  let item = document.querySelector('.selected');
+  if (move.nextElementSibling) {
+    move.insertBefore(item.nextElementSibling, item);
+  }
+});
+// ------------------------------------------------------------------------------------------------------------------
