@@ -33,3 +33,11 @@ list.addEventListener('dblclick', function(event) {
         completed.classList.add('completed');
     }
 });
+
+const deleteCompleted = document.getElementById('remover-finalizados');
+deleteCompleted.addEventListener('click', function() {
+    while (document.querySelector('.completed')) { // remove só os completed
+        document.querySelector('ol').removeChild(document.querySelector('.completed'));
+    }
+});
+
