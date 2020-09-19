@@ -11,33 +11,28 @@ botaoCriarTarefa.addEventListener("click", function(){
     tarefas.innerHTML = textoTarefa.value;
     listaTarefas.appendChild(tarefas);
     textoTarefa.value = "";
-    tarefas.addEventListener("click", tarefaSelecionada);
     tarefas.addEventListener("dblclick", tarefaCompleta);
     arrayListaTarefas.push(tarefas);
-
-});
-
-function tarefaSelecionada(){
     for(let index = 0; index < arrayListaTarefas.length; index += 1){
         arrayListaTarefas[index].addEventListener("click", function(){
             for(let j = 0; j < arrayListaTarefas.length; j += 1){
-                arrayListaTarefas[j].className = "";
+                if(arrayListaTarefas[j].classList.contains("classeFundoCinza")){
+                    arrayListaTarefas[j].classList.remove("classeFundoCinza");
+                };
+            arrayListaTarefas[index].className += " classeFundoCinza";
             };
-            arrayListaTarefas[index].classList.add("classeFundoCinza");
         });
-    };
-}
+    }    
+});
 
 function tarefaCompleta(event){
     let itemSelecionado = event.target;
     if(itemSelecionado.classList.contains("completed")){
         itemSelecionado.classList.remove("completed");
     } else {
-        itemSelecionado.classList.add("completed");   
+        itemSelecionado.className += " completed";
     };
-}
-
-
+};
 
 // clicar em um item e alterar a cor de fundo para cinza
 // criar uma classe com background-color: rgb(128, 128, 128)
