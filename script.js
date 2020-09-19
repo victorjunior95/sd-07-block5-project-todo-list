@@ -10,12 +10,12 @@ const botaoSalvarTarefas = document.getElementById('salvar-tarefas');
 
 // Carregando lista salva na LocalStorage
 const listaArmazenada = JSON.parse(localStorage.getItem('lista'));
-for (let i = 0; i < listaArmazenada.length; i += 1) {
-  const listaItem = document.createElement('li');
-  listaItem.className = listaArmazenada[i].classe;
-  listaItem.innerText = listaArmazenada[i].texto;
-  listaTarefas.appendChild(listaItem);
-}
+// for (let i = 0; i < listaArmazenada.length; i += 1) {
+//   const listaItem = document.createElement('li');
+//   listaItem.className = listaArmazenada[i].classe;
+//   listaItem.innerText = listaArmazenada[i].texto;
+//   listaTarefas.appendChild(listaItem);
+// }
 
 // Funcionalidade do botão Salvar Lista
 botaoSalvarTarefas.addEventListener('click', function () {
