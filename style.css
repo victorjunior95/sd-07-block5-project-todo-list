@@ -29,13 +29,13 @@ p {
 .fatherbuttonformat {
   background-color: rgba(35 , 177 , 232 , 0.91);
   border-radius: 15%;
-  height: 200px;
+  height: 100px;
   left: 30px;
   margin-top: 100px;
   padding-top: 35px;
   position: fixed;
   text-align: center;
-  width: 350px;
+  width: 550px;
 }
 
 button {
