@@ -63,9 +63,8 @@ function getLocalStorageValues(keyValueCheck) {
   const valueStorage = [];
   for (let keys = 0; keys < localStorage.length; keys += 1) {
     const keyStorage = (localStorage.key(keys)).split('_');
-    console.log(keyStorage);
     if (keyStorage[0] === keyValueCheck) {
-      valueStorage[keyStorage[1]] =  localStorage.getItem(`${keyStorage[0]}_${keyStorage[1]}`);
+      valueStorage[keyStorage[1]] = localStorage.getItem(`${keyStorage[0]}_${keyStorage[1]}`);
     }
   }
   return valueStorage;
@@ -117,9 +116,8 @@ window.onload = function () {
   const listaTarefasOl = document.querySelector('#lista-tarefas');
 
   // carrega tarefas, caso existam, do localStorage
-  let tarefasSalvas = getLocalStorageValues('tarefa');
-  console.log(tarefasSalvas);
-  let classesSalvas = getLocalStorageValues('tarefaClasse');
+  const tarefasSalvas = getLocalStorageValues('tarefa');
+  const classesSalvas = getLocalStorageValues('tarefaClasse');
   carregaTarefas(tarefasSalvas, classesSalvas);
 
   // adicionar tarefa
