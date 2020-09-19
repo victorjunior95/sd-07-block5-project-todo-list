@@ -2,101 +2,79 @@
 const headerPage = document.createElement('header');
 headerPage.className = 'head-class';
 document.body.appendChild(headerPage);
-
 const navPage = document.createElement('nav');
 document.body.appendChild(navPage);
-
 const mainPage = document.createElement('main');
 mainPage.className = 'main-class';
 document.body.appendChild(mainPage);
-
 const articlePage = document.createElement('article');
 mainPage.appendChild(articlePage);
-
 const sectionFirst = document.createElement('section');
 sectionFirst.className = 'first-section';
 sectionFirst.setAttribute('id', 'first-section');
 articlePage.appendChild(sectionFirst);
-
 const sectionSecond = document.createElement('section');
 sectionSecond.className = 'second-section';
 sectionSecond.setAttribute('id', 'second-section');
 articlePage.appendChild(sectionSecond);
-
 const asidePage = document.createElement('aside');
 mainPage.appendChild(asidePage);
-
 const footerPage = document.createElement('footer');
 document.body.appendChild(footerPage);
 // ********* End Base HTML *********
-// ********* Init Items of page - html *********
-// Add title into tag header
 const getHeader = document.getElementsByTagName('header')[0];
 const titlePage = document.createElement('h1');
 titlePage.className = 'title';
 titlePage.innerText = 'Minha Lista de Tarefas';
 getHeader.appendChild(titlePage);
-// Add paragraph for nav
 const getNav = document.getElementsByTagName('nav')[0];
 const paragraphInformactive = document.createElement('p');
 paragraphInformactive.setAttribute('id', 'funcionamento');
 paragraphInformactive.innerText = 'Clique duas vezes em um item para marcá-lo como completo';
 getNav.appendChild(paragraphInformactive);
-// Section First Select
 const parentSectionFirst = document.getElementById('first-section');
-// Input
 const inputTextItem = document.createElement('input');
 inputTextItem.setAttribute('type', 'text');
 inputTextItem.setAttribute('id', 'texto-tarefa');
 inputTextItem.className = 'texto-tarefa';
 parentSectionFirst.appendChild(inputTextItem);
-// Button for add task
 const sendTextItem = document.createElement('button');
 sendTextItem.className = 'criar-tarefa';
 sendTextItem.setAttribute('id', 'criar-tarefa');
 sendTextItem.innerText = 'Adicionar Nova Tarefa';
 parentSectionFirst.appendChild(sendTextItem);
-// Section Second Select
 const parentSectionSecond = document.getElementById('second-section');
-// botton for erase all task
 const eraseAllTasksButton = document.createElement('button');
 eraseAllTasksButton.className = 'apaga-tudo';
 eraseAllTasksButton.setAttribute('id', 'apaga-tudo');
 eraseAllTasksButton.innerText = 'Apagar Tudo';
 parentSectionSecond.appendChild(eraseAllTasksButton);
-
 const eraseTaskCompleted = document.createElement('button');
 eraseTaskCompleted.className = 'remover-finalizados';
 eraseTaskCompleted.setAttribute('id', 'remover-finalizados');
 eraseTaskCompleted.innerText = 'Apagar Tarefas Finalizadas';
 parentSectionSecond.appendChild(eraseTaskCompleted);
-
 const saveTask = document.createElement('button');
 saveTask.className = 'salvar-tarefas';
 saveTask.setAttribute('id', 'salvar-tarefas');
 saveTask.innerText = 'Salvar Lista';
 parentSectionSecond.appendChild(saveTask);
-
 const removeSelectedButton = document.createElement('button');
 removeSelectedButton.className = 'remover-selecionado';
 removeSelectedButton.setAttribute('id', 'remover-selecionado');
 removeSelectedButton.innerText = 'Remover Selecionado';
 parentSectionSecond.appendChild(removeSelectedButton);
-
 const moveUpButton = document.createElement('button');
 moveUpButton.className = 'remover-selecionado';
 moveUpButton.setAttribute('id', 'mover-cima');
 moveUpButton.innerText = 'Up';
 parentSectionSecond.appendChild(moveUpButton);
-
 const moveDownButton = document.createElement('button');
 moveDownButton.className = 'remover-selecionado';
 moveDownButton.setAttribute('id', 'mover-baixo');
 moveDownButton.innerText = 'Down';
 parentSectionSecond.appendChild(moveDownButton);
 // ********* Init Items of page - html *********
-
-// Create OL
 function createOrdenateList() {
   const parentItemSection = document.getElementById('first-section');
   const ordenateListToDo = document.createElement('ol');
@@ -105,13 +83,11 @@ function createOrdenateList() {
   parentItemSection.appendChild(ordenateListToDo);
 }
 createOrdenateList();
-// Remove OL
 function removeOrdenateList() {
   const parentOfOl = document.getElementById('first-section');
   const getOl = document.querySelector('#lista-tarefas');
   parentOfOl.removeChild(getOl);
 }
-// Load items on page
 function loadListItem(data) {
   if (data !== null) {
     const parentOfOl = document.getElementById('first-section');
@@ -128,7 +104,6 @@ function loadListItem(data) {
     }
   }
 }
-// Get data LocalStorage
 function getLocalStorage() {
   let propagationDataStorage = [];
   const tasksLoadeds = localStorage.getItem('task');
@@ -160,7 +135,6 @@ function createListItem(data) {
     olTag.appendChild(itemLi);
   }
 }
-// insert task with click
 const getInsertButton = document.querySelector('#criar-tarefa');
 getInsertButton.addEventListener('click', function () {
   const inputData = document.querySelector('#texto-tarefa');
@@ -175,7 +149,6 @@ getInsertButton.addEventListener('click', function () {
     inputData.value = '';
   }
 });
-// insert task with enter
 const getKeyEnter = document.querySelector('#texto-tarefa');
 getKeyEnter.addEventListener('keydown', function (event) {
   const inputDataWitchEnter = document.querySelector('#texto-tarefa');
@@ -190,7 +163,6 @@ getKeyEnter.addEventListener('keydown', function (event) {
     inputDataWitchEnter.value = '';
   }
 });
-// Remove all
 const getEraseAllButton = document.querySelector('#apaga-tudo');
 getEraseAllButton.addEventListener('click', function () {
   const listOrdenateTarget = document.querySelector('#lista-tarefas');
@@ -202,7 +174,6 @@ getEraseAllButton.addEventListener('click', function () {
   }
   localStorage.clear();
 });
-// Marck checked item clicked as selected
 document.body.addEventListener('click', function (event) {
   if (event.target.nodeName === 'LI') {
     const liSelected = document.querySelectorAll('.selected')[0];
@@ -215,14 +186,12 @@ document.body.addEventListener('click', function (event) {
     }
   }
 });
-// Marck checked item double clicked as completed
 document.body.addEventListener('dblclick', function (event) {
   if (event.target.nodeName === 'LI') {
     const liClicked = event.target;
     liClicked.classList.toggle('completed');
   }
 });
-// Remove item completed
 const getEraseItemButton = document.querySelector('#remover-finalizados');
 getEraseItemButton.addEventListener('click', function () {
   const completedRemove = document.querySelectorAll('.item-tarefa');
@@ -245,7 +214,6 @@ getEraseItemButton.addEventListener('click', function () {
   const filtredItensCompleted = arrayFilter.filter(filterCase);
   createListItem(filtredItensCompleted);
 });
-// Local stored itens
 const saveTasksButton = document.querySelector('#salvar-tarefas');
 saveTasksButton.addEventListener('click', function () {
   const itemsForSave = document.querySelectorAll('.item-tarefa');
@@ -264,7 +232,6 @@ saveTasksButton.addEventListener('click', function () {
   }
   localStorage.setItem('task', JSON.stringify(arrayForLocalStorage));
 });
-// Remove selected
 const buttonDeleteItemSelected = document.querySelector('#remover-selecionado');
 buttonDeleteItemSelected.addEventListener('click', function () {
   const selectedRemove = document.querySelectorAll('.item-tarefa');
@@ -287,7 +254,6 @@ buttonDeleteItemSelected.addEventListener('click', function () {
   const filtredItensSelected = arrayFilter.filter(filterCase);
   createListItem(filtredItensSelected);
 });
-// Button Function item Up
 function itemUp(data, from, to) {
   if (to >= 0 && from < data.length) {
     data.splice(to, 0, data.splice(from, 1)[0]);
