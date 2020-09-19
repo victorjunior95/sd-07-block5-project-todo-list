@@ -116,7 +116,6 @@ function getLocalStorage() {
   }
   return propagationDataStorage;
 }
-const arrayFullDataTasks = getLocalStorage();
 // Load items on page
 function loadListItem(data) {
   if (data !== null) {
@@ -134,6 +133,7 @@ function loadListItem(data) {
     }
   }
 }
+const arrayFullDataTasks = getLocalStorage();
 loadListItem(arrayFullDataTasks);
 // Lis Generator
 function createListItem(data) {
