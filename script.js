@@ -4,7 +4,7 @@ const orderedList = document.querySelector('#lista-tarefas');
 const eraseAllButton = document.querySelector('#apaga-tudo');
 const removeFinishedButton = document.querySelector('#remover-finalizados');
 const removeSelectedButton = document.querySelector('#remover-selecionado');
-// const saveTasksButton = document.querySelector('#salvar-tarefas');
+const saveTasksButton = document.querySelector('#salvar-tarefas');
 const moveUpButton = document.querySelector('#mover-cima');
 const moveDownButton = document.querySelector('#mover-baixo');
 
@@ -56,19 +56,19 @@ function eraseAll() {
     orderedList.removeChild(orderedList.firstChild);
   }
 }
-// function saveTasks() {
-//   // localStorage.clear();
-//   const toSave = document.querySelector('ol');
-//   localStorage.setItem('toSaveTasks', toSave.innerHTML)
-// }
+function saveTasks() {
+  // localStorage.clear();
+  const toSave = document.querySelector('ol');
+  localStorage.setItem('toSaveTasks', toSave.innerHTML)
+}
 
-// function reload() {
-//   document.querySelector('ol').innerHTML = localStorage.getItem('toSaveTasks')
-// }
-// saveTasksButton.addEventListener('click', saveTasks);
+function reload() {
+  document.querySelector('ol').innerHTML = localStorage.getItem('toSaveTasks')
+}
+saveTasksButton.addEventListener('click', saveTasks);
 
-//   // makeTaskList()
-//   reload()
+  // makeTaskList()
+  reload()
 function moveUp() {
   const toMoveUpLi = document.querySelector('.selected');
   if (toMoveUpLi !== null) {
