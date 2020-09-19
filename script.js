@@ -111,7 +111,7 @@ function getLocalStorage() {
   propagationDataStorage = JSON.parse(tasksLoadeds);
   loadListItem(propagationDataStorage);
   if (propagationDataStorage === null) {
-    propagationDataStorage = []
+    propagationDataStorage = [];
     return propagationDataStorage;
   }
   return propagationDataStorage;
@@ -211,31 +211,31 @@ document.body.addEventListener('click', function (event) {
 // Marck checked item double clicked as completed
 document.body.addEventListener('dblclick', function (event) {
   if (event.target.nodeName === 'LI') {
-  const liClicked = event.target;
-  liClicked.classList.toggle('completed');
-}
+    const liClicked = event.target;
+    liClicked.classList.toggle('completed');
+  }
 });
 // Remove item completed
 const getEraseItemButton = document.querySelector('#remover-finalizados');
 getEraseItemButton.addEventListener('click', function () {
-  const completedRemove = document.querySelectorAll('.item-tarefa');
+  let completedRemove = document.querySelectorAll('.item-tarefa')
   for (let index = 0; index < completedRemove.length; index += 1) {
     if (completedRemove[index].classList.contains('selected')) {
       completedRemove[index].classList.remove('selected');
     }
   }
-  let arrayFilter = [];
+  const arrayFilter = [];
   for (let outherIndex = 0; outherIndex < completedRemove.length; outherIndex += 1) {
     arrayFilter.push({
-      'id': completedRemove[outherIndex].id,
-      'class': completedRemove[outherIndex].className,
-      'content': completedRemove[outherIndex].innerText
+    id: completedRemove[outherIndex].id,
+    class: completedRemove[outherIndex].className,
+    content: completedRemove[outherIndex].innerText,
     });
   }
   function filterCase(data) {
     return data.class !== 'item-tarefa completed';
   }
-  const filtredItensCompleted = arrayFilter.filter(filterCase);
+  let filtredItensCompleted = arrayFilter.filter(filterCase);
   createListItem(filtredItensCompleted);
 });
 // Local stored itens
@@ -247,57 +247,56 @@ saveTasksButton.addEventListener('click', function () {
       itemsForSave[index].classList.remove('selected');
     }
   }
-  let arrayForLocalStorage = [];
+  const arrayForLocalStorage = [];
   for (let index = 0; index < itemsForSave.length; index += 1) {
-    let taskLocalStorage = {
+    arrayForLocalStorage.push({
       id: itemsForSave[index].id,
       class: itemsForSave[index].className,
       content: itemsForSave[index].innerText,
-    };
-    arrayForLocalStorage.push(taskLocalStorage);
+    });
   }
   localStorage.setItem('task', JSON.stringify(arrayForLocalStorage));
 });
 // Remove selected
 const buttonDeleteItemSelected = document.querySelector('#remover-selecionado');
 buttonDeleteItemSelected.addEventListener('click', function () {
-  const selectedRemove = document.querySelectorAll('.item-tarefa')
+  const selectedRemove = document.querySelectorAll('.item-tarefa');
   for (let index = 0; index < selectedRemove.length; index += 1) {
     if (selectedRemove[index].classList.contains('completed')) {
       selectedRemove[index].classList.remove('completed');
     }
   }
-  let arrayFilter = [];
+  const arrayFilter = [];
   for (let outherIndex = 0; outherIndex < selectedRemove.length; outherIndex += 1) {
     arrayFilter.push({
       id: selectedRemove[outherIndex].id,
       class: selectedRemove[outherIndex].className,
-      content: selectedRemove[outherIndex].innerText
+      content: selectedRemove[outherIndex].innerText,
     });
   }
   function filterCase(data) {
     return data.class !== 'item-tarefa selected';
   }
-  let filtredItensSelected = arrayFilter.filter(filterCase);
+  const filtredItensSelected = arrayFilter.filter(filterCase);
   createListItem(filtredItensSelected);
-})
+});
 // Button Function item Up
 function itemUp(data, from, to) {
   if (to >= 0 && from < data.length) {
-  data.splice(to, 0, data.splice(from, 1)[0]);
-  return createListItem(data);
+    data.splice(to, 0, data.splice(from, 1)[0]);
+    createListItem(data);
   }
-};
+}
 document.body.addEventListener('click', function (event) {
-  if (event.target.nodeName === 'BUTTON' && event.target.id === 'mover-cima' || event.target.id === 'mover-baixo') {
+  if (event.target.id === 'mover-cima' || event.target.id === 'mover-baixo') {
     const selectedItemMoveUp = document.querySelectorAll('.item-tarefa');
-    let arrayFilter = []
+    const arrayFilter = [];
     for (let index = 0; index < selectedItemMoveUp.length; index += 1) {
       arrayFilter.push({
         id: selectedItemMoveUp[index].id,
         class: selectedItemMoveUp[index].className,
-        content: selectedItemMoveUp[index].innerText
-      })
+        content: selectedItemMoveUp[index].innerText,
+      });
     }
     const arrayReceived = document.getElementsByClassName('selected');
     if (arrayReceived.length !== 0) {
@@ -311,4 +310,4 @@ document.body.addEventListener('click', function (event) {
       itemUp(arrayFilter, itemFrom, itemTo);
     }
   }
-})
+});
