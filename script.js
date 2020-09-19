@@ -38,6 +38,7 @@ creatorButton.addEventListener('click', function () {
   elementLi.value = '';
 });
 cleanAllButton.addEventListener('click', function () {
+  const allLi = document.querySelectorAll('li');
   allLi.forEach(element => { olList.removeChild(element) })});
 
 removeFinished.addEventListener('click', function () {
@@ -63,7 +64,6 @@ save.addEventListener('click', function () {
   }
 });
 
-function start() {
   let getElement;
   let getClass;
   for (let elementStore = 0; elementStore < localStorage.length / 2; elementStore += 1) {
@@ -72,5 +72,3 @@ function start() {
     const elementList = launcherTask(getElement);
     elementList.className = getClass;
   }
-}
-start()
