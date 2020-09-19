@@ -7,6 +7,7 @@ addButton.addEventListener('click', addTask);
 function addTask() {
   const addedItem = document.createElement('li');
   addedItem.innerText = inputText.value;
+  addedItem.addEventListener('dblclick', completedItem)
   addedItem.addEventListener('click', changeItemColor);
   taskList.appendChild(addedItem);
   inputText.value = '';
@@ -21,4 +22,8 @@ function changeItemColor() {
     }
   })
   this.classList.toggle('item-background');
+}
+
+function completedItem() {
+  this.classList.toggle('completed');
 }
