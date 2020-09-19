@@ -87,7 +87,6 @@ function updateList() {
 }
 
 updateList();
-const verify = false;
 
 addTarefa.addEventListener('click', function () {
   const elementLi = document.createElement('li');
