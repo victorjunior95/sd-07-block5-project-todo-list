@@ -60,6 +60,7 @@ const marcarCompleto = function (event) {
     }
   }
   limpaSelecao();
+  salvarLista();
 };
 
 const apagaTudo = function () {
@@ -67,13 +68,7 @@ const apagaTudo = function () {
   listaLi.forEach((item) => {
     item.remove();
   })
-}
-
-const removerFinalizados = function () {
-  const itensCompletos = document.querySelectorAll('.completed');
-  itensCompletos.forEach((item) => {
-    item.remove();
-  })
+  salvarLista();
 }
 
 const salvarLista = function () {
@@ -115,8 +110,13 @@ const moverParaCima = function () {
   }
 }
 
-
-
+const removerFinalizados = function () {
+  const itensCompletos = document.querySelectorAll('.completed');
+  itensCompletos.forEach((item) => {
+    item.remove();
+  })
+  salvarLista();
+}
 
 window.onload = function () {
   carregaItensSalvos();
@@ -126,8 +126,8 @@ window.onload = function () {
   listaOrdenadaDeTarefas.addEventListener('dblclick', marcarCompleto);
   listaOrdenadaDeTarefas.addEventListener('click', selecionaItemLista);
   document.getElementById('apaga-tudo').addEventListener('click', apagaTudo);
-  document.getElementById('remover-finalizados').addEventListener('click', removerFinalizados);
   document.getElementById('salvar-tarefas').addEventListener('click', salvarLista);
   document.getElementById('mover-baixo').addEventListener('click', moveParaBaixo);
   document.getElementById('mover-cima').addEventListener('click', moverParaCima);
+  document.getElementById('remover-finalizados').addEventListener('click', removerFinalizados);
 }
