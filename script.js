@@ -118,9 +118,16 @@ const removerFinalizados = function () {
   salvarLista();
 }
 
+const removerSelecionados = function () {
+  const itenSelecionado = document.querySelectorAll('.selected')[0];
+  itenSelecionado.remove();
+  salvarLista();
+}
+
+
+
 window.onload = function () {
   carregaItensSalvos();
-
   document.addEventListener('click', limparSelecaoClickFora)
   document.getElementById('criar-tarefa').addEventListener('click', criaTarefa);
   listaOrdenadaDeTarefas.addEventListener('dblclick', marcarCompleto);
@@ -130,4 +137,5 @@ window.onload = function () {
   document.getElementById('mover-baixo').addEventListener('click', moveParaBaixo);
   document.getElementById('mover-cima').addEventListener('click', moverParaCima);
   document.getElementById('remover-finalizados').addEventListener('click', removerFinalizados);
+  document.getElementById('remover-selecionado').addEventListener('click', removerSelecionados);
 }
