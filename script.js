@@ -1,6 +1,7 @@
 const creatorButton = document.getElementById('criar-tarefa');
 const olList = document.getElementById('lista-tarefas');
 const cleanAllButton = document.querySelector('#apaga-tudo');
+const removeFinished = document.querySelector('#remover-finalizados');
 
 
 function newEventListener(elementList) {
@@ -41,7 +42,10 @@ creatorButton.addEventListener('click', function () {
 
 cleanAllButton.addEventListener('click', function () {
   const allLi = document.querySelectorAll('li');
-  for (let element = 0; element < allLi.length; element += 1) {
-    olList.removeChild(allLi[element]);
-  }
-});
+  allLi.forEach(element => { olList.removeChild(element) })});
+
+  removeFinished.addEventListener('click', function () {
+    const allFinished = document.querySelectorAll('.completed');
+    allFinished.forEach(element => { olList.removeChild(element) })});
+
+  
