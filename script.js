@@ -104,18 +104,6 @@ function removeOrdenateList() {
   const getOl = document.querySelector('#lista-tarefas');
   parentOfOl.removeChild(getOl);
 }
-// Get data LocalStorage
-function getLocalStorage() {
-  let propagationDataStorage = [];
-  const tasksLoadeds = localStorage.getItem('task');
-  propagationDataStorage = JSON.parse(tasksLoadeds);
-  loadListItem(propagationDataStorage);
-  if (propagationDataStorage === null) {
-    propagationDataStorage = [];
-    return propagationDataStorage;
-  }
-  return propagationDataStorage;
-}
 // Load items on page
 function loadListItem(data) {
   if (data !== null) {
@@ -132,6 +120,18 @@ function loadListItem(data) {
       olTag.appendChild(itemLi);
     }
   }
+}
+// Get data LocalStorage
+function getLocalStorage() {
+  let propagationDataStorage = [];
+  const tasksLoadeds = localStorage.getItem('task');
+  propagationDataStorage = JSON.parse(tasksLoadeds);
+  loadListItem(propagationDataStorage);
+  if (propagationDataStorage === null) {
+    propagationDataStorage = [];
+    return propagationDataStorage;
+  }
+  return propagationDataStorage;
 }
 const arrayFullDataTasks = getLocalStorage();
 loadListItem(arrayFullDataTasks);
