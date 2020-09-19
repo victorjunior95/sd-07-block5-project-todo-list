@@ -59,16 +59,16 @@ function eraseAll() {
 function saveTasks() {
   // localStorage.clear();
   const toSave = document.querySelector('ol');
-  localStorage.setItem('toSaveTasks', toSave.innerHTML)
+  localStorage.setItem('toSaveTasks', toSave.innerHTML);
 }
 
 function reload() {
-  document.querySelector('ol').innerHTML = localStorage.getItem('toSaveTasks')
+  document.querySelector('ol').innerHTML = localStorage.getItem('toSaveTasks');
 }
 saveTasksButton.addEventListener('click', saveTasks);
 
   // makeTaskList()
-  reload()
+reload();
 function moveUp() {
   const toMoveUpLi = document.querySelector('.selected');
   if (toMoveUpLi !== null) {
