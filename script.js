@@ -70,15 +70,22 @@ function eraseAll() {
 //   reload()
 function moveUp() {
   const toMoveUpLi = document.querySelector(".selected");
-  if (toMoveUpLi.previousElementSibling !== null) {
-    orderedList.insertBefore(toMoveUpLi, toMoveUpLi.previousElementSibling);
+  if (toMoveUpLi !== null) {
+    const previousToMove = toMoveUpLi.previousElementSibling;
+    if (previousToMove !== null) {
+      orderedList.insertBefore(toMoveUpLi, toMoveUpLi.previousElementSibling);
+      // previousToMove.Before(toMoveUpLi)
+    }
   }
 }
 
 function moveDown() {
   const toMoveDownLi = document.querySelector(".selected");
-  if (toMoveDownLi.nextElementSibling !== null) {
-    orderedList.insertBefore(toMoveDownLi.nextElementSibling, toMoveDownLi);
+  if (toMoveDownLi !== null) {
+    const nextToMove = toMoveDownLi.nextElementSibling;
+    if (nextToMove !== null) {
+      orderedList.insertBefore(toMoveDownLi.nextElementSibling, toMoveDownLi);
+    }
   }
 }
 
