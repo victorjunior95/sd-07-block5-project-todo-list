@@ -12,17 +12,21 @@
         <p id="funcionamento"><em>Clique duas vezes em um item para marcá-lo como completo</em></p>
     </header>
     <section class="content">
-        <input required type="text" id="texto-tarefa">
-        <button id="criar-tarefa">Adicionar</button>
+        <div class="botoes-container">
+            <input class="texto" required type="text" id="texto-tarefa">
+            <button class="botao botao-add" id="criar-tarefa">Adicionar</button>
+        </div>
         <ol id="lista-tarefas">
 
         </ol>
-        <button id="remover-selecionado"> X </button>
-        <button id="mover-cima">UP</button>
-        <button id="mover-baixo">DOWN</button>
-        <button id="remover-finalizados">Limpar Completos</button>
-        <button id="apaga-tudo">Limpar Lista</button>
-        <button id="salvar-tarefas">Salvar Lista</button>
+        <div class="botoes-container">
+            <button class="botao botao-x" id="remover-selecionado"> X </button>
+            <button class="botao botao-up-down" id="mover-cima">UP</button>
+            <button class="botao botao-up-down" id="mover-baixo">DOWN</button>
+            <button class="botao botao-limpar" id="remover-finalizados">Limpar Completos</button>
+            <button class="botao botao-x" id="apaga-tudo">Limpar Lista</button>
+            <button class="botao botao-salvar" id="salvar-tarefas">Salvar Lista</button>
+        </div>
     </section>
     <script src="script.js"></script>
 </body>

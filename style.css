@@ -7,6 +7,7 @@ body , html {
   line-height: 1.3;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 header {
@@ -18,9 +19,22 @@ header {
   border: 1px solid rgb(214 , 217 , 220);
   border-radius: 3px;
   margin: 40px auto;
-  padding: 20px;
+  padding: 40px;
   width: 80%;
 }
+
+.texto {
+  color: rgb(48 , 48 , 48);
+  font-size: 16px;
+  height: 30px;
+  width: calc(100% - 220px);
+}
+
+ol {
+  margin: 20px 0 20px 20px;
+  padding: 0;
+}
+
 
 .texto-lista:hover {
   cursor: pointer;
@@ -32,4 +46,52 @@ header {
 
 .completed {
   text-decoration: line-through solid black;
+}
+
+.botoes-container {
+  width: 100%;
+  text-align: justify;
+  height: 30px;
+}
+
+.botao {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 3px 3px 10px gray;
+  color: white;
+  font-size: 16px;
+  height: 37px;
+  outline: none;
+  width: 200px;
+}
+
+.botao:hover {
+  cursor: pointer;
+  outline: none;
+}
+
+.botoes-container:after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+
+.botao-x {
+  background-color: crimson;
+}
+
+.botao-up-down {
+  background-color: orange;
+}
+
+.botao-limpar {
+  background-color: dodgerblue;
+}
+
+.botao-salvar {
+  background-color: orangered;
+}
+
+.botao-add {
+  background-color: darkmagenta;
 }
