@@ -75,6 +75,18 @@ removeSelectedButton.className = 'remover-selecionado';
 removeSelectedButton.setAttribute('id', 'remover-selecionado');
 removeSelectedButton.innerText = 'Remover Selecionado';
 parentSectionSecond.appendChild(removeSelectedButton);
+
+const moveUpButton = document.createElement('button');
+moveUpButton.className = 'remover-selecionado';
+moveUpButton.setAttribute('id', 'mover-cima');
+moveUpButton.innerText = 'Up';
+parentSectionSecond.appendChild(moveUpButton);
+
+const moveDownButton = document.createElement('button');
+moveDownButton.className = 'remover-selecionado';
+moveDownButton.setAttribute('id', 'mover-baixo');
+moveDownButton.innerText = 'Down';
+parentSectionSecond.appendChild(moveDownButton);
 // *********** FIM DA CRIAÇAO DO HTML **********
 
 // Create OL
@@ -122,22 +134,20 @@ function loadListItem(data) {
 loadListItem(arrayFullDataTasks);
 // Lis Generator
 function createListItem(data) {
-  if (data.length !== 0) {
-    removeOrdenateList()
-    createOrdenateList();
-    const olTag = document.getElementById('lista-tarefas');
-    for (let index = 0; index < data.length; index += 1) {
-      let id = index;
-      let classSet = 'item-tarefa';
-      if (data[index].class.length > 11){
-        classSet = data[index].class
-      }
-      const itemLi = document.createElement('li');
-      itemLi.className = classSet;
-      itemLi.setAttribute('id', id);
-      itemLi.innerText = data[index].content;
-      olTag.appendChild(itemLi);
+  removeOrdenateList()
+  createOrdenateList();
+  const olTag = document.getElementById('lista-tarefas');
+  for (let index = 0; index < data.length; index += 1) {
+    let id = index;
+    let classSet = 'item-tarefa';
+    if (data[index].class.length > 11){
+      classSet = data[index].class
     }
+    const itemLi = document.createElement('li');
+    itemLi.className = classSet;
+    itemLi.setAttribute('id', id);
+    itemLi.innerText = data[index].content;
+    olTag.appendChild(itemLi);
   }
 }
 // insert task with click
@@ -248,7 +258,7 @@ saveTasksButton.addEventListener('click', function () {
 // Remove selected
 const buttonDeleteItemSelected = document.querySelector('#remover-selecionado');
 buttonDeleteItemSelected.addEventListener('click', function () {
-  let selectedRemove = document.querySelectorAll('.item-tarefa')
+  const selectedRemove = document.querySelectorAll('.item-tarefa')
   for (let index = 0; index < selectedRemove.length; index += 1) {
     if (selectedRemove[index].classList.contains('completed')) {
       selectedRemove[index].classList.remove('completed');
@@ -267,4 +277,32 @@ buttonDeleteItemSelected.addEventListener('click', function () {
   }
   let filtredItensSelected = arrayFilter.filter(filterCase);
   createListItem(filtredItensSelected);
+})
+// Button Function item Up
+function itemUp(data, from, to) {
+  if (to >= 0 && from < data.length) {
+  data.splice(to, 0, data.splice(from, 1)[0]);
+  return createListItem(data);
+  }
+};
+document.body.addEventListener('click', function (event) {
+  if (event.target.nodeName === 'BUTTON' && event.target.id === 'mover-cima' || event.target.id === 'mover-baixo') {
+    const selectedItemMoveUp = document.querySelectorAll('.item-tarefa');
+    let arrayFilter = []
+    for (let index = 0; index < selectedItemMoveUp.length; index += 1) {
+      arrayFilter.push({
+        'id': selectedItemMoveUp[index].id,
+        'class': selectedItemMoveUp[index].className,
+        'content': selectedItemMoveUp[index].innerText
+      })
+    }
+    const itemFrom = parseInt(document.getElementsByClassName('selected')[0].id);
+    let itemTo = 0;
+    if (event.target.id === 'mover-cima') {
+      itemTo = itemFrom - 1;
+    } else {
+      itemTo = itemFrom + 1;
+    }
+    itemUp(arrayFilter, itemFrom, itemTo);
+  }
 })
