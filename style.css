@@ -1,9 +1,40 @@
-.completed{
-    text-decoration: line-through solid rgb(0, 0, 0);
+body{
+    background-image: url('./imgs/todoList.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.titulo{
+    visibility: hidden;
+}
+#principal{
+    margin-top: 110px;
+    margin-left: 750px;
+
+}
+.texto-tarefa{
+    width: 60%;
+    line-height: 30px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
-ol{
-    display: block;
-    width: 300px;
+.lista{
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 90%;
+    min-height: 300px;
+}
 
+.lista-tarefas{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.botoes{
+    margin-top: 30px;
+    width: 90%;
+}
+button{
+    line-height: 25px;
+    margin: 4px;
+}
+.completed{
+    text-decoration: line-through solid rgb(0, 0, 0);
 }
