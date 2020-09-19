@@ -4,6 +4,8 @@ const cleanAllButton = document.querySelector('#apaga-tudo');
 const removeFinished = document.querySelector('#remover-finalizados');
 const removeSelected = document.querySelector('#remover-selecionado');
 const save = document.querySelector('#salvar-tarefas');
+const moveUp = document.querySelector('#mover-cima');
+const moveDown = document.querySelector('#mover-baixo');
 function newEventListener(elementList) {
   elementList.addEventListener('click', function () {
     const selectedItem = document.querySelector('.selected');
@@ -72,3 +74,39 @@ save.addEventListener('click', function () {
     const elementList = launcherTask(getElement);
     elementList.className = getClass;
   }
+
+  moveUp.addEventListener('click', function () {
+    const selectedElement = document.querySelector('.selected');
+    let beforeTask = '';
+    if (selectedElement) {
+      beforeTask = selectedElement.previousElementSibling;
+    }
+    if (beforeTask) {
+      const txtSelected = selectedElement.innerText;
+      const classSelected = selectedElement.className;
+      const prevTxt = beforeTask.innerText;
+      const prevClass = beforeTask.className;
+      beforeTask.innerText = txtSelected;
+      beforeTask.className = classSelected;
+      selectedElement.innerText = prevTxt;
+      selectedElement.className = prevClass;
+    }
+  });
+  moveDown.addEventListener('click', function () {
+    const selectedElement = document.querySelector('.selected');
+    let afterTask = '';
+    if (selectedElement) {
+      afterTask = selectedElement.nextElementSibling;
+    }
+    if (afterTask) {
+      const txtSelected = selectedElement.innerText;
+      const classSelected = selectedElement.className;
+      const afterTxt = afterTask.innerText;
+      const afterClass = afterTask.className;
+      afterTask.innerText = txtSelected;
+      afterTask.className = classSelected;
+      selectedElement.innerText = afterTxt;
+      selectedElement.className = afterClass;
+    }
+  });
+
