@@ -47,7 +47,7 @@ function adicionarTarefa(element, textInput, classElement) {
 // salva as tarefas criadas no localStorage
 function salvarTarefas() {
   if (typeof (Storage) !== 'undefined') {
-    // localStorage.clear();
+    localStorage.clear();
     const tarefas = document.getElementsByTagName('li');
     for (let index = 0; index < tarefas.length; index += 1) {
       localStorage.setItem(`tarefa_${index}`, tarefas[index].innerText);
@@ -58,22 +58,24 @@ function salvarTarefas() {
   }
 }
 
-// carrega as tarefas salvas no localStorage
-function carregarTarefas() {
-  const listaTarefasOl = document.querySelector('#lista-tarefas');
+// verifica valores referente às tarefas salvas no localStorage
+function getLocalStorageValues(keyValueCheck) {
   const valueStorage = [];
-  const classStorage = [];
   for (let keys = 0; keys < localStorage.length; keys += 1) {
     const keyStorage = (localStorage.key(keys)).split('_');
-    if (keyStorage[0] === 'tarefa') {
-      valueStorage[keyStorage[1]] = localStorage.getItem(`${keyStorage[0]}_${keyStorage[1]}`);
-    }
-    if (keyStorage[0] === 'tarefaClasse') {
-      classStorage[keyStorage[1]] = localStorage.getItem(`${keyStorage[0]}_${keyStorage[1]}`);
+    console.log(keyStorage);
+    if (keyStorage[0] === keyValueCheck) {
+      valueStorage[keyStorage[1]] =  localStorage.getItem(`${keyStorage[0]}_${keyStorage[1]}`);
     }
   }
-  for (let index = 0; index < valueStorage.length; index += 1) {
-    adicionarTarefa(listaTarefasOl, valueStorage[index], classStorage[index]);
+  return valueStorage;
+}
+
+// carrega as tarefas, e respectiva classe, salvas no localStorage
+function carregaTarefas(tarefas, classes) {
+  const listaTarefasOl = document.querySelector('#lista-tarefas');
+  for (let index = 0; index < tarefas.length; index += 1) {
+    adicionarTarefa(listaTarefasOl, tarefas[index], classes[index]);
   }
 }
 
@@ -115,7 +117,10 @@ window.onload = function () {
   const listaTarefasOl = document.querySelector('#lista-tarefas');
 
   // carrega tarefas, caso existam, do localStorage
-  carregarTarefas();
+  let tarefasSalvas = getLocalStorageValues('tarefa');
+  console.log(tarefasSalvas);
+  let classesSalvas = getLocalStorageValues('tarefaClasse');
+  carregaTarefas(tarefasSalvas, classesSalvas);
 
   // adicionar tarefa
   criarTarefaButton.addEventListener('click', function () {
