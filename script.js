@@ -5,7 +5,7 @@ const criaTarefa = function () {
   const tarefaInput = document.getElementById('texto-tarefa');
   if (tarefaInput.value !== '') {
     avisos.innerText = '';
-    let novaTarefa = document.createElement('li');
+    const novaTarefa = document.createElement('li');
 
     novaTarefa.textContent = tarefaInput.value;
 
@@ -17,17 +17,17 @@ const criaTarefa = function () {
   } else {
     avisos.innerText = 'Favor descreva a tarefa antes de adicionar';
   }
-}
+};
 
 const limpaSelecao = function () {
-  let itensLista = document.querySelectorAll('ol>li');
+  const itensLista = document.querySelectorAll('ol>li');
   for (const item of itensLista) {
     if (item.className.indexOf('selected') != -1) {
       item.className = item.className.replace('selected', '');
     }
     item.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
   }
-}
+};
 
 const selecionaItemLista = function (event) {
   const itemLista = event.target;
@@ -36,25 +36,26 @@ const selecionaItemLista = function (event) {
     itemLista.className += ' selected';
     itemLista.style.backgroundColor = 'rgb(128, 128, 128)';
   }
-}
+};
 
 const limparSelecaoClickFora = function (event) {
   const item = event.target;
   if (item.nodeName !== 'LI' && item.nodeName !== 'BUTTON') {
     limpaSelecao();
   }
-}
+};
+
+const salvarLista = function () {
+  localStorage.clear();
+  localStorage.setItem('listaTarefas', listaOrdenadaDeTarefas.innerHTML);
+};
 
 const marcarCompleto = function (event) {
   const item = event.target;
   event.stopPropagation();
-  console.log('Nome da classe = ' + item.className)
-
   if (item.nodeName === 'LI') {
-    console.log(item.className.indexOf('completed'))
     if (item.className.indexOf('completed') !== -1) {
       item.className = '';
-      console.log('entrei')
     } else {
       item.className += ' completed';
     }
@@ -69,22 +70,17 @@ const apagaTudo = function () {
     item.remove();
   })
   salvarLista();
-}
-
-const salvarLista = function () {
-  localStorage.clear();
-  localStorage.setItem('listaTarefas', listaOrdenadaDeTarefas.innerHTML);
-}
+};
 
 // Não consigo fazer essa função ser auto executavel. Por quê?
 const carregaItensSalvos = function () {
   document.querySelector('ol').innerHTML = localStorage.getItem('listaTarefas');
-}
+};
 
 const moveParaBaixo = function () {
   avisos.textContent = '';
   const itemSelecionado = document.querySelectorAll('.selected')[0];
-  let proximo = itemSelecionado.nextSibling;
+  const proximo = itemSelecionado.nextSibling;
 
   if (itemSelecionado !== null && proximo != null) {
     listaOrdenadaDeTarefas.insertBefore(itemSelecionado, proximo);
@@ -93,14 +89,13 @@ const moveParaBaixo = function () {
   } else {
     avisos.textContent = 'Fim da lista!';
   }
-}
+};
 
 const moverParaCima = function () {
   avisos.textContent = '';
   const itemSelecionado = document.querySelectorAll('.selected')[0];
-  let anterior = itemSelecionado.previousElementSibling;
+  const anterior = itemSelecionado.previousElementSibling;
 
-  console.log(anterior)
   if (anterior != null) {
     listaOrdenadaDeTarefas.insertBefore(anterior, itemSelecionado);
     listaOrdenadaDeTarefas.insertBefore(itemSelecionado, anterior);
@@ -108,7 +103,7 @@ const moverParaCima = function () {
   } else {
     avisos.textContent = 'Fim da lista!';
   }
-}
+};
 
 const removerFinalizados = function () {
   const itensCompletos = document.querySelectorAll('.completed');
@@ -116,15 +111,13 @@ const removerFinalizados = function () {
     item.remove();
   })
   salvarLista();
-}
+};
 
 const removerSelecionados = function () {
   const itenSelecionado = document.querySelectorAll('.selected')[0];
   itenSelecionado.remove();
   salvarLista();
-}
-
-
+};
 
 window.onload = function () {
   carregaItensSalvos();
@@ -138,4 +131,4 @@ window.onload = function () {
   document.getElementById('mover-cima').addEventListener('click', moverParaCima);
   document.getElementById('remover-finalizados').addEventListener('click', removerFinalizados);
   document.getElementById('remover-selecionado').addEventListener('click', removerSelecionados);
-}
+};
