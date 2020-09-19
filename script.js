@@ -1,12 +1,13 @@
-let textoTarefa = document.querySelector("#texto-tarefa");
-let botaoCriarTarefa = document.querySelector("#criar-tarefa");
+const textoTarefa = document.querySelector("#texto-tarefa");
+const botaoCriarTarefa = document.querySelector("#criar-tarefa");
 let listaTarefas = document.querySelector("#lista-tarefas");
-let botaoApagar = document.querySelector("#apaga-tudo");
-let botaoFinalizadas = document.querySelector("#remover-finalizados");
-let arrayListaTarefas = [];
+const botaoApagar = document.querySelector("#apaga-tudo");
+const botaoFinalizadas = document.querySelector("#remover-finalizados");
+const arrayListaTarefas = [];
 
-// adiciona as tarefas na lista
-botaoCriarTarefa.addEventListener("click", function(){
+// adiciona as tarefas na lista e fundo cinza
+botaoCriarTarefa.addEventListener("click", function()
+{
     let tarefas;
     tarefas = document.createElement("li");
     tarefas.className = "itens-lista";
@@ -21,10 +22,10 @@ botaoCriarTarefa.addEventListener("click", function(){
                 if(arrayListaTarefas[j].classList.contains("classeFundoCinza")){
                     arrayListaTarefas[j].classList.remove("classeFundoCinza");
                 };
-            arrayListaTarefas[index].className += " classeFundoCinza";
+                arrayListaTarefas[index].className += " classeFundoCinza";
             };
         });
-    }    
+    };    
 });
 
 function tarefaCompleta(event){
@@ -46,20 +47,8 @@ function apagaFinalizadas(){
     for(index = 0; index < arrayAtualizada.length; index += 1){
         listaTarefas.removeChild(arrayAtualizada[index]);    
     }
-
-
 }
-/*function apagaFinalizadas(){
-       const arrayAtualizada = document.querySelectorAll('li');
-        for(index = 0; index < arrayAtualizada.length; index += 1){
-            let indice = arrayAtualizada[index];
-            if(indice.classList.contains("completed")){
-                listaTarefas.removeChild(indice);
-            };
-        };        
-    };   */
 botaoFinalizadas.addEventListener("click", apagaFinalizadas);
-
 
 let botaoConsole = document.querySelector("#botao-console");
 botaoConsole.addEventListener('click', function(){
@@ -68,10 +57,3 @@ botaoConsole.addEventListener('click', function(){
     console.log(listaTarefas);
     
 });
-
-
-// clicar em um item e alterar a cor de fundo para cinza
-// criar uma classe com background-color: rgb(128, 128, 128)
-// criar um for para passar por todos os elementos da ul
-// add evento que exclui a classe de qualquer elemento
-// add evento que, ao clicar no elemento da lista, essa classe seja add a ele.
