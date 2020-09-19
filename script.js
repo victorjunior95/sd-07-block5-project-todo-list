@@ -86,15 +86,30 @@ const carregaItensSalvos = function () {
   document.querySelector('ol').innerHTML = localStorage.getItem('listaTarefas');
 }
 
-// Por que preciso dar dois clicks pausados para mover o item?
 const moveParaBaixo = function () {
   avisos.textContent = '';
   const itemSelecionado = document.querySelectorAll('.selected')[0];
   let proximo = itemSelecionado.nextSibling;
 
-  if (itemSelecionado !== null && proximo !== null) {
+  if (itemSelecionado !== null && proximo != null) {
     listaOrdenadaDeTarefas.insertBefore(itemSelecionado, proximo);
     listaOrdenadaDeTarefas.insertBefore(proximo, itemSelecionado);
+    salvarLista();
+  } else {
+    avisos.textContent = 'Fim da lista!';
+  }
+}
+
+const moverParaCima = function () {
+  avisos.textContent = '';
+  const itemSelecionado = document.querySelectorAll('.selected')[0];
+  let anterior = itemSelecionado.previousElementSibling;
+
+  console.log(anterior)
+  if (anterior != null) {
+    listaOrdenadaDeTarefas.insertBefore(anterior, itemSelecionado);
+    listaOrdenadaDeTarefas.insertBefore(itemSelecionado, anterior);
+    salvarLista();
   } else {
     avisos.textContent = 'Fim da lista!';
   }
@@ -104,7 +119,7 @@ const moveParaBaixo = function () {
 
 
 window.onload = function () {
-  //carregaItensSalvos();
+  carregaItensSalvos();
 
   document.addEventListener('click', limparSelecaoClickFora)
   document.getElementById('criar-tarefa').addEventListener('click', criaTarefa);
@@ -114,6 +129,5 @@ window.onload = function () {
   document.getElementById('remover-finalizados').addEventListener('click', removerFinalizados);
   document.getElementById('salvar-tarefas').addEventListener('click', salvarLista);
   document.getElementById('mover-baixo').addEventListener('click', moveParaBaixo);
-
-
+  document.getElementById('mover-cima').addEventListener('click', moverParaCima);
 }
