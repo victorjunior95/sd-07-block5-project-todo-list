@@ -1,31 +1,30 @@
-const textoTarefa = document.querySelector('#texto-tarefa');
-const botaoCriarTarefa = document.querySelector('#criar-tarefa');
-const listaTarefas = document.querySelector('#lista-tarefas');
-const botaoApagar = document.querySelector('#apaga-tudo');
-const botaoFinalizadas = document.querySelector('#remover-finalizados');
+const textoTarefa = document.querySelector("#texto-tarefa");
+const botaoCriarTarefa = document.querySelector("#criar-tarefa");
+const listaTarefas = document.querySelector("#lista-tarefas");
+const botaoApagar = document.querySelector("#apaga-tudo");
+const botaoFinalizadas = document.querySelector("#remover-finalizados");
 const arrayListaTarefas = [];
 
-
 // adiciona as tarefas na lista e fundo cinza
-botaoCriarTarefa.addEventListener ('click', function() {
+botaoCriarTarefa.addEventListener ("click", function() {
   const tarefas;
-  tarefas = document.createElement('li');
-  tarefas.className = 'itens-lista';
+  tarefas = document.createElement("li");
+  tarefas.className = "itens-lista";
   tarefas.innerHTML = textoTarefa.value;
   listaTarefas.appendChild(tarefas);
   textoTarefa.value = '';
-  tarefas.addEventListener('dblclick', tarefaCompleta);
+  tarefas.addEventListener("dblclick", tarefaCompleta);
   arrayListaTarefas.push(tarefas);
   for(let index = 0; index < arrayListaTarefas.length; index += 1){
-       arrayListaTarefas[index].addEventListener('click', function() {
+        arrayListaTarefas[index].addEventListener("click", function() {
         for (let j = 0; j < arrayListaTarefas.length; j += 1) {
-            if (arrayListaTarefas[j].classList.contains('classeFundoCinza')) {
-                 arrayListaTarefas[j].classList.remove('classeFundoCinza');
+            if (arrayListaTarefas[j].classList.contains("classeFundoCinza")) {
+                  arrayListaTarefas[j].classList.remove("classeFundoCinza");
             }
             arrayListaTarefas[index].className += ' classeFundoCinza';
         };
         });
-     };
+      };
 });
 
 function tarefaCompleta(event){
