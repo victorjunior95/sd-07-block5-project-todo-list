@@ -1,45 +1,49 @@
-body{
-    background-image: url('./imgs/todoList.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-}
-.titulo{
-    visibility: hidden;
-}
-.principal{
-    margin-left: 750px;
-    margin-top: 110px;  
-}
-.texto-tarefa{
-    background-color: rgba(0, 0, 0, 0.2);
-    border: none;
-    line-height: 30px;
-    width: 60%;
+body {
+  background-image: url('./imgs/todoList.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.lista{
-    background-color: rgba(0, 0, 0, 0.1);
-    min-height: 300px;
-    width: 90%;
-    
+.titulo {
+  visibility: hidden;
 }
 
-.lista-tarefas{
-    background-color: rgba(255, 255, 255, 0.1);
-}
-.botoes{
-    margin-top: 30px;
-    width: 90%;
-}
-button{
-    line-height: 25px;
-    margin: 4px;
-}
-.completed{
-    text-decoration: line-through solid rgb(0, 0, 0);
+.principal {
+  margin-left: 750px;
+  margin-top: 110px;
 }
 
-.selected{
-    background-color: rgb(128, 128, 128);
+.texto-tarefa {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+  line-height: 30px;
+  width: 60%;
+}
+
+.lista {
+  background-color: rgba(0, 0, 0, 0.1);
+  min-height: 300px;
+  width: 90%;
+}
+
+.lista-tarefas {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.botoes {
+  margin-top: 30px;
+  width: 90%;
+}
+
+button {
+  line-height: 25px;
+  margin: 4px;
+}
+
+.completed {
+  text-decoration: line-through solid black;
+}
+
+.selected {
+  background-color: rgb(128, 128, 128);
 }
