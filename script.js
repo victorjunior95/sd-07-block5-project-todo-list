@@ -296,13 +296,16 @@ document.body.addEventListener('click', function (event) {
         'content': selectedItemMoveUp[index].innerText
       })
     }
-    const itemFrom = parseInt(document.getElementsByClassName('selected')[0].id);
-    let itemTo = 0;
-    if (event.target.id === 'mover-cima') {
-      itemTo = itemFrom - 1;
-    } else {
-      itemTo = itemFrom + 1;
+    const arrayReceived = document.getElementsByClassName('selected');
+    if (arrayReceived.length !== 0) {
+      const itemFrom = parseInt(arrayReceived[0].id);
+      let itemTo = 0;
+      if (event.target.id === 'mover-cima') {
+        itemTo = itemFrom - 1;
+      } else {
+        itemTo = itemFrom + 1;
+      }
+      itemUp(arrayFilter, itemFrom, itemTo);
     }
-    itemUp(arrayFilter, itemFrom, itemTo);
   }
 })
