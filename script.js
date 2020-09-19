@@ -8,8 +8,9 @@ const removeSelectedButton = document.querySelector('#remover-selecionado');
 const moveUpButton = document.querySelector('#mover-cima');
 const moveDownButton = document.querySelector('#mover-baixo');
 
-/* eslint no-restricted-syntax: ['error', 'FunctionExpression',
- 'WithStatement', 'BinaryExpression[operator='in']'] */
+/* eslint no-restricted-syntax: ["error", "FunctionExpression",
+ "WithStatement", "BinaryExpression[operator='in']"] */
+
 
 function setColorBackgroundLi() {
   const classLi = document.querySelector('#lista-tarefas').children;
