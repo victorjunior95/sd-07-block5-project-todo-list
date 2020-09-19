@@ -298,9 +298,10 @@ document.body.addEventListener('click', function (event) {
         content: selectedItemMoveUp[index].innerText,
       });
     }
-    let arrayReceived = document.getElementsByClassName('selected');
+    const arrayReceived = document.getElementsByClassName('selected');
     if (arrayReceived.length !== 0) {
-      const itemFrom = parseInt(document.getElementsByClassName('selected')[0].id);
+      let itemFrom = document.getElementsByClassName('selected')[0].id;
+      itemFrom = parseInt(itemFrom);
       let itemTo = 0;
       if (event.target.id === 'mover-cima') {
         itemTo = itemFrom - 1;
