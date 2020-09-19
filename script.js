@@ -176,7 +176,7 @@ getKeyEnter.addEventListener('keydown', function (event) {
     const task = {
       id: 0,
       class: '',
-      content: inputDataWitchEnter.value;
+      content: inputDataWitchEnter.value,
     };
     arrayFullDataTasks.push(task);
     createListItem(arrayFullDataTasks);
