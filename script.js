@@ -1,4 +1,4 @@
-let textoTarefa = document.getElementById('texto-tarefa');
+const textoTarefa = document.getElementById('texto-tarefa');
 const botaoCriaTarefa = document.getElementById('criar-tarefa');
 const listaTarefas = document.getElementById('lista-tarefas');
 const botaoApagaTudo = document.getElementById('apaga-tudo');
@@ -12,27 +12,27 @@ const botaoSalvarTarefas = document.getElementById('salvar-tarefas');
 const listaArmazenada = JSON.parse(localStorage.getItem('lista'));
 for (let i = 0; i < listaArmazenada.length; i += 1) {
   const listaItem = document.createElement('li');
-    listaItem.className = listaArmazenada[i].classe;
-    listaItem.innerText = listaArmazenada[i].texto;
-    listaTarefas.appendChild(listaItem);
+  listaItem.className = listaArmazenada[i].classe;
+  listaItem.innerText = listaArmazenada[i].texto;
+  listaTarefas.appendChild(listaItem);
 }
 
 // Funcionalidade do botão Salvar Lista
 botaoSalvarTarefas.addEventListener('click', function () {
-  let tag = [{
+  const tag = [{
     texto: '',
     classe: '',
   }];
-  let tarefas = []
+  const tarefas = [];
 
   for (let i = 0; i < listaTarefas.childElementCount; i += 1) {
     tag.texto = listaTarefas.children[i].innerText;
     tag.classe = listaTarefas.children[i].className;
 
-    tarefas.push(Object.assign({}, tag))
+    tarefas.push(Object.assign({}, tag));
   }
   localStorage.setItem('lista', JSON.stringify(tarefas));
-})
+});
 
 // Botão que remove alguns item selecionado
 botaoRemoverSelecionado.addEventListener('click', function () {
