@@ -14,12 +14,13 @@ botaoCriarTarefa.addEventListener("click", function(){
     arrayListaTarefas.push(tarefas);
     for(let index = 0; index < arrayListaTarefas.length; index += 1){
         arrayListaTarefas[index].addEventListener("click", function(){
-            let item = arrayListaTarefas[index];
-            item.style.backgroundColor = ''; 
+            for(let j = 0; j < arrayListaTarefas.length; j += 1){
+                arrayListaTarefas[j].className = "";
+            };
             arrayListaTarefas[index].classList.add("classeFundoCinza");
         });
-    }
-})
+    };
+});
 
 
 
