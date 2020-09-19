@@ -5,14 +5,6 @@ const botaoApagar = document.querySelector('#apaga-tudo');
 const botaoFinalizadas = document.querySelector('#remover-finalizados');
 const arrayListaTarefas = [];
 
-function tarefaCompleta(event){
-    let itemSelecionado = event.target;
-    if(itemSelecionado.classList.contains('completed')){
-        itemSelecionado.classList.remove('completed');
-    } else {
-        itemSelecionado.className += ' completed';
-    };
-};
 
 // adiciona as tarefas na lista e fundo cinza
 botaoCriarTarefa.addEventListener ('click', function() {
@@ -33,10 +25,17 @@ botaoCriarTarefa.addEventListener ('click', function() {
             arrayListaTarefas[index].className += ' classeFundoCinza';
         };
         });
-    };
+     };
 });
 
-
+function tarefaCompleta(event){
+    let itemSelecionado = event.target;
+    if(itemSelecionado.classList.contains('completed')){
+        itemSelecionado.classList.remove('completed');
+    } else {
+        itemSelecionado.className += ' completed';
+    };
+};
 
 botaoApagar.addEventListener('click', apagaTudo);
 function apagaTudo(){
@@ -50,10 +49,3 @@ function apagaFinalizadas(){
     }
 }
 botaoFinalizadas.addEventListener('click', apagaFinalizadas);
-
-let botaoConsole = document.querySelector('#botao-console');
-botaoConsole.addEventListener('click', function(){
-    let body = document.querySelector('body');
-    console.log(body);
-    console.log(listaTarefas);  
-});
