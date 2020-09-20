@@ -42,13 +42,15 @@ creatorButton.addEventListener('click', function () {
 });
 cleanAllButton.addEventListener('click', function () {
   const allLi = document.querySelectorAll('li');
-  allLi.forEach(element => {olList.removeChild(element)});
+  allLi.forEach(element => { (olList.removeChild(element)); 
+  });
 });
 removeFinished.addEventListener('click', function () {
   const allFinished = document.querySelectorAll('.completed');
-  allFinished.forEach(element => {(olList.removeChild(element))});
+  allFinished.forEach(element => { (olList.removeChild(element)); 
+  });
 });
-removeSelected.addEventListener('click', function() {
+removeSelected.addEventListener ('click', function() {
   const removeSelectedElement = document.querySelector('.selected');
   olList.removeChild(removeSelectedElement);
 });
@@ -86,11 +88,11 @@ moveUp.addEventListener('click', function () {
     const classSelected = selectedElement.className;
     const prevTxt = beforeTask.innerText;
     const prevClass = beforeTask.className;
-      beforeTask.innerText = txtSelected;
-      beforeTask.className = classSelected;
-      selectedElement.innerText = prevTxt;
-      selectedElement.className = prevClass;
-    }
+    beforeTask.innerText = txtSelected;
+    beforeTask.className = classSelected;
+    selectedElement.innerText = prevTxt;
+    selectedElement.className = prevClass;
+  }
 });
 moveDown.addEventListener('click', function () {
   const selectedElement = document.querySelector('.selected');
@@ -100,12 +102,12 @@ moveDown.addEventListener('click', function () {
   }
   if (afterTask) {
       const txtSelected = selectedElement.innerText;
-      const classSelected = selectedElement.className;
-      const afterTxt = afterTask.innerText;
-      const afterClass = afterTask.className;
-      afterTask.innerText = txtSelected;
+    const classSelected = selectedElement.className;
+    const afterTxt = afterTask.innerText;
+    const afterClass = afterTask.className;
+    afterTask.innerText = txtSelected;
     afterTask.className = classSelected;
     selectedElement.innerText = afterTxt;
     selectedElement.className = afterClass;
-    }
+  }
 });
