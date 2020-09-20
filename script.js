@@ -10,11 +10,10 @@ function salveItensListOnLocalStorage() {
   if (getItemsList.length === 0) {
     alert('Lista vazia');
   } else {
-
     for (let index = 0; index < getItemsList.length; index += 1) {
       const item = getItemsList[index].innerText;
       const classItem = getItemsList[index].className;
-      itensClassList.push(objectItemClassList[index] = [item,classItem])
+      itensClassList.push(objectItemClassList[index] = [item, classItem])
     }
   }
   localStorage.setItem('itemsList', JSON.stringify(itensClassList));
@@ -38,11 +37,10 @@ function createItemListLocalStorage(getObjectList) {
     const textItemList = item[0];
     const textClassName = item[1];
     itemList.innerText = textItemList;
-    if (textClassName !== "") {
+    if (textClassName !== '') {
       itemList.classList.add(textClassName);
     }
     addItemListInOrderList(itemList);
-
   });
 }
 
@@ -57,7 +55,7 @@ function clearInputValue(item) {
   item.value = '';
 }
 
-function changeFromBackgroundToWhite () {
+function changeFromBackgroundToWhite() {
   for (let index = 0; index < getItemsList.length; index += 1) {
     getItemsList[index].style.backgroundColor = 'rgb(255,255,255)';
   }
@@ -123,7 +121,7 @@ document.getElementById('apaga-tudo').addEventListener('click', function () {
 document.getElementById('salvar-tarefas').addEventListener('click', function () {
   const arrayItemsList = [];
   const arrayClassItemList = [];
-  for (let index = 0; index < getItemsList.length; index += 1)  {
+  for (let index = 0; index < getItemsList.length; index += 1) {
     arrayItemsList.push(getItemsList[index].innerText);
     arrayClassItemList.push(getItemsList[index].className);
   }
@@ -136,10 +134,8 @@ function downItemList(itemSelected) {
   const nextSibling = itemSelected.nextSibling;
 
   if (itemSelected === lastElementChild) {
-    // itemSelected.style.backgroundColor = 'white';
-    return alert('Não existem itens a baixo');
-  } elementFather.insertBefore(itemSelected, nextSibling.nextSibling);
-  // itemSelected.style.backgroundColor = 'white';
+    alert('Não existem itens a baixo');
+  } else elementFather.insertBefore(itemSelected, nextSibling.nextSibling);
 }
 
 function upItemList(itemSelected) {
@@ -148,11 +144,8 @@ function upItemList(itemSelected) {
   const previousSibling = itemSelected.previousElementSibling;
 
   if (itemSelected === firstElementChild) {
-    // itemSelected.style.backgroundColor = 'white';
-    return alert('Não existem itens a cima');
-  }
-  elementFather.insertBefore(itemSelected, previousSibling);
-  // itemSelected.style.backgroundColor = 'white';
+    alert('Não existem itens a cima');
+  } else elementFather.insertBefore(itemSelected, previousSibling);
 }
 
 document.getElementById('mover-cima').addEventListener('click', function () {
@@ -163,8 +156,9 @@ document.getElementById('mover-cima').addEventListener('click', function () {
 
 document.getElementById('mover-baixo').addEventListener('click', function () {
   const resultItemSelectec = getItemSelected();
-  if (resultItemSelectec === false) return alert('Selecione um item');
-  downItemList(resultItemSelectec);
+  if (resultItemSelectec === false) {
+    alert('Selecione um item');
+  } else downItemList(resultItemSelectec);
 });
 
 function mountArrayOfCompletedClass() {
@@ -194,7 +188,7 @@ document.getElementById('remover-finalizados').addEventListener('click', functio
 
 document.getElementById('remover-selecionado').addEventListener('click', function () {
   const itemSelected = getItemSelected();
-  if(itemSelected === false) {
+  if (itemSelected === false) {
     alert('Selecione um item');
   } else itemSelected.parentNode.removeChild(itemSelected);
 });
