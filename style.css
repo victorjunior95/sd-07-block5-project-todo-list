@@ -10,7 +10,7 @@ body {
 
 .principal {
   margin-left: 750px;
-  margin-top: 110px;
+  margin-top: 40px;
 }
 
 .texto-tarefa {
@@ -18,10 +18,12 @@ body {
   border: none;
   line-height: 30px;
   width: 60%;
+  
 }
 
 .lista {
   box-shadow: 3px 3px 3px 3px gray;
+  margin-top: 10px;
   min-height: 300px;
   width: 75%;
 }

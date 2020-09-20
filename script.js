@@ -20,7 +20,7 @@ const criaTarefa = function () {
 
 const limpaSelecao = function () {
   const itensLista = document.querySelectorAll('ol>li');
-  itensLista.forEach((item) => {    
+  itensLista.forEach((item) => {
     !(item.classList.remove('selected')) && (item.style.backgroundColor = 'rgba(255, 255, 255, 0.1)');
   });
 };
@@ -70,10 +70,9 @@ const apagaTudo = function () {
 const moveParaBaixo = function () {
   avisos.textContent = '';
   const itemSelecionado = document.querySelectorAll('.selected')[0];
-  const proximo = itemSelecionado.nextSibling;
 
-  if (itemSelecionado !== null && proximo != null) {
-    listaOrdenadaDeTarefas.insertBefore(proximo, itemSelecionado);
+  if (itemSelecionado !== null && itemSelecionado.nextSibling != null) {
+    listaOrdenadaDeTarefas.insertBefore(itemSelecionado.nextSibling, itemSelecionado);
     salvarLista();
   } else {
     avisos.textContent = 'Fim da lista!';
@@ -83,10 +82,9 @@ const moveParaBaixo = function () {
 const moverParaCima = function () {
   avisos.textContent = '';
   const itemSelecionado = document.querySelectorAll('.selected')[0];
-  const anterior = itemSelecionado.previousElementSibling;
 
-  if (anterior != null) {
-    listaOrdenadaDeTarefas.insertBefore(itemSelecionado, anterior);
+  if (itemSelecionado.previousElementSibling != null) {
+    listaOrdenadaDeTarefas.insertBefore(itemSelecionado, itemSelecionado.previousElementSibling);
     salvarLista();
   } else {
     avisos.textContent = 'Fim da lista!';
