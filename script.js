@@ -34,8 +34,18 @@ document.addEventListener('dblclick', function (event) {
 
 const cleanButton = document.querySelector('#apaga-tudo');
 
-cleanButton.addEventListener('click', function() {
+cleanButton.addEventListener('click', function () {
   for (let index = 0; list.childElementCount !== 0; index += 1) {
     list.removeChild(list.children[0]);
+  }
+});
+
+const finishedRemove = document.querySelector('#remover-finalizados');
+
+finishedRemove.addEventListener('click', function () {
+  for (let index = 0; index < list.children.length; index += 1) {
+    if (list.children[index].classList.contains('completed')) {
+      list.removeChild(list.children[index]);
+    }
   }
 });
