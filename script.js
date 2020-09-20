@@ -1,3 +1,49 @@
+// função para criar items na lista puxando o valor do input
+
+function createListItem(){
+  let ordList = document.getElementById('lista-tarefas');
+  let input = document.getElementById('texto-tarefa');
+  let item = document.createElement('li');
+
+  item.innerText = input.value;
+  item.className = 'item';
+  item.addEventListener('click', changeSelected);
+  item.addEventListener('dblclick', checkList);
+
+  ordList.appendChild(item);
+
+  input.value = "";
+}
+
+let addButton = document.getElementById('criar-tarefa');
+addButton.addEventListener('click', createListItem);
+
+//função para salvar todos os itens da lista para uma proxima sessão
+
+  //função para salvar a lista
+
+  function saveList() {
+    localStorage.clear();
+
+    let ol = document.getElementById("lista-tarefas");
+
+    localStorage.setItem('itemList', ol.innerHTML);
+  }
+
+  let saveListButton = document.getElementById('salvar-tarefas');
+
+  saveListButton.addEventListener('click', saveList);
+
+  //função para puxar lista salva na ultima sessão
+
+  function newSession() {
+    let ol = document.getElementById("lista-tarefas");
+
+    ol.innerHTML = localStorage.getItem('itemList');
+  }
+
+  window.onload = newSession;
+
 //função para alterar o background de um item na lista quando clicado
 
 function changeSelected(event) {
@@ -25,35 +71,16 @@ function checkList(event) {
   }
 }
 
-// função para criar items na lista puxando o valor do input
-
-function createListItem(){
-  let ordList = document.getElementById('lista-tarefas');
-  let input = document.getElementById('texto-tarefa');
-  let item = document.createElement('li');
-
-  item.innerText = input.value;
-  item.className = 'item';
-  item.addEventListener('click', changeSelected);
-  item.addEventListener('dblclick', checkList);
-
-  ordList.appendChild(item);
-
-  input.value = "";
-}
-
-let addButton = document.getElementById('criar-tarefa');
-addButton.addEventListener('click', createListItem);
-
 // Função para apagar toda a lista
 
 function clearAll() {
   let ol = document.getElementById("lista-tarefas");
 
-  //ideia baseada no site: https://medium.com/front-end-weekly/remove-all-children-of-the-node-in-javascript-968ad8f120eb
-  while (ol.firstChild) {
+    while (ol.firstChild) {
       ol.removeChild(ol.firstChild);
   }
+
+  //função baseada no site: https://medium.com/front-end-weekly/remove-all-children-of-the-node-in-javascript-968ad8f120eb
 }
 
 let clearButton = document.getElementById('apaga-tudo');
@@ -89,4 +116,6 @@ function clearSelectedItem() {
 
 let clearSelectedButton = document.getElementById('remover-selecionado');
 
-clearSelectedButton.addEventListener('click', clearSelectedItem)
+clearSelectedButton.addEventListener('click', clearSelectedItem);
+
+
