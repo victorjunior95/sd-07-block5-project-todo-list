@@ -24,7 +24,11 @@ apagarLista.addEventListener("click", function() {
 });
 
 lista.addEventListener("dblclick", function(event) {
-    event.target.classList.add("completed");
+    if (event.target.classList.contains("completed")) {
+        event.target.classList.remove("completed");
+    } else {
+        event.target.classList.add("completed");
+    }
 });
 
 //solução adaptada a partir de https://github.com/tryber/sd-07-block5-project-todo-list/blob/749e0a187fda8965fd829f3b488dd175defa6c70/script.js
