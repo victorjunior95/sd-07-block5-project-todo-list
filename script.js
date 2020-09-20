@@ -1,10 +1,17 @@
-const textTarefa = document.getElementById("texto-tarefa").value;
 const btnAdd = document.getElementById("criar-tarefa");
+//const selected = document.getElementsByClassName("selected");
 
+btnAdd.addEventListener("click", function() {
+   const novaLi = adicionaTarefa();
+novaLi.addEventListener("click", function() {
+      mudaCorFundo(novaLi);
+})
+novaLi.addEventListener("dbclick", function(event) {
+      completaTarefa(novaLi);
+})
+})
 //adicionando tarefa
-
-   
-   function adicionaTarefa(){
+function adicionaTarefa(){
       const paiLista = document.getElementById("lista-tarefas"); 
       const novaLi = document.createElement("li");
       const textTarefa = document.getElementById("texto-tarefa").value;
@@ -17,43 +24,27 @@ const btnAdd = document.getElementById("criar-tarefa");
       }
       return novaLi;
 }
-   btnAdd.addEventListener("click", function() {
-      const novaLi = adicionaTarefa();
-      novaLi.addEventListener("click", function(event) {
-         mudaCorFundo(novaLi);
-      })
-      novaLi.addEventListener("dbclick", function(event) {
-         mudaCorFundo(novaLi);
-      })
-   })
-
+  
 //mudando a cor de fundo da li
 function mudaCorFundo(novaLi){
-
-const selected = document.querySelector(".selected");
+   const selected = document.querySelector(".selected");
    if (selected) {
       selected.classList.remove("selected");
    } 
-      event.target.classList.add("selected"); 
-
+      novaLi.classList.add("selected"); 
 }
-//ompleta terefa 
-function completaTarefa(novaLi){
-   novaLi.addEventListener("dbclick", function(event) {
-   const completed = document.querySelector(".completed");
-      if (completed) {
-         selected.classList.remove("selected");
-      } 
-         event.target.classList.add("selected"); 
-   })
-   }
+
+//completa terefa 
+// function completaTarefa(novaLi){
+//    novaLi = ;
+// }
 
 //apagando a lista
-const btApagaTudo = document.getElementById('apaga-tudo');
-btApagaTudo.addEventListener('click', function(){
-  const novaLi = getElementsByClassName('li-tarefas');
-  const myOl = document.querySelector('lista-tarefas');
-   for(i = 0; i < novaLi.length; i+=1) {
-     myOl.removeChild(novaLi[i]);
-   }
- })
+// const btApagaTudo = document.getElementById('apaga-tudo');
+// btApagaTudo.addEventListener('click', function(){
+//   const novaLi = getElementsByClassName('li-tarefas');
+//   const myOl = document.querySelector('lista-tarefas');
+//    for(i = 0; i < novaLi.length; i+=1) {
+//      myOl.removeChild(novaLi[i]);
+//    }
+//  })
