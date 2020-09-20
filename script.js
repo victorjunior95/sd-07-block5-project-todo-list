@@ -4,10 +4,12 @@ taskName.focus();
 const createTaskBtn = document.getElementById('criar-tarefa');
 
 createTaskBtn.addEventListener('click', function () {
+  if (taskName.value !== ''){
   const item = document.createElement('li');
   item.innerHTML = taskName.value;
   toDoList.appendChild(item);
   taskName.value = '';
+  }
   taskName.focus();
   item.addEventListener('click', function () {
     const selectedItem = document.querySelector('.selected');
@@ -23,7 +25,7 @@ createTaskBtn.addEventListener('click', function () {
     } else {
       item.classList.add('completed');
     }
-  })
+  });
 
   const clearBtn = document.getElementById('apaga-tudo');
   clearBtn.addEventListener('click', function () {
@@ -35,7 +37,7 @@ createTaskBtn.addEventListener('click', function () {
     if (item.classList.contains('completed')) {
       toDoList.removeChild(item);
     }
-  })
+  });
 
   const removeSelectedBtn = document.getElementById('remover-selecionado');
   removeSelectedBtn.addEventListener('click', function () {
@@ -43,6 +45,4 @@ createTaskBtn.addEventListener('click', function () {
       toDoList.removeChild(item);
     }
   });
-
-})
-
+});
