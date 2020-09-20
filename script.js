@@ -134,6 +134,29 @@ function downItemList(itemSelected) {
   itemSelected.style.backgroundColor = 'white';
 }
 
+function upItemList(itemSelected) {
+
+  if (getItensList[0] === itemSelected) return alert('Não existe item a cima')
+
+  for (let index = 0; index < getItensList.length; index += 1) {
+    if (getItensList[index] === itemSelected) {
+      const beforeItemList = getItensList[index - 1];
+      const textBeforeItemList = beforeItemList.innerText;
+
+      beforeItemList.innerText = itemSelected.innerText;
+      itemSelected.innerText = textBeforeItemList;
+      break;
+    }
+  }
+  itemSelected.style.backgroundColor = 'white';
+}
+
+document.getElementById('mover-cima').addEventListener('click', function() {
+  const resultItemSelectec = getItemSelected();
+  if (resultItemSelectec === false) return alert('Selecione um item');
+  upItemList(resultItemSelectec);
+});
+
 document.getElementById('mover-baixo').addEventListener('click', function() {
   const resultItemSelectec = getItemSelected();
   if (resultItemSelectec === false) return alert('Selecione um item');
