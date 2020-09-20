@@ -57,7 +57,7 @@ save.addEventListener('click', function () {
   const completed = document.querySelectorAll('.completed');
   if (completed) {
     const liList = document.querySelectorAll('li');
-    for (let index = 0; index < liList.length; inde'x += 1) {
+    for (let index = 0; index < liList.length; index += 1) {
       const value = liList[index].innerText;
       localStorage.setItem(`item${index}`, value);
       const nameElement = liList[index].className;
