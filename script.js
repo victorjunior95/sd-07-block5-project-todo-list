@@ -108,7 +108,7 @@ completedListButton.addEventListener('click', clearCompletedList);
 // função para apagar somente elemento selecionado
 
 function clearSelectedItem() {
-  let ol = document.getElementById("lista-tarefas");
+  let ol = document.getElementById('lista-tarefas');
   let selected = document.querySelector('.selected');
 
   ol.removeChild(selected);
@@ -118,4 +118,43 @@ let clearSelectedButton = document.getElementById('remover-selecionado');
 
 clearSelectedButton.addEventListener('click', clearSelectedItem);
 
+//função para mover o elemento selecionado para cima
+
+function moveUp() {
+  let lis = document.querySelectorAll('li');
+  let selected = document.querySelector('.selected');
+  let ol = document.getElementById('lista-tarefas');
+
+  if (lis.length === 0 || selected === null) {
+    alert ('É necessário adicionar tarefas ou selecionar uma tarefa!');
+  } else if (selected.previousElementSibling === null) {
+    alert ('Sua tarefa já está no topo da lista!');
+  } else {
+    ol.insertBefore(selected, selected.previousElementSibling);
+  }
+}
+
+let moveUpButton = document.getElementById('mover-cima');
+
+moveUpButton.addEventListener('click', moveUp);
+
+//função para mover o elemento selecionado para baixo
+
+function moveDown() {
+  let lis = document.querySelectorAll('li');
+  let selected = document.querySelector('.selected');
+  let ol = document.getElementById('lista-tarefas');
+
+  if (lis.length === 0 || selected === null) {
+    alert ('É necessário adicionar tarefas ou selecionar uma tarefa!');
+  } else if (selected.nextElementSibling === null) {
+    alert ('Sua tarefa já está no fim da lista!');
+  } else {
+    ol.insertBefore(selected.nextElementSibling, selected);
+  }
+}
+
+let moveDownButton = document.getElementById('mover-baixo');
+
+moveDownButton.addEventListener('click', moveDown);
 
