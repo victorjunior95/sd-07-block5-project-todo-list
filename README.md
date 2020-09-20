@@ -147,7 +147,7 @@ O não cumprimento de um requisito, total ou parcialmente, impactará em sua ava
 
 - Três itens serão criados na lista e será checado se eles estão ordenados por ordem de criação - ou seja, primeiro o primeiro item criado, depois o segundo, e assim por diante.
 
-### 7 - Ao clicar em um item da lista, altere a cor de fundo do item para cinza rgb(128,128,128).
+### 7 👌️- Ao clicar em um item da lista, altere a cor de fundo do item para cinza rgb(128,128,128).
 ##### As seguintes verificações serão feitas:
 
 - Será verificado que, ao se carregar a página, os itens da lista **não tem** o estilo CSS `background-color: rgb(128, 128, 128)`
@@ -184,7 +184,7 @@ O não cumprimento de um requisito, total ou parcialmente, impactará em sua ava
 - Será verificado que existe um elemento `button` com o id `remover-finalizados`
 - Será verificado que, ao clicar no botão, todos os elementos marcados como feitos são removidos da lista
 
-## BÔNUS
+## BÔNUS🏁️🏁️🏁️🏁️🏁️🏁️🏁️🏁️🏁️🏁️🏁️🏁️
 
 ### 12 - Adicione um botão com `id="salvar-tarefas"` que salve o conteúdo da lista. Se você fechar e reabrir a página, a lista deve continuar no estado em que estava.
 ##### As seguintes verificações serão feitas:

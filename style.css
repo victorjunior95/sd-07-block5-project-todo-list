@@ -1,6 +1,5 @@
 header {
   font-family: Verdana, Tahoma, sans-serif;
-  background-color: greenyellow;
   width: 100%;
   height: 10%;
 }
@@ -14,14 +13,7 @@ header {
  cursor: pointer;
 }
 
-main {
-  background-color: red;
-  height: 80%;
-  width: 100%;
+.selected { 
+  background-color: rgb(128, 128, 128);
 }
 
-footer {
-  background-color: greenyellow;
-  width: 100%;
-  height: 10%;
-}
