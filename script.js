@@ -8,19 +8,19 @@ const botaoRemover = document.querySelector('#remover-selecionado');
 const botaoCima = document.querySelector('#mover-cima');
 const botaoBaixo = document.querySelector('#mover-baixo');
 
-function criaLista(inputText) {
-  if (inputText.value === '') {
-    alert("Preencha os campos");
+function criaLista(text) {
+  if (text.value === '') {
+    alert('Preencha os campos');
   } else {
-    let criaLista = document.createElement('li');
-    criaLista.innerText = inputText.value;
+    const criaLista = document.createElement('li');
+    criaLista.innerText = text.value;
     lista.appendChild(criaLista);
-    inputText.value = '';
+    text.value = '';
   }
 }
 
 function selected() {
-  let listada =  document.querySelectorAll('#lista-tarefas li');
+  const listada = document.querySelectorAll('#lista-tarefas li');
   for (let index = 0; index < listada.length; index += 1) {
     listada[index].addEventListener('click', () => {
       for (let sel = 0; sel < listada.length; sel += 1) {
@@ -31,22 +31,22 @@ function selected() {
         }
       }
       if (listada[index].className === 'completed') {
-        listada[index].className = 'completed'
+        listada[index].className = 'completed';
       } else {
-          listada[index].className = 'selected';
-        }
-        if (listada[index].className === 'completed' ||
-        listada[index].className === 'selected') {
-          listada[index].style.backgroundColor = 'rgb(128,128,128)';
-        }
+        listada[index].className = 'selected';
+      }
+      if (listada[index].className === 'completed' ||
+      listada[index].className === 'selected') {
+        listada[index].style.backgroundColor = 'rgb(128,128,128)';
+      }
     });
   }
 }
 
-lista.addEventListener('dblclick' , (event) => {
+lista.addEventListener('dblclick', (event) => {
   if (event.target.className === 'completed') {
     event.target.className = 'selected';
-  } else  {
+  } else {
     event.target.className = 'completed';
   }
 });
@@ -57,7 +57,7 @@ adicionar.addEventListener('click', function () {
 });
 
 botaoLimpa.addEventListener('click', function () {
-  let listada =  document.querySelectorAll('#lista-tarefas li');
+  const listada = document.querySelectorAll('#lista-tarefas li');
   for (let index = 0; index < listada.length; index += 1) {
     if (listada.length > 0) {
       listada[index].remove();
@@ -66,7 +66,7 @@ botaoLimpa.addEventListener('click', function () {
 });
 
 botaoCompleto.addEventListener('click', function () {
-  let listada =  document.querySelectorAll('#lista-tarefas li');
+  const listada =  document.querySelectorAll('#lista-tarefas li');
   for (let index = 0; index < listada.length; index += 1) {
     if (listada[index].className === 'completed') {
       listada[index].remove(document.getElementsByClassName('completed'));
@@ -75,17 +75,19 @@ botaoCompleto.addEventListener('click', function () {
 });
 
 botaoSalvar.addEventListener('click', () => {
-  let listada = document.querySelectorAll('#lista-tarefas li');
-  let todo = [];
+  const listada = document.querySelectorAll('#lista-tarefas li');
+  const todo = [];
   for (let index = 0; index < listada.length; index += 1) {
-    todo.push(listada[index].outerHTML); /*Retorna as tags e todos nomes de atributos da tag*/
+    /*
+    Retorna as tags e todos nomes de atributos da tag
+    */
+    todo.push(listada[index].outerHTML);
   }
-  localStorage.setItem(`lista-todos`, JSON.stringify(todo));
+  localStorage.setItem('lista-todos', JSON.stringify(todo));
 });
 
-window.onload = render;
 function render() {
-  let listTodo = JSON.parse(localStorage.getItem('lista-todos'));
+  const listTodo = JSON.parse(localStorage.getItem('lista-todos'));
   if (listTodo !== null) {
     for (let index = 0; index < listTodo.length; index += 1) {
       lista.innerHTML += listTodo[index];
@@ -93,9 +95,10 @@ function render() {
     selected();
   }
 }
+window.onload = render;
 
 botaoRemover.addEventListener('click', function () {
-  let listada =  document.querySelectorAll('#lista-tarefas li');
+  const listada = document.querySelectorAll('#lista-tarefas li');
   for (let index = 0; index < listada.length; index += 1) {
     if (listada[index].className === 'selected') {
       listada[index].remove(document.getElementsByClassName('selected'));
@@ -104,11 +107,11 @@ botaoRemover.addEventListener('click', function () {
 });
 
 botaoCima.addEventListener('click', function () {
-  let listada =  document.querySelectorAll('#lista-tarefas li');
+  const listada = document.querySelectorAll('#lista-tarefas li');
   for (let index = 0; index < listada.length; index += 1) {
     if (listada[index].className === 'selected') {
       if (listada[index].previousElementSibling === null) {
-        alert("Você é o primeiro!");
+        alert('Você é o primeiro!');
       } else {
         listada[index].previousElementSibling.before(listada[index]);
       }
@@ -117,12 +120,12 @@ botaoCima.addEventListener('click', function () {
 });
 
 botaoBaixo.addEventListener('click', function () {
-  let move =  document.querySelector('.selected');
-  if(move !== null) {
+  const move = document.querySelector('.selected');
+  if (move !== null) {
     if (move.nextElementSibling === null) {
-      alert("Você é o ultimo!");
+      alert('Você é o ultimo!');
     } else {
-      let baixo = move.nextElementSibling;
+      const baixo = move.nextElementSibling;
       move.before(baixo);
     }
   }
