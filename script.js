@@ -10,8 +10,8 @@ function newEventListener(elementList) {
   elementList.addEventListener('click', function () {
     const selectedItem = document.querySelector('.selected');
     if (selectedItem) {
-    selectedItem.classList.remove('selected');
-    elementList.classList.add('selected');
+      selectedItem.classList.remove('selected');
+      elementList.classList.add('selected');
   } else {
       elementList.classList.add('selected');
     }
@@ -42,12 +42,12 @@ creatorButton.addEventListener('click', function () {
 });
 cleanAllButton.addEventListener('click', function () {
   const allLi = document.querySelectorAll('li');
-  allLi.forEach(element => {olList.removeChild(element)});
+  allLi.forEach(element => {( olList.removeChild(element)) });
 });
 removeFinished.addEventListener('click', function () {
   const allFinished = document.querySelectorAll('.completed');
-  allFinished.forEach(element => {olList.removeChild(element)});
-});
+  allFinished.forEach(element => {( olList.removeChild(element)) } );
+} );
 removeSelected.addEventListener( 'click', function() {
   const removeSelectedElement = document.querySelector('.selected');
   olList.removeChild(removeSelectedElement);
@@ -73,14 +73,14 @@ for (let elementStore = 0; elementStore < localStorage.length / 2; elementStore 
   getElement = localStorage.getItem(`item${elementStore}`);
   getClass = localStorage.getItem(`class${elementStore}`);
   const elementList = launcherTask(getElement);
-    elementList.className = getClass;
+  elementList.className = getClass;
 }
 moveUp.addEventListener('click', function () {
   const selectedElement = document.querySelector('.selected');
   let beforeTask = '';
   if (selectedElement) {
-      beforeTask = selectedElement.previousElementSibling;
-    }
+    beforeTask = selectedElement.previousElementSibling;
+  }
     if (beforeTask) {
       const txtSelected = selectedElement.innerText;
       const classSelected = selectedElement.className;
@@ -96,9 +96,9 @@ moveDown.addEventListener('click', function () {
   const selectedElement = document.querySelector('.selected');
   let afterTask = '';
   if (selectedElement) {
-      afterTask = selectedElement.nextElementSibling;
-    }
-    if (afterTask) {
+    afterTask = selectedElement.nextElementSibling;
+  }
+  if (afterTask) {
       const txtSelected = selectedElement.innerText;
       const classSelected = selectedElement.className;
       const afterTxt = afterTask.innerText;
