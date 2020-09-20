@@ -13,10 +13,6 @@ function salveItensListOnLocalStorage() {
   localStorage.setItem('itensList', JSON.stringify(arrayItemsList));
 }
 
-function removeItensListOnLocalStorage() {
-  const getArrayList = JSON.parse(localStorage.getItem('itensList'));
-}
-
 function addItemListInOrderList(itemList) {
   document.getElementById('lista-tarefas').appendChild(itemList);
 }
@@ -113,11 +109,6 @@ document.getElementById('salvar-tarefas').addEventListener('click', function () 
   salveItensListOnLocalStorage();
 });
 
-document.getElementById('mover-cima').addEventListener('click', function (event) {
-  const elementFather = document.getElementById('lista-tarefas');
-  elementFather.insert
-});
-
 function downItemList(itemSelected) {
   const elementFather = itemSelected.parentNode;
   const lastElementChild = elementFather.lastElementChild;
@@ -135,25 +126,24 @@ function downItemList(itemSelected) {
 
 function upItemList(itemSelected) {
   const elementFather = itemSelected.parentNode;
-  const lastElementChild = elementFather.lastElementChild;
   const firstElementChild = elementFather.firstElementChild;
   const previousSibling = itemSelected.previousElementSibling;
 
   if (itemSelected === firstElementChild) {
     //itemSelected.style.backgroundColor = 'white';
-    return alert('Não existem itens a cima')
+    return alert('Não existem itens a cima');
   }
   elementFather.insertBefore(itemSelected, previousSibling);
   //itemSelected.style.backgroundColor = 'white';
 }
 
-document.getElementById('mover-cima').addEventListener('click', function() {
+document.getElementById('mover-cima').addEventListener('click', function () {
   const resultItemSelectec = getItemSelected();
   if (resultItemSelectec === false) return alert('Selecione um item');
-  upItemList(resultItemSelectec);
+    upItemList(resultItemSelectec);
 });
 
-document.getElementById('mover-baixo').addEventListener('click', function() {
+document.getElementById('mover-baixo').addEventListener('click', function () {
   const resultItemSelectec = getItemSelected();
   if (resultItemSelectec === false) return alert('Selecione um item');
   downItemList(resultItemSelectec);
@@ -173,14 +163,14 @@ function removeFinishedItems() {
   const elementFather = getItemsList[0].parentNode;
 
   const arrayOfCompletedClass = mountArrayOfCompletedClass();
-  const totalItems = arrayOfCompletedClass.length
+  const totalItems = arrayOfCompletedClass.length;
 
   for (let index = 0; index < totalItems; index += 1) {
     elementFather.removeChild(arrayOfCompletedClass[index]);
   }
 }
 
-document.getElementById('remover-finalizados').addEventListener('click', function() {
+document.getElementById('remover-finalizados').addEventListener('click', function () {
   removeFinishedItems();
   salveItensListOnLocalStorage();
 });
