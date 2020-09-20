@@ -73,7 +73,8 @@ window.onload = function () {
                 if (event.target.style.textDecoration === 'line-through solid rgb(0, 0, 0)') {
                     event.target.style.textDecoration = '';
                 } else
-                    event.target.style.textDecoration = 'line-through solid rgb(0, 0, 0)';
+                    event.target.style.textDecoration = 'line-through solid';
+                    event.target.style.textDecorationColor = 'rgb(0,0,0)'
             });
         }
     }
