@@ -181,4 +181,5 @@ function removeFinishedItems() {
 
 document.getElementById('remover-finalizados').addEventListener('click', function() {
   removeFinishedItems();
+  salveItensListOnLocalStorage();
 });
