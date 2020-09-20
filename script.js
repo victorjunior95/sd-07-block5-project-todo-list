@@ -98,6 +98,7 @@ document.getElementById('lista-tarefas').addEventListener('dblclick', function (
   const resultBoolean = existClassCompleted(event.target);
   if (resultBoolean) {
     removeClasseCompleted(event.target);
+    event.target.style.backgroundColor = 'rgb(255,255,255)';
   } else addClasseCompleted(event.target);
 });
 
