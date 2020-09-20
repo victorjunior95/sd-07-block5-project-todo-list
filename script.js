@@ -7,5 +7,15 @@ buttonCriarTarefa.addEventListener("click", function() {
     itemList.innerText = inputTextoTarefa.value;
     olListaTarefas.appendChild(itemList);
     inputTextoTarefa.value = "";
+    inputTextoTarefa.focus();
 });
 
+olListaTarefas.addEventListener("click", function(event) {
+    if (event.target.tagName == "LI") {
+        let liSelected = document.querySelector(".selected");
+        if (liSelected !== null) {
+            liSelected.classList.remove("selected");    
+        }
+    event.target.classList.add("selected");
+    }
+});
