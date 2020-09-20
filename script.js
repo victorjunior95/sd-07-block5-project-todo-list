@@ -8,5 +8,8 @@ function addItemLista() {
   }
   function deleteAllItems(){
     let lista = document.getElementById("lista-tarefas");
-    lista.deleteAllItems;
+    let itensLista = document.querySelectorAll("li");
+    for (let count = 0; count < itensLista.length; count+=1){
+        lista.removeChild(itensLista[count]);
+    }   
   }
