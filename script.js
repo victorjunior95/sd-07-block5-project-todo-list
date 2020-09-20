@@ -77,3 +77,16 @@ function clearCompletedList(){
 let completedListButton = document.getElementById('remover-finalizados');
 
 completedListButton.addEventListener('click', clearCompletedList);
+
+// função para apagar somente elemento selecionado
+
+function clearSelectedItem() {
+  let ol = document.getElementById("lista-tarefas");
+  let selected = document.querySelector('.selected');
+
+  ol.removeChild(selected);
+}
+
+let clearSelectedButton = document.getElementById('remover-selecionado');
+
+clearSelectedButton.addEventListener('click', clearSelectedItem)
