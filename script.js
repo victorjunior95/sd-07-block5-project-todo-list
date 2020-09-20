@@ -1,9 +1,36 @@
+//função para alterar o background de um item na lista quando clicado
+
+function changeSelected(event) {
+  let item = document.querySelectorAll('li');
+
+  for (let i = 0; i < item.length;i += 1){
+    if (item[i].classList.contains('selected')){
+      let selected = document.querySelector('.selected');
+      selected.classList.remove('selected');
+    }
+  }
+  event.target.classList.add('selected');
+}
+
+// função para riscar uma tarefa concluida
+
+function checkList(event) {
+  console.log("ola");
+
+  if(event.target.classList.contains('completed')){
+    event.target.classList.remove('completed');
+  }
+  else {
+    event.target.classList.add('completed');
+  }
+}
+
 // função para criar items na lista puxando o valor do input
 
-function createListItem(){
-  let ordList = document.getElementById('lista-tarefas');
-  let input = document.getElementById('texto-tarefa');
-  let item = document.createElement('li');
+function createListItem() {
+  const ordList = document.getElementById('lista-tarefas');
+  const input = document.getElementById('texto-tarefa');
+  const item = document.createElement('li');
 
   item.innerText = input.value;
   item.className = 'item';
@@ -12,10 +39,10 @@ function createListItem(){
 
   ordList.appendChild(item);
 
-  input.value = "";
+  input.value = '';
 }
 
-let addButton = document.getElementById('criar-tarefa');
+const addButton = document.getElementById('criar-tarefa');
 addButton.addEventListener('click', createListItem);
 
 //função para salvar todos os itens da lista para uma proxima sessão
@@ -43,33 +70,6 @@ addButton.addEventListener('click', createListItem);
   }
 
   window.onload = newSession;
-
-//função para alterar o background de um item na lista quando clicado
-
-function changeSelected(event) {
-  let item = document.querySelectorAll('li');
-
-  for (let i = 0; i < item.length;i += 1){
-    if (item[i].classList.contains('selected')){
-      let selected = document.querySelector('.selected');
-      selected.classList.remove('selected');
-    }
-  }
-  event.target.classList.add('selected');
-}
-
-// função para riscar uma tarefa concluida
-
-function checkList(event) {
-  console.log("ola");
-
-  if(event.target.classList.contains('completed')){
-    event.target.classList.remove('completed');
-  }
-  else {
-    event.target.classList.add('completed');
-  }
-}
 
 // Função para apagar toda a lista
 
