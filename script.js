@@ -11,17 +11,17 @@ botaoCriarTarefa.addEventListener("click", function () {
   arrayListaComTodasTarefas.push(itemParaAdicionar.innerText);
   listaTarefas.appendChild(itemParaAdicionar);
   textoTarefa.value = "";
+  textoTarefa.focus();
 });
 
 // Pintando intens da lista de cinza
 listaTarefas.addEventListener("click", function (event) {
-  if (document.getElementsByClassName("selected")[0] == undefined) {
-    event.target.classList.add("selected");
-  } else {
-    let itemARemover = document.getElementsByClassName("selected")[0];
+  let itemARemover = document.getElementsByClassName("selected")[0];
+  if (document.getElementsByClassName("selected")[0] != null) {
     itemARemover.classList.remove("selected");
-    event.target.classList.add("selected");
-  }
+  } 
+  event.target.classList.add("selected");
 });
 
+// Riscando os itens
 console.log(arrayListaComTodasTarefas);
