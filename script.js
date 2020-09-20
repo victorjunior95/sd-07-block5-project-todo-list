@@ -6,12 +6,8 @@ criar.addEventListener("click", function() {
     let li = document.createElement("li");
     li.innerText = texto.value;
     lista.appendChild(li);
-    apagarTexto();
-});
-
-function apagarTexto() {
     texto.value = "";
-}
+});
 
 let apagarLista = document.querySelector("#apaga-tudo");
 apagarLista.addEventListener("click", function() {
@@ -21,6 +17,7 @@ apagarLista.addEventListener("click", function() {
     while (list.hasChildNodes()) {
         list.removeChild(list.firstChild);
     } // enquanto o elemento ol tiver filhos, eles serão exlcluidos.
+    //hasChildNodes(): https://developer.mozilla.org/en-US/docs/Web/API/Node/hasChildNodes
 });
 
 lista.addEventListener("dblclick", function(event) {

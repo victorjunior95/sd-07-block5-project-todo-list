@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
+<link rel="stylesheet" href="bk.css">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
 
 <body>
     <center>
-        <header>Minha Lista de Tarefas</header>
-
-
         <div id="bk"></div>
-        <div id="fundobranco">
+        <div id="fe">
 
             <p id="funcionamento" class="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
             <p>Para retirar um item da lista, selecione-o com um clique, e aperte 'retirar da lista'</p>
-            <input required="required" type="text" maxlength="50" id="texto-tarefa">
+            <input required="required" type="text" id="texto-tarefa">
             <button id="criar-tarefa">Adionar á Lista</button>
             <button id="remover-finalizados">Retirar da Lista</button>
 
@@ -26,9 +24,9 @@
             <ol id="lista-tarefas"></ol>
             <br><br>
         </div>
-
-        <script src="script.js"></script>
     </center>
+    <script src="script.js"></script>
+
 </body>
 
-</html>s
+</html>
