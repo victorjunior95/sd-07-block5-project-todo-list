@@ -19,3 +19,9 @@ olListaTarefas.addEventListener("click", function(event) {
     event.target.classList.add("selected");
     }
 });
+
+olListaTarefas.addEventListener("dblclick", function(event) {
+    if (event.target.tagName == "LI") {
+        event.target.classList.toggle("completed");
+    }    
+});
