@@ -1,8 +1,10 @@
 const backgroundColor = 'rgb(128, 128, 128)';
 const getItemsList = document.getElementsByTagName('li');
 const comparedClass = 'completed';
-const arrayItemsList = [];
+
+
 function salveItensListOnLocalStorage() {
+  const arrayItemsList = [];
   if (getItemsList.length === 0) {
     alert('Lista vazia');
   } else {
@@ -10,7 +12,7 @@ function salveItensListOnLocalStorage() {
       arrayItemsList.push(getItemsList[index].innerHTML);
     }
   }
-  localStorage.setItem('itensList', JSON.stringify(arrayItemsList));
+  localStorage.setItem('itemsList', JSON.stringify(arrayItemsList));
 }
 
 function addItemListInOrderList(itemList) {
@@ -26,7 +28,7 @@ function createItemList(arrayItens) {
 }
 
 function loadingListItemsOnLocalstorage() {
-  const getArrayList = JSON.parse(localStorage.getItem('itensList'));
+  const getArrayList = JSON.parse(localStorage.getItem('itemsList'));
   if (getArrayList !== null) createItemList(getArrayList);
 }
 
@@ -131,13 +133,13 @@ function upItemList(itemSelected) {
 document.getElementById('mover-cima').addEventListener('click', function () {
   const resultItemSelectec = getItemSelected();
   if (resultItemSelectec === false) return alert('Selecione um item');
-    upItemList(resultItemSelectec);
+  upItemList(resultItemSelectec);
 });
 
 document.getElementById('mover-baixo').addEventListener('click', function () {
   const resultItemSelectec = getItemSelected();
   if (resultItemSelectec === false) return alert('Selecione um item');
-    downItemList(resultItemSelectec);
+  downItemList(resultItemSelectec);
 });
 
 function mountArrayOfCompletedClass() {
@@ -167,6 +169,7 @@ document.getElementById('remover-finalizados').addEventListener('click', functio
 
 document.getElementById('remover-selecionado').addEventListener('click', function () {
   const itemSelected = getItemSelected();
-  if(itemSelected === false) return alert('Selecione um item');
-  itemSelected.parentNode.removeChild(itemSelected);
+  if(itemSelected === false) {
+    alert('Selecione um item');
+  } else itemSelected.parentNode.removeChild(itemSelected);
 });
