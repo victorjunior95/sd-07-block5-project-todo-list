@@ -43,7 +43,7 @@ cleanButton.addEventListener('click', function () {
 const finishedRemove = document.querySelector('#remover-finalizados');
 
 finishedRemove.addEventListener('click', function () {
-  for (let index = 0; index < list.children.length; index += 1) {
+  for (let index = (list.childElementCount - 1); index >= 0; index -= 1) {
     if (list.children[index].classList.contains('completed')) {
       list.removeChild(list.children[index]);
     }
@@ -51,7 +51,7 @@ finishedRemove.addEventListener('click', function () {
 });
 
 const tasksSave = document.querySelector('#salvar-tarefas');
-let tasksArray = [];
+const tasksArray = [];
 
 tasksSave.addEventListener('click', function () {
   for (let index = 0; index < list.children.length; index += 1) {
