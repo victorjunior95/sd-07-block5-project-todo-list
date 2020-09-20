@@ -9,7 +9,7 @@ function createJob() {
 }
 
 function createLi(valueLi, liClass) {
-  let li = document.createElement('li');
+  const li = document.createElement('li');
   list.appendChild(li);
   li.classList.add('li', liClass);
   li.innerText = valueLi;
@@ -23,8 +23,8 @@ function clearInput() {
 
 function changeColorJob() {
   list.addEventListener('click', function (event) {
-    let li = event.target;
-    let children = list.children;
+    const li = event.target;
+    const children = list.children;
     for (let i = 0; i < children.length; i += 1) {
       children[i].style.backgroundColor = '';
     }
@@ -57,7 +57,7 @@ const buttonRemoveCompletedJob = document.querySelector('#remover-finalizados');
 
 function removeCompletedJob() {
   buttonRemoveCompletedJob.addEventListener('click', function () {
-    let li = document.getElementsByClassName('completed');
+    const li = document.getElementsByClassName('completed');
     for (let i = li.length - 1; i >= 0; i -= 1) {
       list.removeChild(li[i]);
     }
@@ -68,14 +68,14 @@ const buttonSaveJob = document.querySelector('#salvar-tarefas');
 
 function saveJob() {
   buttonSaveJob.addEventListener('click', function () {
-    let li = document.querySelectorAll('.li');
+    const li = document.querySelectorAll('.li');
     for (let i = li.length - 1; i >= 0; i -= 1) {
-      let object = {
+      const object = {
         text: li[i].innerText,
         classList: li[i].classList.contains('completed'),
       };
 
-      let stringStorage = JSON.stringify(object);
+      const stringStorage = JSON.stringify(object);
       localStorage.setItem(i, stringStorage);
       // console.log(localStorage.getItem(i));
     }
@@ -83,11 +83,11 @@ function saveJob() {
 }
 
 function updateList() {
-  let localStorageLength = localStorage.length;
+  const localStorageLength = localStorage.length;
 
   for (let i = 0; i < localStorageLength; i += 1) {
-    let objectStorage = JSON.parse(localStorage.getItem(i));
-    if (objectStorage.classList == true) {
+    const objectStorage = JSON.parse(localStorage.getItem(i));
+    if (objectStorage.classList === true) {
       createLi(objectStorage.text, 'completed');
     } else {
       createLi(objectStorage.text);
@@ -99,11 +99,11 @@ const buttonMoveUp = document.querySelector('#mover-cima');
 
 function moveUp() {
   buttonMoveUp.addEventListener('click', function () {
-    let li = document.getElementsByTagName('li');
+    const li = document.getElementsByTagName('li');
 
     for (let i = 0; i < li.length; i += 1) {
       if (
-        li[i].style.backgroundColor == 'rgb(128, 128, 128)' &&
+        li[i].style.backgroundColor === 'rgb(128, 128, 128)' &&
         li[i].previousElementSibling !== null
       ) {
         list.insertBefore(li[i], li[i].previousElementSibling);
@@ -120,7 +120,7 @@ function moveDown() {
 
     for (let i = 0; i < li.length; i += 1) {
       if (
-        li[i].style.backgroundColor == 'rgb(128, 128, 128)' &&
+        li[i].style.backgroundColor === 'rgb(128, 128, 128)' &&
         li[i].nextElementSibling !== null
       ) {
         list.insertBefore(li[i].nextElementSibling, li[i]);
@@ -132,16 +132,15 @@ function moveDown() {
 
 const buttonRemoveSelected = document.querySelector('#remover-selecionado');
 
-function removeSelected () {
+function removeSelected() {
   buttonRemoveSelected.addEventListener('click', function () {
-    let li = document.getElementsByTagName('li');
-    for ( let i = 0; i< li.length; i += 1) {
-      if (li[i].style.backgroundColor == 'rgb(128, 128, 128)') {
+    const li = document.getElementsByTagName('li');
+    for (let i = 0; i < li.length; i += 1) {
+      if (li[i].style.backgroundColor === 'rgb(128, 128, 128)') {
         list.removeChild(li[i]);
       }
     }
-  })
-
+  });
 }
 
 window.onload = function () {
