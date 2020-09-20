@@ -3,11 +3,13 @@ let criar = document.getElementById("criar-tarefa");
 let lista = document.getElementById("lista-tarefas");
 
 criar.addEventListener("click", function() {
-    let li = document.createElement("li");
-    li.innerText = texto.value;
-    lista.appendChild(li);
-    texto.value = "";
-    texto.focus();
+    if (texto.value !== "") {
+        let li = document.createElement("li");
+        li.innerText = texto.value;
+        lista.appendChild(li);
+        texto.value = "";
+        texto.focus();
+    }
 });
 
 let apagarLista = document.querySelector("#apaga-tudo");
