@@ -14,15 +14,14 @@ deleteAllButton.addEventListener('click', function() {
     list.innerText = '';
 });
 
-// seleciona
-// list.addEventListener('click', function(event) {
-//     const lastSelectedElement = document.getElementsByClassName('selected');
-//     lastSelectedElement.classList.remove('selected');
-//     lastSelectedElement.style.backgroundColor = '';
-//     const selected = event.target;
-//     selected.classList.add("selected");
-//     selected.style.backgroundColor = "rgb(128 , 128 , 128)";
-// });
+// seleciona e pinta background cinza
+list.addEventListener('click', function(event) {
+    const lastSelectedElement = document.getElementsByClassName('selected');
+    if (lastSelectedElement.length !== 0) { 
+        lastSelectedElement[0].classList.remove('selected');
+    }
+    event.target.classList.add('selected');
+});
 
 // marca como concluída
 list.addEventListener('dblclick', function(event) {
