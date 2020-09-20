@@ -22,23 +22,31 @@ const btnAdd = document.getElementById("criar-tarefa");
       novaLi.addEventListener("click", function(event) {
          mudaCorFundo(novaLi);
       })
+      novaLi.addEventListener("dbclick", function(event) {
+         mudaCorFundo(novaLi);
+      })
    })
-
-   
-      
-
 
 //mudando a cor de fundo da li
 function mudaCorFundo(novaLi){
-novaLi.addEventListener("click", function(event) {
+
 const selected = document.querySelector(".selected");
    if (selected) {
       selected.classList.remove("selected");
    } 
       event.target.classList.add("selected"); 
-})
-}
 
+}
+//ompleta terefa 
+function completaTarefa(novaLi){
+   novaLi.addEventListener("dbclick", function(event) {
+   const completed = document.querySelector(".completed");
+      if (completed) {
+         selected.classList.remove("selected");
+      } 
+         event.target.classList.add("selected"); 
+   })
+   }
 
 //apagando a lista
 const btApagaTudo = document.getElementById('apaga-tudo');
