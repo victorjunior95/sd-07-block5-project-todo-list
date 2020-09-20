@@ -17,9 +17,18 @@ function addItemLista() {
 
 
   document.addEventListener("click", function(event){
+    let itens = document.getElementsByClassName("item");
       if (event.target.className == "item")
-        if (event.target.style.backgroundColor != "rgb(128, 128, 128)")
-             event.target.style.backgroundColor = "rgb(128, 128, 128)";
-        else
+      
+        if (event.target.style.backgroundColor != "rgb(128, 128, 128)"){
+            for (let count = 0; count < itens.length; count+=1){
+                itens[count].style.backgroundColor = "rgb(255, 255, 255)";
+            }
+            event.target.style.backgroundColor = "rgb(128, 128, 128)";
+        }
+            
+        else{
             event.target.style.backgroundColor = "rgb(255, 255, 255)";
+        }
+            
   })
