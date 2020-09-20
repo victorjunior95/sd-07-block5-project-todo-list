@@ -24,20 +24,19 @@ apagarLista.addEventListener("click", function() {
 });
 
 lista.addEventListener("dblclick", function(event) {
-    if (document.getElementsByClassName("completed").length !== 0);
-    let register = event.target;
-    register.classList.add("completed");
+    event.target.classList.add("completed");
 });
 
 //solução adaptada a partir de https://github.com/tryber/sd-07-block5-project-todo-list/blob/749e0a187fda8965fd829f3b488dd175defa6c70/script.js
 
 lista.addEventListener("click", function(event) {
-    let riscado = document.querySelector(".selecionado");
-    if (riscado != null) {
-        riscado.classList.remove("selecionado");
-    } else {
-        let register = event.target;
-        register.classList.add("selecionado");
+    let pintado = document.querySelector(".selecionado");
+    if (event.target.tagName == "LI") {
+        if (pintado != null) {
+            pintado.classList.remove("selecionado");
+        } else {
+            event.target.classList.add("selecionado");
+        }
     }
 });
 
