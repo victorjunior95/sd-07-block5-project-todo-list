@@ -1,3 +1,64 @@
+body {
+  background-color: rgb(221, 138, 102);
+}
+
+.btns-left {
+  display: inline-block;
+}
+
+.btns-right {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.criarTarefa {
+  display: inline-block;
+  font-weight: 900;
+  margin-left: 10px;
+  background-color: rgb(204, 109, 85);;
+}
+
 .completed {
   text-decoration: line-through solid black;
+}
+
+.div-container {
+  margin-left: 40px;
+  margin-top: 40px;
+  width: 50%;
+}
+
+li {
+ font-size: 14pt;
+}
+
+.removerFinalizados {
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(182, 166, 66);
+  font-weight: 900;
+  font-size: 14px;
+  width: 50px;
+}
+
+.moverBaixo{
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(160, 143, 57);
+  font-weight: 900;
+  width: 50px;
+}
+
+.moverCima {
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(160, 143, 57);
+  font-weight: 900;
+  width: 50px;
+}
+
+.removeAndSalve {
+  background-color: rgb(204, 109, 85);
+  border-radius: 5px;
+  font-weight: 900;
 }
