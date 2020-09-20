@@ -13,7 +13,7 @@ function salveItensListOnLocalStorage() {
     for (let index = 0; index < getItemsList.length; index += 1) {
       const item = getItemsList[index].innerText;
       const classItem = getItemsList[index].className;
-      itensClassList.push(objectItemClassList[index] = [item, classItem])
+      itensClassList.push(objectItemClassList[index] = [item, classItem]);
     }
   }
   localStorage.setItem('itemsList', JSON.stringify(itensClassList));
@@ -150,8 +150,9 @@ function upItemList(itemSelected) {
 
 document.getElementById('mover-cima').addEventListener('click', function () {
   const resultItemSelectec = getItemSelected();
-  if (resultItemSelectec === false) return alert('Selecione um item');
-  upItemList(resultItemSelectec);
+  if (resultItemSelectec === false) {
+    alert('Selecione um item');
+  } else upItemList(resultItemSelectec);
 });
 
 document.getElementById('mover-baixo').addEventListener('click', function () {
