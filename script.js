@@ -1,17 +1,17 @@
 const backgroundColor = 'rgb(128, 128, 128)';
-const getItensList = document.getElementsByTagName('li');
+const getItemsList = document.getElementsByTagName('li');
 const comparedClass = 'completed';
-const arrayItensList = [];
+const arrayItemsList = [];
 
 function salveItensListOnLocalStorage() {
-  if (getItensList.length === 0) {
+  if (getItemsList.length === 0) {
     alert('Lista vazia');
   } else {
-    for (let index = 0; index < getItensList.length; index += 1) {
-      arrayItensList.push(getItensList[index].innerHTML);
+    for (let index = 0; index < getItemsList.length; index += 1) {
+      arrayItemsList.push(getItemsList[index].innerHTML);
     }
   }
-  localStorage.setItem('itensList', JSON.stringify(arrayItensList));
+  localStorage.setItem('itensList', JSON.stringify(arrayItemsList));
 }
 
 function addItemListInOrderList(itemList) {
@@ -53,9 +53,9 @@ function checkIfExistItemSelectedInList(itensList) {
 }
 
 function getItemSelected() {
-  for (let index = 0; index < getItensList.length; index += 1) {
-    if (getItensList[index].style.backgroundColor === backgroundColor) {
-      return getItensList[index];
+  for (let index = 0; index < getItemsList.length; index += 1) {
+    if (getItemsList[index].style.backgroundColor === backgroundColor) {
+      return getItemsList[index];
     }
   }
   return false;
@@ -90,7 +90,7 @@ document.getElementById('criar-tarefa').addEventListener('click', function () {
 });
 
 document.getElementById('lista-tarefas').addEventListener('click', function (event) {
-  const resultCheck = checkIfExistItemSelectedInList(getItensList);
+  const resultCheck = checkIfExistItemSelectedInList(getItemsList);
   chanceBackgroundColorItemList(resultCheck, event.target);
 });
 
@@ -137,11 +137,11 @@ function downItemList(itemSelected) {
 
 function upItemList(itemSelected) {
 
-  if (getItensList[0] === itemSelected) return alert('Não existe item a cima')
+  if (getItemsList[0] === itemSelected) return alert('Não existe item a cima')
 
-  for (let index = 0; index < getItensList.length; index += 1) {
-    if (getItensList[index] === itemSelected) {
-      const beforeItemList = getItensList[index - 1];
+  for (let index = 0; index < getItemsList.length; index += 1) {
+    if (getItemsList[index] === itemSelected) {
+      const beforeItemList = getItemsList[index - 1];
       const textBeforeItemList = beforeItemList.innerText;
 
       beforeItemList.innerText = itemSelected.innerText;
@@ -162,4 +162,29 @@ document.getElementById('mover-baixo').addEventListener('click', function() {
   const resultItemSelectec = getItemSelected();
   if (resultItemSelectec === false) return alert('Selecione um item');
   downItemList(resultItemSelectec);
+});
+
+function mountArrayOfCompletedClass() {
+  const arrayOfCompletedClass = []
+  for (let index = 0; index < getItemsList.length; index += 1) {
+    if (getItemsList[index].getAttribute('class') === comparedClass) {
+      arrayOfCompletedClass.push(getItemsList[index]);
+    }
+  }
+  return arrayOfCompletedClass;
+}
+
+function removeFinishedItems() {
+  const elementFather = getItemsList[0].parentNode;
+
+  const arrayOfCompletedClass = mountArrayOfCompletedClass();
+  const totalItems = arrayOfCompletedClass.length
+
+  for (let index = 0; index < totalItems; index += 1) {
+    elementFather.removeChild(arrayOfCompletedClass[index]);
+  }
+}
+
+document.getElementById('remover-finalizados').addEventListener('click', function() {
+  removeFinishedItems();
 });
