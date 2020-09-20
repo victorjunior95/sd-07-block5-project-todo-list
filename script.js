@@ -1,8 +1,8 @@
 let buttonTarefa = document.getElementById(`criar-tarefa`);
 
 let ordinal = document.createElement(`OL`);
-ordinal.setAttribute(`id`, `bloco`);
-document.getElementById(`lista-tarefas`).appendChild(ordinal);
+ordinal.setAttribute(`id`, `lista-tarefas`);
+document.getElementById(`lista`).appendChild(ordinal);
 
 buttonTarefa.addEventListener(`click`, function(){
   let input = document.getElementById(`texto-tarefa`).value;
