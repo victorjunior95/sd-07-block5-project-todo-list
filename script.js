@@ -80,7 +80,7 @@ window.onload = function () {
         let list = document.querySelectorAll('ol');
         for (let item = 0; item < list.length; item += 1) {
             list[item].addEventListener('click', function (event) {
-                event.target.style.color = 'rgb(128, 128, 128)';
+                event.target.style.backgroundColor = 'rgb(128, 128, 128)';
             });
         }
     }
