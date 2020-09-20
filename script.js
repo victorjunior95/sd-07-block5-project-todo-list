@@ -70,10 +70,10 @@ window.onload = function () {
         let list = document.querySelectorAll('ol');
         for (let item = 0; item < list.length; item += 1) {
             list[item].addEventListener('dblclick', function (event) {
-                if (event.target.style.textDecoration === 'line-through') {
+                if (event.target.style.textDecoration === 'line-through solid rgb(0, 0, 0)') {
                     event.target.style.textDecoration = '';
                 } else
-                    event.target.style.textDecoration = 'line-through';
+                    event.target.style.textDecoration = 'line-through solid rgb(0, 0, 0)';
             });
         }
     }
