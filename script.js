@@ -11,3 +11,11 @@ btCriarTarefa.addEventListener('click', function(){
     }
     inputTextoTarefa.focus(); 
 });
+
+olListaTarefa.addEventListener("click",function(event){
+    let liSelected = document.querySelector(".selected")
+    if(liSelected){
+        liSelected.classList.remove('selected')
+    }
+    event.target.classList.add('selected')
+})
