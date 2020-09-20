@@ -42,11 +42,11 @@ creatorButton.addEventListener('click', function () {
 });
 cleanAllButton.addEventListener('click', function () {
   const allLi = document.querySelectorAll('li');
-  (allLi.forEach(element => { (olList.removeChild(element)) }));
+  (allLi.forEach((element) => { (olList.removeChild(element)); }));
 });
 removeFinished.addEventListener('click', function () {
   const allFinished = document.querySelectorAll('.completed');
-  (allFinished.forEach(element => { (olList.removeChild(element)) }));
+  (allFinished.forEach((element) => { (olList.removeChild(element)); }));
 });
 removeSelected.addEventListener('click', function () {
   const removeSelectedElement = document.querySelector('.selected');
