@@ -42,15 +42,15 @@ creatorButton.addEventListener('click', function () {
 });
 cleanAllButton.addEventListener('click', function () {
   const allLi = document.querySelectorAll('li');
-  (allLi.forEach(element => {(olList.removeChild(element)); 
-  }));
+  allLi.forEach(element =>
+    { (olList.removeChild(element)) });
 });
 removeFinished.addEventListener('click', function () {
   const allFinished = document.querySelectorAll('.completed');
-  (allFinished.forEach(element => {(olList.removeChild(element)); 
-  }));
+  allFinished.forEach(element =>
+    { (olList.removeChild(element)) });
 });
-removeSelected.addEventListener('click', function() {
+removeSelected.addEventListener('click', function () {
   const removeSelectedElement = document.querySelector('.selected');
   olList.removeChild(removeSelectedElement);
 });
@@ -101,7 +101,7 @@ moveDown.addEventListener('click', function () {
     afterTask = selectedElement.nextElementSibling;
   }
   if (afterTask) {
-      const txtSelected = selectedElement.innerText;
+    const txtSelected = selectedElement.innerText;
     const classSelected = selectedElement.className;
     const afterTxt = afterTask.innerText;
     const afterClass = afterTask.className;
