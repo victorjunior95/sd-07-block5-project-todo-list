@@ -16,27 +16,31 @@ deleteAllButton.addEventListener('click', function() {
 
 // seleciona e pinta background cinza
 list.addEventListener('click', function(event) {
-    const lastSelectedElement = document.getElementsByClassName('selected');
-    if (lastSelectedElement.length !== 0) { 
+    if (event.target.tagName == 'LI') {
+        const lastSelectedElement = document.getElementsByClassName('selected');
+        if (lastSelectedElement.length !== 0) { 
         lastSelectedElement[0].classList.remove('selected');
+        }
+        event.target.classList.add('selected');
     }
-    event.target.classList.add('selected');
 });
 
 // marca como concluída
 list.addEventListener('dblclick', function(event) {
-    if(event.target.className == 'completed') {
-        event.target.classList.remove('completed');
-    } else {
-        const completed = event.target;
-        completed.classList.add('completed');
+    if (event.target.tagName == "LI") {
+        if(event.target.classList.contains('completed')) {
+            event.target.classList.remove('completed');
+        } else {
+            const completed = event.target;
+            completed.classList.add('completed');
+        }
     }
 });
 
+// remove finaizados
 const deleteCompleted = document.getElementById('remover-finalizados');
 deleteCompleted.addEventListener('click', function() {
     while (document.querySelector('.completed')) { // remove só os completed
         document.querySelector('ol').removeChild(document.querySelector('.completed'));
     }
 });
-
