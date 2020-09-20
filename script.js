@@ -36,19 +36,14 @@ function clearInputValue(item) {
   item.value = '';
 }
 
-function chanceBackgroundColorItemList(boolean, itemList) {
-  if (boolean) {
-    itemList.style.backgroundColor = backgroundColor;
+function changeFromBackgroundToWhite () {
+  for (let index = 0; index < getItemsList.length; index += 1) {
+    getItemsList[index].style.backgroundColor = 'rgb(255,255,255)';
   }
 }
 
-function checkIfExistItemSelectedInList(itensList) {
-  for (let index = 0; index < itensList.length; index += 1) {
-    if (itensList[index].style.backgroundColor === backgroundColor) {
-      return false;
-    }
-  }
-  return true;
+function chanceBackgroundColorItemList(itemList) {
+  itemList.style.backgroundColor = backgroundColor;
 }
 
 function getItemSelected() {
@@ -89,8 +84,8 @@ document.getElementById('criar-tarefa').addEventListener('click', function () {
 });
 
 document.getElementById('lista-tarefas').addEventListener('click', function (event) {
-  const resultCheck = checkIfExistItemSelectedInList(getItemsList);
-  chanceBackgroundColorItemList(resultCheck, event.target);
+  changeFromBackgroundToWhite();
+  chanceBackgroundColorItemList(event.target);
 });
 
 document.getElementById('lista-tarefas').addEventListener('dblclick', function (event) {
@@ -168,5 +163,10 @@ function removeFinishedItems() {
 
 document.getElementById('remover-finalizados').addEventListener('click', function () {
   removeFinishedItems();
-  salveItensListOnLocalStorage();
+});
+
+document.getElementById('remover-selecionado').addEventListener('click', function () {
+  const itemSelected = getItemSelected();
+  if(itemSelected === false) return alert('Selecione um item');
+  itemSelected.parentNode.removeChild(itemSelected);
 });
