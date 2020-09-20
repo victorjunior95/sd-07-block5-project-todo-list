@@ -8,19 +8,6 @@ function createJob() {
   });
 }
 
-function createLi(valueLi, liClass) {
-  const li = document.createElement('li');
-  list.appendChild(li);
-  li.classList.add('li', liClass);
-  li.innerText = valueLi;
-  clearInput();
-  // console.log(li);
-}
-
-function clearInput() {
-  inputText.value = '';
-}
-
 function changeColorJob() {
   list.addEventListener('click', function (event) {
     const li = event.target;
@@ -95,6 +82,19 @@ function updateList() {
   }
 }
 
+function createLi(valueLi, liClass) {
+  const li = document.createElement('li');
+  list.appendChild(li);
+  li.classList.add('li', liClass);
+  li.innerText = valueLi;
+  clearInput();
+  // console.log(li);
+}
+
+function clearInput() {
+  inputText.value = '';
+}
+
 const buttonMoveUp = document.querySelector('#mover-cima');
 
 function moveUp() {
@@ -116,7 +116,7 @@ const buttonMoveDown = document.querySelector('#mover-baixo');
 
 function moveDown() {
   buttonMoveDown.addEventListener('click', function () {
-    let li = document.getElementsByTagName('li');
+    const li = document.getElementsByTagName('li');
 
     for (let i = 0; i < li.length; i += 1) {
       if (
