@@ -4,15 +4,20 @@ const comparedClass = 'completed';
 
 
 function salveItensListOnLocalStorage() {
-  const arrayItemsList = [];
+  const itensClassList = [];
+  const objectItemClassList = {};
+
   if (getItemsList.length === 0) {
     alert('Lista vazia');
   } else {
+
     for (let index = 0; index < getItemsList.length; index += 1) {
-      arrayItemsList.push(getItemsList[index].innerHTML);
+      const item = getItemsList[index].innerText;
+      const classItem = getItemsList[index].className;
+      itensClassList.push(objectItemClassList[index] = [item,classItem])
     }
   }
-  localStorage.setItem('itemsList', JSON.stringify(arrayItemsList));
+  localStorage.setItem('itemsList', JSON.stringify(itensClassList));
 }
 
 function addItemListInOrderList(itemList) {
@@ -27,9 +32,23 @@ function createItemList(arrayItens) {
   });
 }
 
+function createItemListLocalStorage(getObjectList) {
+  getObjectList.forEach((item) => {
+    const itemList = document.createElement('li');
+    const textItemList = item[0];
+    const textClassName = item[1];
+    itemList.innerText = textItemList;
+    if (textClassName !== "") {
+      itemList.classList.add(textClassName);
+    }
+    addItemListInOrderList(itemList);
+
+  });
+}
+
 function loadingListItemsOnLocalstorage() {
-  const getArrayList = JSON.parse(localStorage.getItem('itemsList'));
-  if (getArrayList !== null) createItemList(getArrayList);
+  const getObjectList = JSON.parse(localStorage.getItem('itemsList'));
+  if (getObjectList !== null) createItemListLocalStorage(getObjectList);
 }
 
 loadingListItemsOnLocalstorage();
@@ -102,7 +121,13 @@ document.getElementById('apaga-tudo').addEventListener('click', function () {
 });
 
 document.getElementById('salvar-tarefas').addEventListener('click', function () {
-  salveItensListOnLocalStorage();
+  const arrayItemsList = [];
+  const arrayClassItemList = [];
+  for (let index = 0; index < getItemsList.length; index += 1)  {
+    arrayItemsList.push(getItemsList[index].innerText);
+    arrayClassItemList.push(getItemsList[index].className);
+  }
+  salveItensListOnLocalStorage(arrayItemsList, arrayClassItemList);
 });
 
 function downItemList(itemSelected) {
