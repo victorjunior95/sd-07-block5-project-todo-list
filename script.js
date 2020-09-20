@@ -38,7 +38,7 @@ item.addEventListener("dblclick", function() {
   if (event.target.className != 'completed') {
     event.target.className = 'completed';
   } else if (event.target.className === 'completed') {
-    event.target.className = '';
+    event.target.className = 'not-completed';
   }
 });
 
