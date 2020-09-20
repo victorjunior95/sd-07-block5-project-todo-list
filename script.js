@@ -12,9 +12,9 @@ const btSaveList = document.getElementById("salvar-tarefas");
 
 btAdd.addEventListener('click', function() {
    const novaLi = adicionaTarefa();
-novaLi.addEventListener('click', function() {
+novaLi.addEventListener('click', function(event) {
       mudaCorFundo(novaLi);
-novaLi.addEventListener('dblclick', function() {
+novaLi.addEventListener('dblclick', function(event) {
       completaTarefa(novaLi);
 btRmvSelect.addEventListener('click', function () {
       removeSelecionados();
@@ -40,6 +40,7 @@ function adicionaTarefa(){
   
 //mudando a cor de fundo da li
 function mudaCorFundo(novaLi){
+   const li = Event.target
    const selected = document.querySelector(".selected");
    if (selected) {
       selected.classList.remove("selected");
@@ -50,7 +51,7 @@ function mudaCorFundo(novaLi){
 //completa terefa 
 function completaTarefa(novaLi){
    const completed = novaLi.classList.contains("completed");
-   if (completed) {
+   if (completed.length != '') {
       novaLi.classList.remove("completed");
    } 
    novaLi.classList.add("completed"); ;
@@ -58,9 +59,9 @@ function completaTarefa(novaLi){
 
 //remover seleciondos
 function removeSelecionados(){
-   let selecionados = document.getElementsByClassName("select");
+   let selecionados = document.getElementsByClassName("selected");
    let ul = document.getElementById("lista-tarefas");
-   if (selecionados){
+   if (selecionados.length){
       for(let i = 0; i< selecionados.length; i += 1){
          ul.removeChild(selecionados.children[(i)]);         
       }
