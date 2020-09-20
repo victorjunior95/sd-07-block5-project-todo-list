@@ -51,10 +51,12 @@ function mudaCorFundo(novaLi){
 //completa terefa 
 function completaTarefa(novaLi){
    const completed = novaLi.classList.contains("completed");
-   if (completed.length != '') {
+   if (completed) {
       novaLi.classList.remove("completed");
    } 
-   novaLi.classList.add("completed"); ;
+   else {novaLi.classList.add("completed");
+   }
+   return;
 }
 
 //remover seleciondos
