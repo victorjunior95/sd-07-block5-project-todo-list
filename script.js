@@ -1,6 +1,7 @@
 const task = document.getElementById('texto-tarefa');
 const list = document.getElementById('lista-tarefas');
 const taskAdd = document.getElementById('criar-tarefa');
+let selectedAllTasks = [];
 
 taskAdd.addEventListener('click', function () {
   const currentTask = document.createElement('li');
@@ -12,7 +13,7 @@ taskAdd.addEventListener('click', function () {
 
 document.addEventListener('click', function (event) {
   if (event.target.classList.contains('ordered-list')) {
-    const selectedAllTasks = document.getElementsByClassName('ordered-list');
+    selectedAllTasks = document.getElementsByClassName('ordered-list');
     for (let index = 0; index < selectedAllTasks.length; index += 1) {
       selectedAllTasks[index].classList.remove('selected');
     }
@@ -26,7 +27,15 @@ document.addEventListener('dblclick', function (event) {
     if (event.target.classList.contains('completed')) {
       event.target.classList.remove('completed');
     } else {
-        event.target.classList.add('completed');
+      event.target.classList.add('completed');
     }
+  }
+});
+
+const cleanButton = document.querySelector('#apaga-tudo');
+
+cleanButton.addEventListener('click', function() {
+  for (let index = 0; list.childElementCount !== 0; index += 1) {
+    list.removeChild(list.children[0]);
   }
 });
