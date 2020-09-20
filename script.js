@@ -51,7 +51,7 @@ class TodoListController {
     document.getElementById("texto-tarefa").value = "";
     this.idEdicao = null;
   }
-/* 
+  /* 
   construirLista() {
     let tabela = document.getElementById("lista-tarefas");
     tabela.innerHTML = "";
@@ -81,15 +81,19 @@ class TodoListController {
     }
   } */
 
-  construirTarefa(){
+  construirTarefa() {
     let parent = document.getElementById("lista");
-    
-    var li = document.createElement("li");
-    var text = document.createTextNode("consegui grande dia!!!");
-    li.appendChild(text);
-    parent.firstElementChild.appendChild(li);
-     }
-   
+
+    /*  let tabela = document.getElementById("lista-tarefas");
+    tabela.innerHTML = ""; */
+
+    for (let i = 0; i < this.lista.length; i++) {
+      var li = document.createElement("li");
+      var text = document.createTextNode(this.lista[i].descricao);
+      li.appendChild(text);
+      parent.firstElementChild.appendChild(li);
+    }
+  }
 
   excluir(id) {
     if (confirm("Tem certeza que deseja excluir essa tarefa?")) {
@@ -111,82 +115,67 @@ class TodoListController {
     }
   }
 
-  apagarTudo(){
+  apagarTudo() {
     let tabela = document.getElementById("lista-tarefas");
-    tabela.innerHTML = '';
-    this.lista=[];
+    tabela.innerHTML = "";
+    this.lista = [];
   }
- 
 
   alterarStatus(id) {
     if (confirm("Tem certeza que deseja alterar o status dessa tarefa?")) {
-        let i = 0;
-        let achou = false;
+      let i = 0;
+      let achou = false;
 
-        while (i < this.lista.length && !achou) {
-            if (this.lista[i].id == id) {
-                achou = true
-                this.lista[i].concluida = !this.lista[i].concluida
-            } else {
-                i++
-            }
+      while (i < this.lista.length && !achou) {
+        if (this.lista[i].id == id) {
+          achou = true;
+          this.lista[i].concluida = !this.lista[i].concluida;
+        } else {
+          i++;
         }
+      }
 
-        this.construirLista();
-
+      this.construirLista();
     }
   }
 
   editar(id) {}
 
-  selecionar(id){ 
-    listItem.addEventListener('click', function () {
-      const selectedItem = document.querySelector('.selected');
+  selecionar(id) {
+    listItem.addEventListener("click", function () {
+      const selectedItem = document.querySelector(".selected");
       if (selectedItem) {
-        selectedItem.classList.remove('selected');
+        selectedItem.classList.remove("selected");
       }
-      listItem.classList.add('selected');
+      listItem.classList.add("selected");
     });
-
   }
-  completarTarefa(){
-   
-    this.lista.addEventListener('dblclick', function () {
-      if (lista.classList.contains('completed')) {
-        lista.classList.remove('completed');
+  completarTarefa() {
+    this.lista.addEventListener("dblclick", function () {
+      if (lista.classList.contains("completed")) {
+        lista.classList.remove("completed");
       } else {
-        lista.classList.add('completed');
+        lista.classList.add("completed");
       }
     });
   }
 
   moverParaCima() {
-    const btnMoveUp = document.querySelector('#mover-cima');
-    btnMoveUp.addEventListener('click', function () {
-      let allList = document.querySelector('ol').innerHTML;
+    const btnMoveUp = document.querySelector("#mover-cima");
+    btnMoveUp.addEventListener("click", function () {
+      let allList = document.querySelector("ol").innerHTML;
       for (let index = 0; index < allList.length; index += 1) {
         const nListSelected = allList[index];
-        if (nListSelected.classList.contains('selected')) {
-          nListSelected.insertBefore(nListSelected, nListSelected.previousElementSibling);
+        if (nListSelected.classList.contains("selected")) {
+          nListSelected.insertBefore(
+            nListSelected,
+            nListSelected.previousElementSibling
+          );
         }
       }
-  
     });
-
   }
-  moverParaBaixo(id) {
-
-
-  }
-
-
-
- 
-  
-
-
-
-
+  moverParaBaixo(id) {}
 }
 
 const controller = new TodoListController();
