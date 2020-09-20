@@ -13,8 +13,8 @@ function newEventListener(elementList) {
     selectedItem.classList.remove('selected');
     elementList.classList.add('selected');
   } else {
-    elementList.classList.add('selected');
-  } 
+      elementList.classList.add('selected');
+    }
   });
 }
 function completedTask(elementList) {
@@ -42,11 +42,11 @@ creatorButton.addEventListener('click', function () {
 });
 cleanAllButton.addEventListener('click', function () {
   const allLi = document.querySelectorAll('li');
-  allLi.forEach(element => { olList.removeChild(element) })
+  allLi.forEach(element => {olList.removeChild(element)});
 });
 removeFinished.addEventListener('click', function () {
   const allFinished = document.querySelectorAll('.completed');
-  allFinished.forEach(element => { olList.removeChild(element) });
+  allFinished.forEach(element => {olList.removeChild(element)});
 });
 removeSelected.addEventListener( 'click', function() {
   const removeSelectedElement = document.querySelector('.selected');
@@ -70,15 +70,15 @@ save.addEventListener('click', function () {
 let getElement;
 let getClass;
 for (let elementStore = 0; elementStore < localStorage.length / 2; elementStore += 1) {
-    getElement = localStorage.getItem(`item${elementStore}`);
-    getClass = localStorage.getItem(`class${elementStore}`);
-    const elementList = launcherTask(getElement);
+  getElement = localStorage.getItem(`item${elementStore}`);
+  getClass = localStorage.getItem(`class${elementStore}`);
+  const elementList = launcherTask(getElement);
     elementList.className = getClass;
-  };
+}
 moveUp.addEventListener('click', function () {
-    const selectedElement = document.querySelector('.selected');
-    let beforeTask = '';
-    if (selectedElement) {
+  const selectedElement = document.querySelector('.selected');
+  let beforeTask = '';
+  if (selectedElement) {
       beforeTask = selectedElement.previousElementSibling;
     }
     if (beforeTask) {
@@ -91,11 +91,11 @@ moveUp.addEventListener('click', function () {
       selectedElement.innerText = prevTxt;
       selectedElement.className = prevClass;
     }
-  });
+});
 moveDown.addEventListener('click', function () {
-    const selectedElement = document.querySelector('.selected');
-    let afterTask = '';
-    if (selectedElement) {
+  const selectedElement = document.querySelector('.selected');
+  let afterTask = '';
+  if (selectedElement) {
       afterTask = selectedElement.nextElementSibling;
     }
     if (afterTask) {
@@ -108,4 +108,4 @@ moveDown.addEventListener('click', function () {
       selectedElement.innerText = afterTxt;
       selectedElement.className = afterClass;
     }
-  });
+});
