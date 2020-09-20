@@ -13,7 +13,7 @@ buttonTarefa.addEventListener(`click`, function(){
   
   let texto = document.createTextNode(input);
   linha.appendChild(texto);
-  document.getElementById(`bloco`).appendChild(linha);  
+  document.getElementById(`lista-tarefas`).appendChild(linha);  
   document.getElementById(`texto-tarefa`).value = ``;
   let clear = document.getElementById(`texto-tarefa`).value;
 })
