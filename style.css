@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(221, 138, 102);
+  background-color: rgb(221 , 138 , 102);
 }
 
 .btns-left {
@@ -12,7 +12,7 @@ body {
 }
 
 .criarTarefa {
-  background-color: rgb(204, 109, 85);
+  background-color: rgb(204 , 109 , 85);
   display: inline-block;
   font-weight: 900;
   margin-left: 10px;
@@ -30,11 +30,11 @@ body {
 }
 
 li {
- font-size:14pt;
+  font-size: 14pt;
 }
 
 .removerFinalizados {
-  background-color: rgb(182, 166, 66);
+  background-color: rgb(182 , 166 , 66);
   border-radius: 5px;
   color: white;
   font-size: 14px;
@@ -43,7 +43,7 @@ li {
 }
 
 .mover {
-  background-color: rgb(160, 143, 57);
+  background-color: rgb(160 , 143 , 57);
   border-radius: 5px;
   color: white;
   font-weight: 900;
@@ -51,7 +51,7 @@ li {
 }
 
 .removeAndSalve {
-  background-color: rgb(204, 109, 85);
+  background-color: rgb(204 , 109 , 85);
   border-radius: 5px;
   font-weight: 900;
 }
