@@ -58,11 +58,22 @@ window.onload = function () {
         });
     }
 
+    // function RiskListChosen() {
+    //     let list = document.querySelectorAll('ol');
+    //     for (let item = 0; item < list.length; item += 1) {
+    //         list[item].addEventListener('dblclick', function (event) {
+    //             event.target.style.textDecoration = 'line-through';
+    //         });
+    //     }
+    // }
     function RiskListChosen() {
         let list = document.querySelectorAll('ol');
         for (let item = 0; item < list.length; item += 1) {
             list[item].addEventListener('dblclick', function (event) {
-                event.target.style.textDecoration = 'line-through';
+                if (event.target.style.textDecoration === 'line-through') {
+                    event.target.style.textDecoration = '';
+                } else
+                    event.target.style.textDecoration = 'line-through';
             });
         }
     }
@@ -78,4 +89,5 @@ window.onload = function () {
             });
         }
     }
+
 }
