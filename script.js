@@ -1,13 +1,25 @@
-const btnAdd = document.getElementById("criar-tarefa");
-//const selected = document.getElementsByClassName("selected");
+window.onload = function() {
+   document.getElementById("texto-tarefa").focus();
+ };
 
-btnAdd.addEventListener("click", function() {
+const btAdd = document.getElementById("criar-tarefa");
+const btRmvSelect = document. getElementById("remover-selecionado");
+const btMvUp = document.getElementById("mover-cima");
+const btMvDw = document.getElementById("mover-baixo");
+const btRmvFinalizados = document.getElementById("remover-finalizados");
+const btRmvAll = document.getElementById("remover-tudo");
+const btSaveList = document.getElementById("salvar-tarefas");
+
+btAdd.addEventListener('click', function() {
    const novaLi = adicionaTarefa();
-novaLi.addEventListener("click", function() {
+novaLi.addEventListener('click', function() {
       mudaCorFundo(novaLi);
-})
-novaLi.addEventListener("dbclick", function(event) {
+novaLi.addEventListener('dblclick', function() {
       completaTarefa(novaLi);
+btRmvSelect.addEventListener('click', function () {
+      removeSelecionados();
+})
+})
 })
 })
 //adicionando tarefa
@@ -22,7 +34,8 @@ function adicionaTarefa(){
          novaLi.innerText = textTarefa;
          document.getElementById("texto-tarefa").value =""
       }
-      return novaLi;
+      document.getElementById("texto-tarefa").focus();
+      return novaLi;     
 }
   
 //mudando a cor de fundo da li
@@ -35,9 +48,24 @@ function mudaCorFundo(novaLi){
 }
 
 //completa terefa 
-// function completaTarefa(novaLi){
-//    novaLi = ;
-// }
+function completaTarefa(novaLi){
+   const completed = novaLi.classList.contains("completed");
+   if (completed) {
+      novaLi.classList.remove("completed");
+   } 
+   novaLi.classList.add("completed"); ;
+}
+
+//remover seleciondos
+function removeSelecionados(){
+   let selecionados = document.getElementsByClassName("select");
+   let ul = document.getElementById("lista-tarefas");
+   if (selecionados){
+      for(let i = 0; i< selecionados.length; i += 1){
+         ul.removeChild(selecionados.children[(i)]);         
+      }
+   }
+}
 
 //apagando a lista
 // const btApagaTudo = document.getElementById('apaga-tudo');
