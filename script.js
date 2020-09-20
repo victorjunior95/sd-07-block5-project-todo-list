@@ -2,12 +2,6 @@ const inputText = document.querySelector('#texto-tarefa');
 const buttonCreateJob = document.querySelector('#criar-tarefa');
 const list = document.querySelector('#lista-tarefas');
 
-function createJob() {
-  buttonCreateJob.addEventListener('click', function () {
-    createLi(inputText.value);
-  });
-}
-
 function changeColorJob() {
   list.addEventListener('click', function (event) {
     const li = event.target;
@@ -69,6 +63,19 @@ function saveJob() {
   });
 }
 
+function clearInput() {
+  inputText.value = '';
+}
+
+function createLi(valueLi, liClass) {
+  const li = document.createElement('li');
+  list.appendChild(li);
+  li.classList.add('li', liClass);
+  li.innerText = valueLi;
+  clearInput();
+  // console.log(li);
+}
+
 function updateList() {
   const localStorageLength = localStorage.length;
 
@@ -82,17 +89,10 @@ function updateList() {
   }
 }
 
-function createLi(valueLi, liClass) {
-  const li = document.createElement('li');
-  list.appendChild(li);
-  li.classList.add('li', liClass);
-  li.innerText = valueLi;
-  clearInput();
-  // console.log(li);
-}
-
-function clearInput() {
-  inputText.value = '';
+function createJob() {
+  buttonCreateJob.addEventListener('click', function () {
+    createLi(inputText.value);
+  });
 }
 
 const buttonMoveUp = document.querySelector('#mover-cima');
