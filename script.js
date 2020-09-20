@@ -10,20 +10,20 @@ createTaskBtn.addEventListener('click', function () {
     toDoList.appendChild(item);
     taskName.value = '';
     item.addEventListener('click', function () {
-    const selectedItem = document.querySelector('.selected');
-    if (selectedItem) {
-      selectedItem.classList.remove('selected');
-    }
-    item.classList.add('selected');
+      const selectedItem = document.querySelector('.selected');
+      if (selectedItem) {
+        selectedItem.classList.remove('selected');
+      }
+      item.classList.add('selected');
     });
-  
+
     taskName.focus();
     item.addEventListener('dblclick', function () {
       if (item.classList.contains('completed')) {
         item.classList.remove('completed');
       } else {
         item.classList.add('completed');
-      };
+      }
     });
 
     const clearBtn = document.getElementById('apaga-tudo');
@@ -35,7 +35,7 @@ createTaskBtn.addEventListener('click', function () {
     removeCompletedBtn.addEventListener('click', function () {
       if (item.classList.contains('completed')) {
         toDoList.removeChild(item);
-      };
+      }
     });
 
     const removeSelectedBtn = document.getElementById('remover-selecionado');
@@ -44,5 +44,5 @@ createTaskBtn.addEventListener('click', function () {
         toDoList.removeChild(item);
       }
     });
-  };
+  }
 });
