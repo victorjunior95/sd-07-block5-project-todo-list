@@ -12,9 +12,9 @@ function criaLista(text) {
   if (text.value === '') {
     alert('Preencha os campos');
   } else {
-    const criaLista = document.createElement('li');
-    criaLista.innerText = text.value;
-    lista.appendChild(criaLista);
+    const criarLista = document.createElement('li');
+    criarLista.innerText = text.value;
+    lista.appendChild(criarLista);
     text.value = '';
   }
 }
@@ -66,7 +66,7 @@ botaoLimpa.addEventListener('click', function () {
 });
 
 botaoCompleto.addEventListener('click', function () {
-  const listada =  document.querySelectorAll('#lista-tarefas li');
+  const listada = document.querySelectorAll('#lista-tarefas li');
   for (let index = 0; index < listada.length; index += 1) {
     if (listada[index].className === 'completed') {
       listada[index].remove(document.getElementsByClassName('completed'));
