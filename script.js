@@ -6,9 +6,8 @@ const criaTarefa = function () {
   if (tarefaInput.value !== '') {
     avisos.innerText = '';
     const novaTarefa = document.createElement('li');
-
-    novaTarefa.textContent = tarefaInput.value;
-
+    const textNode = document.createTextNode(tarefaInput.value);
+    novaTarefa.appendChild(textNode);
     listaOrdenadaDeTarefas.appendChild(novaTarefa);
 
     tarefaInput.value = '';
@@ -21,11 +20,8 @@ const criaTarefa = function () {
 
 const limpaSelecao = function () {
   const itensLista = document.querySelectorAll('ol>li');
-  itensLista.forEach((item) => {
-    if (item.className.indexOf('selected') !== -1) {
-      item.className = item.className.replace('selected', '');
-    }
-    item.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+  itensLista.forEach((item) => {    
+    !(item.classList.remove('selected')) && (item.style.backgroundColor = 'rgba(255, 255, 255, 0.1)');
   });
 };
 
@@ -33,8 +29,7 @@ const selecionaItemLista = function (event) {
   const itemLista = event.target;
   if (itemLista.nodeName === 'LI') {
     limpaSelecao();
-    itemLista.className += ' selected';
-    itemLista.style.backgroundColor = 'rgb(128, 128, 128)';
+    itemLista.classList.toggle('selected') && (itemLista.style.backgroundColor = 'rgb(128, 128, 128)');
   }
 };
 
@@ -54,11 +49,7 @@ const marcarCompleto = function (event) {
   const item = event.target;
   event.stopPropagation();
   if (item.nodeName === 'LI') {
-    if (item.className.indexOf('completed') !== -1) {
-      item.className = '';
-    } else {
-      item.className += ' completed';
-    }
+    item.classList.toggle('completed')
   }
   limpaSelecao();
   salvarLista();
@@ -72,10 +63,9 @@ const apagaTudo = function () {
   salvarLista();
 };
 
-// Não consigo fazer essa função ser auto executavel. Por quê?
-const carregaItensSalvos = function () {
+(function () {
   document.querySelector('ol').innerHTML = localStorage.getItem('listaTarefas');
-};
+})()
 
 const moveParaBaixo = function () {
   avisos.textContent = '';
@@ -83,7 +73,6 @@ const moveParaBaixo = function () {
   const proximo = itemSelecionado.nextSibling;
 
   if (itemSelecionado !== null && proximo != null) {
-    listaOrdenadaDeTarefas.insertBefore(itemSelecionado, proximo);
     listaOrdenadaDeTarefas.insertBefore(proximo, itemSelecionado);
     salvarLista();
   } else {
@@ -97,7 +86,6 @@ const moverParaCima = function () {
   const anterior = itemSelecionado.previousElementSibling;
 
   if (anterior != null) {
-    listaOrdenadaDeTarefas.insertBefore(anterior, itemSelecionado);
     listaOrdenadaDeTarefas.insertBefore(itemSelecionado, anterior);
     salvarLista();
   } else {
@@ -120,7 +108,6 @@ const removerSelecionados = function () {
 };
 
 window.onload = function () {
-  carregaItensSalvos();
   document.addEventListener('click', limparSelecaoClickFora);
   document.getElementById('criar-tarefa').addEventListener('click', criaTarefa);
   listaOrdenadaDeTarefas.addEventListener('dblclick', marcarCompleto);

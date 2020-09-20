@@ -21,13 +21,18 @@ body {
 }
 
 .lista {
-  background-color: rgba(0 , 0 , 0 , 0.1);
+  box-shadow: 3px 3px 3px 3px gray;
   min-height: 300px;
-  width: 90%;
+  width: 75%;
 }
 
 .lista-tarefas {
-  background-color: rgba(255 , 255 , 255 , 0.1);
+  background-color: rgba(255 , 255 , 255 , 0.0);
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-family: 'Cormorant Upright', serif;
+  font-size: 1.5em;
 }
 
 .botoes {
@@ -41,7 +46,7 @@ button {
 }
 
 .completed {
-  text-decoration: line-through solid black;
+  text-decoration: line-through solid black;  
 }
 
 .selected {
