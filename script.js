@@ -1,10 +1,8 @@
-let createTaskBtn = document.getElementById('criar-tarefa');
+
 let toDoList = document.getElementById('lista-tarefas');
 let taskName = document.getElementById('texto-tarefa');
-let clearBtn = document.getElementById('apaga-tudo');
-let removeCompletedBtn = document.getElementById('remover-finalizados');
-let removeSelectedBtn = document.getElementById('remover-selecionado');
 taskName.focus();
+let createTaskBtn = document.getElementById('criar-tarefa');
 
 createTaskBtn.addEventListener('click', function(){
   let item = document.createElement('li');
@@ -29,16 +27,19 @@ createTaskBtn.addEventListener('click', function(){
     }
   })
 
+  let clearBtn = document.getElementById('apaga-tudo');
   clearBtn.addEventListener('click', function(){
     toDoList.innerText = '';
   })
   
+  let removeCompletedBtn = document.getElementById('remover-finalizados');
   removeCompletedBtn.addEventListener('click', function(){
     if (item.classList.contains('completed')){
       toDoList.removeChild(item);
     }
   })
 
+  let removeSelectedBtn = document.getElementById('remover-selecionado');
   removeSelectedBtn.addEventListener('click', function(){
     if (item.classList.contains('selected')){
       toDoList.removeChild(item);
