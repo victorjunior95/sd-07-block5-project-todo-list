@@ -6,3 +6,7 @@ function addItemLista() {
     lista.appendChild(novoItem);
     document.getElementById("texto-tarefa").value = "";
   }
+  function deleteAllItems(){
+    let lista = document.getElementById("lista-tarefas");
+    lista.deleteAllItems;
+  }
