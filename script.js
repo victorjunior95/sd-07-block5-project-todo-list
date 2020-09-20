@@ -4,12 +4,18 @@ let listBranch = document.getElementById("lista-tarefas");
 
 createBranchButton.addEventListener("click", function() {
     if (!(inputBranch.value === "")) {;
-        let litag = document.createElement("li");
-        litag.innerText = inputBranch.value;
-        listBranch.appendChild(litag);
-        inputBranch = "";
-    } else {
-        alert("Adicione um item da tarefa!")
+        let addBranch = document.createElement("li");
+        addBranch.innerText = inputBranch.value;
+        listBranch.appendChild(addBranch);
+        inputBranch.value = "";
     }
     inputBranch.focus();
 });
+
+listBranch.addEventListener("click", function (event) {
+    const classSelected = document.querySelector(".selected")
+    if (classSelected != null) {
+        classSelected.classList.remove("selected")
+    }
+    event.target.classList.add("selected")
+})
