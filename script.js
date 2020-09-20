@@ -97,7 +97,6 @@ document.getElementById('lista-tarefas').addEventListener('dblclick', function (
   const resultBoolean = existClassCompleted(event.target);
   if (resultBoolean) {
     removeClasseCompleted(event.target);
-    event.target.style.backgroundColor = 'rgb(255,255,255)';
   } else addClasseCompleted(event.target);
 });
 
@@ -112,16 +111,13 @@ document.getElementById('salvar-tarefas').addEventListener('click', function () 
 function downItemList(itemSelected) {
   const elementFather = itemSelected.parentNode;
   const lastElementChild = elementFather.lastElementChild;
-  const firstElementChild = elementFather.firstElementChild;
   const nextSibling = itemSelected.nextSibling;
 
   if (itemSelected === lastElementChild) {
-    //itemSelected.style.backgroundColor = 'white';
-    return alert('Não existem itens a baixo')
-  } else {
-    elementFather.insertBefore(itemSelected, nextSibling.nextSibling);
-  }
-  //itemSelected.style.backgroundColor = 'white';
+    // itemSelected.style.backgroundColor = 'white';
+    return alert('Não existem itens a baixo');
+  } elementFather.insertBefore(itemSelected, nextSibling.nextSibling);
+  // itemSelected.style.backgroundColor = 'white';
 }
 
 function upItemList(itemSelected) {
@@ -130,11 +126,11 @@ function upItemList(itemSelected) {
   const previousSibling = itemSelected.previousElementSibling;
 
   if (itemSelected === firstElementChild) {
-    //itemSelected.style.backgroundColor = 'white';
+    // itemSelected.style.backgroundColor = 'white';
     return alert('Não existem itens a cima');
   }
   elementFather.insertBefore(itemSelected, previousSibling);
-  //itemSelected.style.backgroundColor = 'white';
+  // itemSelected.style.backgroundColor = 'white';
 }
 
 document.getElementById('mover-cima').addEventListener('click', function () {
@@ -146,11 +142,11 @@ document.getElementById('mover-cima').addEventListener('click', function () {
 document.getElementById('mover-baixo').addEventListener('click', function () {
   const resultItemSelectec = getItemSelected();
   if (resultItemSelectec === false) return alert('Selecione um item');
-  downItemList(resultItemSelectec);
+    downItemList(resultItemSelectec);
 });
 
 function mountArrayOfCompletedClass() {
-  const arrayOfCompletedClass = []
+  const arrayOfCompletedClass = [];
   for (let index = 0; index < getItemsList.length; index += 1) {
     if (getItemsList[index].getAttribute('class') === comparedClass) {
       arrayOfCompletedClass.push(getItemsList[index]);
