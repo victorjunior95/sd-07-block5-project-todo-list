@@ -12,10 +12,21 @@ buttonCriarTarefa.addEventListener('click', function () {
 });
 
 listaTarefas.addEventListener('click', function (event) {
-  if (document.querySelector('.selected') !== null) {
-    document.querySelector('.selected').style.backgroundColor = 'white';
-    document.querySelector('.selected').classList.remove('selected');
+  if (event.target.tagName === 'li') {
+    if (document.querySelector('.selected') !== null) {
+      document.querySelector('.selected').style.backgroundColor = 'white';
+      document.querySelector('.selected').classList.remove('selected');
+    }
+    event.target.classList.add('selected');
+    event.target.style.backgroundColor = 'rgb(128,128,128)';
   }
-  event.target.classList.add('selected');
-  event.target.style.backgroundColor = 'rgb(128,128,128)';
+
+});
+
+listaTarefas.addEventListener('dblclick', function (event) {
+  if (event.target.classList.contains('completed')) {
+    event.target.classList.remove('completed');
+  } else {
+    event.target.classList.add('completed');
+  }
 });
