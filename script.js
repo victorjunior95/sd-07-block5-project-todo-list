@@ -39,7 +39,7 @@ function removeTodasTarefa() {
 function adicionarTarefa(element, textInput, classElement) {
   const listaTarefa = document.createElement('li');
   listaTarefa.innerText = textInput;
-  listaTarefa.className = 'tarefa'
+  listaTarefa.className = 'tarefa';
   listaTarefa.addEventListener('click', selectedItemList);
   listaTarefa.addEventListener('dblclick', completedItemList);
   if (classElement === 'completed') {
