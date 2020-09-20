@@ -31,11 +31,15 @@ olListaTarefa.addEventListener('click', function (event) {
     }
     event.target.classList.add('selected');
   }
-
-
 })
 
-
-// add escuta li clicado
-// add escuta ol
-// criar uma classe liClicada com a cor
+olListaTarefa.addEventListener('dblclick', function (event) {
+  // if (event.target.classList.contains('completed')) {
+  //   event.target.classList.remove('completed');
+  // } else {
+  //   event.target.classList.add('completed');
+  // }
+  if (event.target.tagName == 'LI') {
+    event.target.classList.toggle('completed');
+  }
+})
