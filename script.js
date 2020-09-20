@@ -4,35 +4,33 @@ let bttCriarTarefa = document.getElementById("criar-tarefa");
 
 bttCriarTarefa.addEventListener('click', function () {
 
-    if (inputLista.value) {
+  if (inputLista.value) {
 
-        let item = document.createElement('li');
+    let item = document.createElement('li');
 
-        item.innerText = inputLista.value;
+    item.innerText = inputLista.value;
 
-        listaTarefas.appendChild(item);
+    listaTarefas.appendChild(item);
 
-        inputLista.value = '';
+    inputLista.value = '';
 
-    }
+  }
 
-    inputLista.focus();
+  inputLista.focus();
 });
 
-listaTarefas.addEventListener('click', function(event) {
+listaTarefas.addEventListener('click', function (event) {
+  if (event.target.tagName == 'LI') {
     let allSelected = document.querySelector('.selected');
     if (allSelected !== null) {
-       allSelected.classList.remove('selected');
+      allSelected.classList.remove('selected');
     }
     event.target.classList.add('selected');
+  }
 });
 
-
-
-
-// listaTarefas.addEventListener( 'click', function (event){
-//     if(document.querySelector('.selected')) {
-//         document.querySelector('selected').classList,this.remove('selected')
-//     }
-//     event.target.classList.add('selected');
-// });
+listaTarefas.addEventListener('dblclick', function (event) {
+  if (event.target.tagName == 'LI') {
+    event.target.classList.toggle('completed');
+  }
+});
