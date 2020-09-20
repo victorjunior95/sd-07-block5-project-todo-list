@@ -42,15 +42,13 @@ creatorButton.addEventListener('click', function () {
 });
 cleanAllButton.addEventListener('click', function () {
   const allLi = document.querySelectorAll('li');
-  allLi.forEach(element => { (olList.removeChild(element)); 
-  });
+  allLi.forEach(element => (olList.removeChild(element)));
 });
 removeFinished.addEventListener('click', function () {
   const allFinished = document.querySelectorAll('.completed');
-  allFinished.forEach(element => { (olList.removeChild(element)); 
-  });
+  allFinished.forEach(element =>  (olList.removeChild(element)))
 });
-removeSelected.addEventListener ('click', function() {
+removeSelected.addEventListener ('click', function () {
   const removeSelectedElement = document.querySelector('.selected');
   olList.removeChild(removeSelectedElement);
 });
@@ -59,7 +57,7 @@ save.addEventListener('click', function () {
   const completed = document.querySelectorAll('.completed');
   if (completed) {
     const liList = document.querySelectorAll('li');
-    for (let index = 0; index < liList.length; index += 1) {
+    for (let index = 0; index < liList.length; inde'x += 1) {
       const value = liList[index].innerText;
       localStorage.setItem(`item${index}`, value);
       const nameElement = liList[index].className;
@@ -101,7 +99,7 @@ moveDown.addEventListener('click', function () {
     afterTask = selectedElement.nextElementSibling;
   }
   if (afterTask) {
-      const txtSelected = selectedElement.innerText;
+    const txtSelected = selectedElement.innerText;
     const classSelected = selectedElement.className;
     const afterTxt = afterTask.innerText;
     const afterClass = afterTask.className;
