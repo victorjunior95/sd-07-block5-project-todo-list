@@ -13,9 +13,17 @@ btCriarTarefa.addEventListener('click', function(){
 });
 
 olListaTarefa.addEventListener("click",function(event){
+    if(event.target.tagName !== 'OL'){
     let liSelected = document.querySelector(".selected")
-    if(liSelected){
+        if(liSelected){
         liSelected.classList.remove('selected')
-    }
+        }
     event.target.classList.add('selected')
+    }
+})
+
+olListaTarefa.addEventListener('dblclick', function(event){
+    if(event.target.tagName !== 'OL'){
+        event.target.classList.toggle('completed')
+    }
 })
