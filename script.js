@@ -14,6 +14,10 @@ function salveItensListOnLocalStorage() {
   localStorage.setItem('itensList', JSON.stringify(arrayItemsList));
 }
 
+function removeItensListOnLocalStorage() {
+  const getArrayList = JSON.parse(localStorage.getItem('itensList'));
+}
+
 function addItemListInOrderList(itemList) {
   document.getElementById('lista-tarefas').appendChild(itemList);
 }
@@ -132,7 +136,7 @@ function downItemList(itemSelected) {
       nexDownItem.innerText = itemSelected.innerText;
       itemSelected.innerText = textNexDownItem;
   }
-  itemSelected.style.backgroundColor = 'white';
+  //itemSelected.style.backgroundColor = 'white';
 }
 
 function upItemList(itemSelected) {
@@ -149,7 +153,7 @@ function upItemList(itemSelected) {
       break;
     }
   }
-  itemSelected.style.backgroundColor = 'white';
+  //itemSelected.style.backgroundColor = 'white';
 }
 
 document.getElementById('mover-cima').addEventListener('click', function() {
