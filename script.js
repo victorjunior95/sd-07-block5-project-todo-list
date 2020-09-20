@@ -49,3 +49,13 @@ finishedRemove.addEventListener('click', function () {
     }
   }
 });
+
+const tasksSave = document.querySelector('#salvar-tarefas');
+let tasksArray = [];
+
+tasksSave.addEventListener('click', function () {
+  for (let index = 0; index < list.children.length; index += 1) {
+    tasksArray.push(list.children[index].innerText);
+  }
+  localStorage.setItem('List_tasks', JSON.stringify(tasksArray));
+});
