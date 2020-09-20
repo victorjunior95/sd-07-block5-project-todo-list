@@ -24,13 +24,8 @@ apagarLista.addEventListener("click", function() {
 });
 
 lista.addEventListener("dblclick", function(event) {
-    let riscado = document.querySelector(".completed");
-    if (riscado != null) {
-        riscado.classList.remove("completed");
-    } else {
-        let register = event.target;
-        register.classList.add("completed");
-    }
+    let register = event.target;
+    register.classList.add("completed");
 });
 //solução adaptada a partir de https://github.com/tryber/sd-07-block5-project-todo-list/blob/749e0a187fda8965fd829f3b488dd175defa6c70/script.js
 
@@ -48,5 +43,7 @@ let apagarItem = document.querySelector("#remover-finalizados");
 
 apagarItem.addEventListener("click", function() {
     let list = document.getElementsByClassName("completed");
-    list[0].remove();
+    while (list.length !== 0) {
+        list[0].remove();
+    }
 });
