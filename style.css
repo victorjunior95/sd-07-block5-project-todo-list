@@ -14,7 +14,7 @@ header {
 }
 
 body {
-    background-color: rgb(163, 219, 181);
+    background-color: rgba(163, 219, 181, 0.2);
     position: relative;
 }
 
@@ -22,7 +22,8 @@ body {
     display: inline-block;
 }
 
-p {
+p,
+#ol {
     font-size: 20px;
     color: rgb(97, 89, 89);
 }

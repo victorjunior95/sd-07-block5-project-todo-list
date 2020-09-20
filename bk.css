@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: rgb(163, 219, 181);
+    background-color: rgba(163, 219, 181);
     z-index: 4;
     position: relative;
 }
