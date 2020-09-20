@@ -3,7 +3,8 @@ const avisos = document.getElementById('avisos');
 
 const criaTarefa = function () {
   const tarefaInput = document.getElementById('texto-tarefa');
-  if (tarefaInput.value !== '') {
+  
+  if (tarefaInput.value) {
     avisos.innerText = '';
     const novaTarefa = document.createElement('li');
     const textNode = document.createTextNode(tarefaInput.value);
@@ -71,7 +72,7 @@ const moveParaBaixo = function () {
   avisos.textContent = '';
   const itemSelecionado = document.querySelectorAll('.selected')[0];
 
-  if (itemSelecionado !== null && itemSelecionado.nextSibling != null) {
+  if (itemSelecionado !== null && itemSelecionado.nextSibling !== null) {
     listaOrdenadaDeTarefas.insertBefore(itemSelecionado.nextSibling, itemSelecionado);
     salvarLista();
   } else {
@@ -79,12 +80,11 @@ const moveParaBaixo = function () {
   }
 };
 
-const moverParaCima = function () {
+const moverParaCima = function (event) {
   avisos.textContent = '';
   const itemSelecionado = document.querySelectorAll('.selected')[0];
-
-  if (itemSelecionado.previousElementSibling != null) {
-    listaOrdenadaDeTarefas.insertBefore(itemSelecionado, itemSelecionado.previousElementSibling);
+  if (itemSelecionado.previousSibling !== null) {
+    listaOrdenadaDeTarefas.insertBefore(itemSelecionado, itemSelecionado.previousSibling);
     salvarLista();
   } else {
     avisos.textContent = 'Fim da lista!';
