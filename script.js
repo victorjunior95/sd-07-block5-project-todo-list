@@ -125,11 +125,12 @@ function downItemList(itemSelected) {
   const nextSibling = itemSelected.nextSibling;
 
   if (itemSelected === lastElementChild) {
-    elementFather.insertBefore(itemSelected, firstElementChild);
+    //itemSelected.style.backgroundColor = 'white';
+    return alert('Não existem itens a baixo')
   } else {
     elementFather.insertBefore(itemSelected, nextSibling.nextSibling);
   }
-  itemSelected.style.backgroundColor = 'white';
+  //itemSelected.style.backgroundColor = 'white';
 }
 
 function upItemList(itemSelected) {
@@ -139,11 +140,11 @@ function upItemList(itemSelected) {
   const previousSibling = itemSelected.previousElementSibling;
 
   if (itemSelected === firstElementChild) {
-    itemSelected.style.backgroundColor = 'white';
+    //itemSelected.style.backgroundColor = 'white';
     return alert('Não existem itens a cima')
   }
   elementFather.insertBefore(itemSelected, previousSibling);
-  itemSelected.style.backgroundColor = 'white';
+  //itemSelected.style.backgroundColor = 'white';
 }
 
 document.getElementById('mover-cima').addEventListener('click', function() {
