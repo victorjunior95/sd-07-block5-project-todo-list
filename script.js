@@ -5,7 +5,7 @@ const arrayItensList = [];
 
 function salveItensListOnLocalStorage() {
   if (getItensList.length === 0) {
-    alert('Lista vazia')
+    alert('Lista vazia');
   } else {
     for (let index = 0; index < getItensList.length; index += 1) {
       arrayItensList.push(getItensList[index].innerHTML);
@@ -15,8 +15,7 @@ function salveItensListOnLocalStorage() {
 }
 
 function addItemListInOrderList(itemList) {
-  const orderList = document.getElementById('lista-tarefas');
-  orderList.appendChild(itemList);
+  document.getElementById('lista-tarefas').appendChild(itemList);
 }
 
 function createItemList(arrayItens) {
@@ -38,13 +37,6 @@ function clearInputValue(item) {
   item.value = '';
 }
 
-document.getElementById('criar-tarefa').addEventListener('click', function () {
-  const inputItem = document.getElementById('texto-tarefa');
-  const arrayItens = [inputItem.value];
-  createItemList(arrayItens);
-  clearInputValue(inputItem);
-});
-
 function chanceBackgroundColorItemList(boolean, itemList) {
   if (boolean) {
     itemList.style.backgroundColor = backgroundColor;
@@ -60,10 +52,14 @@ function checkIfExistItemSelectedInList(itensList) {
   return true;
 }
 
-document.getElementById('lista-tarefas').addEventListener('click', function (event) {
-  const resultCheck = checkIfExistItemSelectedInList(getItensList);
-  chanceBackgroundColorItemList(resultCheck, event.target);
-});
+function getItemSelected() {
+  for (let index = 0; index < getItensList.length; index += 1) {
+    if (getItensList[index].style.backgroundColor === backgroundColor) {
+      return getItensList[index];
+    }
+  }
+  return false;
+}
 
 function existClassCompleted(itemList) {
   if (itemList.getAttribute('class') === comparedClass) {
@@ -85,6 +81,19 @@ function deleteAllItensList(parent) {
     parent.removeChild(parent.firstChild);
   }
 }
+
+document.getElementById('criar-tarefa').addEventListener('click', function () {
+  const inputItem = document.getElementById('texto-tarefa');
+  const arrayItens = [inputItem.value];
+  createItemList(arrayItens);
+  clearInputValue(inputItem);
+});
+
+document.getElementById('lista-tarefas').addEventListener('click', function (event) {
+  const resultCheck = checkIfExistItemSelectedInList(getItensList);
+  chanceBackgroundColorItemList(resultCheck, event.target);
+});
+
 document.getElementById('lista-tarefas').addEventListener('dblclick', function (event) {
   const resultBoolean = existClassCompleted(event.target);
   if (resultBoolean) {
@@ -100,3 +109,33 @@ document.getElementById('salvar-tarefas').addEventListener('click', function () 
   salveItensListOnLocalStorage();
 });
 
+document.getElementById('mover-cima').addEventListener('click', function (event) {
+  const elementFather = document.getElementById('lista-tarefas');
+  elementFather.insert
+});
+
+function downItemList(itemSelected) {
+  const elementFather = itemSelected.parentNode
+  const lastElementChild = elementFather.lastElementChild;
+  const firstElementChild = elementFather.firstElementChild;
+
+  const textFirsElementChild = firstElementChild.innerText;
+  const textLastElementChild = lastElementChild.innerText;
+
+  if (itemSelected === lastElementChild) {
+    lastElementChild.innerText = textFirsElementChild;
+    firstElementChild.innerText = textLastElementChild;
+  } else {
+      const nexDownItem =  itemSelected.nextElementSibling;
+      const textNexDownItem =  nexDownItem.innerText;
+      nexDownItem.innerText = itemSelected.innerText;
+      itemSelected.innerText = textNexDownItem;
+  }
+  itemSelected.style.backgroundColor = 'white';
+}
+
+document.getElementById('mover-baixo').addEventListener('click', function() {
+  const resultItemSelectec = getItemSelected();
+  if (resultItemSelectec === false) return alert('Selecione um item');
+  downItemList(resultItemSelectec);
+});
