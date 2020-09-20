@@ -1,9 +1,10 @@
-let buttonCriarTarefa = document.querySelector("#criar-tarefa");
-let inputTarefa = document.querySelector("#texto-tarefa");
-let listaTarefas = document.querySelector("#lista-tarefas");
+const buttonCriarTarefa = document.querySelector("#criar-tarefa");
+const inputTarefa = document.querySelector("#texto-tarefa");
+const listaTarefas = document.querySelector("#lista-tarefas");
 
 buttonCriarTarefa.addEventListener("click", function () {
-  let tarefaLista = document.createElement("li");
-  listaTarefas.appendChild(tarefaLista);
+  const tarefaLista = document.createElement("li");
   tarefaLista.innerText = inputTarefa.value;
+  listaTarefas.appendChild(tarefaLista);
+  inputTarefa.value = "";
 });
