@@ -6,11 +6,7 @@ window.onload = function () {
     clearField();
     selectItem();
     RiskListChosen();
-    PaintListChosen();
-
-    function printGray() {
-
-    }
+    paintListChosenAndTakeIt();
 
     function insertTextBuildListField() {
         document.querySelector("#criar-tarefa").addEventListener("click", function () {
@@ -57,12 +53,7 @@ window.onload = function () {
         let list = document.querySelectorAll('ol');
         list.forEach(item => { // para cada elemento
             item.addEventListener('dblclick', function (event) {
-                event.target.classList.add('selected'); //verifica qual elemento recebeu a ação
-                list.forEach(item => { // efetuo loop para identificar se
-                    if (item !== event.target) {
-                        item.classList.remove('selected');
-                    }
-                });
+                event.target.classList.add('selected');
             });
         });
     }
@@ -76,11 +67,14 @@ window.onload = function () {
         }
     }
 
-    function PaintListChosen() {
+    function paintListChosenAndTakeIt() {
         let list = document.querySelectorAll('ol');
         for (let item = 0; item < list.length; item += 1) {
             list[item].addEventListener('click', function (event) {
-                event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+                if (event.target.style.backgroundColor === 'rgb(128, 128, 128)') {
+                    event.target.style.backgroundColor = '';
+                } else
+                    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
             });
         }
     }
