@@ -17,8 +17,7 @@ document.addEventListener('click', function (event) {
     for (let index = 0; index < selectedAllTasks.length; index += 1) {
       selectedAllTasks[index].classList.remove('selected');
     }
-    const selectedTask = event.target;
-    selectedTask.classList.add('selected');
+    event.target.classList.add('selected');
   }
 });
 
@@ -35,18 +34,15 @@ document.addEventListener('dblclick', function (event) {
 const cleanButton = document.querySelector('#apaga-tudo');
 
 cleanButton.addEventListener('click', function () {
-  for (let index = 0; list.childElementCount !== 0; index += 1) {
-    list.removeChild(list.children[0]);
-  }
+  list.innerHTML = '';
 });
 
 const finishedRemove = document.querySelector('#remover-finalizados');
 
 finishedRemove.addEventListener('click', function () {
-  for (let index = (list.childElementCount - 1); index >= 0; index -= 1) {
-    if (list.children[index].classList.contains('completed')) {
-      list.removeChild(list.children[index]);
-    }
+  const item = document.querySelectorAll('.completed');
+  for (index = 0; index < item.length; index += 1) {
+    item[index].remove();
   }
 });
 
@@ -59,3 +55,16 @@ tasksSave.addEventListener('click', function () {
   }
   localStorage.setItem('List_tasks', JSON.stringify(tasksArray));
 });
+
+if (typeof (Storage) != "undefined") {
+  if(localStorage.length !== 0) {
+    const oldList = JSON.parse(localStorage.getItem('List_tasks'));
+    console.log(oldList);
+    for (let index = 0; index < oldList.length; index += 1) {
+      const itemList = document.createElement('li');
+      itemList.className = 'ordered-list';
+      itemList.innerText = oldList[index];
+      list.appendChild(itemList);
+    }
+  }
+}
