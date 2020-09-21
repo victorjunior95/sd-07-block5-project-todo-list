@@ -27,11 +27,11 @@ olListaTarefa.addEventListener('click', function (event) {
   if (event.target.tagName == 'LI') {
     let todasAsLISelecionadas = document.querySelector('.selected');
     if (todasAsLISelecionadas != null) {
-      todasAsLISelecionadas.classList.remove('selected')
+      todasAsLISelecionadas.classList.remove('selected');
     }
     event.target.classList.add('selected');
   }
-})
+});
 
 olListaTarefa.addEventListener('dblclick', function (event) {
   // if (event.target.classList.contains('completed')) {
@@ -41,5 +41,25 @@ olListaTarefa.addEventListener('dblclick', function (event) {
   // }
   if (event.target.tagName == 'LI') {
     event.target.classList.toggle('completed');
+  }
+});
+
+let btApagaTudo = document.getElementById('apaga-tudo');
+let btRemoverFinalizados = document.getElementById('remover-finalizados');
+
+btApagaTudo.addEventListener('click', function () {
+  olListaTarefa.innerHTML = '';
+
+  // let listaNova = document.querySelectorAll('ol > li')
+  // for (let i = 0;  i < listaNova.length;i += 1){
+  //   listaNova[i].remove();
+  // }
+})
+
+btRemoverFinalizados.addEventListener('click', function () {
+  let item = document.querySelectorAll('.completed');
+  for (i = 0; i < item.length ; i += 1) {
+    console.log(item[i])
+    item[i].remove()
   }
 })
