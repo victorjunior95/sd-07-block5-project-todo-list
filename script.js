@@ -28,8 +28,7 @@ function apagaTudo() {
   const lista = document.getElementById('lista-tarefas');
   while (lista.firstChild) {
   lista.removeChild(lista.lastChild);
-}
-  lista.innerHTML = '<h3>Itens Adicinados</h3>';
+ }
 }
 botaoClear.addEventListener('click', apagaTudo);
 // Function to select indivudual item.
@@ -40,6 +39,7 @@ function selected(clickIten) {
     itemList.classList.remove('selected');
   }
   clickIten.target.classList.add('selected');
+  document.getElementById('lista-tarefas').classList.remove('selected');
 }
 itensList.addEventListener('click', selected)
 // Function to mark as completed.
@@ -64,12 +64,37 @@ removerSelecionado.addEventListener('click', function () {
   linhas[count].remove();
   }
 });
-
+// Function to save list status
 const saveTask = document.getElementById('salvar-tarefas');
 saveTask.addEventListener('click', function () {
   localStorage.setItem('saved', document.getElementById('lista-tarefas').innerHTML);
 });
+// Function to auto save list status
 const automaticSave = function () {
   localStorage.setItem('saved', document.getElementById('lista-tarefas').innerHTML);
 }
 window.onchange = automaticSave;
+// Function to move iten up.
+function itensListMoveUp() {
+  const list = document.getElementById('lista-tarefas');
+  const listItens = document.querySelectorAll('li');
+  for (let count = 1; count < listItens.length; count += 1) {
+    if (listItens[count])
+    if ((listItens[count].className == 'itens-list selected') || (listItens[count].className == 'itens-list completed selected') || (listItens[count].className == 'itens-list selected completed')) {
+        listItens[count] = list.insertBefore(listItens[count], listItens[count - 1]);
+      }
+  }
+}
+
+document.getElementById('mover-cima').addEventListener('click', itensListMoveUp);
+// Function to move iten down.
+function itensListMoveDown() {
+  const list = document.getElementById('lista-tarefas');
+  const listItens = document.querySelectorAll('li');
+  for (let count = 0; count < listItens.length - 1; count += 1) {
+    if ((listItens[count].className == 'itens-list selected') || (listItens[count].className == 'itens-list completed selected') || (listItens[count].className == 'itens-list selected completed')) {
+        listItens[count] = list.insertBefore(listItens[count + 1], listItens[count]);
+      }
+  }
+}
+document.getElementById('mover-baixo').addEventListener('click', itensListMoveDown);
