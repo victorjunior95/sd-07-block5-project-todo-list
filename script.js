@@ -36,13 +36,13 @@ function changeBGColorTask(task) {
 }
 
 function addAndRemoveCompletedTask(task) {
-  task.addEventListener("dblclick", function () {
-    if (task.classList.contains("completed")) {
+  task.addEventListener("dblclick", function (event) {
+    if (event.target.classList.contains("completed")) {
       console.log('tirou')
       task.classList.remove("completed");
     } else {
       console.log('colocou')
-      task.classList.add("completed");
+      event.target.classList.add("completed");
     }
   });
 }
