@@ -4,6 +4,14 @@ let orderedList = document.querySelector("#lista-tarefas");
 let indexTask = 0;
 let firstTime = true;
 let removerBtn = document.querySelector("#remover-finalizados");
+let clearBtn = document.querySelector("#apaga-tudo");
+
+clearBtn.addEventListener("click", function() {
+  let allTasks = document.querySelectorAll('li');
+  for (let index = 0; index < allTasks.length; index += 1) {
+    orderedList.removeChild(allTasks[index]);
+  }
+})
 
 removerBtn.addEventListener("click", function() {
   let completed = document.getElementByClassName("completed");
