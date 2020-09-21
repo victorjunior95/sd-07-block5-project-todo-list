@@ -1,7 +1,12 @@
+body {
+  background-color: rgb(222, 233, 206);
+}
+
 .completed {
   text-decoration: line-through;
 }
 
 .selected {
-  background-color: rgb(128, 128, 128);
+  background-color: rgb(128 , 128 , 128);
+  max-width: 23%;
 }
