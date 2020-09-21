@@ -19,6 +19,9 @@ const controllerEventsClicks = (type) => {
       case 'btnAddList':
         addList();
         break;
+      case 'selectedItem':
+        selectionItemList(event);
+        break;
     }
   })
 }
@@ -36,10 +39,22 @@ const addList = () => {
 const createElementList = (text) => {
   const liElementList = document.createElement('li');
   liElementList.innerText = text;
+  liElementList.className = 'list';
+  liElementList.dataset.event = 'selectedItem';
+
   return liElementList;
 }
 const clearTextInput = (Element) => {
   Element.value = '';
+}
+const selectionItemList = (event) => {
+  const currentItemSelected = document.querySelector('.selected');
+  if (currentItemSelected) {
+    currentItemSelected.classList.remove('selected');
+    event.target.classList.add('selected');
+  } else {
+    event.target.classList.add('selected');
+  }
 }
 
 
