@@ -4,7 +4,7 @@ let btCriarTarefa = document.getElementById("criar-tarefa");
 let inpTextoTarefa = document.getElementById("texto-tarefa");
 let olListaTarefa = document.getElementById("lista-tarefas");
 
-// Para receber a ação (click) e realizar a função de adicionar o valor do input à orderList
+// Para receber a ação (click) e realizar a função de adicionar o valor do input à olListaTarefa
 btCriarTarefa.addEventListener("click", function () {
     // Testar se há conteúdo no input
     if (inpTextoTarefa.value !== "") {
@@ -21,4 +21,21 @@ btCriarTarefa.addEventListener("click", function () {
     }
     // *perfumaria* colocar o foco no input
     inpTextoTarefa.focus();
+})
+
+// criar escuta para add background
+olListaTarefa.addEventListener("click", function(event) {
+    // tagName referencia o nome da tag HTML
+    if (event.target.tagName == "LI") {
+        let todasAsLiSelecionadas = document.querySelector(".selected");
+
+        if (todasAsLiSelecionadas != null) {
+        // remover class select
+            todasAsLiSelecionadas.classList.remove("selected");
+        }
+    
+        // add class select onde for clicado
+        event.target.classList.add("selected");
+    }
+    // estudar sobre toggle
 })
