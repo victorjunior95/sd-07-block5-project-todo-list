@@ -29,3 +29,9 @@ listaTarefas.addEventListener('click', function (event) {
 listaTarefas.addEventListener('dblclick', function (event) {
   event.target.classList.toggle('completed');
 });
+
+let btApagaTudo = document.getElementById('apaga-tudo');
+let btRemoverFinalizados = document.getElementById('remover-finalizados');
+
+
+
