@@ -2,13 +2,13 @@ let texto = document.getElementById('texto-tarefa');
 let criar = document.getElementById('criar-tarefa');
 let lista = document.getElementById('lista-tarefas');
 
-criar.addEventListener('click', function() {
-    if (texto.value !== '') {
-        let li = document.createElement('li');
-        li.innerText = texto.value;
-        lista.appendChild(li);
-        texto.value = '';
-        texto.focus();
+criar.addEventListener('click', function(event) {
+    if (event.target.tagName == 'LI') {
+        let todasAsLISelecionadas = document.querySelector('.selected');
+        if (todasAsLISelecionadas != null) {
+            todasAsLISelecionadas.classList.remove('selected');
+        }
+        event.target.classList.add('selected');
     }
 });
 
@@ -24,8 +24,10 @@ apagarLista.addEventListener('click', function() {
 });
 
 lista.addEventListener('dblclick', function(event) {
-    if (event.target.tagName == 'LI') {
-        event.target.classList.toggle('completed');
+    if (event.target.classList.contains('completed')) {
+        event.target.classList.remove('completed');
+    } else {
+        event.target.classList.add('completed');
     }
 });
 
