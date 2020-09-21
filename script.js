@@ -34,6 +34,13 @@ const controllerEventsClicks = (type) => {
       case 'saveList':
         saveListLocalStorage();
         break
+      case 'moveUpSelected':
+        moveUpSelected();
+        break
+      case 'moveDownSelected':
+        moveDownSelected();
+        break
+
 
     }
   })
@@ -98,31 +105,48 @@ const clearListCompleted = () => {
   })
 }
 
-
-
 const saveListLocalStorage = () => {
-  const lists = document.querySelectorAll('.list');
-  let listsSave = [];
-  lists.forEach(list => {
-    listsSave.push(list.innerText);
-  })
-  localStorage.setItem("lists", JSON.stringify(listsSave));
+  const lists = document.querySelector('#lista-tarefas').innerHTML;
+  localStorage.setItem("lists", lists);
 }
 
 const loadListLocalStorage = () => {
-  let listsSave = JSON.parse(localStorage.getItem('lists'));
+  let listsSaved = localStorage.getItem('lists');
   const olLists = document.querySelector('#lista-tarefas');
+
   if (localStorage.getItem('lists')) {
-    for (const list of listsSave) {
-      olLists.appendChild(createElementList(list))
-    }
+    olLists.innerHTML = listsSaved;
   }
 }
+const moveUpSelected = () => {
+
+  const currentItemSelected = document.querySelector('.selected');
+  const myLists = document.querySelector('#lista-tarefas');
+
+  if (currentItemSelected !== myLists.firstChild) {
+    const previousElement = currentItemSelected.previousElementSibling;
+    myLists.insertBefore(currentItemSelected, previousElement)
+  }
+}
+const moveDownSelected = () => {
+  const currentItemSelected = document.querySelector('.selected');
+  const myLists = document.querySelector('#lista-tarefas');
+  if (currentItemSelected !== myLists.lastChild) {
+    const nextElement = currentItemSelected.nextElementSibling;
+    myLists.insertBefore(nextElement, currentItemSelected)
+  } else {
+    console.log('sou o último')
+  }
+}
+
 
 window.onload = () => {
 
   handleEventsController('click', 'dblclick');
   loadListLocalStorage()
+
+
+
 
 
 }
