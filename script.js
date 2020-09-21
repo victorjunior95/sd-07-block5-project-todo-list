@@ -12,7 +12,18 @@ if(inputTaskText.value !== ''){
     inputTaskText.value= '';
  
 }
-    inputTaskText.focus();
-
-    
+    inputTaskText.focus();   
 });
+
+taskList.addEventListener('click',function(event){
+
+
+      if(event.target.tagName == 'LI'){
+  let allLi = document.querySelector('.selected'); 
+    if(allLi != null)
+   {
+       allLi.classList.remove('selected');
+   } else{
+       event.target.classList.add('selected');}
+   }
+})
