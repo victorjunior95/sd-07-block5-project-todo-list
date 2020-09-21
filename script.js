@@ -1,3 +1,4 @@
+const botaoSalvarLista = document.querySelector("#salvar-tarefas");
 const botaoApagarLista = document.querySelector("#apaga-tudo");
 const botaoRemoverSelecionado = document.querySelector("#remover-selecionado");
 const botaoRemoverFinalizados = document.querySelector("#remover-finalizados");
@@ -60,6 +61,19 @@ function apagarFinalizados () {
         finalizados[index].remove();
     }    
 }
+
+botaoSalvarLista.addEventListener('click', salvarLista);
+function salvarLista () {
+    let listaParaSalvar = document.querySelectorAll('#list');
+    let gravarLista = []
+    for (let i = 0; i < listaParaSalvar.length; i++) {
+        gravarLista.push(listaParaSalvar[i].textContent);
+    }
+    localStorage.setItem("lista", gravarLista);
+
+}
+
+
 
 window.onload = () => {
     InputTextField ()
