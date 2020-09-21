@@ -37,16 +37,16 @@ const selecionaItemLista = function (event) {
   }
 };
 
-const limparSelecaoClickFora = function (event) {
+/* const limparSelecaoClickFora = function (event) {
   const item = event.target;
   if (item.nodeName !== 'LI' && item.nodeName !== 'BUTTON') {
     limpaSelecao();
   }
-};
+}; */
 
 const salvarLista = function () {
   localStorage.clear();
-  localStorage.setItem('listaTarefas', listaOrdenadaDeTarefas.innerHTML);
+  localStorage.setItem('listaTarefas', listaOrdenadaDeTarefas.innerHTML.replace('selected', ''));
 };
 
 const marcarCompleto = function (event) {
@@ -60,9 +60,7 @@ const marcarCompleto = function (event) {
 };
 
 const apagaTudo = function () {
-  //listaOrdenadaDeTarefas.childNodes
   const listaLi = document.querySelectorAll('li');
-  //const listaLi = listaOrdenadaDeTarefas.children
   listaLi.forEach((item) => {
     item.remove();
   });
@@ -79,7 +77,6 @@ const moveParaBaixo = function () {
 
   if (itemSelecionado.nextSibling !== null) {
     listaOrdenadaDeTarefas.insertBefore(itemSelecionado.nextSibling, itemSelecionado);
-    salvarLista();
   } else {
     mensagemAoUsuario('Fim da lista!');
   }
@@ -89,12 +86,11 @@ const moverParaCima = function () {
   mensagemAoUsuario('');
   const itemSelecionado = document.querySelector('.selected');
 
-  if (itemSelecionado.previousSibling !== null && itemSelecionado.firstChild !== itemSelecionado) {
+  if (itemSelecionado.previousSibling !== null) {
     listaOrdenadaDeTarefas.insertBefore(itemSelecionado, itemSelecionado.previousSibling);
-    salvarLista();
-  }/* else {
+  } else {
     mensagemAoUsuario('Fim da lista!');
-  }*/
+  }
 };
 
 const removerFinalizados = function () {
