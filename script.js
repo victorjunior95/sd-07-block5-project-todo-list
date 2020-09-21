@@ -28,14 +28,15 @@ window.onload = function () {
     function clearListedField() {
         let list = document.querySelectorAll('ol');
         let btn = document.querySelector('.clearReadyBtn');
-            list.forEach(item => {
-                btn.addEventListener('click', function () {
-                    console.log(item.className === 'item selected');
-                    if (item.className === 'item selected' ) {
-                        list.removeChild(item);
-                    }
-                });
+        list.forEach(item =>{
+            btn.addEventListener('click', function() {
+                let atributoDiv = document.querySelector('.selected').getAttribute('class');
+                console.log(atributoDiv);
+                if (atributoDiv === 'item selected') {
+                    item.innerText = '';
+                }
             });
+        });
     }
 
 
@@ -48,23 +49,7 @@ window.onload = function () {
         });
     }
 
-    // function selectItem() {
-    //     let list = document.querySelectorAll('ol');
-    //     list.forEach(item => { // para cada elemento
-    //         item.addEventListener('dblclick', function (event) {
-    //             event.target.classList.add('selected');
-    //         });
-    //     });
-    // }
 
-    // function RiskListChosen() {
-    //     let list = document.querySelectorAll('ol');
-    //     for (let item = 0; item < list.length; item += 1) {
-    //         list[item].addEventListener('dblclick', function (event) {
-    //             event.target.style.textDecoration = 'line-through';
-    //         });
-    //     }
-    // }
     function RiskListChosen() {
         let list = document.querySelectorAll('ol');
         list.forEach(item => {
@@ -74,11 +59,9 @@ window.onload = function () {
                     event.target.style.textDecoration = '';
                     event.target.classList.remove('selected');
                 } else
-                    event.target.style.textDecoration = 'line-through solid';
-                event.target.style.textDecorationColor = 'rgb(0,0,0)'
+                    event.target.style.textDecoration = 'line-through solid rgb(0,0,0)';
             });
         });
-
     }
 
 
