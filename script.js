@@ -83,7 +83,7 @@ up.addEventListener('click', function () {
   const upItems = document.querySelectorAll('.ordered-list');
   for (let index = 0; index < upItems.length; index += 1) {
     if (upItems[index].classList.contains('selected') && index !== 0) {
-      let positionChange = list.insertBefore(upItems[index], upItems[index - 1]);
+      list.insertBefore(upItems[index], upItems[index - 1]);
     }
   }
 });
@@ -94,7 +94,7 @@ down.addEventListener('click', function () {
   const downItems = document.querySelectorAll('.ordered-list');
   for (let index = 0; index < downItems.length; index += 1) {
     if (downItems[index].classList.contains('selected') && index !== downItems.length - 1) {
-      let positionChange = list.insertBefore(downItems[index], downItems[index + 1].nextSibling);
+      list.insertBefore(downItems[index], downItems[index + 1].nextSibling);
     }
   }
 });
