@@ -69,6 +69,18 @@ function removeFinalizados() {
     }   
 }
 
+let buttonRemoverSelecionado = document.getElementById("remover-selecionado");
+buttonRemoverSelecionado.addEventListener("click", removeSelecionado);
+
+// Função que remove o item selecionado
+function removeSelecionado() {
+    let itemSelecionado = document.getElementById("selected");
+    if (itemSelecionado != null) {
+        itemSelecionado.remove();
+    }
+}
+
+
 // let botaoParaBaixo = document.getElementById("mover-baixo");
 // botaoParaBaixo.addEventListener("click", moveParaBaixo);
 
