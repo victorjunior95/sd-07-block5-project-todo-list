@@ -36,3 +36,11 @@ let btRemoverFinalizados = document.getElementById('remover-finalizados');
 btApagaTudo.addEventListener('click', function () {
   listaTarefas.innerHTML = '';
 });
+//Observar que querySelectorAll dá um node list e getElementsByClassName dá um HTML Colection. Para efeito de nó é melhor nodeList
+btRemoverFinalizados.addEventListener('click', function () {
+  let item = document.querySelectorAll('.completed');
+
+  for (let index = 0; index < item.length; index += 1) {
+    item[index].remove();
+  }
+});
