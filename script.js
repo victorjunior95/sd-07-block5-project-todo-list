@@ -33,12 +33,12 @@ lista.addEventListener('dblclick', function(event) {
 
 lista.addEventListener('click', function(event) {
     if (event.target.tagName == 'LI') {
-        let todasAsLISelecionadas = document.querySelector('.selected');
+        let todasAsLISelecionadas = document.querySelector('.selecionado');
         if (todasAsLISelecionadas != null) {
-            todasAsLISelecionadas.classList.remove('selected');
+            todasAsLISelecionadas.classList.remove('selecionado');
         }
 
-        event.target.classList.add('selected');
+        event.target.classList.add('selecionado');
     }
 });
 
