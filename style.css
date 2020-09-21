@@ -1,8 +1,31 @@
+header {
+width: 100%;
+text-align: center;
+
+}
+
+ol{
+    margin-left: 300px;
+    font-size: 30px;
+    width: 30%;
+}
+
+body {
+background-color: thistle;
+}
+
 .selected {
     background-color: rgb(128, 128, 128);
 }
+
 .completed {
     text-decoration:line-through solid rgb(0, 0, 0);
 }
-
-
+button {
+    background-color: rgb(75, 187, 121);
+    border-radius:10px;
+    color:white;
+    height: 30px;
+    
+    
+}
