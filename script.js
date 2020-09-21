@@ -3,7 +3,7 @@ let inpTextoTarefa = document.getElementById('texto-tarefa');
 let olListaTarefa = document.getElementById('lista-tarefas');
 
 btCriarTarefa.addEventListener('click', function () {
-    // Testar de input tem conteudo
+    // Testar se input tem conteudo
     // criar li
     // conteudo dentro da li
     //add li como filha da ol
@@ -11,13 +11,11 @@ btCriarTarefa.addEventListener('click', function () {
    //colocar o foco no input 
    if (inpTextoTarefa.value ) {
    let liTag = document.createElement('li');
-    
-   liTag.innerText = inpTextoTarefa.value
+    liTag.innerText = inpTextoTarefa.value
    // let text = document.getElementById('texto-tarefa');
    //liTag.appendChild(text)
     olListaTarefa.appendChild(liTag);
     inpTextoTarefa.value = '';
-
 }
 inpTextoTarefa.focus();
 });
@@ -25,7 +23,8 @@ inpTextoTarefa.focus();
 olListaTarefa.addEventListener('click', function (event) {
     if(event.target.tagName == 'LI'){
     let todasAsLiSelecionadas = document.querySelector('.selected');
-    if(todasAsLiSelecionadas == null) {
+    console.log(todasAsLiSelecionadas)
+    if(todasAsLiSelecionadas !== null) { 
         todasAsLiSelecionadas.classList.remove('selected')
     }
     event.target.classList.add('selected');
@@ -34,12 +33,13 @@ olListaTarefa.addEventListener('click', function (event) {
 // add escuta li clicada
 // add escuta ol
 // criar uma classe liClicada com a cor
-olListaTarefa.addEventListener('dbclick', function (event) {
+olListaTarefa.addEventListener('dblclick', function (event) {
 // if(event.target.classList.contains('completed'){
 //     event.target.classList.remove('completed');
 // } else{
 // event.target.classList.add('completed');
 // }
+
     if(event.target.tagName == 'LI'){
     event.target.classList.toggle('completed');
     }
