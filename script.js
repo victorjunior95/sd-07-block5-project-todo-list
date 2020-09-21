@@ -48,8 +48,8 @@ olLista.addEventListener('dblclick', function(event) {
    }
 })
 
-//remover seleciondos
-const btRmvSelect = document. getElementById("remover-selecionado");
+//remover finalizados
+const btRmvSelect = document. getElementById("remover-finalizados);
 btRmvSelect.addEventListener('click', function () {
    const item = document.querySelectorAll('.completed');
    for (let i = 0; i < item.length; i+=1){
