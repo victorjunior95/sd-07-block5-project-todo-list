@@ -30,7 +30,7 @@ olListaTarefa.addEventListener('dblclick', function (event) {
   }
 });
 btApagarTudo('click', function () {
-    olListaTarefa.removeChild
+    olListaTarefa.innerHTML = ''
 });
 
 btRemoverFinalizados('click', function(){
