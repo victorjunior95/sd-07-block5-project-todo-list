@@ -33,19 +33,29 @@ lista.addEventListener('dblclick', function(event) {
 
 lista.addEventListener('click', function(event) {
     if (event.target.tagName == 'LI') {
-        let todasAsLISelecionadas = document.querySelector('.selecionado');
-        if (todasAsLISelecionadas != null) {
-            todasAsLISelecionadas.classList.remove('selecionado');
+        let selecionado = document.querySelector('.selecionado');
+        if (selecionado != null) {
+            selecionado.classList.remove('selecionado');
         }
 
         event.target.classList.add('selecionado');
     }
 });
+//consultei o repositorio de nosso projeto, pois havia seguido uma das linhas sugeridas que funcionava de um modo um pouco diferente, apagando primeiro para só depois adicionor a classe.
+//https://github.com/tryber/sd-07-block5-project-todo-list/blob/37e92cec09a15836f1b759992ef09af545e682fa/script.js
 
-let apagarItem = document.querySelector('#remover-finalizados');
-apagarItem.addEventListener('click', function() {
+let apagarFinalizados = document.querySelector('#remover-finalizados');
+apagarFinalizados.addEventListener('click', function() {
     let list = document.getElementsByClassName('completed');
     while (list.length !== 0) {
         list[0].remove();
+    }
+});
+
+let apagarSelecionado = document.getElementById('remover-selecionado');
+apagarSelecionado.addEventListener('click', function(event) {
+    let selecionado = document.querySelector('.selecionado');
+    if (selecionado != null) {
+        lista.removeChild(selecionado);
     }
 });
