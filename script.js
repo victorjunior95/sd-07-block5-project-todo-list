@@ -25,16 +25,16 @@ list.addEventListener('click', function(event) {
     }
 });
 
-// marca como concluída
+// marca como concluída - Refatorando 
 list.addEventListener('dblclick', function(event) {
-    if (event.target.tagName == "LI") {
+    if (event.target.tagName == 'LI') {
         if(event.target.classList.contains('completed')) {
             event.target.classList.remove('completed');
         } else {
             const completed = event.target;
             completed.classList.add('completed');
         }
-    }
+    } // pode usar event.target.classList.toggle('completed') - remove ou add completed
 });
 
 // remove finaizados
@@ -43,4 +43,10 @@ deleteCompleted.addEventListener('click', function() {
     while (document.querySelector('.completed')) { // remove só os completed
         document.querySelector('ol').removeChild(document.querySelector('.completed'));
     }
+});
+
+// remove selecionado
+const deleteSelected = document.getElementById('remover-selecionado');
+deleteSelected.addEventListener('click', function() {
+    document.querySelector('ol').removeChild(document.querySelector('.selected'));
 });
