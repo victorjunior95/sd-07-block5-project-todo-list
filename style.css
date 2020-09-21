@@ -1,28 +1,29 @@
 header {
-text-align: center;
-width: 100%;
+  text-align: center;
+  width: 100%;
 }
 
 ol {
-    font-size: 30px;
-    margin-left: 300px;
-    width: 30%;
+  font-size: 30px;
+  margin-left: 300px;
+  width: 30%;
 }
 
 body {
-background-color: thistle;
+  background-color: thistle;
 }
 
 .selected {
-    background-color: rgb(128, 128, 128);
+  background-color: rgb( 128 , 128 , 128 );
 }
 
 .completed {
-    text-decoration:line-through solid rgb(0, 0, 0);
+  text-decoration: line-through solid rgb(0, 0, 0);
 }
+
 button {
-    background-color: rgb(75, 187, 121);
-    border-radius:10px;
-    color:white;
-    height: 30px;
+  background-color: rgb( 75 , 187 , 121 );
+  border-radius: 10px;
+  color: white;
+  height: 30px;
 }

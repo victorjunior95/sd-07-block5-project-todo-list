@@ -7,15 +7,15 @@ add.addEventListener('click', function () {
   itensList.innerText = assignment.value;
   assignment.value = '';
 
-  itensList.addEventListener('click', function () {  
-  const selected = document.querySelector('.selected');
+itensList.addEventListener('click', function () {  
+    const selected = document.querySelector('.selected');
     if (selected) {
       selected.classList.remove('selected');
     }
   itensList.classList.add('selected');
-})
+  });
 
-  itensList.addEventListener('dblclick', function () { 
+itensList.addEventListener('dblclick', function () { 
     if (itensList.classList.contains('completed')) {
       itensList.classList.remove('completed');
     } else {
@@ -36,17 +36,15 @@ save.addEventListener('click', function () {
   localStorage.setItem('Tarefas', document.querySelector('#lista-tarefas').innerHTML);
 });
 
-
-
 function Load() {
   document.querySelector('#lista-tarefas').innerHTML = localStorage.getItem('Tarefas');
-};
+}
 window.onload = Load;
 
 const removed = document.querySelector('#remover-finalizados');
   removed.addEventListener('click', function () {
-   while (document.querySelector('.completed')) {
-    document.querySelector('ol').removeChild(document.querySelector('.completed'));
+    while (document.querySelector('.completed')) {
+     document.querySelector('ol').removeChild(document.querySelector('.completed'));
   }
 });
 
