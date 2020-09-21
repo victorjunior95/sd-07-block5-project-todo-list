@@ -65,7 +65,8 @@ buttonMoveDown.addEventListener('click', function () {
       if(olToDoList.children[index] === olToDoList.lastChild) {
         alert('impossível mover para baixo!');
       } else {
-         olToDoList.insertBefore(olToDoList.children[index], olToDoList.children[index].nextElementSibling);
+        olToDoList.children[index].nextElementSibling.after(olToDoList.children[index])
+        break;
       }
     }
   }
