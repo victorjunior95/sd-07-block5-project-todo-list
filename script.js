@@ -1,7 +1,7 @@
 const textoTarefa = document.getElementById('texto-tarefa');
 const botaoCriarTarefa = document.getElementById('criar-tarefa');
 const listaTarefas = document.getElementById('lista-tarefas');
-let arrayListaComTodasTarefas = [];
+const arrayListaComTodasTarefas = [];
 
 // Adicionando itens na lista, apagando o campo de preenchimento
 botaoCriarTarefa.addEventListener('click', function () {
@@ -33,5 +33,6 @@ listaTarefas.addEventListener('dblclick', function (event) {
 let btApagaTudo = document.getElementById('apaga-tudo');
 let btRemoverFinalizados = document.getElementById('remover-finalizados');
 
-
-
+btApagaTudo.addEventListener('click', function () {
+  listaTarefas.innerHTML = '';
+});

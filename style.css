@@ -3,18 +3,18 @@
 }
 
 #criar-tarefa {
-  height: 21px;
-  width: 90px;
   background-color: gray;
   color: white;
+  height: 21px;
+  width: 90px;
 }
 
 #apaga-tudo,
 #remover-finalizados {
-  height: 21px;
-  width: 110px;
   background-color: gray;
   color: white;
+  height: 21px;
+  width: 110px;
 }
 
 .selected {
