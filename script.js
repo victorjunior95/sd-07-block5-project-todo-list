@@ -30,7 +30,7 @@ olListaTarefa.addEventListener("click", function(event) {
         let todasAsLiSelecionadas = document.querySelector(".selected");
 
         if (todasAsLiSelecionadas != null) {
-        // remover class select
+            // remover class select
             todasAsLiSelecionadas.classList.remove("selected");
         }
     
@@ -38,4 +38,21 @@ olListaTarefa.addEventListener("click", function(event) {
         event.target.classList.add("selected");
     }
     // estudar sobre toggle
+})
+
+// criar uma escuta para o doble click
+olListaTarefa.addEventListener("dblclick", function(event) {
+    // if (event.target.tagName == "LI") {
+    //     // verificar se o item clicado tem ou nao a classe complited
+    //     if (event.target.classList.contains("completed")) {
+    //         // remover class complited
+    //         todasAsLiSelecionadas.classList.remove("completed");
+    //     } else {
+    //         event.target.classList.add("completed");
+    //     }
+    // }
+    if (event.target.tagName == "LI") {
+        // refatorando o if acima
+        event.target.classList.toggle("completed");
+    }
 })
