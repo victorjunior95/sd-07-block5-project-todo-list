@@ -1,5 +1,4 @@
 // handle events
-
 const handleEventsController = (...types) => {
   for (const type of types) {
     switch (type) {
@@ -9,13 +8,11 @@ const handleEventsController = (...types) => {
       case 'dblclick':
         controllerEventsDoubleClicks(type);
         break;
-
     }
   }
 }
 
 const controllerEventsClicks = (type) => {
-
   document.addEventListener(type, (event) => {
     const eventDataSet = event.target.dataset.click;
     switch (eventDataSet) {
@@ -43,8 +40,6 @@ const controllerEventsClicks = (type) => {
       case 'removeSelected':
         removeSelected();
         break
-
-
     }
   })
 }
@@ -70,18 +65,20 @@ const addListFromInput = () => {
     alert('text not exist')
   }
 }
+
 const createElementList = (text) => {
   const liElementList = document.createElement('li');
   liElementList.innerText = text;
   liElementList.className = 'list';
   liElementList.dataset.click = 'selectedItem';
   liElementList.dataset.dblclick = 'completedItem'
-
   return liElementList;
 }
+
 const clearTextInput = (Element) => {
   Element.value = '';
 }
+
 const selectionItemList = (event) => {
   const currentItemSelected = document.querySelector('.selected');
   if (currentItemSelected) {
@@ -91,6 +88,7 @@ const selectionItemList = (event) => {
     event.target.classList.add('selected');
   }
 }
+
 const addCompletedItemList = (event) => {
   event.target.classList.toggle('completed');
 }
@@ -116,29 +114,33 @@ const saveListLocalStorage = () => {
 const loadListLocalStorage = () => {
   let listsSaved = localStorage.getItem('lists');
   const olLists = document.querySelector('#lista-tarefas');
-
   if (localStorage.getItem('lists')) {
     olLists.innerHTML = listsSaved;
   }
 }
-const moveUpSelected = () => {
 
+const moveUpSelected = () => {
   const currentItemSelected = document.querySelector('.selected');
   const myLists = document.querySelector('#lista-tarefas');
-
-  if (currentItemSelected !== myLists.firstChild) {
-    const previousElement = currentItemSelected.previousElementSibling;
-    myLists.insertBefore(currentItemSelected, previousElement)
+  if (currentItemSelected) {
+    if (currentItemSelected !== myLists.firstChild) {
+      const previousElement = currentItemSelected.previousElementSibling;
+      myLists.insertBefore(currentItemSelected, previousElement)
+    }
   }
 }
+
 const moveDownSelected = () => {
   const currentItemSelected = document.querySelector('.selected');
   const myLists = document.querySelector('#lista-tarefas');
-  if (currentItemSelected !== myLists.lastChild) {
-    const nextElement = currentItemSelected.nextElementSibling;
-    myLists.insertBefore(nextElement, currentItemSelected)
+  if (currentItemSelected) {
+    if (currentItemSelected !== myLists.lastChild) {
+      const nextElement = currentItemSelected.nextElementSibling;
+      myLists.insertBefore(nextElement, currentItemSelected)
+    }
   }
 }
+
 const removeSelected = () => {
   const currentItemSelected = document.querySelector('.selected');
   if (currentItemSelected) {
