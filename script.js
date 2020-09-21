@@ -56,3 +56,20 @@ olListaTarefa.addEventListener("dblclick", function(event) {
         event.target.classList.toggle("completed");
     }
 })
+
+let btApagaTudo = document.getElementById("apaga-tudo");
+let btRemoverFinalizados = document.getElementById("remover-finalizados");
+
+// escuta para o botão apaga-tudo
+btApagaTudo.addEventListener("click", function () {
+    // while
+    // id e removeu os li's
+    // for each
+    // remove child
+    // innerHTML = ""
+    
+    let listaNova = document.querySelectorAll("li")
+    for (let index = 0; index < listaNova.length; index += 1) {
+        listaNova[index].remove();
+    }
+})
