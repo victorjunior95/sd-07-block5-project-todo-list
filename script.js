@@ -1,8 +1,6 @@
 const buttonCriarTarefa = document.querySelector('#criar-tarefa');
 const buttonDeletarTudo = document.querySelector('#apaga-tudo');
-const buttonRemoverSelecionados = document.querySelector(
-  '#remover-finalizados'
-);
+const buttonRemoverSelecionados = document.querySelector('#remover-finalizados');
 const inputTarefa = document.querySelector('#texto-tarefa');
 const listaTarefas = document.querySelector('#lista-tarefas');
 
