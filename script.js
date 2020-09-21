@@ -6,6 +6,7 @@ let vetorLista = lista.getElementsByTagName('li');
 function criarTarefa() {
     let item = document.createElement('li');
     item.innerText = caixaTexto.value;
+    item.className = "uncompleted";
     lista.appendChild(item);
     caixaTexto.value = '';
     item.addEventListener("click", function() {mudarCor(item);});
@@ -22,11 +23,11 @@ function tiraCor(item) {
 }
 
 function riscaItem(item) {
-    if(item.style.textDecoration === "none") {
-        item.style.textDecoration = "line-through";
+    if(item.className === "uncompleted") {
+        item.className = "completed";
     }
     else {
-        item.style.textDecoration = "none";
+        item.className = "uncompleted";
     } 
 }
 
