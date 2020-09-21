@@ -25,6 +25,9 @@ const controllerEventsClicks = (type) => {
       case 'selectedItem':
         selectionItemList(event);
         break;
+      case 'clearList':
+        clearList();
+        break;
     }
   })
 }
@@ -73,6 +76,13 @@ const selectionItemList = (event) => {
 }
 const addCompletedItemList = (event) => {
   event.target.classList.toggle('completed');
+}
+
+const clearList = () => {
+  const lists = document.querySelectorAll('.list');
+  lists.forEach(list => {
+    list.remove();
+  })
 }
 
 window.onload = () => {
