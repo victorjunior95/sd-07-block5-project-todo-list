@@ -3,11 +3,9 @@ window.onload = function() {
  };
 
 const btAdd = document.getElementById("criar-tarefa");
-const btRmvSelect = document. getElementById("remover-selecionado");
 const btMvUp = document.getElementById("mover-cima");
 const btMvDw = document.getElementById("mover-baixo");
 const btRmvFinalizados = document.getElementById("remover-finalizados");
-const btRmvAll = document.getElementById("remover-tudo");
 const btSaveList = document.getElementById("salvar-tarefas");
 
 btAdd.addEventListener('click', function() {
@@ -16,9 +14,6 @@ novaLi.addEventListener('click', function(event) {
       mudaCorFundo(novaLi);
 novaLi.addEventListener('dblclick', function(event) {
       completaTarefa(novaLi);
-btRmvSelect.addEventListener('click', function () {
-      removeSelecionados();
-})
 })
 })
 })
@@ -60,22 +55,19 @@ function completaTarefa(novaLi){
 }
 
 //remover seleciondos
-function removeSelecionados(){
-   let selecionados = document.getElementsByClassName("selected");
-   let ul = document.getElementById("lista-tarefas");
-   if (selecionados.length){
-      for(let i = 0; i< selecionados.length; i += 1){
-         ul.removeChild(selecionados.children[(i)]);         
-      }
+const btRmvSelect = document. getElementById("remover-selecionado");
+btRmvSelect.addEventListener('click', function () {
+   const item = document.querySelectorAll('.completed');
+   for (let i = 0; i < item.length; i+=1){
+      item[i].remove();
    }
-}
+})
 
 //apagando a lista
-// const btApagaTudo = document.getElementById('apaga-tudo');
-// btApagaTudo.addEventListener('click', function(){
-//   const novaLi = getElementsByClassName('li-tarefas');
-//   const myOl = document.querySelector('lista-tarefas');
-//    for(i = 0; i < novaLi.length; i+=1) {
-//      myOl.removeChild(novaLi[i]);
-//    }
-//  })
+const btRmvAll = document.getElementById("remover-tudo");
+btRmvAll.addEventListener('click', function() {
+   const olLista = document.querySelectorAll('ol > li');
+   for (let i = 0; i < olLista.length; i+=1){
+      olLista[i].remove();
+   }
+})
