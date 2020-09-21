@@ -20,7 +20,6 @@ listaTarefas.addEventListener('click', function (event) {
     event.target.classList.add('selected');
     event.target.style.backgroundColor = 'rgb(128,128,128)';
   }
-
 });
 
 listaTarefas.addEventListener('dblclick', function (event) {

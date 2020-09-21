@@ -6,6 +6,6 @@ li {
   background-color: white;
 }
 
-.selected {
+.completed {
   text-decoration-line: line-through;
 }
