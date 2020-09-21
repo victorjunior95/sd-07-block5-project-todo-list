@@ -1,6 +1,7 @@
 const buttonAdd = document.getElementById("criar-tarefa");
 const inputText = document.getElementById("texto-tarefa");
 const outList = document.getElementById("lista-tarefas");
+const buttonRemoveAll = document.getElementById('apaga-tudo')
 
 buttonAdd.addEventListener("click", function () {
   if (!inputText.value == "") {
@@ -24,10 +25,10 @@ outList.addEventListener("click", function (event) {
 });
 
 outList.addEventListener('dblclick', function(event) {
-  let selectedClass = document.querySelector(".line-through");
-  if (selectedClass != null) {
-    selectedClass.classList.remove("line-through");
-  }
-  event.target.classList.add('line-through')
 
+  event.target.classList.add('completed')
+  event.target.classList.add('completed')
+})
+buttonRemoveAll.addEventListener('click',function() {
+  outList.innerHTML = ''
 })
