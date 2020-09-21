@@ -64,7 +64,7 @@ btRmvSelect.addEventListener('click', function () {
 })
 
 //apagando a lista
-const btRmvAll = document.getElementById("remover-tudo");
+const btRmvAll = document.getElementById("apaga-tudo");
 btRmvAll.addEventListener('click', function() {
    const olLista = document.querySelectorAll('ol > li');
    for (let i = 0; i < olLista.length; i+=1){
