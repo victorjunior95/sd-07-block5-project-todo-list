@@ -23,9 +23,9 @@ const criaTarefa = function () {
 };
 
 const limpaSelecao = function () {
-  const itensLista = document.querySelectorAll('ol>li');
+  const itensLista = document.querySelectorAll('li');
   itensLista.forEach((item) => {
-    !(item.classList.remove('selected')) && (item.style.backgroundColor = 'rgba(255, 255, 255, 0.1)');
+    item.classList.remove('selected');
   });
 };
 
@@ -33,20 +33,15 @@ const selecionaItemLista = function (event) {
   const itemLista = event.target;
   if (itemLista.nodeName === 'LI') {
     limpaSelecao();
-    itemLista.classList.toggle('selected') && (itemLista.style.backgroundColor = 'rgb(128, 128, 128)');
+    itemLista.classList.add('selected');
   }
 };
 
-/* const limparSelecaoClickFora = function (event) {
-  const item = event.target;
-  if (item.nodeName !== 'LI' && item.nodeName !== 'BUTTON') {
-    limpaSelecao();
-  }
-}; */
-
 const salvarLista = function () {
   localStorage.clear();
-  localStorage.setItem('listaTarefas', listaOrdenadaDeTarefas.innerHTML.replace('selected', ''));
+  console.log(listaOrdenadaDeTarefas.innerHTML)
+  localStorage.setItem('listaTarefas', listaOrdenadaDeTarefas.innerHTML.replace(/selected/g, ''));
+  console.log(listaOrdenadaDeTarefas.innerHTML)
 };
 
 const marcarCompleto = function (event) {
@@ -56,7 +51,6 @@ const marcarCompleto = function (event) {
     item.classList.toggle('completed');
   }
   limpaSelecao();
-  salvarLista();
 };
 
 const apagaTudo = function () {
@@ -108,7 +102,6 @@ const removerSelecionados = function () {
 };
 
 window.onload = function () {
-  document.addEventListener('click', limparSelecaoClickFora);
   document.getElementById('criar-tarefa').addEventListener('click', criaTarefa);
   listaOrdenadaDeTarefas.addEventListener('dblclick', marcarCompleto);
   listaOrdenadaDeTarefas.addEventListener('click', selecionaItemLista);
