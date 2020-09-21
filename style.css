@@ -18,7 +18,6 @@ body {
   border: none;
   line-height: 30px;
   width: 60%;
-  
 }
 
 .lista {
@@ -29,12 +28,16 @@ body {
 }
 
 .lista-tarefas {
-  background-color: rgba(255 , 255 , 255 , 0.0);
+  background-color: rgba(255 , 255 , 255 , 0);
   display: inline-flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-flow: wrap column;
   font-family: 'Cormorant Upright', serif;
   font-size: 1.5em;
+}
+
+.cria{
+  display: inline-flex;
+  width: 113%;
 }
 
 .botoes {
@@ -45,12 +48,33 @@ body {
 button {
   line-height: 25px;
   margin: 4px;
+  border-radius: 5px;
+  background-color:  rgb(48, 103, 108);
+  border: 1px solid  rgb(48, 103, 108);
+  box-shadow: 2px 2px 2px gray;
+}
+
+.cria-tarefa{
+  border: none;
+  background-color: rgba(255 , 255 , 255 , 0);
+  margin: 0;
+  padding: 0;
+  margin-left: 10px;
+  height: 32px;
+  width: 32px;
+}
+
+.cria-tarefa:sele
+
+li {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .completed {
-  text-decoration: line-through solid black;  
+  text-decoration: line-through solid black;
 }
 
 .selected {
   background-color: gray;
 }
+

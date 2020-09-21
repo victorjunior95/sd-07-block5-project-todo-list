@@ -1,9 +1,12 @@
 const listaOrdenadaDeTarefas = document.getElementById('lista-tarefas');
 const avisos = document.getElementById('avisos');
 
+const mensagemAoUsuario = function (mensagem) {
+  document.getElementById('avisos').textContent = mensagem;
+}
 const criaTarefa = function () {
   const tarefaInput = document.getElementById('texto-tarefa');
-  
+
   if (tarefaInput.value) {
     avisos.innerText = '';
     const novaTarefa = document.createElement('li');
@@ -15,7 +18,7 @@ const criaTarefa = function () {
 
     tarefaInput.focus();
   } else {
-    avisos.innerText = 'Favor descreva a tarefa antes de adicionar';
+    mensagemAoUsuario('Favor descreva a tarefa antes de adicionar');
   }
 };
 
@@ -50,14 +53,16 @@ const marcarCompleto = function (event) {
   const item = event.target;
   event.stopPropagation();
   if (item.nodeName === 'LI') {
-    item.classList.toggle('completed')
+    item.classList.toggle('completed');
   }
   limpaSelecao();
   salvarLista();
 };
 
 const apagaTudo = function () {
-  const listaLi = document.querySelectorAll('ol>li');
+  //listaOrdenadaDeTarefas.childNodes
+  const listaLi = document.querySelectorAll('li');
+  //const listaLi = listaOrdenadaDeTarefas.children
   listaLi.forEach((item) => {
     item.remove();
   });
@@ -66,29 +71,30 @@ const apagaTudo = function () {
 
 (function () {
   document.querySelector('ol').innerHTML = localStorage.getItem('listaTarefas');
-})()
+}());
 
 const moveParaBaixo = function () {
-  avisos.textContent = '';
+  mensagemAoUsuario('');
   const itemSelecionado = document.querySelectorAll('.selected')[0];
 
-  if (itemSelecionado !== null && itemSelecionado.nextSibling !== null) {
+  if (itemSelecionado.nextSibling !== null) {
     listaOrdenadaDeTarefas.insertBefore(itemSelecionado.nextSibling, itemSelecionado);
     salvarLista();
   } else {
-    avisos.textContent = 'Fim da lista!';
+    mensagemAoUsuario('Fim da lista!');
   }
 };
 
-const moverParaCima = function (event) {
-  avisos.textContent = '';
-  const itemSelecionado = document.querySelectorAll('.selected')[0];
-  if (itemSelecionado.previousSibling !== null) {
+const moverParaCima = function () {
+  mensagemAoUsuario('');
+  const itemSelecionado = document.querySelector('.selected');
+
+  if (itemSelecionado.previousSibling !== null && itemSelecionado.firstChild !== itemSelecionado) {
     listaOrdenadaDeTarefas.insertBefore(itemSelecionado, itemSelecionado.previousSibling);
     salvarLista();
-  } else {
-    avisos.textContent = 'Fim da lista!';
-  }
+  }/* else {
+    mensagemAoUsuario('Fim da lista!');
+  }*/
 };
 
 const removerFinalizados = function () {
