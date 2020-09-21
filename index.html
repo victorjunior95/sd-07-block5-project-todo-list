@@ -21,7 +21,16 @@
           Add in List
         </button>
         <ol id="lista-tarefas"></ol>
-        <button data-click="clearList" type="apaga-tudo">Limpar Lista</button>
+        <button data-click="clearList" id="apaga-tudo" type="button">
+          Clear All
+        </button>
+        <button
+          data-click="removeCompleted"
+          type="button"
+          id="remover-finalizados"
+        >
+          Clear Completed
+        </button>
       </form>
     </main>
     <script src="script.js"></script>

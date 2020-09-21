@@ -17,8 +17,8 @@ const handleEventsController = (...types) => {
 const controllerEventsClicks = (type) => {
 
   document.addEventListener(type, (event) => {
-    const getDataSet = event.target.dataset.click;
-    switch (getDataSet) {
+    const eventDataSet = event.target.dataset.click;
+    switch (eventDataSet) {
       case 'btnAddList':
         addList();
         break;
@@ -28,14 +28,18 @@ const controllerEventsClicks = (type) => {
       case 'clearList':
         clearList();
         break;
+      case 'removeCompleted':
+        clearListCompleted();
+        break
+
     }
   })
 }
 
 const controllerEventsDoubleClicks = (type) => {
   document.addEventListener(type, (event) => {
-    const getDataSet = event.target.dataset.dblclick
-    switch (getDataSet) {
+    const eventDataSet = event.target.dataset.dblclick
+    switch (eventDataSet) {
       case 'completedItem':
         addCompletedItemList(event);
         break;
@@ -80,6 +84,12 @@ const addCompletedItemList = (event) => {
 
 const clearList = () => {
   const lists = document.querySelectorAll('.list');
+  lists.forEach(list => {
+    list.remove();
+  })
+}
+const clearListCompleted = () => {
+  const lists = document.querySelectorAll('.completed');
   lists.forEach(list => {
     list.remove();
   })
