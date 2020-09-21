@@ -7,6 +7,11 @@ function criarTarefa() {
     item.innerText = caixaTexto.value;
     lista.appendChild(item);
     caixaTexto.value = '';
+    item.addEventListener("click", function() {mudarCor(item);});
+}
+
+function mudarCor(item) {
+    item.style.backgroundColor = "gray";
 }
 
 botao1.addEventListener("click", criarTarefa);
