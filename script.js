@@ -10,6 +10,7 @@ window.onload = function(){
         }else{
             let li = document.createElement('li');
             li.addEventListener('click',toggleSelected)
+            li.addEventListener('dblclick', markAsCompleted)
             li.innerText = inputTextTask.value;
             taskList.appendChild(li);
             inputTextTask.value = '';
@@ -24,6 +25,13 @@ window.onload = function(){
         }
         
         event.target.classList.add('selected');
+
+    }
+    function markAsCompleted(event){
+        const selectedItem = document.querySelector('.completed');
+        
+    
+        event.target.classList.toggle('completed')
 
     }
     
