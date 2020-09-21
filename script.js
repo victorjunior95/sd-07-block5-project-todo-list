@@ -20,7 +20,7 @@ const controllerEventsClicks = (type) => {
     const eventDataSet = event.target.dataset.click;
     switch (eventDataSet) {
       case 'btnAddList':
-        addList();
+        addListFromInput();
         break;
       case 'selectedItem':
         selectionItemList(event);
@@ -30,6 +30,9 @@ const controllerEventsClicks = (type) => {
         break;
       case 'removeCompleted':
         clearListCompleted();
+        break
+      case 'saveList':
+        saveListLocalStorage();
         break
 
     }
@@ -47,7 +50,7 @@ const controllerEventsDoubleClicks = (type) => {
   })
 }
 
-const addList = () => {
+const addListFromInput = () => {
   const inputText = document.querySelector('#texto-tarefa');
   if (inputText.value) {
     const olLists = document.querySelector('#lista-tarefas');
@@ -95,9 +98,31 @@ const clearListCompleted = () => {
   })
 }
 
+
+
+const saveListLocalStorage = () => {
+  const lists = document.querySelectorAll('.list');
+  let listsSave = [];
+  lists.forEach(list => {
+    listsSave.push(list.innerText);
+  })
+  localStorage.setItem("lists", JSON.stringify(listsSave));
+}
+
+const loadListLocalStorage = () => {
+  let listsSave = JSON.parse(localStorage.getItem('lists'));
+  const olLists = document.querySelector('#lista-tarefas');
+  if (localStorage.getItem('lists')) {
+    for (const list of listsSave) {
+      olLists.appendChild(createElementList(list))
+    }
+  }
+}
+
 window.onload = () => {
 
   handleEventsController('click', 'dblclick');
+  loadListLocalStorage()
 
 
 }
