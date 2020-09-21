@@ -48,14 +48,16 @@ olLista.addEventListener('dblclick', function(event) {
 })
 
 //remover finalizados
-const btRmvFinalizados = document. getElementById('remover-finalizados');
+const btRmvFinalizados = document.getElementById('remover-finalizados');
 btRmvFinalizados.addEventListener('click', function () {
-   const item = document.querySelector('.completed');
-      item.remove();
+   const item = document.querySelectorAll('.completed');
+   for (let i = 0; i < item.length; i += 1){
+       item[i].remove();
+   }
 })
 
-//apagando a lista
-const btRmvAll = document.getElementById("apaga-tudo");
+//apagar a lista
+const btRmvAll = document.getElementById('apaga-tudo');
 btRmvAll.addEventListener('click', function() {
    const olLista = document.querySelectorAll('ol > li');
    for (let i = 0; i < olLista.length; i+=1){
