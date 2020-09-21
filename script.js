@@ -1,4 +1,5 @@
 const buttonCriarTarefa = document.querySelector('#criar-tarefa');
+const buttonDeletarTudo = document.querySelector('#apaga-tudo');
 const inputTarefa = document.querySelector('#texto-tarefa');
 const listaTarefas = document.querySelector('#lista-tarefas');
 
@@ -27,5 +28,11 @@ listaTarefas.addEventListener('dblclick', function (event) {
     event.target.classList.remove('completed');
   } else {
     event.target.classList.add('completed');
+  }
+});
+
+buttonDeletarTudo.addEventListener('click', function () {
+  while (listaTarefas.firstChild) {
+    listaTarefas.removeChild(listaTarefas.firstChild);
   }
 });
