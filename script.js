@@ -41,7 +41,7 @@ const finishedRemove = document.querySelector('#remover-finalizados');
 
 finishedRemove.addEventListener('click', function () {
   const item = document.querySelectorAll('.completed');
-  for (index = 0; index < item.length; index += 1) {
+  for (let index = 0; index < item.length; index += 1) {
     item[index].remove();
   }
 });
@@ -56,10 +56,8 @@ tasksSave.addEventListener('click', function () {
   localStorage.setItem('List_tasks', JSON.stringify(tasksArray));
 });
 
-if (typeof (Storage) != "undefined") {
-  if(localStorage.length !== 0) {
+if (typeof (Storage) !== 'undefined' && localStorage.length !== 0) {
     const oldList = JSON.parse(localStorage.getItem('List_tasks'));
-    console.log(oldList);
     for (let index = 0; index < oldList.length; index += 1) {
       const itemList = document.createElement('li');
       itemList.className = 'ordered-list';
@@ -67,4 +65,14 @@ if (typeof (Storage) != "undefined") {
       list.appendChild(itemList);
     }
   }
-}
+
+const selectedRemove = document.getElementById('remover-selecionado');
+
+selectedRemove.addEventListener('click', function (event) {
+  const listRemove = document.querySelectorAll('.ordered-list');
+  for (let index = 0; index < listRemove.length; index += 1) {
+    if (listRemove[index].classList.contains('selected')) {
+      listRemove[index].remove();
+    }
+  }
+});
