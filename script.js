@@ -4,7 +4,10 @@ let olToDoList = document.querySelector(".lista-tarefas");
 const buttonClearAllTasksInTheList = document.querySelector(".apaga-tudo");
 const buttonClearDoneTasks = document.querySelector(".remover-finalizados");
 const buttonToSalveList = document.querySelector(".salvar-tarefas");
-const buttonRemoveSelectedTask = document.querySelector('.remover-selecionado')
+const buttonRemoveSelectedTask = document.querySelector(".remover-selecionado");
+const buttonMoveUp = document.querySelector('.mover-cima');
+const buttonMoveDown = document.querySelector('.mover-baixo');
+
 
 function clearInputTextToDo() {
   inputTextToDo.value = "";
@@ -19,45 +22,66 @@ function createLI() {
   addAndRemoveCompletedTask(liTask);
 }
 
-buttonCreateToDo.addEventListener("click", createLI);
 
 function changeBGColorTask(task) {
   task.addEventListener("click", function (event) {
     for (let index = 0; index < olToDoList.childElementCount; index += 1) {
       if (olToDoList.children[index] !== event.target) {
-        olToDoList.children[index].classList.remove('selected');
+        olToDoList.children[index].classList.remove("selected");
       } else {
-        event.target.classList.add('selected');
+        event.target.classList.add("selected");
       }
     }
-  
-   
   });
 }
 
 function addAndRemoveCompletedTask(task) {
   task.addEventListener("dblclick", function (event) {
     if (event.target.classList.contains("completed")) {
-      console.log('tirou')
       task.classList.remove("completed");
     } else {
-      console.log('colocou')
       event.target.classList.add("completed");
     }
   });
 }
 
+buttonCreateToDo.addEventListener("click", createLI);
+
+buttonMoveUp.addEventListener('click', function () {
+  for (let index = 0; index < olToDoList.childElementCount; index += 1) {
+    if (olToDoList.children[index].classList.contains('selected')) {
+      if(olToDoList.children[index] === olToDoList.firstChild) {
+        alert('impossível mover para cima!');
+      } else {
+        olToDoList.insertBefore(olToDoList.children[index], olToDoList.children[index].previousElementSibling);
+      }
+    }
+  }
+})
+
+buttonMoveDown.addEventListener('click', function () {
+  for (let index = 0; index < olToDoList.childElementCount; index += 1) {
+    if (olToDoList.children[index].classList.contains('selected')) {
+      if(olToDoList.children[index] === olToDoList.lastChild) {
+        alert('impossível mover para baixo!');
+      } else {
+         olToDoList.insertBefore(olToDoList.children[index], olToDoList.children[index].nextElementSibling);
+      }
+    }
+  }
+})
+
 buttonClearAllTasksInTheList.addEventListener("click", function () {
   olToDoList.innerHTML = "";
 });
 
-buttonRemoveSelectedTask.addEventListener('click', function () {
-   for (let index = 0; index < olToDoList.childElementCount; index += 1 ){
-     if (olToDoList.children[index].classList.contains('selected')) {
-       olToDoList.removeChild(olToDoList.children[index])
-     }
-   }
-})
+buttonRemoveSelectedTask.addEventListener("click", function () {
+  for (let index = 0; index < olToDoList.childElementCount; index += 1) {
+    if (olToDoList.children[index].classList.contains("selected")) {
+      olToDoList.removeChild(olToDoList.children[index]);
+    }
+  }
+});
 
 buttonClearDoneTasks.addEventListener("click", function () {
   let doneTasks = document.querySelectorAll(".completed");
