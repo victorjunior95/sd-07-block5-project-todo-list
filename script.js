@@ -57,22 +57,44 @@ tasksSave.addEventListener('click', function () {
 });
 
 if (typeof (Storage) !== 'undefined' && localStorage.length !== 0) {
-    const oldList = JSON.parse(localStorage.getItem('List_tasks'));
-    for (let index = 0; index < oldList.length; index += 1) {
-      const itemList = document.createElement('li');
-      itemList.className = 'ordered-list';
-      itemList.innerText = oldList[index];
-      list.appendChild(itemList);
-    }
+  const oldList = JSON.parse(localStorage.getItem('List_tasks'));
+  for (let index = 0; index < oldList.length; index += 1) {
+    const itemList = document.createElement('li');
+    itemList.className = 'ordered-list';
+    itemList.innerText = oldList[index];
+    list.appendChild(itemList);
   }
+}
 
 const selectedRemove = document.getElementById('remover-selecionado');
 
-selectedRemove.addEventListener('click', function (event) {
+selectedRemove.addEventListener('click', function () {
   const listRemove = document.querySelectorAll('.ordered-list');
   for (let index = 0; index < listRemove.length; index += 1) {
     if (listRemove[index].classList.contains('selected')) {
       listRemove[index].remove();
+    }
+  }
+});
+
+const up = document.getElementById('mover-cima');
+
+up.addEventListener('click', function () {
+  const upItems = document.querySelectorAll('.ordered-list');
+  for (let index = 0; index < upItems.length; index += 1) {
+    if (upItems[index].classList.contains('selected') && index !== 0) {
+      let positionChange = list.insertBefore(upItems[index], upItems[index - 1]);
+    }
+  }
+});
+
+const down = document.getElementById('mover-baixo');
+
+down.addEventListener('click', function () {
+  const downItems = document.querySelectorAll('.ordered-list');
+  for (let index = 0; index < downItems.length; index += 1) {
+    if (downItems[index].classList.contains('selected') && index !== downItems.length - 1) {
+      let positionChange = list.insertBefore(downItems[index], downItems[index + 1].nextSibling);
     }
   }
 });
