@@ -62,14 +62,18 @@ let btRemoverFinalizados = document.getElementById("remover-finalizados");
 
 // escuta para o botão apaga-tudo
 btApagaTudo.addEventListener("click", function () {
-    // while
-    // id e removeu os li's
-    // for each
     // remove child
-    // innerHTML = ""
-    
     let listaNova = document.querySelectorAll("li")
     for (let index = 0; index < listaNova.length; index += 1) {
         listaNova[index].remove();
+    }
+    // innerHTML = ""
+    // olListaTarefa.innerHTML = "";
+})
+
+btRemoverFinalizados.addEventListener("click", function () {
+    let item = document.querySelectorAll(".completed");
+    for (let index =0; index <item.length; index += 1) {
+        item[index].remove();
     }
 })
