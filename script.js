@@ -24,10 +24,8 @@ apagarLista.addEventListener('click', function() {
 });
 
 lista.addEventListener('dblclick', function(event) {
-    if (event.target.classList.contains('completed')) {
-        event.target.classList.remove('completed');
-    } else {
-        event.target.classList.add('completed');
+    if (event.target.tagName == 'LI') {
+        event.target.classList.toggle('completed');
     }
 });
 
