@@ -1,5 +1,6 @@
 const buttonCriarTarefa = document.querySelector('#criar-tarefa');
 const buttonDeletarTudo = document.querySelector('#apaga-tudo');
+const buttonRemoverSelecionados = document.querySelector('#apaga-tudo');
 const inputTarefa = document.querySelector('#texto-tarefa');
 const listaTarefas = document.querySelector('#lista-tarefas');
 
@@ -34,5 +35,13 @@ listaTarefas.addEventListener('dblclick', function (event) {
 buttonDeletarTudo.addEventListener('click', function () {
   while (listaTarefas.firstChild) {
     listaTarefas.removeChild(listaTarefas.firstChild);
+  }
+});
+
+buttonRemoverSelecionados.addEventListener('click', function () {
+  for (let index = 0; index < listaTarefas.childElementCount; index += 1) {
+    if (listaTarefas[index].classList.contains('completed')) {
+      listaTarefas.removeChild(listaTarefas[index]);
+    }
   }
 });
