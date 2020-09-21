@@ -34,7 +34,7 @@ buttonApagaTudo.addEventListener('click', function () {
 });
 
 buttonRemoveFinalizados.addEventListener('click', function () {
-  let removeFinalizados = document.querySelectorAll('completed');
+  let removeFinalizados = document.querySelectorAll('.completed');
   for (index = 0; index < removeFinalizados.length; index += 1) {
     removeFinalizados[index].remove();
   }
