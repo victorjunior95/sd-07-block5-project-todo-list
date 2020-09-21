@@ -14,12 +14,20 @@ buttonAdd.addEventListener("click", function () {
   inputText.focus();
 });
 
-outList.addEventListener('click', function(event) {
-  let selectedClass = document.querySelector('.selected');
-if(selectedClass != null){
-    selectedClass.classList.remove('selected')
-}
+outList.addEventListener("click", function (event) {
+  let selectedClass = document.querySelector(".selected");
+  if (selectedClass != null) {
+    selectedClass.classList.remove("selected");
+  }
 
-  event.target.classList.add('selected')
-    
+  event.target.classList.add("selected");
+});
+
+outList.addEventListener('dblclick', function(event) {
+  let selectedClass = document.querySelector(".line-through");
+  if (selectedClass != null) {
+    selectedClass.classList.remove("line-through");
+  }
+  event.target.classList.add('line-through')
+
 })

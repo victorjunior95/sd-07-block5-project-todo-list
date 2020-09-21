@@ -1,4 +1,10 @@
 .selected {
-    background-color: rgb(128,128,128);
-    width: max-content;
+  background-color: rgb(128, 128, 128);
+  width: max-content;
+}
+
+.line-through {
+  text-decoration: line-through;
+  background-color: rgb(128, 128, 128);
+  width: max-content;
 }
