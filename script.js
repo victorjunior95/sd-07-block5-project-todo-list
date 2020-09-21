@@ -40,6 +40,9 @@ const controllerEventsClicks = (type) => {
       case 'moveDownSelected':
         moveDownSelected();
         break
+      case 'removeSelected':
+        removeSelected();
+        break
 
 
     }
@@ -134,19 +137,16 @@ const moveDownSelected = () => {
   if (currentItemSelected !== myLists.lastChild) {
     const nextElement = currentItemSelected.nextElementSibling;
     myLists.insertBefore(nextElement, currentItemSelected)
-  } else {
-    console.log('sou o último')
+  }
+}
+const removeSelected = () => {
+  const currentItemSelected = document.querySelector('.selected');
+  if (currentItemSelected) {
+    currentItemSelected.remove();
   }
 }
 
-
 window.onload = () => {
-
   handleEventsController('click', 'dblclick');
-  loadListLocalStorage()
-
-
-
-
-
+  loadListLocalStorage();
 }
