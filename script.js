@@ -54,12 +54,11 @@ btApagaTudo.addEventListener('click', function () {
   // for (let i = 0;  i < listaNova.length;i += 1){
   //   listaNova[i].remove();
   // }
-})
+});
 
 btRemoverFinalizados.addEventListener('click', function () {
   let item = document.querySelectorAll('.completed');
-  for (i = 0; i < item.length ; i += 1) {
-    console.log(item[i])
-    item[i].remove()
+  for (let i = 0; i < item.length; i += 1) {
+    item[i].remove();
   }
-})
+});
