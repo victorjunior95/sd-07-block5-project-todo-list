@@ -6,6 +6,9 @@ const handleEventsController = (...types) => {
       case 'click':
         controllerEventsClicks(type);
         break;
+      case 'dblclick':
+        controllerEventsDoubleClicks(type);
+        break;
 
     }
   }
@@ -14,13 +17,24 @@ const handleEventsController = (...types) => {
 const controllerEventsClicks = (type) => {
 
   document.addEventListener(type, (event) => {
-    const eventData = event.target.dataset.event;
-    switch (eventData) {
+    const getDataSet = event.target.dataset.click;
+    switch (getDataSet) {
       case 'btnAddList':
         addList();
         break;
       case 'selectedItem':
         selectionItemList(event);
+        break;
+    }
+  })
+}
+
+const controllerEventsDoubleClicks = (type) => {
+  document.addEventListener(type, (event) => {
+    const getDataSet = event.target.dataset.dblclick
+    switch (getDataSet) {
+      case 'completedItem':
+        addCompletedItemList(event);
         break;
     }
   })
@@ -40,7 +54,8 @@ const createElementList = (text) => {
   const liElementList = document.createElement('li');
   liElementList.innerText = text;
   liElementList.className = 'list';
-  liElementList.dataset.event = 'selectedItem';
+  liElementList.dataset.click = 'selectedItem';
+  liElementList.dataset.dblclick = 'completedItem'
 
   return liElementList;
 }
@@ -56,11 +71,13 @@ const selectionItemList = (event) => {
     event.target.classList.add('selected');
   }
 }
-
+const addCompletedItemList = (event) => {
+  event.target.classList.toggle('completed');
+}
 
 window.onload = () => {
 
-  handleEventsController('click');
+  handleEventsController('click', 'dblclick');
 
 
 }
