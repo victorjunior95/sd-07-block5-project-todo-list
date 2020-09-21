@@ -4,6 +4,7 @@ let olToDoList = document.querySelector(".lista-tarefas");
 const buttonClearAllTasksInTheList = document.querySelector(".apaga-tudo");
 const buttonClearDoneTasks = document.querySelector(".remover-finalizados");
 const buttonToSalveList = document.querySelector(".salvar-tarefas");
+const buttonRemoveSelectedTask = document.querySelector('.remover-selecionado')
 
 function clearInputTextToDo() {
   inputTextToDo.value = "";
@@ -24,10 +25,13 @@ function changeBGColorTask(task) {
   task.addEventListener("click", function (event) {
     for (let index = 0; index < olToDoList.childElementCount; index += 1) {
       if (olToDoList.children[index] !== event.target) {
-        olToDoList.children[index].style.backgroundColor = "";
+        olToDoList.children[index].classList.remove('selected');
+      } else {
+        event.target.classList.add('selected');
       }
     }
-    event.target.style.backgroundColor = "rgb(128, 128, 128)";
+  
+   
   });
 }
 
@@ -44,6 +48,14 @@ function addAndRemoveCompletedTask(task) {
 buttonClearAllTasksInTheList.addEventListener("click", function () {
   olToDoList.innerHTML = "";
 });
+
+buttonRemoveSelectedTask.addEventListener('click', function () {
+   for (let index = 0; index < olToDoList.childElementCount; index += 1 ){
+     if (olToDoList.children[index].classList.contains('selected')) {
+       olToDoList.removeChild(olToDoList.children[index])
+     }
+   }
+})
 
 buttonClearDoneTasks.addEventListener("click", function () {
   let doneTasks = document.querySelectorAll(".completed");
