@@ -12,9 +12,6 @@ btAdd.addEventListener('click', function() {
    const novaLi = adicionaTarefa();
 novaLi.addEventListener('click', function(event) {
       mudaCorFundo(novaLi);
-novaLi.addEventListener('dblclick', function(event) {
-      completaTarefa(novaLi);
-})
 })
 })
 //adicionando tarefa
@@ -44,15 +41,12 @@ function mudaCorFundo(novaLi){
 }
 
 //completa terefa 
-function completaTarefa(novaLi){
-   const completed = novaLi.classList.contains("completed");
-   if (completed) {
-      novaLi.classList.remove("completed");
-   } 
-   else {novaLi.classList.add("completed");
+const olLista = document.getElementById('lista-tarefas');
+olLista.addEventListener('dblclick', function(event) {
+   if (event.target.tagName == 'LI') {
+      event.target.classList.toggle('completed');
    }
-   return;
-}
+})
 
 //remover seleciondos
 const btRmvSelect = document. getElementById("remover-selecionado");
