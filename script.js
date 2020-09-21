@@ -3,8 +3,8 @@ const toDoList = document.querySelector('#lista-tarefas');
 const task = document.querySelector('#texto-tarefa');
 task.focus();
 
-addTaskBtn.addEventListener('click',function () {
-  if (task.value !== ''){
+addTaskBtn.addEventListener('click', function () {
+  if (task.value !== '') {
     const item = document.createElement('li');
     item.innerHTML = task.value;
     toDoList.appendChild(item);
@@ -14,7 +14,7 @@ addTaskBtn.addEventListener('click',function () {
 });
 
 toDoList.addEventListener('click', function (event) {
-  if (event.target.tagName == 'LI'){
+  if (event.target.tagName == 'LI') {
     const selectedItem = document.querySelector('.selected');
     if (selectedItem) {
       selectedItem.classList.toggle('selected');
@@ -24,7 +24,7 @@ toDoList.addEventListener('click', function (event) {
 });
 
 toDoList.addEventListener('dblclick', function (event) {
-  if (event.target.tagName == 'LI'){
+  if (event.target.tagName == 'LI') {
     event.target.classList.toggle('completed');
   }
 });
@@ -40,28 +40,27 @@ removeCompletedBtn.addEventListener('click', function () {
   for (let index = 0; index < item.length; index += 1) {
     if (item[index].classList.contains('completed')) {
       toDoList.removeChild(item[index]);
-        }
-      }
+    }
+  }
 });
 
-let saveListBtn = document.getElementById('salvar-tarefas');
-saveListBtn.addEventListener('click', function(){
+const saveListBtn = document.getElementById('salvar-tarefas');
+saveListBtn.addEventListener('click', function () {
   localStorage.clear();
   const saved = toDoList.innerHTML;
-  localStorage.setItem('savedList', saved)
+  localStorage.setItem('savedList', saved);
+});
 
-})
-
-window.onload = function() {
+window.onload = function () {
   toDoList.innerHTML = localStorage.getItem('savedList');
 }
 
 const removeSelectedBtn = document.getElementById('remover-selecionado');
 removeSelectedBtn.addEventListener('click', function () {
-  let item = document.getElementsByTagName('li');
+  const item = document.getElementsByTagName('li');
   for (let index = 0; index < item.length; index += 1) {
     if (item[index].classList.contains('selected')) {
           toDoList.removeChild(item[index]);
-        }
+    }
   }
 });
