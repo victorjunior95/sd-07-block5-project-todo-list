@@ -39,7 +39,7 @@ p {
     text-decoration: line-through solid rgb(0, 0, 0);
 }
 
-.selecionado {
+.selected {
     background-color: rgb(128, 128, 128);
 }
 

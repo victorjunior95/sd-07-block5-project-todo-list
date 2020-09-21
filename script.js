@@ -32,18 +32,17 @@ lista.addEventListener('dblclick', function(event) {
 //solução adaptada a partir de https://github.com/tryber/sd-07-block5-project-todo-list/blob/749e0a187fda8965fd829f3b488dd175defa6c70/script.js
 
 lista.addEventListener('click', function(event) {
-    let pintado = document.querySelector('.selecionado');
     if (event.target.tagName == 'LI') {
-        if (pintado != null) {
-            pintado.classList.remove('selecionado');
-        } else {
-            event.target.classList.add('selecionado');
+        let todasAsLISelecionadas = document.querySelector('.selected');
+        if (todasAsLISelecionadas != null) {
+            todasAsLISelecionadas.classList.remove('selected');
         }
+
+        event.target.classList.add('selected');
     }
 });
 
 let apagarItem = document.querySelector('#remover-finalizados');
-
 apagarItem.addEventListener('click', function() {
     let list = document.getElementsByClassName('completed');
     while (list.length !== 0) {
