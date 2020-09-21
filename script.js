@@ -68,3 +68,31 @@ function removeFinalizados() {
         itensFinalizados[0].remove();
     }   
 }
+
+let botaoParaBaixo = document.getElementById("mover-baixo");
+botaoParaBaixo.addEventListener("click", moveParaBaixo);
+
+// Função que passa o item para baixo
+// Adaptado do link https://stackoverflow.com/questions/33325974/creating-a-task-list-with-pure-js-and-moving-items-up-and-down
+function moveParaBaixo() {
+    let listaDeItems = document.getElementsByTagName("ol")[0];
+    let itemSelecionado = document.getElementById("selected");
+    let proximoItem = itemSelecionado.nextSibling;
+    if (proximoItem != null) {
+        listaDeItems.insertBefore(proximoItem, itemSelecionado);
+    }
+}
+
+let botaoParaCima = document.getElementById("mover-cima");
+botaoParaCima.addEventListener("click", moveParaCima);
+
+// Função que passa o item para cima
+// Adaptado do link https://stackoverflow.com/questions/33325974/creating-a-task-list-with-pure-js-and-moving-items-up-and-down
+function moveParaCima() {
+    let listaDeItems = document.getElementsByTagName("ol")[0];
+    let itemSelecionado = document.getElementById("selected");
+    let itemAnterior = itemSelecionado.previousSibling;
+    if (itemAnterior != null) {
+        listaDeItems.insertBefore(itemSelecionado, itemAnterior);
+    }
+}
