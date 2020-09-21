@@ -34,5 +34,8 @@ btApagarTudo.addEventListener('click', function () {
 });
 
 btRemoverFinalizados.addEventListener('click', function(){
-    olListaTarefa.removeChild.classList('completed')
+  let item = document.getElementsByClassName('completed');  
+  for (i = (item.length -1); i >= 0; i -= 1){
+    item[i].remove()
+  }
 })
