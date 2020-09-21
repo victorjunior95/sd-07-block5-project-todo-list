@@ -1,48 +1,67 @@
-const toDoList = document.getElementById('lista-tarefas');
-const taskName = document.getElementById('texto-tarefa');
-taskName.focus();
-const createTaskBtn = document.getElementById('criar-tarefa');
+const addTaskBtn = document.querySelector('#criar-tarefa');
+const toDoList = document.querySelector('#lista-tarefas');
+const task = document.querySelector('#texto-tarefa');
+task.focus();
 
-createTaskBtn.addEventListener('click', function () {
-  if (taskName.value !== '') {
+addTaskBtn.addEventListener('click',function () {
+  if (task.value !== ''){
     const item = document.createElement('li');
-    item.innerHTML = taskName.value;
+    item.innerHTML = task.value;
     toDoList.appendChild(item);
-    taskName.value = '';
-    item.addEventListener('click', function () {
-      const selectedItem = document.querySelector('.selected');
-      if (selectedItem) {
-        selectedItem.classList.remove('selected');
-      }
-      item.classList.add('selected');
-    });
+    task.value = '';
+    task.focus();
+  }
+});
 
-    taskName.focus();
-    item.addEventListener('dblclick', function () {
-      if (item.classList.contains('completed')) {
-        item.classList.remove('completed');
-      } else {
-        item.classList.add('completed');
-      }
-    });
+toDoList.addEventListener('click', function (event) {
+  if (event.target.tagName == 'LI'){
+    const selectedItem = document.querySelector('.selected');
+    if (selectedItem) {
+      selectedItem.classList.toggle('selected');
+    }
+    event.target.classList.toggle('selected');
+  }
+});
 
-    const clearBtn = document.getElementById('apaga-tudo');
-    clearBtn.addEventListener('click', function () {
-      toDoList.innerText = '';
-    });
+toDoList.addEventListener('dblclick', function (event) {
+  if (event.target.tagName == 'LI'){
+    event.target.classList.toggle('completed');
+  }
+});
 
-    const removeCompletedBtn = document.getElementById('remover-finalizados');
-    removeCompletedBtn.addEventListener('click', function () {
-      if (item.classList.contains('completed')) {
-        toDoList.removeChild(item);
-      }
-    });
+const clearBtn = document.getElementById('apaga-tudo');
+clearBtn.addEventListener('click', function () {
+  toDoList.innerText = '';
+});
 
-    const removeSelectedBtn = document.getElementById('remover-selecionado');
-    removeSelectedBtn.addEventListener('click', function () {
-      if (item.classList.contains('selected')) {
-        toDoList.removeChild(item);
+const removeCompletedBtn = document.getElementById('remover-finalizados');
+removeCompletedBtn.addEventListener('click', function () {
+  const item = document.getElementsByTagName('li');
+  for (let index = 0; index < item.length; index += 1) {
+    if (item[index].classList.contains('completed')) {
+      toDoList.removeChild(item[index]);
+        }
       }
-    });
+});
+
+let saveListBtn = document.getElementById('salvar-tarefas');
+saveListBtn.addEventListener('click', function(){
+  localStorage.clear();
+  const saved = toDoList.innerHTML;
+  localStorage.setItem('savedList', saved)
+
+})
+
+window.onload = function() {
+  toDoList.innerHTML = localStorage.getItem('savedList');
+}
+
+const removeSelectedBtn = document.getElementById('remover-selecionado');
+removeSelectedBtn.addEventListener('click', function () {
+  let item = document.getElementsByTagName('li');
+  for (let index = 0; index < item.length; index += 1) {
+    if (item[index].classList.contains('selected')) {
+          toDoList.removeChild(item[index]);
+        }
   }
 });
