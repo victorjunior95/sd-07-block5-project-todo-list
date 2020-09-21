@@ -4,8 +4,8 @@ function selectionListItem(event) {
   const selectedItem = event.target;
   for (let index = 0; index < list.childElementCount; index += 1){
     for (let j = 0; j < list.childElementCount; j += 1) {
-      if (list.children[j] !== selectedItem) {
-        list.children[j].style.backgroundColor = '';
+      if (todoItens[j] !== selectedItem) {
+        todoItens[j].style.backgroundColor = '';
       }
     }
     selectedItem.style.backgroundColor = 'rgb(128, 128, 128)';
