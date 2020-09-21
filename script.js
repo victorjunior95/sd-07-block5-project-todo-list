@@ -1,12 +1,14 @@
 const buttonCriarTarefa = document.querySelector('#criar-tarefa');
 const buttonDeletarTudo = document.querySelector('#apaga-tudo');
-const buttonRemoverSelecionados = document.querySelector('#apaga-tudo');
+const buttonRemoverSelecionados = document.querySelector(
+  '#remover-finalizados'
+);
 const inputTarefa = document.querySelector('#texto-tarefa');
 const listaTarefas = document.querySelector('#lista-tarefas');
 
 buttonCriarTarefa.addEventListener('click', function () {
   const tarefaLista = document.createElement('li');
-  tarefaLista.setAttribute('id', 'tarefa-salva');
+  tarefaLista.setAttribute('class', 'tarefa-salva');
   tarefaLista.innerText = inputTarefa.value;
   listaTarefas.appendChild(tarefaLista);
   inputTarefa.value = '';
@@ -39,9 +41,11 @@ buttonDeletarTudo.addEventListener('click', function () {
 });
 
 buttonRemoverSelecionados.addEventListener('click', function () {
+  const tarefasCompletas = document.querySelectorAll('.completed');
+
   for (let index = 0; index < listaTarefas.childElementCount; index += 1) {
-    if (listaTarefas[index].classList.contains('completed')) {
-      listaTarefas.removeChild(listaTarefas[index]);
+    if (tarefasCompletas[index].classList.contains('completed')) {
+      listaTarefas.removeChild(tarefasCompletas[index]);
     }
   }
 });
