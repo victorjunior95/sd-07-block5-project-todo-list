@@ -29,4 +29,10 @@ olListaTarefa.addEventListener('dblclick', function (event) {
     event.target.classList.toggle('completed');
   }
 });
-btApagarTudo('click', function () {});
+btApagarTudo('click', function () {
+    olListaTarefa.removeChild
+});
+
+btRemoverFinalizados('click', function(){
+    olListaTarefa.removeChild.classList('completed')
+})
