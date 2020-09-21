@@ -22,10 +22,10 @@ inpTextoTarefa.focus();
 
 olListaTarefa.addEventListener('click', function (event) {
     if(event.target.tagName == 'LI'){
-    let todasAsLiSelecionadas = document.querySelector('.selected');
-    console.log(todasAsLiSelecionadas)
-    if(todasAsLiSelecionadas !== null) { 
-        todasAsLiSelecionadas.classList.remove('selected')
+    let liSelecionada = document.querySelector('.selected');
+    console.log(liSelecionada)
+    if(liSelecionada !== null) { 
+        liSelecionada.classList.remove('selected')
     }
     event.target.classList.add('selected');
 }
@@ -57,16 +57,12 @@ btApagaTudo.addEventListener('click', function(){
 olListaTarefa.innerHTML = '';
 // let listaNova = document.querySelectorAll('ol > li')
 // for (let i = 0; i < listaNova.length; i++) {
-    
 // olListaTarefa.firstChild.remove()
-
 // }
-
  });
-
  btRemoverFinalizados.addEventListener('click', function(){
  //buscR PELA CLASS E MATAR TODOS
-    let item = document.getElementsByClassName('completed');
+    let item = document.querySelectorAll('.completed');
     // for (let i (item.length -1); i >= 0; i--) {
     //   item[i].remove() 
     // }
