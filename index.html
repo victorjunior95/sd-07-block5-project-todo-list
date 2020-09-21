@@ -3,7 +3,7 @@
     <title>To Do List</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    
   </head>
 
   <body>
@@ -15,40 +15,52 @@
 
       <div class="entradaDados">
         <input type="text" placeholder="Tarefa" id="texto-tarefa" />
-     
-       <button alt="Executar Tarefa"onclick="controller.adicionarTarefa()"id="criar-tarefa"class="btn-tarefa">
-        criar Tarefa
-       </button>
+
+        <button
+          alt="Executar Tarefa"
+          
+          id="criar-tarefa"
+          class="btn-tarefa"
+        >
+          criar Tarefa
+        </button>
       </div>
-     
-    
 
-  <!--   <div class="lista">
-     
-      <table class="tabela">
-        <tbody id="lista-tarefas"></tbody>
-      </table>
-    </div>
- -->
+    <!--   <div class="lista">
+        <table class="tabela">
+          <tbody id="lista-tarefas"></tbody>
+        </table>
+      </div> -->
 
-
-    <div id="lista">
+      <div id="lista">
       <ol id="lista-tarefas">
-       
-     
+        <li class="completed selected">arroz</li>
+        <li>frango</li>
+        <li>peixe</li>
       </ol>
     </div>
 
-    <section class="botoes">
-      <button type="button" class="btn" id="removerSelecionado">X</button>
-      <button type="button" class="btn1" id="mover-cima">^</button>
-      <button type="button" class="btn2" id="moverParaBaixo">v</button>
-      <button type="button" class="btn3" id="remover-finalizados">Limpar completos</button>
-      <button type="button" class="btn4" id="apaga-tudo"onclick="controller.apagarTudo()">Limpar lista</button>
-      <button type="button" class="btn5" id="salvartarefas">salvar lista</button>
-    </section>
-    <footer></footer>
-  </div>
-
+      <section class="botoes">
+        <button type="button" class="btn" id="removerSelecionado">X</button>
+        <button type="button" class="btn1" id="mover-cima">^</button>
+        <button type="button" class="btn2" id="moverParaBaixo">v</button>
+        <button type="button" class="btn3" id="remover-finalizados">
+          Limpar completos
+        </button>
+        <button
+          type="button"
+          class="btn4"
+          id="apaga-tudo"
+          
+        >
+          Limpar lista
+        </button>
+        <button type="button" class="btn5" id="salvartarefas">
+          salvar lista
+        </button>
+      </section>
+      <footer></footer>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>
