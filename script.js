@@ -12,7 +12,7 @@ buttonCriarTarefa.addEventListener('click', function () {
 });
 
 listaTarefas.addEventListener('click', function (event) {
-  if (event.target.tagName === 'li') {
+  if (event.target.tagName === 'LI') {
     if (document.querySelector('.selected') !== null) {
       document.querySelector('.selected').style.backgroundColor = 'white';
       document.querySelector('.selected').classList.remove('selected');
