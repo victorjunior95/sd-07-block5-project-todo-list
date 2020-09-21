@@ -1,6 +1,6 @@
 window.onload = function() {
    document.getElementById("texto-tarefa").focus();
- };
+};
 
 const btAdd = document.getElementById("criar-tarefa");
 const btMvUp = document.getElementById("mover-cima");

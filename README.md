@@ -153,12 +153,12 @@ O não cumprimento de um requisito, total ou parcialmente, impactará em sua ava
 - Será verificado que, ao se carregar a página, os itens da lista **não tem** o estilo CSS `background-color: rgb(128, 128, 128)`
 - Será verificado que, ao se clicar em um item da lista, ele passa a ter o estilo CSS `background-color: rgb(128, 128, 128)`
 
-### 8 - Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo.
+### 8 👌️- Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo.
 ##### As seguintes verificações serão feitas:
 
 - Será verificado que, quando um elemento da lista é selecionado, o elemento selecionado previamente deixa de sê-lo. Isso é verificado através da presença ou não do estilo `background-color: rgb(128, 128, 128)` no elemento.
 
-### 9 - Ao clicar duas vezes em um item, ele deverá ser riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item.
+### 9 👌️- Ao clicar duas vezes em um item, ele deverá ser riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item.
 
     Pontos importantes sobre este requisito:
 
@@ -172,13 +172,13 @@ O não cumprimento de um requisito, total ou parcialmente, impactará em sua ava
 - Será verificado que a ação pedida é disparada mediante duplo clique no elemento da lista e que os elementos da lista completos tem em si a classe `completed` e a propriedade `text-decoration` com o valor `line-through solid rgb(0, 0, 0)`
 - Será verificado que, com um segundo duplo clique, um elemento completo deixa de sê-lo
 
-### 10 - Deve haver um botão com `id="apaga-tudo"` que quando clicado deve apagar todos os items da lista.
+### 10 👌️- Deve haver um botão com `id="apaga-tudo"` que quando clicado deve apagar todos os items da lista.
 ##### As seguintes verificações serão feitas:
 
 - Será verificado que existe um elemento `button` com o id `apaga-tudo`
 - Será verificado que, dado que uma lista possui tarefas, um clique no botão a deixa vazia
 
-### 11 - Deve haver um botão com `id="remover-finalizados"` que quando clicado remove **somente** os elementos finalizados da sua lista.
+### 11 👌️- Deve haver um botão com `id="remover-finalizados"` que quando clicado remove **somente** os elementos finalizados da sua lista.
 ##### As seguintes verificações serão feitas:
 
 - Será verificado que existe um elemento `button` com o id `remover-finalizados`
