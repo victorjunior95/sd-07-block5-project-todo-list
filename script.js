@@ -5,7 +5,6 @@ window.onload = function() {
 const btAdd = document.getElementById("criar-tarefa");
 const btMvUp = document.getElementById("mover-cima");
 const btMvDw = document.getElementById("mover-baixo");
-const btRmvFinalizados = document.getElementById("remover-finalizados");
 const btSaveList = document.getElementById("salvar-tarefas");
 
 btAdd.addEventListener('click', function() {
@@ -49,12 +48,10 @@ olLista.addEventListener('dblclick', function(event) {
 })
 
 //remover finalizados
-const btRmvSelect = document. getElementById('remover-finalizados');
-btRmvSelect.addEventListener('click', function () {
-   const item = document.querySelectorAll('.completed');
-   for (let i = 0; i < item.length; i+=1){
-      item[i].remove();
-   }
+const btRmvFinalizados = document. getElementById('remover-finalizados');
+btRmvFinalizados.addEventListener('click', function () {
+   const item = document.querySelector('.completed');
+      item.remove();
 })
 
 //apagando a lista
@@ -63,5 +60,14 @@ btRmvAll.addEventListener('click', function() {
    const olLista = document.querySelectorAll('ol > li');
    for (let i = 0; i < olLista.length; i+=1){
       olLista[i].remove();
+   }
+})
+
+//remover selecionado
+const btRmvSelect = document. getElementById('remover-selecionado');
+btRmvSelect.addEventListener('click', function () {
+   const item = document.querySelectorAll('.selected');
+   for (let i = 0; i < item.length; i+=1){
+      item[i].remove();
    }
 })
