@@ -44,3 +44,25 @@ olListaTarefa.addEventListener("dblclick", function (event) {
   }
   event.target.classList.toggle("completed");
 });
+
+let btApagaTudo = document.getElementById("apaga-tudo");
+let btRemoverFinalizados = document.getElementById("remover-finalizados");
+let btRemoverSelecionado = document.getElementById("remover-selecionado");
+
+btApagaTudo.addEventListener("click", function () {
+  olListaTarefa.innerHTML = "";
+});
+
+btRemoverFinalizados.addEventListener("click", function () {
+  let item = document.querySelectorAll(".completed");
+  for (i = 0; i < item.length; i += 1) {
+    item[i].remove();
+  }
+});
+
+btRemoverSelecionado.addEventListener("click", function () {
+  let item = document.querySelectorAll(".selected");
+  for (i = 0; i < item.length; i += 1) {
+    item[i].remove();
+  }
+});
