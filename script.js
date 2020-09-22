@@ -47,21 +47,27 @@ finishedRemove.addEventListener('click', function () {
 });
 
 const tasksSave = document.querySelector('#salvar-tarefas');
-const tasksArray = [];
 
 tasksSave.addEventListener('click', function () {
+  let tasksArray = [{
+    name: '',
+    class: ''
+  }];
+  let newArray = [];
   for (let index = 0; index < list.children.length; index += 1) {
-    tasksArray.push(list.children[index].innerText);
+    tasksArray.name = list.children[index].innerText;
+    tasksArray.class = list.children[index].className;
+    newArray.push(Object.assign({}, tasksArray));
   }
-  localStorage.setItem('List_tasks', JSON.stringify(tasksArray));
+  localStorage.setItem('List_tasks', JSON.stringify(newArray));
 });
 
 if (typeof (Storage) !== 'undefined' && localStorage.length !== 0) {
   const oldList = JSON.parse(localStorage.getItem('List_tasks'));
   for (let index = 0; index < oldList.length; index += 1) {
     const itemList = document.createElement('li');
-    itemList.className = 'ordered-list';
-    itemList.innerText = oldList[index];
+    itemList.className = oldList[index].class;
+    itemList.innerText = oldList[index].name;
     list.appendChild(itemList);
   }
 }
