@@ -1,11 +1,9 @@
-'use strict'
 window.onload = function () {
 
     clearListedField();
     insertTextBuildListField();
     clearField();
     RiskListChosen();
-    paintListChosenAndTakeIt();
 
     function insertTextBuildListField() {
         document.querySelector("#criar-tarefa").addEventListener("click", function () {
@@ -14,6 +12,7 @@ window.onload = function () {
             let li = document.createElement('li');
             li.className = 'item';
             li.textContent = text.value;
+            paintListChosenAndTakeIt(li);
             if (text.value === '') {
                 alert("Você precisa adicionar algo!");
             } else {
@@ -28,8 +27,8 @@ window.onload = function () {
     function clearListedField() {
         let list = document.querySelectorAll('ol');
         let btn = document.querySelector('.clearReadyBtn');
-        list.forEach(item =>{
-            btn.addEventListener('click', function() {
+        list.forEach(item => {
+            btn.addEventListener('click', function () {
                 let atributoDiv = document.querySelector('.selected').getAttribute('class');
                 console.log(atributoDiv);
                 if (atributoDiv === 'item selected') {
@@ -64,17 +63,18 @@ window.onload = function () {
         });
     }
 
+    function paintListChosenAndTakeIt(task) {
+        let list = document.querySelector('ol');
 
-    function paintListChosenAndTakeIt() {
-        let list = document.querySelectorAll('ol');
-        for (let item = 0; item < list.length; item += 1) {
-            list[item].addEventListener('click', function (event) {
-                if (event.target.style.backgroundColor === 'rgb(128, 128, 128)') {
-                    event.target.style.backgroundColor = '';
-                } else
+        console.log('entrei');
+        task.addEventListener('click', function (event) {
+            for (let item = 0; item < list.childElementCount; item += 1) {
+                if (list.children[item] !== event.target) {
+                    list.children[item].style.backgroundColor = '';
+                } else {
                     event.target.style.backgroundColor = 'rgb(128, 128, 128)';
-            });
-        }
+                }
+            }
+        });
     }
-
 }
