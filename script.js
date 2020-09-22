@@ -46,7 +46,7 @@ moveUpBtn.addEventListener('click', function () {
 moveDownBtn.addEventListener('click', function () {
   const tSelected = document.querySelector('.t-selected');
   if (tSelected !== null && tSelected.nextElementSibling !== null) {
-    tarefaList.insertBefore(tSelected.nextElementSibling, tSelected);
+    tarefaList.insertBefore( tSelected, tSelected.nextElementSibling.nextElementSibling);
   }
 });
 
