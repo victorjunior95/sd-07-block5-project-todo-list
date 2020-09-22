@@ -89,7 +89,7 @@ function moveUpDown(listAllTasks, action) {
       listAllTasks[task].innerText = next.innerText;
       listAllTasks[task].className = next.className;
       task += 1;
-    } else if (action === 'mover-cima' && listAllTasks[task].className.includes('selected')) {
+    } else {
       const previous = listAllTasks[task - 1].cloneNode(true);
       listAllTasks[task - 1].innerText = selected.innerText;
       listAllTasks[task - 1].className = selected.className;
