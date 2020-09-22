@@ -69,9 +69,14 @@ const moveParaBaixo = function () {
   const itemSelecionado = document.querySelector('.selected');
   const ultimoItem = listaOrdenadaDeTarefas.lastElementChild;
 
-  if (!(itemSelecionado.nextElementSibling === null && ultimoItem !== null)) {
-    listaOrdenadaDeTarefas.insertBefore(itemSelecionado.nextElementSibling, itemSelecionado);
-  } 
+  if (itemSelecionado !== null) {
+
+    if (!(itemSelecionado.nextElementSibling === null)) {
+      listaOrdenadaDeTarefas.insertBefore(itemSelecionado.nextElementSibling, itemSelecionado);
+    }
+  }
+
+
 };
 
 const moverParaCima = function () {
