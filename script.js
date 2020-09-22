@@ -1,13 +1,12 @@
 const inputTextToDo = document.querySelector('.texto-tarefa');
 const buttonCreateToDo = document.querySelector('.criar-tarefa');
-let olToDoList = document.querySelector('.lista-tarefas');
+const olToDoList = document.querySelector('.lista-tarefas');
 const buttonClearAllTasksInTheList = document.querySelector('.apaga-tudo');
 const buttonClearDoneTasks = document.querySelector('.remover-finalizados');
 const buttonToSalveList = document.querySelector('.salvar-tarefas');
 const buttonRemoveSelectedTask = document.querySelector('.remover-selecionado');
 const buttonMoveUp = document.querySelector('.mover-cima');
 const buttonMoveDown = document.querySelector('.mover-baixo');
-
 
 function clearInputTextToDo() {
   inputTextToDo.value = '';
@@ -25,7 +24,6 @@ function changeBGColorTask(task) {
   });
 }
 
-
 function addAndRemoveCompletedTask(task) {
   task.addEventListener('dblclick', function (event) {
     if (event.target.classList.contains('completed')) {
@@ -36,7 +34,6 @@ function addAndRemoveCompletedTask(task) {
   });
 }
 
-
 function createLI() {
   const liTask = document.createElement('li');
   liTask.innerText = inputTextToDo.value;
@@ -46,13 +43,12 @@ function createLI() {
   addAndRemoveCompletedTask(liTask);
 }
 
-
 buttonCreateToDo.addEventListener('click', createLI);
 
 buttonMoveUp.addEventListener('click', function () {
   for (let index = 0; index < olToDoList.childElementCount; index += 1) {
     if (olToDoList.children[index].classList.contains('selected')) {
-      if(olToDoList.children[index] === olToDoList.firstChild) {
+      if (olToDoList.children[index] === olToDoList.firstChild) {
         alert('impossível mover para cima!');
       } else {
         olToDoList.insertBefore(olToDoList.children[index], olToDoList.children[index].previousElementSibling);
@@ -72,7 +68,7 @@ buttonMoveDown.addEventListener('click', function () {
       }
     }
   }
-})
+});
 
 buttonClearAllTasksInTheList.addEventListener('click', function () {
   olToDoList.innerHTML = '';
@@ -87,7 +83,7 @@ buttonRemoveSelectedTask.addEventListener('click', function () {
 });
 
 buttonClearDoneTasks.addEventListener('click', function () {
-  let doneTasks = document.querySelectorAll('.completed');
+  const doneTasks = document.querySelectorAll('.completed');
   doneTasks.forEach((item) => {
     // usei esse link pra resolver essa parte: https://developer.mozilla.org/pt-BR/docs/Web/API/Node/removeChild
     olToDoList.removeChild(item);
@@ -95,16 +91,16 @@ buttonClearDoneTasks.addEventListener('click', function () {
 });
 
 buttonToSalveList.addEventListener('click', function () {
-  let listToSaveLocalStorage = [];
+  const listToSaveLocalStorage = [];
   for (let index = 0; index < olToDoList.childElementCount; index += 1) {
-    let innerTextTaskList = olToDoList.children[index].innerText;
-    let completedTrueOrFalse = false;
+    const innerTextTaskList = olToDoList.children[index].innerText;
+    const completedTrueOrFalse = false;
     if (olToDoList.children[index].classList.contains('completed')) {
       completedTrueOrFalse = true;
     } else {
       completedTrueOrFalse = false;
     }
-    let taskStorage = {
+    const taskStorage = {
       task: innerTextTaskList,
       completed: completedTrueOrFalse,
     };
@@ -125,12 +121,12 @@ function createLILocalStorage(taskText, taskClass) {
 }
 
 if (localStorage.getItem('Tasks') !== null) {
-  let jsonParseGetItem = JSON.parse(localStorage.getItem('Tasks'));
-  let lengthLocalStorageList = jsonParseGetItem.length;
+  const jsonParseGetItem = JSON.parse(localStorage.getItem('Tasks'));
+  const lengthLocalStorageList = jsonParseGetItem.length;
   for (let index = 0; index < lengthLocalStorageList; index += 1) {
     createLILocalStorage(
       jsonParseGetItem[index].task,
-      jsonParseGetItem[index].completed
+      jsonParseGetItem[index].completed,
     );
   }
 }
