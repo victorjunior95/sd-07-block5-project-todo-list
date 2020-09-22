@@ -79,8 +79,14 @@ const moveParaBaixo = function () {
 const moverParaCima = function () {
   mensagemAoUsuario('');
   const itemSelecionado = document.querySelector('.selected');
+  const primeiroFilho = listaOrdenadaDeTarefas.firstElementChild;
+  
 
-  if (itemSelecionado.previousSibling !== null) {
+  if (primeiroFilho !== itemSelecionado) {
+    /*console.log("Primeiro filho: ");
+    console.log(primeiroFilho);
+    console.log('item selecionado: ');
+    console.log(itemSelecionado);*/
     listaOrdenadaDeTarefas.insertBefore(itemSelecionado, itemSelecionado.previousSibling);
   } else {
     mensagemAoUsuario('Fim da lista!');
