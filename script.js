@@ -1,9 +1,8 @@
 const listaOrdenadaDeTarefas = document.getElementById('lista-tarefas');
-const avisos = document.getElementById('avisos');
 
 const mensagemAoUsuario = function (mensagem) {
   document.getElementById('avisos').textContent = mensagem;
-}
+};
 
 const criaTarefa = function () {
   const tarefaInput = document.getElementById('texto-tarefa');
@@ -40,9 +39,7 @@ const selecionaItemLista = function (event) {
 
 const salvarLista = function () {
   localStorage.clear();
-  console.log(listaOrdenadaDeTarefas.innerHTML)
   localStorage.setItem('listaTarefas', listaOrdenadaDeTarefas.innerHTML.replace(/selected/g, ''));
-  console.log(listaOrdenadaDeTarefas.innerHTML)
 };
 
 const marcarCompleto = function (event) {
