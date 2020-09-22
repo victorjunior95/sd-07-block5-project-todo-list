@@ -1,53 +1,53 @@
-body {	
-  background-image: url('./imgs/todoList.jpg');	
-  background-repeat: no-repeat;	
-  background-size: cover;	
-}	
+body {
+  background-image: url('./imgs/todoList.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-.titulo {	
-  visibility: hidden;	
-}	
+.titulo {
+  visibility: hidden;
+}
 
-.principal {	
-  margin-left: 750px;	
-  margin-top: 40px;	
-}	
+.principal {
+  margin-left: 750px;
+  margin-top: 40px;
+}
 
-.texto-tarefa {	
-  background-color: rgba(0 , 0 , 0 , 0.2);	
-  border: none;	
-  line-height: 30px;	
-  width: 60%;	
-}	
+.texto-tarefa {
+  background-color: rgba(0 , 0 , 0 , 0.2);
+  border: none;
+  line-height: 30px;
+  width: 60%;
+}
 
-.lista {	
-  box-shadow: 3px 3px 3px 3px gray;	
-  margin-top: 10px;	
-  min-height: 300px;	
-  width: 75%;	
-}	
+.lista {
+  box-shadow: 3px 3px 3px 3px gray;
+  margin-top: 10px;
+  min-height: 300px;
+  width: 75%;
+}
 
-.lista-tarefas {	
-  background-color: rgba(255 , 255 , 255 , 0);	
-  display: inline-flex;	
-  flex-flow: wrap column;	
-  font-family: 'Cormorant Upright', serif;	
-  font-size: 1.5em;	
-}	
+.lista-tarefas {
+  background-color: rgba(255 , 255 , 255 , 0);
+  display: inline-flex;
+  flex-flow: wrap column;
+  font-family: 'Cormorant Upright', serif;
+  font-size: 1.5em;
+}
 
-.cria{	
-  display: inline-flex;	
-  width: 113%;	
-}	
+.cria {
+  display: inline-flex;
+  width: 113%;
+}
 
 .botoes {
   margin-top: 10px;
   width: 90%;
 }
 
-button {  
-  background-color:  rgb(48, 103, 108);
-  border: 1px solid  rgb(48, 103, 108);
+button {
+  background-color: rgb(48 , 103 , 108);
+  border: 1px solid rgb(48 , 103 , 108);
   border-radius: 5px;
   box-shadow: 2px 2px 2px gray;
   line-height: 25px;
@@ -60,12 +60,12 @@ button {
   height: 32px;
   margin: 0;
   margin-left: 10px;
-  padding: 0;  
+  padding: 0;
   width: 32px;
 }
 
 li {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255 , 255 , 255 , 0.1);
 }
 
 .completed {
@@ -75,4 +75,3 @@ li {
 .selected {
   background-color: gray;
 }
-
