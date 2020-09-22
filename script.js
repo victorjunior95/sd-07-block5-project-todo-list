@@ -58,8 +58,9 @@ criarTarefa.addEventListener('click', function () {
             }
         });
         tarefa.addEventListener('dblclick', function () {
-            if (tarefa.classList.contains("complited")){
-                tarefa.classList.remove("complited");
+            if (tarefa.classList.contains("completed")){
+                console.log("teste");
+                tarefa.classList.remove("completed");
             } else {
                 tarefa.classList.add("completed");
             }
