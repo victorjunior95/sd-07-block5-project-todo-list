@@ -21,12 +21,11 @@ function voltarLista (voltarListaSalva) {
     for (let i = 0; i < voltarListaSalva.length; i++) {
         let li = document.createElement('li');
         li.id ='list'
-        //console.log(voltarListaSalva[i])
         li.innerHTML = voltarListaSalva[i];
         listaTarefas.appendChild(li);
     }
-    
-    
+    textoTarefa.value = '';
+
 }
 
 
@@ -55,6 +54,18 @@ function eventosDaLista () {
         }
     });
 }
+
+/*
+const botaoAcima = document.querySelector("#mover-cima");
+botaoAcima.addEventListener('click', movimentarItemAcima);
+function movimentarItemAcima () {
+    const selecionado = document.querySelectorAll(".selected");
+    for (let index = 0; index < selecionado.length; index += 1) {
+    
+    }
+}
+*/
+
 
 botaoRemoverSelecionado.addEventListener('click', apagarSelecionado);
 function apagarSelecionado () {
