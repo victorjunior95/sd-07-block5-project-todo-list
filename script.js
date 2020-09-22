@@ -49,11 +49,11 @@ finishedRemove.addEventListener('click', function () {
 const tasksSave = document.querySelector('#salvar-tarefas');
 
 tasksSave.addEventListener('click', function () {
-  let tasksArray = [{
+  const tasksArray = [{
     name: '',
-    class: ''
+    class: '',
   }];
-  let newArray = [];
+  const newArray = [];
   for (let index = 0; index < list.children.length; index += 1) {
     tasksArray.name = list.children[index].innerText;
     tasksArray.class = list.children[index].className;
