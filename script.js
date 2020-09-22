@@ -3,6 +3,7 @@ let list = document.getElementById("lista-tarefas");
 let inputTask = document.getElementById("texto-tarefa");
 let buttonClearAll = document.getElementById("apaga-tudo");
 let buttonClearCompleted = document.getElementById("remover-finalizados");
+let buttonClearSelected = document.getElementById("remover-selecionado");
 
 addTask.addEventListener ("click", function() {
     let newTask = document.createElement("li")
@@ -31,6 +32,13 @@ addTask.addEventListener ("click", function() {
         let completedElements = document.querySelectorAll(".completed");
         for (let i = 0; i < completedElements.length; i += 1) {
             list.removeChild(completedElements[i])
+            }
+    });
+
+    buttonClearSelected.addEventListener ("click", function () {
+        let selectedElements = document.querySelectorAll(".selected");
+        for (let i = 0; i < selectedElements.length; i += 1) {
+            list.removeChild(selectedElements[i])
             }
     });
 });
