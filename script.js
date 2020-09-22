@@ -68,11 +68,9 @@ const apagaTudo = function () {
 const moveParaBaixo = function () {
   const itemSelecionado = document.querySelector('.selected');
   const tagPai = document.getElementById('lista-tarefas');
+  const ultimoItem = tagPai.lastElementChild;
 
-// 1ª verificação: se o proximo filho é null. Essa condicional faz que a troca só ocorra na situação em que o itemSelecionado é diferente do ultimo elemento da lista ordenada. 
-// 2º verificação: se existe algum item selecionado. caso não hava nada acontece.
-
-  if (!(itemSelecionado.nextElementSibling === null) && itemSelecionado !== null) {
+  if (ultimoItem !== itemSelecionado && itemSelecionado !== null) {
     tagPai.insertBefore(itemSelecionado.nextElementSibling, itemSelecionado);
   }
 };
