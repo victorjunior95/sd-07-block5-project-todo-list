@@ -10,34 +10,48 @@
 </head>
 
 <body>
-    <header>
-        <h1>Minha Lista de Tarefas</h1>
-        <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
-    </header>
-    <main>
-        <div>
-            <label for="texto-tarefa">Digite a tarefa a ser adicionada:</label>
-            <input type="text" name="texto-tarefa" id="texto-tarefa">
-        </div>
-        <div>
-            <ol id="lista-tarefas"></ol>
-        </div>
-        <div>
-            <div>
-                <button id="criar-tarefa">Criar Tarefa</button>
+    <section class="section has-text-centered">
+        <header>
+            <h1 class="title">Minha Lista de Tarefas</h1>
+            <p class="subtitle" id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+        </header>
+    </section>
+    <section class="section">
+        <main>
+            <div class="container">
+                <div class="field">
+                    <label class="label" for="texto-tarefa">Digite a tarefa a ser adicionada:</label>
+                    <div class="control">
+                        <input class="input is-primary is-rounded" type="text" name="texto-tarefa" id="texto-tarefa">
+                    </div>
+                </div>
             </div>
-            <div>
-                <button id="remover-finalizados">Remover Finalizados</button>
+            <br>
+            <div class="container">
+                <ol id="lista-tarefas"></ol>
             </div>
-            <div>
-                <button id="salvar-tarefas">Salvar Tarefas</button>
+            <br>
+            <div class="container">
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-primary is-rounded is-light" id="criar-tarefa">Criar Tarefa</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-warning is-rounded is-light" id="remover-finalizados">Remover
+                            Finalizados</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-success is-rounded is-light" id="salvar-tarefas">Salvar
+                            Tarefas</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-danger is-rounded is-light" id="remover-selecionado">Remover
+                            Selecionado</button>
+                    </div>
+                </div>
             </div>
-            <div>
-                <button id="remover-selecionado">Remover Selecionado</button>
-            </div>
-        </div>
-
-    </main>
+        </main>
+    </section>
     <script src="script.js"></script>
 </body>
 
