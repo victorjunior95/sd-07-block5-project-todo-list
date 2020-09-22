@@ -1,10 +1,13 @@
-// Função para mudar a clase com 1 ou 2 cliques
-function elementosLista (parametro) {
-  parametro.addEventListener('click', function () {
-    parametro.setAttribute('class', 'selected');
+function adicionaTarefa (novoItem) {
+  novoItem.addEventListener('click', function () {
+    for (let index = 0; index < document.getElementById('lista-tarefas').children.length; index += 1) {
+      document.getElementById('lista-tarefas').children[index].classList.remove('selected');
+    }
+    novoItem.classList.add('selected');
   });
-  parametro.addEventListener('dblclick', function () {
-    parametro.setAttribute('class', 'completed');
+  novoItem.addEventListener('dblclick', function () {
+    novoItem.classList.remove('selected');
+    novoItem.classList.add('completed');
   });
 }
 // Função para inserir tarefa
@@ -15,8 +18,7 @@ botaoAddTarefa.addEventListener('click', function () {
   const itemTarefa = document.getElementById('lista-tarefas');
   itemTarefa.appendChild(novoItem).innerHTML = tarefa;
   document.getElementById('texto-tarefa').value = '';
-  removeClasse;
-  elementosLista(novoItem);
+  adicionaTarefa(novoItem);
 });
 // Função para remover todos os itens da lista
 const botaoLimpaLista = document.getElementById('apaga-tudo');
@@ -26,14 +28,15 @@ botaoLimpaLista.addEventListener('click', function () {
     itemTarefa.removeChild(itemTarefa.firstChild);
   }
 });
-// Função para remover finalizados
-removeCompleto = document.getElementById('remover-finalizados');
-totalLista = document.getElementById('lista-tarefas').children.length;
-removeCompleto.addEventListener('click', function () { 
+/* Função para remover finalizados
+const removeCompleto = document.getElementById('remover-finalizados');
+const totalLista = document.getElementById('lista-tarefas').children.length;
+removeCompleto.addEventListener('click', function () {
   for (let index = 0; index < totalLista; index += 1) {
     const selecionado = document.getElementById('lista-tarefas').children[index];
-    if (selecionado.hasAttributes == 'selected') {
+    if (selecionado.hasAttributes === 'selected') {
       console.log("selecionado");
     }
   }
 });
+*/
