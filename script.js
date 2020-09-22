@@ -27,9 +27,10 @@ function taskCompleted(event) {
 
 // Add task event
 let addTask = document.querySelector('#criar-tarefa'); // Button add task
+let tasks = document.querySelector('#lista-tarefas');
 
 addTask.addEventListener('click', function () {
-  let tasks = document.querySelector('#lista-tarefas'); // List of all tasks to do
+   // List of all tasks to do
   let taskToDo = document.querySelector('#texto-tarefa'); // Input with the new task
 
   let taskItem = document.createElement('li');
@@ -63,10 +64,17 @@ saveButton.addEventListener('click', function () {
   localStorage.clear()
   let tasksToSave = document.querySelectorAll('#lista-tarefas li')
   for (let item = 0; item < tasksToSave.length; item += 1) {
-    localStorage.setItem(`Item-${item}`, tasksToSave[item])
+    localStorage.setItem(`Item-${item}`, tasksToSave[item].innerText)
   }
 })
 
 window.onload = function () {
-  console.log(localStorage['Item-0'])
+
+  for (let getItem = 0; getItem < localStorage.length; getItem += 1) {
+    let itemTask = document.createElement('li');
+    itemTask.innerText = localStorage[`Item-${getItem}`];
+    itemTask.addEventListener('click', selectItem);
+    itemTask.addEventListener('dblclick', taskCompleted);
+    tasks.appendChild(itemTask);
+  }
 }
