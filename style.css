@@ -1,0 +1,9 @@
+.completed {
+    text-decoration: lineThrough solid rgb(0, 0, 0);
+  }
+  * {
+    background-color: whitesmoke;
+  }
+  .selected {
+    background-color: rgb(128,128,128);
+  }
