@@ -15,4 +15,9 @@ addTask.addEventListener ("click", function() {
     }
     newTask.classList.add("selected")
     });
+
+    newTask.addEventListener ("dblclick", function () {
+        //// https://developer.mozilla.org/pt-BR/docs/Web/API/Element/classList
+        newTask.classList.toggle("completed");
+    });
 });
