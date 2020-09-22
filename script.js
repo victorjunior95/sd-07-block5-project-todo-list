@@ -1,7 +1,7 @@
 let botao1 = document.querySelector('#criar-tarefa');
 let caixaTexto = document.querySelector('#texto-tarefa');
 let lista = document.querySelector('#lista-tarefas');
-let vetorLista = lista.getElementsByTagName('li');
+let botao2 = document.querySelector('#apaga-tudo');
 
 function criarTarefa() {
     let item = document.createElement('li');
@@ -31,5 +31,11 @@ function riscaItem(item) {
     } 
 }
 
+function apagarTudo() {
+    while (lista.firstChild) {
+        lista.removeChild(lista.firstChild);
+    }
+}
 
 botao1.addEventListener("click", criarTarefa);
+botao2.addEventListener("click", apagarTudo);
