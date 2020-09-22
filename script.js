@@ -1,6 +1,6 @@
 // Select item with click
 function selectItem(event) {
-  let previousSelectedTask = document.querySelector('.selected');
+  const previousSelectedTask = document.querySelector('.selected');
   // check if any items are selected
 
   if (previousSelectedTask !== null) {
@@ -12,7 +12,6 @@ function selectItem(event) {
   } else {
     event.target.className = 'selected';
   }
-
 }
 
 // Mark task completed
@@ -22,24 +21,28 @@ function taskCompleted(event) {
   } else {
     event.target.className += ' completed';
   }
+}
 
+// Create List
+function createList(itemValue, classNam = ''){
+  const taskItem = document.createElement('li');
+  taskItem.addEventListener('click', selectItem);
+  taskItem.addEventListener('dblclick', taskCompleted);
+  taskItem.innerText = itemValue;
+  taskItem.className = classNam;
+  return taskItem;
 }
 
 // Add task event
-let addTask = document.querySelector('#criar-tarefa'); // Button add task
-let tasks = document.querySelector('#lista-tarefas');
+const addTask = document.querySelector('#criar-tarefa'); // Button add task
+const tasks = document.querySelector('#lista-tarefas');
 
 addTask.addEventListener('click', function () {
-   // List of all tasks to do
-  let taskToDo = document.querySelector('#texto-tarefa'); // Input with the new task
-
-  let taskItem = document.createElement('li');
-  taskItem.addEventListener('click', selectItem);
-  taskItem.addEventListener('dblclick', taskCompleted);
-  taskItem.innerText = taskToDo.value;
+  // List of all tasks to do
+  const taskToDo = document.querySelector('#texto-tarefa'); // Input with the new task
+  tasks.appendChild(createList(taskToDo.value));
   taskToDo.value = '';
-
-  tasks.appendChild(taskItem); // add task to list
+  
 });
 
 // Clear list
@@ -50,37 +53,69 @@ clearAll.addEventListener('click', function () {
 });
 
 // Clear all completed tasks
-let clearAllCompleted = document.querySelector('#remover-finalizados');
+const clearAllCompleted = document.querySelector('#remover-finalizados');
 clearAllCompleted.addEventListener('click', function () {
-  let tasksCompleteds = document.querySelectorAll('#lista-tarefas .completed')
-  for (let index = 0; index < tasksCompleteds.length; index += 1){
+  const tasksCompleteds = document.querySelectorAll('#lista-tarefas .completed');
+  for (let index = 0; index < tasksCompleteds.length; index += 1) {
     tasksCompleteds[index].remove();
   }
 });
 
 // Save tasks
-let saveButton = document.querySelector('#salvar-tarefas');
+const saveButton = document.querySelector('#salvar-tarefas');
 saveButton.addEventListener('click', function () {
-  localStorage.clear()
-  let tasksToSave = document.querySelectorAll('#lista-tarefas li')
+  localStorage.clear();
+  const tasksToSave = document.querySelectorAll('#lista-tarefas li');
   for (let item = 0; item < tasksToSave.length; item += 1) {
-    localStorage.setItem(`Item-${item}`, 
-    [tasksToSave[item].innerText, tasksToSave[item].className])
+    localStorage.setItem(`Item-${item}`,
+    [tasksToSave[item].innerText, tasksToSave[item].className]);
   }
-})
+});
 
 // Load all tasks save
 window.onload = function () {
-
   for (let getItem = 0; getItem < localStorage.length; getItem += 1) {
-    let itemTask = document.createElement('li');
-    let localStor = localStorage[`Item-${getItem}`].split(',');
-    itemTask.innerText = localStor[0];
-    itemTask.className = localStor[1];
-    itemTask.addEventListener('click', selectItem);
-    itemTask.addEventListener('dblclick', taskCompleted);
-    tasks.appendChild(itemTask);
+    const localStor = localStorage[`Item-${getItem}`].split(',');
+    tasks.appendChild(createList(localStor[0],localStor[1]));
   }
 }
 
+function moveItem(event) {
+  action = event.target.id;
+  let listAllTasks = document.querySelector('#lista-tarefas').children;
+  let lastchild = document.querySelector('#lista-tarefas').lastElementChild.className;
+  let firstChild = document.querySelector('#lista-tarefas').firstElementChild.className;
+  if ((lastchild.includes('selected') && action === 'mover-baixo' ) || (firstChild.includes('selected') && action === 'mover-cima')) {
+    alert('Ação inválida');
+  }
+  else {
+    for (let task = 0; task < listAllTasks.length; task += 1) {
+    //down
+    if (listAllTasks[task].className.includes('selected')) {
+      
+      const selected = listAllTasks[task].cloneNode(true);
+      if (action === 'mover-baixo') {
+        const next = listAllTasks[task + 1].cloneNode(true);
+        listAllTasks[task + 1].innerText = selected.innerText;
+        listAllTasks[task + 1].className = selected.className;
+        listAllTasks[task].innerText = next.innerText;
+        listAllTasks[task].className = next.className;
+      }
+      else if (action === 'mover-cima') {
+        const previous = listAllTasks[task - 1].cloneNode(true);
+        listAllTasks[task - 1].innerText = selected.innerText;
+        listAllTasks[task - 1].className = selected.className;
+        listAllTasks[task].innerText = previous.innerText;
+        listAllTasks[task].className = previous.className;
+      }
+      task += 1;
+    }
+  }
+  }
+  
+}
 
+const buttonUp = document.querySelector('#mover-cima');
+buttonUp.addEventListener('click', moveItem);
+const buttonDown = document.querySelector('#mover-baixo');
+buttonDown.addEventListener('click', moveItem);
