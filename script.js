@@ -79,27 +79,22 @@ window.onload = function () {
   }
 };
 
-function checkUpDown(action, listAllTasks) {
-  const selected = listAllTasks[task].cloneNode(true);
-  if (action === 'mover-baixo') {
-    const next = listAllTasks[task + 1].cloneNode(true);
-    listAllTasks[task + 1].innerText = selected.innerText;
-    listAllTasks[task + 1].className = selected.className;
-    listAllTasks[task].innerText = next.innerText;
-    listAllTasks[task].className = next.className;
-  } else if (action === 'mover-cima') {
-    const previous = listAllTasks[task - 1].cloneNode(true);
-    listAllTasks[task - 1].innerText = selected.innerText;
-    listAllTasks[task - 1].className = selected.className;
-    listAllTasks[task].innerText = previous.innerText;
-    listAllTasks[task].className = previous.className;
-  }
-}
-
 function moveUpDown(listAllTasks, action) {
   for (let task = 0; task < listAllTasks.length; task += 1) {
-    if (listAllTasks[task].className.includes('selected')) {
-      checkUpDown(listAllTasks, action);
+    const selected = listAllTasks[task].cloneNode(true);
+    if (action === 'mover-baixo' && listAllTasks[task].className.includes('selected')) {
+      const next = listAllTasks[task + 1].cloneNode(true);
+      listAllTasks[task + 1].innerText = selected.innerText;
+      listAllTasks[task + 1].className = selected.className;
+      listAllTasks[task].innerText = next.innerText;
+      listAllTasks[task].className = next.className;
+      task += 1;
+    } else if (action === 'mover-cima' && listAllTasks[task].className.includes('selected')) {
+      const previous = listAllTasks[task - 1].cloneNode(true);
+      listAllTasks[task - 1].innerText = selected.innerText;
+      listAllTasks[task - 1].className = selected.className;
+      listAllTasks[task].innerText = previous.innerText;
+      listAllTasks[task].className = previous.className;
       task += 1;
     }
   }
