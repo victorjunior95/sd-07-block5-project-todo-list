@@ -1,4 +1,5 @@
 const listaOrdenadaDeTarefas = document.getElementById('lista-tarefas');
+const avisos = document.getElementById('avisos');
 
 const mensagemAoUsuario = function (mensagem) {
   document.getElementById('avisos').textContent = mensagem;
@@ -58,7 +59,6 @@ const apagaTudo = function () {
   listaLi.forEach((item) => {
     item.remove();
   });
-  salvarLista();
 };
 
 (function () {
@@ -67,26 +67,11 @@ const apagaTudo = function () {
 
 const moveParaBaixo = function () {
   const itemSelecionado = document.querySelector('.selected');
-  const nodePai = itemSelecionado.parentNode;
   const ultimoItem = listaOrdenadaDeTarefas.lastElementChild;
-  const proximoItem = itemSelecionado.nextSibling;
-  console.log('Item selecionado: ')
-  console.log(itemSelecionado)
-  console.log('Pai: ')
-  console.log(nodePai)
-  console.log('Ultimo item da lista: ')
-  console.log(ultimoItem)
-  console.log('Proximo item da lista: ')
-  console.log(proximoItem);
-  console.log('Proximo do proximo item da lista: ')  
-  console.log(proximoItem.nextSibling);
 
-
-  if (itemSelecionado === ultimoItem) {
-    mensagemAoUsuario('Fim da lista');
-  } else{
-    listaOrdenadaDeTarefas.insertBefore(itemSelecionado, proximoItem.nextSibling);
-  }
+  if (!(itemSelecionado.nextElementSibling === null && ultimoItem !== null)) {
+    listaOrdenadaDeTarefas.insertBefore(itemSelecionado.nextElementSibling, itemSelecionado);
+  } 
 };
 
 const moverParaCima = function () {
@@ -103,13 +88,11 @@ const removerFinalizados = function () {
   itensCompletos.forEach((item) => {
     item.remove();
   });
-  salvarLista();
 };
 
 const removerSelecionados = function () {
   const itenSelecionado = document.querySelectorAll('.selected')[0];
   itenSelecionado.remove();
-  salvarLista();
 };
 
 window.onload = function () {
