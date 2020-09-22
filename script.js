@@ -55,15 +55,15 @@ buttonMoveUp.addEventListener('click', function () {
       }
     }
   }
-})
+});
 
 buttonMoveDown.addEventListener('click', function () {
   for (let index = 0; index < olToDoList.childElementCount; index += 1) {
     if (olToDoList.children[index].classList.contains('selected')) {
-      if(olToDoList.children[index] === olToDoList.lastChild) {
+      if (olToDoList.children[index] === olToDoList.lastChild) {
         alert('impossível mover para baixo!');
       } else {
-        olToDoList.children[index].nextElementSibling.after(olToDoList.children[index])
+        olToDoList.children[index].nextElementSibling.after(olToDoList.children[index]);
         break;
       }
     }
@@ -94,7 +94,7 @@ buttonToSalveList.addEventListener('click', function () {
   const listToSaveLocalStorage = [];
   for (let index = 0; index < olToDoList.childElementCount; index += 1) {
     const innerTextTaskList = olToDoList.children[index].innerText;
-    const completedTrueOrFalse = false;
+    let completedTrueOrFalse = false;
     if (olToDoList.children[index].classList.contains('completed')) {
       completedTrueOrFalse = true;
     } else {
