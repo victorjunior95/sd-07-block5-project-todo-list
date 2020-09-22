@@ -3,18 +3,21 @@ const tarefaList = document.querySelector('#lista-tarefas');
 const limparList = document.querySelector('#apaga-tudo');
 const removeCompleted = document.querySelector('#remover-finalizados');
 const removeSelected = document.querySelector('#remover-selecionado');
-const moveUpBtn = document.querySelector('#move-up');
-const moveDownBtn = document.querySelector('#move-down');
-const saveList = document.querySelector('#salvar-tarefas')
+const moveUpBtn = document.querySelector('#move-cima');
+const moveDownBtn = document.querySelector('#move-baixo');
+const saveList = document.querySelector('#salvar-tarefas');
 
-saveList.addEventListener('click', function() {
+saveList.addEventListener('click', function () {
   localStorage.clear();
+  const tSelected = document.querySelector('.t-selected');
+  const tCompleted = document.querySelector('.completed');
+  tSelected.classList.remove('t-selected');
+  tCompleted.classList.remove('completed');
   localStorage.setItem('tarefaList', tarefaList.innerHTML);
 });
 
-window.onload = loadSaveList();
 function loadSaveList() {
-  let savedList = localStorage.getItem('tarefaList');
+  const savedList = localStorage.getItem('tarefaList');
   if (savedList !== null) {
     tarefaList.innerHTML = savedList;
   }
@@ -22,7 +25,7 @@ function loadSaveList() {
 
 moveUpBtn.addEventListener('click', function () {
   const tSelected = document.querySelector('.t-selected');
-  if ( tSelected !== null && tSelected.previousElementSibling !== null) {
+  if (tSelected !== null && tSelected.previousElementSibling !== null) {
     tarefaList.insertBefore(tSelected, tSelected.previousElementSibling);
   }
 });
@@ -37,27 +40,21 @@ moveDownBtn.addEventListener('click', function () {
 function tSelect(a) {
   const newTarefa = a;
   newTarefa.addEventListener('click', function (select) {
-    const color = newTarefa.style.backgroundColor;
-    if (color === 'gray') {
-      newTarefa.style.backgroundColor = null;
-    } else {
-      const tSelected = document.querySelector('.t-selected');
-      select.target.className += ' t-selected';
-      if (tSelected) {
-        tSelected.classList.remove('t-selected');
-      }
+    const tSelected = document.querySelector('.t-selected');
+    select.target.className += ' t-selected';
+    if (tSelected) {
+      tSelected.classList.remove('t-selected');
     }
   });
 }
 
 function tComplete(a) {
   const newTarefa = a;
-  newTarefa.addEventListener('dblclick', function (select) {
-    const decor = newTarefa.style.textDecoration;
-    if (decor === 'ine-through solid black') {
+  newTarefa.addEventListener('dblclick', function () {
+    if (newTarefa.classList.contains('completed')) {
       newTarefa.classList.remove('completed');
     } else {
-      select.target.className += ' completed';
+      newTarefa.classList.add('completed');
     }
   });
 }
@@ -93,5 +90,7 @@ removeCompleted.addEventListener('click', function () {
 } */
 
 removeSelected.addEventListener('click', function () {
-  document.querySelector('.t-selected').remove()
-})
+  document.querySelector('.t-selected').remove();
+});
+
+window.onload = loadSaveList();
