@@ -3,8 +3,8 @@ const tarefaList = document.querySelector('#lista-tarefas');
 const limparList = document.querySelector('#apaga-tudo');
 const removeCompleted = document.querySelector('#remover-finalizados');
 const removeSelected = document.querySelector('#remover-selecionado');
-const moveUpBtn = document.querySelector('#move-cima');
-const moveDownBtn = document.querySelector('#move-baixo');
+const moveUpBtn = document.querySelector('#mover-cima');
+const moveDownBtn = document.querySelector('#mover-baixo');
 const saveList = document.querySelector('#salvar-tarefas');
 
 saveList.addEventListener('click', function () {
