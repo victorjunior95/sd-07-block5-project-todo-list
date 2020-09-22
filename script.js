@@ -79,23 +79,27 @@ window.onload = function () {
   }
 };
 
+function checkUpDown(action, listAllTasks) {
+  const selected = listAllTasks[task].cloneNode(true);
+  if (action === 'mover-baixo') {
+    const next = listAllTasks[task + 1].cloneNode(true);
+    listAllTasks[task + 1].innerText = selected.innerText;
+    listAllTasks[task + 1].className = selected.className;
+    listAllTasks[task].innerText = next.innerText;
+    listAllTasks[task].className = next.className;
+  } else if (action === 'mover-cima') {
+    const previous = listAllTasks[task - 1].cloneNode(true);
+    listAllTasks[task - 1].innerText = selected.innerText;
+    listAllTasks[task - 1].className = selected.className;
+    listAllTasks[task].innerText = previous.innerText;
+    listAllTasks[task].className = previous.className;
+  }
+}
+
 function moveUpDown(listAllTasks, action) {
   for (let task = 0; task < listAllTasks.length; task += 1) {
     if (listAllTasks[task].className.includes('selected')) {
-      const selected = listAllTasks[task].cloneNode(true);
-      if (action === 'mover-baixo') {
-        const next = listAllTasks[task + 1].cloneNode(true);
-        listAllTasks[task + 1].innerText = selected.innerText;
-        listAllTasks[task + 1].className = selected.className;
-        listAllTasks[task].innerText = next.innerText;
-        listAllTasks[task].className = next.className;
-      } else if (action === 'mover-cima') {
-        const previous = listAllTasks[task - 1].cloneNode(true);
-        listAllTasks[task - 1].innerText = selected.innerText;
-        listAllTasks[task - 1].className = selected.className;
-        listAllTasks[task].innerText = previous.innerText;
-        listAllTasks[task].className = previous.className;
-      }
+      checkUpDown(listAllTasks, action);
       task += 1;
     }
   }
@@ -118,7 +122,7 @@ buttonUp.addEventListener('click', moveItem);
 const buttonDown = document.querySelector('#mover-baixo');
 buttonDown.addEventListener('click', moveItem);
 
-const buttonRemoveSel = document.querySelector('#remover-selecionado')
+const buttonRemoveSel = document.querySelector('#remover-selecionado');
 buttonRemoveSel.addEventListener('click', function () {
   document.querySelector('.selected').remove();
 });
