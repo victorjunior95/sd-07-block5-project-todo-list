@@ -68,18 +68,15 @@ const apagaTudo = function () {
 
 const moveParaBaixo = function () {
   const itemSelecionado = document.querySelector('.selected');
-  const ultimoItem = listaOrdenadaDeTarefas.lastElementChild;
 
-  if (itemSelecionado !== ultimoItem) {
+  if (!(itemSelecionado.nextElementSibling === null)) {
     listaOrdenadaDeTarefas.insertBefore(itemSelecionado.nextElementSibling, itemSelecionado);
   } 
 };
 
 const moverParaCima = function () {
-  const itemSelecionado = document.querySelector('.selected');
-  const primeiroFilho = listaOrdenadaDeTarefas.firstElementChild;
-  
-  if (primeiroFilho !== itemSelecionado) {
+  const itemSelecionado = document.querySelector('.selected');  
+  if (!(itemSelecionado.previousElementSibling === null)) {
     listaOrdenadaDeTarefas.insertBefore(itemSelecionado, itemSelecionado.previousElementSibling);
   }
 };
