@@ -66,30 +66,20 @@ const apagaTudo = function () {
 }());
 
 const moveParaBaixo = function () {
-  mensagemAoUsuario('');
-  const itemSelecionado = document.querySelectorAll('.selected')[0];
+  const itemSelecionado = document.querySelector('.selected');
+  const ultimoItem = listaOrdenadaDeTarefas.lastElementChild;
 
-  if (itemSelecionado.nextSibling !== null) {
-    listaOrdenadaDeTarefas.insertBefore(itemSelecionado.nextSibling, itemSelecionado);
-  } else {
-    mensagemAoUsuario('Fim da lista!');
-  }
+  if (itemSelecionado !== ultimoItem) {
+    listaOrdenadaDeTarefas.insertBefore(itemSelecionado.nextElementSibling, itemSelecionado);
+  } 
 };
 
 const moverParaCima = function () {
-  mensagemAoUsuario('');
   const itemSelecionado = document.querySelector('.selected');
   const primeiroFilho = listaOrdenadaDeTarefas.firstElementChild;
   
-
   if (primeiroFilho !== itemSelecionado) {
-    /*console.log("Primeiro filho: ");
-    console.log(primeiroFilho);
-    console.log('item selecionado: ');
-    console.log(itemSelecionado);*/
-    listaOrdenadaDeTarefas.insertBefore(itemSelecionado, itemSelecionado.previousSibling);
-  } else {
-    mensagemAoUsuario('Fim da lista!');
+    listaOrdenadaDeTarefas.insertBefore(itemSelecionado, itemSelecionado.previousElementSibling);
   }
 };
 
