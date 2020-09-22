@@ -1,6 +1,7 @@
 body {
   background-color: grey;
 }
+
 header {
   background-color: green;
   border-radius: 15px;
@@ -12,17 +13,17 @@ h1 {
 }
 
 p {
-  margin: 15px 0 20px 0;
+  margin: 15px 0 20px;
 }
 
-button{
+button {
   height: 30px;
 }
 
 .t-selected {
-  background-color: rgb(128,128,128);
+  background-color: gray;
 }
 
 .completed {
-  text-decoration: line-through solid rgb(0, 0, 0);
+  text-decoration: line-through solid black;
 }
