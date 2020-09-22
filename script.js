@@ -14,6 +14,24 @@ function InputTextField () {
     })
 }
 
+let voltarListaSalva = localStorage.getItem("lista");
+voltarListaSalva = voltarListaSalva.split(",");
+
+function voltarLista (voltarListaSalva) {
+    for (let i = 0; i < voltarListaSalva.length; i++) {
+        let li = document.createElement('li');
+        li.id ='list'
+        //console.log(voltarListaSalva[i])
+        li.innerHTML = voltarListaSalva[i];
+        listaTarefas.appendChild(li);
+    }
+    
+    
+}
+
+
+
+
 function listTask () {
     buttoncriarTarefa.addEventListener('click', () => {
         listaTarefas = document.querySelector("#lista-tarefas");
@@ -70,7 +88,6 @@ function salvarLista () {
         gravarLista.push(listaParaSalvar[i].textContent);
     }
     localStorage.setItem("lista", gravarLista);
-
 }
 
 
@@ -79,4 +96,5 @@ window.onload = () => {
     InputTextField ()
     eventosDaLista ()
     listTask ()
+    voltarLista (voltarListaSalva)
 }
