@@ -38,11 +38,9 @@ criarTarefa.addEventListener('click', function () {
     if (novaTarefa.value == '') {
         alert("Digite uma tarefa.");
     } else {
-        let count = tarefas.length +1;
         let tarefa = document.createElement('li');
         tarefa.textContent = novaTarefa.value;
         tarefa.classList.add('tarefas');
-        tarefa.classList.add(count);
         lista.appendChild(tarefa);
         novaTarefa.value = "";
         tarefa.addEventListener('click', function () {
@@ -98,12 +96,12 @@ removerSelecionado.addEventListener('click', function (){
     itemSelecionado = "";
 });
 removerFinalizados.addEventListener('click', function () {
-    for (let i = 0; i < tarefas.length; i+=1){
-        if (tarefas[i].classList.contains("completed")){
-            tarefas[i].remove();
-        }
-    }
-});
+    const finalizados = document.querySelectorAll(".completed");
+    finalizados.forEach((item) => {
+        lista.removeChild(item);
+    });
+  });
+
 apagaTudo.addEventListener('click', function () {
     lista.innerHTML = "";
     localStorage.clear();
