@@ -1,6 +1,6 @@
 const inputTextToDo = document.querySelector('.texto-tarefa');
 const buttonCreateToDo = document.querySelector('.criar-tarefa');
-const olToDoList = document.querySelector('.lista-tarefas');
+const olToDo = document.querySelector('.lista-tarefas');
 const buttonClearAllTasksInTheList = document.querySelector('.apaga-tudo');
 const buttonClearDoneTasks = document.querySelector('.remover-finalizados');
 const buttonToSalveList = document.querySelector('.salvar-tarefas');
@@ -14,9 +14,9 @@ function clearInputTextToDo() {
 
 function changeBGColorTask(task) {
   task.addEventListener('click', function (event) {
-    for (let index = 0; index < olToDoList.childElementCount; index += 1) {
-      if (olToDoList.children[index] !== event.target) {
-        olToDoList.children[index].classList.remove('selected');
+    for (let index = 0; index < olToDo.childElementCount; index += 1) {
+      if (olToDo.children[index] !== event.target) {
+        olToDo.children[index].classList.remove('selected');
       } else {
         event.target.classList.add('selected');
       }
@@ -37,7 +37,7 @@ function addAndRemoveCompletedTask(task) {
 function createLI() {
   const liTask = document.createElement('li');
   liTask.innerText = inputTextToDo.value;
-  olToDoList.appendChild(liTask);
+  olToDo.appendChild(liTask);
   clearInputTextToDo();
   changeBGColorTask(liTask);
   addAndRemoveCompletedTask(liTask);
@@ -46,24 +46,24 @@ function createLI() {
 buttonCreateToDo.addEventListener('click', createLI);
 
 buttonMoveUp.addEventListener('click', function () {
-  for (let index = 0; index < olToDoList.childElementCount; index += 1) {
-    if (olToDoList.children[index].classList.contains('selected')) {
-      if (olToDoList.children[index] === olToDoList.firstChild) {
+  for (let index = 0; index < olToDo.childElementCount; index += 1) {
+    if (olToDo.children[index].classList.contains('selected')) {
+      if (olToDo.children[index] === olToDo.firstChild) {
         alert('impossível mover para cima!');
       } else {
-        olToDoList.insertBefore(olToDoList.children[index], olToDoList.children[index].previousElementSibling);
+        olToDo.insertBefore(olToDo.children[index], olToDo.children[index].previousElementSibling);
       }
     }
   }
 });
 
 buttonMoveDown.addEventListener('click', function () {
-  for (let index = 0; index < olToDoList.childElementCount; index += 1) {
-    if (olToDoList.children[index].classList.contains('selected')) {
-      if (olToDoList.children[index] === olToDoList.lastChild) {
+  for (let index = 0; index < olToDo.childElementCount; index += 1) {
+    if (olToDo.children[index].classList.contains('selected')) {
+      if (olToDo.children[index] === olToDo.lastChild) {
         alert('impossível mover para baixo!');
       } else {
-        olToDoList.children[index].nextElementSibling.after(olToDoList.children[index]);
+        olToDo.children[index].nextElementSibling.after(olToDo.children[index]);
         break;
       }
     }
@@ -71,13 +71,13 @@ buttonMoveDown.addEventListener('click', function () {
 });
 
 buttonClearAllTasksInTheList.addEventListener('click', function () {
-  olToDoList.innerHTML = '';
+  olToDo.innerHTML = '';
 });
 
 buttonRemoveSelectedTask.addEventListener('click', function () {
-  for (let index = 0; index < olToDoList.childElementCount; index += 1) {
-    if (olToDoList.children[index].classList.contains('selected')) {
-      olToDoList.removeChild(olToDoList.children[index]);
+  for (let index = 0; index < olToDo.childElementCount; index += 1) {
+    if (olToDo.children[index].classList.contains('selected')) {
+      olToDo.removeChild(olToDo.children[index]);
     }
   }
 });
@@ -86,16 +86,16 @@ buttonClearDoneTasks.addEventListener('click', function () {
   const doneTasks = document.querySelectorAll('.completed');
   doneTasks.forEach((item) => {
     // usei esse link pra resolver essa parte: https://developer.mozilla.org/pt-BR/docs/Web/API/Node/removeChild
-    olToDoList.removeChild(item);
+    olToDo.removeChild(item);
   });
 });
 
 buttonToSalveList.addEventListener('click', function () {
   const listToSaveLocalStorage = [];
-  for (let index = 0; index < olToDoList.childElementCount; index += 1) {
-    const innerTextTaskList = olToDoList.children[index].innerText;
+  for (let index = 0; index < olToDo.childElementCount; index += 1) {
+    const innerTextTaskList = olToDo.children[index].innerText;
     let completedTrueOrFalse = false;
-    if (olToDoList.children[index].classList.contains('completed')) {
+    if (olToDo.children[index].classList.contains('completed')) {
       completedTrueOrFalse = true;
     } else {
       completedTrueOrFalse = false;
@@ -112,7 +112,7 @@ buttonToSalveList.addEventListener('click', function () {
 function createLILocalStorage(taskText, taskClass) {
   const liTask = document.createElement('li');
   liTask.innerText = taskText;
-  olToDoList.appendChild(liTask);
+  olToDo.appendChild(liTask);
   changeBGColorTask(liTask);
   addAndRemoveCompletedTask(liTask);
   if (taskClass === true) {
