@@ -1,4 +1,5 @@
-function adicionaTarefa(novoItem) {
+// Função para adicionar e tratar eventos
+function adicionaEvento(novoItem) {
   novoItem.addEventListener('click', function () {
     for (let index = 0; index < document.getElementById('lista-tarefas').children.length; index += 1) {
       document.getElementById('lista-tarefas').children[index].classList.remove('selected');
@@ -22,7 +23,7 @@ botaoAddTarefa.addEventListener('click', function () {
   const itemTarefa = document.getElementById('lista-tarefas');
   itemTarefa.appendChild(novoItem).innerHTML = tarefa;
   document.getElementById('texto-tarefa').value = '';
-  adicionaTarefa(novoItem);
+  adicionaEvento(novoItem);
 });
 // Função para remover todos os itens da lista
 const botaoLimpaLista = document.getElementById('apaga-tudo');
