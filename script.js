@@ -30,7 +30,6 @@ addTask.addEventListener ("click", function() {
     buttonClearCompleted.addEventListener ("click", function () {
         let completedElements = document.querySelectorAll(".completed");
         for (let i = 0; i < completedElements.length; i += 1) {
-            //https://developer.mozilla.org/pt-BR/docs/Web/API/Node/removeChild
             list.removeChild(completedElements[i])
             }
     });
