@@ -42,4 +42,25 @@ btEmpty = document.querySelector('#apaga-tudo').addEventListener('click', functi
 })
 
 
+const btnFinalizados = document.querySelector('#remover-finalizados');
+
+btnFinalizados.addEventListener('click', removeCompleted);
+
+function removeCompleted() {
+
+let listAssignment = document.querySelector('#lista-tarefas');
+let complete = document.querySelectorAll('li');
+
+for (i = 0; i < complete.length; i ++){
+
+    if(complete[i].classList.contains('completed')){
+
+        listAssignment.removeChild(complete[i])
+
+    }
+  }
+
+  }
+
+
 }
