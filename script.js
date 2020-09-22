@@ -1,5 +1,4 @@
 const listaOrdenadaDeTarefas = document.getElementById('lista-tarefas');
-const avisos = document.getElementById('avisos');
 
 const mensagemAoUsuario = function (mensagem) {
   document.getElementById('avisos').textContent = mensagem;
@@ -9,7 +8,7 @@ const criaTarefa = function () {
   const tarefaInput = document.getElementById('texto-tarefa');
 
   if (tarefaInput.value) {
-    avisos.innerText = '';
+    mensagemAoUsuario('');
     const novaTarefa = document.createElement('li');
     const textNode = document.createTextNode(tarefaInput.value);
     novaTarefa.appendChild(textNode);
@@ -68,11 +67,26 @@ const apagaTudo = function () {
 
 const moveParaBaixo = function () {
   const itemSelecionado = document.querySelector('.selected');
+  const nodePai = itemSelecionado.parentNode;
   const ultimoItem = listaOrdenadaDeTarefas.lastElementChild;
+  const proximoItem = itemSelecionado.nextSibling;
+  console.log('Item selecionado: ')
+  console.log(itemSelecionado)
+  console.log('Pai: ')
+  console.log(nodePai)
+  console.log('Ultimo item da lista: ')
+  console.log(ultimoItem)
+  console.log('Proximo item da lista: ')
+  console.log(proximoItem);
+  console.log('Proximo do proximo item da lista: ')  
+  console.log(proximoItem.nextSibling);
 
-  if (!(itemSelecionado.nextElementSibling === null && ultimoItem !== null)) {
-    listaOrdenadaDeTarefas.insertBefore(itemSelecionado.nextElementSibling, itemSelecionado);
-  } 
+
+  if (itemSelecionado === ultimoItem) {
+    mensagemAoUsuario('Fim da lista');
+  } else{
+    listaOrdenadaDeTarefas.insertBefore(itemSelecionado, proximoItem.nextSibling);
+  }
 };
 
 const moverParaCima = function () {
