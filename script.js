@@ -36,17 +36,14 @@ clearBtn.addEventListener('click', function () {
 
 const removeCompletedBtn = document.getElementById('remover-finalizados');
 removeCompletedBtn.addEventListener('click', function () {
-  const item = document.getElementsByTagName('li');
-  for (let index = 0; index < item.length; index += 1) {
-    if (item[index].classList.contains('completed')) {
-      toDoList.removeChild(item[index]);
-    }
+  const remove = document.querySelectorAll('.completed');
+  for (let index = 0; index < remove.length; index += 1) {
+    remove[index].remove();
   }
 });
 
 const saveListBtn = document.getElementById('salvar-tarefas');
 saveListBtn.addEventListener('click', function () {
-  localStorage.clear();
   const saved = toDoList.innerHTML;
   localStorage.setItem('savedList', saved);
 });
