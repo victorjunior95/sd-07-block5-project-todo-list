@@ -4,6 +4,7 @@ const avisos = document.getElementById('avisos');
 const mensagemAoUsuario = function (mensagem) {
   document.getElementById('avisos').textContent = mensagem;
 }
+
 const criaTarefa = function () {
   const tarefaInput = document.getElementById('texto-tarefa');
 
