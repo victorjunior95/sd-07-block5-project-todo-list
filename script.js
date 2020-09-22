@@ -106,11 +106,10 @@ function moveItem(event) {
   const listAllTasks = document.querySelector('#lista-tarefas').children;
   const lastchild = document.querySelector('#lista-tarefas').lastElementChild.className;
   const firstChild = document.querySelector('#lista-tarefas').firstElementChild.className;
-  if (( lastchild.includes('selected') && action === 'mover-baixo' ) || ( firstChild.includes('selected') && action === 'mover-cima' )) {
+  if ((lastchild.includes('selected') && action === 'mover-baixo') || (firstChild.includes('selected') && action === 'mover-cima')) {
     alert('Ação inválida');
-  }
-  else {
-    moveUpDown(listAllTasks, action)
+  } else {
+    moveUpDown(listAllTasks, action);
   }
 }
 
@@ -120,7 +119,6 @@ const buttonDown = document.querySelector('#mover-baixo');
 buttonDown.addEventListener('click', moveItem);
 
 const buttonRemoveSel = document.querySelector('#remover-selecionado')
-buttonRemoveSel.addEventListener('click',function (event) {
-  document.querySelector('.selected').remove()
-})
-
+buttonRemoveSel.addEventListener('click', function () {
+  document.querySelector('.selected').remove();
+});
