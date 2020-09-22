@@ -9,19 +9,32 @@ const saveList = document.querySelector('#salvar-tarefas');
 
 saveList.addEventListener('click', function () {
   localStorage.clear();
-  const tSelected = document.querySelector('.t-selected');
-  const tCompleted = document.querySelector('.completed');
-  tSelected.classList.remove('t-selected');
-  tCompleted.classList.remove('completed');
-  localStorage.setItem('tarefaList', tarefaList.innerHTML);
+  const savedLi = [{ texto: '', classe: '' }];
+  const tarefa = [];
+  for (let i = 0; i < tarefaList.childElementCount; i += 1) {
+    savedLi.texto = tarefaList.children[i].innerText;
+    savedLi.classe = tarefaList.children[i].className;
+
+    tarefa.push(Object.assign({}, savedLi));
+  }
+  localStorage.setItem('tarefaList', JSON.stringify(tarefa));
 });
 
+
 function loadSaveList() {
-  const savedList = localStorage.getItem('tarefaList');
-  if (savedList !== null) {
-    tarefaList.innerHTML = savedList;
+  if (typeof (Storage) !== 'undefined') {
+    if (localStorage.length !== 0) {
+      const savedLi = JSON.parse(localStorage.getItem('tarefaList'));
+      for (let i = 0; i < savedLi.length; i += 1) {
+        const savedTarefa = document.createElement('li');
+        savedTarefa.className = savedLi[i].classe;
+        savedTarefa.innerText = savedLi[i].texto;
+        tarefaList.appendChild(savedTarefa);
+      }
+    }
   }
 }
+
 
 moveUpBtn.addEventListener('click', function () {
   const tSelected = document.querySelector('.t-selected');
