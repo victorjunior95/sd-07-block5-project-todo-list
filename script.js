@@ -1,6 +1,7 @@
 let addTask = document.getElementById("criar-tarefa");
 let list = document.getElementById("lista-tarefas");
 let inputTask = document.getElementById("texto-tarefa");
+let buttonClear = document.getElementById("apaga-tudo")
 
 addTask.addEventListener ("click", function() {
     let newTask = document.createElement("li")
@@ -19,5 +20,9 @@ addTask.addEventListener ("click", function() {
     newTask.addEventListener ("dblclick", function () {
         //// https://developer.mozilla.org/pt-BR/docs/Web/API/Element/classList
         newTask.classList.toggle("completed");
+    });
+
+    buttonClear.addEventListener ("click", function () {
+        list.innerHTML = "";
     });
 });
