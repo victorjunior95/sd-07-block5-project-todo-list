@@ -67,16 +67,11 @@ const apagaTudo = function () {
 
 const moveParaBaixo = function () {
   const itemSelecionado = document.querySelector('.selected');
-  const ultimoItem = listaOrdenadaDeTarefas.lastElementChild;
+  const tagPai = document.getElementById('lista-tarefas');
 
-  if (itemSelecionado !== null) {
-
-    if (!(itemSelecionado.nextElementSibling === null)) {
-      listaOrdenadaDeTarefas.insertBefore(itemSelecionado.nextElementSibling, itemSelecionado);
-    }
+  if (!(itemSelecionado.nextElementSibling === null) && itemSelecionado !== null) {
+    tagPai.insertBefore(itemSelecionado.nextElementSibling, itemSelecionado);
   }
-
-
 };
 
 const moverParaCima = function () {
