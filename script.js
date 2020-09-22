@@ -24,7 +24,7 @@ function taskCompleted(event) {
 }
 
 // Create List
-function createList(itemValue, classNam = ''){
+function createList(itemValue, classNam = '') {
   const taskItem = document.createElement('li');
   taskItem.addEventListener('click', selectItem);
   taskItem.addEventListener('dblclick', taskCompleted);
@@ -42,11 +42,10 @@ addTask.addEventListener('click', function () {
   const taskToDo = document.querySelector('#texto-tarefa'); // Input with the new task
   tasks.appendChild(createList(taskToDo.value));
   taskToDo.value = '';
-  
 });
 
 // Clear list
-let clearAll = document.querySelector('#apaga-tudo');
+const clearAll = document.querySelector('#apaga-tudo');
 
 clearAll.addEventListener('click', function () {
   document.querySelector('#lista-tarefas').innerHTML = '';
@@ -68,7 +67,7 @@ saveButton.addEventListener('click', function () {
   const tasksToSave = document.querySelectorAll('#lista-tarefas li');
   for (let item = 0; item < tasksToSave.length; item += 1) {
     localStorage.setItem(`Item-${item}`,
-    [tasksToSave[item].innerText, tasksToSave[item].className]);
+      [tasksToSave[item].innerText, tasksToSave[item].className]);
   }
 });
 
@@ -76,23 +75,13 @@ saveButton.addEventListener('click', function () {
 window.onload = function () {
   for (let getItem = 0; getItem < localStorage.length; getItem += 1) {
     const localStor = localStorage[`Item-${getItem}`].split(',');
-    tasks.appendChild(createList(localStor[0],localStor[1]));
+    tasks.appendChild(createList(localStor[0], localStor[1]));
   }
-}
+};
 
-function moveItem(event) {
-  action = event.target.id;
-  let listAllTasks = document.querySelector('#lista-tarefas').children;
-  let lastchild = document.querySelector('#lista-tarefas').lastElementChild.className;
-  let firstChild = document.querySelector('#lista-tarefas').firstElementChild.className;
-  if ((lastchild.includes('selected') && action === 'mover-baixo' ) || (firstChild.includes('selected') && action === 'mover-cima')) {
-    alert('Ação inválida');
-  }
-  else {
-    for (let task = 0; task < listAllTasks.length; task += 1) {
-    //down
+function moveUpDown(listAllTasks, action) {
+  for (let task = 0; task < listAllTasks.length; task += 1) {
     if (listAllTasks[task].className.includes('selected')) {
-      
       const selected = listAllTasks[task].cloneNode(true);
       if (action === 'mover-baixo') {
         const next = listAllTasks[task + 1].cloneNode(true);
@@ -100,8 +89,7 @@ function moveItem(event) {
         listAllTasks[task + 1].className = selected.className;
         listAllTasks[task].innerText = next.innerText;
         listAllTasks[task].className = next.className;
-      }
-      else if (action === 'mover-cima') {
+      } else if (action === 'mover-cima') {
         const previous = listAllTasks[task - 1].cloneNode(true);
         listAllTasks[task - 1].innerText = selected.innerText;
         listAllTasks[task - 1].className = selected.className;
@@ -111,11 +99,28 @@ function moveItem(event) {
       task += 1;
     }
   }
+}
+
+function moveItem(event) {
+  const action = event.target.id;
+  const listAllTasks = document.querySelector('#lista-tarefas').children;
+  const lastchild = document.querySelector('#lista-tarefas').lastElementChild.className;
+  const firstChild = document.querySelector('#lista-tarefas').firstElementChild.className;
+  if (( lastchild.includes('selected') && action === 'mover-baixo' ) || ( firstChild.includes('selected') && action === 'mover-cima' )) {
+    alert('Ação inválida');
   }
-  
+  else {
+    moveUpDown(listAllTasks, action)
+  }
 }
 
 const buttonUp = document.querySelector('#mover-cima');
 buttonUp.addEventListener('click', moveItem);
 const buttonDown = document.querySelector('#mover-baixo');
 buttonDown.addEventListener('click', moveItem);
+
+const buttonRemoveSel = document.querySelector('#remover-selecionado')
+buttonRemoveSel.addEventListener('click',function (event) {
+  document.querySelector('.selected').remove()
+})
+
