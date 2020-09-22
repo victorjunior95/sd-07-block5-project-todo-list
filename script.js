@@ -14,8 +14,12 @@ function selectionListItem(event) {
 
 // Risca o elemento da lista
 function crossOutListItem(event) {
-  let crossOutItem = event.target;
-  crossOutItem.className = 'completed';
+ const crossOutItem = event.target;
+  if (crossOutItem.classList.value === "completed") {
+    crossOutItem.classList.remove("completed");
+  } else {
+    crossOutItem.classList.add("completed");
+  }
 }
 
 // Criar elemento na lista
@@ -56,9 +60,9 @@ const removeButton = document.querySelector('#remover-finalizados');
 
 function removeCrossOutItem() {
   const completedItem = document.querySelectorAll('.completed');
-  for (let i in completedItem) {
-    completedItem[i].remove();
-  }
+  completedItem.forEach(item => { // utilizei como referência o código do devDavielCespedes
+    list.removeChild(item);
+  })
 }
 
 removeButton.addEventListener('click', removeCrossOutItem);
