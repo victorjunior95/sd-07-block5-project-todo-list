@@ -84,7 +84,7 @@ removeCompleted.addEventListener('click', function () {
   });
 });
 
-/* function removeCompleted() { ! OUTRA FORMA DE ELIMINAR POR CLASS !
+/* function removeCompleted() { !OUTRA FORMA DE ELIMINAR POR CLASS!
   const completedArray = document.getElementsByClassName("completed");
   while (completedArray.length > 0) elements[0].remove();
 } */
