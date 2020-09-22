@@ -64,17 +64,23 @@ saveButton.addEventListener('click', function () {
   localStorage.clear()
   let tasksToSave = document.querySelectorAll('#lista-tarefas li')
   for (let item = 0; item < tasksToSave.length; item += 1) {
-    localStorage.setItem(`Item-${item}`, tasksToSave[item].innerText)
+    localStorage.setItem(`Item-${item}`, 
+    [tasksToSave[item].innerText, tasksToSave[item].className])
   }
 })
 
+// Load all tasks save
 window.onload = function () {
 
   for (let getItem = 0; getItem < localStorage.length; getItem += 1) {
     let itemTask = document.createElement('li');
-    itemTask.innerText = localStorage[`Item-${getItem}`];
+    let localStor = localStorage[`Item-${getItem}`].split(',');
+    itemTask.innerText = localStor[0];
+    itemTask.className = localStor[1];
     itemTask.addEventListener('click', selectItem);
     itemTask.addEventListener('dblclick', taskCompleted);
     tasks.appendChild(itemTask);
   }
 }
+
+
