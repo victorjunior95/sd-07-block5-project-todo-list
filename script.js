@@ -34,7 +34,7 @@ clearBranch.addEventListener("click", function () {
         deleteList[index].remove();
     }
 })
-let removeBranch = document.getElementById("remover-finalizados");
+let removeBranch = document.getElementById("remover-selecionado");
 removeBranch.addEventListener("click", function () {
     let deleteList = document.querySelectorAll(".completed")
     for (let index = 0; index < deleteList.length; index++) {
