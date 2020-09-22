@@ -11,7 +11,7 @@ buttonAdd.addEventListener('click', function () {
     outList.appendChild(liElement);
     inputText.value = '';
   } else {
-    alert('campo de texto vazio');
+    alert('campo vazio')
   }
   inputText.focus();
 });
