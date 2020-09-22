@@ -28,9 +28,9 @@ footer {
   color: white;
   font-size: 11.5px;
   padding: 1%;
-  position: flex;
+  position: fixed;
   text-align: center;
-  width: 98%;  
+  width: 98%;
 }
 
 button {

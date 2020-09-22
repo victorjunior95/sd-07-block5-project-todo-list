@@ -14,7 +14,7 @@ addTaskBtn.addEventListener('click', function () {
 });
 
 toDoList.addEventListener('click', function (event) {
-  if (event.target.tagName == 'LI') {
+  if (event.target.tagName === 'LI') {
     const selectedItem = document.querySelector('.selected');
     if (selectedItem) {
       selectedItem.classList.toggle('selected');
@@ -24,7 +24,7 @@ toDoList.addEventListener('click', function (event) {
 });
 
 toDoList.addEventListener('dblclick', function (event) {
-  if (event.target.tagName == 'LI') {
+  if (event.target.tagName === 'LI') {
     event.target.classList.toggle('completed');
   }
 });
@@ -50,14 +50,14 @@ saveListBtn.addEventListener('click', function () {
 
 window.onload = function () {
   toDoList.innerHTML = localStorage.getItem('savedList');
-}
+};
 
 const removeSelectedBtn = document.getElementById('remover-selecionado');
 removeSelectedBtn.addEventListener('click', function () {
   const item = document.getElementsByTagName('li');
   for (let index = 0; index < item.length; index += 1) {
     if (item[index].classList.contains('selected')) {
-          toDoList.removeChild(item[index]);
+      toDoList.removeChild(item[index]);
     }
   }
 });
