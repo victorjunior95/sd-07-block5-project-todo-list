@@ -5,12 +5,23 @@ removerSelecionadosButton = document.querySelector('#remover-selecionado');
 apagaTudoButton = document.querySelector('#apaga-tudo');
 listaDeTarefas = document.querySelector('#lista-tarefas');
 tarefaInput = document.querySelector('#texto-tarefa');
+itemLista = document.querySelectorAll('.item-lista');
 
-criarTarefaButton.addEventListener('click', function () {
-  listaDeTarefas.innerHTML += listaDeTarefas.innerHTML = `<li>${tarefaInput.value}</li>`;
+//   addEventOnItemLista()
+//   // $('#lista-tarefas').append(function () {
+//   //   return $(this).children().get().reverse()
+//   // });
+
+
+$('#criar-tarefa').click(function () {
+  $('#lista-tarefas').append(`<li class="item-lista">${tarefaInput.value}</li>`);
   tarefaInput.value = '';
+
+  // $('.item-lista').on('dblclick', function () {
+  //   $(".item-lista").addClass('completed');
+  // });
 });
 
-apagaTudoButton.addEventListener('click', function () {
+$('#apaga-tudo').click(function () {
   $('#lista-tarefas').empty();
 });
