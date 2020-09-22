@@ -1,0 +1,9 @@
+body {
+  margin: auto;
+  max-width: 800px;
+  width: 100%;
+}
+
+.completed {
+  text-decoration: line-through solid rgb(0, 0, 0);
+}
