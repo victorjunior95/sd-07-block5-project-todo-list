@@ -1,4 +1,4 @@
-function adicionaTarefa (novoItem) {
+function adicionaTarefa(novoItem) {
   novoItem.addEventListener('click', function () {
     for (let index = 0; index < document.getElementById('lista-tarefas').children.length; index += 1) {
       document.getElementById('lista-tarefas').children[index].classList.remove('selected');
@@ -7,7 +7,11 @@ function adicionaTarefa (novoItem) {
   });
   novoItem.addEventListener('dblclick', function () {
     novoItem.classList.remove('selected');
-    novoItem.classList.add('completed');
+    if (novoItem.className === 'completed') {
+      novoItem.classList.remove('completed');
+    } else {
+      novoItem.classList.add('completed');
+    }
   });
 }
 // Função para inserir tarefa
