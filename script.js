@@ -77,10 +77,11 @@ const moveParaBaixo = function () {
 
 const moverParaCima = function () {
   const itemSelecionado = document.querySelector('.selected');
-  const primeiroItem = listaOrdenadaDeTarefas.firstElementChild;
+  const tagPai = document.getElementById('lista-tarefas');
+  const primeiroItem = tagPai.firstElementChild;
 
-  if (!(itemSelecionado.previousElementSibling === null) && primeiroItem !== itemSelecionado) {
-    listaOrdenadaDeTarefas.insertBefore(itemSelecionado, itemSelecionado.previousElementSibling);
+  if (primeiroItem !== itemSelecionado && itemSelecionado !== null) {
+    tagPai.insertBefore(itemSelecionado, itemSelecionado.previousElementSibling);
   }
 };
 
