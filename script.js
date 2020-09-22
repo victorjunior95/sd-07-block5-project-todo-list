@@ -3,7 +3,7 @@ window.onload = function(){
     const inputTextTask = document.getElementById('texto-tarefa');
     const taskList = document.getElementById('lista-tarefas');
     const itensList = document.getElementsByTagName('li');
-
+    const cleanList = document.getElementById('apaga-tudo')
     function addItemToTaskList(){
         if(inputTextTask.value == ''){
             alert('adicione um nome ao item da lista')
@@ -34,12 +34,17 @@ window.onload = function(){
         event.target.classList.toggle('completed')
 
     }
+
+    function removeAllItensToTheList(event){
+        let taskList = document.getElementById('lista-tarefas');
+        taskList.innerHTML = '';
+    }
     
 
 
 
     buttonCreateTask.addEventListener('click', addItemToTaskList);
    
-    
+    cleanList.addEventListener('click',removeAllItensToTheList);
     
 }
