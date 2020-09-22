@@ -8,12 +8,11 @@ addTask.addEventListener ("click", function() {
     list.appendChild(newTask);
     inputTask.value = "";
 
-    function changeColor() {
-        document.querySelectorAll("li").forEach((item) => {
-            item.addEventListener("click", function () {
-                item.style.backgroundColor = "rgb(128, 128, 128)";
-        });
-      });
-    };
-    changeColor()
+    newTask.addEventListener ("click", function () {
+    let itemSelected = document.querySelector(".selected");
+    if (itemSelected) {
+        itemSelected.classList.remove("selected");
+    }
+    newTask.classList.add("selected")
+    });
 });
