@@ -1,20 +1,44 @@
-const inputTextToDo = document.querySelector(".texto-tarefa");
-const buttonCreateToDo = document.querySelector(".criar-tarefa");
-let olToDoList = document.querySelector(".lista-tarefas");
-const buttonClearAllTasksInTheList = document.querySelector(".apaga-tudo");
-const buttonClearDoneTasks = document.querySelector(".remover-finalizados");
-const buttonToSalveList = document.querySelector(".salvar-tarefas");
-const buttonRemoveSelectedTask = document.querySelector(".remover-selecionado");
+const inputTextToDo = document.querySelector('.texto-tarefa');
+const buttonCreateToDo = document.querySelector('.criar-tarefa');
+let olToDoList = document.querySelector('.lista-tarefas');
+const buttonClearAllTasksInTheList = document.querySelector('.apaga-tudo');
+const buttonClearDoneTasks = document.querySelector('.remover-finalizados');
+const buttonToSalveList = document.querySelector('.salvar-tarefas');
+const buttonRemoveSelectedTask = document.querySelector('.remover-selecionado');
 const buttonMoveUp = document.querySelector('.mover-cima');
 const buttonMoveDown = document.querySelector('.mover-baixo');
 
 
 function clearInputTextToDo() {
-  inputTextToDo.value = "";
+  inputTextToDo.value = '';
 }
 
+function changeBGColorTask(task) {
+  task.addEventListener('click', function (event) {
+    for (let index = 0; index < olToDoList.childElementCount; index += 1) {
+      if (olToDoList.children[index] !== event.target) {
+        olToDoList.children[index].classList.remove('selected');
+      } else {
+        event.target.classList.add('selected');
+      }
+    }
+  });
+}
+
+
+function addAndRemoveCompletedTask(task) {
+  task.addEventListener('dblclick', function (event) {
+    if (event.target.classList.contains('completed')) {
+      task.classList.remove('completed');
+    } else {
+      event.target.classList.add('completed');
+    }
+  });
+}
+
+
 function createLI() {
-  const liTask = document.createElement("li");
+  const liTask = document.createElement('li');
   liTask.innerText = inputTextToDo.value;
   olToDoList.appendChild(liTask);
   clearInputTextToDo();
@@ -23,29 +47,7 @@ function createLI() {
 }
 
 
-function changeBGColorTask(task) {
-  task.addEventListener("click", function (event) {
-    for (let index = 0; index < olToDoList.childElementCount; index += 1) {
-      if (olToDoList.children[index] !== event.target) {
-        olToDoList.children[index].classList.remove("selected");
-      } else {
-        event.target.classList.add("selected");
-      }
-    }
-  });
-}
-
-function addAndRemoveCompletedTask(task) {
-  task.addEventListener("dblclick", function (event) {
-    if (event.target.classList.contains("completed")) {
-      task.classList.remove("completed");
-    } else {
-      event.target.classList.add("completed");
-    }
-  });
-}
-
-buttonCreateToDo.addEventListener("click", createLI);
+buttonCreateToDo.addEventListener('click', createLI);
 
 buttonMoveUp.addEventListener('click', function () {
   for (let index = 0; index < olToDoList.childElementCount; index += 1) {
@@ -72,32 +74,32 @@ buttonMoveDown.addEventListener('click', function () {
   }
 })
 
-buttonClearAllTasksInTheList.addEventListener("click", function () {
-  olToDoList.innerHTML = "";
+buttonClearAllTasksInTheList.addEventListener('click', function () {
+  olToDoList.innerHTML = '';
 });
 
-buttonRemoveSelectedTask.addEventListener("click", function () {
+buttonRemoveSelectedTask.addEventListener('click', function () {
   for (let index = 0; index < olToDoList.childElementCount; index += 1) {
-    if (olToDoList.children[index].classList.contains("selected")) {
+    if (olToDoList.children[index].classList.contains('selected')) {
       olToDoList.removeChild(olToDoList.children[index]);
     }
   }
 });
 
-buttonClearDoneTasks.addEventListener("click", function () {
-  let doneTasks = document.querySelectorAll(".completed");
+buttonClearDoneTasks.addEventListener('click', function () {
+  let doneTasks = document.querySelectorAll('.completed');
   doneTasks.forEach((item) => {
     // usei esse link pra resolver essa parte: https://developer.mozilla.org/pt-BR/docs/Web/API/Node/removeChild
     olToDoList.removeChild(item);
   });
 });
 
-buttonToSalveList.addEventListener("click", function () {
+buttonToSalveList.addEventListener('click', function () {
   let listToSaveLocalStorage = [];
   for (let index = 0; index < olToDoList.childElementCount; index += 1) {
     let innerTextTaskList = olToDoList.children[index].innerText;
     let completedTrueOrFalse = false;
-    if (olToDoList.children[index].classList.contains("completed")) {
+    if (olToDoList.children[index].classList.contains('completed')) {
       completedTrueOrFalse = true;
     } else {
       completedTrueOrFalse = false;
@@ -108,22 +110,22 @@ buttonToSalveList.addEventListener("click", function () {
     };
     listToSaveLocalStorage.push(taskStorage);
   }
-  localStorage.setItem("Tasks", JSON.stringify(listToSaveLocalStorage));
+  localStorage.setItem('Tasks', JSON.stringify(listToSaveLocalStorage));
 });
 
 function createLILocalStorage(taskText, taskClass) {
-  const liTask = document.createElement("li");
+  const liTask = document.createElement('li');
   liTask.innerText = taskText;
   olToDoList.appendChild(liTask);
   changeBGColorTask(liTask);
   addAndRemoveCompletedTask(liTask);
   if (taskClass === true) {
-    liTask.classList.add("completed");
+    liTask.classList.add('completed');
   }
 }
 
-if (localStorage.getItem("Tasks") !== null) {
-  let jsonParseGetItem = JSON.parse(localStorage.getItem("Tasks"));
+if (localStorage.getItem('Tasks') !== null) {
+  let jsonParseGetItem = JSON.parse(localStorage.getItem('Tasks'));
   let lengthLocalStorageList = jsonParseGetItem.length;
   for (let index = 0; index < lengthLocalStorageList; index += 1) {
     createLILocalStorage(
