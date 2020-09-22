@@ -6,13 +6,12 @@ const enter = document.getElementById('texto-tarefa');
 // Function to add products with click.
 function addProduct() {
   const lista = document.getElementById('lista-tarefas');
-  const itensDigitados = document.getElementById('texto-tarefa');
-  const liItensDigitados = document.createElement('li');
-  liItensDigitados.innerText = itensDigitados.value;
-  liItensDigitados.className = 'itens-list';
-  lista.appendChild(liItensDigitados);
-  itensDigitados.value = '';
-  itensDigitados.focus();
+  const itensList = document.createElement('li');
+  itensList.innerText = document.getElementById('texto-tarefa').value;
+  itensList.className = 'itens-list';
+  lista.appendChild(itensList);
+  itensList.value = '';
+  itensList.focus();
 }
 // Call the function addProduct.
 botaoAdd.addEventListener('click', addProduct);
@@ -64,22 +63,12 @@ removerSelecionado.addEventListener('click', function () {
   linhas[count].remove();
   }
 });
-// Function to save list status
-const saveTask = document.getElementById('salvar-tarefas');
-saveTask.addEventListener('click', function () {
-  localStorage.setItem('saved', document.getElementById('lista-tarefas').innerHTML);
-});
-// Function to auto save list status
-const automaticSave = function () {
-  localStorage.setItem('saved', document.getElementById('lista-tarefas').innerHTML);
-}
-window.onchange = automaticSave;
+
 // Function to move iten up.
 function itensListMoveUp() {
   const list = document.getElementById('lista-tarefas');
   const listItens = document.querySelectorAll('li');
   for (let count = 1; count < listItens.length; count += 1) {
-    if (listItens[count])
     if ((listItens[count].className == 'itens-list selected') || (listItens[count].className == 'itens-list completed selected') || (listItens[count].className == 'itens-list selected completed')) {
         listItens[count] = list.insertBefore(listItens[count], listItens[count - 1]);
       }
@@ -98,3 +87,13 @@ function itensListMoveDown() {
   }
 }
 document.getElementById('mover-baixo').addEventListener('click', itensListMoveDown);
+// Function to save list status
+const saveTask = document.getElementById('salvar-tarefas');
+saveTask.addEventListener('click', function () {
+  localStorage.setItem('saved', document.getElementById('lista-tarefas').innerHTML);
+});
+// Function to auto save list status
+const automaticSave = function () {
+  localStorage.setItem('saved', document.getElementById('lista-tarefas').innerHTML);
+}
+window.onchange = automaticSave;
