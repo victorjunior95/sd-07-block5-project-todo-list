@@ -1,7 +1,11 @@
-.selected {
-    background-color: rgb(128, 128, 128);
+button {
+    margin: 10px;
 }
 
 .completed {
     text-decoration: line-through;
+}
+
+.selected {
+    background-color: rgb(128, 128, 128);
 }

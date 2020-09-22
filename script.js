@@ -1,7 +1,8 @@
 let addTask = document.getElementById("criar-tarefa");
 let list = document.getElementById("lista-tarefas");
 let inputTask = document.getElementById("texto-tarefa");
-let buttonClear = document.getElementById("apaga-tudo")
+let buttonClearAll = document.getElementById("apaga-tudo");
+let buttonClearCompleted = document.getElementById("remover-finalizados");
 
 addTask.addEventListener ("click", function() {
     let newTask = document.createElement("li")
@@ -18,11 +19,19 @@ addTask.addEventListener ("click", function() {
     });
 
     newTask.addEventListener ("dblclick", function () {
-        //// https://developer.mozilla.org/pt-BR/docs/Web/API/Element/classList
+        // https://developer.mozilla.org/pt-BR/docs/Web/API/Element/classList
         newTask.classList.toggle("completed");
     });
 
-    buttonClear.addEventListener ("click", function () {
+    buttonClearAll.addEventListener ("click", function () {
         list.innerHTML = "";
+    });
+
+    buttonClearCompleted.addEventListener ("click", function () {
+        let completedElements = document.querySelectorAll(".completed");
+        for (let i = 0; i < completedElements.length; i += 1) {
+            //https://developer.mozilla.org/pt-BR/docs/Web/API/Node/removeChild
+            list.removeChild(completedElements[i])
+            }
     });
 });
