@@ -1,8 +1,9 @@
 // Função para adicionar e tratar eventos
 function adicionaEvento(novoItem) {
   novoItem.addEventListener('click', function () {
-    for (let index = 0; index < document.getElementById('lista-tarefas').children.length; index += 1) {
-      document.getElementById('lista-tarefas').children[index].classList.remove('selected');
+    const itensLista = document.getElementById('lista-tarefas').children;
+    for (let index = 0; index < itensLista.length; index += 1) {
+      itensLista[index].classList.remove('selected');
     }
     novoItem.classList.add('selected');
   });
@@ -33,15 +34,13 @@ botaoLimpaLista.addEventListener('click', function () {
     itemTarefa.removeChild(itemTarefa.firstChild);
   }
 });
-/* Função para remover finalizados
+// Função para remover finalizados
 const removeCompleto = document.getElementById('remover-finalizados');
-const totalLista = document.getElementById('lista-tarefas').children.length;
 removeCompleto.addEventListener('click', function () {
-  for (let index = 0; index < totalLista; index += 1) {
-    const selecionado = document.getElementById('lista-tarefas').children[index];
-    if (selecionado.hasAttributes === 'selected') {
-      console.log("selecionado");
+  for (let index = 0; index < document.getElementById('lista-tarefas').children.length; index += 1) {
+    let item = document.getElementById('lista-tarefas').children[index].className;
+    while (item === 'completed') {
+      document.querySelector('.completed').remove(item[index]);
     }
   }
 });
-*/
