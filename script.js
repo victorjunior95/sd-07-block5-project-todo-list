@@ -26,4 +26,11 @@ taskList.addEventListener('click',function(event){
    } else{
        event.target.classList.add('selected');}
    }
-})
+});
+
+taskList.addEventListener('dblclick', function(event){
+
+    if(event.target.tagName == 'LI'){
+        event.target.classList.toggle('completed');
+    }
+});
