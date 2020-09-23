@@ -20,12 +20,10 @@ taskList.addEventListener('click',function(event){
 
       if(event.target.tagName == 'LI'){
   let allLi = document.querySelector('.selected'); 
-    if(allLi != null)
-   {
+    if(allLi != null){
        allLi.classList.remove('selected');
-   } else{
-       event.target.classList.add('selected');}
-   }
+   } 
+   event.target.classList.add('selected');}
 });
 
 // adicionar dublo click 
@@ -38,17 +36,17 @@ taskList.addEventListener('dblclick', function(event){
 
 // adiconar o botão de apagar
 
-let btApagaTudo = document.getElementById('apaga-tudo');
-let btRemoverFinalizados = document.getElementById('remover-finalizados');
+let btDeleteAll = document.getElementById('apaga-tudo');
+let btRemoveFinished = document.getElementById('remover-finalizados');
 
-btApagaTudo.addEventListener('click', function(){
+btDeleteAll.addEventListener('click', function(){
     let newLine = document.querySelectorAll('li');
     for(let index = 0; index < newLine.length;  index += 1){
         newLine[index].remove();
     }
 });
 
-btRemoverFinalizados.addEventListener('click', function(){
+btRemoveFinished.addEventListener('click', function(){
     let delItem = document.querySelectorAll('.completed');
     for(let index = 0 ; index < delItem.length; index += 1){
         delItem[index].remove();
