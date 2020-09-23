@@ -2,6 +2,6 @@ body {
   text-align: center;
 }
 
-.lista-tarefas li.selecionado {
-  background-color: rgb(128, 128, 128);
+.selecionado {
+  background-color: grey;
 }

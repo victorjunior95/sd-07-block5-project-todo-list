@@ -1,5 +1,4 @@
 const btnCriarTarefa = document.getElementById('criar-tarefa');
-
 btnCriarTarefa.addEventListener('click', function () {
   const listaTarefas = document.getElementById('lista-tarefas');
   const itemLista = document.createElement('li');
@@ -16,3 +15,9 @@ itemListaBG.addEventListener('click', function (event) {
   }
   // source: https://www.w3schools.com/howto/howto_js_todolist.asp
 });
+
+const btnLimpaTudo = document.getElementById('apaga-tudo');
+const lista = document.getElementById('lista-tarefas');
+btnLimpaTudo.addEventListener('click', function () {
+  lista.innerHTML = '';
+})
