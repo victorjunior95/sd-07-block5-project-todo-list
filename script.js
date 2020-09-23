@@ -2,6 +2,7 @@ const btnCreateTask = document.getElementById('criar-tarefa');
 const btnSaveList = document.getElementById('salvar-tarefas');
 const btnClearList = document.getElementById('apaga-tudo');
 const btnRemoveCompletedTasks = document.getElementById('remover-finalizados');
+const btnRemoveSelected = document.getElementById('remover-selecionado');
 const taskTextInput = document.getElementById('texto-tarefa');
 
 function createTask() {
@@ -55,6 +56,11 @@ function removeCompletedTasks() {
   }
 }
 
+function removeSelected() {
+  const selectedTask = document.querySelector('.selected');
+  selectedTask.remove();
+}
+
 document.addEventListener('click', (event) => {
   if (event.target.classList.contains('task-item')) {
     for (
@@ -63,8 +69,10 @@ document.addEventListener('click', (event) => {
       taskItem += 1
     ) {
       taskItemsList()[taskItem].style = '';
+      taskItemsList()[taskItem].classList.remove('selected');
     }
     event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+    event.target.className += ' selected';
   }
 });
 
@@ -84,4 +92,5 @@ taskTextInput.addEventListener('keyup', (event) => {
 btnClearList.addEventListener('click', clearList);
 btnSaveList.addEventListener('click', saveList);
 btnRemoveCompletedTasks.addEventListener('click', removeCompletedTasks);
+btnRemoveSelected.addEventListener('click', removeSelected);
 getList();
