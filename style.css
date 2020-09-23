@@ -14,15 +14,15 @@ body {
 }
 
 .selected {
-  background-color: rgb( 128 , 128 , 128 );
+  background-color: rgb(128 ,128 ,128);
 }
 
 .completed {
-  text-decoration: line-through solid rgb(0, 0, 0);
+  text-decoration: line-through solid rgb(0 ,0 ,0);
 }
 
 button {
-  background-color: rgb( 75 , 187 , 121 );
+  background-color: rgb(75 , 87 ,121);
   border-radius: 10px;
   color: white;
   height: 30px;
