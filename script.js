@@ -49,10 +49,9 @@ addTask.addEventListener ("click", function() {
         let elementSelected = document.querySelector(".selected");
         //https://stackoverflow.com/questions/46724542/javascript-move-elements-up-and-down-in-the-list
         //https://developer.mozilla.org/pt-BR/docs/Web/API/Node/insertBefore
-        //https://www.w3schools.com/JSREF/prop_node_previoussibling.asp
         if (elementSelected != null) {
-            if (elementSelected.previousSibling != null) {
-                elementSelected.parentNode.insertBefore(elementSelected, elementSelected.previousSibling);
+            if (elementSelected.previousElementSibling != null) {
+                list.insertBefore(elementSelected, elementSelected.previousElementSibling);
             }
         }
     });
@@ -60,10 +59,9 @@ addTask.addEventListener ("click", function() {
     buttonDown.addEventListener("click", function () {
         let list = document.getElementById("lista-tarefas");
         let elementSelected = document.querySelector(".selected");
-        //https://www.w3schools.com/JSREF/prop_node_nextsibling.asp
         if (elementSelected != null) {
-            if (elementSelected.nextSibling != null) {
-                elementSelected.parentNode.insertBefore(elementSelected.nextSibling, elementSelected);
+            if (elementSelected.nextElementSibling != null) {
+                list.insertBefore(elementSelected.nextElementSibling, elementSelected);
             }
         }
     });
