@@ -19,7 +19,7 @@ criaTarefa.addEventListener('click', function(){
 
 
 
-listaTarefas.addEventListener('click', function(event){
+listaTarefas.addEventListener('dblclick', function(event){
     if(event.target.classList.contains('completed')){
         event.target.classList.remove('completed');
     }else{
@@ -36,7 +36,7 @@ apagarTudo.addEventListener('click', function () {
 
 removeFinalizado.addEventListener('click', function () {
     while (listaTarefas.hasChildNodes()) { 
-      listaTarefas.removeChild(document.querySelector('.feito'));
+      listaTarefas.removeChild(document.querySelector('.completed'));
     }
   });
 
