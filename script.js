@@ -2,6 +2,8 @@ const btnCreateTask = document.getElementById('criar-tarefa');
 const btnSaveList = document.getElementById('salvar-tarefas');
 const btnClearList = document.getElementById('apaga-tudo');
 const btnRemoveCompletedTasks = document.getElementById('remover-finalizados');
+const btnMoveUp = document.getElementById('mover-cima');
+const btnMoveDown = document.getElementById('mover-baixo');
 const btnRemoveSelected = document.getElementById('remover-selecionado');
 const taskTextInput = document.getElementById('texto-tarefa');
 
@@ -61,6 +63,23 @@ function removeSelected() {
   selectedTask.remove();
 }
 
+function moveUp(previous, selected) {
+  const next = previous.innerHTML;
+  previous.innerHTML = selected.innerHTML;
+  selected.innerHTML = next;
+  const nextClass = previous.className;
+  previous.className = selected.className;
+  selected.className = nextClass;
+}
+function moveDown(next, selected) {
+  const previous = next.innerHTML;
+  next.innerHTML = selected.innerHTML;
+  selected.innerHTML = previous;
+  const previousClass = next.className;
+  next.className = selected.className;
+  selected.className = previousClass;
+}
+
 document.addEventListener('click', (event) => {
   if (event.target.classList.contains('task-item')) {
     for (
@@ -71,7 +90,6 @@ document.addEventListener('click', (event) => {
       taskItemsList()[taskItem].style = '';
       taskItemsList()[taskItem].classList.remove('selected');
     }
-    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
     event.target.className += ' selected';
   }
 });
@@ -87,6 +105,27 @@ taskTextInput.addEventListener('keyup', (event) => {
   if (event.key === 'Enter') {
     btnCreateTask.click();
   }
+});
+
+btnMoveUp.addEventListener('click', function () {
+  const selectedTask = document.querySelector('.selected');
+  if (selectedTask != null) {
+    const previous = selectedTask.previousElementSibling;
+    if (previous != null) {
+      moveUp(previous, selectedTask);
+    }
+  }
+  return false;
+});
+btnMoveDown.addEventListener('click', function () {
+  const selectedTask = document.querySelector('.selected');
+  if (selectedTask != null) {
+    const next = selectedTask.nextElementSibling;
+    if (next != null) {
+      moveDown(next, selectedTask);
+    }
+  }
+  return false;
 });
 
 btnClearList.addEventListener('click', clearList);
