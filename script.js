@@ -7,35 +7,6 @@ const moveUpBtn = document.querySelector('#mover-cima');
 const moveDownBtn = document.querySelector('#mover-baixo');
 const saveList = document.querySelector('#salvar-tarefas');
 
-function saveL() {
-  saveList.addEventListener('click', function () {
-    localStorage.clear();
-    const savedLi = [{ texto: '', classe: '' }];
-    const tarefa = [];
-    for (let i = 0; i < tarefaList.childElementCount; i += 1) {
-      savedLi.texto = tarefaList.children[i].innerText;
-      savedLi.classe = tarefaList.children[i].className;
-  
-      tarefa.push(Object.assign({}, savedLi));
-    }
-    localStorage.setItem('tarefaList', JSON.stringify(tarefa));
-  });
-}
-
-function loadSaveList(a) {
-  const check = a
-  const savedLi = JSON.parse(check);
-  for (let i = 0; i < savedLi.length; i += 1) {
-    const savedTarefa = document.createElement('li');
-    savedTarefa.className = savedLi[i].classe;
-    savedTarefa.innerText = savedLi[i].texto;
-    tarefaList.appendChild(savedTarefa);
-    tSelect(savedTarefa);
-    tComplete(savedTarefa);  
-  }
-}
-
-
 function moveUp() {
   moveUpBtn.addEventListener('click', function () {
     const tSelected = document.querySelector('.t-selected');
@@ -46,7 +17,7 @@ function moveUp() {
 }
 
 
-function moveDown(){
+function moveDown() {
   moveDownBtn.addEventListener('click', function () {
     const tSelected = document.querySelector('.t-selected');
     if (tSelected !== null && tSelected.nextElementSibling !== null) {
@@ -100,7 +71,34 @@ function removeC() {
 function removeS() {
   removeSelected.addEventListener('click', function () {
     document.querySelector('.t-selected').remove();
-  });  
+  });
+}
+
+function saveL() {
+  saveList.addEventListener('click', function () {
+    localStorage.clear();
+    const savedLi = [{ texto: '', classe: '' }];
+    const tarefa = [];
+    for (let i = 0; i < tarefaList.childElementCount; i += 1) {
+      savedLi.texto = tarefaList.children[i].innerText;
+      savedLi.classe = tarefaList.children[i].className;
+      tarefa.push(Object.assign({}, savedLi));
+    }
+    localStorage.setItem('tarefaList', JSON.stringify(tarefa));
+  });
+}
+
+function loadSaveList(a) {
+  const check = a;
+  const savedLi = JSON.parse(check);
+  for (let i = 0; i < savedLi.length; i += 1) {
+    const savedTarefa = document.createElement('li');
+    savedTarefa.className = savedLi[i].classe;
+    savedTarefa.innerText = savedLi[i].texto;
+    tarefaList.appendChild(savedTarefa);
+    tSelect(savedTarefa);
+    tComplete(savedTarefa);
+  }
 }
 
 addTarefa.addEventListener('click', function () {
@@ -114,10 +112,9 @@ addTarefa.addEventListener('click', function () {
   }
   tSelect(newTarefa);
   tComplete(newTarefa);
-  
 });
 
-window.onload = function() {
+window.onload = function () {
   const check = localStorage.getItem('tarefaList');
   if (check !== null) {
     loadSaveList(check);
@@ -127,5 +124,5 @@ window.onload = function() {
   removeS();
   moveUp();
   moveDown();
-  saveL()
+  saveL();
 };
