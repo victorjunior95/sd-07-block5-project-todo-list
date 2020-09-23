@@ -23,7 +23,7 @@ listBranch.addEventListener("click", function (event) {
 });
 listBranch.addEventListener("dblclick", function (event) {
     if (event.target.tagName == "LI") {
-        event.target.classList.toggle("completed");
+        event.target.classList.toggle("finished");
     }
 
 })
@@ -34,9 +34,9 @@ clearBranch.addEventListener("click", function () {
         deleteList[index].remove();
     }
 })
-let removeBranch = document.getElementById("remover-selecionado");
+let removeBranch = document.getElementById("remover-finalizados");
 removeBranch.addEventListener("click", function () {
-    let deleteList = document.querySelectorAll(".completed")
+    let deleteList = document.querySelectorAll(".finished")
     for (let index = 0; index < deleteList.length; index++) {
          deleteList[index].remove();  
     }
