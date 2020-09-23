@@ -27,6 +27,15 @@ listaTarefas.addEventListener('dblclick', function(event){
     }
 });
 
+listaTarefas.addEventListener('click', function(event){
+    if(event.target.classList.contains('selected')){
+        event.target.classList.remove('selected');
+    }else{
+        event.target.classList.add('selected');
+    }
+})
+
+
 
 apagarTudo.addEventListener('click', function () {    
     while (listaTarefas.hasChildNodes()){
