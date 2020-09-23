@@ -11,3 +11,13 @@ buttonCreate.addEventListener('click', function() {
     }
     inputTexto.focus()
 })
+
+listaTarefa.addEventListener('click', function(event) {
+    if (event.target.tagName == 'LI') {
+        let allLiSelected = document.querySelector('.selected')
+        if(allLiSelected != null) {
+            allLiSelected.classList.remove('selected')
+        }
+        event.target.classList.add('selected')
+    }
+})
