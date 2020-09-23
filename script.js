@@ -42,9 +42,19 @@ botaoLimpaLista.addEventListener('click', function () {
 const removeFinalizado = document.getElementById('remover-finalizados');
 removeFinalizado.addEventListener('click', function () {
   for (let index = 0; index < document.getElementById('lista-tarefas').children.length; index += 1) {
-    let remover = document.getElementById('lista-tarefas').children;
+    const remover = document.getElementById('lista-tarefas').children;
     if (remover[index].classList.value === 'completed') {
       remover[index].remove();
+    }
+  }
+});
+//Função para remover selecionado
+const removeSelecionado = document.getElementById('remover-selecionado');
+removeSelecionado.addEventListener('click', function () {
+  for (let index = 0; index < document.getElementById('lista-tarefas').children.length; index += 1) {
+    const seleciona = document.getElementById('lista-tarefas').children;
+    if (seleciona[index].classList.value === 'selected') {
+      seleciona[index].remove();
     }
   }
 });
