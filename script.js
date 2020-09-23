@@ -82,10 +82,8 @@ window.onload = function () {
 function actionAtribute(task, action) {
   if (action === 'mover-baixo') {
     return task + 1;
-  } else if (action === 'mover-cima') {
-    return task - 1;
   }
-  return task
+  return task - 1;
 }
 
 function moveUpDown(listAllTasks, action) {
