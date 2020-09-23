@@ -1,3 +1,15 @@
+header {
+  text-align: center;
+}
+
+ol:hover {
+  cursor: pointer;
+}
+
+.selecionado {
+  background-color: rgb(192,192,192);
+}
+
 .completed {
-    text-decoration: line-through;
+  text-decoration: line-through solid red;
 }

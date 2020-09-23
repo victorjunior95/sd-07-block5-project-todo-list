@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minha Lista de Tarefas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+    <header class="content">
         <h1>
             Minha Lista de Tarefas
         </h1>
@@ -15,22 +16,19 @@
         </p>
     </header>
 
-    <section>
+    <section class="content">
         <div>
             <input type="text" name="texto-tarefa" id="texto-tarefa">
         </div>
+        <ol id="lista-tarefas">
+        </ol>
+        
         <div>
-            <ol id="lista-tarefas">
-                <li></li>
-                <li></li>
-                <li></li>
-            </ol>
-
-            <button id="criar-tarefa" type="submit">Criar tarefa!</button>
-            <button id="apaga-tudo" type="reset">Apagar tudo!</button>
-            <button id="remover-finalizados">Remover finalizados!</button>
+            <button id="criar-tarefa" >Criar tarefa!</button>
+            <button id="apaga-tudo" >Apagar tudo!</button>
+            <button id="remover-finalizados" >Remover finalizados!</button>
         </div>
-
     </section>
+    <script src="script.js"></script>
 </body>
 </html>
