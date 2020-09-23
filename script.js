@@ -9,17 +9,16 @@ btnCriarTarefa.addEventListener('click', function () {
   textoTarefa.value = '';
 });
 
+let listaLi = [];
 const itemListaBG = document.getElementById('lista-tarefas');
 itemListaBG.addEventListener('click', function (event) {
   if (event.target.classList.contains('lista-li')) {
-    if (event.target.classList.contains('selected')) {
-      event.target.classList.remove('selected');
-    } else {
-      event.target.classList.toggle('selected');
+    listaLi = document.getElementsByClassName('lista-li');
+    for (let index = 0; index < listaLi.length; index += 1){
+      listaLi[index].classList.remove('selected');
     }
+    event.target.classList.toggle('selected');
   }
-  // source: https://www.w3schools.com/howto/howto_js_todolist.asp
-  // source: https://velhobit.com.br/tutoriais/como-selecionar-o-item-de-uma-tabela-html.html
 });
 
 const itemListaSel = document.getElementById('lista-tarefas');
@@ -32,6 +31,8 @@ itemListaSel.addEventListener('dblclick', function (event) {
     }
   }
 });
+// source: https://www.w3schools.com/howto/howto_js_todolist.asp
+// source: https://velhobit.com.br/tutoriais/como-selecionar-o-item-de-uma-tabela-html.html
 
 const btnLimpaTudo = document.getElementById('apaga-tudo');
 const lista = document.getElementById('lista-tarefas');
