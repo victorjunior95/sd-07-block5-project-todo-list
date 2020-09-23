@@ -22,8 +22,9 @@ saveList.addEventListener('click', function () {
 
 
 function loadSaveList() {
-  if (localStorage.length !== 0) {
-    const savedLi = JSON.parse(localStorage.getItem('tarefaList'));
+  const check = localStorage.getItem('tarefaList')
+  if (check !== null) {
+    const savedLi = JSON.parse(check);
     for (let i = 0; i < savedLi.length; i += 1) {
       const savedTarefa = document.createElement('li');
       savedTarefa.className = savedLi[i].classe;
