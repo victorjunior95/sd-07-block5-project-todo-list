@@ -4,8 +4,10 @@ function adicionaEvento(novoItem) {
     const itensLista = document.getElementById('lista-tarefas').children;
     for (let index = 0; index < itensLista.length; index += 1) {
       itensLista[index].classList.remove('selected');
+      itensLista[index].style.backgroundColor = '';
     }
     novoItem.classList.add('selected');
+    novoItem.style.backgroundColor = 'rgb(128, 128, 128)';
   });
   novoItem.addEventListener('dblclick', function () {
     novoItem.classList.remove('selected');
