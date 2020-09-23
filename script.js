@@ -10,10 +10,10 @@ add.addEventListener('click', function () {
   itensList.addEventListener('click', function () {
     const selected = document.querySelector('.selected');
     if (selected) {
-    selected.classList.remove('selected');
+      selected.classList.remove('selected');
     }
-    itensList.classList.add('selected');
-});
+      itensList.classList.add('selected');
+  });
 
   itensList.addEventListener('dblclick', function () {
     if (itensList.classList.contains('completed')) {
@@ -21,13 +21,13 @@ add.addEventListener('click', function () {
     } else {
     itensList.classList.add('completed');
     }
-});
+  });
 
   document.querySelector('#remover-selecionado').addEventListener('click', function () {
     if (itensList.classList.contains('selected')) {
       document.querySelector('ol').removeChild(itensList);
     }
-});
+  });
 });
 
 const save = document.querySelector('#salvar-tarefas');
