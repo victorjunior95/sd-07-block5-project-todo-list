@@ -35,7 +35,6 @@ function loadSaveList() {
   }
 }
 
-
 moveUpBtn.addEventListener('click', function () {
   const tSelected = document.querySelector('.t-selected');
   if (tSelected !== null && tSelected.previousElementSibling !== null) {
@@ -46,7 +45,7 @@ moveUpBtn.addEventListener('click', function () {
 moveDownBtn.addEventListener('click', function () {
   const tSelected = document.querySelector('.t-selected');
   if (tSelected !== null && tSelected.nextElementSibling !== null) {
-    tarefaList.insertBefore( tSelected, tSelected.nextElementSibling.nextElementSibling);
+    tarefaList.insertBefore(tSelected.nextElementSibling, tSelected);
   }
 });
 
