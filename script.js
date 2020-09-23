@@ -20,10 +20,10 @@ criaTarefa.addEventListener('click', function(){
 
 
 listaTarefas.addEventListener('click', function(event){
-    if(event.target.classList.contains('feito')){
-        event.target.classList.remove('feito');
+    if(event.target.classList.contains('completed')){
+        event.target.classList.remove('completed');
     }else{
-        event.target.classList.add('feito');
+        event.target.classList.add('completed');
     }
 });
 
