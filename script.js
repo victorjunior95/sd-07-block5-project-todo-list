@@ -33,14 +33,14 @@ addTask.addEventListener ("click", function() {
     buttonClearCompleted.addEventListener ("click", function () {
         let completedElements = document.querySelectorAll(".completed");
         for (let i = 0; i < completedElements.length; i += 1) {
-            list.removeChild(completedElements[i])
+            list.removeChild(completedElements[i]);
             }
     });
 
     buttonClearSelected.addEventListener ("click", function () {
         let selectedElements = document.querySelectorAll(".selected");
         for (let i = 0; i < selectedElements.length; i += 1) {
-            list.removeChild(selectedElements[i])
+            list.removeChild(selectedElements[i]);
             }
     });
 
@@ -49,19 +49,22 @@ addTask.addEventListener ("click", function() {
         let elementSelected = document.querySelector(".selected");
         //https://stackoverflow.com/questions/46724542/javascript-move-elements-up-and-down-in-the-list
         //https://developer.mozilla.org/pt-BR/docs/Web/API/Node/insertBefore
-        //https://www.w3schools.com/JSREF/prop_element_previouselementsibling.asp
-        if (elementSelected != undefined && elementSelected.previousElementSibling != null) {
-            list.insertBefore(elementSelected, elementSelected.previousElementSibling);
+        //https://www.w3schools.com/JSREF/prop_node_previoussibling.asp
+        if (elementSelected != null) {
+            if (elementSelected.previousSibling != null) {
+                elementSelected.parentNode.insertBefore(elementSelected, elementSelected.previousSibling);
+            }
         }
-        console.log(elementSelected)
     });
 
     buttonDown.addEventListener("click", function () {
         let list = document.getElementById("lista-tarefas");
         let elementSelected = document.querySelector(".selected");
-        //https://www.w3schools.com/JSREF/prop_element_nextelementsibling.asp
-        if (elementSelected != undefined && elementSelected.nextElementSibling != null) {
-            list.insertBefore(elementSelected.nextElementSibling, elementSelected);
+        //https://www.w3schools.com/JSREF/prop_node_nextsibling.asp
+        if (elementSelected != null) {
+            if (elementSelected.nextSibling != null) {
+                elementSelected.parentNode.insertBefore(elementSelected.nextSibling, elementSelected);
+            }
         }
     });
 
