@@ -10,9 +10,15 @@ $("#criar-tarefa").click(function () {
   }
 });
 
-$("#lista-tarefas").on("click", "li", function (e) {
+// SELECIONA UM ITEM DA LISTA E DESSELECIONA OS OUTROS
+$("#lista-tarefas").on("click", "li", function (event) {
   $(".selected").removeClass("selected");
-  $(e.target).addClass("selected");
+  $(event.target).addClass("selected");
+});
+
+// SELECIONA UM ITEM COM DOUBLE CLICK E O MARCA COMO TAREFA COMPLETA
+$("#lista-tarefas").on("dblclick", "li", function (event) {
+  $(event.target).toggleClass("completed");
 });
 
 // REMOVE OS FINALIZADOS
