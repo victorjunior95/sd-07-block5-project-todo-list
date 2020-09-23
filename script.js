@@ -1,5 +1,6 @@
 let criarTarefa = document.getElementById('criar-tarefa');
 let apagaTudo = document.getElementById('apaga-tudo');
+let removerFinalizados = document.getElementById('remover-finalizados');
 
 // window.onload = renderizarTodos (); 
 
@@ -40,7 +41,12 @@ apagaTudo.addEventListener('click', function (){
   listaTarefas.innerHTML = '';
 })
 
-
+removerFinalizados.addEventListener('click', function () {
+  let itemLista = document.querySelectorAll('.completed');
+  for (let item of itemLista){
+    item.remove();
+  }
+})
 
 
 
