@@ -1,22 +1,19 @@
-let textoTarefa = document.getElementById('texto-tarefa').value;
-let botaoAdicionar = document.getElementById('criar-tarefa');
+const botaoAdicionar = document.getElementById('criar-tarefa');
 let listaTarefas = document.getElementById('lista-tarefas');
 let itensLista = document.getElementsByClassName('selecionado');
 let itensCompletados = document.getElementsByClassName('completed');
-let botaoLimpar = document.getElementById('apaga-tudo');
-let botaoRemoverFinalizados = document.getElementById('remover-finalizados');
 
 botaoAdicionar.addEventListener('click', function () {
-  let textoTarefa = document.getElementById('texto-tarefa').value;
+  const textoTarefa = document.getElementById('texto-tarefa').value;
   let elementoLista = document.createElement('li');
   elementoLista.innerHTML= textoTarefa;
   elementoLista.classList.add('item');
   listaTarefas.appendChild(elementoLista);
-  document.getElementById('texto-tarefa').value = "";
+  document.getElementById('texto-tarefa').value = '';
   elementoLista.addEventListener('click', function () {
     if (itensLista.length > 0) {
-      for (index = 0; index < itensLista.length; index += 1) {
-        itensLista[index].classList.remove('selecionado')};
+      for (let index = 0; index < itensLista.length; index += 1) {
+        itensLista[index].classList.remove('selecionado') }
     }
     elementoLista.classList.add('selecionado');
   });
@@ -25,18 +22,25 @@ botaoAdicionar.addEventListener('click', function () {
   });
 });
 
+const botaoLimpar = document.getElementById('apaga-tudo');
+
 botaoLimpar.addEventListener('click', function () {
   while (listaTarefas.firstChild) {
     listaTarefas.removeChild(listaTarefas.firstChild);
-  };
+  }
 });
+
+const botaoRemoverFinalizados = document.getElementById('remover-finalizados');
 
 botaoRemoverFinalizados.addEventListener('click', function () {
-  let item = document.querySelectorAll('.completed');
+  const item = document.querySelectorAll('.completed');
   for (let index = 0; index < item.length; index += 1) {
     item[index].remove();
-  };
+  }
 });
 
+const botaoRemoverSelecionado = document.getElementById('remover-selecionado');
 
-
+botaoRemoverSelecionado.addEventListener('click', function () {
+  itensLista[0].remove();
+})
