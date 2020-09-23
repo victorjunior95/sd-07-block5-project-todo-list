@@ -82,6 +82,9 @@ function saveL() {
     for (let i = 0; i < tarefaList.childElementCount; i += 1) {
       savedLi.texto = tarefaList.children[i].innerText;
       savedLi.classe = tarefaList.children[i].className;
+      if (savedLi.classe === 'tarefa t-selected') {
+        savedLi.classe = 'tarefa';
+      }
       tarefa.push(Object.assign({}, savedLi));
     }
     localStorage.setItem('tarefaList', JSON.stringify(tarefa));
