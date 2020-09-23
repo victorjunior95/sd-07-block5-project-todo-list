@@ -1,10 +1,18 @@
-let btnCriarTarefa = document.getElementById('criar-tarefa');
+const btnCriarTarefa = document.getElementById('criar-tarefa');
 
 btnCriarTarefa.addEventListener('click', function () {
-  let listaTarefas = document.getElementById('lista-tarefas');
-  let intemLista = document.createElement('li');
-  let textoTarefa = document.getElementById('texto-tarefa');
-  intemLista.innerText = textoTarefa.value;
-  listaTarefas.appendChild(intemLista);
+  const listaTarefas = document.getElementById('lista-tarefas');
+  const itemLista = document.createElement('li');
+  const textoTarefa = document.getElementById('texto-tarefa');
+  itemLista.innerText = textoTarefa.value;
+  listaTarefas.appendChild(itemLista);
   textoTarefa.value = '';
+});
+
+const itemListaBG = document.getElementById('lista-tarefas');
+itemListaBG.addEventListener('click', function (event) {
+  if (event.target.tagName === 'LI') {
+    event.target.classList.toggle('selecionado');
+  }
+  // source: https://www.w3schools.com/howto/howto_js_todolist.asp
 });
