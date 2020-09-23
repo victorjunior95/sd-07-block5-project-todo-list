@@ -1,19 +1,20 @@
 const botaoAdicionar = document.getElementById('criar-tarefa');
-let listaTarefas = document.getElementById('lista-tarefas');
-let itensLista = document.getElementsByClassName('selecionado');
-let itensCompletados = document.getElementsByClassName('completed');
+const listaTarefas = document.getElementById('lista-tarefas');
+const itensLista = document.getElementsByClassName('selecionado');
+const itensCompletados = document.getElementsByClassName('completed');
 
 botaoAdicionar.addEventListener('click', function () {
   const textoTarefa = document.getElementById('texto-tarefa').value;
-  let elementoLista = document.createElement('li');
-  elementoLista.innerHTML= textoTarefa;
+  const elementoLista = document.createElement('li');
+  elementoLista.innerHTML = textoTarefa;
   elementoLista.classList.add('item');
   listaTarefas.appendChild(elementoLista);
   document.getElementById('texto-tarefa').value = '';
   elementoLista.addEventListener('click', function () {
     if (itensLista.length > 0) {
       for (let index = 0; index < itensLista.length; index += 1) {
-        itensLista[index].classList.remove('selecionado') }
+        itensLista[index].classList.remove('selecionado') 
+      };
     }
     elementoLista.classList.add('selecionado');
   });
@@ -43,4 +44,4 @@ const botaoRemoverSelecionado = document.getElementById('remover-selecionado');
 
 botaoRemoverSelecionado.addEventListener('click', function () {
   itensLista[0].remove();
-})
+});
