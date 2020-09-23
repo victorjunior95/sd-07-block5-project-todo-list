@@ -11,8 +11,10 @@ function adicionaEvento(novoItem) {
     novoItem.classList.remove('selected');
     if (novoItem.className === 'completed') {
       novoItem.classList.remove('completed');
+      novoItem.style.textDecoration = '';
     } else {
       novoItem.classList.add('completed');
+      novoItem.style.textDecoration = 'line-through solid rgb(0, 0, 0)';
     }
   });
 }
@@ -38,7 +40,7 @@ botaoLimpaLista.addEventListener('click', function () {
 const removeCompleto = document.getElementById('remover-finalizados');
 removeCompleto.addEventListener('click', function () {
   for (let index = 0; index < document.getElementById('lista-tarefas').children.length; index += 1) {
-    let item = document.getElementById('lista-tarefas').children[index].className;
+    const item = document.getElementById('lista-tarefas').children[index].className;
     while (item === 'completed') {
       document.querySelector('.completed').remove(item[index]);
     }
