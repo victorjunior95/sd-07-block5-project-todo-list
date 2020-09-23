@@ -47,3 +47,11 @@ btApagaTudo.addEventListener('click', function(){
         newLine[index].remove();
     }
 });
+
+btRemoverFinalizados.addEventListener('click', function(){
+    let delItem = document.getElementsByClassName('completed');
+    for(let index = 0 ; index < delItem.length; index += 1){
+        delItem[index].remove();
+    }
+
+});
