@@ -12,3 +12,7 @@ body{
     padding: 10px;
 
 }
+
+.feito {
+    text-decoration: line-through solid black;
+  }
