@@ -1,3 +1,4 @@
+
 const add = document.querySelector('#criar-tarefa');
 add.addEventListener('click', function () {
   const itensList = document.createElement('li');
@@ -12,14 +13,14 @@ add.addEventListener('click', function () {
     if (selected) {
       selected.classList.remove('selected');
     }
-      itensList.classList.add('selected');
+    itensList.classList.add('selected');
   });
 
   itensList.addEventListener('dblclick', function () {
     if (itensList.classList.contains('completed')) {
       itensList.classList.remove('completed');
     } else {
-    itensList.classList.add('completed');
+      itensList.classList.add('completed');
     }
   });
 
@@ -81,3 +82,6 @@ up.addEventListener('click', function () {
     document.querySelector('ol').insertBefore(selected, selected.previousElementSibling);
   }
 });
+
+document.querySelector('.selected').style.backgroundColor = `rgb(128 , 128 , 128)`;
+document.querySelector('.completed').style.backgroundColor = `rgb(0 , 0 , 0)`;
