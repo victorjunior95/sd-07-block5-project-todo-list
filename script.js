@@ -23,13 +23,13 @@ saveList.addEventListener('click', function () {
 
 function loadSaveList() {
   if (typeof (Storage) !== 'undefined') {
-      const savedLi = JSON.parse(localStorage.getItem('tarefaList'));
-      for (let i = 0; i < savedLi.length; i += 1) {
-        const savedTarefa = document.createElement('li');
-        savedTarefa.className = savedLi[i].classe;
-        savedTarefa.innerText = savedLi[i].texto;
-        tarefaList.appendChild(savedTarefa);
-      }
+    const savedLi = JSON.parse(localStorage.getItem('tarefaList'));
+    for (let i = 0; i < savedLi.length; i += 1) {
+      const savedTarefa = document.createElement('li');
+      savedTarefa.className = savedLi[i].classe;
+      savedTarefa.innerText = savedLi[i].texto;
+      tarefaList.appendChild(savedTarefa);
+    }
   }
 }
 
