@@ -1,3 +1,7 @@
+body {
+    text-align: center;
+    background-color: rgb(46, 156, 129);
+}
 .selecionado {
     background-color: rgb(128, 128, 128);
 }
