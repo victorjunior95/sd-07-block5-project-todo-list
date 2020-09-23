@@ -2,6 +2,10 @@ body {
   text-align: center;
 }
 
-.selecionado {
+.selected {
   background-color: grey;
+}
+
+.completed {
+  text-decoration: line-through;
 }
