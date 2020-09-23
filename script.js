@@ -13,11 +13,14 @@ buttonCreate.addEventListener('click', function() {
 })
 
 listaTarefa.addEventListener('click', function(event) {
-    if (event.target.tagName == 'LI') {
-        let allLiSelected = document.querySelector('.selected')
-        if(allLiSelected != null) {
-            allLiSelected.classList.remove('selected')
-        }
-        event.target.classList.add('selected')
-    }
+    // if (event.target.tagName == 'LI') {
+    //     let allLiSelected = document.querySelector('.selected')
+    //     if(allLiSelected != null) {
+    //         allLiSelected.classList.remove('selected')
+    //     }
+    //     event.target.classList.add('selected')
+   // }
+   if (event.target.tagName == 'LI') {
+       event.target.classList.toggle('completed')
+   }
 })
