@@ -82,17 +82,17 @@ window.onload = function () {
 function actionAtribute(task, action) {
   if (action === 'mover-baixo') {
     return task + 1;
-  }
-  else if (action === 'mover-cima') {
+  } else if (action === 'mover-cima') {
     return task - 1;
   }
+  return task
 }
 
 function moveUpDown(listAllTasks, action) {
   for (let task = 0; task < listAllTasks.length; task += 1) {
     const selected = listAllTasks[task].cloneNode(true);
     if (listAllTasks[task].className.includes('selected')) {
-      let indexTask = actionAtribute(task, action)
+      const indexTask = actionAtribute(task, action);
       const next = listAllTasks[indexTask].cloneNode(true);
       listAllTasks[indexTask].innerText = selected.innerText;
       listAllTasks[indexTask].className = selected.className;
