@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do List Project</title>
 </head>
+
 <body>
     <header>
         <h1>Minha Lista de Tarefas</h1>
     </header>
-    <p id="funcionamento"> Clique duas vezes em um item para marcá-lo como completo" explicando o funcionamento da lista para o usuário</p>
+    <p id="funcionamento"> Clique duas vezes em um item para marcá-lo como completo" explicando o funcionamento da lista
+        para o usuário</p>
     <input id="texto-tarefa" type="text">
     <ol id="lista-tarefas">
-
     </ol>
     <button id="criar-tarefa">Criar tarefa!</button>
     <button id="apaga-tudo">Resetar sua lista!</button>
     <button id="remover-finalizados">Tarefa finalizada</button>
     <button id="salvar-tarefas">Salvar suas tarefas!</button>
 </body>
+<script src="script.js"></script>
+<script>
+    botaoCriarTarefa.addEventListener("click", criarTarefa);
+    botaoApagaTudo.addEventListener("click", apagaTudo);
+    botaoRemoverFinalizados.addEventListener("click", removerFinalizados);
+    botaoSalvarTarefas.addEventListener("click", salvarTarefas);
+</script>
+
 </html>
