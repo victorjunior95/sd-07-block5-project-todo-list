@@ -1,7 +1,6 @@
 const botaoAdicionar = document.getElementById('criar-tarefa');
 const listaTarefas = document.getElementById('lista-tarefas');
 const itensLista = document.getElementsByClassName('selecionado');
-const itensCompletados = document.getElementsByClassName('completed');
 
 botaoAdicionar.addEventListener('click', function () {
   const textoTarefa = document.getElementById('texto-tarefa').value;
@@ -13,8 +12,8 @@ botaoAdicionar.addEventListener('click', function () {
   elementoLista.addEventListener('click', function () {
     if (itensLista.length > 0) {
       for (let index = 0; index < itensLista.length; index += 1) {
-        itensLista[index].classList.remove('selecionado') 
-      };
+        itensLista[index].classList.remove('selecionado');
+      }
     }
     elementoLista.classList.add('selecionado');
   });
