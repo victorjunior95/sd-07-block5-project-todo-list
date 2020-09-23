@@ -79,22 +79,25 @@ window.onload = function () {
   }
 };
 
+function actionAtribute(task, action) {
+  if (action === 'mover-baixo') {
+    return task + 1;
+  }
+  else if (action === 'mover-cima') {
+    return task - 1;
+  }
+}
+
 function moveUpDown(listAllTasks, action) {
   for (let task = 0; task < listAllTasks.length; task += 1) {
     const selected = listAllTasks[task].cloneNode(true);
-    if (action === 'mover-baixo' && listAllTasks[task].className.includes('selected')) {
-      const next = listAllTasks[task + 1].cloneNode(true);
-      listAllTasks[task + 1].innerText = selected.innerText;
-      listAllTasks[task + 1].className = selected.className;
+    if (listAllTasks[task].className.includes('selected')) {
+      let indexTask = actionAtribute(task, action)
+      const next = listAllTasks[indexTask].cloneNode(true);
+      listAllTasks[indexTask].innerText = selected.innerText;
+      listAllTasks[indexTask].className = selected.className;
       listAllTasks[task].innerText = next.innerText;
       listAllTasks[task].className = next.className;
-      task += 1;
-    } else {
-      const previous = listAllTasks[task - 1].cloneNode(true);
-      listAllTasks[task - 1].innerText = selected.innerText;
-      listAllTasks[task - 1].className = selected.className;
-      listAllTasks[task].innerText = previous.innerText;
-      listAllTasks[task].className = previous.className;
       task += 1;
     }
   }
