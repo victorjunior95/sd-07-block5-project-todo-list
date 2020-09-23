@@ -54,6 +54,72 @@ p {
     overflow: auto;
 }
 
+@media (max-width: 900px) {
+    #fundobranco {
+        background-color: whitesmoke;
+        border-radius: 155px;
+        height: 250px;
+        width: 650px;
+        position: relative;
+        z-index: 3;
+        margin-top: -500px;
+        overflow: auto;
+    }
+    header {
+        background-color: rgba(127, 255, 212, 0.3);
+        font-size: 20px;
+        color: rgb(97, 89, 89);
+    }
+    p {
+        font-size: 15px;
+        color: rgb(97, 89, 89);
+    }
+}
+
+@media (max-width: 700px) {
+    #fundobranco {
+        background-color: whitesmoke;
+        border-radius: 155px;
+        height: 150px;
+        width: 550px;
+        position: relative;
+        z-index: 3;
+        margin-top: -500px;
+        overflow: auto;
+    }
+    header {
+        background-color: rgba(127, 255, 212, 0.3);
+        font-size: 20px;
+        color: rgb(97, 89, 89);
+    }
+    p {
+        font-size: 15px;
+        color: rgb(97, 89, 89);
+    }
+}
+
+@media (max-width: 600px) {
+    #fundobranco {
+        background-color: whitesmoke;
+        border-radius: 155px;
+        height: 150px;
+        width: 450px;
+        position: relative;
+        z-index: 3;
+        margin-top: -500px;
+        overflow: auto;
+    }
+    header {
+        background-color: rgba(127, 255, 212, 0.3);
+        font-size: 15px;
+        color: rgb(97, 89, 89);
+    }
+    p {
+        font-size: 10px;
+        color: rgb(97, 89, 89);
+    }
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
