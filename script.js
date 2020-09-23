@@ -39,12 +39,12 @@ botaoLimpaLista.addEventListener('click', function () {
   }
 });
 // Função para remover finalizados
-const removeCompleto = document.getElementById('remover-finalizados');
-removeCompleto.addEventListener('click', function () {
+const removeFinalizado = document.getElementById('remover-finalizados');
+removeFinalizado.addEventListener('click', function () {
   for (let index = 0; index < document.getElementById('lista-tarefas').children.length; index += 1) {
-    const item = document.getElementById('lista-tarefas').children[index].className;
-    while (item === 'completed') {
-      document.querySelector('.completed').remove(item[index]);
+    let remover = document.getElementById('lista-tarefas').children;
+    if (remover[index].classList.value === 'completed') {
+      remover[index].remove();
     }
   }
 });
