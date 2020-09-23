@@ -35,7 +35,10 @@ criarTarefa.addEventListener('click', function () {
   });
 });
 
-
+apagaTudo.addEventListener('click', function (){
+  let listaTarefas = document.getElementById('lista-tarefas');
+  listaTarefas.innerHTML = '';
+})
 
 
 
