@@ -4,6 +4,8 @@ let inputTask = document.getElementById("texto-tarefa");
 let buttonClearAll = document.getElementById("apaga-tudo");
 let buttonClearCompleted = document.getElementById("remover-finalizados");
 let buttonClearSelected = document.getElementById("remover-selecionado");
+let buttonUp = document.getElementById("mover-cima");
+let buttonDown = document.getElementById("mover-baixo");
 
 addTask.addEventListener ("click", function() {
     let newTask = document.createElement("li")
@@ -20,7 +22,7 @@ addTask.addEventListener ("click", function() {
     });
 
     newTask.addEventListener ("dblclick", function () {
-        // https://developer.mozilla.org/pt-BR/docs/Web/API/Element/classList
+        //https://developer.mozilla.org/pt-BR/docs/Web/API/Element/classList
         newTask.classList.toggle("completed");
     });
 
@@ -40,5 +42,25 @@ addTask.addEventListener ("click", function() {
         for (let i = 0; i < selectedElements.length; i += 1) {
             list.removeChild(selectedElements[i])
             }
+    });
+
+    buttonUp.addEventListener("click", function () {
+        let listElements = document.querySelectorAll("li");
+        let selectedElements = document.querySelector(".selected");
+        let list = document.getElementById("lista-tarefas")
+        //https://stackoverflow.com/questions/46724542/javascript-move-elements-up-and-down-in-the-list
+        //https://developer.mozilla.org/pt-BR/docs/Web/API/Node/insertBefore
+        //https://www.w3schools.com/JSREF/prop_element_previouselementsibling.asp
+        if (selectedElements.previousElementSibling)
+        list.insertBefore(selectedElements, selectedElements.previousElementSibling);
+    });
+
+    buttonDown.addEventListener("click", function () {
+        let listElements = document.querySelectorAll("li");
+        let selectedElements = document.querySelector(".selected");
+        let list = document.getElementById("lista-tarefas")
+        //https://www.w3schools.com/JSREF/prop_element_nextelementsibling.asp
+        if (selectedElements.nextElementSibling)
+        list.insertBefore(selectedElements.nextElementSibling, selectedElements);
     });
 });
