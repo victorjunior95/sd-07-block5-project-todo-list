@@ -8,15 +8,15 @@
     <title>Document</title>
 </head>
 
-<body class="d-flex align-items-center flex-column justify-content-center" style="height: 700px;">
-    <header class="mb-5">Minha Lista de Tarefas</header>
+<body class="d-flex align-items-center flex-column justify-content-center bg-dark text-white" style="height: 700px;">
+    <header class="mb-5 text-monospace">Minha Lista de Tarefas</header>
     <section
-        class="border border-warning rounded rounded-lg d-flex align-items-center justify-content-between flex-column w-75 p-5 h-75">
+        class="border border-warning rounded rounded-lg d-flex align-items-center justify-content-between flex-column w-75 p-5 h-75 bg-light text-dark">
         <div>
-            <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+            <p id="funcionamento" class="bg-warning text-dark p-3 text-monospace border rounded">Clique duas vezes em um item para marcá-lo como completo</p>
             <input id="texto-tarefa" type="text" class="w-100">
         </div>
-        <div class="h-50 w-50 m-4 p-4 border border-secondary rounded">
+        <div class="h-50 w-50 m-4 p-2 border border-secondary rounded">
             <div class="d-flex justify-content-start">
                 <ol id="lista-tarefas"></ol>
             </div>

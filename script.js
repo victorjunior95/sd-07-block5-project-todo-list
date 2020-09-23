@@ -24,6 +24,9 @@ function createListItem() {
   const orderedList = document.getElementById('lista-tarefas');
   orderedList.appendChild(item);
   item.innerText = inputText.value;
+  item.classList.add('border-bottom');
+  item.classList.add('border-secondary');
+  item.style.width = "430px"
   inputText.value = '';
   item.addEventListener('click', focusedItem);
   item.addEventListener('dblclick', markItem);

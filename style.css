@@ -5,3 +5,7 @@
 .completed {
   text-decoration: line-through solid black;
 }
+
+header {
+  font-size: 4rem;
+}
