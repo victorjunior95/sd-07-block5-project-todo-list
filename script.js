@@ -27,3 +27,13 @@ listaTarefa.addEventListener('dblclick', function () {
         event.target.classList.toggle('completed')
     }
 })
+
+let btApagarTudo = document.getElementById('apaga-tudo')
+let btRemoveFinalizados = document.getElementById('remover-finalizados')
+
+btApagarTudo.addEventListener('click', function() {
+    let clear = document.querySelectorAll('li')
+    for (let i = 0; i < clear.length; i += 1) {
+        clear[i].remove()
+    }
+})
