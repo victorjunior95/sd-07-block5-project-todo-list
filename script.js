@@ -82,6 +82,3 @@ up.addEventListener('click', function () {
     document.querySelector('ol').insertBefore(selected, selected.previousElementSibling);
   }
 });
-
-document.querySelector('.selected').style.backgroundColor = `rgb(128 , 128 , 128)`;
-document.querySelector('.completed').style.backgroundColor = `rgb(0 , 0 , 0)`;
