@@ -30,10 +30,10 @@ function tSelect(a) {
   const newTarefa = a;
   newTarefa.addEventListener('click', function (select) {
     const tSelected = document.querySelector('.t-selected');
-    select.target.className += ' t-selected';
     if (tSelected) {
       tSelected.classList.remove('t-selected');
     }
+    select.target.className += ' t-selected';
   });
 }
 
