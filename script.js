@@ -5,13 +5,15 @@ let botaoSalvarTarefas = document.getElementById("salvar-tarefas");
 let inputTarefa = document.getElementById("texto-tarefa");
 let listaTarefas = document.getElementById("lista-tarefas");
 let textoInput = document.getElementById("texto-tarefa");
-let count = 0;
+let selecao = document.querySelector(".selecionado");
 
 function criarTarefa() {
     let tarefa = document.createElement("li");
     tarefa.innerText = inputTarefa.value;
     listaTarefas.appendChild(tarefa);
     inputTarefa.value = "";
+    tarefa.addEventListener("click", selecaoTarefa);
+    tarefa.addEventListener("dbclick", tarefaCompleta);
 }
 
 function apagaTudo() {
@@ -21,7 +23,16 @@ function apagaTudo() {
     }
 }
 
-function selecaoTarefa() {}
+function selecaoTarefa(event) {
+    if (selecao !== null) {
+        selecao.classList.remove("selecionado");
+        event.target.classList.add("selecionado");
+        selecao = event.target;
+    } else {
+        event.target.classList.add("selecionado");
+        selecao = event.target;
+    }
+}
 
 function removerFinalizados() {}
 
