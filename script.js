@@ -4,7 +4,7 @@ let botaoRemoverFinalizados = document.getElementById('remover-finalizados');
 let botaoSalvarTarefas = document.getElementById('salvar-tarefas');
 let inputTarefa = document.getElementById('texto-tarefa');
 let listaTarefas = document.getElementById('lista-tarefas');
-let textoInput = document.getElementById('texto-tarefa')
+let textoInput = document.getElementById('texto-tarefa');
 
 
 function criarTarefa() {
@@ -14,11 +14,13 @@ function criarTarefa() {
     inputTarefa.value = "";
 }
 
-function selecaoTarefa() {
-
+function apagaTudo() {
+    for (let index = 0; index < listaTarefas.querySelectorAll('li').length; index++) {
+        listaTarefas.removeChild(listaTarefas.querySelectorAll('li')[index]);
+    }
 }
 
-function apagaTudo() {
+function selecaoTarefa() {
 
 }
 
@@ -27,9 +29,5 @@ function removerFinalizados() {
 }
 
 function salvarTarefas() {
-
-}
-
-function limpaTexto() {
 
 }

@@ -1,11 +1,7 @@
-#lista-tarefas {
-    background-color: rgb(128, 128, 128);
-}
-
 .completed {
     text-decoration: line-through;
 }
 
-#apaga-tudo {}
-
-#remover-finalizados {}
+.selected {
+    background-color: rgb(128, 128, 128);
+}
