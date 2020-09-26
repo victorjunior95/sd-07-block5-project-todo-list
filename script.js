@@ -7,34 +7,31 @@ let listaTarefas = document.getElementById('lista-tarefas');
 let textoInput = document.getElementById('texto-tarefa')
 
 
-function criarTarefa()
-{
-    
+function criarTarefa() {
     let topicoLista = document.createElement("li");
     listaTarefas.appendChild(topicoLista);
     listaTarefas.innerText = textoInput.value;
-    textoInput.value="";
+    textoInput.value = "";
     conteudo.addEventListener("click", seleçãoTarefa);
     conteudo.addEventListener("click", tarefaCompleta);
-    
 }
 
-function apagaTudo()
-{
-
-}
-
-function removerFinalizados()
-{
+function selecaoTarefa() {
 
 }
 
-function salvarTarefas()
-{
+function apagaTudo() {
 
 }
 
-function limpaTexto()
-{
+function removerFinalizados() {
+
+}
+
+function salvarTarefas() {
+
+}
+
+function limpaTexto() {
 
 }
