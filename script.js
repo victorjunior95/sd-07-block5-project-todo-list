@@ -8,12 +8,10 @@ let textoInput = document.getElementById('texto-tarefa')
 
 
 function criarTarefa() {
-    let topicoLista = document.createElement("li");
-    listaTarefas.appendChild(topicoLista);
-    listaTarefas.innerText = textoInput.value;
-    textoInput.value = "";
-    conteudo.addEventListener("click", seleçãoTarefa);
-    conteudo.addEventListener("click", tarefaCompleta);
+    let tarefa = document.createElement('li');
+    tarefa.innerText = inputTarefa.value;
+    listaTarefas.appendChild(tarefa);
+    inputTarefa.value = "";
 }
 
 function selecaoTarefa() {
