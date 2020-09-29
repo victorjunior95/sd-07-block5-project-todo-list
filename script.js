@@ -1,8 +1,7 @@
 function check() {
   if (event.target.className === '') {
     event.target.classList.add('completed');
-  }
-  else {
+  } else {
     event.target.classList.remove('completed');
   }
 }
