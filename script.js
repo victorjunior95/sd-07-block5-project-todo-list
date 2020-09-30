@@ -1,3 +1,5 @@
+window.onload = storage;
+
 document.getElementById('criar-tarefa').addEventListener('click', () => {
   const itemLista = document.createElement('li');
   const caixaTexto = document.getElementById('texto-tarefa');
@@ -49,3 +51,15 @@ document.getElementById('remover-selecionado').addEventListener('click', () => {
   let tarefaSelecionada = document.querySelector('.selected');
   tarefaSelecionada.remove();
 })
+
+document.getElementById('salvar-tarefas').addEventListener('click', () => {
+  localStorage.clear();
+  let listaSalva = document.getElementById('lista-tarefas');
+  localStorage.setItem('List', listaSalva.innerHTML);
+})
+
+function storage() {
+  const ol = document.getElementsByTagName('ol');
+  let listaSalva = localStorage.getItem('List');
+  ol.innerHTML = listaSalva;
+}
