@@ -33,3 +33,10 @@ document.getElementById('apaga-tudo').addEventListener('click', () => {
   const lista = document.getElementById('lista-tarefas');
   lista.innerHTML = '';
 })
+
+document.getElementById('remover-finalizados').addEventListener('click', () => {
+  let tarefasFinalizadas = document.getElementsByClassName('completed');
+  for (let i = 0; i < tarefasFinalizadas.length; i += 1) {
+    tarefasFinalizadas[i].style.display = 'none';
+  }
+})
