@@ -62,3 +62,18 @@ removeFinalizado.addEventListener('click', function () {
     }
   });
 
+const movCima = document.getElementById('mover-cima');
+const movBaixo = document.getElementById('mover-baixo');
+
+const salvarTarefas = document.getElementById('salvar-tarefas');
+salvarTarefas.addEventListener('click', function(){
+    localStorage.clear();
+    const listaSalva = document.querySelector('ol');
+    localStorage.setItem('novaLista', listaSalva.innerHTML);
+});
+
+window.onload = function(){
+    const novaLista = document.querySelector('ol');
+    novaLista.innerHTML = localStorage.getItem('novaLista');
+
+}
