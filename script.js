@@ -21,6 +21,7 @@ document.getElementById('lista-tarefas').addEventListener('dblclick', (event) =>
 
   if (tarefaSelecionada.classList.contains('completed')) {
     tarefaSelecionada.style.textDecoration = 'none';
+    tarefaSelecionada.classList.remove('completed');
   }
   else {
     tarefaSelecionada.classList.add('completed');
