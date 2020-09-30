@@ -11,10 +11,12 @@ document.getElementById('criar-tarefa').addEventListener('click', () => {
 document.getElementById('lista-tarefas').addEventListener('click', (event) => {
   const tarefas = document.getElementsByTagName('li');
   for (let i = 0; i < tarefas.length; i += 1) {
-      tarefas[i].style.backgroundColor = '';
+    tarefas[i].style.backgroundColor = '';
+    tarefas[i].classList.remove('selected');
   }
   const tarefaSelecionada = event.target;
-  tarefaSelecionada.style.backgroundColor = 'rgb(128, 128, 128)'
+  tarefaSelecionada.style.backgroundColor = 'rgb(128, 128, 128)';
+  tarefaSelecionada.classList.add('selected');
 })
 
 document.getElementById('lista-tarefas').addEventListener('dblclick', (event) => {
@@ -41,4 +43,9 @@ document.getElementById('remover-finalizados').addEventListener('click', () => {
     let tarefa = tarefasFinalizadas[i];
     tarefa.remove();
   }
+})
+
+document.getElementById('remover-selecionado').addEventListener('click', () => {
+  let tarefaSelecionada = document.querySelector('.selected');
+  tarefaSelecionada.remove();
 })
