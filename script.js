@@ -53,7 +53,8 @@ apagarTudo.addEventListener('click', function () {
   });
 
 removeFinalizado.addEventListener('click', function () {
-    while (listaTarefas.hasChildNodes()) { 
+    const completo = document.querySelector('.completed')
+    while (completo) { 
       listaTarefas.removeChild(document.querySelector('.completed'));
     }
   });
