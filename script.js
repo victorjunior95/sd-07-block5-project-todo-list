@@ -1,7 +1,6 @@
 const textoTarefa = document.getElementById('texto-tarefa');
 const criaTarefa = document.getElementById('criar-tarefa');
 const listaTarefas = document.getElementById('lista-tarefas');
-const removeFinalizado = document.getElementById('remover-finalizados');
 const apagarTudo = document.getElementById('apaga-tudo');
 const feito = document.getElementsByClassName('feito');
 
@@ -35,27 +34,36 @@ listaTarefas.addEventListener('click', function(event){
         event.target.classList.add('selected');
     }
 })
-
 listaTarefas.addEventListener('click', function(event){
     const selecionado = document.querySelector('.selected');
     if(selecionado !== null){
         selecionado.classList.remove('selected');
     }
         event.target.classList.add('selected');
+
     
 })
 
-
+const removerSelecionado = document.getElementById('remover-selecionado');
+    
+    removerSelecionado.addEventListener('click', function(){
+        const selecionado = document.querySelector('.selected');
+        while(selecionado){
+            listaTarefas.removeChild(selecionado);
+        }
+})
 apagarTudo.addEventListener('click', function () {    
     while (listaTarefas.hasChildNodes()){
         listaTarefas.removeChild(listaTarefas.firstChild);
     }
   });
 
+
+const removeFinalizado = document.getElementById('remover-finalizados');
 removeFinalizado.addEventListener('click', function () {
     const completo = document.querySelector('.completed')
     while (completo) { 
-      listaTarefas.removeChild(document.querySelector('.completed'));
+      listaTarefas.removeChild(completo);
     }
   });
 
