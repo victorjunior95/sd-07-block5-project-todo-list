@@ -17,15 +17,6 @@ criaTarefa.addEventListener('click', function(){
     }
 });
 
-listaTarefas.addEventListener('click', function(){
-    const selecionado = document.querySelector('.selected');
-    if(selecionado){
-        selecionado.classList.remove('selected');
-    }else{
-        selecionado.classList.add('selected');
-    }
-})
-
 
 listaTarefas.addEventListener('dblclick', function(event){
     if(event.target.classList.contains('completed')){
@@ -43,6 +34,15 @@ listaTarefas.addEventListener('click', function(event){
     }else{
         event.target.classList.add('selected');
     }
+})
+
+listaTarefas.addEventListener('click', function(event){
+    const selecionado = document.querySelector('.selected');
+    if(selecionado !== null){
+        selecionado.classList.remove('selected');
+    }
+        event.target.classList.add('selected');
+    
 })
 
 
