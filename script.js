@@ -28,3 +28,8 @@ document.getElementById('lista-tarefas').addEventListener('dblclick', (event) =>
     tarefaSelecionada.style.textDecoration = 'line-through solid rgb(0, 0, 0)';
   }
 })
+
+document.getElementById('apaga-tudo').addEventListener('click', () => {
+  const lista = document.getElementById('lista-tarefas');
+  lista.innerHTML = '';
+})
