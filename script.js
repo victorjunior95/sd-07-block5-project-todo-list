@@ -5,6 +5,7 @@ document.getElementById('criar-tarefa').addEventListener('click', () => {
   const lista = document.getElementById('lista-tarefas');
   lista.appendChild(itemLista).innerText = tarefa;
   caixaTexto.value = '';
+  caixaTexto.focus();
 })
 
 document.getElementById('lista-tarefas').addEventListener('click', (event) => {
@@ -35,8 +36,9 @@ document.getElementById('apaga-tudo').addEventListener('click', () => {
 })
 
 document.getElementById('remover-finalizados').addEventListener('click', () => {
-  let tarefasFinalizadas = document.getElementsByClassName('completed');
+  const tarefasFinalizadas = document.querySelectorAll('.completed');
   for (let i = 0; i < tarefasFinalizadas.length; i += 1) {
-    tarefasFinalizadas[i].style.display = 'none';
+    let tarefa = tarefasFinalizadas[i];
+    tarefa.remove();
   }
 })
