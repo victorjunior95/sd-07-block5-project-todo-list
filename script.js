@@ -39,18 +39,13 @@ listaTarefas.addEventListener('click', function(event){
     if(selecionado !== null){
         selecionado.classList.remove('selected');
     }
-        event.target.classList.add('selected');
-
-    
+        event.target.classList.add('selected');   
 })
 
 const removerSelecionado = document.getElementById('remover-selecionado');
     
-    removerSelecionado.addEventListener('click', function(){
-        const selecionado = document.querySelector('.selected');
-        while(selecionado){
-            listaTarefas.removeChild(selecionado);
-        }
+removerSelecionado.addEventListener('click', function(){
+    document.querySelector('.selected').remove();
 })
 apagarTudo.addEventListener('click', function () {    
     while (listaTarefas.hasChildNodes()){
@@ -61,9 +56,9 @@ apagarTudo.addEventListener('click', function () {
 
 const removeFinalizado = document.getElementById('remover-finalizados');
 removeFinalizado.addEventListener('click', function () {
-    const completo = document.querySelector('.completed')
-    while (completo) { 
-      listaTarefas.removeChild(completo);
+     const completos = document.querySelectorAll('.completed');
+    for(index = 0; index < completos.length; index += 1){
+        completos[index].remove();
     }
   });
 
