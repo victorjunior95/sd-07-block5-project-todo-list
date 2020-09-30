@@ -59,7 +59,5 @@ document.getElementById('salvar-tarefas').addEventListener('click', () => {
 })
 
 function storage() {
-  const ol = document.getElementsByTagName('ol');
-  let listaSalva = localStorage.getItem('List');
-  ol.innerHTML = listaSalva;
+  document.querySelector('ol').innerHTML = localStorage.getItem('List');
 }
