@@ -17,6 +17,14 @@ criaTarefa.addEventListener('click', function(){
     }
 });
 
+listaTarefas.addEventListener('click', function(){
+    const selecionado = document.querySelector('.selected');
+    if(selecionado){
+        selecionado.classList.remove('selected');
+    }else{
+        selecionado.classList.add('selected');
+    }
+})
 
 
 listaTarefas.addEventListener('dblclick', function(event){
@@ -27,6 +35,8 @@ listaTarefas.addEventListener('dblclick', function(event){
     }
 });
 
+
+
 listaTarefas.addEventListener('click', function(event){
     if(event.target.classList.contains('selected')){
         event.target.classList.remove('selected');
@@ -34,7 +44,6 @@ listaTarefas.addEventListener('click', function(event){
         event.target.classList.add('selected');
     }
 })
-
 
 
 apagarTudo.addEventListener('click', function () {    
