@@ -15,3 +15,15 @@ document.getElementById('lista-tarefas').addEventListener('click', (event) => {
   const tarefaSelecionada = event.target;
   tarefaSelecionada.style.backgroundColor = 'rgb(128, 128, 128)'
 })
+
+document.getElementById('lista-tarefas').addEventListener('dblclick', (event) => {
+  const tarefaSelecionada = event.target;
+
+  if (tarefaSelecionada.classList.contains('completed')) {
+    tarefaSelecionada.style.textDecoration = 'none';
+  }
+  else {
+    tarefaSelecionada.classList.add('completed');
+    tarefaSelecionada.style.textDecoration = 'line-through solid rgb(0, 0, 0)';
+  }
+})
