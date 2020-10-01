@@ -61,3 +61,23 @@ document.getElementById('salvar-tarefas').addEventListener('click', () => {
 function storage() {
   document.querySelector('ol').innerHTML = localStorage.getItem('List');
 }
+
+document.getElementById('mover-cima').addEventListener('click', () => {
+  const selecionado = document.querySelector('.selected');
+  if (selecionado.previousElementSibling === null) {
+    alert('Sua tarefa já está na primeira posição!');
+  }
+  else {
+    document.querySelector('ol').insertBefore(selecionado, selecionado.previousElementSibling);
+  }
+})
+
+document.getElementById('mover-baixo').addEventListener('click', () => {
+  const selecionado = document.querySelector('.selected');
+  if (selecionado.nextElementSibling === null) {
+    alert('Sua tarefa já está na última posição!');
+  }
+  else {
+    document.querySelector('ol').insertBefore(selecionado.nextElementSibling, selecionado);
+  }
+})
