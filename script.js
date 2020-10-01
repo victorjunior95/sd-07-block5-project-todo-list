@@ -64,7 +64,10 @@ function storage() {
 
 document.getElementById('mover-cima').addEventListener('click', () => {
   const selecionado = document.querySelector('.selected');
-  if (selecionado.previousElementSibling === null) {
+  if (selecionado === null) {
+    alert('Selecione uma tarefa para movê-la!')
+  }
+  else if (selecionado.previousElementSibling === null) {
     alert('Sua tarefa já está na primeira posição!');
   }
   else {
@@ -74,7 +77,10 @@ document.getElementById('mover-cima').addEventListener('click', () => {
 
 document.getElementById('mover-baixo').addEventListener('click', () => {
   const selecionado = document.querySelector('.selected');
-  if (selecionado.nextElementSibling === null) {
+  if (selecionado === null) {
+    alert('Selecione uma tarefa para movê-la!');
+  }
+  else if (selecionado.nextElementSibling === null) {
     alert('Sua tarefa já está na última posição!');
   }
   else {
