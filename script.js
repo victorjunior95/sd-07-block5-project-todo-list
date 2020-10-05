@@ -2,6 +2,7 @@ let inputTask = document.getElementById("texto-tarefa");
 let olList = document.getElementById("lista-tarefas");
 let buttonAdd = document.getElementById("criar-tarefa");
 let deleteButton = document.getElementById('apaga-tudo');
+const buttonDeleteFinished = document.querySelector('#remover-finalizados');
 
 
 buttonAdd.addEventListener("click", function() {
@@ -29,4 +30,13 @@ olList.addEventListener("click", function(event) {
 
 deleteButton.addEventListener('click', function () {
     olList.innerHTML = '';
+  });
+
+buttonDeleteFinished.addEventListener("click", () => {
+    const elemento = document.getElementsByTagName("li");
+    for (let i = 0; i < elemento.length; i++) {
+      if (elemento[i].classList.contains('completed')){
+        document.getElementById("lista-tarefas").removeChild(elemento[i]);
+      }
+    }
   });
