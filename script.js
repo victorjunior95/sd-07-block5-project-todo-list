@@ -32,11 +32,10 @@ deleteButton.addEventListener('click', function () {
     olList.innerHTML = '';
   });
 
-buttonDeleteFinished.addEventListener("click", () => {
-    const elemento = document.getElementsByTagName("li");
-    for (let i = 0; i < elemento.length; i++) {
-      if (elemento[i].classList.contains('completed')){
-        document.getElementById("lista-tarefas").removeChild(elemento[i]);
-      }
-    }
-  });
+buttonDeleteFinished.addEventListener('click', () => {
+  const tasksFinished = document.querySelectorAll('.completed');    
+  for (let index = 0; index < tasksFinished.length; index += 1) {
+    let tasksComplete = tasksFinished[index];
+    tasksComplete.remove();
+  }
+}) 
