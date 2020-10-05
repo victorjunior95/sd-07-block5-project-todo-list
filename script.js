@@ -12,9 +12,9 @@ buttonAdd.addEventListener("click", function() {
 
 olList.addEventListener("click", function(event) {
     if (event.target.tagName == "LI") {
-        let selectedItem = document.querySelector(".selected");
-        if (selectedItem !== null) {
-            selectedItem.classList.remove("selected");    
+    let selectedItem = document.querySelector(".selected");
+    if (selectedItem !== null) {
+        selectedItem.classList.remove("selected");    
         }
     event.target.classList.add("selected");
     }
