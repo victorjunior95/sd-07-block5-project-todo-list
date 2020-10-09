@@ -8,3 +8,9 @@ const removerSelecionado = document.getElementById('remover-selecionato');
 const moverCima = document.getElementById('mover-cima');
 const moverBaixo = document.getElementById('mover-baixo');
 
+
+criarTarefa.addEventListener('click', addTarefa = () => {
+    const li = document.createElement('li');
+    li.innerHTML = textoTarefa.value;
+    listaTarefas.appendChild(li);
+});
