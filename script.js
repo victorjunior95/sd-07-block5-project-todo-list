@@ -8,27 +8,31 @@ const removerSelecionado = document.getElementById('remover-selecionato');
 const moverCima = document.getElementById('mover-cima');
 const moverBaixo = document.getElementById('mover-baixo');
 
-function clearSelection() {
-    const items = document.querySelectorAll('#lista-tarefas li');  
-    for (let index = 0; index < items.length; index += 1) {
-        items[index].classList.remove('selecionado');
-    }
-}
-
-const addSelection= (target) => target.classList.add('selecionado');
-
-
 criarTarefa.addEventListener('click', () => {
-    const li = document.createElement('li');
-    li.innerHTML = textoTarefa.value;
-    listaTarefas.appendChild(li);
-    textoTarefa.value = '';
+  const li = document.createElement('li');
+  li.innerHTML = textoTarefa.value;
+  listaTarefas.appendChild(li);
+  textoTarefa.value = '';
 });
-
 
 listaTarefas.addEventListener('click', function (event) {
-    if (event.target !== listaTarefas) {
-        clearSelection();
-        addSelection(event.target);
+  if (event.target !== listaTarefas) {
+    const clearSelecionado = () => {
+      const items = document.querySelectorAll('#lista-tarefas li');
+      for (let index = 0; index < items.length; index += 1) {
+        items[index].classList.remove('selecionado');
+      }
     }
+    const addSelecionado = (target) => target.classList.add('selecionado');
+    clearSelecionado();
+    addSelecionado(event.target);
+  }
 });
+
+listaTarefas.addEventListener('dblclick', function (event) {
+  if (event.target !== listaTarefas) {
+    const addCompleted = (target) => target.classList.toggle('completed');
+    addCompleted(event.target);
+  }
+});
+

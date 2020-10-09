@@ -7,9 +7,9 @@ ol:hover {
 }
 
 .selecionado {
-  background-color: rgb(192,192,192);
+  background-color: rgb(128,128,128);
 }
 
 .completed {
-  text-decoration: line-through solid red;
+  text-decoration: line-through solid black;
 }
