@@ -36,4 +36,4 @@ listaTarefas.addEventListener('dblclick', function (event) {
   }
 });
 
-//teste de envio
+deletarTudo.addEventListener('click', () => listaTarefas.innerHTML = '');
