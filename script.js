@@ -51,3 +51,17 @@ removerSelecionado.addEventListener('click', () => {
     listaTarefas.removeChild(itemSelecionado[index]);
   }
 });
+
+salvarTarefa.addEventListener('click', () => {
+  const tarefas = listaTarefas.innerHTML;
+  localStorage.setItem('tasks', tarefas);
+})
+
+window.onload = function () {
+  importarTarefas();
+};
+
+function importarTarefas() {
+  const loadedTasks = localStorage.getItem('tasks');
+  listaTarefas.innerHTML = loadedTasks;
+}
