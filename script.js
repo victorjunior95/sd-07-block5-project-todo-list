@@ -32,7 +32,7 @@ listTasks.addEventListener('dblclick', (event) => {
 });
 
 // Delete all button
-delButton.addEventListener('click', () => listTasks.innerHTML = '');
+delButton.addEventListener('click', () => listTasks.innerHTML === '');
 
 // Remover Finalizados
 finalized.addEventListener('click', () => {
