@@ -11,7 +11,7 @@ function criarTarefa() {
     let tarefa = document.createElement("li");
     tarefa.innerText = inputTarefa.value;
     listaTarefas.appendChild(tarefa);
-    inputTarefa.value = "";
+    inputTarefa.value = null;
     tarefa.addEventListener("click", selecaoTarefa);
     tarefa.addEventListener("dbclick", tarefaCompleta);
 }
