@@ -7,7 +7,7 @@ let listaTarefas = document.getElementById("lista-tarefas");
 let textoInput = document.getElementById("texto-tarefa");
 let selecao = document.querySelector(".selecionado");
 
-function criarTarefa() {
+function criarTarefa() { 
     let tarefa = document.createElement("li");
     tarefa.innerText = inputTarefa.value;
     listaTarefas.appendChild(tarefa);
