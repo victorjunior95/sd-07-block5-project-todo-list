@@ -14,7 +14,6 @@ function selecaoTarefa(event) {
         selecao.classList.remove("selecionado");
         event.target.classList.add("selecionado");
         selecao = event.target;
-        
     } else {
         event.target.classList.add("selecionado");
         selecao = event.target;
@@ -49,4 +48,6 @@ function apagaTudo() {
 
 function removerFinalizados() {}
 
-function salvarTarefas() {}
+function salvarTarefas() {
+    localStorage.setItem('tarefasSalvas', listaTarefas.innerHTML);
+}
