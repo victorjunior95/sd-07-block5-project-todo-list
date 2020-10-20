@@ -34,6 +34,14 @@ function selecaoTarefa(event) {
     }
 }
 
+function tarefaCompleta(event){
+    if (event.target.classList.contains("completed")){
+        event.target.classList.remove("completed");
+    }else{
+        event.target.classList.add("completed");
+    }
+}
+
 function removerFinalizados() {}
 
 function salvarTarefas() {}
