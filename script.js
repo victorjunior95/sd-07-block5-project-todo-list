@@ -7,6 +7,7 @@ let listaTarefas = document.getElementById("lista-tarefas");
 let textoInput = document.getElementById("texto-tarefa");
 let selecao = document.querySelector(".selecionado");
 
+
 function criarTarefa() { 
     let tarefa = document.createElement("li");
     tarefa.innerText = inputTarefa.value;
@@ -28,6 +29,7 @@ function selecaoTarefa(event) {
         selecao.classList.remove("selecionado");
         event.target.classList.add("selecionado");
         selecao = event.target;
+        
     } else {
         event.target.classList.add("selecionado");
         selecao = event.target;
