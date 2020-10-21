@@ -2,11 +2,13 @@ let botaoCriarTarefa = document.getElementById("criar-tarefa");
 let botaoApagaTudo = document.getElementById("apaga-tudo"); 
 let botaoRemoverFinalizados = document.getElementById("remover-finalizados");
 let botaoSalvarTarefas = document.getElementById("salvar-tarefas");
+let botaoRemoverSelecionados = document.getElementById("remover-selecionado")
 let inputTarefa = document.getElementById("texto-tarefa");
 let listaTarefas = document.getElementById("lista-tarefas");
 let textoInput = document.getElementById("texto-tarefa");
 let selecao = document.querySelector(".selecionado");
 let completed = document.querySelector(".completed");
+
 
 
 function selecaoTarefa(event) {
@@ -44,10 +46,27 @@ function apagaTudo() {
     }
 }
 
+function removerFinalizados() {
 
-
-function removerFinalizados() {}
+}
+function checarTarefasSalvas()
+{
+    if (localStorage.length > 0){
+        taskList.innerHTML = localStorage.getItem('tarefasSalvas');
+        console.log(listaTarefas);
+        let listaTarefas2 = listaTarefas.querySelector('li');
+        listaTarefas2.forEach((tarefa1) => {
+            tarefa1.addEventListener('dblclick', tarefaCompleta);
+            tarefa1.addEventListener('click', selecaoTarefa);
+        });
+    }
+}
+checarTarefasSalvas();
 
 function salvarTarefas() {
     localStorage.setItem('tarefasSalvas', listaTarefas.innerHTML);
+}
+
+function removeSelecionados(){
+    listaTarefas.removeChild(selecao);
 }
