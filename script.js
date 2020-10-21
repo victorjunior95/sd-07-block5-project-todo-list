@@ -2,7 +2,9 @@ let botaoCriarTarefa = document.getElementById("criar-tarefa");
 let botaoApagaTudo = document.getElementById("apaga-tudo"); 
 let botaoRemoverFinalizados = document.getElementById("remover-finalizados");
 let botaoSalvarTarefas = document.getElementById("salvar-tarefas");
-let botaoRemoverSelecionados = document.getElementById("remover-selecionado")
+let botaoRemoverSelecionados = document.getElementById("remover-selecionado");
+let botaoMoverCima = document.getElementById("mover-cima");
+let botaoMoverBaixo = document.getElementById("mover-baixo");
 let inputTarefa = document.getElementById("texto-tarefa");
 let listaTarefas = document.getElementById("lista-tarefas");
 let textoInput = document.getElementById("texto-tarefa");
@@ -75,4 +77,10 @@ function removeFinalizados(){
             listaTarefas.removeChild(listaTarefas2[i]);
         }
     }
+}
+function moverCima(){
+    
+}
+function moverBaixo(){
+
 }
