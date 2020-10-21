@@ -69,5 +69,10 @@ function removeSelecionados(){
     listaTarefas.removeChild(selecao);
 }
 function removeFinalizados(){
-    listaTarefas.removeChild(completed);
+    let listaTarefas2 = listaTarefas.querySelectorAll('li');
+    for (i=0; i < listaTarefas2.length; i++){
+        if (listaTarefas2[i].classList.contains('completed')){
+            listaTarefas.removeChild(listaTarefas2[i]);
+        }
+    }
 }
