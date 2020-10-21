@@ -41,12 +41,14 @@ function criarTarefa() {
     tarefa.addEventListener('click', selecaoTarefa);
 }
 
+
 function apagaTudo() {
     let listaTarefasApagar = listaTarefas.querySelectorAll("li");
     for (let index = 0; index < listaTarefasApagar.length; index++) {
         listaTarefas.removeChild(listaTarefasApagar[index]);
     }
 }
+
 // function checarTarefasSalvas()
 // {
 //     if (localStorage.length > 0){
@@ -64,9 +66,13 @@ function apagaTudo() {
 function salvarTarefas() {
     localStorage.setItem('tarefasSalvas', listaTarefas.innerHTML);
 }
+
+
 function removeSelecionados(){
     listaTarefas.removeChild(selecao);
 }
+
+
 function removeFinalizados(){
     let listaTarefas2 = listaTarefas.querySelectorAll('li');
     for (i=0; i < listaTarefas2.length; i++){
@@ -75,6 +81,8 @@ function removeFinalizados(){
         }
     }
 }
+
+
 // function moverBaixo(){
 //     if (selecao !== null) {
 //         if (selecao.nextSibling !== null) {
@@ -90,3 +98,8 @@ function removeFinalizados(){
 //         }
 //     }
 // }
+botaoCriarTarefa.addEventListener("click", criarTarefa);
+botaoRemoverFinalizados.addEventListener("click", removeFinalizados);
+botaoRemoverSelecionados.addEventListener("click", removeSelecionados);
+botaoSalvarTarefas.addEventListener("click", salvarTarefas);
+botaoApagaTudo.addEventListener("click", apagaTudo);
