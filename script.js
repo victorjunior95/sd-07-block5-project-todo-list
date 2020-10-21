@@ -81,14 +81,14 @@ function removeFinalizados(){
 function moverCima(){
     let selecionado = document.querySelector('.selecionado');
     let primeiroFilho = listaTarefas.firstElementChild;
-    if ((document.querySelectorAll('.sel{ecionado').length !== 0) (selecionado !== primeiroFilho)){
+    if ((document.querySelectorAll('.selecionado').length !== 0) && (selecionado !== primeiroFilho)){
         listaTarefas.insertBefore(selecionado, selecionado.previousElementSibling);
     }
 }
 function moverBaixo(){
     let selecionado = document.querySelector('.selecionado');
     let ultimoFilho = listaTarefas.lastElementChild;
-    if ((document.querySelectorAll('.sel{ecionado').length !== 0) (selecionado !== ultimoFilho)){
-        listaTarefas.insertBefore(selecionado, selecionado.nextElementSibling);
+    if ((document.querySelectorAll('.selecionado').length !== 0) && (selecionado !== ultimoFilho)){
+        listaTarefas.insertBefore(selecionado, selecionado.nextElementSibling.nextElementSibling);
     }
 }
