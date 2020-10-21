@@ -69,24 +69,24 @@ function removeSelecionados(){
 }
 function removeFinalizados(){
     let listaTarefas2 = listaTarefas.querySelectorAll('li');
-    for (i=0; i < listaTarefas2.length; i+=1){
+    for (i=0; i < listaTarefas2.length; i++){
         if (listaTarefas2[i].classList.contains('completed')){
             listaTarefas.removeChild(listaTarefas2[i]);
         }
     }
 }
-function moverBaixo(){
-    if (selecao !== null) {
-        if (selecao.nextSibling !== null) {
-            selecao.parentNode.insertBefore(selecao.nextSibling, selecao);
-        }
-    }
-}
+// function moverBaixo(){
+//     if (selecao !== null) {
+//         if (selecao.nextSibling !== null) {
+//             selecao.parentNode.insertBefore(selecao.nextSibling, selecao);
+//         }
+//     }
+// }
 
-function moverCima(){
-    if (selecao !== null) {
-        if (selecao.nextSibling !== null) {
-            selecao.parentNode.insertBefore(selecao, selecao.previousSibling);
-        }
-    }
-}
+// function moverCima(){
+//     if (selecao !== null) {
+//         if (selecao.nextSibling !== null) {
+//             selecao.parentNode.insertBefore(selecao, selecao.previousSibling);
+//         }
+//     }
+// }
