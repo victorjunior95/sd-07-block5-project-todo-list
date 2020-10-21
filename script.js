@@ -45,7 +45,6 @@ function apagaTudo() {
         listaTarefas.removeChild(listaTarefasApagar[index]);
     }
 }
-
 function removerFinalizados() {
 
 }
@@ -66,7 +65,9 @@ checarTarefasSalvas();
 function salvarTarefas() {
     localStorage.setItem('tarefasSalvas', listaTarefas.innerHTML);
 }
-
 function removeSelecionados(){
     listaTarefas.removeChild(selecao);
+}
+function removeFinalizados(){
+    listaTarefas.removeChild(completed);
 }
