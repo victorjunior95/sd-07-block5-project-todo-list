@@ -4,23 +4,37 @@ btn.addEventListener("click", function () {
     let inputItem = document.querySelector("#texto-tarefa").value;
     createLi(inputItem);
     document.querySelector("#texto-tarefa").value = "";
-       
+
 });
 
-function createLi(inputValue){
+function createLi(inputValue) {
     const ol = document.querySelector("#lista-tarefas");
     const li = document.createElement("li")
     li.innerText = inputValue;
     addEventClick(li);
+    addEventDoubleClick(li);
     ol.appendChild(li);
 }
 
-function addEventClick(li){
+function addEventClick(li) {
     li.addEventListener('click', function () {
         const selectedLi = document.querySelector(".select");
-        if(selectedLi !== null){
+        if (selectedLi !== null) {
             selectedLi.classList.remove("select");
         }
         li.classList.add("select");
     });
+}
+
+function addEventDoubleClick(li) {
+    console.log('estou aki1')
+    li.addEventListener('dblclick', function () {
+        if (li.classList.contains('completed')) {
+            li.classList.remove('completed');
+        } else {
+            li.classList.add('completed');
+        }
+        console.log('estou aki')
+    });
+
 }
