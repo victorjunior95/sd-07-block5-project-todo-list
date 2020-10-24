@@ -78,3 +78,10 @@ btnMoveDown.addEventListener('click', function(){
         }
     }
 });
+
+const btnremoveItem = document.querySelector("#remover-selecionado")
+
+btnremoveItem.addEventListener('click', function(){
+    const itemSelect = document.querySelector(".select")
+    itemSelect.remove();
+});
