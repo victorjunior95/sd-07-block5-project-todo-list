@@ -46,3 +46,35 @@ btnremovefinalizado.addEventListener("click", function () {
     allEnded.forEach(li => li.remove());
     
 });
+
+const btnMoveUp = document.querySelector("#mover-cima");
+btnMoveUp.addEventListener('click', function(){
+    const itemSelect = document.querySelector(".select");
+    const ol = document.querySelector("#lista-tarefas");
+    if(itemSelect === null){
+        alert("Nenhum item selecionado");
+    } else{
+        const previousLi = itemSelect.previousSibling;
+        if(itemSelect === ol.firstChild){
+            alert("Impossivel mover este item para cima");
+        }else{
+            ol.insertBefore(itemSelect, previousLi); 
+        }
+    }
+});
+
+const btnMoveDown = document.querySelector("#mover-baixo")
+btnMoveDown.addEventListener('click', function(){
+    const itemSelect = document.querySelector(".select");
+    const ol = document.querySelector("#lista-tarefas");
+    if(itemSelect === null){
+        alert("Nenhum item selecionado");
+    } else{
+        const nextLi = itemSelect.nextSibling;
+        if(itemSelect === ol.lastChild){
+            alert("Impossivel mover este item para baixo");
+        }else{
+            ol.insertBefore(nextLi, itemSelect);
+        }
+    }
+});
