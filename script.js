@@ -11,6 +11,12 @@ function createLi(inputValue){
     const ol = document.querySelector("#lista-tarefas");
     const li = document.createElement("li")
     li.innerText = inputValue;
+    addEventClick(li);
     ol.appendChild(li);
+}
 
+function addEventClick(li){
+    li.addEventListener('click', function () {
+        li.classList.add("select");
+    });
 }
