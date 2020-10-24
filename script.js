@@ -11,8 +11,8 @@ function createLi(inputValue) {
     const ol = document.querySelector("#lista-tarefas");
     const li = document.createElement("li")
     li.innerText = inputValue;
-    addEventClick(li);
     addEventDoubleClick(li);
+    addEventClick(li);
     ol.appendChild(li);
 }
 
@@ -27,14 +27,15 @@ function addEventClick(li) {
 }
 
 function addEventDoubleClick(li) {
-    console.log('estou aki1')
     li.addEventListener('dblclick', function () {
         if (li.classList.contains('completed')) {
             li.classList.remove('completed');
         } else {
             li.classList.add('completed');
         }
-        console.log('estou aki')
     });
-
 }
+const btnremove = document.querySelector("#apaga-tudo");
+btnremove.addEventListener('click', function () {
+    document.querySelector("#lista-tarefas").innerHTML = "";
+});
