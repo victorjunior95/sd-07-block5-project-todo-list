@@ -17,6 +17,10 @@ function createLi(inputValue){
 
 function addEventClick(li){
     li.addEventListener('click', function () {
+        const selectedLi = document.querySelector(".select");
+        if(selectedLi !== null){
+            selectedLi.classList.remove("select");
+        }
         li.classList.add("select");
     });
 }
