@@ -39,3 +39,10 @@ const btnremove = document.querySelector("#apaga-tudo");
 btnremove.addEventListener('click', function () {
     document.querySelector("#lista-tarefas").innerHTML = "";
 });
+
+const btnremovefinalizado = document.querySelector("#remover-finalizados");
+btnremovefinalizado.addEventListener("click", function () {
+    const allEnded = document.querySelectorAll(".completed");
+    allEnded.forEach(li => li.remove());
+    
+});
