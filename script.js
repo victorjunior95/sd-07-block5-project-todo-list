@@ -140,7 +140,7 @@ window.onload = function () {
 
     function getSavedList() {
         console.log(jobList);
-        if (localStorage.getItem("ListaTarefas") !== "undefined" || localStorage.getItem("ListaTarefas") !== "null") {
+        if (localStorage.getItem("ListaTarefas") !== null) {
             jobList.innerHTML = localStorage.getItem("ListaTarefas");
             let elementInsert = document.querySelectorAll("li");
             for (index = 0; index < elementInsert.length; index += 1) {
